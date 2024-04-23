@@ -1,0 +1,34 @@
+module;
+
+#include "../../FatWin32_.hpp"
+
+#include <d3d11.h>
+#include <d3dcompiler.h>
+#include <wrl.h>
+
+module VertexShader;
+
+namespace fatpound::starrealm
+{
+    VertexShader::VertexShader(fatpound::dx11::D3DGraphics& gfx, const std::wstring& path)
+    {
+        D3DReadFileToBlob(path.c_str(), &pBytecodeBlob_);
+
+        GetDevice_(gfx)->CreateVertexShader(
+            pBytecodeBlob_->GetBufferPointer(),
+            pBytecodeBlob_->GetBufferSize(),
+            nullptr,
+            &pVertexShader_
+        );
+    }
+
+    ID3DBlob* VertexShader::GetBytecode() const noexcept
+    {
+        return pBytecodeBlob_.Get();
+    }
+
+    void VertexShader::Bind(fatpound::dx11::D3DGraphics& gfx) noexcept
+    {
+        GetContext_(gfx)->VSSetShader(pVertexShader_.Get(), nullptr, 0u);
+    }
+}
