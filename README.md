@@ -15,7 +15,7 @@ The stars just rotate around their centres\
 You can zoom in or out with the mouse wheel\
 You can move around the space in the X and Y axis using the left mouse click\
 You can play the game in fullscreen if you build it in Release mode\
-If you want to lower the memory usage of the game, then try 8, 4, 2 or 1 value for the MSAA_QUALITY in D3D11Graphics.cpp file\
+If you want to lower the memory usage of the game, then try 8, 4, 2 or 1 value for the MSAA_QUALITY in D3D11Graphics.cpp file. The tradeoff is, stars will look slightly worse than before.\
 Press SPACE to stop stars\
 Press ESC to exit
 
