@@ -1,6 +1,6 @@
 module;
 
-#include "../../../../Win32_/FatWin32_.hpp"
+#include "../../../Win32_/FatWin32_.hpp"
 
 #include <d3d11.h>
 #include <DirectXMath.h>
@@ -11,7 +11,7 @@ module;
 #endif // !NDEBUG
 #endif // (_MSVC_LANG == 202002L)
 
-module StarFilledMulti;
+module StarFilledBlend;
 
 import FatColor;
 import VertexBuffer;
@@ -19,7 +19,6 @@ import VertexShader;
 import PixelShader;
 import InputLayout;
 import Topology;
-import PixelCBuffer;
 import TransformCBuffer;
 
 namespace dx = DirectX;
@@ -28,28 +27,54 @@ using namespace fatpound::win32::d3d11;
 
 namespace fatpound::starrealm
 {
-    StarFilledMulti::StarFilledMulti(Graphics& gfx, const Descriptor& desc)
+    StarFilledBlend::StarFilledBlend(Graphics& gfx, const Descriptor& desc)
         :
-        StarBase<StarFilledMulti>(desc)
+        StarBase<StarFilledBlend>(desc)
     {
         if (!IsStaticInitialized_())
         {
-            auto pvs = std::make_unique<VertexShader>(gfx, L"VSColorIndexed.cso");
+            auto pvs = std::make_unique<VertexShader>(gfx, L"VSColorBlend.cso");
             auto pvsbc = pvs->GetBytecode();
             AddStaticBind_(std::move(pvs));
-            AddStaticBind_(std::make_unique<PixelShader>(gfx, L"PSColorIndexed.cso"));
+            AddStaticBind_(std::make_unique<PixelShader>(gfx, L"PSColorBlend.cso"));
 
             const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
             {
-                { "Position", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+                { "Position", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0u, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+                { "Color",    0, DXGI_FORMAT_R8G8B8A8_UNORM,  0, 12u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
             };
 
             AddStaticBind_(std::make_unique<InputLayout>(gfx, ied, pvsbc));
             AddStaticBind_(std::make_unique<Topology>(gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
         }
 
-        // The non-Blend effect Vertex is the same as Star::Make's dx::XMFLOAT3
-        const auto& vertices = Star::Make(radius_.x, radius_.y, position_, desc.flare_count);
+        struct Vertex final
+        {
+            DirectX::XMFLOAT3 pos;
+
+            fatpound::util::Color color;
+        };
+
+        std::minstd_rand mrng(std::random_device{}());
+        std::uniform_int_distribution<int> rgb_dist(0, 255);
+
+        const auto& flare_count = desc.flare_count;
+
+        std::vector<Vertex> vertices;
+        vertices.reserve(flare_count * 2u + 1u);
+
+        for (const auto& vertex : Star::Make(radius_.x, radius_.y, position_, flare_count))
+        {
+            vertices.emplace_back(
+                vertex,
+                fatpound::util::Color(
+                    static_cast<unsigned char>(rgb_dist(mrng)),
+                    static_cast<unsigned char>(rgb_dist(mrng)),
+                    static_cast<unsigned char>(rgb_dist(mrng)),
+                    255 // not necessary because we set this Alpha value to 1.0f in the Pixel Shader
+                )
+            );
+        }
 
         const auto& vertex_count_no_centre = vertices.size() - 1u;
 
@@ -64,11 +89,11 @@ namespace fatpound::starrealm
                     idx_arr.end(),
                     [&](const auto& idx0, const auto& idx1) -> bool
                     {
-                        return vertices[idx0].x < vertices[idx1].x;
+                        return vertices[idx0].pos.x < vertices[idx1].pos.x;
                     }
                 );
 
-                if (vertices[idx_arr[1u]].y < vertices[idx_arr[2u]].y)
+                if (vertices[idx_arr[1u]].pos.y < vertices[idx_arr[2u]].pos.y)
                 {
                     std::swap(idx_arr[1u], idx_arr[2u]);
                 }
@@ -78,8 +103,6 @@ namespace fatpound::starrealm
                     indices.emplace_back(static_cast<unsigned short int>(idx));
                 }
             };
-
-        AddBind_(std::make_unique<VertexBuffer>(gfx, vertices));
 
         for (std::size_t i = 1u; i <= vertex_count_no_centre - 1u; i += 2u)
         {
@@ -95,30 +118,8 @@ namespace fatpound::starrealm
             }
         }
 
+        AddBind_(std::make_unique<VertexBuffer>(gfx, vertices));
         AddIndexBuffer_(std::make_unique<IndexBuffer>(gfx, indices));
-
-        struct ConstantBuffer2
-        {
-            dx::XMFLOAT4 vertex_colors[6];
-        };
-
-        ConstantBuffer2 cb2 = {};
-
-        std::minstd_rand mrng(std::random_device{}());
-        std::uniform_int_distribution<int> rgb_dist(0, 255);
-
-        for (std::size_t i = 0u; i < 6u; ++i)
-        {
-            cb2.vertex_colors[i] = dx::XMFLOAT4{
-                static_cast<float>(rgb_dist(mrng)) / 255.0f,
-                static_cast<float>(rgb_dist(mrng)) / 255.0f,
-                static_cast<float>(rgb_dist(mrng)) / 255.0f,
-                1.0f
-            };
-        }
-
-        AddBind_(std::make_unique<PixelCBuffer<ConstantBuffer2>>(gfx, cb2));
-
         AddBind_(std::make_unique<TransformCBuffer>(gfx, *this));
     }
 }

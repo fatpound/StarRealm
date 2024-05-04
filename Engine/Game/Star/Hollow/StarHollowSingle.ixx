@@ -1,11 +1,11 @@
 module;
 
-#include "../../../../Win32_/FatWin32_.hpp"
+#include "../../../Win32_/FatWin32_.hpp"
 
 #include <d3d11.h>
 #include <DirectXMath.h>
 
-export module StarHollowMulti;
+export module StarHollowSingle;
 
 import D3D11Graphics;
 import StarBase;
@@ -32,10 +32,10 @@ import <numeric>;
 
 export namespace fatpound::starrealm
 {
-    class StarHollowMulti final : public StarBase<StarHollowMulti>
+    class StarHollowSingle final : public StarBase<StarHollowSingle>
     {
     public:
-        StarHollowMulti(fatpound::win32::d3d11::Graphics& gfx, const Descriptor& desc);
+        StarHollowSingle(fatpound::win32::d3d11::Graphics& gfx, const Descriptor& desc);
 
 
     protected:

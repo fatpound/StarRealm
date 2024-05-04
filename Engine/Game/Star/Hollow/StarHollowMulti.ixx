@@ -1,11 +1,11 @@
 module;
 
-#include "../../../../Win32_/FatWin32_.hpp"
+#include "../../../Win32_/FatWin32_.hpp"
 
 #include <d3d11.h>
 #include <DirectXMath.h>
 
-export module StarHollowBlend;
+export module StarHollowMulti;
 
 import D3D11Graphics;
 import StarBase;
@@ -23,6 +23,7 @@ import <memory>;
 //
 import <random>;
 import <algorithm>;
+import <numeric>;
 #endif // NDEBUG
 #else
 #error C++20 or greater version required
@@ -31,10 +32,10 @@ import <algorithm>;
 
 export namespace fatpound::starrealm
 {
-    class StarHollowBlend final : public StarBase<StarHollowBlend>
+    class StarHollowMulti final : public StarBase<StarHollowMulti>
     {
     public:
-        StarHollowBlend(fatpound::win32::d3d11::Graphics& gfx, const Descriptor& desc);
+        StarHollowMulti(fatpound::win32::d3d11::Graphics& gfx, const Descriptor& desc);
 
 
     protected:

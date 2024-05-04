@@ -75,70 +75,70 @@
     <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\VertexShader.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Camera\Camera.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Camera\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Camera\Camera.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Camera\Camera.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Camera\CameraController.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Camera\CameraController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Camera\CameraController.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Camera\CameraController.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Drawable\Drawable.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Drawable\Drawable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Drawable\Drawable.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Drawable\Drawable.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Drawable\DrawableBase.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Drawable\DrawableBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Drawable\Star\Filled\StarFilledBlend.cpp">
+    <ClCompile Include="Game\Star\Filled\StarFilledBlend.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Drawable\Star\Filled\StarFilledBlend.ixx">
+    <ClCompile Include="Game\Star\Filled\StarFilledBlend.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Drawable\Star\Filled\StarFilledMulti.cpp">
+    <ClCompile Include="Game\Star\Filled\StarFilledMulti.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Drawable\Star\Filled\StarFilledMulti.ixx">
+    <ClCompile Include="Game\Star\Filled\StarFilledMulti.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Drawable\Star\Filled\StarFilledSingle.cpp">
+    <ClCompile Include="Game\Star\Filled\StarFilledSingle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Drawable\Star\Filled\StarFilledSingle.ixx">
+    <ClCompile Include="Game\Star\Filled\StarFilledSingle.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Drawable\Star\Hollow\StarHollowBlend.cpp">
+    <ClCompile Include="Game\Star\Hollow\StarHollowBlend.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Drawable\Star\Hollow\StarHollowBlend.ixx">
+    <ClCompile Include="Game\Star\Hollow\StarHollowBlend.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Drawable\Star\Hollow\StarHollowMulti.cpp">
+    <ClCompile Include="Game\Star\Hollow\StarHollowMulti.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Drawable\Star\Hollow\StarHollowMulti.ixx">
+    <ClCompile Include="Game\Star\Hollow\StarHollowMulti.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Drawable\Star\Hollow\StarHollowSingle.cpp">
+    <ClCompile Include="Game\Star\Hollow\StarHollowSingle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Drawable\Star\Hollow\StarHollowSingle.ixx">
+    <ClCompile Include="Game\Star\Hollow\StarHollowSingle.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Drawable\Star\Star.cpp">
+    <ClCompile Include="Game\Star\Star.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Drawable\Star\Star.ixx">
+    <ClCompile Include="Game\Star\Star.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Drawable\Star\StarBase.ixx">
+    <ClCompile Include="Game\Star\StarBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game\StarRealm.cpp">
