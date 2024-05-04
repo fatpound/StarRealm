@@ -5,11 +5,11 @@ module;
 #include <d3d11.h>
 #include <DirectXMath.h>
 
-#if (_MSVC_LANG == 202002L)
+#if _MSVC_LANG == 202002L
 #ifndef NDEBUG
 #include <array>
 #endif // !NDEBUG
-#endif // (_MSVC_LANG == 202002L)
+#endif // _MSVC_LANG == 202002L
 
 module StarFilledMulti;
 

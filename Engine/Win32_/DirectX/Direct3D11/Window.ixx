@@ -9,10 +9,10 @@ import Keyboard;
 import Mouse;
 import FatMath;
 
-#if (_MSVC_LANG > 202002L)
+#if _MSVC_LANG > 202002L
 import std;
 #else
-#if (_MSVC_LANG == 202002L)
+#if _MSVC_LANG == 202002L
 #ifdef NDEBUG
 import std.core;
 import std.memory;
@@ -27,8 +27,8 @@ import <stdexcept>;
 #endif // NDEBUG
 #else
 #error C++20 or greater version required
-#endif // (_MSVC_LANG == 202002L)
-#endif // (_MSVC_LANG > 202002L)
+#endif // _MSVC_LANG == 202002L
+#endif // _MSVC_LANG > 202002L
 
 export namespace fatpound::win32::d3d11
 {
