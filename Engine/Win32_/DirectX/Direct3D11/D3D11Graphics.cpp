@@ -7,6 +7,12 @@ module;
 #include <DirectXMath.h>
 #include <wrl.h>
 
+#if _MSVC_LANG == 202002L
+#ifndef NDEBUG
+#include <array>
+#endif // !NDEBUG
+#endif // _MSVC_LANG == 202002L
+
 #define MSAA_QUALITY 16u
 
 #pragma comment(lib, "d3d11")
@@ -41,15 +47,15 @@ namespace fatpound::win32::d3d11
         scd.Windowed = FALSE;
 #else
         scd.Windowed = TRUE;
-#endif
+#endif // NDEBUG
         scd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
         scd.Flags = 0u;
 
-        UINT swapCreateFlags = 0u;
-
-#ifndef NDEBUG
-        swapCreateFlags |= D3D11_CREATE_DEVICE_DEBUG;
-#endif
+#ifdef NDEBUG
+        constexpr UINT swapCreateFlags = 0u;
+#else
+        constexpr UINT swapCreateFlags = D3D11_CREATE_DEVICE_DEBUG;
+#endif // NDEBUG
 
         D3D11CreateDeviceAndSwapChain(
             nullptr,

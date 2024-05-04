@@ -12,8 +12,7 @@ namespace fatpound::win32::d3d11
         screen_width_(width),
         screen_height_(height)
     {
-        WNDCLASSEX wc = { 0 };
-
+        WNDCLASSEX wc = {};
         wc.cbSize = sizeof(wc);
         wc.style = CS_OWNDC;
         wc.lpfnWndProc = &HandleMsgSetup_;
@@ -26,6 +25,8 @@ namespace fatpound::win32::d3d11
         wc.lpszMenuName = nullptr;
         wc.lpszClassName = wndClassName_;
         wc.hIconSm = nullptr;
+        wc.hIcon = nullptr;
+        wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
 
         RegisterClassEx(&wc);
 
@@ -88,7 +89,6 @@ namespace fatpound::win32::d3d11
         }
 
         ShowWindow(hWnd_, /*SW_SHOW*/ SW_SHOWDEFAULT);
-        SetCursor(LoadCursor(nullptr, IDC_ARROW));
     }
     Window::~Window()
     {
@@ -96,7 +96,7 @@ namespace fatpound::win32::d3d11
         UnregisterClass(wndClassName_, hInst_);
     }
 
-    std::optional<int> Window::ProcessMessages() noexcept
+    std::optional<WPARAM> Window::ProcessMessages() noexcept
     {
         MSG msg;
 
@@ -104,7 +104,7 @@ namespace fatpound::win32::d3d11
         {
             if (msg.message == WM_QUIT)
             {
-                return static_cast<int>(msg.wParam);
+                return msg.wParam;
             }
 
             TranslateMessage(&msg);

@@ -149,7 +149,7 @@ namespace fatpound::starrealm
 
     int Game::Go()
     {
-        std::optional<int> error_code;
+        std::optional<WPARAM> error_code;
 
         while (true)
         {
@@ -157,7 +157,7 @@ namespace fatpound::starrealm
 
             [[unlikely]] if (error_code)
             {
-                return *error_code;
+                return static_cast<int>(*error_code);
             }
 
             [[unlikely]] if (wnd_.kbd.KeyIsPressed(VK_ESCAPE))
