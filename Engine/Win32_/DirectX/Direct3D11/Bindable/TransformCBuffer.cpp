@@ -1,6 +1,6 @@
 module;
 
-#include "../../FatWin32_.hpp"
+#include "../../../FatWin32_.hpp"
 
 #include <d3d11.h>
 #include <DirectXMath.h>
@@ -11,9 +11,9 @@ module TransformCBuffer;
 import D3D11Graphics;
 import Drawable;
 
-namespace fatpound::starrealm
+namespace fatpound::win32::d3d11
 {
-    TransformCBuffer::TransformCBuffer(fatpound::dx11::D3DGraphics& gfx, const Drawable& parent)
+    TransformCBuffer::TransformCBuffer(Graphics& gfx, const Drawable& parent)
         :
         vcbuf_(gfx),
         parent_(parent)
@@ -21,7 +21,7 @@ namespace fatpound::starrealm
 
     }
 
-    void TransformCBuffer::Bind(fatpound::dx11::D3DGraphics& gfx) noexcept
+    void TransformCBuffer::Bind(Graphics& gfx) noexcept
     {
         vcbuf_.Update(
             gfx,

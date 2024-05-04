@@ -18,61 +18,61 @@
     <ClCompile Include="wWinMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\Bindable\Bindable.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\Bindable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\Bindable\Bindable.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\Bindable.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\Bindable\CBuffer.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\CBuffer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\Bindable\IndexBuffer.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\IndexBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\Bindable\IndexBuffer.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\IndexBuffer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\Bindable\InputLayout.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\InputLayout.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\Bindable\InputLayout.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\InputLayout.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\Bindable\PixelCBuffer.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\PixelCBuffer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\Bindable\PixelShader.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\PixelShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\Bindable\PixelShader.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\PixelShader.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\Bindable\Topology.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\Topology.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\Bindable\Topology.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\Topology.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\Bindable\TransformCBuffer.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\TransformCBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\Bindable\TransformCBuffer.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\TransformCBuffer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\Bindable\VertexBuffer.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\VertexBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\Bindable\VertexBuffer.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\VertexBuffer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\Bindable\VertexCBuffer.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\VertexCBuffer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\Bindable\VertexShader.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\VertexShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\Bindable\VertexShader.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\VertexShader.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game\Camera\Camera.cpp">
@@ -159,16 +159,16 @@
     <ClCompile Include="Util\FatTimer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\D3D11Graphics.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Graphics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\D3D11Graphics.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Graphics.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\D3D11Window.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX11\D3D11Window.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Window.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Win32_\IO\Keyboard.cpp">
@@ -190,11 +190,11 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Win32_\DirectX11\Shader\PSColorBlend.hlsl" />
-    <FxCompile Include="Win32_\DirectX11\Shader\PSColorIndexed.hlsl" />
-    <FxCompile Include="Win32_\DirectX11\Shader\PSColorSingle.hlsl" />
-    <FxCompile Include="Win32_\DirectX11\Shader\VSColorBlend.hlsl" />
-    <FxCompile Include="Win32_\DirectX11\Shader\VSColorIndexed.hlsl" />
-    <FxCompile Include="Win32_\DirectX11\Shader\VSColorSingle.hlsl" />
+    <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\PSColorBlend.hlsl" />
+    <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\PSColorIndexed.hlsl" />
+    <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\PSColorSingle.hlsl" />
+    <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\VSColorBlend.hlsl" />
+    <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\VSColorIndexed.hlsl" />
+    <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\VSColorSingle.hlsl" />
   </ItemGroup>
 </Project>

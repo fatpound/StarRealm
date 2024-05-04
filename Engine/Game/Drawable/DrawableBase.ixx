@@ -11,6 +11,10 @@ export module DrawableBase;
 import Bindable;
 import Drawable;
 
+#if (_MSVC_LANG > 202002L)
+import std;
+#else
+#if (_MSVC_LANG == 202002L)
 #ifdef NDEBUG
 import std.core;
 import std.memory;
@@ -21,8 +25,12 @@ import <cstdint>;
 import <vector>;
 import <memory>;
 #endif // NDEBUG
+#else
+#error C++20 or greater version required
+#endif // (_MSVC_LANG == 202002L)
+#endif // (_MSVC_LANG > 202002L)
 
-export namespace fatpound::starrealm
+export namespace fatpound::win32::d3d11
 {
     template <class C>
     class DrawableBase : public Drawable
@@ -31,11 +39,11 @@ export namespace fatpound::starrealm
 
 
     protected:
-        virtual bool IsStaticInitialized_() const noexcept = 0;
+        virtual bool IsStaticInitialized_() const noexcept(!IS_DEBUG) = 0;
 
         virtual void AddStaticBind_(std::unique_ptr<Bindable> bind) noexcept(!IS_DEBUG) = 0;
-        virtual void AddStaticIndexBuffer_(std::unique_ptr<IndexBuffer> ibuf) = 0;
-        virtual void SetIndexFromStatic_() = 0;
+        virtual void AddStaticIndexBuffer_(std::unique_ptr<IndexBuffer> ibuf) noexcept(!IS_DEBUG) = 0;
+        virtual void SetIndexFromStatic_() noexcept(!IS_DEBUG) = 0;
 
 
     protected:

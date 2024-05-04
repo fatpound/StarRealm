@@ -10,7 +10,7 @@ import D3D11Graphics;
 
 namespace dx = DirectX;
 
-namespace fatpound::starrealm
+namespace fatpound::win32::d3d11
 {
     Camera::Camera(const float& min_depth, const float& max_depth) noexcept
         :

@@ -2,29 +2,37 @@
 
 export module Mouse;
 
+#if (_MSVC_LANG > 202002L)
+import std;
+#else
+#if (_MSVC_LANG == 202002L)
 #ifdef NDEBUG
 import std.core;
 #else
 import <queue>;
 import <optional>;
 #endif // NDEBUG
+#else
+#error C++20 or greater version required
+#endif // (_MSVC_LANG == 202002L)
+#endif // (_MSVC_LANG > 202002L)
 
-namespace fatpound::dx11
+namespace fatpound::win32::d3d11
 {
-    class D3DWindow;
+    class Window;
 }
 
 export namespace fatpound::win32::io
 {
     class Mouse final
     {
-        friend class fatpound::dx11::D3DWindow;
+        friend class fatpound::win32::d3d11::Window;
 
     public:
         Mouse() = default;
         Mouse(const Mouse& src) = delete;
-        Mouse(Mouse&& src) = delete;
         Mouse& operator = (const Mouse& src) = delete;
+        Mouse(Mouse&& src) = delete;
         Mouse& operator = (Mouse&& src) = delete;
         ~Mouse() = default;
 

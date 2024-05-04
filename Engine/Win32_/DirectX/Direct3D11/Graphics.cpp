@@ -1,6 +1,6 @@
 module;
 
-#include "../FatWin32_.hpp"
+#include "../../FatWin32_.hpp"
 
 #include <d3d11.h>
 #include <d3dcompiler.h>
@@ -17,9 +17,9 @@ module D3D11Graphics;
 namespace wrl = Microsoft::WRL;
 namespace dx = DirectX;
 
-namespace fatpound::dx11
+namespace fatpound::win32::d3d11
 {
-    D3DGraphics::D3DGraphics(HWND hWnd, std::size_t width, std::size_t height)
+    Graphics::Graphics(HWND hWnd, std::size_t width, std::size_t height)
         :
         screen_width_(width),
         screen_height_(height)
@@ -139,41 +139,41 @@ namespace fatpound::dx11
         pContext_->RSSetViewports(1u, &vp);
     }
 
-    DirectX::XMMATRIX D3DGraphics::GetProjectionXM() const noexcept
+    DirectX::XMMATRIX Graphics::GetProjectionXM() const noexcept
     {
         return projection_;
     }
-    DirectX::XMMATRIX D3DGraphics::GetCameraXM() const noexcept
+    DirectX::XMMATRIX Graphics::GetCameraXM() const noexcept
     {
         return camera_;
     }
 
-    void D3DGraphics::BeginFrame(float red, float green, float blue)
+    void Graphics::BeginFrame(float red, float green, float blue)
     {
         ClearBuffer_(red, green, blue);
     }
-    void D3DGraphics::EndFrame()
+    void Graphics::EndFrame()
     {
         if (FAILED(pSwapChain_->Present(1u, 0u)))
         {
             throw;
         }
     }
-    void D3DGraphics::DrawIndexed(UINT count) noexcept(!IS_DEBUG)
+    void Graphics::DrawIndexed(UINT count) noexcept(!IS_DEBUG)
     {
         pContext_->DrawIndexed(count, 0u, 0u);
     }
 
-    void D3DGraphics::SetProjection(const DirectX::XMMATRIX& projection) noexcept
+    void Graphics::SetProjection(const DirectX::XMMATRIX& projection) noexcept
     {
         projection_ = projection;
     }
-    void D3DGraphics::SetCamera(const DirectX::XMMATRIX& camera) noexcept
+    void Graphics::SetCamera(const DirectX::XMMATRIX& camera) noexcept
     {
         camera_ = camera;
     }
 
-    void D3DGraphics::ClearBuffer_(float red, float green, float blue) noexcept
+    void Graphics::ClearBuffer_(float red, float green, float blue) noexcept
     {
         const std::array<float, 4> colors = { red, green, blue, 1.0f };
 

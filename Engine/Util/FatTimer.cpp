@@ -1,8 +1,10 @@
 module;
 
+#if (_MSVC_LANG == 202002L)
 #ifndef NDEBUG
 #include <chrono>
 #endif // !NDEBUG
+#endif // (_MSVC_LANG == 202002L)
 
 module FatTimer;
 

@@ -1,12 +1,12 @@
 module;
 
-#include "../FatWin32_.hpp"
+#include "../../FatWin32_.hpp"
 
 module D3D11Window;
 
-namespace fatpound::dx11
+namespace fatpound::win32::d3d11
 {
-    D3DWindow::D3DWindow(const wchar_t* const window_title, std::size_t width, std::size_t height)
+    Window::Window(const wchar_t* const window_title, std::size_t width, std::size_t height)
         :
         hInst_(GetModuleHandle(nullptr)),
         screen_width_(width),
@@ -16,7 +16,7 @@ namespace fatpound::dx11
 
         wc.cbSize = sizeof(wc);
         wc.style = CS_OWNDC;
-        wc.lpfnWndProc = HandleMsgSetup_;
+        wc.lpfnWndProc = &HandleMsgSetup_;
         wc.cbClsExtra = 0;
         wc.cbWndExtra = 0;
         wc.hInstance = hInst_;
@@ -83,9 +83,9 @@ namespace fatpound::dx11
         }
 
 #ifdef NDEBUG
-        pGfx_ = std::make_unique<D3DGraphics>(hWnd_, screen_width_, screen_height_);
+        pGfx_ = std::make_unique<Graphics>(hWnd_, screen_width_, screen_height_);
 #else
-        pGfx_ = std::make_unique<D3DGraphics>(hWnd_, rect.right - rect.left, rect.bottom - rect.top);
+        pGfx_ = std::make_unique<Graphics>(hWnd_, rect.right - rect.left, rect.bottom - rect.top);
 #endif // NDEBUG
 
         if (pGfx_ == nullptr)
@@ -95,13 +95,13 @@ namespace fatpound::dx11
 
         SetCursor(LoadCursor(nullptr, IDC_ARROW));
     }
-    D3DWindow::~D3DWindow()
+    Window::~Window()
     {
         DestroyWindow(hWnd_);
         UnregisterClass(wndClassName_, hInst_);
     }
 
-    std::optional<int> D3DWindow::ProcessMessages() noexcept
+    std::optional<int> Window::ProcessMessages() noexcept
     {
         MSG msg;
 
@@ -119,7 +119,7 @@ namespace fatpound::dx11
         return {};
     }
 
-    D3DGraphics& D3DWindow::Gfx()
+    Graphics& Window::Gfx()
     {
         if (pGfx_ == nullptr)
         {
@@ -129,40 +129,40 @@ namespace fatpound::dx11
         return *pGfx_;
     }
 
-    void D3DWindow::SetTitle(const std::wstring& title)
+    void Window::SetTitle(const std::wstring& title)
     {
         if (SetWindowText(hWnd_, title.c_str()) == 0)
         {
             throw;
         }
     }
-    void D3DWindow::Kill()
+    void Window::Kill()
     {
         PostQuitMessage(0);
     }
 
-    LRESULT CALLBACK D3DWindow::HandleMsgSetup_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
+    LRESULT CALLBACK Window::HandleMsgSetup_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
     {
         if (msg == WM_NCCREATE)
         {
             const CREATESTRUCTW* const pCreate = reinterpret_cast<CREATESTRUCTW*>(lParam);
-            D3DWindow* const pWnd = static_cast<D3DWindow*>(pCreate->lpCreateParams);
+            Window* const pWnd = static_cast<Window*>(pCreate->lpCreateParams);
 
             SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pWnd));
-            SetWindowLongPtr(hWnd, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(&D3DWindow::HandleMsgThunk_));
+            SetWindowLongPtr(hWnd, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(&Window::HandleMsgThunk_));
 
             return pWnd->HandleMsg_(hWnd, msg, wParam, lParam);
         }
 
         return DefWindowProc(hWnd, msg, wParam, lParam);
     }
-    LRESULT CALLBACK D3DWindow::HandleMsgThunk_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
+    LRESULT CALLBACK Window::HandleMsgThunk_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
     {
-        D3DWindow* const pWnd = reinterpret_cast<D3DWindow*>(GetWindowLongPtr(hWnd, GWLP_USERDATA));
+        Window* const pWnd = reinterpret_cast<Window*>(GetWindowLongPtr(hWnd, GWLP_USERDATA));
 
         return pWnd->HandleMsg_(hWnd, msg, wParam, lParam);
     }
-    LRESULT D3DWindow::HandleMsg_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
+    LRESULT Window::HandleMsg_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
     {
         switch (msg)
         {

@@ -1,15 +1,15 @@
 module;
 
-#include "../../FatWin32_.hpp"
+#include "../../../FatWin32_.hpp"
 
 #include <d3d11.h>
 #include <wrl.h>
 
 module InputLayout;
 
-namespace fatpound::starrealm
+namespace fatpound::win32::d3d11
 {
-    InputLayout::InputLayout(fatpound::dx11::D3DGraphics& gfx, const std::vector<D3D11_INPUT_ELEMENT_DESC>& layout, ID3DBlob* pVertexShaderBytecode)
+    InputLayout::InputLayout(Graphics& gfx, const std::vector<D3D11_INPUT_ELEMENT_DESC>& layout, ID3DBlob* pVertexShaderBytecode)
     {
         GetDevice_(gfx)->CreateInputLayout(
             layout.data(),
@@ -20,7 +20,7 @@ namespace fatpound::starrealm
         );
     }
 
-    void InputLayout::Bind(fatpound::dx11::D3DGraphics& gfx) noexcept
+    void InputLayout::Bind(Graphics& gfx) noexcept
     {
         GetContext_(gfx)->IASetInputLayout(pInputLayout_.Get());
     }

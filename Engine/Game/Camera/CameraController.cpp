@@ -8,7 +8,7 @@ module CameraController;
 
 namespace dx = DirectX;
 
-namespace fatpound::starrealm
+namespace fatpound::win32::d3d11
 {
     CameraController::CameraController(fatpound::win32::io::Mouse& mouse, const fatpound::win32::io::Keyboard& kbd, Camera& camera)
         :

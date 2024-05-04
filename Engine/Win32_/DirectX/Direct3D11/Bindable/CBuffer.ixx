@@ -1,6 +1,6 @@
 module;
 
-#include "../../FatWin32_.hpp"
+#include "../../../FatWin32_.hpp"
 
 #include <d3d11.h>
 #include <wrl.h>
@@ -10,19 +10,27 @@ export module CBuffer;
 import D3D11Graphics;
 import Bindable;
 
+#if (_MSVC_LANG > 202002L)
+import std;
+#else
+#if (_MSVC_LANG == 202002L)
 #ifdef NDEBUG
 import std.core;
 #else
 import <cstring>;
 #endif // NDEBUG
+#else
+#error C++20 or greater version required
+#endif // (_MSVC_LANG == 202002L)
+#endif // (_MSVC_LANG > 202002L)
 
-export namespace fatpound::starrealm
+export namespace fatpound::win32::d3d11
 {
     template <typename C>
     class CBuffer : public Bindable
     {
     public:
-        CBuffer(fatpound::dx11::D3DGraphics& gfx, const C& consts)
+        CBuffer(Graphics& gfx, const C& consts)
         {
             D3D11_BUFFER_DESC cbd = {};
             cbd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
@@ -37,7 +45,7 @@ export namespace fatpound::starrealm
 
             GetDevice_(gfx)->CreateBuffer(&cbd, &csd, &pConstantBuffer_);
         }
-        CBuffer(fatpound::dx11::D3DGraphics& gfx)
+        CBuffer(Graphics& gfx)
         {
             D3D11_BUFFER_DESC cbd = {};
             cbd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
@@ -52,7 +60,7 @@ export namespace fatpound::starrealm
 
 
     public:
-        void Update(fatpound::dx11::D3DGraphics& gfx, const C& consts)
+        void Update(Graphics& gfx, const C& consts)
         {
             D3D11_MAPPED_SUBRESOURCE msr;
 

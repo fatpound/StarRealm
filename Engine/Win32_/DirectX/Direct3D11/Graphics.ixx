@@ -1,6 +1,6 @@
 module;
 
-#include "../FatWin32_.hpp"
+#include "../../FatWin32_.hpp"
 
 #include <d3d11.h>
 #include <DirectXMath.h>
@@ -8,6 +8,10 @@ module;
 
 export module D3D11Graphics;
 
+#if (_MSVC_LANG > 202002L)
+import std;
+#else
+#if (_MSVC_LANG == 202002L)
 #ifdef NDEBUG
 import std.core;
 import std.memory;
@@ -23,27 +27,26 @@ import <memory>;
 import <array>;
 import <sstream>;
 #endif // NDEBUG
+#else
+#error C++20 or greater version required
+#endif // (_MSVC_LANG == 202002L)
+#endif // (_MSVC_LANG > 202002L)
 
-namespace fatpound::starrealm
+export namespace fatpound::win32::d3d11
 {
-    class Bindable;
-}
-
-export namespace fatpound::dx11
-{
-    class D3DGraphics final
+    class Graphics final
     {
-        friend class fatpound::starrealm::Bindable;
+        friend class Bindable;
 
     public:
-        D3DGraphics(HWND hWnd, std::size_t width, std::size_t height);
+        Graphics(HWND hWnd, std::size_t width, std::size_t height);
 
-        D3DGraphics() = delete;
-        D3DGraphics(const D3DGraphics& src) = delete;
-        D3DGraphics(D3DGraphics&& src) = delete;
-        D3DGraphics& operator = (const D3DGraphics& src) = delete;
-        D3DGraphics& operator = (D3DGraphics&& src) = delete;
-        ~D3DGraphics() = default;
+        Graphics() = delete;
+        Graphics(const Graphics& src) = delete;
+        Graphics& operator = (const Graphics& src) = delete;
+        Graphics(Graphics&& src) = delete;
+        Graphics& operator = (Graphics&& src) = delete;
+        ~Graphics() = default;
 
 
     public:

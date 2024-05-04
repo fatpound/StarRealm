@@ -1,6 +1,6 @@
 module;
 
-#include "../../FatWin32_.hpp"
+#include "../../../FatWin32_.hpp"
 
 #include <d3d11.h>
 
@@ -9,16 +9,16 @@ export module Topology;
 import D3D11Graphics;
 import Bindable;
 
-export namespace fatpound::starrealm
+export namespace fatpound::win32::d3d11
 {
     class Topology : public Bindable
     {
     public:
-        Topology(fatpound::dx11::D3DGraphics& gfx, D3D11_PRIMITIVE_TOPOLOGY type);
+        Topology(Graphics& gfx, D3D11_PRIMITIVE_TOPOLOGY type);
 
 
     public:
-        void Bind(fatpound::dx11::D3DGraphics& gfx) noexcept override;
+        void Bind(Graphics& gfx) noexcept override;
 
 
     protected:

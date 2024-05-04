@@ -1,6 +1,6 @@
 module;
 
-#include "../../FatWin32_.hpp"
+#include "../../../FatWin32_.hpp"
 
 #include <d3d11.h>
 #include <DirectXMath.h>
@@ -13,16 +13,16 @@ import VertexCBuffer;
 import Bindable;
 import Drawable;
 
-export namespace fatpound::starrealm
+export namespace fatpound::win32::d3d11
 {
     class TransformCBuffer : public Bindable
     {
     public:
-        TransformCBuffer(fatpound::dx11::D3DGraphics& gfx, const Drawable& parent);
+        TransformCBuffer(Graphics& gfx, const Drawable& parent);
 
 
     public:
-        void Bind(fatpound::dx11::D3DGraphics& gfx) noexcept override;
+        void Bind(Graphics& gfx) noexcept override;
 
 
     protected:

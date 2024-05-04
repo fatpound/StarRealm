@@ -6,9 +6,9 @@ module;
 
 module Drawable;
 
-namespace fatpound::starrealm
+namespace fatpound::win32::d3d11
 {
-    void Drawable::Draw(fatpound::dx11::D3DGraphics& gfx) const noexcept(!IS_DEBUG)
+    void Drawable::Draw(Graphics& gfx) const noexcept(!IS_DEBUG)
     {
         for (auto& bindable : binds_)
         {
@@ -30,7 +30,7 @@ namespace fatpound::starrealm
         binds_.push_back(std::move(bind));
     }
 
-    void Drawable::AddIndexBuffer_(std::unique_ptr<IndexBuffer> idxbuf) noexcept
+    void Drawable::AddIndexBuffer_(std::unique_ptr<IndexBuffer> idxbuf) noexcept(!IS_DEBUG)
     {
         assert((pCIndexBuffer_ == nullptr) && "*Must* use AddIndexBuffer_() method to bind it!");
 

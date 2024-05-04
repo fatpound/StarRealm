@@ -1,6 +1,6 @@
 module;
 
-#include "../../FatWin32_.hpp"
+#include "../../../FatWin32_.hpp"
 
 #include <d3d11.h>
 #include <d3dcompiler.h>
@@ -8,9 +8,9 @@ module;
 
 module PixelShader;
 
-namespace fatpound::starrealm
+namespace fatpound::win32::d3d11
 {
-    PixelShader::PixelShader(fatpound::dx11::D3DGraphics& gfx, const std::wstring& path)
+    PixelShader::PixelShader(Graphics& gfx, const std::wstring& path)
     {
         Microsoft::WRL::ComPtr<ID3DBlob> pBlob;
 
@@ -24,7 +24,7 @@ namespace fatpound::starrealm
         );
     }
 
-    void PixelShader::Bind(fatpound::dx11::D3DGraphics& gfx) noexcept
+    void PixelShader::Bind(Graphics& gfx) noexcept
     {
         GetContext_(gfx)->PSSetShader(pPixelShader_.Get(), nullptr, 0u);
     }

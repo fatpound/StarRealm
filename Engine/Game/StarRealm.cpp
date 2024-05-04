@@ -5,9 +5,11 @@ module;
 #include <d3d11.h>
 #include <DirectXMath.h>
 
+#if (_MSVC_LANG == 202002L)
 #ifndef NDEBUG
 #include <algorithm>
 #endif // !NDEBUG
+#endif // (_MSVC_LANG == 202002L)
 
 module StarRealm;
 
@@ -36,7 +38,7 @@ namespace fatpound::starrealm
         class Factory final
         {
         public:
-            Factory(fatpound::dx11::D3DGraphics& gfx, const Game& game)
+            Factory(fatpound::win32::d3d11::Graphics& gfx, const Game& game)
                 :
                 gfx_(gfx),
                 game_(game)
@@ -122,7 +124,7 @@ namespace fatpound::starrealm
 
             std::uniform_int_distribution<int> flare_count_dist_{ minFlareCount_, maxFlareCount_ };
 
-            fatpound::dx11::D3DGraphics& gfx_;
+            fatpound::win32::d3d11::Graphics& gfx_;
             const Game& game_;
         };
 
@@ -151,7 +153,7 @@ namespace fatpound::starrealm
 
         while (true)
         {
-            error_code = fatpound::dx11::D3DWindow::ProcessMessages();
+            error_code = fatpound::win32::d3d11::Window::ProcessMessages();
 
             [[unlikely]] if (error_code)
             {

@@ -5,9 +5,11 @@ module;
 #include <d3d11.h>
 #include <DirectXMath.h>
 
+#if (_MSVC_LANG == 202002L)
 #ifndef NDEBUG
 #include <array>
 #endif // !NDEBUG
+#endif // (_MSVC_LANG == 202002L)
 
 module StarFilledMulti;
 
@@ -22,9 +24,11 @@ import TransformCBuffer;
 
 namespace dx = DirectX;
 
+using namespace fatpound::win32::d3d11;
+
 namespace fatpound::starrealm
 {
-    StarFilledMulti::StarFilledMulti(fatpound::dx11::D3DGraphics& gfx, const Descriptor& desc)
+    StarFilledMulti::StarFilledMulti(Graphics& gfx, const Descriptor& desc)
         :
         StarBase<StarFilledMulti>(desc)
     {

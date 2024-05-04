@@ -1,14 +1,14 @@
 module;
 
-#include "../../FatWin32_.hpp"
+#include "../../../FatWin32_.hpp"
 
 #include <wrl.h>
 
 module VertexBuffer;
 
-namespace fatpound::starrealm
+namespace fatpound::win32::d3d11
 {
-    void VertexBuffer::Bind(fatpound::dx11::D3DGraphics& gfx) noexcept
+    void VertexBuffer::Bind(Graphics& gfx) noexcept
     {
         const UINT offset = 0u;
 

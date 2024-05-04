@@ -80,6 +80,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
+      <BuildStlModules>true</BuildStlModules>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -98,6 +99,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
+      <BuildStlModules>true</BuildStlModules>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -116,6 +118,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
+      <BuildStlModules>true</BuildStlModules>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -134,6 +137,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
+      <BuildStlModules>true</BuildStlModules>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -143,25 +147,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Win32_\DirectX11\Bindable\Bindable.cpp" />
-    <ClCompile Include="Win32_\DirectX11\Bindable\Bindable.ixx" />
-    <ClCompile Include="Win32_\DirectX11\Bindable\CBuffer.ixx" />
-    <ClCompile Include="Win32_\DirectX11\Bindable\IndexBuffer.cpp" />
-    <ClCompile Include="Win32_\DirectX11\Bindable\IndexBuffer.ixx" />
-    <ClCompile Include="Win32_\DirectX11\Bindable\InputLayout.cpp" />
-    <ClCompile Include="Win32_\DirectX11\Bindable\InputLayout.ixx" />
-    <ClCompile Include="Win32_\DirectX11\Bindable\PixelCBuffer.ixx" />
-    <ClCompile Include="Win32_\DirectX11\Bindable\PixelShader.cpp" />
-    <ClCompile Include="Win32_\DirectX11\Bindable\PixelShader.ixx" />
-    <ClCompile Include="Win32_\DirectX11\Bindable\Topology.cpp" />
-    <ClCompile Include="Win32_\DirectX11\Bindable\Topology.ixx" />
-    <ClCompile Include="Win32_\DirectX11\Bindable\TransformCBuffer.cpp" />
-    <ClCompile Include="Win32_\DirectX11\Bindable\TransformCBuffer.ixx" />
-    <ClCompile Include="Win32_\DirectX11\Bindable\VertexBuffer.cpp" />
-    <ClCompile Include="Win32_\DirectX11\Bindable\VertexBuffer.ixx" />
-    <ClCompile Include="Win32_\DirectX11\Bindable\VertexCBuffer.ixx" />
-    <ClCompile Include="Win32_\DirectX11\Bindable\VertexShader.cpp" />
-    <ClCompile Include="Win32_\DirectX11\Bindable\VertexShader.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\Bindable.cpp" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\Bindable.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\CBuffer.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\IndexBuffer.cpp" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\IndexBuffer.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\InputLayout.cpp" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\InputLayout.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\PixelCBuffer.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\PixelShader.cpp" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\PixelShader.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\Topology.cpp" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\Topology.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\TransformCBuffer.cpp" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\TransformCBuffer.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\VertexBuffer.cpp" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\VertexBuffer.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\VertexCBuffer.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\VertexShader.cpp" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\VertexShader.ixx" />
     <ClCompile Include="Game\Camera\Camera.cpp" />
     <ClCompile Include="Game\Camera\Camera.ixx" />
     <ClCompile Include="Game\Camera\CameraController.cpp" />
@@ -190,10 +194,10 @@
     <ClCompile Include="Util\FatColor.ixx" />
     <ClCompile Include="Util\FatTimer.cpp" />
     <ClCompile Include="Util\FatTimer.ixx" />
-    <ClCompile Include="Win32_\DirectX11\D3D11Graphics.cpp" />
-    <ClCompile Include="Win32_\DirectX11\D3D11Graphics.ixx" />
-    <ClCompile Include="Win32_\DirectX11\D3D11Window.cpp" />
-    <ClCompile Include="Win32_\DirectX11\D3D11Window.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Graphics.cpp" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Graphics.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Window.cpp" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Window.ixx" />
     <ClCompile Include="Win32_\IO\Keyboard.cpp" />
     <ClCompile Include="Win32_\IO\Keyboard.ixx" />
     <ClCompile Include="Win32_\IO\Mouse.cpp" />
@@ -204,7 +208,7 @@
     <ClInclude Include="Win32_\FatWin32_.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Win32_\DirectX11\Shader\PSColorBlend.hlsl">
+    <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\PSColorBlend.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
@@ -214,7 +218,7 @@
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="Win32_\DirectX11\Shader\PSColorIndexed.hlsl">
+    <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\PSColorIndexed.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
@@ -228,7 +232,7 @@
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.1</ShaderModel>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.1</ShaderModel>
     </FxCompile>
-    <FxCompile Include="Win32_\DirectX11\Shader\PSColorSingle.hlsl">
+    <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\PSColorSingle.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
@@ -238,7 +242,7 @@
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="Win32_\DirectX11\Shader\VSColorBlend.hlsl">
+    <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\VSColorBlend.hlsl">
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
@@ -248,7 +252,7 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
-    <FxCompile Include="Win32_\DirectX11\Shader\VSColorIndexed.hlsl">
+    <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\VSColorIndexed.hlsl">
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
@@ -258,7 +262,7 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
-    <FxCompile Include="Win32_\DirectX11\Shader\VSColorSingle.hlsl">
+    <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\VSColorSingle.hlsl">
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>

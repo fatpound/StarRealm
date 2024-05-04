@@ -1,15 +1,15 @@
 module;
 
-#include "../../FatWin32_.hpp"
+#include "../../../FatWin32_.hpp"
 
 #include <d3d11.h>
 #include <wrl.h>
 
 module IndexBuffer;
 
-namespace fatpound::starrealm
+namespace fatpound::win32::d3d11
 {
-    IndexBuffer::IndexBuffer(fatpound::dx11::D3DGraphics& gfx, const std::vector<unsigned short int>& indices)
+    IndexBuffer::IndexBuffer(Graphics& gfx, const std::vector<unsigned short int>& indices)
         :
         count_(static_cast<UINT>(indices.size()))
     {
@@ -32,7 +32,7 @@ namespace fatpound::starrealm
         return count_;
     }
 
-    void IndexBuffer::Bind(fatpound::dx11::D3DGraphics& gfx) noexcept
+    void IndexBuffer::Bind(Graphics& gfx) noexcept
     {
         GetContext_(gfx)->IASetIndexBuffer(pIndexBuffer_.Get(), DXGI_FORMAT_R16_UINT, 0u);
     }

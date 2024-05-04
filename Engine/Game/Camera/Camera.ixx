@@ -6,7 +6,7 @@ module;
 
 export module Camera;
 
-export namespace fatpound::starrealm
+export namespace fatpound::win32::d3d11
 {
     class Camera final
     {

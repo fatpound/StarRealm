@@ -1,6 +1,6 @@
 module;
 
-#include "../FatWin32_.hpp"
+#include "../../FatWin32_.hpp"
 
 export module D3D11Window;
 
@@ -9,6 +9,10 @@ import Keyboard;
 import Mouse;
 import FatMath;
 
+#if (_MSVC_LANG > 202002L)
+import std;
+#else
+#if (_MSVC_LANG == 202002L)
 #ifdef NDEBUG
 import std.core;
 import std.memory;
@@ -21,26 +25,30 @@ import <memory>;
 import <sstream>;
 import <stdexcept>;
 #endif // NDEBUG
+#else
+#error C++20 or greater version required
+#endif // (_MSVC_LANG == 202002L)
+#endif // (_MSVC_LANG > 202002L)
 
-export namespace fatpound::dx11
+export namespace fatpound::win32::d3d11
 {
-    class D3DWindow final
+    class Window final
     {
     public:
-        D3DWindow(const wchar_t* const window_title, std::size_t width, std::size_t height);
+        Window(const wchar_t* const window_title, std::size_t width, std::size_t height);
 
-        D3DWindow() = delete;
-        D3DWindow(const D3DWindow& src) = delete;
-        D3DWindow(D3DWindow&& src) = delete;
-        D3DWindow& operator = (const D3DWindow& src) = delete;
-        D3DWindow& operator = (D3DWindow&& src) = delete;
-        ~D3DWindow();
+        Window() = delete;
+        Window(const Window& src) = delete;
+        Window& operator = (const Window& src) = delete;
+        Window(Window&& src) = delete;
+        Window& operator = (Window&& src) = delete;
+        ~Window();
 
 
     public:
         static std::optional<int> ProcessMessages() noexcept;
 
-        D3DGraphics& Gfx();
+        Graphics& Gfx();
 
         template <fatpound::math::Number N>
         N GetWidth() noexcept
@@ -76,7 +84,7 @@ export namespace fatpound::dx11
         HWND hWnd_;
         HINSTANCE hInst_;
 
-        std::unique_ptr<D3DGraphics> pGfx_;
+        std::unique_ptr<Graphics> pGfx_;
 
         std::vector<BYTE> rawBuffer_;
 

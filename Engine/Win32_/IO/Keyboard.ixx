@@ -2,29 +2,37 @@
 
 export module Keyboard;
 
+#if (_MSVC_LANG > 202002L)
+import std;
+#else
+#if (_MSVC_LANG == 202002L)
 #ifdef NDEBUG
 import std.core;
 #else
 import <bitset>;
 import <queue>;
 #endif // NDEBUG
+#else
+#error C++20 or greater version required
+#endif // (_MSVC_LANG == 202002L)
+#endif // (_MSVC_LANG > 202002L)
 
-namespace fatpound::dx11
+namespace fatpound::win32::d3d11
 {
-    class D3DWindow;
+    class Window;
 }
 
 export namespace fatpound::win32::io
 {
     class Keyboard final
     {
-        friend class fatpound::dx11::D3DWindow;
+        friend class fatpound::win32::d3d11::Window;
 
     public:
         Keyboard() = default;
         Keyboard(const Keyboard& src) = delete;
-        Keyboard(Keyboard&& src) = delete;
         Keyboard& operator = (const Keyboard& src) = delete;
+        Keyboard(Keyboard&& src) = delete;
         Keyboard& operator = (Keyboard&& src) = delete;
         ~Keyboard() = default;
 

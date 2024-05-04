@@ -8,6 +8,10 @@ export module Star;
 
 import DrawableBase;
 
+#if (_MSVC_LANG > 202002L)
+import std;
+#else
+#if (_MSVC_LANG == 202002L)
 #ifdef NDEBUG
 import std.core;
 #else
@@ -16,10 +20,14 @@ import <cstdint>;
 /**/
 import <vector>;
 #endif // NDEBUG
+#else
+#error C++20 or greater version required
+#endif // (_MSVC_LANG == 202002L)
+#endif // (_MSVC_LANG > 202002L)
 
 export namespace fatpound::starrealm
 {
-    class Star : public DrawableBase<Star>
+    class Star : public fatpound::win32::d3d11::DrawableBase<Star>
     {
     public:
         struct Descriptor final
@@ -38,8 +46,8 @@ export namespace fatpound::starrealm
 
         Star() = default;
         Star(const Star& src) = delete;
-        Star(Star&& src) = delete;
         Star& operator = (const Star& src) = delete;
+        Star(Star&& src) = delete;
         Star& operator = (Star&& src) = delete;
         virtual ~Star() = default;
 
@@ -76,13 +84,13 @@ export namespace fatpound::starrealm
             return star;
         }
 
-        DirectX::XMMATRIX GetTransformXM() const noexcept override;
+        virtual DirectX::XMMATRIX GetTransformXM() const noexcept override final;
 
-        DirectX::XMFLOAT3 GetPosition() const noexcept;
+        virtual DirectX::XMFLOAT3 GetPosition() const noexcept final;
 
-        float GetOuterRadius() const noexcept;
+        virtual float GetOuterRadius() const noexcept final;
 
-        void Update(float delta_time) noexcept override;
+        virtual void Update(float delta_time) noexcept override final;
 
 
     protected:
