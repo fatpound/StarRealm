@@ -70,7 +70,7 @@ namespace fatpound::win32::d3d11
         wrl::ComPtr<ID3D11Texture2D> pBackBufferTexture = nullptr;
 
         pSwapChain_->GetBuffer(0, __uuidof(ID3D11Texture2D), &pBackBufferTexture);
-        D3D11_TEXTURE2D_DESC backBufferDesc;
+        D3D11_TEXTURE2D_DESC backBufferDesc = {};
         backBufferDesc.SampleDesc.Count = MSAA_QUALITY;
         backBufferDesc.SampleDesc.Quality = 0u;
         pBackBufferTexture->GetDesc(&backBufferDesc);
@@ -112,8 +112,7 @@ namespace fatpound::win32::d3d11
 
         wrl::ComPtr<ID3D11RasterizerState> pRasterState;
 
-        D3D11_RASTERIZER_DESC rasterDesc;
-        ZeroMemory(&rasterDesc, sizeof(rasterDesc));
+        D3D11_RASTERIZER_DESC rasterDesc = {};
         rasterDesc.FillMode = D3D11_FILL_SOLID;
         rasterDesc.CullMode = D3D11_CULL_BACK;
         rasterDesc.FrontCounterClockwise = false;

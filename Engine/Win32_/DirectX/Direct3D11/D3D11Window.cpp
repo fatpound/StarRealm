@@ -47,15 +47,13 @@ namespace fatpound::win32::d3d11
 
 #else
 
-        RECT rect =
-        {
-            0,
-            0,
-            static_cast<LONG>(screen_width_),
-            static_cast<LONG>(screen_height_)
-        };
+        RECT rect = {};
+        rect.left = 0;
+        rect.right = static_cast<LONG>(screen_width_) + rect.left;
+        rect.top = 0;
+        rect.bottom = static_cast<LONG>(screen_height_) + rect.top;
 
-        AdjustWindowRectEx(&rect, WS_OVERLAPPED | WS_SYSMENU | WS_MINIMIZEBOX, false, WS_EX_OVERLAPPEDWINDOW);
+        AdjustWindowRect(&rect, WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU, FALSE);
 
         hWnd_ = CreateWindow(
             wndClassName_,
@@ -77,10 +75,6 @@ namespace fatpound::win32::d3d11
         {
             throw;
         }
-        else
-        {
-            ShowWindow(hWnd_, /*SW_SHOW*/ SW_SHOWDEFAULT);
-        }
 
 #ifdef NDEBUG
         pGfx_ = std::make_unique<Graphics>(hWnd_, screen_width_, screen_height_);
@@ -93,6 +87,7 @@ namespace fatpound::win32::d3d11
             throw;
         }
 
+        ShowWindow(hWnd_, /*SW_SHOW*/ SW_SHOWDEFAULT);
         SetCursor(LoadCursor(nullptr, IDC_ARROW));
     }
     Window::~Window()
