@@ -170,12 +170,12 @@ namespace fatpound::starrealm
         {
             error_code = fatpound::win32::d3d11::Window::ProcessMessages();
 
-            [[unlikely]] if (error_code)
+            if (error_code) [[unlikely]]
             {
                 return static_cast<int>(*error_code);
             }
 
-            [[unlikely]] if (wnd_.kbd.KeyIsPressed(VK_ESCAPE))
+            if (wnd_.kbd.KeyIsPressed(VK_ESCAPE)) [[unlikely]]
             {
                 wnd_.Kill();
 
