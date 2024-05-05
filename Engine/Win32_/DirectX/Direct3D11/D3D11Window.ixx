@@ -63,6 +63,7 @@ export namespace fatpound::win32::d3d11
         }
 
         void SetTitle(const std::wstring& title);
+        void ShowMessageBox(const std::wstring& message, const std::wstring& title, UINT error_flags); // Maybe unsued
         void Kill();
 
 

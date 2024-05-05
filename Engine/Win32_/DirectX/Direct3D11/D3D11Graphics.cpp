@@ -30,125 +30,136 @@ namespace fatpound::win32::d3d11
         screen_width_(width),
         screen_height_(height)
     {
-        DXGI_SWAP_CHAIN_DESC scd = {};
-        scd.BufferDesc.Width = 0u;
-        scd.BufferDesc.Height = 0u;
-        scd.BufferDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
-        scd.BufferDesc.RefreshRate.Numerator = 0u;
-        scd.BufferDesc.RefreshRate.Denominator = 0u;
-        scd.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
-        scd.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
-        scd.SampleDesc.Count = MSAA_QUALITY;
-        scd.SampleDesc.Quality = 0u;
-        scd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-        scd.BufferCount = 1u;
-        scd.OutputWindow = hWnd;
-#ifdef NDEBUG
-        scd.Windowed = FALSE;
-#else
-        scd.Windowed = TRUE;
-#endif // NDEBUG
-        scd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
-        scd.Flags = 0u;
+        try
+        {
+            DXGI_SWAP_CHAIN_DESC scd = {};
+            scd.BufferDesc.Width = 0u;
+            scd.BufferDesc.Height = 0u;
+            scd.BufferDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
+            scd.BufferDesc.RefreshRate.Numerator = 0u;
+            scd.BufferDesc.RefreshRate.Denominator = 0u;
+            scd.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
+            scd.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
+            scd.SampleDesc.Count = MSAA_QUALITY;
+            scd.SampleDesc.Quality = 0u;
+            scd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+            scd.BufferCount = 1u;
+            scd.OutputWindow = hWnd;
+            scd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
+            scd.Flags = 0u;
 
 #ifdef NDEBUG
-        constexpr UINT swapCreateFlags = 0u;
+            scd.Windowed = FALSE;
+            constexpr UINT swapCreateFlags = 0u;
 #else
-        constexpr UINT swapCreateFlags = D3D11_CREATE_DEVICE_DEBUG;
+            scd.Windowed = TRUE;
+            constexpr UINT swapCreateFlags = D3D11_CREATE_DEVICE_DEBUG;
+
 #endif // NDEBUG
 
-        D3D11CreateDeviceAndSwapChain(
-            nullptr,
-            D3D_DRIVER_TYPE_HARDWARE,
-            nullptr,
-            swapCreateFlags,
-            nullptr,
-            0u,
-            D3D11_SDK_VERSION,
-            &scd,
-            &pSwapChain_,
-            &pDevice_,
-            nullptr,
-            &pContext_
-        );
+            D3D11CreateDeviceAndSwapChain(
+                nullptr,
+                D3D_DRIVER_TYPE_HARDWARE,
+                nullptr,
+                swapCreateFlags,
+                nullptr,
+                0u,
+                D3D11_SDK_VERSION,
+                &scd,
+                &pSwapChain_,
+                &pDevice_,
+                nullptr,
+                &pContext_
+            );
 
-        wrl::ComPtr<ID3D11Resource> pBackBuffer = nullptr;
-        wrl::ComPtr<ID3D11Texture2D> pBackBufferTexture = nullptr;
+            wrl::ComPtr<ID3D11Resource> pBackBuffer = nullptr;
+            wrl::ComPtr<ID3D11Texture2D> pBackBufferTexture = nullptr;
 
-        pSwapChain_->GetBuffer(0, __uuidof(ID3D11Texture2D), &pBackBufferTexture);
-        D3D11_TEXTURE2D_DESC backBufferDesc = {};
-        backBufferDesc.SampleDesc.Count = MSAA_QUALITY;
-        backBufferDesc.SampleDesc.Quality = 0u;
-        pBackBufferTexture->GetDesc(&backBufferDesc);
-        pDevice_->CreateRenderTargetView(pBackBufferTexture.Get(), nullptr, &pTarget_);
+            pSwapChain_->GetBuffer(0, __uuidof(ID3D11Texture2D), &pBackBufferTexture);
+            D3D11_TEXTURE2D_DESC backBufferDesc = {};
+            backBufferDesc.SampleDesc.Count = MSAA_QUALITY;
+            backBufferDesc.SampleDesc.Quality = 0u;
+            pBackBufferTexture->GetDesc(&backBufferDesc);
+            pDevice_->CreateRenderTargetView(pBackBufferTexture.Get(), nullptr, &pTarget_);
 
-        wrl::ComPtr<ID3D11DepthStencilState> pDSState;
+            wrl::ComPtr<ID3D11DepthStencilState> pDSState;
 
-        // z-buffer
-        D3D11_DEPTH_STENCIL_DESC dsDesc = {};
-        dsDesc.DepthEnable = TRUE;
-        dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
-        dsDesc.DepthFunc = D3D11_COMPARISON_LESS;
+            // z-buffer
+            D3D11_DEPTH_STENCIL_DESC dsDesc = {};
+            dsDesc.DepthEnable = TRUE;
+            dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+            dsDesc.DepthFunc = D3D11_COMPARISON_LESS;
 
-        pDevice_->CreateDepthStencilState(&dsDesc, &pDSState);
-        pContext_->OMSetDepthStencilState(pDSState.Get(), 1u);
+            pDevice_->CreateDepthStencilState(&dsDesc, &pDSState);
+            pContext_->OMSetDepthStencilState(pDSState.Get(), 1u);
 
-        wrl::ComPtr<ID3D11Texture2D> pDepthStencil;
+            wrl::ComPtr<ID3D11Texture2D> pDepthStencil;
 
-        D3D11_TEXTURE2D_DESC descDepth = {};
-        descDepth.Width = backBufferDesc.Width;
-        descDepth.Height = backBufferDesc.Height;
-        descDepth.MipLevels = 1u;
-        descDepth.ArraySize = 1u;
-        descDepth.Format = DXGI_FORMAT_D32_FLOAT;
-        descDepth.SampleDesc.Count = MSAA_QUALITY;
-        descDepth.SampleDesc.Quality = 0u;
-        descDepth.Usage = D3D11_USAGE_DEFAULT;
-        descDepth.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+            D3D11_TEXTURE2D_DESC descDepth = {};
+            descDepth.Width = backBufferDesc.Width;
+            descDepth.Height = backBufferDesc.Height;
+            descDepth.MipLevels = 1u;
+            descDepth.ArraySize = 1u;
+            descDepth.Format = DXGI_FORMAT_D32_FLOAT;
+            descDepth.SampleDesc.Count = MSAA_QUALITY;
+            descDepth.SampleDesc.Quality = 0u;
+            descDepth.Usage = D3D11_USAGE_DEFAULT;
+            descDepth.BindFlags = D3D11_BIND_DEPTH_STENCIL;
 
-        pDevice_->CreateTexture2D(&descDepth, nullptr, &pDepthStencil);
+            pDevice_->CreateTexture2D(&descDepth, nullptr, &pDepthStencil);
 
-        D3D11_DEPTH_STENCIL_VIEW_DESC descDSV = {};
-        descDSV.Format = DXGI_FORMAT_D32_FLOAT;
-        descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DMS;
-        descDSV.Texture2D.MipSlice = 0u;
+            D3D11_DEPTH_STENCIL_VIEW_DESC descDSV = {};
+            descDSV.Format = DXGI_FORMAT_D32_FLOAT;
+            descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DMS;
+            descDSV.Texture2D.MipSlice = 0u;
 
-        pDevice_->CreateDepthStencilView(pDepthStencil.Get(), &descDSV, &pDSV_);
-        pContext_->OMSetRenderTargets(1u, pTarget_.GetAddressOf(), pDSV_.Get());
+            pDevice_->CreateDepthStencilView(pDepthStencil.Get(), &descDSV, &pDSV_);
+            pContext_->OMSetRenderTargets(1u, pTarget_.GetAddressOf(), pDSV_.Get());
 
-        wrl::ComPtr<ID3D11RasterizerState> pRasterState;
+            wrl::ComPtr<ID3D11RasterizerState> pRasterState;
 
-        D3D11_RASTERIZER_DESC rasterDesc = {};
-        rasterDesc.FillMode = D3D11_FILL_SOLID;
-        rasterDesc.CullMode = D3D11_CULL_BACK;
-        rasterDesc.FrontCounterClockwise = false;
-        rasterDesc.DepthBias = 0;
-        rasterDesc.DepthBiasClamp = 0.0f;
-        rasterDesc.SlopeScaledDepthBias = 0.0f;
-        rasterDesc.DepthClipEnable = true;
-        rasterDesc.ScissorEnable = false;
-        rasterDesc.MultisampleEnable = true;
-        rasterDesc.AntialiasedLineEnable = true;
+            D3D11_RASTERIZER_DESC rasterDesc = {};
+            rasterDesc.FillMode = D3D11_FILL_SOLID;
+            rasterDesc.CullMode = D3D11_CULL_BACK;
+            rasterDesc.FrontCounterClockwise = false;
+            rasterDesc.DepthBias = 0;
+            rasterDesc.DepthBiasClamp = 0.0f;
+            rasterDesc.SlopeScaledDepthBias = 0.0f;
+            rasterDesc.DepthClipEnable = true;
+            rasterDesc.ScissorEnable = false;
+            rasterDesc.MultisampleEnable = true;
+            rasterDesc.AntialiasedLineEnable = true;
 
-        pDevice_->CreateRasterizerState(&rasterDesc, &pRasterState);
-        pContext_->RSSetState(pRasterState.Get());
+            pDevice_->CreateRasterizerState(&rasterDesc, &pRasterState);
+            pContext_->RSSetState(pRasterState.Get());
 
-        D3D11_VIEWPORT vp = {};
-        vp.Width  = static_cast<FLOAT>(screen_width_);
-        vp.Height = static_cast<FLOAT>(screen_height_);
-        vp.MinDepth = 0.0f;
-        vp.MaxDepth = 1.0f;
-        vp.TopLeftX = 0.0f;
-        vp.TopLeftY = 0.0f;
+            D3D11_VIEWPORT vp = {};
+            vp.Width = static_cast<FLOAT>(screen_width_);
+            vp.Height = static_cast<FLOAT>(screen_height_);
+            vp.MinDepth = 0.0f;
+            vp.MaxDepth = 1.0f;
+            vp.TopLeftX = 0.0f;
+            vp.TopLeftY = 0.0f;
+            
+            pContext_->RSSetViewports(1u, &vp);
+        }
+        catch (const std::exception& ex)
+        {
+            throw ex;
+        }
+        catch (...)
+        {
+            MessageBox(nullptr, L"Non-STD Exception was thrown inside D3D11Graphics CTOR!", L"Graphics Error", MB_OK | MB_ICONERROR);
 
-        pContext_->RSSetViewports(1u, &vp);
+            throw;
+        }
     }
 
-    DirectX::XMMATRIX Graphics::GetProjectionXM() const noexcept
+    dx::XMMATRIX Graphics::GetProjectionXM() const noexcept
     {
         return projection_;
     }
-    DirectX::XMMATRIX Graphics::GetCameraXM() const noexcept
+    dx::XMMATRIX Graphics::GetCameraXM() const noexcept
     {
         return camera_;
     }
@@ -169,11 +180,11 @@ namespace fatpound::win32::d3d11
         pContext_->DrawIndexed(count, 0u, 0u);
     }
 
-    void Graphics::SetProjection(const DirectX::XMMATRIX& projection) noexcept
+    void Graphics::SetProjection(const dx::XMMATRIX& projection) noexcept
     {
         projection_ = projection;
     }
-    void Graphics::SetCamera(const DirectX::XMMATRIX& camera) noexcept
+    void Graphics::SetCamera(const dx::XMMATRIX& camera) noexcept
     {
         camera_ = camera;
     }

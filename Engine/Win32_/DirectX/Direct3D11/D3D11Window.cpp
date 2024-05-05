@@ -12,83 +12,96 @@ namespace fatpound::win32::d3d11
         screen_width_(width),
         screen_height_(height)
     {
-        WNDCLASSEX wc = {};
-        wc.cbSize = sizeof(wc);
-        wc.style = CS_OWNDC;
-        wc.lpfnWndProc = &HandleMsgSetup_;
-        wc.cbClsExtra = 0;
-        wc.cbWndExtra = 0;
-        wc.hInstance = hInst_;
-        wc.hIcon = nullptr;
-        wc.hCursor = nullptr;
-        wc.hbrBackground = nullptr;
-        wc.lpszMenuName = nullptr;
-        wc.lpszClassName = wndClassName_;
-        wc.hIconSm = nullptr;
-        wc.hIcon = nullptr;
-        wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
+        try
+        {
+            WNDCLASSEX wc = {};
+            wc.cbSize = sizeof(wc);
+            wc.style = CS_OWNDC;
+            wc.lpfnWndProc = &Window::HandleMsgSetup_;
+            wc.cbClsExtra = 0;
+            wc.cbWndExtra = 0;
+            wc.hInstance = hInst_;
+            wc.hIcon = nullptr;
+            wc.hCursor = nullptr;
+            wc.hbrBackground = nullptr;
+            wc.lpszMenuName = nullptr;
+            wc.lpszClassName = wndClassName_;
+            wc.hIconSm = nullptr;
+            wc.hIcon = nullptr;
+            wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
 
-        RegisterClassEx(&wc);
-
+            RegisterClassEx(&wc);
+            
 #ifdef NDEBUG
 
-        hWnd_ = CreateWindow(
-            wndClassName_,
-            window_title,
-            WS_POPUP,
-            CW_USEDEFAULT,
-            CW_USEDEFAULT,
-            static_cast<int>(screen_width_),
-            static_cast<int>(screen_height_),
-            nullptr,
-            nullptr,
-            hInst_,
-            this
-        );
+            hWnd_ = CreateWindow(
+                wndClassName_,
+                window_title,
+                WS_POPUP,
+                CW_USEDEFAULT,
+                CW_USEDEFAULT,
+                static_cast<int>(screen_width_),
+                static_cast<int>(screen_height_),
+                nullptr,
+                nullptr,
+                hInst_,
+                this
+            );
 
 #else
 
-        RECT rect = {};
-        rect.left = 0;
-        rect.right = static_cast<LONG>(screen_width_) + rect.left;
-        rect.top = 0;
-        rect.bottom = static_cast<LONG>(screen_height_) + rect.top;
+            RECT rect = {};
+            rect.left = 150;
+            rect.right = static_cast<LONG>(screen_width_) + rect.left;
+            rect.top = 150;
+            rect.bottom = static_cast<LONG>(screen_height_) + rect.top;
 
-        AdjustWindowRect(&rect, WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU, FALSE);
+            AdjustWindowRect(&rect, WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU, FALSE);
 
-        hWnd_ = CreateWindow(
-            wndClassName_,
-            window_title,
-            WS_OVERLAPPED | WS_SYSMENU | WS_MINIMIZEBOX,
-            CW_USEDEFAULT,
-            CW_USEDEFAULT,
-            rect.right - rect.left,
-            rect.bottom - rect.top,
-            nullptr,
-            nullptr,
-            hInst_,
-            this
-        );
+            hWnd_ = CreateWindow(
+                wndClassName_,
+                window_title,
+                WS_OVERLAPPED | WS_SYSMENU | WS_MINIMIZEBOX,
+                rect.left,
+                rect.top,
+                rect.right - rect.left,
+                rect.bottom - rect.top,
+                nullptr,
+                nullptr,
+                hInst_,
+                this
+            );
 
 #endif // NDEBUG
 
-        if (hWnd_ == nullptr)
-        {
-            throw;
-        }
+            if (hWnd_ == nullptr)
+            {
+                throw std::runtime_error("Error occured when creating HWND!");
+            }
 
 #ifdef NDEBUG
-        pGfx_ = std::make_unique<Graphics>(hWnd_, screen_width_, screen_height_);
+            pGfx_ = std::make_unique<Graphics>(hWnd_, screen_width_, screen_height_);
 #else
-        pGfx_ = std::make_unique<Graphics>(hWnd_, rect.right - rect.left, rect.bottom - rect.top);
+            pGfx_ = std::make_unique<Graphics>(hWnd_, rect.right - rect.left, rect.bottom - rect.top);
 #endif // NDEBUG
 
-        if (pGfx_ == nullptr)
+            if (pGfx_ == nullptr)
+            {
+                throw std::runtime_error("Error occured when creating pGfx!");
+            }
+
+            ShowWindow(hWnd_, /*SW_SHOW*/ SW_SHOWDEFAULT);
+        }
+        catch (const std::exception& ex)
         {
+            throw ex;
+        }
+        catch (...)
+        {
+            MessageBox(nullptr, L"Non-STD Exception was thrown inside D3D11Window CTOR!", L"Window Error", MB_OK | MB_ICONERROR);
+
             throw;
         }
-
-        ShowWindow(hWnd_, /*SW_SHOW*/ SW_SHOWDEFAULT);
     }
     Window::~Window()
     {
@@ -130,6 +143,10 @@ namespace fatpound::win32::d3d11
         {
             throw;
         }
+    }
+    void Window::ShowMessageBox(const std::wstring& message, const std::wstring& title, UINT error_flags)
+    {
+        MessageBox(hWnd_, message.c_str(), title.c_str(), error_flags);
     }
     void Window::Kill()
     {

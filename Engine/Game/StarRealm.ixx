@@ -17,7 +17,7 @@ import CameraController;
 #if _MSVC_LANG > 202002L
 import std;
 #else
-#if (_MSVC_LANG == 202002L)
+#if _MSVC_LANG == 202002L
 #ifdef NDEBUG
 import std.core;
 import std.memory;
@@ -33,7 +33,7 @@ import <ranges>;
 #endif // NDEBUG
 #else
 #error C++20 or greater version required
-#endif // (_MSVC_LANG == 202002L)
+#endif // _MSVC_LANG == 202002L
 #endif // _MSVC_LANG > 202002L
 
 export namespace fatpound::starrealm
@@ -66,10 +66,10 @@ export namespace fatpound::starrealm
         fatpound::win32::d3d11::Window wnd_;
         fatpound::win32::d3d11::Graphics& gfx_;
         
-        fatpound::util::Timer timer_;
-
         fatpound::win32::d3d11::Camera camera_;
         fatpound::win32::d3d11::CameraController camera_controller_;
+
+        fatpound::util::Timer timer_;
         
         static constexpr std::size_t star_count_ = 150u;
         static constexpr std::size_t minFlareCount_ = 2u;

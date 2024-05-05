@@ -11,6 +11,14 @@ module;
 #endif // !NDEBUG
 #endif // _MSVC_LANG == 202002L
 
+#ifdef NDEBUG
+#define SCREEN_WIDTH GetSystemMetrics(SM_CXSCREEN)
+#define SCREEN_HEIGHT GetSystemMetrics(SM_CYSCREEN)
+#else
+#define SCREEN_WIDTH 800
+#define SCREEN_HEIGHT 600
+#endif // NDEBUG
+
 module StarRealm;
 
 import StarHollowSingle;
@@ -25,12 +33,9 @@ namespace dx = DirectX;
 namespace fatpound::starrealm
 {
     Game::Game()
+        try
         :
-#ifdef NDEBUG
-        wnd_(L"StarRealm", GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN)),
-#else
-        wnd_(L"StarRealm", 1366, 768),
-#endif
+        wnd_(L"StarRealm", SCREEN_WIDTH, SCREEN_HEIGHT),
         gfx_(wnd_.Gfx()),
         camera_(minStarDepth_, maxStarDepth_),
         camera_controller_(wnd_.mouse, wnd_.kbd, camera_)
@@ -127,7 +132,7 @@ namespace fatpound::starrealm
             fatpound::win32::d3d11::Graphics& gfx_;
             const Game& game_;
         };
-
+        
         stars_.reserve(star_count_);
 
         std::generate_n(std::back_inserter(stars_), star_count_, Factory{gfx_, *this});
@@ -140,6 +145,16 @@ namespace fatpound::starrealm
                 maxStarDepth_ * 2.0f
             )
         );
+    }
+    catch (const std::exception& ex)
+    {
+        throw ex;
+    }
+    catch (...)
+    {
+        MessageBox(nullptr, L"Non-STD Exception was thrown when entering StarRealm CTOR!", L"Game Error", MB_OK | MB_ICONERROR);
+
+        throw;
     }
 
     Game::~Game() noexcept
