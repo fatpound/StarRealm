@@ -60,7 +60,7 @@ export namespace fatpound::win32::d3d11
 
 
     public:
-        void Update(Graphics& gfx, const C& consts)
+        virtual void Update(Graphics& gfx, const C& consts)
         {
             D3D11_MAPPED_SUBRESOURCE msr;
 

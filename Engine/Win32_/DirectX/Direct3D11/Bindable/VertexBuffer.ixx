@@ -26,7 +26,7 @@ import <vector>;
 
 export namespace fatpound::win32::d3d11
 {
-    class VertexBuffer : public Bindable
+    class VertexBuffer final : public Bindable
     {
     public:
         template <class V>
@@ -50,7 +50,7 @@ export namespace fatpound::win32::d3d11
 
 
     public:
-        void Bind(Graphics& gfx) noexcept override;
+        virtual void Bind(Graphics& gfx) noexcept override final;
 
 
     protected:

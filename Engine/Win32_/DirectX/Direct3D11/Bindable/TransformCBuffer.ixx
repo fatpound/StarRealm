@@ -15,14 +15,14 @@ import Drawable;
 
 export namespace fatpound::win32::d3d11
 {
-    class TransformCBuffer : public Bindable
+    class TransformCBuffer final : public Bindable
     {
     public:
         TransformCBuffer(Graphics& gfx, const Drawable& parent);
 
 
     public:
-        void Bind(Graphics& gfx) noexcept override;
+        virtual void Bind(Graphics& gfx) noexcept override final;
 
 
     protected:

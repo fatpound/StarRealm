@@ -11,14 +11,14 @@ import Bindable;
 
 export namespace fatpound::win32::d3d11
 {
-    class Topology : public Bindable
+    class Topology final : public Bindable
     {
     public:
         Topology(Graphics& gfx, D3D11_PRIMITIVE_TOPOLOGY type);
 
 
     public:
-        void Bind(Graphics& gfx) noexcept override;
+        virtual void Bind(Graphics& gfx) noexcept override final;
 
 
     protected:

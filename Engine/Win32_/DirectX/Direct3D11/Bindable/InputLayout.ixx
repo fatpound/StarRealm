@@ -26,14 +26,14 @@ import <vector>;
 
 export namespace fatpound::win32::d3d11
 {
-    class InputLayout : public Bindable
+    class InputLayout final : public Bindable
     {
     public:
         InputLayout(Graphics& gfx, const std::vector<D3D11_INPUT_ELEMENT_DESC>& layout, ID3DBlob* pVertexShaderBytecode);
 
 
     public:
-        void Bind(Graphics& gfx) noexcept override;
+        virtual void Bind(Graphics& gfx) noexcept override final;
 
 
     protected:

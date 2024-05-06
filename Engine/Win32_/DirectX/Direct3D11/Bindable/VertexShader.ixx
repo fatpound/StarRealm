@@ -26,7 +26,7 @@ import <string>;
 
 export namespace fatpound::win32::d3d11
 {
-    class VertexShader : public Bindable
+    class VertexShader final : public Bindable
     {
     public:
         VertexShader(Graphics& gfx, const std::wstring& path);
@@ -35,7 +35,7 @@ export namespace fatpound::win32::d3d11
     public:
         ID3DBlob* GetBytecode() const noexcept;
 
-        void Bind(Graphics& gfx) noexcept override;
+        virtual void Bind(Graphics& gfx) noexcept override final;
 
 
     protected:

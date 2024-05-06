@@ -26,14 +26,14 @@ import <string>;
 
 export namespace fatpound::win32::d3d11
 {
-    class PixelShader : public Bindable
+    class PixelShader final : public Bindable
     {
     public:
         PixelShader(Graphics& gfx, const std::wstring& path);
 
 
     public:
-        void Bind(Graphics& gfx) noexcept override;
+        virtual void Bind(Graphics& gfx) noexcept override final;
 
 
     protected:

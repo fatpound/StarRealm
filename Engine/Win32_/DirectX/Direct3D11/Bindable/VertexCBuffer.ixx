@@ -14,12 +14,12 @@ import Bindable;
 export namespace fatpound::win32::d3d11
 {
     template <typename C>
-    class VertexCBuffer : public CBuffer<C>
+    class VertexCBuffer final : public CBuffer<C>
     {
     public:
         using CBuffer<C>::CBuffer;
 
-        void Bind(Graphics& gfx) noexcept override
+        virtual void Bind(Graphics& gfx) noexcept override final
         {
             Bindable::GetContext_(gfx)->VSSetConstantBuffers(0u, 1u, this->pConstantBuffer_.GetAddressOf());
         }

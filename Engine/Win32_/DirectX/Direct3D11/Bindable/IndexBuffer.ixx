@@ -26,7 +26,7 @@ import <vector>;
 
 export namespace fatpound::win32::d3d11
 {
-    class IndexBuffer : public Bindable
+    class IndexBuffer final : public Bindable
     {
     public:
         IndexBuffer(Graphics& gfx, const std::vector<unsigned short int>& indices);
@@ -35,7 +35,7 @@ export namespace fatpound::win32::d3d11
     public:
         UINT GetCount() const noexcept;
 
-        void Bind(Graphics& gfx) noexcept override;
+        virtual void Bind(Graphics& gfx) noexcept override final;
 
 
     protected:
