@@ -2,6 +2,14 @@ module;
 
 #include "../../FatWin32_.hpp"
 
+#ifdef NDEBUG
+#define CLIENT_WIDTH  screen_width_
+#define CLIENT_HEIGHT screen_height_
+#else
+#define CLIENT_WIDTH  (rect.right - rect.left)
+#define CLIENT_HEIGHT (rect.bottom - rect.top)
+#endif // NDEBUG
+
 module D3D11Window;
 
 namespace fatpound::win32::d3d11
@@ -22,17 +30,15 @@ namespace fatpound::win32::d3d11
             wc.cbWndExtra = 0;
             wc.hInstance = hInst_;
             wc.hIcon = nullptr;
-            wc.hCursor = nullptr;
+            wc.hIconSm = nullptr;
+            wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
             wc.hbrBackground = nullptr;
             wc.lpszMenuName = nullptr;
             wc.lpszClassName = wndClassName_;
-            wc.hIconSm = nullptr;
-            wc.hIcon = nullptr;
-            wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
 
             RegisterClassEx(&wc);
             
-#ifdef NDEBUG
+#if IN_RELEASE
 
             hWnd_ = CreateWindow(
                 wndClassName_,
@@ -40,8 +46,8 @@ namespace fatpound::win32::d3d11
                 WS_POPUP,
                 CW_USEDEFAULT,
                 CW_USEDEFAULT,
-                static_cast<int>(screen_width_),
-                static_cast<int>(screen_height_),
+                static_cast<int>(CLIENT_WIDTH),
+                static_cast<int>(CLIENT_HEIGHT),
                 nullptr,
                 nullptr,
                 hInst_,
@@ -57,40 +63,37 @@ namespace fatpound::win32::d3d11
             rect.bottom = static_cast<LONG>(screen_height_) + rect.top;
 
             AdjustWindowRect(&rect, WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU, FALSE);
-
+            
             hWnd_ = CreateWindow(
                 wndClassName_,
                 window_title,
                 WS_OVERLAPPED | WS_SYSMENU | WS_MINIMIZEBOX,
                 rect.left,
                 rect.top,
-                rect.right - rect.left,
-                rect.bottom - rect.top,
+                static_cast<int>(CLIENT_WIDTH),
+                static_cast<int>(CLIENT_HEIGHT),
                 nullptr,
                 nullptr,
                 hInst_,
                 this
             );
 
-#endif // NDEBUG
+#endif // IN_RELEASE
 
-            if (hWnd_ == nullptr)
+            if (hWnd_ == nullptr) [[unlikely]]
             {
                 throw std::runtime_error("Error occured when creating HWND!");
             }
 
-#ifdef NDEBUG
-            pGfx_ = std::make_unique<Graphics>(hWnd_, screen_width_, screen_height_);
-#else
-            pGfx_ = std::make_unique<Graphics>(hWnd_, rect.right - rect.left, rect.bottom - rect.top);
-#endif // NDEBUG
+            pGfx_ = std::make_unique<Graphics>(hWnd_, CLIENT_WIDTH, CLIENT_HEIGHT);
 
-            if (pGfx_ == nullptr)
+            if (pGfx_ == nullptr) [[unlikely]]
             {
                 throw std::runtime_error("Error occured when creating pGfx!");
             }
 
             ShowWindow(hWnd_, /*SW_SHOW*/ SW_SHOWDEFAULT);
+            UpdateWindow(hWnd_);
         }
         catch (const std::exception& ex)
         {

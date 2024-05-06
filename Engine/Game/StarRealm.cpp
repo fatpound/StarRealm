@@ -12,11 +12,11 @@ module;
 #endif // _MSVC_LANG == 202002L
 
 #ifdef NDEBUG
-#define SCREEN_WIDTH GetSystemMetrics(SM_CXSCREEN)
-#define SCREEN_HEIGHT GetSystemMetrics(SM_CYSCREEN)
+#define SCREEN_WIDTH    GetSystemMetrics(SM_CXSCREEN)
+#define SCREEN_HEIGHT   GetSystemMetrics(SM_CYSCREEN)
 #else
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 600
+#define SCREEN_WIDTH    800
+#define SCREEN_HEIGHT   600
 #endif // NDEBUG
 
 module StarRealm;
