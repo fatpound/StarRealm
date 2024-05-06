@@ -90,13 +90,11 @@ export namespace fatpound::win32::d3d11
 
         std::unique_ptr<Graphics> pGfx_;
 
-        std::vector<BYTE> rawBuffer_;
-
         const std::size_t screen_width_;
         const std::size_t screen_height_;
 
-        bool cursor_enabled_ = false;
+        static constexpr bool cursor_enabled_ = true;
 
-        static constexpr const auto* const wndClassName_ = L"Fat Direct3D11 Engine Window Class";
+        static constexpr auto wndClassName_ = L"Fat Direct3D11 Engine Window Class";
     };
 }

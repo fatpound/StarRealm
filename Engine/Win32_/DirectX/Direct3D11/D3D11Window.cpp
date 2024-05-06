@@ -3,11 +3,11 @@ module;
 #include "../../FatWin32_.hpp"
 
 #ifdef NDEBUG
-#define CLIENT_WIDTH  screen_width_
-#define CLIENT_HEIGHT screen_height_
+#define CLIENT_WIDTH    screen_width_
+#define CLIENT_HEIGHT   screen_height_
 #else
-#define CLIENT_WIDTH  (rect.right - rect.left)
-#define CLIENT_HEIGHT (rect.bottom - rect.top)
+#define CLIENT_WIDTH    (rect.right - rect.left)
+#define CLIENT_HEIGHT   (rect.bottom - rect.top)
 #endif // NDEBUG
 
 module D3D11Window;
@@ -31,10 +31,18 @@ namespace fatpound::win32::d3d11
             wc.hInstance = hInst_;
             wc.hIcon = nullptr;
             wc.hIconSm = nullptr;
-            wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
             wc.hbrBackground = nullptr;
             wc.lpszMenuName = nullptr;
-            wc.lpszClassName = wndClassName_;
+            wc.lpszClassName = Window::wndClassName_;
+
+            if constexpr (Window::cursor_enabled_)
+            {
+                wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
+            }
+            else
+            {
+                ShowCursor(false);
+            }
 
             RegisterClassEx(&wc);
             
