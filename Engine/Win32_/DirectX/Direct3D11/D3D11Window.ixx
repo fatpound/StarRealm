@@ -62,8 +62,11 @@ export namespace fatpound::win32::d3d11
             return static_cast<N>(screen_height_);
         }
 
+        bool IsActive() const;
+        bool IsMinimized() const;
+
         void SetTitle(const std::wstring& title);
-        void ShowMessageBox(const std::wstring& message, const std::wstring& title, UINT error_flags); // Maybe unsued
+        void ShowMessageBox(const std::wstring& message, const std::wstring& title, UINT error_flags);
         void Kill();
 
 

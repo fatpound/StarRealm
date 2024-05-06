@@ -190,7 +190,7 @@ namespace fatpound::starrealm
 
     void Game::DoFrame_()
     {
-        auto delta_time = timer_.Mark();
+        const auto& delta_time = timer_.Mark();
 
         camera_controller_.Update(delta_time);
         
