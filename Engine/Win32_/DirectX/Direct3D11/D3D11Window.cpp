@@ -212,21 +212,16 @@ namespace fatpound::win32::d3d11
             break;
 
             /******** KEYBOARD MESSAGES ********/
-        case WM_KEYDOWN:
-            [[fallthrough]];
-            
-        [[likely]] case WM_SYSKEYDOWN:
+        case WM_KEYDOWN: [[fallthrough]];
+        case WM_SYSKEYDOWN:
             if (!(lParam & 0x40000000) || kbd.AutoRepeatIsEnabled())
             {
                 kbd.OnKeyPressed_(static_cast<unsigned char>(wParam));
             }
             break;
 
-        case WM_KEYUP:
-            [[fallthrough]];
-
-            
-        [[likely]] case WM_SYSKEYUP:
+        case WM_KEYUP: [[fallthrough]];
+        case WM_SYSKEYUP:
             kbd.OnKeyReleased_(static_cast<unsigned char>(wParam));
             break;
 

@@ -62,7 +62,7 @@ namespace fatpound::win32::d3d11
 
             HRESULT hr;
 
-            D3D11CreateDeviceAndSwapChain(
+            hr = D3D11CreateDeviceAndSwapChain(
                 nullptr,
                 D3D_DRIVER_TYPE_HARDWARE,
                 nullptr,
@@ -76,6 +76,11 @@ namespace fatpound::win32::d3d11
                 nullptr,
                 &pContext_
             );
+
+            if (FAILED(hr)) [[unlikely]]
+            {
+                throw std::runtime_error("Could NOT create the Device and SwapChain!");
+            }
 
             wrl::ComPtr<ID3D11Resource> pBackBuffer = nullptr;
             wrl::ComPtr<ID3D11Texture2D> pBackBufferTexture = nullptr;
@@ -235,7 +240,7 @@ namespace fatpound::win32::d3d11
     }
     void Graphics::DrawIndexed(UINT count) noexcept(IN_RELEASE)
     {
-        pContext_->DrawIndexed(count, 0u, 0u);
+        pContext_->DrawIndexed(count, 0u, 0);
     }
 
     void Graphics::SetProjection(const dx::XMMATRIX& projection) noexcept
