@@ -45,12 +45,12 @@ export namespace fatpound::win32::d3d11
         virtual DirectX::XMMATRIX GetTransformXM() const noexcept = 0;
 
         virtual void Update(float delta_time) noexcept = 0;
-        virtual void Draw(Graphics& gfx) const noexcept(!IS_DEBUG) final;
+        virtual void Draw(Graphics& gfx) const noexcept(IN_RELEASE) final;
 
 
     protected:
-        virtual void AddBind_(std::unique_ptr<Bindable> bind) noexcept(!IS_DEBUG) final;
-        virtual void AddIndexBuffer_(std::unique_ptr<IndexBuffer> ibuf) noexcept(!IS_DEBUG) final;
+        virtual void AddBind_(std::unique_ptr<Bindable> bind) noexcept(IN_RELEASE) final;
+        virtual void AddIndexBuffer_(std::unique_ptr<IndexBuffer> ibuf) noexcept(IN_RELEASE) final;
 
 
     protected:
@@ -58,7 +58,7 @@ export namespace fatpound::win32::d3d11
 
 
     private:
-        virtual const std::vector<std::unique_ptr<Bindable>>& GetStaticBinds_() const noexcept(!IS_DEBUG) = 0;
+        virtual const std::vector<std::unique_ptr<Bindable>>& GetStaticBinds_() const noexcept(IN_RELEASE) = 0;
 
 
     private:

@@ -196,9 +196,17 @@ namespace fatpound::starrealm
         
         gfx_.SetCamera(camera_.GetMatrix());
 
-        for (auto& star : stars_)
+        for (auto& star : stars_) // MSVC SSA Optimizer's "Loop if-unswitching" will optimize this loop
         {
-            star->Update(wnd_.kbd.KeyIsPressed(VK_SPACE) ? 0.0f : delta_time);
+            if (wnd_.kbd.KeyIsPressed(VK_SPACE)) [[unlikely]]
+            {
+                star->Update(0.0f);
+            }
+            else [[likely]]
+            {
+                star->Update(delta_time);
+            }
+
             star->Draw(gfx_);
         }
     }

@@ -49,9 +49,10 @@
 
 #include <Windows.h>
 
-
-#ifndef NDEBUG
-#define IS_DEBUG true
+#ifdef NDEBUG
+#define IN_RELEASE true
+#define IN_DEBUG false
 #else
-#define IS_DEBUG false
+#define IN_DEBUG true
+#define IN_RELEASE false
 #endif // NDEBUG

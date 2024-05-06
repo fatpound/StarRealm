@@ -39,11 +39,11 @@ export namespace fatpound::win32::d3d11
 
 
     protected:
-        virtual bool IsStaticInitialized_() const noexcept(!IS_DEBUG) = 0;
+        virtual bool IsStaticInitialized_() const noexcept(IN_RELEASE) = 0;
 
-        virtual void AddStaticBind_(std::unique_ptr<Bindable> bind) noexcept(!IS_DEBUG) = 0;
-        virtual void AddStaticIndexBuffer_(std::unique_ptr<IndexBuffer> ibuf) noexcept(!IS_DEBUG) = 0;
-        virtual void SetIndexFromStatic_() noexcept(!IS_DEBUG) = 0;
+        virtual void AddStaticBind_(std::unique_ptr<Bindable> bind) noexcept(IN_RELEASE) = 0;
+        virtual void AddStaticIndexBuffer_(std::unique_ptr<IndexBuffer> ibuf) noexcept(IN_RELEASE) = 0;
+        virtual void SetIndexFromStatic_() noexcept(IN_RELEASE) = 0;
 
 
     protected:

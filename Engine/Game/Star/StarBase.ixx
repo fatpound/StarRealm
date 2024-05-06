@@ -41,18 +41,18 @@ export namespace fatpound::starrealm
 
 
     protected:
-        virtual bool IsStaticInitialized_() const noexcept(!IS_DEBUG) override final
+        virtual bool IsStaticInitialized_() const noexcept(IN_RELEASE) override final
         {
             return !static_binds_.empty();
         }
 
-        virtual void AddStaticBind_(std::unique_ptr<fatpound::win32::d3d11::Bindable> bind) noexcept(!IS_DEBUG) override final
+        virtual void AddStaticBind_(std::unique_ptr<fatpound::win32::d3d11::Bindable> bind) noexcept(IN_RELEASE) override final
         {
             assert("*Must* use AddStaticIndexBuffer to bind index buffer" && typeid(*bind) != typeid(fatpound::win32::d3d11::IndexBuffer));
 
             static_binds_.push_back(std::move(bind));
         }
-        virtual void AddStaticIndexBuffer_(std::unique_ptr<fatpound::win32::d3d11::IndexBuffer> ibuf) noexcept(!IS_DEBUG) override final
+        virtual void AddStaticIndexBuffer_(std::unique_ptr<fatpound::win32::d3d11::IndexBuffer> ibuf) noexcept(IN_RELEASE) override final
         {
             assert(pCIndexBuffer_ == nullptr);
 
@@ -60,7 +60,7 @@ export namespace fatpound::starrealm
 
             static_binds_.push_back(std::move(ibuf));
         }
-        virtual void SetIndexFromStatic_() noexcept(!IS_DEBUG) override final
+        virtual void SetIndexFromStatic_() noexcept(IN_RELEASE) override final
         {
             assert("Attempting to add index buffer a second time" && pCIndexBuffer_ == nullptr);
 
@@ -82,7 +82,7 @@ export namespace fatpound::starrealm
 
 
     private:
-        virtual const std::vector<std::unique_ptr<fatpound::win32::d3d11::Bindable>>& GetStaticBinds_() const noexcept(!IS_DEBUG) override final
+        virtual const std::vector<std::unique_ptr<fatpound::win32::d3d11::Bindable>>& GetStaticBinds_() const noexcept(IN_RELEASE) override final
         {
             return static_binds_;
         }

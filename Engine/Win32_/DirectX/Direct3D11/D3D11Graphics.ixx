@@ -26,6 +26,7 @@ import <memory>;
 //
 import <array>;
 import <sstream>;
+import <stdexcept>;
 #endif // NDEBUG
 #else
 #error C++20 or greater version required
@@ -53,9 +54,9 @@ export namespace fatpound::win32::d3d11
         DirectX::XMMATRIX GetProjectionXM() const noexcept;
         DirectX::XMMATRIX GetCameraXM() const noexcept;
 
-        void BeginFrame(float red, float green, float blue);
+        void BeginFrame(float red, float green, float blue) noexcept;
         void EndFrame();
-        void DrawIndexed(UINT count) noexcept(!IS_DEBUG);
+        void DrawIndexed(UINT count) noexcept(IN_RELEASE);
 
         void SetProjection(const DirectX::XMMATRIX& projection) noexcept;
         void SetCamera(const DirectX::XMMATRIX& camera) noexcept;
