@@ -33,7 +33,6 @@ namespace dx = DirectX;
 namespace fatpound::starrealm
 {
     Game::Game()
-        try
         :
         wnd_(L"StarRealm", SCREEN_WIDTH, SCREEN_HEIGHT),
         gfx_(wnd_.Gfx()),
@@ -141,20 +140,10 @@ namespace fatpound::starrealm
             dx::XMMatrixPerspectiveLH(
                 1.0f,
                 wnd_.GetHeight<float>() / wnd_.GetWidth<float>(), // 1 / Aspect Ratio
-                minStarDepth_,
-                maxStarDepth_ * 2.0f
+                Game::minStarDepth_,
+                Game::maxStarDepth_ * 2.0f
             )
         );
-    }
-    catch (const std::exception& ex)
-    {
-        throw ex;
-    }
-    catch (...)
-    {
-        MessageBox(nullptr, L"Non-STD Exception was thrown when entering StarRealm CTOR!", L"Game Error", MB_OK | MB_ICONERROR);
-
-        throw;
     }
 
     Game::~Game() noexcept
@@ -182,7 +171,7 @@ namespace fatpound::starrealm
                 return 0;
             }
 
-            gfx_.BeginFrame(0.0f, 0.0f, 0.25f);
+            gfx_.BeginFrame();
             DoFrame_();
             gfx_.EndFrame();
         }
@@ -196,7 +185,7 @@ namespace fatpound::starrealm
         
         gfx_.SetCamera(camera_.GetMatrix());
 
-        for (auto& star : stars_) // MSVC SSA Optimizer's "Loop if-unswitching" will optimize this loop
+        for (auto& star : stars_)
         {
             if (wnd_.kbd.KeyIsPressed(VK_SPACE)) [[unlikely]]
             {

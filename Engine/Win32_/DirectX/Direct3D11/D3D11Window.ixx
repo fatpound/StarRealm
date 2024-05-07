@@ -62,11 +62,11 @@ export namespace fatpound::win32::d3d11
             return static_cast<N>(screen_height_);
         }
 
-        bool IsActive() const;
-        bool IsMinimized() const;
+        bool IsActive() const noexcept;
+        bool IsMinimized() const noexcept;
 
         void SetTitle(const std::wstring& title);
-        void ShowMessageBox(const std::wstring& message, const std::wstring& title, UINT error_flags);
+        void ShowMessageBox(const std::wstring& message, const std::wstring& title, UINT error_flags) noexcept;
         void Kill();
 
 
@@ -95,6 +95,6 @@ export namespace fatpound::win32::d3d11
 
         static constexpr bool cursor_enabled_ = true;
 
-        static constexpr auto wndClassName_ = L"Fat Direct3D11 Engine Window Class";
+        static constexpr auto wndClassName_ = L"FatPound Direct3D11 Engine Window Class";
     };
 }

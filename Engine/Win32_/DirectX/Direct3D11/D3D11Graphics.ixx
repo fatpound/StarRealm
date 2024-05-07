@@ -54,7 +54,7 @@ export namespace fatpound::win32::d3d11
         DirectX::XMMATRIX GetProjectionXM() const noexcept;
         DirectX::XMMATRIX GetCameraXM() const noexcept;
 
-        void BeginFrame(float red, float green, float blue) noexcept;
+        void BeginFrame() noexcept;
         void EndFrame();
         void DrawIndexed(UINT count) noexcept(IN_RELEASE);
 

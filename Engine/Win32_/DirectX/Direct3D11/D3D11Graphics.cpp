@@ -32,177 +32,167 @@ namespace fatpound::win32::d3d11
         screen_width_(width),
         screen_height_(height)
     {
-        try
-        {
-            DXGI_SWAP_CHAIN_DESC scd = {};
-            scd.BufferDesc.Width = 0u;
-            scd.BufferDesc.Height = 0u;
-            scd.BufferDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
-            scd.BufferDesc.RefreshRate.Numerator = 0u;
-            scd.BufferDesc.RefreshRate.Denominator = 0u;
-            scd.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
-            scd.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
-            scd.SampleDesc.Count = MSAA_QUALITY;
-            scd.SampleDesc.Quality = 0u;
-            scd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-            scd.BufferCount = 1u;
-            scd.OutputWindow = hWnd;
-            scd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
-            scd.Flags = 0u;
+        DXGI_SWAP_CHAIN_DESC scd = {};
+        scd.BufferDesc.Width = 0u;
+        scd.BufferDesc.Height = 0u;
+        scd.BufferDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
+        scd.BufferDesc.RefreshRate.Numerator = 0u;
+        scd.BufferDesc.RefreshRate.Denominator = 0u;
+        scd.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
+        scd.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
+        scd.SampleDesc.Count = MSAA_QUALITY;
+        scd.SampleDesc.Quality = 0u;
+        scd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+        scd.BufferCount = 1u;
+        scd.OutputWindow = hWnd;
+        scd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
+        scd.Flags = 0u;
 
 #ifdef NDEBUG
 
-            scd.Windowed = FALSE;
-            constexpr UINT swapCreateFlags = 0u;
+        scd.Windowed = FALSE;
+        constexpr UINT swapCreateFlags = 0u;
 #else
-            scd.Windowed = TRUE;
-            constexpr UINT swapCreateFlags = D3D11_CREATE_DEVICE_DEBUG;
+        scd.Windowed = TRUE;
+        constexpr UINT swapCreateFlags = D3D11_CREATE_DEVICE_DEBUG;
 
 #endif // NDEBUG
 
-            HRESULT hr;
+        HRESULT hr;
 
-            hr = D3D11CreateDeviceAndSwapChain(
-                nullptr,
-                D3D_DRIVER_TYPE_HARDWARE,
-                nullptr,
-                swapCreateFlags,
-                nullptr,
-                0u,
-                D3D11_SDK_VERSION,
-                &scd,
-                &pSwapChain_,
-                &pDevice_,
-                nullptr,
-                &pContext_
-            );
+        hr = D3D11CreateDeviceAndSwapChain(
+            nullptr,
+            D3D_DRIVER_TYPE_HARDWARE,
+            nullptr,
+            swapCreateFlags,
+            nullptr,
+            0u,
+            D3D11_SDK_VERSION,
+            &scd,
+            &pSwapChain_,
+            &pDevice_,
+            nullptr,
+            &pContext_
+        );
 
-            if (FAILED(hr)) [[unlikely]]
-            {
-                throw std::runtime_error("Could NOT create the Device and SwapChain!");
-            }
+        if (FAILED(hr)) [[unlikely]]
+        {
+            throw std::runtime_error("Could NOT create the Device and SwapChain!");
+        }
 
-            wrl::ComPtr<ID3D11Resource> pBackBuffer = nullptr;
-            wrl::ComPtr<ID3D11Texture2D> pBackBufferTexture = nullptr;
+        wrl::ComPtr<ID3D11Resource> pBackBuffer = nullptr;
+        wrl::ComPtr<ID3D11Texture2D> pBackBufferTexture = nullptr;
 
-            hr = pSwapChain_->GetBuffer(0, __uuidof(ID3D11Texture2D), &pBackBufferTexture);
+        hr = pSwapChain_->GetBuffer(0, __uuidof(ID3D11Texture2D), &pBackBufferTexture);
 
-            if (FAILED(hr)) [[unlikely]]
-            {
-                throw std::runtime_error("Could NOT get the buffer from SwapChain!");
-            }
+        if (FAILED(hr)) [[unlikely]]
+        {
+            throw std::runtime_error("Could NOT get the buffer from SwapChain!");
+        }
 
-            D3D11_TEXTURE2D_DESC backBufferDesc = {};
-            backBufferDesc.SampleDesc.Count = MSAA_QUALITY;
-            backBufferDesc.SampleDesc.Quality = 0u;
+        D3D11_TEXTURE2D_DESC backBufferDesc = {};
+        backBufferDesc.SampleDesc.Count = MSAA_QUALITY;
+        backBufferDesc.SampleDesc.Quality = 0u;
 
-            pBackBufferTexture->GetDesc(&backBufferDesc);
+        pBackBufferTexture->GetDesc(&backBufferDesc);
 
-            hr = pDevice_->CreateRenderTargetView(pBackBufferTexture.Get(), nullptr, &pTarget_);
+        hr = pDevice_->CreateRenderTargetView(pBackBufferTexture.Get(), nullptr, &pTarget_);
 
-            if (FAILED(hr)) [[unlikely]]
-            {
-                throw std::runtime_error("Could NOT create RenderTargetView!");
-            }
+        if (FAILED(hr)) [[unlikely]]
+        {
+            throw std::runtime_error("Could NOT create RenderTargetView!");
+        }
 
-            wrl::ComPtr<ID3D11DepthStencilState> pDSState;
+#pragma region Z-BUFFER
 
-            // z-buffer
-            D3D11_DEPTH_STENCIL_DESC dsDesc = {};
-            dsDesc.DepthEnable = TRUE;
-            dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
-            dsDesc.DepthFunc = D3D11_COMPARISON_LESS;
+        wrl::ComPtr<ID3D11DepthStencilState> pDSState;
 
-            hr = pDevice_->CreateDepthStencilState(&dsDesc, &pDSState);
+        D3D11_DEPTH_STENCIL_DESC dsDesc = {};
+        dsDesc.DepthEnable = TRUE;
+        dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+        dsDesc.DepthFunc = D3D11_COMPARISON_LESS;
 
-            if (FAILED(hr)) [[unlikely]]
-            {
-                throw std::runtime_error("Could NOT create DepthStencilState!");
-            }
+        hr = pDevice_->CreateDepthStencilState(&dsDesc, &pDSState);
 
-            pContext_->OMSetDepthStencilState(pDSState.Get(), 1u);
+        if (FAILED(hr)) [[unlikely]]
+        {
+            throw std::runtime_error("Could NOT create DepthStencilState!");
+        }
 
-            wrl::ComPtr<ID3D11Texture2D> pDepthStencil;
+        pContext_->OMSetDepthStencilState(pDSState.Get(), 1u);
 
-            D3D11_TEXTURE2D_DESC descDepth = {};
-            descDepth.Width = backBufferDesc.Width;
-            descDepth.Height = backBufferDesc.Height;
-            descDepth.MipLevels = 1u;
-            descDepth.ArraySize = 1u;
-            descDepth.Format = DXGI_FORMAT_D32_FLOAT;
-            descDepth.SampleDesc.Count = MSAA_QUALITY;
-            descDepth.SampleDesc.Quality = 0u;
-            descDepth.Usage = D3D11_USAGE_DEFAULT;
-            descDepth.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+        wrl::ComPtr<ID3D11Texture2D> pDepthStencil;
+        
+        D3D11_TEXTURE2D_DESC descDepth = {};
+        descDepth.Width = backBufferDesc.Width;
+        descDepth.Height = backBufferDesc.Height;
+        descDepth.MipLevels = 1u;
+        descDepth.ArraySize = 1u;
+        descDepth.Format = DXGI_FORMAT_D32_FLOAT;
+        descDepth.SampleDesc.Count = MSAA_QUALITY;
+        descDepth.SampleDesc.Quality = 0u;
+        descDepth.Usage = D3D11_USAGE_DEFAULT;
+        descDepth.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+        
+        hr = pDevice_->CreateTexture2D(&descDepth, nullptr, &pDepthStencil);
+        
+        if (FAILED(hr)) [[unlikely]]
+        {
+            throw std::runtime_error("Could NOT create Texture2D!");
+        }
 
-            hr = pDevice_->CreateTexture2D(&descDepth, nullptr, &pDepthStencil);
+        D3D11_DEPTH_STENCIL_VIEW_DESC descDSV = {};
+        descDSV.Format = DXGI_FORMAT_D32_FLOAT;
+        descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DMS;
+        descDSV.Texture2D.MipSlice = 0u;
+        
+        hr = pDevice_->CreateDepthStencilView(pDepthStencil.Get(), &descDSV, &pDSV_);
 
-            if (FAILED(hr)) [[unlikely]]
-            {
-                throw std::runtime_error("Could NOT create Texture2D!");
-            }
+        if (FAILED(hr)) [[unlikely]]
+        {
+            throw std::runtime_error("Could NOT create DepthStencilView!");
+        }
 
-            D3D11_DEPTH_STENCIL_VIEW_DESC descDSV = {};
-            descDSV.Format = DXGI_FORMAT_D32_FLOAT;
-            descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DMS;
-            descDSV.Texture2D.MipSlice = 0u;
+        pContext_->OMSetRenderTargets(1u, pTarget_.GetAddressOf(), pDSV_.Get());
 
-            hr = pDevice_->CreateDepthStencilView(pDepthStencil.Get(), &descDSV, &pDSV_);
-
-            if (FAILED(hr)) [[unlikely]]
-            {
-                throw std::runtime_error("Could NOT create DepthStencilView!");
-            }
-
-            pContext_->OMSetRenderTargets(1u, pTarget_.GetAddressOf(), pDSV_.Get());
+#pragma endregion
 
 #ifdef RASTERIZATION_ENABLED
 
-            wrl::ComPtr<ID3D11RasterizerState> pRasterState;
+        wrl::ComPtr<ID3D11RasterizerState> pRasterState;
 
-            D3D11_RASTERIZER_DESC rasterDesc = {};
-            rasterDesc.FillMode = D3D11_FILL_SOLID;
-            rasterDesc.CullMode = D3D11_CULL_BACK;
-            rasterDesc.FrontCounterClockwise = false;
-            rasterDesc.DepthBias = 0;
-            rasterDesc.DepthBiasClamp = 0.0f;
-            rasterDesc.SlopeScaledDepthBias = 0.0f;
-            rasterDesc.DepthClipEnable = true;
-            rasterDesc.ScissorEnable = false;
-            rasterDesc.MultisampleEnable = true;
-            rasterDesc.AntialiasedLineEnable = true;
+        D3D11_RASTERIZER_DESC rasterDesc = {};
+        rasterDesc.FillMode = D3D11_FILL_SOLID;
+        rasterDesc.CullMode = D3D11_CULL_BACK;
+        rasterDesc.FrontCounterClockwise = false;
+        rasterDesc.DepthBias = 0;
+        rasterDesc.DepthBiasClamp = 0.0f;
+        rasterDesc.SlopeScaledDepthBias = 0.0f;
+        rasterDesc.DepthClipEnable = true;
+        rasterDesc.ScissorEnable = false;
+        rasterDesc.MultisampleEnable = true;
+        rasterDesc.AntialiasedLineEnable = true;
 
-            hr = pDevice_->CreateRasterizerState(&rasterDesc, &pRasterState);
+        hr = pDevice_->CreateRasterizerState(&rasterDesc, &pRasterState);
 
-            if (FAILED(hr)) [[unlikely]]
-            {
-                throw std::runtime_error("Could NOT create RasterizerState!");
-            }
+        if (FAILED(hr)) [[unlikely]]
+        {
+            throw std::runtime_error("Could NOT create RasterizerState!");
+        }
 
-            pContext_->RSSetState(pRasterState.Get());
+        pContext_->RSSetState(pRasterState.Get());
 
 #endif // RASTERIZATION_ENABLED
 
-            D3D11_VIEWPORT vp = {};
-            vp.Width = static_cast<FLOAT>(screen_width_);
-            vp.Height = static_cast<FLOAT>(screen_height_);
-            vp.MinDepth = 0.0f;
-            vp.MaxDepth = 1.0f;
-            vp.TopLeftX = 0.0f;
-            vp.TopLeftY = 0.0f;
-            
-            pContext_->RSSetViewports(1u, &vp);
-        }
-        catch (const std::exception& ex)
-        {
-            throw ex;
-        }
-        catch (...)
-        {
-            MessageBox(nullptr, L"Non-STD Exception was thrown inside D3D11Graphics CTOR!", L"Graphics Error", MB_OK | MB_ICONERROR);
+        D3D11_VIEWPORT vp = {};
+        vp.Width = static_cast<FLOAT>(screen_width_);
+        vp.Height = static_cast<FLOAT>(screen_height_);
+        vp.MinDepth = 0.0f;
+        vp.MaxDepth = 1.0f;
+        vp.TopLeftX = 0.0f;
+        vp.TopLeftY = 0.0f;
 
-            throw;
-        }
+        pContext_->RSSetViewports(1u, &vp);
     }
 
     dx::XMMATRIX Graphics::GetProjectionXM() const noexcept
@@ -214,28 +204,19 @@ namespace fatpound::win32::d3d11
         return camera_;
     }
 
-    void Graphics::BeginFrame(float red, float green, float blue) noexcept
+    void Graphics::BeginFrame() noexcept
     {
-        ClearBuffer_(red, green, blue);
+        ClearBuffer_(0.0f, 0.0f, 0.25f);
     }
     void Graphics::EndFrame()
     {
-        try
-        {
-            if (FAILED(pSwapChain_->Present(1u, 0u))) [[unlikely]]
-            {
-                throw std::runtime_error("The Graphics Device Failed to Present/Draw!");
-            }
-        }
-        catch (const std::exception& ex)
-        {
-            throw ex;
-        }
-        catch (...)
-        {
-            MessageBox(nullptr, L"Non-STD Exception was thrown inside D3D11Graphics::EndFrame!", L"Graphics Error", MB_OK | MB_ICONERROR);
+        HRESULT hr;
 
-            throw;
+        hr = pSwapChain_->Present(1u, 0u);
+
+        if (FAILED(hr)) [[unlikely]]
+        {
+            throw std::runtime_error("The Graphics Device Failed to Present/Draw!");
         }
     }
     void Graphics::DrawIndexed(UINT count) noexcept(IN_RELEASE)
@@ -254,7 +235,7 @@ namespace fatpound::win32::d3d11
 
     void Graphics::ClearBuffer_(float red, float green, float blue) noexcept
     {
-        const std::array<float, 4> colors = { red, green, blue, 1.0f };
+        const std::array<float, 4> colors{ red, green, blue, 1.0f };
 
         pContext_->ClearRenderTargetView(pTarget_.Get(), colors.data());
         pContext_->ClearDepthStencilView(pDSV_.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);

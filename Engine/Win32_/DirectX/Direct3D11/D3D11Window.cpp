@@ -20,99 +20,86 @@ namespace fatpound::win32::d3d11
         screen_width_(width),
         screen_height_(height)
     {
-        try
+        WNDCLASSEX wc = {};
+        wc.cbSize = sizeof(wc);
+        wc.style = CS_OWNDC;
+        wc.lpfnWndProc = &Window::HandleMsgSetup_;
+        wc.cbClsExtra = 0;
+        wc.cbWndExtra = 0;
+        wc.hInstance = hInst_;
+        wc.hIcon = nullptr;
+        wc.hIconSm = nullptr;
+        wc.hbrBackground = nullptr;
+        wc.lpszMenuName = nullptr;
+        wc.lpszClassName = Window::wndClassName_;
+
+        if constexpr (Window::cursor_enabled_)
         {
-            WNDCLASSEX wc = {};
-            wc.cbSize = sizeof(wc);
-            wc.style = CS_OWNDC;
-            wc.lpfnWndProc = &Window::HandleMsgSetup_;
-            wc.cbClsExtra = 0;
-            wc.cbWndExtra = 0;
-            wc.hInstance = hInst_;
-            wc.hIcon = nullptr;
-            wc.hIconSm = nullptr;
-            wc.hbrBackground = nullptr;
-            wc.lpszMenuName = nullptr;
-            wc.lpszClassName = Window::wndClassName_;
+            wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
+        }
+        else
+        {
+            ShowCursor(false);
+        }
 
-            if constexpr (Window::cursor_enabled_)
-            {
-                wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
-            }
-            else
-            {
-                ShowCursor(false);
-            }
-
-            RegisterClassEx(&wc);
+        RegisterClassEx(&wc);
             
 #if IN_RELEASE
 
-            hWnd_ = CreateWindow(
-                wndClassName_,
-                window_title,
-                WS_POPUP,
-                CW_USEDEFAULT,
-                CW_USEDEFAULT,
-                static_cast<int>(CLIENT_WIDTH),
-                static_cast<int>(CLIENT_HEIGHT),
-                nullptr,
-                nullptr,
-                hInst_,
-                this
-            );
+        hWnd_ = CreateWindow(
+            Window::wndClassName_,
+            window_title,
+            WS_POPUP,
+            CW_USEDEFAULT,
+            CW_USEDEFAULT,
+            static_cast<int>(CLIENT_WIDTH),
+            static_cast<int>(CLIENT_HEIGHT),
+            nullptr,
+            nullptr,
+            hInst_,
+            this
+        );
 
 #else
 
-            RECT rect = {};
-            rect.left = 150;
-            rect.right = static_cast<LONG>(screen_width_) + rect.left;
-            rect.top = 150;
-            rect.bottom = static_cast<LONG>(screen_height_) + rect.top;
+        RECT rect = {};
+        rect.left = 150;
+        rect.right = static_cast<LONG>(screen_width_) + rect.left;
+        rect.top = 150;
+        rect.bottom = static_cast<LONG>(screen_height_) + rect.top;
 
-            AdjustWindowRect(&rect, WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU, FALSE);
-            
-            hWnd_ = CreateWindow(
-                wndClassName_,
-                window_title,
-                WS_OVERLAPPED | WS_SYSMENU | WS_MINIMIZEBOX,
-                rect.left,
-                rect.top,
-                static_cast<int>(CLIENT_WIDTH),
-                static_cast<int>(CLIENT_HEIGHT),
-                nullptr,
-                nullptr,
-                hInst_,
-                this
-            );
+        AdjustWindowRect(&rect, WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU, FALSE);
+        
+        hWnd_ = CreateWindow(
+            Window::wndClassName_,
+            window_title,
+            WS_OVERLAPPED | WS_SYSMENU | WS_MINIMIZEBOX,
+            rect.left,
+            rect.top,
+            static_cast<int>(CLIENT_WIDTH),
+            static_cast<int>(CLIENT_HEIGHT),
+            nullptr,
+            nullptr,
+            hInst_,
+            this
+        );
 
 #endif // IN_RELEASE
 
-            if (hWnd_ == nullptr) [[unlikely]]
-            {
-                throw std::runtime_error("Error occured when creating HWND!");
-            }
-
-            pGfx_ = std::make_unique<Graphics>(hWnd_, CLIENT_WIDTH, CLIENT_HEIGHT);
-
-            if (pGfx_ == nullptr) [[unlikely]]
-            {
-                throw std::runtime_error("Error occured when creating pGfx!");
-            }
-
-            ShowWindow(hWnd_, /*SW_SHOW*/ SW_SHOWDEFAULT);
-            UpdateWindow(hWnd_);
-        }
-        catch (const std::exception& ex)
+        if (hWnd_ == nullptr) [[unlikely]]
         {
-            throw ex;
+            throw std::runtime_error("Error occured when creating HWND!");
         }
-        catch (...)
-        {
-            MessageBox(nullptr, L"Non-STD Exception was thrown inside D3D11Window CTOR!", L"Window Error", MB_OK | MB_ICONERROR);
 
-            throw;
+        pGfx_ = std::make_unique<Graphics>(hWnd_, CLIENT_WIDTH, CLIENT_HEIGHT);
+
+        if (pGfx_ == nullptr) [[unlikely]]
+        {
+            throw std::runtime_error("Error occured when creating pGfx!");
         }
+
+        ShowWindow(hWnd_, /*SW_SHOW*/ SW_SHOWDEFAULT);
+        UpdateWindow(hWnd_);
     }
     Window::~Window()
     {
@@ -126,7 +113,7 @@ namespace fatpound::win32::d3d11
 
         while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
         {
-            if (msg.message == WM_QUIT)
+            if (msg.message == WM_QUIT) [[unlikely]]
             {
                 return msg.wParam;
             }
@@ -140,7 +127,7 @@ namespace fatpound::win32::d3d11
 
     Graphics& Window::Gfx()
     {
-        if (pGfx_ == nullptr) /**/ [[unlikely]] /**/
+        if (pGfx_ == nullptr) /**/ [[unlikely]] /**/ // [[assume(false)]]
         {
             // There is only one way to reach this point and that is not Standard C++.
             __assume(false);
@@ -153,23 +140,23 @@ namespace fatpound::win32::d3d11
         return *pGfx_;
     }
 
-    bool Window::IsActive() const
+    bool Window::IsActive() const noexcept
     {
         return GetActiveWindow() == hWnd_;
     }
-    bool Window::IsMinimized() const
+    bool Window::IsMinimized() const noexcept
     {
         return IsIconic(hWnd_) != 0;
     }
 
     void Window::SetTitle(const std::wstring& title)
     {
-        if (SetWindowText(hWnd_, title.c_str()) == 0)
+        if (SetWindowText(hWnd_, title.c_str()) == 0) [[unlikely]]
         {
-            throw;
+            throw std::runtime_error("Could NOT set the Window Text!");
         }
     }
-    void Window::ShowMessageBox(const std::wstring& message, const std::wstring& title, UINT error_flags)
+    void Window::ShowMessageBox(const std::wstring& message, const std::wstring& title, UINT error_flags) noexcept
     {
         MessageBox(hWnd_, message.c_str(), title.c_str(), error_flags);
     }

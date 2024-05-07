@@ -17,13 +17,13 @@ int APIENTRY wWinMain(
 		const std::string str = ex.what();
 		const std::wstring wstr{ str.cbegin(), str.cend() };
 
-		MessageBox(nullptr, wstr.c_str(), L"Main Error!", MB_OK | MB_ICONERROR);
+		MessageBox(nullptr, wstr.c_str(), L"Error!", MB_OK | MB_ICONERROR);
 
 		return -1;
 	}
 	catch (...)
 	{
-		MessageBox(nullptr, L"Non-STD Exception was thrown!", L"Main Error...", MB_OK | MB_ICONERROR);
+		MessageBox(nullptr, L"Non-STD Exception was thrown!", L"Error...", MB_OK | MB_ICONERROR);
 
 		return -1;
 	}
