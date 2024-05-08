@@ -66,7 +66,7 @@ export namespace fatpound::win32::d3d11
 
 
     private:
-        void ClearBuffer_(float red, float green, float blue) noexcept;
+        void ClearBuffer_(const float& red, const float& green, const float& blue) noexcept;
 
 
     private:

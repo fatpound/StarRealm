@@ -32,6 +32,8 @@ namespace fatpound::win32::d3d11
         screen_width_(width),
         screen_height_(height)
     {
+        assert(hWnd != nullptr);
+
         DXGI_SWAP_CHAIN_DESC scd = {};
         scd.BufferDesc.Width = 0u;
         scd.BufferDesc.Height = 0u;
@@ -233,7 +235,7 @@ namespace fatpound::win32::d3d11
         camera_ = camera;
     }
 
-    void Graphics::ClearBuffer_(float red, float green, float blue) noexcept
+    void Graphics::ClearBuffer_(const float& red, const float& green, const float& blue) noexcept
     {
         const std::array<float, 4> colors{ red, green, blue, 1.0f };
 

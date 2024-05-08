@@ -45,7 +45,7 @@ namespace fatpound::starrealm
             };
 
             AddStaticBind_(std::make_unique<InputLayout>(gfx, ied, pvsbc));
-            AddStaticBind_(std::make_unique<Topology>(gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
+            AddStaticBind_(std::make_unique<Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
         }
 
         // The non-Blend effect Vertex is the same as Star::Make's dx::XMFLOAT3

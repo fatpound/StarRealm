@@ -14,7 +14,7 @@ export namespace fatpound::win32::d3d11
     class Topology final : public Bindable
     {
     public:
-        Topology(Graphics& gfx, D3D11_PRIMITIVE_TOPOLOGY type);
+        Topology(D3D11_PRIMITIVE_TOPOLOGY type);
 
 
     public:

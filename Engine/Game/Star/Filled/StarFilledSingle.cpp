@@ -46,7 +46,7 @@ namespace fatpound::starrealm
             };
 
             AddStaticBind_(std::make_unique<InputLayout>(gfx, ied, pvsbc));
-            AddStaticBind_(std::make_unique<Topology>(gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
+            AddStaticBind_(std::make_unique<Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
         }
 
         const auto& vertices = Star::Make(radius_.x, radius_.y, position_, desc.flare_count);
