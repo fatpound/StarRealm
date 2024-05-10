@@ -33,9 +33,11 @@ export namespace fatpound::win32::d3d11
 
 
     public:
-        UINT GetCount() const noexcept;
-
         virtual void Bind(Graphics& gfx) noexcept override final;
+
+
+    public:
+        UINT GetCount() const noexcept;
 
 
     protected:

@@ -24,7 +24,7 @@ namespace fatpound::win32::d3d11
         D3D11_SUBRESOURCE_DATA sd = {};
         sd.pSysMem = indices.data();
 
-        GetDevice_(gfx)->CreateBuffer(&bd, &sd, &pIndexBuffer_);
+        Bindable::GetDevice_(gfx)->CreateBuffer(&bd, &sd, &pIndexBuffer_);
     }
 
     UINT IndexBuffer::GetCount() const noexcept
@@ -34,6 +34,6 @@ namespace fatpound::win32::d3d11
 
     void IndexBuffer::Bind(Graphics& gfx) noexcept
     {
-        GetContext_(gfx)->IASetIndexBuffer(pIndexBuffer_.Get(), DXGI_FORMAT_R16_UINT, 0u);
+        Bindable::GetContext_(gfx)->IASetIndexBuffer(pIndexBuffer_.Get(), DXGI_FORMAT_R16_UINT, 0u);
     }
 }

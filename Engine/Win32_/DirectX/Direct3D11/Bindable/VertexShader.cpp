@@ -14,7 +14,7 @@ namespace fatpound::win32::d3d11
     {
         D3DReadFileToBlob(path.c_str(), &pBytecodeBlob_);
 
-        GetDevice_(gfx)->CreateVertexShader(
+        Bindable::GetDevice_(gfx)->CreateVertexShader(
             pBytecodeBlob_->GetBufferPointer(),
             pBytecodeBlob_->GetBufferSize(),
             nullptr,
@@ -29,6 +29,6 @@ namespace fatpound::win32::d3d11
 
     void VertexShader::Bind(Graphics& gfx) noexcept
     {
-        GetContext_(gfx)->VSSetShader(pVertexShader_.Get(), nullptr, 0u);
+        Bindable::GetContext_(gfx)->VSSetShader(pVertexShader_.Get(), nullptr, 0u);
     }
 }

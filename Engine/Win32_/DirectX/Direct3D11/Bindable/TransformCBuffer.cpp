@@ -8,9 +8,6 @@ module;
 
 module TransformCBuffer;
 
-import D3D11Graphics;
-import Drawable;
-
 namespace fatpound::win32::d3d11
 {
     TransformCBuffer::TransformCBuffer(Graphics& gfx, const Drawable& parent)

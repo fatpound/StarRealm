@@ -16,7 +16,7 @@ namespace fatpound::win32::d3d11
 
         D3DReadFileToBlob(path.c_str(), &pBlob);
 
-        GetDevice_(gfx)->CreatePixelShader(
+        Bindable::GetDevice_(gfx)->CreatePixelShader(
             pBlob->GetBufferPointer(),
             pBlob->GetBufferSize(),
             nullptr,
@@ -26,6 +26,6 @@ namespace fatpound::win32::d3d11
 
     void PixelShader::Bind(Graphics& gfx) noexcept
     {
-        GetContext_(gfx)->PSSetShader(pPixelShader_.Get(), nullptr, 0u);
+        Bindable::GetContext_(gfx)->PSSetShader(pPixelShader_.Get(), nullptr, 0u);
     }
 }

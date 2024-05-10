@@ -33,9 +33,11 @@ export namespace fatpound::win32::d3d11
 
 
     public:
-        ID3DBlob* GetBytecode() const noexcept;
-
         virtual void Bind(Graphics& gfx) noexcept override final;
+
+
+    public:
+        ID3DBlob* GetBytecode() const noexcept;
 
 
     protected:

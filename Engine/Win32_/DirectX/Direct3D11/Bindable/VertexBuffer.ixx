@@ -45,7 +45,7 @@ export namespace fatpound::win32::d3d11
             D3D11_SUBRESOURCE_DATA sd = {};
             sd.pSysMem = vertices.data();
 
-            GetDevice_(gfx)->CreateBuffer(&bd, &sd, &pVertexBuffer_);
+            Bindable::GetDevice_(gfx)->CreateBuffer(&bd, &sd, &pVertexBuffer_);
         }
 
 

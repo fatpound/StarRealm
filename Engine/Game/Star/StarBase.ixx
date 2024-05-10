@@ -36,8 +36,9 @@ export namespace fatpound::starrealm
     template <class C>
     class StarBase : public Star
     {
-    public:
         using Star::Star;
+
+    public:
 
 
     protected:
@@ -78,11 +79,8 @@ export namespace fatpound::starrealm
         }
 
 
-    protected:
-
-
     private:
-        virtual const std::vector<std::unique_ptr<fatpound::win32::d3d11::Bindable>>& GetStaticBinds_() const noexcept(IN_RELEASE) override final
+        virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const std::vector<std::unique_ptr<fatpound::win32::d3d11::Bindable>>& override final
         {
             return static_binds_;
         }

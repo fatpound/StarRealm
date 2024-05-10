@@ -84,13 +84,15 @@ export namespace fatpound::starrealm
             return star;
         }
 
+
+    public:
         virtual DirectX::XMMATRIX GetTransformXM() const noexcept override final;
+
+        virtual void Update(float delta_time) noexcept override final;
 
         virtual DirectX::XMFLOAT3 GetPosition() const noexcept final;
 
         virtual float GetOuterRadius() const noexcept final;
-
-        virtual void Update(float delta_time) noexcept override final;
 
 
     protected:

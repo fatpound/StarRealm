@@ -11,7 +11,7 @@ namespace fatpound::win32::d3d11
 {
     InputLayout::InputLayout(Graphics& gfx, const std::vector<D3D11_INPUT_ELEMENT_DESC>& layout, ID3DBlob* pVertexShaderBytecode)
     {
-        GetDevice_(gfx)->CreateInputLayout(
+        Bindable::GetDevice_(gfx)->CreateInputLayout(
             layout.data(),
             static_cast<UINT>(layout.size()),
             pVertexShaderBytecode->GetBufferPointer(),
@@ -22,6 +22,6 @@ namespace fatpound::win32::d3d11
 
     void InputLayout::Bind(Graphics& gfx) noexcept
     {
-        GetContext_(gfx)->IASetInputLayout(pInputLayout_.Get());
+        Bindable::GetContext_(gfx)->IASetInputLayout(pInputLayout_.Get());
     }
 }

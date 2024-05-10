@@ -18,13 +18,11 @@ int APIENTRY wWinMain(
 		const std::wstring wstr{ str.cbegin(), str.cend() };
 
 		MessageBox(nullptr, wstr.c_str(), L"Error!", MB_OK | MB_ICONERROR);
-
-		return -1;
 	}
 	catch (...)
 	{
 		MessageBox(nullptr, L"Non-STD Exception was thrown!", L"Error...", MB_OK | MB_ICONERROR);
-
-		return -1;
 	}
+
+	return -1;
 }
