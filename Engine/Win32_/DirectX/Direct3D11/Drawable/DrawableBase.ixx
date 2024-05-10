@@ -10,6 +10,7 @@ export module DrawableBase;
 
 import Bindable;
 import Drawable;
+import IndexBuffer;
 
 #if _MSVC_LANG > 202002L
 import std;
@@ -39,14 +40,53 @@ export namespace fatpound::win32::d3d11
 
 
     protected:
-        virtual bool IsStaticInitialized_() const noexcept(IN_RELEASE) = 0;
+        virtual bool IsStaticInitialized_() const noexcept(IN_RELEASE)
+        {
+            return !static_binds_.empty();
+        }
 
-        virtual void AddStaticBind_(std::unique_ptr<Bindable> bind) noexcept(IN_RELEASE) = 0;
-        virtual void AddStaticIndexBuffer_(std::unique_ptr<IndexBuffer> ibuf) noexcept(IN_RELEASE) = 0;
-        virtual void SetIndexFromStatic_() noexcept(IN_RELEASE) = 0;
+        virtual void AddStaticBind_(std::unique_ptr<Bindable> bind) noexcept(IN_RELEASE)
+        {
+            assert("*Must* use AddStaticIndexBuffer to bind index buffer" && typeid(*bind) != typeid(fatpound::win32::d3d11::IndexBuffer));
+
+            static_binds_.push_back(std::move(bind));
+        }
+        virtual void AddStaticIndexBuffer_(std::unique_ptr<IndexBuffer> ibuf) noexcept(IN_RELEASE)
+        {
+            assert(pCIndexBuffer_ == nullptr);
+
+            pCIndexBuffer_ = ibuf.get();
+
+            static_binds_.push_back(std::move(ibuf));
+        }
+        virtual void SetIndexFromStatic_() noexcept(IN_RELEASE)
+        {
+            assert("Attempting to add index buffer a second time" && pCIndexBuffer_ == nullptr);
+
+            for (const auto& b : static_binds_)
+            {
+                const auto& ptr = dynamic_cast<fatpound::win32::d3d11::IndexBuffer*>(b.get());
+
+                if (ptr != nullptr)
+                {
+                    pCIndexBuffer_ = ptr;
+
+                    return;
+                }
+            }
+
+            assert("Failed to find index buffer in static binds" && pCIndexBuffer_ != nullptr);
+        }
 
 
     protected:
+
+
+    private:
+        virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const std::vector<std::unique_ptr<fatpound::win32::d3d11::Bindable>>& override
+        {
+            return static_binds_;
+        }
 
 
     private:

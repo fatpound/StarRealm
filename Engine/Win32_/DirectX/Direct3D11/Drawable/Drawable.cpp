@@ -32,7 +32,7 @@ namespace fatpound::win32::d3d11
 
     void Drawable::AddIndexBuffer_(std::unique_ptr<IndexBuffer> idxbuf) noexcept(IN_RELEASE)
     {
-        assert((pCIndexBuffer_ == nullptr) && "*Must* use AddIndexBuffer_() method to bind it!");
+        assert((pCIndexBuffer_ == nullptr) && "Attempting to add index buffer a second time");
 
         pCIndexBuffer_ = idxbuf.get();
 

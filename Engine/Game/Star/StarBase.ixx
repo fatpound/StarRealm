@@ -67,9 +67,11 @@ export namespace fatpound::starrealm
 
             for (const auto& b : static_binds_)
             {
-                if (const auto p = dynamic_cast<fatpound::win32::d3d11::IndexBuffer*>(b.get()))
+                const auto& ptr = dynamic_cast<fatpound::win32::d3d11::IndexBuffer*>(b.get());
+
+                if (ptr != nullptr)
                 {
-                    pCIndexBuffer_ = p;
+                    pCIndexBuffer_ = ptr;
 
                     return;
                 }
