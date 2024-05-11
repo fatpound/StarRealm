@@ -159,16 +159,16 @@
     <ClCompile Include="Util\FatTimer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\D3D11Graphics.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Graphics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\D3D11Graphics.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Graphics.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\D3D11Window.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\D3D11Window.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Window.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Win32_\IO\Keyboard.cpp">

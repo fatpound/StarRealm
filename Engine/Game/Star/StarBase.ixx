@@ -54,34 +54,13 @@ export namespace fatpound::starrealm
 
             static_binds_.push_back(std::move(bind));
         }
-
-
-    protected:
-        virtual void AddStaticIndexBuffer_(std::unique_ptr<fatpound::win32::d3d11::IndexBuffer> ibuf) noexcept(IN_RELEASE) override final
+        static void AddStaticIndexBuffer_(std::unique_ptr<fatpound::win32::d3d11::IndexBuffer> idxbuf) noexcept(IN_RELEASE)
         {
             assert(pCIndexBuffer_ == nullptr);
 
-            pCIndexBuffer_ = ibuf.get();
+            pCIndexBuffer_ = idxbuf.get();
 
-            static_binds_.push_back(std::move(ibuf));
-        }
-        virtual void SetIndexFromStatic_() noexcept(IN_RELEASE) override final
-        {
-            assert("Attempting to add index buffer a second time" && pCIndexBuffer_ == nullptr);
-
-            for (const auto& b : static_binds_)
-            {
-                const auto& ptr = dynamic_cast<fatpound::win32::d3d11::IndexBuffer*>(b.get());
-
-                if (ptr != nullptr)
-                {
-                    pCIndexBuffer_ = ptr;
-
-                    return;
-                }
-            }
-
-            assert("Failed to find index buffer in static binds" && pCIndexBuffer_ != nullptr);
+            static_binds_.push_back(std::move(idxbuf));
         }
 
 
