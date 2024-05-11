@@ -6,8 +6,6 @@ module;
 
 module Camera;
 
-import D3D11Graphics;
-
 namespace dx = DirectX;
 
 namespace fatpound::win32::d3d11
@@ -25,9 +23,9 @@ namespace fatpound::win32::d3d11
         const auto& look =
             dx::XMMatrixTranslation(x_, y_, z_) *
             dx::XMMatrixLookAtLH(
-                dx::XMVectorSet(0.0f, 0.0f, -r_, 0.0f),   // position to go n look from
+                dx::XMVectorSet(0.0f, 0.0f, -r_, 0.0f),        // position to go n look from
                 dx::XMVectorSet(0.0f, 0.0f, max_depth_, 0.0f), // position to go n look at
-                dx::XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f) // y should be pointing towards up
+                dx::XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f)        // y should be pointing towards up
         );
 
         return look;
