@@ -186,6 +186,7 @@ namespace fatpound::win32::d3d11
 
         return pWnd->HandleMsg_(hWnd, msg, wParam, lParam);
     }
+
     LRESULT Window::HandleMsg_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
     {
         switch (msg)
