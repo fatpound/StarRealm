@@ -38,7 +38,7 @@ namespace fatpound::starrealm
         :
         wnd_(L"StarRealm", SCREEN_WIDTH, SCREEN_HEIGHT),
         gfx_(wnd_.Gfx()),
-        camera_(minStarDepth_, maxStarDepth_),
+        camera_(Game::minStarDepth_, Game::maxStarDepth_),
         camera_controller_(wnd_.mouse, wnd_.kbd, camera_)
     {
         class Factory final
@@ -123,20 +123,20 @@ namespace fatpound::starrealm
 
             std::uniform_real_distribution<float> outer_rad_dist_{ 0.4f, 0.8f };
             std::uniform_real_distribution<float> inner_rad_dist_{ 0.1f, 0.3f };
-            std::uniform_real_distribution<float> x_dist_{ -worldWidth_, worldWidth_ };
-            std::uniform_real_distribution<float> y_dist_{ -worldHeight_, worldHeight_ };
-            std::uniform_real_distribution<float> zed_depth_dist_{ minStarDepth_, maxStarDepth_ };
-            std::uniform_real_distribution<float> rotation_speed_dist_{ minRotationSpeed_, maxRotationSpeed_ };
+            std::uniform_real_distribution<float> x_dist_{ -Game::worldWidth_,  Game::worldWidth_ };
+            std::uniform_real_distribution<float> y_dist_{ -Game::worldHeight_, Game::worldHeight_ };
+            std::uniform_real_distribution<float> zed_depth_dist_{ Game::minStarDepth_, Game::maxStarDepth_ };
+            std::uniform_real_distribution<float> rotation_speed_dist_{ Game::minRotationSpeed_, Game::maxRotationSpeed_ };
 
-            std::uniform_int_distribution<int> flare_count_dist_{ minFlareCount_, maxFlareCount_ };
+            std::uniform_int_distribution<int> flare_count_dist_{ Game::minFlareCount_, Game::maxFlareCount_ };
 
             Graphics& gfx_;
             const Game& game_;
         };
         
-        stars_.reserve(star_count_);
+        stars_.reserve(Game::star_count_);
 
-        std::generate_n(std::back_inserter(stars_), star_count_, Factory{gfx_, *this});
+        std::generate_n(std::back_inserter(stars_), Game::star_count_, Factory{gfx_, *this});
 
         gfx_.SetProjection(
             dx::XMMatrixPerspectiveLH(
@@ -180,7 +180,7 @@ namespace fatpound::starrealm
     }
 
     void Game::DoFrame_()
-    {
+    { 
         const auto& delta_time = timer_.Mark();
 
         camera_controller_.Update(delta_time);

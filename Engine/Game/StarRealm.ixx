@@ -9,10 +9,10 @@ export module StarRealm;
 
 import D3D11Window;
 import D3D11Graphics;
-import FatTimer;
-import Star;
 import Camera;
 import CameraController;
+import FatTimer;
+import Star;
 
 #if _MSVC_LANG > 202002L
 import std;
