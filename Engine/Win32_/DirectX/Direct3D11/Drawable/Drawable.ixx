@@ -59,7 +59,7 @@ export namespace fatpound::win32::d3d11
 
 
     private:
-        virtual const std::vector<std::unique_ptr<Bindable>>& GetStaticBinds_() const noexcept(IN_RELEASE) = 0;
+        virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const std::vector<std::unique_ptr<Bindable>>& = 0;
 
 
     private:
