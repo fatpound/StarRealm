@@ -10,6 +10,7 @@ export module StarBase;
 
 import Bindable;
 import Drawable;
+import IndexBuffer;
 import Star;
 
 #if _MSVC_LANG > 202002L
@@ -42,17 +43,20 @@ export namespace fatpound::starrealm
 
 
     protected:
-        virtual bool IsStaticInitialized_() const noexcept(IN_RELEASE) override final
+        static bool IsStaticInitialized_() noexcept(IN_RELEASE)
         {
             return !static_binds_.empty();
         }
 
-        virtual void AddStaticBind_(std::unique_ptr<fatpound::win32::d3d11::Bindable> bind) noexcept(IN_RELEASE) override final
+        static void AddStaticBind_(std::unique_ptr<fatpound::win32::d3d11::Bindable> bind) noexcept(IN_RELEASE)
         {
             assert("*Must* use AddStaticIndexBuffer to bind index buffer" && typeid(*bind) != typeid(fatpound::win32::d3d11::IndexBuffer));
 
             static_binds_.push_back(std::move(bind));
         }
+
+
+    protected:
         virtual void AddStaticIndexBuffer_(std::unique_ptr<fatpound::win32::d3d11::IndexBuffer> ibuf) noexcept(IN_RELEASE) override final
         {
             assert(pCIndexBuffer_ == nullptr);

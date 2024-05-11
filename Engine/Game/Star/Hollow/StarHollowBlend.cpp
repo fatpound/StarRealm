@@ -31,12 +31,12 @@ namespace fatpound::starrealm
         :
         StarBase<StarHollowBlend>(desc)
     {
-        if (!IsStaticInitialized_())
+        if (!StarBase::IsStaticInitialized_())
         {
             auto pvs = std::make_unique<VertexShader>(gfx, L"VSColorBlend.cso");
             auto pvsbc = pvs->GetBytecode();
-            AddStaticBind_(std::move(pvs));
-            AddStaticBind_(std::make_unique<PixelShader>(gfx, L"PSColorBlend.cso"));
+            StarBase::AddStaticBind_(std::move(pvs));
+            StarBase::AddStaticBind_(std::make_unique<PixelShader>(gfx, L"PSColorBlend.cso"));
 
             const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
             {
@@ -44,8 +44,8 @@ namespace fatpound::starrealm
                 { "Color",    0, DXGI_FORMAT_R8G8B8A8_UNORM,  0, 12u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
             };
 
-            AddStaticBind_(std::make_unique<InputLayout>(gfx, ied, pvsbc));
-            AddStaticBind_(std::make_unique<Topology>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
+            StarBase::AddStaticBind_(std::make_unique<InputLayout>(gfx, ied, pvsbc));
+            StarBase::AddStaticBind_(std::make_unique<Topology>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
         }
 
         struct Vertex final

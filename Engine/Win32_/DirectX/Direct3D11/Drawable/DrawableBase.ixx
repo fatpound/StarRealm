@@ -40,17 +40,20 @@ export namespace fatpound::win32::d3d11
 
 
     protected:
-        virtual bool IsStaticInitialized_() const noexcept(IN_RELEASE)
+        static bool IsStaticInitialized_() noexcept(IN_RELEASE)
         {
             return !static_binds_.empty();
         }
 
-        virtual void AddStaticBind_(std::unique_ptr<Bindable> bind) noexcept(IN_RELEASE)
+        static void AddStaticBind_(std::unique_ptr<Bindable> bind) noexcept(IN_RELEASE)
         {
             assert("*Must* use AddStaticIndexBuffer to bind index buffer" && typeid(*bind) != typeid(fatpound::win32::d3d11::IndexBuffer));
 
             static_binds_.push_back(std::move(bind));
         }
+
+
+    protected:
         virtual void AddStaticIndexBuffer_(std::unique_ptr<IndexBuffer> ibuf) noexcept(IN_RELEASE)
         {
             assert(pCIndexBuffer_ == nullptr);

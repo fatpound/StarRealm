@@ -32,20 +32,20 @@ namespace fatpound::starrealm
         :
         StarBase<StarHollowMulti>(desc)
     {
-        if (!IsStaticInitialized_())
+        if (!StarBase::IsStaticInitialized_())
         {
             auto pvs = std::make_unique<VertexShader>(gfx, L"VSColorIndexed.cso");
             auto pvsbc = pvs->GetBytecode();
-            AddStaticBind_(std::move(pvs));
-            AddStaticBind_(std::make_unique<PixelShader>(gfx, L"PSColorIndexed.cso"));
+            StarBase::AddStaticBind_(std::move(pvs));
+            StarBase::AddStaticBind_(std::make_unique<PixelShader>(gfx, L"PSColorIndexed.cso"));
 
             const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
             {
                 { "Position", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
             };
 
-            AddStaticBind_(std::make_unique<InputLayout>(gfx, ied, pvsbc));
-            AddStaticBind_(std::make_unique<Topology>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
+            StarBase::AddStaticBind_(std::make_unique<InputLayout>(gfx, ied, pvsbc));
+            StarBase::AddStaticBind_(std::make_unique<Topology>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
         }
 
         const auto& vertices = Star::Make(radius_.x, radius_.y, position_, desc.flare_count, false);
