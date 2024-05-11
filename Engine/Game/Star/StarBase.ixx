@@ -54,14 +54,6 @@ export namespace fatpound::starrealm
 
             static_binds_.push_back(std::move(bind));
         }
-        static void AddStaticIndexBuffer_(std::unique_ptr<fatpound::win32::d3d11::IndexBuffer> idxbuf) noexcept(IN_RELEASE)
-        {
-            assert(pCIndexBuffer_ == nullptr);
-
-            pCIndexBuffer_ = idxbuf.get();
-
-            static_binds_.push_back(std::move(idxbuf));
-        }
 
 
     private:
