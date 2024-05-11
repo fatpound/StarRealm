@@ -30,6 +30,8 @@ import StarFilledBlend;
 
 namespace dx = DirectX;
 
+using namespace fatpound::win32::d3d11;
+
 namespace fatpound::starrealm
 {
     Game::Game()
@@ -42,7 +44,7 @@ namespace fatpound::starrealm
         class Factory final
         {
         public:
-            Factory(fatpound::win32::d3d11::Graphics& gfx, const Game& game)
+            Factory(Graphics& gfx, const Game& game)
                 :
                 gfx_(gfx),
                 game_(game)
@@ -128,7 +130,7 @@ namespace fatpound::starrealm
 
             std::uniform_int_distribution<int> flare_count_dist_{ minFlareCount_, maxFlareCount_ };
 
-            fatpound::win32::d3d11::Graphics& gfx_;
+            Graphics& gfx_;
             const Game& game_;
         };
         
@@ -157,7 +159,7 @@ namespace fatpound::starrealm
 
         while (true)
         {
-            error_code = fatpound::win32::d3d11::Window::ProcessMessages();
+            error_code = Window::ProcessMessages();
 
             if (error_code) [[unlikely]]
             {
