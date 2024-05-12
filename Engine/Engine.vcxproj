@@ -82,6 +82,8 @@
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -102,6 +104,8 @@
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -122,6 +126,8 @@
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -142,6 +148,8 @@
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
