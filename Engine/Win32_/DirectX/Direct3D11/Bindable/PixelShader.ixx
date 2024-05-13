@@ -4,6 +4,8 @@ module;
 
 #include <wrl.h>
 
+#include <string>
+
 export module PixelShader;
 
 import D3D11Graphics;
@@ -15,8 +17,6 @@ import std;
 #if _MSVC_LANG == 202002L
 #ifdef NDEBUG
 import std.core;
-#else
-import <string>;
 #endif // NDEBUG
 #else
 #error C++20 or greater version required
