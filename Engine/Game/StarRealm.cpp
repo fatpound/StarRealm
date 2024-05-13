@@ -2,7 +2,6 @@ module;
 
 #include "../Win32_/FatWin32_.hpp"
 
-#include <d3d11.h>
 #include <DirectXMath.h>
 
 #if _MSVC_LANG == 202002L
@@ -20,6 +19,8 @@ module;
 #endif // NDEBUG
 
 module StarRealm;
+
+import <d3d11.h>;
 
 import StarHollowSingle;
 import StarHollowMulti;
