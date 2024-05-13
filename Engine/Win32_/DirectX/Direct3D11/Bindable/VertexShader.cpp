@@ -4,6 +4,8 @@ module;
 
 #include <wrl.h>
 
+#include <string>
+
 module VertexShader;
 
 import <d3dcompiler.h>;

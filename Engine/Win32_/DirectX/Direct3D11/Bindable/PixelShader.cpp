@@ -4,6 +4,8 @@ module;
 
 #include <wrl.h>
 
+#include <string>
+
 module PixelShader;
 
 import <d3dcompiler.h>;
