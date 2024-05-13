@@ -2,6 +2,8 @@ module;
 
 #include "../../../Win32_/FatWin32_.hpp"
 
+#include <DirectXMath.h>
+
 export module StarFilledBlend;
 
 import D3D11Graphics;

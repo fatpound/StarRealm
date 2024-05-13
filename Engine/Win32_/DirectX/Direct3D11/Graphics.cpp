@@ -7,8 +7,6 @@ module;
 #include <DirectXMath.h>
 #include <wrl.h>
 
-#include <cassert>
-
 #if _MSVC_LANG == 202002L
 #ifndef NDEBUG
 #include <array>

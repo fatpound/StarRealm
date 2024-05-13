@@ -2,6 +2,8 @@ module;
 
 #include "../../../FatWin32_.hpp"
 
+#include <d3d11.h>
+
 export module Bindable;
 
 import D3D11Graphics;
