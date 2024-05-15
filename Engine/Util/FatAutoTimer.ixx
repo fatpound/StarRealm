@@ -6,7 +6,7 @@ module;
 #endif // !NDEBUG
 #endif // _MSVC_LANG == 202002L
 
-export module FatTimer;
+export module FatAutoTimer;
 
 #if _MSVC_LANG > 202002L
 import std;
@@ -22,7 +22,7 @@ import std.core;
 
 export namespace fatpound::util
 {
-    class Timer final
+    class AutoTimer final
     {
     public:
         float Mark() noexcept;

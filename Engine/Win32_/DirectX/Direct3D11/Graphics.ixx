@@ -80,7 +80,7 @@ export namespace fatpound::win32::d3d11
         Microsoft::WRL::ComPtr<ID3D11RenderTargetView>    pTarget_    = nullptr;
         Microsoft::WRL::ComPtr<ID3D11DepthStencilView>    pDSV_       = nullptr;
 
-        const std::size_t screen_width_;
-        const std::size_t screen_height_;
+        const std::size_t width_;
+        const std::size_t height_;
     };
 }

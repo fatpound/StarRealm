@@ -31,8 +31,8 @@ namespace fatpound::win32::d3d11
 {
     Graphics::Graphics(HWND hWnd, std::size_t width, std::size_t height)
         :
-        screen_width_(width),
-        screen_height_(height)
+        width_(width),
+        height_(height)
     {
         assert(hWnd != nullptr);
 
@@ -190,8 +190,8 @@ namespace fatpound::win32::d3d11
 #endif // RASTERIZATION_ENABLED
 
         D3D11_VIEWPORT vp = {};
-        vp.Width = static_cast<FLOAT>(screen_width_);
-        vp.Height = static_cast<FLOAT>(screen_height_);
+        vp.Width = static_cast<FLOAT>(width_);
+        vp.Height = static_cast<FLOAT>(height_);
         vp.MinDepth = 0.0f;
         vp.MaxDepth = 1.0f;
         vp.TopLeftX = 0.0f;

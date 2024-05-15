@@ -35,7 +35,7 @@ export namespace fatpound::win32::d3d11
     class Window final
     {
     public:
-        Window(const wchar_t* const window_title, std::size_t width, std::size_t height);
+        Window(const wchar_t* const title, std::size_t width, std::size_t height);
 
         Window() = delete;
         Window(const Window& src) = delete;
@@ -51,15 +51,15 @@ export namespace fatpound::win32::d3d11
 
     public:
         template <fatpound::math::Number N>
-        N GetWidth() noexcept
+        N GetWidth() const noexcept
         {
-            return static_cast<N>(screen_width_);
+            return static_cast<N>(width_);
         }
 
         template <fatpound::math::Number N>
-        N GetHeight() noexcept
+        N GetHeight() const noexcept
         {
-            return static_cast<N>(screen_height_);
+            return static_cast<N>(height_);
         }
 
         Graphics& Gfx();
@@ -95,8 +95,8 @@ export namespace fatpound::win32::d3d11
 
         std::unique_ptr<Graphics> pGfx_;
 
-        const std::size_t screen_width_;
-        const std::size_t screen_height_;
+        const std::size_t width_;
+        const std::size_t height_;
 
         static constexpr bool cursor_enabled_ = true;
 

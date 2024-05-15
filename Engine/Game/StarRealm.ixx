@@ -8,7 +8,7 @@ import D3D11Window;
 import D3D11Graphics;
 import Camera;
 import CameraController;
-import FatTimer;
+import FatAutoTimer;
 import Star;
 
 #if _MSVC_LANG > 202002L
@@ -66,7 +66,7 @@ export namespace fatpound::starrealm
         fatpound::win32::d3d11::Camera camera_;
         fatpound::win32::d3d11::CameraController camera_controller_;
 
-        fatpound::util::Timer timer_;
+        fatpound::util::AutoTimer timer_;
         
         static constexpr std::size_t star_count_ = 150u;
         static constexpr std::size_t minFlareCount_ = 2u;

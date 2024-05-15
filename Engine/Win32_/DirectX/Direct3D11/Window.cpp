@@ -3,22 +3,26 @@ module;
 #include "../../FatWin32_.hpp"
 
 #if IN_RELEASE
-#define CLIENT_WIDTH    screen_width_
-#define CLIENT_HEIGHT   screen_height_
+#define CLIENT_WIDTH    width_
+#define CLIENT_HEIGHT   height_
+#define WIDTH           CLIENT_WIDTH
+#define HEIGHT          CLIENT_HEIGHT
 #else
-#define CLIENT_WIDTH    (rect.right - rect.left)
-#define CLIENT_HEIGHT   (rect.bottom - rect.top)
+#define WINDOW_WIDTH    (rect.right - rect.left)
+#define WINDOW_HEIGHT   (rect.bottom - rect.top)
+#define WIDTH           WINDOW_WIDTH
+#define HEIGHT          WINDOW_HEIGHT
 #endif // IN_RELEASE
 
 module D3D11Window;
 
 namespace fatpound::win32::d3d11
 {
-    Window::Window(const wchar_t* const window_title, std::size_t width, std::size_t height)
+    Window::Window(const wchar_t* const title, std::size_t width, std::size_t height)
         :
         hInst_(GetModuleHandle(nullptr)),
-        screen_width_(width),
-        screen_height_(height)
+        width_(width),
+        height_(height)
     {
         WNDCLASSEX wc = {};
         wc.cbSize = sizeof(wc);
@@ -48,12 +52,12 @@ namespace fatpound::win32::d3d11
 
         hWnd_ = CreateWindow(
             Window::wndClassName_,
-            window_title,
+            title,
             WS_POPUP,
             CW_USEDEFAULT,
             CW_USEDEFAULT,
-            static_cast<int>(CLIENT_WIDTH),
-            static_cast<int>(CLIENT_HEIGHT),
+            static_cast<int>(WIDTH),
+            static_cast<int>(HEIGHT),
             nullptr,
             nullptr,
             hInst_,
@@ -64,20 +68,20 @@ namespace fatpound::win32::d3d11
 
         RECT rect = {};
         rect.left = 150;
-        rect.right = static_cast<LONG>(screen_width_) + rect.left;
+        rect.right = static_cast<LONG>(width_) + rect.left;
         rect.top = 150;
-        rect.bottom = static_cast<LONG>(screen_height_) + rect.top;
+        rect.bottom = static_cast<LONG>(height_) + rect.top;
 
         AdjustWindowRect(&rect, WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU, FALSE);
         
         hWnd_ = CreateWindow(
             Window::wndClassName_,
-            window_title,
+            title,
             WS_OVERLAPPED | WS_SYSMENU | WS_MINIMIZEBOX,
             rect.left,
             rect.top,
-            static_cast<int>(CLIENT_WIDTH),
-            static_cast<int>(CLIENT_HEIGHT),
+            static_cast<int>(WIDTH),
+            static_cast<int>(HEIGHT),
             nullptr,
             nullptr,
             hInst_,
@@ -91,7 +95,7 @@ namespace fatpound::win32::d3d11
             throw std::runtime_error("Error occured when creating HWND!");
         }
 
-        pGfx_ = std::make_unique<Graphics>(hWnd_, CLIENT_WIDTH, CLIENT_HEIGHT);
+        pGfx_ = std::make_unique<Graphics>(hWnd_, WIDTH, HEIGHT);
 
         if (pGfx_ == nullptr) [[unlikely]]
         {
@@ -224,7 +228,7 @@ namespace fatpound::win32::d3d11
         {
             const POINTS pt = MAKEPOINTS(lParam);
 
-            if (pt.x >= 0 && pt.x < screen_width_ && pt.y >= 0 && pt.y < screen_height_)
+            if (pt.x >= 0 && pt.x < width_ && pt.y >= 0 && pt.y < height_)
             {
                 mouse.OnMouseMove_(pt.x, pt.y);
 

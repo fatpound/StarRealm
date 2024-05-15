@@ -204,8 +204,8 @@
     <ClCompile Include="Game\StarRealm.ixx" />
     <ClCompile Include="Math\FatMath.ixx" />
     <ClCompile Include="Util\FatColor.ixx" />
-    <ClCompile Include="Util\FatTimer.cpp" />
-    <ClCompile Include="Util\FatTimer.ixx" />
+    <ClCompile Include="Util\FatAutoTimer.cpp" />
+    <ClCompile Include="Util\FatAutoTimer.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Graphics.cpp" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Graphics.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Window.cpp" />
