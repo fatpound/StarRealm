@@ -17,7 +17,7 @@ module;
 
 #define RASTERIZATION_ENABLED
 
-#define MSAA_QUALITY 16u
+#define MSAA_QUALITY 8u
 
 #pragma comment(lib, "d3d11")
 #pragma comment(lib, "D3DCompiler")
@@ -81,7 +81,8 @@ namespace fatpound::win32::d3d11
 
         if (FAILED(hr)) [[unlikely]]
         {
-            throw std::runtime_error("Could NOT create the Device and SwapChain!");
+            throw std::runtime_error("Could NOT create the Device and SwapChain!\n"
+                "Consider decreasing MSAA_QUALITY by half...");
         }
 
         wrl::ComPtr<ID3D11Resource> pBackBuffer = nullptr;
