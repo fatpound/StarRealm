@@ -15,7 +15,7 @@ export namespace fatpound::win32::d3d11
 
 
     public:
-        DirectX::XMMATRIX GetMatrix() const noexcept;
+        auto GetMatrix() const noexcept -> DirectX::XMMATRIX;
 
         float GetR() const noexcept;
         float GetX() const noexcept;
@@ -33,8 +33,8 @@ export namespace fatpound::win32::d3d11
 
 
     private:
-        const float min_depth_;
-        const float max_depth_;
+        const float& min_depth_;
+        const float& max_depth_;
 
         float r_  = 0.1f;
 

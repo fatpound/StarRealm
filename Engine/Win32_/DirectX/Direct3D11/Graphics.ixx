@@ -52,8 +52,8 @@ export namespace fatpound::win32::d3d11
 
 
     public:
-        DirectX::XMMATRIX GetProjectionXM() const noexcept;
-        DirectX::XMMATRIX GetCameraXM() const noexcept;
+        auto GetProjectionXM() const noexcept -> DirectX::XMMATRIX;
+        auto GetCameraXM()     const noexcept -> DirectX::XMMATRIX;
 
         void BeginFrame() noexcept;
         void EndFrame();

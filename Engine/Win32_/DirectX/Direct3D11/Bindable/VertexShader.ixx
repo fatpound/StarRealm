@@ -4,7 +4,11 @@ module;
 
 #include <wrl.h>
 
+#if _MSVC_LANG == 202002L
+#if IN_DEBUG
 #include <string>
+#endif // IN_DEBUG
+#endif // _MSVC_LANG
 
 export module VertexShader;
 

@@ -15,7 +15,7 @@ export namespace fatpound::win32::d3d11
     class CameraController final
     {
     public:
-        CameraController(fatpound::win32::io::Mouse& mouse, const fatpound::win32::io::Keyboard& kbd, Camera& camera);
+        CameraController(Camera& camera, fatpound::win32::io::Mouse& mouse, const fatpound::win32::io::Keyboard& kbd);
 
 
     public:
@@ -26,12 +26,12 @@ export namespace fatpound::win32::d3d11
 
 
     private:
+        DirectX::XMFLOAT2 last_position_;
+
         Camera& camera_;
 
         fatpound::win32::io::Mouse& mouse_;
         const fatpound::win32::io::Keyboard& kbd_;
-
-        DirectX::XMFLOAT2 last_position_ = { 0.0f, 0.0f };
 
         bool engaged_ = false;
 

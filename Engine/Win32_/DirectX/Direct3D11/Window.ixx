@@ -48,8 +48,8 @@ export namespace fatpound::win32::d3d11
     public:
         static std::optional<WPARAM> ProcessMessages() noexcept;
 
-        Graphics& Gfx();
 
+    public:
         template <fatpound::math::Number N>
         N GetWidth() noexcept
         {
@@ -61,6 +61,8 @@ export namespace fatpound::win32::d3d11
         {
             return static_cast<N>(screen_height_);
         }
+
+        Graphics& Gfx();
 
         bool IsActive() const noexcept;
         bool IsMinimized() const noexcept;

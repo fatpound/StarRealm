@@ -10,11 +10,12 @@ namespace dx = DirectX;
 
 namespace fatpound::win32::d3d11
 {
-    CameraController::CameraController(fatpound::win32::io::Mouse& mouse, const fatpound::win32::io::Keyboard& kbd, Camera& camera)
+    CameraController::CameraController(Camera& camera, fatpound::win32::io::Mouse& mouse, const fatpound::win32::io::Keyboard& kbd)
         :
+        last_position_{ 0.0f, 0.0f },
+        camera_(camera),
         mouse_(mouse),
-        kbd_(kbd),
-        camera_(camera)
+        kbd_(kbd)
     {
 
     }

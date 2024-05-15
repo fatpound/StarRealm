@@ -40,7 +40,7 @@ namespace fatpound::starrealm
         wnd_(L"StarRealm", SCREEN_WIDTH, SCREEN_HEIGHT),
         gfx_(wnd_.Gfx()),
         camera_(Game::minStarDepth_, Game::maxStarDepth_),
-        camera_controller_(wnd_.mouse, wnd_.kbd, camera_)
+        camera_controller_(camera_, wnd_.mouse, wnd_.kbd)
     {
         class Factory final
         {
