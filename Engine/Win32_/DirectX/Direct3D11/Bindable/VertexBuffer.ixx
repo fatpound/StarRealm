@@ -13,11 +13,11 @@ import Bindable;
 import std;
 #else
 #if _MSVC_LANG == 202002L
-#ifdef NDEBUG
+#if IN_RELEASE
 import std.core;
 #else
 import <vector>;
-#endif // NDEBUG
+#endif // IN_RELEASE
 #else
 #error C++20 or greater version required
 #endif // _MSVC_LANG == 202002L

@@ -2,13 +2,13 @@ module;
 
 #include "../../FatWin32_.hpp"
 
-#ifdef NDEBUG
+#if IN_RELEASE
 #define CLIENT_WIDTH    screen_width_
 #define CLIENT_HEIGHT   screen_height_
 #else
 #define CLIENT_WIDTH    (rect.right - rect.left)
 #define CLIENT_HEIGHT   (rect.bottom - rect.top)
-#endif // NDEBUG
+#endif // IN_RELEASE
 
 module D3D11Window;
 

@@ -5,18 +5,18 @@ module;
 #include <DirectXMath.h>
 
 #if _MSVC_LANG == 202002L
-#ifndef NDEBUG
+#if IN_DEBUG
 #include <algorithm>
-#endif // !NDEBUG
+#endif // IN_DEBUG
 #endif // _MSVC_LANG == 202002L
 
-#ifdef NDEBUG
+#if IN_RELEASE
 #define SCREEN_WIDTH    GetSystemMetrics(SM_CXSCREEN)
 #define SCREEN_HEIGHT   GetSystemMetrics(SM_CYSCREEN)
 #else
 #define SCREEN_WIDTH    800
 #define SCREEN_HEIGHT   600
-#endif // NDEBUG
+#endif // IN_RELEASE
 
 module StarRealm;
 

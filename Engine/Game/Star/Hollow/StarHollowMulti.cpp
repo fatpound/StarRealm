@@ -5,9 +5,9 @@ module;
 #include <DirectXMath.h>
 
 #if _MSVC_LANG == 202002L
-#ifndef NDEBUG
+#if IN_DEBUG
 #include <array>
-#endif // !NDEBUG
+#endif // IN_DEBUG
 #endif // _MSVC_LANG == 202002L
 
 module StarHollowMulti;

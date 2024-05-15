@@ -10,9 +10,9 @@ module;
 #include <cassert>
 
 #if _MSVC_LANG == 202002L
-#ifndef NDEBUG
+#if IN_DEBUG
 #include <array>
-#endif // !NDEBUG
+#endif // IN_DEBUG
 #endif // _MSVC_LANG == 202002L
 
 #define RASTERIZATION_ENABLED
@@ -52,7 +52,7 @@ namespace fatpound::win32::d3d11
         scd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
         scd.Flags = 0u;
 
-#ifdef NDEBUG
+#if IN_RELEASE
 
         scd.Windowed = FALSE;
         constexpr UINT swapCreateFlags = 0u;
@@ -60,7 +60,7 @@ namespace fatpound::win32::d3d11
         scd.Windowed = TRUE;
         constexpr UINT swapCreateFlags = D3D11_CREATE_DEVICE_DEBUG;
 
-#endif // NDEBUG
+#endif // IN_RELEASE
 
         HRESULT hr;
 
