@@ -6,12 +6,12 @@ module Mouse;
 
 namespace fatpound::win32::io
 {
-    std::pair<int, int> Mouse::GetPos() const noexcept
+    auto Mouse::GetPos() const noexcept -> std::pair<int, int>
     {
         return { x_, y_ };
     }
 
-    std::optional<Mouse::RawDelta> Mouse::ReadRawDelta() noexcept
+    auto Mouse::ReadRawDelta() noexcept -> std::optional<Mouse::RawDelta>
     {
         if (rawDeltaBuffer_.empty())
         {
@@ -24,7 +24,7 @@ namespace fatpound::win32::io
         return delta;
     }
 
-    Mouse::Event Mouse::ReadFromBuffer() noexcept
+    auto Mouse::ReadFromBuffer() noexcept -> Event
     {
         if (buffer_.size() > 0u)
         {
@@ -210,12 +210,12 @@ namespace fatpound::win32::io
 
     }
 
-    std::pair<int, int> Mouse::Event::GetPos() const noexcept
+    auto Mouse::Event::GetPos() const noexcept -> std::pair<int, int>
     {
         return { x_, y_ };
     }
 
-    Mouse::Event::Type Mouse::Event::GetType() const noexcept
+    auto Mouse::Event::GetType() const noexcept -> Type
     {
         return type_;
     }
