@@ -64,7 +64,7 @@ namespace fatpound::starrealm
         std::vector<Vertex> vertices;
         vertices.reserve(flare_count * 2u + 1u);
 
-        for (const auto& vertex : Star::Make(radius_.x, radius_.y, position_, flare_count))
+        for (const auto& vertex : Star::MakeWithCentre(radius_, position_, flare_count))
         {
             vertices.emplace_back(
                 vertex,

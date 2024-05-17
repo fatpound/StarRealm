@@ -59,11 +59,9 @@ namespace fatpound::starrealm
                 dx::XMFLOAT2 radius;
                 dx::XMFLOAT3 position;
 
-                // Non-Colliding Star Generation Loop
                 while (true)
                 {
                     radius = dx::XMFLOAT2(outer_rad_dist_(mrng_), inner_rad_dist_(mrng_));
-                    // position = dx::XMFLOAT3(x_dist_(mrng_), y_dist_(mrng_), 1.0f);
                     position = dx::XMFLOAT3(x_dist_(mrng_), y_dist_(mrng_), zed_depth_dist_(mrng_));
 
                     const auto& collide = [&](const std::unique_ptr<Star>& star) -> bool

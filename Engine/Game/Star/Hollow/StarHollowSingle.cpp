@@ -47,7 +47,7 @@ namespace fatpound::starrealm
             StarBase::AddStaticBind_(std::make_unique<Topology>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
         }
 
-        const auto& vertices = Star::Make(radius_.x, radius_.y, position_, desc.flare_count, false);
+        const auto& vertices = Star::Make(radius_, position_, desc.flare_count);
 
         const auto& vertex_count = vertices.size();
 

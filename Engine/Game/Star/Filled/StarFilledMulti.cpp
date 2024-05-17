@@ -48,7 +48,7 @@ namespace fatpound::starrealm
         }
 
         // The non-Blend effect Vertex is the same as Star::Make's dx::XMFLOAT3
-        const auto& vertices = Star::Make(radius_.x, radius_.y, position_, desc.flare_count);
+        const auto& vertices = Star::MakeWithCentre(radius_, position_, desc.flare_count);
 
         const auto& vertex_count_no_centre = vertices.size() - 1u;
 
@@ -57,7 +57,6 @@ namespace fatpound::starrealm
 
         const auto& sort_triangles = [&](std::array<std::size_t, 3u>& idx_arr) -> void
             {
-                // TODO: remove sort if we can use only if's since the array size is 3
                 std::sort(
                     idx_arr.begin(),
                     idx_arr.end(),

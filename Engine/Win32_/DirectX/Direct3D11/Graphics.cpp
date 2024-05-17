@@ -200,11 +200,11 @@ namespace fatpound::win32::d3d11
         pContext_->RSSetViewports(1u, &vp);
     }
 
-    dx::XMMATRIX Graphics::GetProjectionXM() const noexcept
+    auto Graphics::GetProjectionXM() const noexcept -> dx::XMMATRIX
     {
         return projection_;
     }
-    dx::XMMATRIX Graphics::GetCameraXM() const noexcept
+    auto Graphics::GetCameraXM() const noexcept -> dx::XMMATRIX
     {
         return camera_;
     }

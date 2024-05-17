@@ -46,7 +46,7 @@ export namespace fatpound::win32::d3d11
 
 
     public:
-        static std::optional<WPARAM> ProcessMessages() noexcept;
+        static auto ProcessMessages() noexcept -> std::optional<WPARAM>;
 
 
     public:

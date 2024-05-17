@@ -111,7 +111,7 @@ namespace fatpound::win32::d3d11
         UnregisterClass(wndClassName_, hInst_);
     }
 
-    std::optional<WPARAM> Window::ProcessMessages() noexcept
+    auto Window::ProcessMessages() noexcept -> std::optional<WPARAM>
     {
         MSG msg;
 
