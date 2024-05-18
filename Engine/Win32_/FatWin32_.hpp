@@ -57,6 +57,8 @@
 #define IN_RELEASE false
 #endif // NDEBUG
 
-
-#define D3D11_NAMESPACE        fatpound::win32::d3d11
-#define PIPELINE_NAMESPACE     D3D11_NAMESPACE::pipeline
+#define NAMESPACE_IO           ::fatpound::win32::io
+#define NAMESPACE_DIRECTX      ::fatpound::win32::directx
+#define NAMESPACE_D3D11        ::fatpound::win32::d3d11
+#define NAMESPACE_PIPELINE     NAMESPACE_D3D11::pipeline
+#define NAMESPACE_ENTITY       NAMESPACE_D3D11::entity

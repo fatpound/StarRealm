@@ -131,16 +131,6 @@ namespace fatpound::win32::d3d11
 
     Graphics& Window::Gfx()
     {
-        if (pGfx_ == nullptr) /**/ [[unlikely]] /**/ // [[assume(false)]]
-        {
-            // There is only one way to reach this point and that is not Standard C++.
-            __assume(false);
-            
-            throw std::logic_error("This code is UNREACHABLE!!! Please get the latest working version of the code from github.com/fatpound/StarRealm");
-            // throw std::domain_error("This code is UNREACHABLE!!!");
-            // try catch...
-        }
-
         return *pGfx_;
     }
 

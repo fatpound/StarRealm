@@ -28,7 +28,7 @@ import <typeinfo>;
 #endif // _MSVC_LANG == 202002L
 #endif // _MSVC_LANG > 202002L
 
-export namespace fatpound::win32::d3d11
+export namespace fatpound::win32::d3d11::entity
 {
     class Drawable
     {
@@ -46,23 +46,23 @@ export namespace fatpound::win32::d3d11
 
         virtual void Update(float delta_time) noexcept = 0;
 
-        virtual void Draw(Graphics& gfx) const noexcept(IN_RELEASE) final;
+        virtual void Draw(NAMESPACE_D3D11::Graphics& gfx) const noexcept(IN_RELEASE) final;
+
+        
+    protected:
+        virtual void AddBind_(std::unique_ptr<NAMESPACE_PIPELINE::Bindable> bind) noexcept(IN_RELEASE) final;
+        virtual void AddIndexBuffer_(std::unique_ptr<NAMESPACE_PIPELINE::IndexBuffer> idxbuf) noexcept(IN_RELEASE) final;
 
 
     protected:
-        virtual void AddBind_(std::unique_ptr<pipeline::Bindable> bind) noexcept(IN_RELEASE) final;
-        virtual void AddIndexBuffer_(std::unique_ptr<pipeline::IndexBuffer> ibuf) noexcept(IN_RELEASE) final;
-
-
-    protected:
-        const pipeline::IndexBuffer* pCIndexBuffer_ = nullptr;
+        const NAMESPACE_PIPELINE::IndexBuffer* pCIndexBuffer_ = nullptr;
 
 
     private:
-        virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const std::vector<std::unique_ptr<pipeline::Bindable>>& = 0;
+        virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>>& = 0;
 
 
     private:
-        std::vector<std::unique_ptr<pipeline::Bindable>> binds_;
+        std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>> binds_;
     };
 }

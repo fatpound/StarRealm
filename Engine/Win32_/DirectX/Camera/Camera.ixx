@@ -1,12 +1,12 @@
 module;
 
-#include "../../../../Win32_/FatWin32_.hpp"
+#include "../../../Win32_/FatWin32_.hpp"
 
 #include <DirectXMath.h>
 
 export module Camera;
 
-export namespace fatpound::win32::d3d11
+export namespace fatpound::win32::directx
 {
     class Camera final
     {
@@ -26,6 +26,7 @@ export namespace fatpound::win32::d3d11
         void SetX(float x) noexcept;
         void SetY(float y) noexcept;
         void SetZ(float z) noexcept;
+
         void Reset() noexcept;
 
 
@@ -33,8 +34,8 @@ export namespace fatpound::win32::d3d11
 
 
     private:
-        const float& min_depth_;
-        const float& max_depth_;
+        const float min_depth_;
+        const float max_depth_;
 
         float r_  = 0.1f;
 

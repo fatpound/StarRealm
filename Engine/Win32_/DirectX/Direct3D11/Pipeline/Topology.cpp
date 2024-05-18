@@ -13,7 +13,7 @@ namespace fatpound::win32::d3d11::pipeline
 
     }
 
-    void Topology::Bind(D3D11_NAMESPACE::Graphics& gfx) noexcept
+    void Topology::Bind(NAMESPACE_D3D11::Graphics& gfx) noexcept
     {
         Bindable::GetContext_(gfx)->IASetPrimitiveTopology(type_);
     }

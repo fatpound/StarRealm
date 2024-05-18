@@ -31,7 +31,7 @@ export namespace fatpound::starrealm
     class StarFilledSingle final : public StarBase<StarFilledSingle>
     {
     public:
-        StarFilledSingle(fatpound::win32::d3d11::Graphics& gfx, const Descriptor& desc);
+        StarFilledSingle(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
 
 
     protected:

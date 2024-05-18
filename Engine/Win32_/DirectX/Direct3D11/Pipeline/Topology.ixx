@@ -16,7 +16,7 @@ export namespace fatpound::win32::d3d11::pipeline
 
 
     public:
-        virtual void Bind(D3D11_NAMESPACE::Graphics& gfx) noexcept override final;
+        virtual void Bind(NAMESPACE_D3D11::Graphics& gfx) noexcept override final;
 
 
     protected:

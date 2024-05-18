@@ -75,25 +75,25 @@
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexShader.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Camera\Camera.cpp">
+    <ClCompile Include="Win32_\DirectX\Camera\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Camera\Camera.ixx">
+    <ClCompile Include="Win32_\DirectX\Camera\Camera.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Camera\CameraController.cpp">
+    <ClCompile Include="Win32_\DirectX\Camera\CameraController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Camera\CameraController.ixx">
+    <ClCompile Include="Win32_\DirectX\Camera\CameraController.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Drawable\Drawable.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Entity\Drawable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Drawable\Drawable.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Entity\Drawable.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Drawable\DrawableBase.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Entity\DrawableBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game\Star\Filled\StarFilledBlend.cpp">

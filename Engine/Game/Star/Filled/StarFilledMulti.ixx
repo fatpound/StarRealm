@@ -32,7 +32,7 @@ export namespace fatpound::starrealm
     class StarFilledMulti final : public StarBase<StarFilledMulti>
     {
     public:
-        StarFilledMulti(fatpound::win32::d3d11::Graphics& gfx, const Descriptor& desc);
+        StarFilledMulti(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
 
 
     protected:

@@ -1,6 +1,6 @@
 module;
 
-#include "../../../../Win32_/FatWin32_.hpp"
+#include "../../../Win32_/FatWin32_.hpp"
 
 #include <DirectXMath.h>
 
@@ -8,9 +8,9 @@ module CameraController;
 
 namespace dx = DirectX;
 
-namespace fatpound::win32::d3d11
+namespace fatpound::win32::directx
 {
-    CameraController::CameraController(Camera& camera, fatpound::win32::io::Mouse& mouse, const fatpound::win32::io::Keyboard& kbd)
+    CameraController::CameraController(Camera& camera, NAMESPACE_IO::Mouse& mouse, const NAMESPACE_IO::Keyboard& kbd)
         :
         last_position_{ 0.0f, 0.0f },
         camera_(camera),
@@ -33,7 +33,7 @@ namespace fatpound::win32::d3d11
 
             switch (mouse_event.GetType())
             {
-            case fatpound::win32::io::Mouse::Event::Type::LPress:
+            case NAMESPACE_IO::Mouse::Event::Type::LPress:
             {
                 engaged_ = true;
                 const auto& pos = mouse_event.GetPos();
@@ -41,15 +41,15 @@ namespace fatpound::win32::d3d11
             }
                 break;
 
-            case fatpound::win32::io::Mouse::Event::Type::LRelease:
+            case NAMESPACE_IO::Mouse::Event::Type::LRelease:
                 engaged_ = false;
                 break;
 
-            case fatpound::win32::io::Mouse::Event::Type::WheelUp:
+            case NAMESPACE_IO::Mouse::Event::Type::WheelUp:
                 camera_.SetR(camera_.GetR() - zoom_increment_ * 5.0f);
                 break;
 
-            case fatpound::win32::io::Mouse::Event::Type::WheelDown:
+            case NAMESPACE_IO::Mouse::Event::Type::WheelDown:
                 camera_.SetR(camera_.GetR() + zoom_increment_ * 5.0f);
                 break;
 

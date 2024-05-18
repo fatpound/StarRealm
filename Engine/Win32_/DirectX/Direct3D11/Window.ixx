@@ -73,8 +73,8 @@ export namespace fatpound::win32::d3d11
 
 
     public:
-        fatpound::win32::io::Keyboard kbd;
-        fatpound::win32::io::Mouse mouse;
+        NAMESPACE_IO::Keyboard kbd;
+        NAMESPACE_IO::Mouse mouse;
 
 
     protected:

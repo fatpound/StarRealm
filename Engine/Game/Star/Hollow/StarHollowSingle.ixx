@@ -32,7 +32,7 @@ export namespace fatpound::starrealm
     class StarHollowSingle final : public StarBase<StarHollowSingle>
     {
     public:
-        StarHollowSingle(fatpound::win32::d3d11::Graphics& gfx, const Descriptor& desc);
+        StarHollowSingle(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
 
 
     protected:

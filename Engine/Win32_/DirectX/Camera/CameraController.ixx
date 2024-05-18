@@ -1,6 +1,6 @@
 module;
 
-#include "../../../../Win32_/FatWin32_.hpp"
+#include "../../../Win32_/FatWin32_.hpp"
 
 #include <DirectXMath.h>
 
@@ -10,12 +10,12 @@ import Camera;
 import Keyboard;
 import Mouse;
 
-export namespace fatpound::win32::d3d11
+export namespace fatpound::win32::directx
 {
     class CameraController final
     {
     public:
-        CameraController(Camera& camera, fatpound::win32::io::Mouse& mouse, const fatpound::win32::io::Keyboard& kbd);
+        CameraController(Camera& camera, NAMESPACE_IO::Mouse& mouse, const NAMESPACE_IO::Keyboard& kbd);
 
 
     public:
@@ -30,8 +30,8 @@ export namespace fatpound::win32::d3d11
 
         Camera& camera_;
 
-        fatpound::win32::io::Mouse& mouse_;
-        const fatpound::win32::io::Keyboard& kbd_;
+        NAMESPACE_IO::Mouse& mouse_;
+        const NAMESPACE_IO::Keyboard& kbd_;
 
         bool engaged_ = false;
 

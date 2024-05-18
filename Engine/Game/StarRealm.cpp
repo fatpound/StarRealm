@@ -43,7 +43,7 @@ namespace fatpound::starrealm
         class Factory final
         {
         public:
-            Factory(D3D11_NAMESPACE::Graphics& gfx, const Game& game)
+            Factory(NAMESPACE_D3D11::Graphics& gfx, const Game& game)
                 :
                 gfx_(gfx),
                 game_(game)
@@ -127,7 +127,7 @@ namespace fatpound::starrealm
 
             std::uniform_int_distribution<int> flare_count_dist_{ Game::minFlareCount_, Game::maxFlareCount_ };
 
-            D3D11_NAMESPACE::Graphics& gfx_;
+            NAMESPACE_D3D11::Graphics& gfx_;
             const Game& game_;
         };
         
@@ -156,7 +156,7 @@ namespace fatpound::starrealm
 
         while (true)
         {
-            error_code = D3D11_NAMESPACE::Window::ProcessMessages();
+            error_code = NAMESPACE_D3D11::Window::ProcessMessages();
 
             if (error_code) [[unlikely]]
             {

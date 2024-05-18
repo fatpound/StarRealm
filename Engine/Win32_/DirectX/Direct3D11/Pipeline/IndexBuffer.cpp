@@ -8,7 +8,7 @@ module IndexBuffer;
 
 namespace fatpound::win32::d3d11::pipeline
 {
-    IndexBuffer::IndexBuffer(D3D11_NAMESPACE::Graphics& gfx, const std::vector<unsigned short int>& indices)
+    IndexBuffer::IndexBuffer(NAMESPACE_D3D11::Graphics& gfx, const std::vector<unsigned short int>& indices)
         :
         count_(static_cast<UINT>(indices.size()))
     {
@@ -31,7 +31,7 @@ namespace fatpound::win32::d3d11::pipeline
         return count_;
     }
 
-    void IndexBuffer::Bind(D3D11_NAMESPACE::Graphics& gfx) noexcept
+    void IndexBuffer::Bind(NAMESPACE_D3D11::Graphics& gfx) noexcept
     {
         Bindable::GetContext_(gfx)->IASetIndexBuffer(pIndexBuffer_.Get(), DXGI_FORMAT_R16_UINT, 0u);
     }

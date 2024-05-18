@@ -18,7 +18,7 @@ export namespace fatpound::win32::d3d11::pipeline
         using CBuffer<C>::CBuffer;
 
     public:
-        virtual void Bind(D3D11_NAMESPACE::Graphics& gfx) noexcept override final
+        virtual void Bind(NAMESPACE_D3D11::Graphics& gfx) noexcept override final
         {
             Bindable::GetContext_(gfx)->VSSetConstantBuffers(0u, 1u, this->pConstantBuffer_.GetAddressOf());
         }

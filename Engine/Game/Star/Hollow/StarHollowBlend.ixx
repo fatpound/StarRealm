@@ -31,7 +31,7 @@ export namespace fatpound::starrealm
     class StarHollowBlend final : public StarBase<StarHollowBlend>
     {
     public:
-        StarHollowBlend(fatpound::win32::d3d11::Graphics& gfx, const Descriptor& desc);
+        StarHollowBlend(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
 
 
     protected:

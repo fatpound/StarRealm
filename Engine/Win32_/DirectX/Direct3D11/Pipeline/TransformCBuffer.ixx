@@ -17,11 +17,11 @@ export namespace fatpound::win32::d3d11::pipeline
     class TransformCBuffer final : public Bindable
     {
     public:
-        TransformCBuffer(D3D11_NAMESPACE::Graphics& gfx, const D3D11_NAMESPACE::Drawable& parent);
+        TransformCBuffer(NAMESPACE_D3D11::Graphics& gfx, const NAMESPACE_ENTITY::Drawable& parent);
 
 
     public:
-        virtual void Bind(D3D11_NAMESPACE::Graphics& gfx) noexcept override final;
+        virtual void Bind(NAMESPACE_D3D11::Graphics& gfx) noexcept override final;
 
 
     protected:
@@ -30,6 +30,6 @@ export namespace fatpound::win32::d3d11::pipeline
     private:
         VertexCBuffer<DirectX::XMMATRIX> vcbuf_;
 
-        const Drawable& parent_;
+        const NAMESPACE_ENTITY::Drawable& parent_;
     };
 }

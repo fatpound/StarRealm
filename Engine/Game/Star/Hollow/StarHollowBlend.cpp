@@ -24,16 +24,16 @@ namespace dx = DirectX;
 
 namespace fatpound::starrealm
 {
-    StarHollowBlend::StarHollowBlend(D3D11_NAMESPACE::Graphics& gfx, const Descriptor& desc)
+    StarHollowBlend::StarHollowBlend(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
         :
         StarBase<StarHollowBlend>(desc)
     {
         if (!StarBase::IsStaticInitialized_())
         {
-            auto pvs = std::make_unique<PIPELINE_NAMESPACE::VertexShader>(gfx, L"VSColorBlend.cso");
+            auto pvs = std::make_unique<NAMESPACE_PIPELINE::VertexShader>(gfx, L"VSColorBlend.cso");
             auto pvsbc = pvs->GetBytecode();
             StarBase::AddStaticBind_(std::move(pvs));
-            StarBase::AddStaticBind_(std::make_unique<PIPELINE_NAMESPACE::PixelShader>(gfx, L"PSColorBlend.cso"));
+            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::PixelShader>(gfx, L"PSColorBlend.cso"));
 
             const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
             {
@@ -41,8 +41,8 @@ namespace fatpound::starrealm
                 { "Color",    0, DXGI_FORMAT_R8G8B8A8_UNORM,  0, 12u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
             };
 
-            StarBase::AddStaticBind_(std::make_unique<PIPELINE_NAMESPACE::InputLayout>(gfx, ied, pvsbc));
-            StarBase::AddStaticBind_(std::make_unique<PIPELINE_NAMESPACE::Topology>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
+            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::InputLayout>(gfx, ied, pvsbc));
+            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::Topology>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
         }
 
         struct Vertex final
@@ -85,8 +85,8 @@ namespace fatpound::starrealm
 
         indices.emplace_back(static_cast<unsigned short int>(0u));
 
-        AddBind_(std::make_unique<PIPELINE_NAMESPACE::VertexBuffer>(gfx, vertices));
-        AddIndexBuffer_(std::make_unique<PIPELINE_NAMESPACE::IndexBuffer>(gfx, indices));
-        AddBind_(std::make_unique<PIPELINE_NAMESPACE::TransformCBuffer>(gfx, *this));
+        AddBind_(std::make_unique<NAMESPACE_PIPELINE::VertexBuffer>(gfx, vertices));
+        AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
+        AddBind_(std::make_unique<NAMESPACE_PIPELINE::TransformCBuffer>(gfx, *this));
     }
 }

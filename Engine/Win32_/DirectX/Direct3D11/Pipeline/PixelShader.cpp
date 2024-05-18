@@ -16,7 +16,7 @@ import <d3dcompiler.h>;
 
 namespace fatpound::win32::d3d11::pipeline
 {
-    PixelShader::PixelShader(D3D11_NAMESPACE::Graphics& gfx, const std::wstring& path)
+    PixelShader::PixelShader(NAMESPACE_D3D11::Graphics& gfx, const std::wstring& path)
     {
         Microsoft::WRL::ComPtr<ID3DBlob> pBlob;
 
@@ -30,7 +30,7 @@ namespace fatpound::win32::d3d11::pipeline
         );
     }
 
-    void PixelShader::Bind(D3D11_NAMESPACE::Graphics& gfx) noexcept
+    void PixelShader::Bind(NAMESPACE_D3D11::Graphics& gfx) noexcept
     {
         Bindable::GetContext_(gfx)->PSSetShader(pPixelShader_.Get(), nullptr, 0u);
     }

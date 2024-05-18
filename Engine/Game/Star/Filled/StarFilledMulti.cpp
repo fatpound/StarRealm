@@ -25,24 +25,24 @@ namespace dx = DirectX;
 
 namespace fatpound::starrealm
 {
-    StarFilledMulti::StarFilledMulti(D3D11_NAMESPACE::Graphics& gfx, const Descriptor& desc)
+    StarFilledMulti::StarFilledMulti(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
         :
         StarBase<StarFilledMulti>(desc)
     {
         if (!StarBase::IsStaticInitialized_())
         {
-            auto pvs = std::make_unique<PIPELINE_NAMESPACE::VertexShader>(gfx, L"VSColorIndexed.cso");
+            auto pvs = std::make_unique<NAMESPACE_PIPELINE::VertexShader>(gfx, L"VSColorIndexed.cso");
             auto pvsbc = pvs->GetBytecode();
             StarBase::AddStaticBind_(std::move(pvs));
-            StarBase::AddStaticBind_(std::make_unique<PIPELINE_NAMESPACE::PixelShader>(gfx, L"PSColorIndexed.cso"));
+            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::PixelShader>(gfx, L"PSColorIndexed.cso"));
 
             const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
             {
                 { "Position", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
             };
 
-            StarBase::AddStaticBind_(std::make_unique<PIPELINE_NAMESPACE::InputLayout>(gfx, ied, pvsbc));
-            StarBase::AddStaticBind_(std::make_unique<PIPELINE_NAMESPACE::Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
+            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::InputLayout>(gfx, ied, pvsbc));
+            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
         }
 
         // The non-Blend effect Vertex is the same as Star::Make's dx::XMFLOAT3
@@ -75,7 +75,7 @@ namespace fatpound::starrealm
                 }
             };
 
-        AddBind_(std::make_unique<PIPELINE_NAMESPACE::VertexBuffer>(gfx, vertices));
+        AddBind_(std::make_unique<NAMESPACE_PIPELINE::VertexBuffer>(gfx, vertices));
 
         for (std::size_t i = 1u; i <= vertex_count_no_centre - 1u; i += 2u)
         {
@@ -91,7 +91,7 @@ namespace fatpound::starrealm
             }
         }
 
-        AddIndexBuffer_(std::make_unique<PIPELINE_NAMESPACE::IndexBuffer>(gfx, indices));
+        AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
 
         struct ConstantBuffer2
         {
@@ -113,7 +113,7 @@ namespace fatpound::starrealm
             };
         }
 
-        AddBind_(std::make_unique<PIPELINE_NAMESPACE::PixelCBuffer<ConstantBuffer2>>(gfx, cb2));
-        AddBind_(std::make_unique<PIPELINE_NAMESPACE::TransformCBuffer>(gfx, *this));
+        AddBind_(std::make_unique<NAMESPACE_PIPELINE::PixelCBuffer<ConstantBuffer2>>(gfx, cb2));
+        AddBind_(std::make_unique<NAMESPACE_PIPELINE::TransformCBuffer>(gfx, *this));
     }
 }
