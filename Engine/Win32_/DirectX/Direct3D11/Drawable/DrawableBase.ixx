@@ -45,16 +45,16 @@ export namespace fatpound::win32::d3d11
             return !static_binds_.empty();
         }
 
-        static void AddStaticBind_(std::unique_ptr<Bindable> bind) noexcept(IN_RELEASE)
+        static void AddStaticBind_(std::unique_ptr<pipeline::Bindable> bind) noexcept(IN_RELEASE)
         {
-            assert("*Must* use AddStaticIndexBuffer to bind index buffer" && typeid(*bind) != typeid(IndexBuffer));
+            assert("*Must* use AddStaticIndexBuffer to bind index buffer" && typeid(*bind) != typeid(pipeline::IndexBuffer));
 
             static_binds_.push_back(std::move(bind));
         }
 
 
     protected:
-        virtual void AddStaticIndexBuffer_(std::unique_ptr<IndexBuffer> idxbuf) noexcept(IN_RELEASE) final
+        virtual void AddStaticIndexBuffer_(std::unique_ptr<pipeline::IndexBuffer> idxbuf) noexcept(IN_RELEASE) final
         {
             assert("Attempting to add index buffer a second time" && pCIndexBuffer_ == nullptr);
 
@@ -68,7 +68,7 @@ export namespace fatpound::win32::d3d11
 
             for (const auto& b : static_binds_)
             {
-                const auto ptr = dynamic_cast<IndexBuffer*>(b.get());
+                const auto ptr = dynamic_cast<pipeline::IndexBuffer*>(b.get());
 
                 if (ptr != nullptr)
                 {
@@ -83,16 +83,16 @@ export namespace fatpound::win32::d3d11
 
 
     private:
-        virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const std::vector<std::unique_ptr<Bindable>>& override
+        virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const std::vector<std::unique_ptr<pipeline::Bindable>>& override
         {
             return static_binds_;
         }
 
 
     private:
-        static std::vector<std::unique_ptr<Bindable>> static_binds_;
+        static std::vector<std::unique_ptr<pipeline::Bindable>> static_binds_;
     };
 
     template <class C>
-    std::vector<std::unique_ptr<Bindable>> DrawableBase<C>::static_binds_;
+    std::vector<std::unique_ptr<pipeline::Bindable>> DrawableBase<C>::static_binds_;
 }

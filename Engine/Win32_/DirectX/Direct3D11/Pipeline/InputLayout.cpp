@@ -6,9 +6,9 @@ module;
 
 module InputLayout;
 
-namespace fatpound::win32::d3d11
+namespace fatpound::win32::d3d11::pipeline
 {
-    InputLayout::InputLayout(Graphics& gfx, const std::vector<D3D11_INPUT_ELEMENT_DESC>& layout, ID3DBlob* pVertexShaderBytecode)
+    InputLayout::InputLayout(D3D11_NAMESPACE::Graphics& gfx, const std::vector<D3D11_INPUT_ELEMENT_DESC>& layout, ID3DBlob* pVertexShaderBytecode)
     {
         Bindable::GetDevice_(gfx)->CreateInputLayout(
             layout.data(),
@@ -19,7 +19,7 @@ namespace fatpound::win32::d3d11
         );
     }
 
-    void InputLayout::Bind(Graphics& gfx) noexcept
+    void InputLayout::Bind(D3D11_NAMESPACE::Graphics& gfx) noexcept
     {
         Bindable::GetContext_(gfx)->IASetInputLayout(pInputLayout_.Get());
     }

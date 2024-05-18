@@ -23,14 +23,14 @@ namespace fatpound::win32::d3d11
         gfx.DrawIndexed(pCIndexBuffer_->GetCount());
     }
 
-    void Drawable::AddBind_(std::unique_ptr<Bindable> bind) noexcept(IN_RELEASE)
+    void Drawable::AddBind_(std::unique_ptr<pipeline::Bindable> bind) noexcept(IN_RELEASE)
     {
-        assert((typeid(*bind) != typeid(IndexBuffer)) && "*Must* use AddIndexBuffer_() method to bind it!");
+        assert((typeid(*bind) != typeid(pipeline::IndexBuffer)) && "*Must* use AddIndexBuffer_() method to bind it!");
 
         binds_.push_back(std::move(bind));
     }
 
-    void Drawable::AddIndexBuffer_(std::unique_ptr<IndexBuffer> idxbuf) noexcept(IN_RELEASE)
+    void Drawable::AddIndexBuffer_(std::unique_ptr<pipeline::IndexBuffer> idxbuf) noexcept(IN_RELEASE)
     {
         assert((pCIndexBuffer_ == nullptr) && "Attempting to add index buffer a second time");
 

@@ -10,7 +10,7 @@ import D3D11Graphics;
 import CBuffer;
 import Bindable;
 
-export namespace fatpound::win32::d3d11
+export namespace fatpound::win32::d3d11::pipeline
 {
     template <typename C>
     class PixelCBuffer final : public CBuffer<C>
@@ -18,7 +18,7 @@ export namespace fatpound::win32::d3d11
         using CBuffer<C>::CBuffer;
 
     public:
-        virtual void Bind(Graphics& gfx) noexcept override final
+        virtual void Bind(D3D11_NAMESPACE::Graphics& gfx) noexcept override final
         {
             Bindable::GetContext_(gfx)->PSSetConstantBuffers(0u, 1u, this->pConstantBuffer_.GetAddressOf());
         }

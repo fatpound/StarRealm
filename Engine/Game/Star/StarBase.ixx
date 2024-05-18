@@ -48,25 +48,25 @@ export namespace fatpound::starrealm
             return !static_binds_.empty();
         }
 
-        static void AddStaticBind_(std::unique_ptr<fatpound::win32::d3d11::Bindable> bind) noexcept(IN_RELEASE)
+        static void AddStaticBind_(std::unique_ptr<PIPELINE_NAMESPACE::Bindable> bind) noexcept(IN_RELEASE)
         {
-            assert("*Must* use AddStaticIndexBuffer to bind index buffer" && typeid(*bind) != typeid(fatpound::win32::d3d11::IndexBuffer));
+            assert("*Must* use AddStaticIndexBuffer to bind index buffer" && typeid(*bind) != typeid(PIPELINE_NAMESPACE::IndexBuffer));
 
             static_binds_.push_back(std::move(bind));
         }
 
 
     private:
-        virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const std::vector<std::unique_ptr<fatpound::win32::d3d11::Bindable>>& override final
+        virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const std::vector<std::unique_ptr<PIPELINE_NAMESPACE::Bindable>>& override final
         {
             return static_binds_;
         }
 
 
     private:
-        static std::vector<std::unique_ptr<fatpound::win32::d3d11::Bindable>> static_binds_;
+        static std::vector<std::unique_ptr<PIPELINE_NAMESPACE::Bindable>> static_binds_;
     };
 
     template <class C>
-    std::vector<std::unique_ptr<fatpound::win32::d3d11::Bindable>> StarBase<C>::static_binds_;
+    std::vector<std::unique_ptr<PIPELINE_NAMESPACE::Bindable>> StarBase<C>::static_binds_;
 }

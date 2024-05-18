@@ -12,16 +12,16 @@ import VertexCBuffer;
 import Bindable;
 import Drawable;
 
-export namespace fatpound::win32::d3d11
+export namespace fatpound::win32::d3d11::pipeline
 {
     class TransformCBuffer final : public Bindable
     {
     public:
-        TransformCBuffer(Graphics& gfx, const Drawable& parent);
+        TransformCBuffer(D3D11_NAMESPACE::Graphics& gfx, const D3D11_NAMESPACE::Drawable& parent);
 
 
     public:
-        virtual void Bind(Graphics& gfx) noexcept override final;
+        virtual void Bind(D3D11_NAMESPACE::Graphics& gfx) noexcept override final;
 
 
     protected:

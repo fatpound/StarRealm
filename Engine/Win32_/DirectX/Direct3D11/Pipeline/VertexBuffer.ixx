@@ -23,13 +23,13 @@ import <vector>;
 #endif // _MSVC_LANG == 202002L
 #endif // _MSVC_LANG > 202002L
 
-export namespace fatpound::win32::d3d11
+export namespace fatpound::win32::d3d11::pipeline
 {
     class VertexBuffer final : public Bindable
     {
     public:
         template <class V>
-        VertexBuffer(Graphics& gfx, const std::vector<V>& vertices)
+        VertexBuffer(D3D11_NAMESPACE::Graphics& gfx, const std::vector<V>& vertices)
             :
             stride_(sizeof(V))
         {
@@ -49,7 +49,7 @@ export namespace fatpound::win32::d3d11
 
 
     public:
-        virtual void Bind(Graphics& gfx) noexcept override final;
+        virtual void Bind(D3D11_NAMESPACE::Graphics& gfx) noexcept override final;
 
 
     protected:

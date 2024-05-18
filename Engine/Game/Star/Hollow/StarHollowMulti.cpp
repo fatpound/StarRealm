@@ -23,33 +23,31 @@ import TransformCBuffer;
 
 namespace dx = DirectX;
 
-using namespace fatpound::win32::d3d11;
-
 namespace fatpound::starrealm
 {
-    StarHollowMulti::StarHollowMulti(Graphics& gfx, const Descriptor& desc)
+    StarHollowMulti::StarHollowMulti(D3D11_NAMESPACE::Graphics& gfx, const Descriptor& desc)
         :
         StarBase<StarHollowMulti>(desc)
     {
         if (!StarBase::IsStaticInitialized_())
         {
-            auto pvs = std::make_unique<VertexShader>(gfx, L"VSColorIndexed.cso");
+            auto pvs = std::make_unique<PIPELINE_NAMESPACE::VertexShader>(gfx, L"VSColorIndexed.cso");
             auto pvsbc = pvs->GetBytecode();
             StarBase::AddStaticBind_(std::move(pvs));
-            StarBase::AddStaticBind_(std::make_unique<PixelShader>(gfx, L"PSColorIndexed.cso"));
+            StarBase::AddStaticBind_(std::make_unique<PIPELINE_NAMESPACE::PixelShader>(gfx, L"PSColorIndexed.cso"));
 
             const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
             {
                 { "Position", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
             };
 
-            StarBase::AddStaticBind_(std::make_unique<InputLayout>(gfx, ied, pvsbc));
-            StarBase::AddStaticBind_(std::make_unique<Topology>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
+            StarBase::AddStaticBind_(std::make_unique<PIPELINE_NAMESPACE::InputLayout>(gfx, ied, pvsbc));
+            StarBase::AddStaticBind_(std::make_unique<PIPELINE_NAMESPACE::Topology>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
         }
 
         const auto& vertices = Star::Make(radius_, position_, desc.flare_count);
         const auto& vertex_count = vertices.size();
-        AddBind_(std::make_unique<VertexBuffer>(gfx, vertices));
+        AddBind_(std::make_unique<PIPELINE_NAMESPACE::VertexBuffer>(gfx, vertices));
 
         std::vector<unsigned short int> indices;
         indices.reserve(vertex_count + 1u);
@@ -61,7 +59,7 @@ namespace fatpound::starrealm
 
         indices.emplace_back(static_cast<unsigned short int>(0u));
 
-        AddIndexBuffer_(std::make_unique<IndexBuffer>(gfx, indices));
+        AddIndexBuffer_(std::make_unique<PIPELINE_NAMESPACE::IndexBuffer>(gfx, indices));
 
         std::minstd_rand mrng(std::random_device{}());
         std::uniform_int_distribution<int> rgb_dist(0, 255);
@@ -83,8 +81,7 @@ namespace fatpound::starrealm
             };
         }
 
-        AddBind_(std::make_unique<PixelCBuffer<ConstantBuffer2>>(gfx, cb2));
-
-        AddBind_(std::make_unique<TransformCBuffer>(gfx, *this));
+        AddBind_(std::make_unique<PIPELINE_NAMESPACE::PixelCBuffer<ConstantBuffer2>>(gfx, cb2));
+        AddBind_(std::make_unique<PIPELINE_NAMESPACE::TransformCBuffer>(gfx, *this));
     }
 }

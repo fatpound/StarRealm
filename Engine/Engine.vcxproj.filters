@@ -18,61 +18,61 @@
     <ClCompile Include="wWinMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\Bindable.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Bindable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\Bindable.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Bindable.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\CBuffer.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\CBuffer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\IndexBuffer.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\IndexBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\IndexBuffer.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\IndexBuffer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\InputLayout.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\InputLayout.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\InputLayout.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\InputLayout.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\PixelCBuffer.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\PixelCBuffer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\PixelShader.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\PixelShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\PixelShader.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\PixelShader.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\Topology.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Topology.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\Topology.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Topology.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\TransformCBuffer.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\TransformCBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\TransformCBuffer.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\TransformCBuffer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\VertexBuffer.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\VertexBuffer.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexBuffer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\VertexCBuffer.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexCBuffer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\VertexShader.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Bindable\VertexShader.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexShader.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Win32_\DirectX\Direct3D11\Camera\Camera.cpp">
@@ -153,12 +153,6 @@
     <ClCompile Include="Util\FatColor.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Util\FatTimer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Util\FatTimer.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Win32_\DirectX\Direct3D11\Graphics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -181,6 +175,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Win32_\IO\Mouse.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\FatAutoTimer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\FatAutoTimer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

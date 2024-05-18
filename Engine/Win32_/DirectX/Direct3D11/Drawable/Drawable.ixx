@@ -50,19 +50,19 @@ export namespace fatpound::win32::d3d11
 
 
     protected:
-        virtual void AddBind_(std::unique_ptr<Bindable> bind) noexcept(IN_RELEASE) final;
-        virtual void AddIndexBuffer_(std::unique_ptr<IndexBuffer> ibuf) noexcept(IN_RELEASE) final;
+        virtual void AddBind_(std::unique_ptr<pipeline::Bindable> bind) noexcept(IN_RELEASE) final;
+        virtual void AddIndexBuffer_(std::unique_ptr<pipeline::IndexBuffer> ibuf) noexcept(IN_RELEASE) final;
 
 
     protected:
-        const IndexBuffer* pCIndexBuffer_ = nullptr;
+        const pipeline::IndexBuffer* pCIndexBuffer_ = nullptr;
 
 
     private:
-        virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const std::vector<std::unique_ptr<Bindable>>& = 0;
+        virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const std::vector<std::unique_ptr<pipeline::Bindable>>& = 0;
 
 
     private:
-        std::vector<std::unique_ptr<Bindable>> binds_;
+        std::vector<std::unique_ptr<pipeline::Bindable>> binds_;
     };
 }

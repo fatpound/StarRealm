@@ -34,11 +34,16 @@ import <stdexcept>;
 #endif // _MSVC_LANG == 202002L
 #endif // _MSVC_LANG > 202002L
 
+namespace fatpound::win32::d3d11::pipeline
+{
+    class Bindable;
+}
+
 export namespace fatpound::win32::d3d11
 {
     class Graphics final
     {
-        friend class Bindable;
+        friend class pipeline::Bindable;
 
     public:
         Graphics(HWND hWnd, std::size_t width, std::size_t height);

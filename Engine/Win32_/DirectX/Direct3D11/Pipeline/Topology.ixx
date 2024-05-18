@@ -7,7 +7,7 @@ export module Topology;
 import D3D11Graphics;
 import Bindable;
 
-export namespace fatpound::win32::d3d11
+export namespace fatpound::win32::d3d11::pipeline
 {
     class Topology final : public Bindable
     {
@@ -16,7 +16,7 @@ export namespace fatpound::win32::d3d11
 
 
     public:
-        virtual void Bind(Graphics& gfx) noexcept override final;
+        virtual void Bind(D3D11_NAMESPACE::Graphics& gfx) noexcept override final;
 
 
     protected:

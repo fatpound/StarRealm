@@ -108,8 +108,6 @@ namespace fatpound::win32::d3d11
             throw std::runtime_error("Could NOT create RenderTargetView!");
         }
 
-#pragma region Z-BUFFER
-
         wrl::ComPtr<ID3D11DepthStencilState> pDSState;
 
         D3D11_DEPTH_STENCIL_DESC dsDesc = {};
@@ -159,8 +157,6 @@ namespace fatpound::win32::d3d11
         }
 
         pContext_->OMSetRenderTargets(1u, pTarget_.GetAddressOf(), pDSV_.Get());
-
-#pragma endregion
 
 #ifdef RASTERIZATION_ENABLED
 

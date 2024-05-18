@@ -60,11 +60,11 @@ export namespace fatpound::starrealm
     private:
         std::vector<std::unique_ptr<Star>> stars_;
         
-        fatpound::win32::d3d11::Window wnd_;
-        fatpound::win32::d3d11::Graphics& gfx_;
+        D3D11_NAMESPACE::Window wnd_;
+        D3D11_NAMESPACE::Graphics& gfx_;
         
-        fatpound::win32::d3d11::Camera camera_;
-        fatpound::win32::d3d11::CameraController camera_controller_;
+        D3D11_NAMESPACE::Camera camera_;
+        D3D11_NAMESPACE::CameraController camera_controller_;
 
         fatpound::util::AutoTimer timer_;
         

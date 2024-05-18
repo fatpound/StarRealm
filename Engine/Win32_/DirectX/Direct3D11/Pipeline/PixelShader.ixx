@@ -10,7 +10,7 @@ module;
 #endif // IN_DEBUG
 #endif // _MSVC_LANG
 
-export module VertexShader;
+export module PixelShader;
 
 import D3D11Graphics;
 import Bindable;
@@ -27,25 +27,20 @@ import std.core;
 #endif // _MSVC_LANG == 202002L
 #endif // _MSVC_LANG > 202002L
 
-export namespace fatpound::win32::d3d11
+export namespace fatpound::win32::d3d11::pipeline
 {
-    class VertexShader final : public Bindable
+    class PixelShader final : public Bindable
     {
     public:
-        VertexShader(Graphics& gfx, const std::wstring& path);
+        PixelShader(D3D11_NAMESPACE::Graphics& gfx, const std::wstring& path);
 
 
     public:
-        virtual void Bind(Graphics& gfx) noexcept override final;
-
-
-    public:
-        ID3DBlob* GetBytecode() const noexcept;
+        virtual void Bind(D3D11_NAMESPACE::Graphics& gfx) noexcept override final;
 
 
     protected:
-        Microsoft::WRL::ComPtr<ID3DBlob> pBytecodeBlob_;
-        Microsoft::WRL::ComPtr<ID3D11VertexShader> pVertexShader_;
+        Microsoft::WRL::ComPtr<ID3D11PixelShader> pPixelShader_;
 
 
     private:

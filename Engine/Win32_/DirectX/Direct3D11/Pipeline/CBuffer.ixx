@@ -23,13 +23,13 @@ import <cstring>;
 #endif // _MSVC_LANG == 202002L
 #endif // _MSVC_LANG > 202002L
 
-export namespace fatpound::win32::d3d11
+export namespace fatpound::win32::d3d11::pipeline
 {
     template <typename C>
     class CBuffer : public Bindable
     {
     public:
-        CBuffer(Graphics& gfx, const C& consts)
+        CBuffer(D3D11_NAMESPACE::Graphics& gfx, const C& consts)
         {
             D3D11_BUFFER_DESC cbd = {};
             cbd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
@@ -42,9 +42,9 @@ export namespace fatpound::win32::d3d11
             D3D11_SUBRESOURCE_DATA csd = {};
             csd.pSysMem = &consts;
 
-            GetDevice_(gfx)->CreateBuffer(&cbd, &csd, &pConstantBuffer_);
+            Bindable::GetDevice_(gfx)->CreateBuffer(&cbd, &csd, &pConstantBuffer_);
         }
-        CBuffer(Graphics& gfx)
+        CBuffer(D3D11_NAMESPACE::Graphics& gfx)
         {
             D3D11_BUFFER_DESC cbd = {};
             cbd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
@@ -54,16 +54,16 @@ export namespace fatpound::win32::d3d11
             cbd.ByteWidth = sizeof(C);
             cbd.StructureByteStride = 0u;
 
-            GetDevice_(gfx)->CreateBuffer(&cbd, nullptr, &pConstantBuffer_);
+            Bindable::GetDevice_(gfx)->CreateBuffer(&cbd, nullptr, &pConstantBuffer_);
         }
 
 
     public:
-        virtual void Update(Graphics& gfx, const C& consts) final
+        virtual void Update(D3D11_NAMESPACE::Graphics& gfx, const C& consts) final
         {
             D3D11_MAPPED_SUBRESOURCE msr;
 
-            GetContext_(gfx)->Map(
+            Bindable::GetContext_(gfx)->Map(
                 pConstantBuffer_.Get(),
                 0u,
                 D3D11_MAP_WRITE_DISCARD,
@@ -73,7 +73,7 @@ export namespace fatpound::win32::d3d11
 
             std::memcpy(msr.pData, &consts, sizeof(consts));
 
-            GetContext_(gfx)->Unmap(pConstantBuffer_.Get(), 0u);
+            Bindable::GetContext_(gfx)->Unmap(pConstantBuffer_.Get(), 0u);
         }
 
 

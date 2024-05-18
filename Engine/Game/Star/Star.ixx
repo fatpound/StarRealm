@@ -27,7 +27,7 @@ import <vector>;
 
 export namespace fatpound::starrealm
 {
-    class Star : public fatpound::win32::d3d11::DrawableBase<Star>
+    class Star : public D3D11_NAMESPACE::DrawableBase<Star>
     {
     public:
         struct Descriptor final

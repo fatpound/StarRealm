@@ -4,7 +4,7 @@ module;
 
 #include <wrl.h>
 
-export module IndexBuffer;
+export module InputLayout;
 
 import D3D11Graphics;
 import Bindable;
@@ -23,26 +23,20 @@ import <vector>;
 #endif // _MSVC_LANG == 202002L
 #endif // _MSVC_LANG > 202002L
 
-export namespace fatpound::win32::d3d11
+export namespace fatpound::win32::d3d11::pipeline
 {
-    class IndexBuffer final : public Bindable
+    class InputLayout final : public Bindable
     {
     public:
-        IndexBuffer(Graphics& gfx, const std::vector<unsigned short int>& indices);
+        InputLayout(D3D11_NAMESPACE::Graphics& gfx, const std::vector<D3D11_INPUT_ELEMENT_DESC>& layout, ID3DBlob* pVertexShaderBytecode);
 
 
     public:
-        virtual void Bind(Graphics& gfx) noexcept override final;
-
-
-    public:
-        UINT GetCount() const noexcept;
+        virtual void Bind(D3D11_NAMESPACE::Graphics& gfx) noexcept override final;
 
 
     protected:
-        Microsoft::WRL::ComPtr<ID3D11Buffer> pIndexBuffer_;
-
-        UINT count_;
+        Microsoft::WRL::ComPtr<ID3D11InputLayout> pInputLayout_;
 
 
     private:

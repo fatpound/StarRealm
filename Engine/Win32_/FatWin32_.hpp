@@ -56,3 +56,7 @@
 #define IN_DEBUG true
 #define IN_RELEASE false
 #endif // NDEBUG
+
+
+#define D3D11_NAMESPACE        fatpound::win32::d3d11
+#define PIPELINE_NAMESPACE     D3D11_NAMESPACE::pipeline
