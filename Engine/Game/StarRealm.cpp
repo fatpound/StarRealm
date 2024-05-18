@@ -20,8 +20,6 @@ module;
 
 module StarRealm;
 
-import <d3d11.h>;
-
 import StarHollowSingle;
 import StarHollowMulti;
 import StarHollowBlend;

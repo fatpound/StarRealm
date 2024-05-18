@@ -4,6 +4,8 @@ module;
 
 #include <DirectXMath.h>
 
+#include <d3d11.h>
+
 #if _MSVC_LANG == 202002L
 #if IN_DEBUG
 #include <array>
@@ -11,8 +13,6 @@ module;
 #endif // _MSVC_LANG == 202002L
 
 module StarFilledBlend;
-
-import <d3d11.h>;
 
 import FatColor;
 import VertexBuffer;

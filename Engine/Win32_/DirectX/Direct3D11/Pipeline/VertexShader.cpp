@@ -2,6 +2,9 @@ module;
 
 #include "../../../FatWin32_.hpp"
 
+#include <d3d11.h>
+#include <d3dcompiler.h>
+
 #include <wrl.h>
 
 #if _MSVC_LANG == 202002L
@@ -11,8 +14,6 @@ module;
 #endif // _MSVC_LANG
 
 module VertexShader;
-
-import <d3dcompiler.h>;
 
 namespace fatpound::win32::d3d11::pipeline
 {

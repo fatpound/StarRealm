@@ -4,6 +4,8 @@ module;
 
 #include <DirectXMath.h>
 
+#include <d3d11.h>
+
 #if _MSVC_LANG == 202002L
 #if IN_DEBUG
 #include <array>
@@ -12,16 +14,14 @@ module;
 
 module StarFilledSingle;
 
-import <d3d11.h>;
-
 import FatColor;
 import VertexBuffer;
 import VertexShader;
 import PixelShader;
 import InputLayout;
 import Topology;
-import TransformCBuffer;
 import PixelCBuffer;
+import TransformCBuffer;
 
 namespace dx = DirectX;
 

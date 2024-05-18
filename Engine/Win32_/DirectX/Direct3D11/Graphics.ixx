@@ -3,12 +3,12 @@ module;
 #include "../../FatWin32_.hpp"
 
 #include <DirectXMath.h>
+
+#include <d3d11.h>
+
 #include <wrl.h>
 
 export module D3D11Graphics;
-
-export import <d3d11.h>;
-export import <d3dcompiler.h>;
 
 #if _MSVC_LANG > 202002L
 import std;

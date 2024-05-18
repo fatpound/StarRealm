@@ -2,11 +2,11 @@ module;
 
 #include "../../Win32_/FatWin32_.hpp"
 
+#include <DirectXMath.h>
+
 #include <cassert>
 
 export module StarBase;
-
-import <DirectXMath.h>;
 
 import Bindable;
 import Drawable;

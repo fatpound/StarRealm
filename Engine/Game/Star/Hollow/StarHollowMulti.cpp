@@ -4,6 +4,8 @@ module;
 
 #include <DirectXMath.h>
 
+#include <d3d11.h>
+
 #if _MSVC_LANG == 202002L
 #if IN_DEBUG
 #include <array>

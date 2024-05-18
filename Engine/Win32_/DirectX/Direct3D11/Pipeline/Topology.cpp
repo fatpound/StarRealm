@@ -2,6 +2,8 @@ module;
 
 #include "../../../FatWin32_.hpp"
 
+#include <d3d11.h>
+
 module Topology;
 
 namespace fatpound::win32::d3d11::pipeline

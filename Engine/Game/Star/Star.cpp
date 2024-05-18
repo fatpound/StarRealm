@@ -14,7 +14,8 @@ namespace fatpound::starrealm
         :
         radius_(desc.radius),
         position_(desc.position),
-        rotation_speed_(desc.rotation_speed)
+        rotation_speed_(desc.rotation_speed),
+        roll_(0.0f)
     {
 
     }
