@@ -100,6 +100,8 @@ export namespace fatpound::win32::io
             }
         }
 
+
+    private:
         void OnKeyPressed_(unsigned char keycode) noexcept;
         void OnKeyReleased_(unsigned char keycode) noexcept;
         void OnChar_(char character) noexcept;
