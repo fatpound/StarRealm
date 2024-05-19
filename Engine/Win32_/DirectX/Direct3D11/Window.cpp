@@ -18,40 +18,17 @@ module D3D11Window;
 
 namespace fatpound::win32::d3d11
 {
+    // Window
+
     Window::Window(const wchar_t* const title, std::size_t width, std::size_t height)
         :
-        hInst_(GetModuleHandle(nullptr)),
         width_(width),
         height_(height)
     {
-        WNDCLASSEX wc = {};
-        wc.cbSize = sizeof(wc);
-        wc.style = CS_OWNDC;
-        wc.lpfnWndProc = &Window::HandleMsgSetup_;
-        wc.cbClsExtra = 0;
-        wc.cbWndExtra = 0;
-        wc.hInstance = hInst_;
-        wc.hIcon = nullptr;
-        wc.hIconSm = nullptr;
-        wc.hbrBackground = nullptr;
-        wc.lpszMenuName = nullptr;
-        wc.lpszClassName = Window::wndClassName_;
-
-        if constexpr (Window::cursor_enabled_)
-        {
-            wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
-        }
-        else
-        {
-            ShowCursor(false);
-        }
-
-        RegisterClassEx(&wc);
-            
 #if IN_RELEASE
 
         hWnd_ = CreateWindow(
-            Window::wndClassName_,
+            WindowClass_::GetName(),
             title,
             WS_POPUP,
             CW_USEDEFAULT,
@@ -60,7 +37,7 @@ namespace fatpound::win32::d3d11
             static_cast<int>(HEIGHT),
             nullptr,
             nullptr,
-            hInst_,
+            WindowClass_::GetInstance(),
             this
         );
 
@@ -75,7 +52,7 @@ namespace fatpound::win32::d3d11
         AdjustWindowRect(&rect, WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU, FALSE);
         
         hWnd_ = CreateWindow(
-            Window::wndClassName_,
+            WindowClass_::GetName(),
             title,
             WS_OVERLAPPED | WS_SYSMENU | WS_MINIMIZEBOX,
             rect.left,
@@ -84,7 +61,7 @@ namespace fatpound::win32::d3d11
             static_cast<int>(HEIGHT),
             nullptr,
             nullptr,
-            hInst_,
+            WindowClass_::GetInstance(),
             this
         );
 
@@ -108,7 +85,6 @@ namespace fatpound::win32::d3d11
     Window::~Window()
     {
         DestroyWindow(hWnd_);
-        UnregisterClass(wndClassName_, hInst_);
     }
 
     auto Window::ProcessMessages() noexcept -> std::optional<WPARAM>
@@ -277,5 +253,53 @@ namespace fatpound::win32::d3d11
         }
 
         return DefWindowProc(hWnd, msg, wParam, lParam);
+    }
+
+
+    // WindowClass_
+
+    Window::WindowClass_ Window::WindowClass_::wndClass_;
+
+    Window::WindowClass_::WindowClass_() noexcept
+        :
+        hInst_(GetModuleHandle(nullptr))
+    {
+        WNDCLASSEX wc = {};
+        wc.cbSize = sizeof(wc);
+        wc.style = CS_OWNDC;
+        wc.lpfnWndProc = &Window::HandleMsgSetup_;
+        wc.cbClsExtra = 0;
+        wc.cbWndExtra = 0;
+        wc.hInstance = hInst_;
+        wc.hIcon = nullptr;
+        wc.hIconSm = nullptr;
+        wc.hbrBackground = nullptr;
+        wc.lpszMenuName = nullptr;
+        wc.lpszClassName = WindowClass_::wndClassName_;
+
+        if constexpr (Window::cursor_enabled_)
+        {
+            wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
+        }
+        else
+        {
+            ShowCursor(false);
+        }
+
+        RegisterClassEx(&wc);
+    }
+    Window::WindowClass_::~WindowClass_()
+    {
+        UnregisterClass(WindowClass_::wndClassName_, WindowClass_::GetInstance());
+    }
+
+    HINSTANCE Window::WindowClass_::GetInstance() noexcept
+    {
+        return wndClass_.hInst_;
+    }
+
+    const wchar_t* Window::WindowClass_::GetName() noexcept
+    {
+        return wndClassName_;
     }
 }

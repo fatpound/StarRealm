@@ -76,8 +76,35 @@ export namespace fatpound::win32::d3d11
         NAMESPACE_IO::Keyboard kbd;
         NAMESPACE_IO::Mouse mouse;
 
-
+            
     protected:
+
+
+    private:
+        class WindowClass_ final
+        {
+        public:
+            static HINSTANCE GetInstance() noexcept;
+
+            static const wchar_t* GetName() noexcept;
+
+        protected:
+
+        private:
+            WindowClass_() noexcept;
+            WindowClass_(const WindowClass_& src) = delete;
+            WindowClass_& operator = (const WindowClass_& src) = delete;
+            WindowClass_(WindowClass_&& src) = delete;
+            WindowClass_& operator = (WindowClass_&& src) = delete;
+            ~WindowClass_();
+
+        private:
+            static WindowClass_ wndClass_;
+
+            HINSTANCE hInst_;
+
+            static constexpr auto wndClassName_ = L"FatPound Direct3D11 Engine Window";
+        };
 
 
     private:
@@ -91,7 +118,6 @@ export namespace fatpound::win32::d3d11
 
     private:
         HWND hWnd_;
-        HINSTANCE hInst_;
 
         std::unique_ptr<Graphics> pGfx_;
 
@@ -99,7 +125,5 @@ export namespace fatpound::win32::d3d11
         const std::size_t height_;
 
         static constexpr bool cursor_enabled_ = true;
-
-        static constexpr auto wndClassName_ = L"FatPound Direct3D11 Engine Window Class";
     };
 }

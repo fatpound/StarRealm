@@ -35,8 +35,6 @@ namespace fatpound::win32::d3d11
         width_(width),
         height_(height)
     {
-        assert(hWnd != nullptr);
-
         DXGI_SWAP_CHAIN_DESC scd = {};
         scd.BufferDesc.Width = 0u;
         scd.BufferDesc.Height = 0u;
