@@ -125,23 +125,23 @@ export namespace fatpound
 
     namespace colors
     {
-        constexpr fatpound::util::Color MakeRGB(unsigned char r, unsigned char g, unsigned char b)
+        constexpr auto MakeRGB(unsigned char r, unsigned char g, unsigned char b) -> ::fatpound::util::Color
         {
-            return (static_cast<std::uint32_t>(r) << 16) |
+            return ((static_cast<std::uint32_t>(r) << 16) |
                 (static_cast<std::uint32_t>(g) << 8) |
-                static_cast<std::uint32_t>(b);
+                static_cast<std::uint32_t>(b));
         }
 
-        constexpr fatpound::util::Color Black = MakeRGB(0u, 0u, 0u);
-        constexpr fatpound::util::Color Gray = MakeRGB(128u, 128u, 128u);
-        constexpr fatpound::util::Color LightGray = MakeRGB(192u, 192u, 192u);
-        constexpr fatpound::util::Color White = MakeRGB(255u, 255u, 255u);
+        constexpr auto Black     = MakeRGB(  0u,   0u,   0u);
+        constexpr auto Gray      = MakeRGB(128u, 128u, 128u);
+        constexpr auto LightGray = MakeRGB(192u, 192u, 192u);
+        constexpr auto White     = MakeRGB(255u, 255u, 255u);
 
-        constexpr fatpound::util::Color Red = MakeRGB(255u, 0u, 0u);
-        constexpr fatpound::util::Color Green = MakeRGB(0u, 255u, 0u);
-        constexpr fatpound::util::Color Blue = MakeRGB(0u, 0u, 255u);
-        constexpr fatpound::util::Color Yellow = MakeRGB(255u, 255u, 0u);
-        constexpr fatpound::util::Color Cyan = MakeRGB(0u, 255u, 255u);
-        constexpr fatpound::util::Color Magenta = MakeRGB(255u, 0u, 255u);
+        constexpr auto Red       = MakeRGB(255u,   0u,   0u);
+        constexpr auto Green     = MakeRGB(  0u, 255u,   0u);
+        constexpr auto Blue      = MakeRGB(  0u,   0u, 255u);
+        constexpr auto Yellow    = MakeRGB(255u, 255u,   0u);
+        constexpr auto Cyan      = MakeRGB(  0u, 255u, 255u);
+        constexpr auto Magenta   = MakeRGB(255u,   0u, 255u);
     }
 }

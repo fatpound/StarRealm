@@ -150,7 +150,7 @@
     <ClCompile Include="Math\FatMath.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Util\FatColor.ixx">
+    <ClCompile Include="Util\Color.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Win32_\DirectX\Direct3D11\Graphics.cpp">
@@ -177,10 +177,10 @@
     <ClCompile Include="Win32_\IO\Mouse.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Util\FatAutoTimer.cpp">
+    <ClCompile Include="Util\AutoTimer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Util\FatAutoTimer.ixx">
+    <ClCompile Include="Util\AutoTimer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

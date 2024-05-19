@@ -66,7 +66,7 @@ export namespace fatpound::starrealm
         NAMESPACE_DIRECTX::Camera camera_;
         NAMESPACE_DIRECTX::CameraController camera_controller_;
 
-        fatpound::util::AutoTimer timer_;
+        NAMESPACE_UTIL::AutoTimer timer_;
         
         static constexpr std::size_t star_count_ = 150u;
         static constexpr std::size_t minFlareCount_ = 2u;

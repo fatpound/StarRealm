@@ -57,6 +57,8 @@
 #define IN_RELEASE false
 #endif // NDEBUG
 
+#define NAMESPACE_MATH         ::fatpound::math
+#define NAMESPACE_UTIL         ::fatpound::util
 #define NAMESPACE_IO           ::fatpound::win32::io
 #define NAMESPACE_DIRECTX      ::fatpound::win32::directx
 #define NAMESPACE_D3D11        ::fatpound::win32::d3d11

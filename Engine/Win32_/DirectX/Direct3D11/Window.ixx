@@ -50,13 +50,13 @@ export namespace fatpound::win32::d3d11
 
 
     public:
-        template <fatpound::math::Number N>
+        template <NAMESPACE_MATH::Number N>
         N GetWidth() const noexcept
         {
             return static_cast<N>(width_);
         }
 
-        template <fatpound::math::Number N>
+        template <NAMESPACE_MATH::Number N>
         N GetHeight() const noexcept
         {
             return static_cast<N>(height_);
