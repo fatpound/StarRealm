@@ -12,7 +12,7 @@ module TransformCBuffer;
 
 namespace fatpound::win32::d3d11::pipeline
 {
-    TransformCBuffer::TransformCBuffer(NAMESPACE_D3D11::Graphics& gfx, const NAMESPACE_VISUAL::Drawable& parent)
+    TransformCBuffer::TransformCBuffer(Graphics& gfx, const NAMESPACE_VISUAL::Drawable& parent)
         :
         vcbuf_(gfx),
         parent_(parent)
@@ -20,7 +20,7 @@ namespace fatpound::win32::d3d11::pipeline
 
     }
 
-    void TransformCBuffer::Bind(NAMESPACE_D3D11::Graphics& gfx) noexcept
+    void TransformCBuffer::Bind(Graphics& gfx) noexcept
     {
         vcbuf_.Update(
             gfx,

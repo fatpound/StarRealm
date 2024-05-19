@@ -31,7 +31,7 @@ export namespace fatpound::win32::d3d11::pipeline
     class CBuffer : public Bindable
     {
     public:
-        CBuffer(NAMESPACE_D3D11::Graphics& gfx, const C& consts)
+        CBuffer(Graphics& gfx, const C& consts)
         {
             D3D11_BUFFER_DESC cbd = {};
             cbd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
@@ -46,7 +46,7 @@ export namespace fatpound::win32::d3d11::pipeline
 
             Bindable::GetDevice_(gfx)->CreateBuffer(&cbd, &csd, &pConstantBuffer_);
         }
-        CBuffer(NAMESPACE_D3D11::Graphics& gfx)
+        CBuffer(Graphics& gfx)
         {
             D3D11_BUFFER_DESC cbd = {};
             cbd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
@@ -61,7 +61,7 @@ export namespace fatpound::win32::d3d11::pipeline
 
 
     public:
-        virtual void Update(NAMESPACE_D3D11::Graphics& gfx, const C& consts) final
+        virtual void Update(Graphics& gfx, const C& consts) final
         {
             D3D11_MAPPED_SUBRESOURCE msr;
 

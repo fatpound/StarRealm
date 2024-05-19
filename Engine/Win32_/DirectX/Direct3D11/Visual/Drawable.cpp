@@ -8,7 +8,7 @@ module Drawable;
 
 namespace fatpound::win32::d3d11::visual
 {
-    void Drawable::Draw(NAMESPACE_D3D11::Graphics& gfx) const noexcept(IN_RELEASE)
+    void Drawable::Draw(Graphics& gfx) const noexcept(IN_RELEASE)
     {
         for (auto& bindable : binds_)
         {

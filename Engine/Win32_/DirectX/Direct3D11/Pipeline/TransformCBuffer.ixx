@@ -20,11 +20,11 @@ export namespace fatpound::win32::d3d11::pipeline
     class TransformCBuffer final : public Bindable
     {
     public:
-        TransformCBuffer(NAMESPACE_D3D11::Graphics& gfx, const NAMESPACE_VISUAL::Drawable& parent);
+        TransformCBuffer(Graphics& gfx, const NAMESPACE_VISUAL::Drawable& parent);
 
 
     public:
-        virtual void Bind(NAMESPACE_D3D11::Graphics& gfx) noexcept override final;
+        virtual void Bind(Graphics& gfx) noexcept override final;
 
 
     protected:

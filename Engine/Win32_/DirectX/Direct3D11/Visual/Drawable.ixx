@@ -46,7 +46,7 @@ export namespace fatpound::win32::d3d11::visual
 
         virtual void Update(float delta_time) noexcept = 0;
 
-        virtual void Draw(NAMESPACE_D3D11::Graphics& gfx) const noexcept(IN_RELEASE) final;
+        virtual void Draw(Graphics& gfx) const noexcept(IN_RELEASE) final;
 
         
     protected:

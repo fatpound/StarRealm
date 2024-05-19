@@ -30,11 +30,11 @@ export namespace fatpound::win32::d3d11::pipeline
     class IndexBuffer final : public Bindable
     {
     public:
-        IndexBuffer(NAMESPACE_D3D11::Graphics& gfx, const std::vector<unsigned short int>& indices);
+        IndexBuffer(Graphics& gfx, const std::vector<unsigned short int>& indices);
 
 
     public:
-        virtual void Bind(NAMESPACE_D3D11::Graphics& gfx) noexcept override final;
+        virtual void Bind(Graphics& gfx) noexcept override final;
 
 
     public:

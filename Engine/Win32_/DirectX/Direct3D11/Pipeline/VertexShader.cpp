@@ -17,7 +17,7 @@ module VertexShader;
 
 namespace fatpound::win32::d3d11::pipeline
 {
-    VertexShader::VertexShader(NAMESPACE_D3D11::Graphics& gfx, const std::wstring& path)
+    VertexShader::VertexShader(Graphics& gfx, const std::wstring& path)
     {
         D3DReadFileToBlob(path.c_str(), &pBytecodeBlob_);
 

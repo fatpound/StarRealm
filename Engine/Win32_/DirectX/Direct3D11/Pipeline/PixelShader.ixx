@@ -34,11 +34,11 @@ export namespace fatpound::win32::d3d11::pipeline
     class PixelShader final : public Bindable
     {
     public:
-        PixelShader(NAMESPACE_D3D11::Graphics& gfx, const std::wstring& path);
+        PixelShader(Graphics& gfx, const std::wstring& path);
 
 
     public:
-        virtual void Bind(NAMESPACE_D3D11::Graphics& gfx) noexcept override final;
+        virtual void Bind(Graphics& gfx) noexcept override final;
 
 
     protected:
