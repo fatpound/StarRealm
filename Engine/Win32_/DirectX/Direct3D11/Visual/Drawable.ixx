@@ -28,7 +28,7 @@ import <typeinfo>;
 #endif // _MSVC_LANG == 202002L
 #endif // _MSVC_LANG > 202002L
 
-export namespace fatpound::win32::d3d11::entity
+export namespace fatpound::win32::d3d11::visual
 {
     class Drawable
     {

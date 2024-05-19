@@ -27,7 +27,7 @@ import <vector>;
 
 export namespace fatpound::starrealm
 {
-    class Star : public NAMESPACE_ENTITY::DrawableBase<Star>
+    class Star : public NAMESPACE_VISUAL::DrawableBase<Star>
     {
     public:
         struct Descriptor final

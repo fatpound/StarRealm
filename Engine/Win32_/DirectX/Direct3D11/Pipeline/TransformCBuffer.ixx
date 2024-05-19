@@ -2,8 +2,9 @@ module;
 
 #include "../../../FatWin32_.hpp"
 
-#include <d3d11.h>
 #include <DirectXMath.h>
+
+#include <d3d11.h>
 
 #include <wrl.h>
 
@@ -19,7 +20,7 @@ export namespace fatpound::win32::d3d11::pipeline
     class TransformCBuffer final : public Bindable
     {
     public:
-        TransformCBuffer(NAMESPACE_D3D11::Graphics& gfx, const NAMESPACE_ENTITY::Drawable& parent);
+        TransformCBuffer(NAMESPACE_D3D11::Graphics& gfx, const NAMESPACE_VISUAL::Drawable& parent);
 
 
     public:
@@ -32,6 +33,6 @@ export namespace fatpound::win32::d3d11::pipeline
     private:
         VertexCBuffer<DirectX::XMMATRIX> vcbuf_;
 
-        const NAMESPACE_ENTITY::Drawable& parent_;
+        const NAMESPACE_VISUAL::Drawable& parent_;
     };
 }

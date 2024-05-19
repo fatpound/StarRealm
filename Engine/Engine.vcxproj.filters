@@ -87,13 +87,13 @@
     <ClCompile Include="Win32_\DirectX\Camera\CameraController.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Entity\Drawable.cpp">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Visual\Drawable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Entity\Drawable.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Visual\Drawable.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Entity\DrawableBase.ixx">
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Visual\DrawableBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game\Star\Filled\StarFilledBlend.cpp">

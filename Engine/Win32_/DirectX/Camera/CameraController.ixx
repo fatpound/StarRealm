@@ -26,7 +26,7 @@ export namespace fatpound::win32::directx
 
 
     private:
-        DirectX::XMFLOAT2 last_position_;
+        ::DirectX::XMFLOAT2 last_position_;
 
         Camera& camera_;
 
