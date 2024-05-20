@@ -57,10 +57,4 @@
 #define IN_RELEASE false
 #endif // NDEBUG
 
-#define NAMESPACE_MATH         ::fatpound::math
-#define NAMESPACE_UTIL         ::fatpound::util
-#define NAMESPACE_IO           ::fatpound::win32::io
-#define NAMESPACE_D3D11        ::fatpound::win32::d3d11
-#define NAMESPACE_DIRECTX      ::fatpound::win32::directx
-#define NAMESPACE_PIPELINE     NAMESPACE_D3D11::pipeline
-#define NAMESPACE_VISUAL       NAMESPACE_D3D11::visual
+#include "FatWin32_Namespaces.hpp"

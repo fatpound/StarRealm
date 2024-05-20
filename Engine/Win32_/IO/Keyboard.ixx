@@ -1,5 +1,7 @@
 module;
 
+#include "../FatWin32_Namespaces.hpp"
+
 export module Keyboard;
 
 #if _MSVC_LANG > 202002L
@@ -26,7 +28,7 @@ export namespace fatpound::win32::io
 {
     class Keyboard final
     {
-        friend class ::fatpound::win32::d3d11::Window;
+        friend class NAMESPACE_D3D11::Window;
 
     public:
         Keyboard() = default;
