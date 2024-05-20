@@ -28,7 +28,7 @@ namespace fatpound::win32::d3d11
 #if IN_RELEASE
 
         hWnd_ = CreateWindow(
-            WindowClass_::GetName(),
+            WndClass_::GetName(),
             title,
             WS_POPUP,
             CW_USEDEFAULT,
@@ -37,7 +37,7 @@ namespace fatpound::win32::d3d11
             static_cast<int>(HEIGHT),
             nullptr,
             nullptr,
-            WindowClass_::GetInstance(),
+            WndClass_::GetInstance(),
             this
         );
 
@@ -52,7 +52,7 @@ namespace fatpound::win32::d3d11
         AdjustWindowRect(&rect, WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU, FALSE);
         
         hWnd_ = CreateWindow(
-            WindowClass_::GetName(),
+            WndClass_::GetName(),
             title,
             WS_OVERLAPPED | WS_SYSMENU | WS_MINIMIZEBOX,
             rect.left,
@@ -61,7 +61,7 @@ namespace fatpound::win32::d3d11
             static_cast<int>(HEIGHT),
             nullptr,
             nullptr,
-            WindowClass_::GetInstance(),
+            WndClass_::GetInstance(),
             this
         );
 
@@ -76,7 +76,7 @@ namespace fatpound::win32::d3d11
 
         if (pGfx_ == nullptr) [[unlikely]]
         {
-            throw std::runtime_error("Error occured when creating pGfx!");
+            throw std::runtime_error("Error occured when creating Graphics!");
         }
 
         ShowWindow(hWnd_, /*SW_SHOW*/ SW_SHOWDEFAULT);
@@ -256,11 +256,9 @@ namespace fatpound::win32::d3d11
     }
 
 
-    // WindowClass_
+    // WndClass_
 
-    Window::WindowClass_ Window::WindowClass_::wndClass_;
-
-    Window::WindowClass_::WindowClass_() noexcept
+    Window::WndClass_::WndClass_() noexcept
         :
         hInst_(GetModuleHandle(nullptr))
     {
@@ -275,7 +273,7 @@ namespace fatpound::win32::d3d11
         wc.hIconSm = nullptr;
         wc.hbrBackground = nullptr;
         wc.lpszMenuName = nullptr;
-        wc.lpszClassName = WindowClass_::wndClassName_;
+        wc.lpszClassName = WndClass_::wndClassName_;
 
         if constexpr (Window::cursor_enabled_)
         {
@@ -288,17 +286,19 @@ namespace fatpound::win32::d3d11
 
         RegisterClassEx(&wc);
     }
-    Window::WindowClass_::~WindowClass_()
+    Window::WndClass_::~WndClass_()
     {
-        UnregisterClass(WindowClass_::wndClassName_, WindowClass_::GetInstance());
+        UnregisterClass(WndClass_::wndClassName_, WndClass_::GetInstance());
     }
 
-    HINSTANCE Window::WindowClass_::GetInstance() noexcept
+    HINSTANCE Window::WndClass_::GetInstance() noexcept
     {
+        static WndClass_ wndClass_;
+
         return wndClass_.hInst_;
     }
 
-    const wchar_t* Window::WindowClass_::GetName() noexcept
+    const wchar_t* const Window::WndClass_::GetName() noexcept
     {
         return wndClassName_;
     }

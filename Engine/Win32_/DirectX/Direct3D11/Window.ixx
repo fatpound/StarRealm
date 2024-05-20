@@ -81,26 +81,24 @@ export namespace fatpound::win32::d3d11
 
 
     private:
-        class WindowClass_ final
+        class WndClass_ final
         {
         public:
             static HINSTANCE GetInstance() noexcept;
 
-            static const wchar_t* GetName() noexcept;
+            static const wchar_t* const GetName() noexcept;
 
         protected:
 
         private:
-            WindowClass_() noexcept;
-            WindowClass_(const WindowClass_& src) = delete;
-            WindowClass_& operator = (const WindowClass_& src) = delete;
-            WindowClass_(WindowClass_&& src) = delete;
-            WindowClass_& operator = (WindowClass_&& src) = delete;
-            ~WindowClass_();
+            WndClass_() noexcept;
+            WndClass_(const WndClass_& src) = delete;
+            WndClass_& operator = (const WndClass_& src) = delete;
+            WndClass_(WndClass_&& src) = delete;
+            WndClass_& operator = (WndClass_&& src) = delete;
+            ~WndClass_();
 
         private:
-            static WindowClass_ wndClass_;
-
             HINSTANCE hInst_;
 
             static constexpr auto wndClassName_ = L"FatPound Direct3D11 Engine Window";
