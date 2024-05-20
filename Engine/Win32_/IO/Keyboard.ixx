@@ -26,7 +26,7 @@ export namespace fatpound::win32::io
 {
     class Keyboard final
     {
-        friend class fatpound::win32::d3d11::Window;
+        friend class ::fatpound::win32::d3d11::Window;
 
     public:
         Keyboard() = default;
@@ -75,6 +75,7 @@ export namespace fatpound::win32::io
         char ReadCharFromBuffer() noexcept;
 
         bool AutoRepeatIsEnabled() const noexcept;
+
         bool CharBufferIsEmpty() const noexcept;
         bool KeyBufferIsEmpty() const noexcept;
         bool KeyIsPressed(unsigned char keycode) const noexcept;
@@ -94,7 +95,7 @@ export namespace fatpound::win32::io
         template <typename T>
         static void TrimBuffer_(std::queue<T>& buffer) noexcept
         {
-            while (buffer.size() > bufferSize_)
+            while (buffer.size() > Keyboard::buffer_size_)
             {
                 buffer.pop();
             }
@@ -110,14 +111,15 @@ export namespace fatpound::win32::io
 
 
     private:
-        static constexpr unsigned int keyCount_ = 256u;
-        static constexpr unsigned int bufferSize_ = 16u;
+        static constexpr unsigned int key_count_ = 256u;
 
-        std::bitset<keyCount_> keystates_;
+        std::bitset<Keyboard::key_count_> key_states_;
 
-        std::queue<Event> keybuffer_;
-        std::queue<char> charbuffer_;
+        std::queue<Event> event_buffer_;
+        std::queue<char>   char_buffer_;
 
-        bool autoRepeatEnabled_ = false;
+        bool auto_repeat_enabled_ = false;
+
+        static constexpr unsigned int buffer_size_ = 16u;
     };
 }
