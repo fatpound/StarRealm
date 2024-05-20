@@ -27,7 +27,7 @@ namespace fatpound::win32::directx
             camera_.Reset();
         }
 
-        while (!mouse_.BufferIsEmpty())
+        while (!mouse_.EventBufferIsEmpty())
         {
             const auto& mouse_event = mouse_.ReadFromBuffer();
 

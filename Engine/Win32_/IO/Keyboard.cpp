@@ -4,6 +4,8 @@ module Keyboard;
 
 namespace fatpound::win32::io
 {
+    // Keyboard
+
     auto Keyboard::ReadKeyFromBuffer() noexcept -> Event
     {
         if (event_buffer_.size() > 0u)
@@ -30,21 +32,21 @@ namespace fatpound::win32::io
         return 0;
     }
 
-    bool Keyboard::AutoRepeatIsEnabled() const noexcept
+    bool Keyboard::KeyIsPressed(unsigned char keycode) const noexcept
     {
-        return auto_repeat_enabled_;
-    }
-    bool Keyboard::CharBufferIsEmpty() const noexcept
-    {
-        return char_buffer_.empty();
+        return key_states_[keycode];
     }
     bool Keyboard::KeyBufferIsEmpty() const noexcept
     {
         return event_buffer_.empty();
     }
-    bool Keyboard::KeyIsPressed(unsigned char keycode) const noexcept
+    bool Keyboard::CharBufferIsEmpty() const noexcept
     {
-        return key_states_[keycode];
+        return char_buffer_.empty();
+    }
+    bool Keyboard::AutoRepeatIsEnabled() const noexcept
+    {
+        return auto_repeat_enabled_;
     }
 
     void Keyboard::FlushKeyBuffer() noexcept
@@ -91,6 +93,7 @@ namespace fatpound::win32::io
 
         TrimBuffer_(char_buffer_);
     }
+
     void Keyboard::ClearKeyStateBitset_() noexcept
     {
         key_states_.reset();

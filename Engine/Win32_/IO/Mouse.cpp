@@ -6,6 +6,8 @@ module Mouse;
 
 namespace fatpound::win32::io
 {
+    // Mouse
+
     auto Mouse::GetPos() const noexcept -> std::pair<int, int>
     {
         return { x_, y_ };
@@ -46,14 +48,13 @@ namespace fatpound::win32::io
         return y_;
     }
 
+    bool Mouse::EventBufferIsEmpty() const noexcept
+    {
+        return event_buffer_.empty();
+    }
     bool Mouse::IsInWindow() const noexcept
     {
         return is_in_window_;
-    }
-
-    bool Mouse::BufferIsEmpty() const noexcept
-    {
-        return event_buffer_.empty();
     }
 
     bool Mouse::LeftIsPressed() const noexcept
@@ -99,12 +100,14 @@ namespace fatpound::win32::io
 
         TrimBuffer_();
     }
+
     void Mouse::OnRawDelta_(int dx, int dy) noexcept
     {
         raw_delta_buffer_.push(RawDelta(dx, dy));
 
         TrimBuffer_();
     }
+
     void Mouse::OnLeftPressed_() noexcept
     {
         left_is_pressed_ = true;
@@ -183,6 +186,7 @@ namespace fatpound::win32::io
             OnWheelDown_();
         }
     }
+
     void Mouse::TrimBuffer_() noexcept
     {
         while (event_buffer_.size() > Mouse::buffer_size_)

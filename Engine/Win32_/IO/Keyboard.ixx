@@ -74,16 +74,14 @@ export namespace fatpound::win32::io
 
         char ReadCharFromBuffer() noexcept;
 
-        bool AutoRepeatIsEnabled() const noexcept;
-
-        bool CharBufferIsEmpty() const noexcept;
-        bool KeyBufferIsEmpty() const noexcept;
         bool KeyIsPressed(unsigned char keycode) const noexcept;
+        bool KeyBufferIsEmpty() const noexcept;
+        bool CharBufferIsEmpty() const noexcept;
+        bool AutoRepeatIsEnabled() const noexcept;
 
         void FlushKeyBuffer() noexcept;
         void FlushCharBuffer() noexcept;
         void FlushBuffers() noexcept;
-
         void EnableAutoRepeat() noexcept;
         void DisableAutoRepeat() noexcept;
 

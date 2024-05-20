@@ -107,11 +107,10 @@ export namespace fatpound::win32::io
         int GetPosX() const noexcept;
         int GetPosY() const noexcept;
 
+        bool EventBufferIsEmpty() const noexcept;
         bool IsInWindow() const noexcept;
 
-        bool BufferIsEmpty() const noexcept;
-
-        bool LeftIsPressed() const noexcept;
+        bool  LeftIsPressed() const noexcept;
         bool RightIsPressed() const noexcept;
         bool WheelIsPressed() const noexcept;
 
@@ -125,7 +124,9 @@ export namespace fatpound::win32::io
         void OnMouseMove_(int x, int y) noexcept;
         void OnMouseEnter_() noexcept;
         void OnMouseLeave_() noexcept;
+
         void OnRawDelta_(int dx, int dy) noexcept;
+
         void OnLeftPressed_() noexcept;
         void OnLeftReleased_() noexcept;
         void OnRightPressed_() noexcept;
