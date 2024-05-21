@@ -14,21 +14,8 @@ export module D3D11Graphics;
 import std;
 #else
 #if _MSVC_LANG == 202002L
-#if IN_RELEASE
 import std.core;
 import std.memory;
-#else
-import <cmath>;
-import <cstdint>;
-import <cstdlib>;
-/**/
-import <vector>;
-import <memory>;
-//
-import <array>;
-import <sstream>;
-import <stdexcept>;
-#endif // IN_RELEASE
 #else
 #error C++20 or greater version required
 #endif // _MSVC_LANG == 202002L

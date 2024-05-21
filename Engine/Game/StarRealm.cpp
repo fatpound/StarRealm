@@ -4,11 +4,7 @@ module;
 
 #include <DirectXMath.h>
 
-#if _MSVC_LANG == 202002L
-#if IN_DEBUG
 #include <algorithm>
-#endif // IN_DEBUG
-#endif // _MSVC_LANG == 202002L
 
 #if IN_RELEASE
 #define SCREEN_WIDTH    GetSystemMetrics(SM_CXSCREEN)

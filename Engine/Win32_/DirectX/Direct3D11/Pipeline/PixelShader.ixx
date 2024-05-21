@@ -6,12 +6,6 @@ module;
 
 #include <wrl.h>
 
-#if _MSVC_LANG == 202002L
-#if IN_DEBUG
-#include <string>
-#endif // IN_DEBUG
-#endif // _MSVC_LANG
-
 export module PixelShader;
 
 import D3D11Graphics;
@@ -21,9 +15,7 @@ import Bindable;
 import std;
 #else
 #if _MSVC_LANG == 202002L
-#if IN_RELEASE
 import std.core;
-#endif // IN_RELEASE
 #else
 #error C++20 or greater version required
 #endif // _MSVC_LANG == 202002L

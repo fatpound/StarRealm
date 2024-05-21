@@ -7,12 +7,6 @@ module;
 
 #include <wrl.h>
 
-#if _MSVC_LANG == 202002L
-#if IN_DEBUG
-#include <string>
-#endif // IN_DEBUG
-#endif // _MSVC_LANG
-
 module PixelShader;
 
 namespace fatpound::win32::d3d11::pipeline

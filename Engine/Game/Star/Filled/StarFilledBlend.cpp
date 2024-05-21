@@ -6,12 +6,6 @@ module;
 
 #include <d3d11.h>
 
-#if _MSVC_LANG == 202002L
-#if IN_DEBUG
-#include <array>
-#endif // IN_DEBUG
-#endif // _MSVC_LANG == 202002L
-
 module StarFilledBlend;
 
 import FatColor;

@@ -10,12 +10,6 @@ module;
 
 #include <cassert>
 
-#if _MSVC_LANG == 202002L
-#if IN_DEBUG
-#include <array>
-#endif // IN_DEBUG
-#endif // _MSVC_LANG == 202002L
-
 #define RASTERIZATION_ENABLED
 
 #define MSAA_QUALITY 8u
