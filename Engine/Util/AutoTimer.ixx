@@ -1,6 +1,6 @@
 module;
 
-export module FatAutoTimer;
+export module AutoTimer;
 
 #if _MSVC_LANG > 202002L
 import std;

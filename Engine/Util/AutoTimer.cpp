@@ -9,7 +9,7 @@ module;
 // text editor coloring works fine, other IntelliSense features are working fine
 // it is OK for now in VS 2022 17.10.0
 
-module FatAutoTimer;
+module AutoTimer;
 
 namespace fatpound::util
 {

@@ -8,7 +8,7 @@ import D3D11Window;
 import D3D11Graphics;
 import Camera;
 import CameraController;
-import FatAutoTimer;
+import AutoTimer;
 import Star;
 
 #if _MSVC_LANG > 202002L
