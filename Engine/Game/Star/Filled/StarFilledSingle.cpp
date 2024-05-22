@@ -19,8 +19,6 @@ import TransformCBuffer;
 
 namespace dx = DirectX;
 
-using namespace fatpound::win32::d3d11;
-
 namespace fatpound::starrealm
 {
     StarFilledSingle::StarFilledSingle(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)

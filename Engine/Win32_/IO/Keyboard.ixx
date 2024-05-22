@@ -6,12 +6,10 @@ export module Keyboard;
 
 #if _MSVC_LANG > 202002L
 import std;
-#else
-#if _MSVC_LANG == 202002L
+#elif _MSVC_LANG == 202002L
 import std.core;
 #else
-#error C++20 or greater version required
-#endif // _MSVC_LANG == 202002L
+#error MSVC /std:c++20 or newer option required
 #endif // _MSVC_LANG > 202002L
 
 namespace fatpound::win32::d3d11
