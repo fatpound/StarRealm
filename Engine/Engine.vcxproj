@@ -203,7 +203,7 @@
     <ClCompile Include="Game\StarRealm.cpp" />
     <ClCompile Include="Game\StarRealm.ixx" />
     <ClCompile Include="Math\FatMath.ixx" />
-    <ClCompile Include="Util\Color.ixx" />
+    <ClCompile Include="Util\FatColor.ixx" />
     <ClCompile Include="Util\AutoTimer.cpp" />
     <ClCompile Include="Util\AutoTimer.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Graphics.cpp" />

@@ -150,7 +150,7 @@
     <ClCompile Include="Math\FatMath.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Util\Color.ixx">
+    <ClCompile Include="Util\FatColor.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Win32_\DirectX\Direct3D11\Graphics.cpp">
