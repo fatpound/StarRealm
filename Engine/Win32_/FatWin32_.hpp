@@ -5,8 +5,11 @@
 
 #include <sdkddkver.h>
 
+#define NOMINMAX
+#define STRICT
+
 #ifndef FATPOUND_FULL_WIN_TARGETED
-#define WIN32_LEAN_AND_MEAN // rarely used things
+#define WIN32_LEAN_AND_MEAN // for 16-bit Windows libraries
 #define NOGDICAPMASKS
 // #define NOSYSMETRICS
 #define NOMENUS
@@ -42,10 +45,8 @@
 #endif
 
 
-#define NOMINMAX
-#define STRICT
+// #define _CRTDBG_MAP_ALLOC
 
-#define _CRTDBG_MAP_ALLOC
 
 #include <Windows.h>
 
