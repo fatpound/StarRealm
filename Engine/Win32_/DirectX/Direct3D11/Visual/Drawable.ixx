@@ -6,9 +6,9 @@ module;
 
 export module Drawable;
 
-import D3D11Graphics;
-import Bindable;
-import IndexBuffer;
+import Direct3D11.Graphics;
+import Direct3D11.Pipeline.Bindable;
+import Direct3D11.Pipeline.IndexBuffer;
 
 #if _MSVC_LANG > 202002L
 import std;

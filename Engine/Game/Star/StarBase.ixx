@@ -8,9 +8,8 @@ module;
 
 export module StarBase;
 
-import Bindable;
+import Direct3D11.Pipeline;
 import Drawable;
-import IndexBuffer;
 import Star;
 
 #if _MSVC_LANG > 202002L

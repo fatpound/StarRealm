@@ -17,7 +17,7 @@ module;
 #pragma comment(lib, "d3d11")
 #pragma comment(lib, "D3DCompiler")
 
-module D3D11Graphics;
+module Direct3D11.Graphics;
 
 namespace wrl = Microsoft::WRL;
 namespace dx = DirectX;

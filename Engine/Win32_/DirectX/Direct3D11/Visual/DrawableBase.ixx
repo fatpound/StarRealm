@@ -8,9 +8,8 @@ module;
 
 export module DrawableBase;
 
-import Bindable;
+import Direct3D11.Pipeline;
 import Drawable;
-import IndexBuffer;
 
 export namespace fatpound::win32::d3d11::visual
 {

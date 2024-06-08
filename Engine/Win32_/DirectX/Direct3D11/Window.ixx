@@ -2,9 +2,9 @@ module;
 
 #include "../../FatWin32_.hpp"
 
-export module D3D11Window;
+export module Direct3D11.Window;
 
-import D3D11Graphics;
+import Direct3D11.Graphics;
 import Keyboard;
 import Mouse;
 import FatMath;

@@ -8,11 +8,11 @@ module;
 
 #include <wrl.h>
 
-export module TransformCBuffer;
+export module Direct3D11.Pipeline.TransformCBuffer;
 
-import D3D11Graphics;
-import VertexCBuffer;
-import Bindable;
+import Direct3D11.Graphics;
+import Direct3D11.Pipeline.VertexCBuffer;
+import Direct3D11.Pipeline.Bindable;
 import Drawable;
 
 export namespace fatpound::win32::d3d11::pipeline

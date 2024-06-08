@@ -4,7 +4,7 @@ module;
 
 #include <d3d11.h>
 
-module Topology;
+module Direct3D11.Pipeline.Topology;
 
 namespace fatpound::win32::d3d11::pipeline
 {

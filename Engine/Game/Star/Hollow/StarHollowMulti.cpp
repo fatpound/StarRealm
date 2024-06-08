@@ -8,14 +8,8 @@ module;
 
 module StarHollowMulti;
 
+import Direct3D11.Pipeline;
 import FatColor;
-import VertexBuffer;
-import VertexShader;
-import PixelShader;
-import InputLayout;
-import Topology;
-import PixelCBuffer;
-import TransformCBuffer;
 
 namespace dx = DirectX;
 

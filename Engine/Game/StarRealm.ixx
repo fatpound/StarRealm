@@ -4,8 +4,7 @@ module;
 
 export module StarRealm;
 
-import D3D11Window;
-import D3D11Graphics;
+import Direct3D11;
 import Camera;
 import CameraController;
 import AutoTimer;

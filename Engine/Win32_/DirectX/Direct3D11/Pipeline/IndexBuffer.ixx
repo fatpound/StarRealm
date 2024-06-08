@@ -6,10 +6,10 @@ module;
 
 #include <wrl.h>
 
-export module IndexBuffer;
+export module Direct3D11.Pipeline.IndexBuffer;
 
-import D3D11Graphics;
-import Bindable;
+import Direct3D11.Graphics;
+import Direct3D11.Pipeline.Bindable;
 
 #if _MSVC_LANG > 202002L
 import std;

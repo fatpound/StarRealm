@@ -7,7 +7,7 @@ module;
 
 #include <wrl.h>
 
-module PixelShader;
+module Direct3D11.Pipeline.PixelShader;
 
 namespace fatpound::win32::d3d11::pipeline
 {

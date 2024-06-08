@@ -177,6 +177,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Direct3D11.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Bindable.cpp" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Bindable.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\CBuffer.ixx" />
@@ -184,6 +185,7 @@
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\IndexBuffer.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\InputLayout.cpp" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\InputLayout.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Pipeline.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\PixelCBuffer.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\PixelShader.cpp" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\PixelShader.ixx" />

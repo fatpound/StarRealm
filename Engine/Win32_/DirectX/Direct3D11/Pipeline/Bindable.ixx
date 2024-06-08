@@ -4,9 +4,9 @@ module;
 
 #include <d3d11.h>
 
-export module Bindable;
+export module Direct3D11.Pipeline.Bindable;
 
-import D3D11Graphics;
+import Direct3D11.Graphics;
 
 export namespace fatpound::win32::d3d11::pipeline
 {

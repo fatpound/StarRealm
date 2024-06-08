@@ -8,13 +8,8 @@ module;
 
 module StarFilledBlend;
 
+import Direct3D11.Pipeline;
 import FatColor;
-import VertexBuffer;
-import VertexShader;
-import PixelShader;
-import InputLayout;
-import Topology;
-import TransformCBuffer;
 
 namespace dx = DirectX;
 

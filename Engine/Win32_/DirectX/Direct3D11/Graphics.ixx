@@ -8,7 +8,7 @@ module;
 
 #include <wrl.h>
 
-export module D3D11Graphics;
+export module Direct3D11.Graphics;
 
 #if _MSVC_LANG > 202002L
 import std;

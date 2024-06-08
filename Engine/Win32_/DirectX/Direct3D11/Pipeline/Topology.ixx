@@ -4,10 +4,10 @@ module;
 
 #include <d3d11.h>
 
-export module Topology;
+export module Direct3D11.Pipeline.Topology;
 
-import D3D11Graphics;
-import Bindable;
+import Direct3D11.Graphics;
+import Direct3D11.Pipeline.Bindable;
 
 export namespace fatpound::win32::d3d11::pipeline
 {
