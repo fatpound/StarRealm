@@ -81,10 +81,10 @@
     <ClCompile Include="Win32_\DirectX\Camera\Camera.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Camera\CameraController.cpp">
+    <ClCompile Include="Win32_\DirectX\Camera\Controller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Camera\CameraController.ixx">
+    <ClCompile Include="Win32_\DirectX\Camera\Controller.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Win32_\DirectX\Direct3D11\Visual\Drawable.cpp">

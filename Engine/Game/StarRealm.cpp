@@ -46,7 +46,7 @@ namespace fatpound::starrealm
             }
 
         public:
-            std::unique_ptr<Star> operator () ()
+            auto operator () () -> std::unique_ptr<Star>
             {
                 dx::XMFLOAT2 radius;
                 dx::XMFLOAT3 position;
@@ -56,7 +56,7 @@ namespace fatpound::starrealm
                     radius = dx::XMFLOAT2(outer_rad_dist_(mrng_), inner_rad_dist_(mrng_));
                     position = dx::XMFLOAT3(x_dist_(mrng_), y_dist_(mrng_), zed_depth_dist_(mrng_));
 
-                    const auto& collide = [&](const std::unique_ptr<Star>& star) -> bool
+                    const auto& collide = [&](const auto& star) -> bool
                         {
                             const dx::XMFLOAT3& existing_star_pos = star->GetPosition();
 

@@ -38,7 +38,6 @@ export namespace fatpound::win32::directx
         const float max_depth_;
 
         float r_  = 0.1f;
-
         float x_  = 0.0f;
         float y_  = 0.0f;
         float z_  = 0.0f;

@@ -70,20 +70,33 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <UseStructuredOutput>false</UseStructuredOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <UseStructuredOutput>false</UseStructuredOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <UseStructuredOutput>false</UseStructuredOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <UseStructuredOutput>false</UseStructuredOutput>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <DiagnosticsFormat>Caret</DiagnosticsFormat>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
       <FloatingPointModel>Precise</FloatingPointModel>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -98,14 +111,16 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <DiagnosticsFormat>Caret</DiagnosticsFormat>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
       <FloatingPointModel>Precise</FloatingPointModel>
+      <AdditionalOptions>/Qvec-report:1 %(AdditionalOptions)</AdditionalOptions>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -120,14 +135,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <DiagnosticsFormat>Caret</DiagnosticsFormat>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
       <FloatingPointModel>Precise</FloatingPointModel>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -142,14 +158,16 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <DiagnosticsFormat>Caret</DiagnosticsFormat>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
       <FloatingPointModel>Precise</FloatingPointModel>
+      <AdditionalOptions>/Qvec-report:1 %(AdditionalOptions)</AdditionalOptions>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -178,10 +196,46 @@
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexCBuffer.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexShader.cpp" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexShader.ixx" />
-    <ClCompile Include="Win32_\DirectX\Camera\Camera.cpp" />
-    <ClCompile Include="Win32_\DirectX\Camera\Camera.ixx" />
-    <ClCompile Include="Win32_\DirectX\Camera\CameraController.cpp" />
-    <ClCompile Include="Win32_\DirectX\Camera\CameraController.ixx" />
+    <ClCompile Include="Win32_\DirectX\Camera\Camera.cpp">
+      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </AdditionalModuleDependencies>
+      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </AdditionalModuleDependencies>
+      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalModuleDependencies>
+      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalModuleDependencies>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\Camera\Camera.ixx">
+      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </AdditionalModuleDependencies>
+      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </AdditionalModuleDependencies>
+      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalModuleDependencies>
+      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalModuleDependencies>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\Camera\Controller.cpp">
+      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </AdditionalModuleDependencies>
+      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </AdditionalModuleDependencies>
+      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalModuleDependencies>
+      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalModuleDependencies>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\Camera\Controller.ixx">
+      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </AdditionalModuleDependencies>
+      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </AdditionalModuleDependencies>
+      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalModuleDependencies>
+      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalModuleDependencies>
+    </ClCompile>
     <ClCompile Include="Win32_\DirectX\Direct3D11\Visual\Drawable.cpp" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Visual\Drawable.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Visual\DrawableBase.ixx" />
