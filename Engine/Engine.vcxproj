@@ -177,6 +177,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Entity\StarExamples\StarExamples.ixx" />
     <ClCompile Include="Util\Util.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Direct3D11.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Bindable.cpp" />
@@ -242,21 +243,21 @@
     <ClCompile Include="Win32_\DirectX\Direct3D11\Visual\Drawable.cpp" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Visual\Drawable.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Visual\DrawableBase.ixx" />
-    <ClCompile Include="Game\Star\Filled\StarFilledBlend.cpp" />
-    <ClCompile Include="Game\Star\Filled\StarFilledBlend.ixx" />
-    <ClCompile Include="Game\Star\Filled\StarFilledMulti.cpp" />
-    <ClCompile Include="Game\Star\Filled\StarFilledMulti.ixx" />
-    <ClCompile Include="Game\Star\Filled\StarFilledSingle.cpp" />
-    <ClCompile Include="Game\Star\Filled\StarFilledSingle.ixx" />
-    <ClCompile Include="Game\Star\Hollow\StarHollowBlend.cpp" />
-    <ClCompile Include="Game\Star\Hollow\StarHollowBlend.ixx" />
-    <ClCompile Include="Game\Star\Hollow\StarHollowMulti.cpp" />
-    <ClCompile Include="Game\Star\Hollow\StarHollowMulti.ixx" />
-    <ClCompile Include="Game\Star\Hollow\StarHollowSingle.cpp" />
-    <ClCompile Include="Game\Star\Hollow\StarHollowSingle.ixx" />
-    <ClCompile Include="Game\Star\Star.cpp" />
-    <ClCompile Include="Game\Star\Star.ixx" />
-    <ClCompile Include="Game\Star\StarBase.ixx" />
+    <ClCompile Include="Game\Entity\StarExamples\Filled\FilledBlend.cpp" />
+    <ClCompile Include="Game\Entity\StarExamples\Filled\FilledBlend.ixx" />
+    <ClCompile Include="Game\Entity\StarExamples\Filled\FilledMulti.cpp" />
+    <ClCompile Include="Game\Entity\StarExamples\Filled\FilledMulti.ixx" />
+    <ClCompile Include="Game\Entity\StarExamples\Filled\FilledSingle.cpp" />
+    <ClCompile Include="Game\Entity\StarExamples\Filled\FilledSingle.ixx" />
+    <ClCompile Include="Game\Entity\StarExamples\Hollow\HollowBlend.cpp" />
+    <ClCompile Include="Game\Entity\StarExamples\Hollow\HollowBlend.ixx" />
+    <ClCompile Include="Game\Entity\StarExamples\Hollow\HollowMulti.cpp" />
+    <ClCompile Include="Game\Entity\StarExamples\Hollow\HollowMulti.ixx" />
+    <ClCompile Include="Game\Entity\StarExamples\Hollow\HollowSingle.cpp" />
+    <ClCompile Include="Game\Entity\StarExamples\Hollow\HollowSingle.ixx" />
+    <ClCompile Include="Game\Entity\Star.cpp" />
+    <ClCompile Include="Game\Entity\Star.ixx" />
+    <ClCompile Include="Game\Entity\StarBase.ixx" />
     <ClCompile Include="Game\StarRealm.cpp" />
     <ClCompile Include="Game\StarRealm.ixx" />
     <ClCompile Include="Math\Math.ixx" />

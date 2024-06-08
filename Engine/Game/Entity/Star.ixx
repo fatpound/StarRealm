@@ -10,7 +10,7 @@ import FatPound.Win32.Direct3D11.Visual.DrawableBase;
 
 import std;
 
-export namespace fatpound::starrealm
+export namespace fatpound::starrealm::entity
 {
     class Star : public NAMESPACE_VISUAL::DrawableBase<Star>
     {

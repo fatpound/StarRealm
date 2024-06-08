@@ -14,7 +14,7 @@ import Star;
 
 import std;
 
-export namespace fatpound::starrealm
+export namespace fatpound::starrealm::entity
 {
     template <class C>
     class StarBase : public Star

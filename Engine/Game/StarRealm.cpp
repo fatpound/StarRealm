@@ -16,12 +16,7 @@ module;
 
 module StarRealm;
 
-import StarHollowSingle;
-import StarHollowMulti;
-import StarHollowBlend;
-import StarFilledSingle;
-import StarFilledMulti;
-import StarFilledBlend;
+import StarRealm.Entity.StarExamples;
 
 namespace dx = DirectX;
 
@@ -46,7 +41,7 @@ namespace fatpound::starrealm
             }
 
         public:
-            auto operator () () -> std::unique_ptr<Star>
+            auto operator () () -> std::unique_ptr<entity::Star>
             {
                 dx::XMFLOAT2 radius;
                 dx::XMFLOAT3 position;
@@ -75,7 +70,7 @@ namespace fatpound::starrealm
                     }
                 }
 
-                const Star::Descriptor desc{
+                const entity::Star::Descriptor desc{
                     radius,
                     position,
                     static_cast<std::size_t>(flare_count_dist_(mrng_)),
@@ -85,22 +80,22 @@ namespace fatpound::starrealm
                 switch (mrng_() % 6u)
                 {
                 case 0:
-                    return std::make_unique<StarHollowSingle>(gfx_, desc);
+                    return std::make_unique<entity::HollowSingle>(gfx_, desc);
                 
                 case 1:
-                    return std::make_unique<StarHollowMulti>(gfx_, desc);
+                    return std::make_unique<entity::HollowMulti>(gfx_, desc);
                 
                 case 2:
-                    return std::make_unique<StarHollowBlend>(gfx_, desc);
+                    return std::make_unique<entity::HollowBlend>(gfx_, desc);
                 
                 case 3:
-                    return std::make_unique<StarFilledSingle>(gfx_, desc);
+                    return std::make_unique<entity::FilledSingle>(gfx_, desc);
                 
                 case 4:
-                    return std::make_unique<StarFilledMulti>(gfx_, desc);
+                    return std::make_unique<entity::FilledMulti>(gfx_, desc);
                 
                 case 5:
-                    return std::make_unique<StarFilledBlend>(gfx_, desc);
+                    return std::make_unique<entity::FilledBlend>(gfx_, desc);
                 
                 default:
                     return nullptr;

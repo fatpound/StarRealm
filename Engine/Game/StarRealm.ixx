@@ -37,7 +37,7 @@ export namespace fatpound::starrealm
 
 
     private:
-        std::vector<std::unique_ptr<Star>> stars_;
+        std::vector<std::unique_ptr<entity::Star>> stars_;
         
         NAMESPACE_D3D11::Window wnd_;
         NAMESPACE_D3D11::Graphics& gfx_;

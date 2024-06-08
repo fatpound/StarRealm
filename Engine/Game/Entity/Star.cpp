@@ -8,7 +8,7 @@ module Star;
 
 namespace dx = DirectX;
 
-namespace fatpound::starrealm
+namespace fatpound::starrealm::entity
 {
     Star::Star(const Descriptor& desc)
         :

@@ -1,30 +1,30 @@
 module;
 
-#include "../../../Win32_/FatWin32_.hpp"
+#include "../../../../Win32_/FatWin32_.hpp"
 
 #include <DirectXMath.h>
 
 #include <d3d11.h>
 
-module StarHollowMulti;
+module StarRealm.Entity.HollowSingle;
 
 import FatPound.Win32.Direct3D11.Pipeline;
 import FatPound.Util.Color;
 
 namespace dx = DirectX;
 
-namespace fatpound::starrealm
+namespace fatpound::starrealm::entity
 {
-    StarHollowMulti::StarHollowMulti(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
+    HollowSingle::HollowSingle(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
         :
-        StarBase<StarHollowMulti>(desc)
+        StarBase<HollowSingle>(desc)
     {
         if (!StarBase::IsStaticInitialized_())
         {
-            auto pvs = std::make_unique<NAMESPACE_PIPELINE::VertexShader>(gfx, L"VSColorIndexed.cso");
+            auto pvs = std::make_unique<NAMESPACE_PIPELINE::VertexShader>(gfx, L"VSColorSingle.cso");
             auto pvsbc = pvs->GetBytecode();
             StarBase::AddStaticBind_(std::move(pvs));
-            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::PixelShader>(gfx, L"PSColorIndexed.cso"));
+            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::PixelShader>(gfx, L"PSColorSingle.cso"));
 
             const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
             {
@@ -36,8 +36,8 @@ namespace fatpound::starrealm
         }
 
         const auto& vertices = Star::Make(radius_, position_, desc.flare_count);
+
         const auto& vertex_count = vertices.size();
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE::VertexBuffer>(gfx, vertices));
 
         std::vector<unsigned short int> indices;
         indices.reserve(vertex_count + 1u);
@@ -49,29 +49,27 @@ namespace fatpound::starrealm
 
         indices.emplace_back(static_cast<unsigned short int>(0u));
 
-        AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
-
-        std::minstd_rand mrng(std::random_device{}());
-        std::uniform_int_distribution<int> rgb_dist(0, 255);
-
         struct ConstantBuffer2
         {
-            dx::XMFLOAT4 vertex_colors[6];
+            dx::XMFLOAT4 the_color;
         };
 
-        ConstantBuffer2 cb2 = {};
+        std::minstd_rand mrng(std::random_device{}());
+        std::uniform_real_distribution<float> rgb_dist(0.0f, 1.0f);
 
-        for (std::size_t i = 0u; i < 6u; ++i)
+        const ConstantBuffer2 cb2 =
         {
-            cb2.vertex_colors[i] = dx::XMFLOAT4{
-                static_cast<float>(rgb_dist(mrng)) / 255.0f,
-                static_cast<float>(rgb_dist(mrng)) / 255.0f,
-                static_cast<float>(rgb_dist(mrng)) / 255.0f,
-                1.0f
-            };
-        }
+            dx::XMFLOAT4{
+                rgb_dist(mrng),
+                rgb_dist(mrng),
+                rgb_dist(mrng),
+                rgb_dist(mrng)
+            }
+        };
 
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::PixelCBuffer<ConstantBuffer2>>(gfx, cb2));
+        AddBind_(std::make_unique<NAMESPACE_PIPELINE::VertexBuffer>(gfx, vertices));
+        AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::TransformCBuffer>(gfx, *this));
     }
 }
