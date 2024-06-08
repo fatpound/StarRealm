@@ -4,7 +4,7 @@ module;
 
 export module StarFilledMulti;
 
-import Direct3D11.Graphics;
+import FatPound.Win32.Direct3D11.Graphics;
 import StarBase;
 
 export namespace fatpound::starrealm

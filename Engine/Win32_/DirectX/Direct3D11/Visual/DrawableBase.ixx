@@ -6,10 +6,10 @@ module;
 
 #include <cassert>
 
-export module DrawableBase;
+export module FatPound.Win32.Direct3D11.Visual.DrawableBase;
 
-import Direct3D11.Pipeline;
-import Drawable;
+import FatPound.Win32.Direct3D11.Visual.Drawable;
+import FatPound.Win32.Direct3D11.Pipeline;
 
 export namespace fatpound::win32::d3d11::visual
 {

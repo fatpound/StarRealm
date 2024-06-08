@@ -1,6 +1,6 @@
 module;
 
-export module AutoTimer;
+export module FatPound.Util.AutoTimer;
 
 import std;
 

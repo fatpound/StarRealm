@@ -6,10 +6,10 @@ module;
 
 #include <wrl.h>
 
-export module Direct3D11.Pipeline.VertexBuffer;
+export module FatPound.Win32.Direct3D11.Pipeline.VertexBuffer;
 
-import Direct3D11.Graphics;
-import Direct3D11.Pipeline.Bindable;
+import FatPound.Win32.Direct3D11.Graphics;
+import FatPound.Win32.Direct3D11.Pipeline.Bindable;
 
 import std;
 

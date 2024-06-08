@@ -1,6 +1,6 @@
 module;
 
-module Keyboard;
+module FatPound.Win32.IO.Keyboard;
 
 namespace fatpound::win32::io
 {

@@ -7,8 +7,7 @@ module;
 export module CameraController;
 
 import Camera;
-import Keyboard;
-import Mouse;
+import FatPound.Win32.IO;
 
 export namespace fatpound::win32::directx
 {

@@ -1,6 +1,6 @@
 module;
 
-export module FatColor;
+export module FatPound.Util.Color;
 
 import std;
 

@@ -2,7 +2,7 @@ module;
 
 #include "../FatWin32_Namespaces.hpp"
 
-export module Mouse;
+export module FatPound.Win32.IO.Mouse;
 
 import std;
 

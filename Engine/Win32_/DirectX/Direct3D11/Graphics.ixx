@@ -8,7 +8,7 @@ module;
 
 #include <wrl.h>
 
-export module Direct3D11.Graphics;
+export module FatPound.Win32.Direct3D11.Graphics;
 
 import std;
 

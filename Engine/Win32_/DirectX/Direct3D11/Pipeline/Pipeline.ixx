@@ -1,20 +1,20 @@
 module;
 
-export module Direct3D11.Pipeline;
+export module FatPound.Win32.Direct3D11.Pipeline;
 
-export import Direct3D11.Pipeline.Bindable;
+export import FatPound.Win32.Direct3D11.Pipeline.Bindable;
 
-export import Direct3D11.Pipeline.Topology;
-export import Direct3D11.Pipeline.InputLayout;
-export import Direct3D11.Pipeline.IndexBuffer;
+export import FatPound.Win32.Direct3D11.Pipeline.Topology;
+export import FatPound.Win32.Direct3D11.Pipeline.InputLayout;
+export import FatPound.Win32.Direct3D11.Pipeline.IndexBuffer;
 
-export import Direct3D11.Pipeline.CBuffer;
+export import FatPound.Win32.Direct3D11.Pipeline.CBuffer;
 
-export import Direct3D11.Pipeline.PixelShader;
-export import Direct3D11.Pipeline.PixelCBuffer;
+export import FatPound.Win32.Direct3D11.Pipeline.PixelShader;
+export import FatPound.Win32.Direct3D11.Pipeline.PixelCBuffer;
 
-export import Direct3D11.Pipeline.VertexBuffer;
-export import Direct3D11.Pipeline.VertexShader;
-export import Direct3D11.Pipeline.VertexCBuffer;
+export import FatPound.Win32.Direct3D11.Pipeline.VertexBuffer;
+export import FatPound.Win32.Direct3D11.Pipeline.VertexShader;
+export import FatPound.Win32.Direct3D11.Pipeline.VertexCBuffer;
 
-export import Direct3D11.Pipeline.TransformCBuffer;
+export import FatPound.Win32.Direct3D11.Pipeline.TransformCBuffer;

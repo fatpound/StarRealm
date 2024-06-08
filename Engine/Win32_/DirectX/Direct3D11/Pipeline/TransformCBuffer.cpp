@@ -8,7 +8,7 @@ module;
 
 #include <wrl.h>
 
-module Direct3D11.Pipeline.TransformCBuffer;
+module FatPound.Win32.Direct3D11.Pipeline.TransformCBuffer;
 
 namespace fatpound::win32::d3d11::pipeline
 {

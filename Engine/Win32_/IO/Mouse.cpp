@@ -2,7 +2,7 @@ module;
 
 #include "../FatWin32_.hpp"
 
-module Mouse;
+module FatPound.Win32.IO.Mouse;
 
 namespace fatpound::win32::io
 {

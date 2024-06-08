@@ -177,6 +177,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Util\Util.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Direct3D11.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Bindable.cpp" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Bindable.ixx" />
@@ -258,14 +259,15 @@
     <ClCompile Include="Game\Star\StarBase.ixx" />
     <ClCompile Include="Game\StarRealm.cpp" />
     <ClCompile Include="Game\StarRealm.ixx" />
-    <ClCompile Include="Math\FatMath.ixx" />
-    <ClCompile Include="Util\FatColor.ixx" />
+    <ClCompile Include="Math\Math.ixx" />
+    <ClCompile Include="Util\Color.ixx" />
     <ClCompile Include="Util\AutoTimer.cpp" />
     <ClCompile Include="Util\AutoTimer.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Graphics.cpp" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Graphics.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Window.cpp" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Window.ixx" />
+    <ClCompile Include="Win32_\IO\IO.ixx" />
     <ClCompile Include="Win32_\IO\Keyboard.cpp" />
     <ClCompile Include="Win32_\IO\Keyboard.ixx" />
     <ClCompile Include="Win32_\IO\Mouse.cpp" />

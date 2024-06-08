@@ -1,6 +1,6 @@
 module;
 
-export module FatMath;
+export module FatPound.Math;
 
 import std;
 

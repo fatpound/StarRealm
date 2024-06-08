@@ -7,7 +7,7 @@ module;
 
 #include <wrl.h>
 
-module Direct3D11.Pipeline.VertexShader;
+module FatPound.Win32.Direct3D11.Pipeline.VertexShader;
 
 namespace fatpound::win32::d3d11::pipeline
 {

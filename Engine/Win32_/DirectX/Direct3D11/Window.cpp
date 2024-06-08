@@ -14,7 +14,7 @@ module;
 #define HEIGHT          WINDOW_HEIGHT
 #endif // IN_RELEASE
 
-module Direct3D11.Window;
+module FatPound.Win32.Direct3D11.Window;
 
 namespace fatpound::win32::d3d11
 {

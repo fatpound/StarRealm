@@ -6,7 +6,7 @@ module;
 
 export module Star;
 
-import DrawableBase;
+import FatPound.Win32.Direct3D11.Visual.DrawableBase;
 
 import std;
 

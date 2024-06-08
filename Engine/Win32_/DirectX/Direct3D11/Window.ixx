@@ -2,12 +2,11 @@ module;
 
 #include "../../FatWin32_.hpp"
 
-export module Direct3D11.Window;
+export module FatPound.Win32.Direct3D11.Window;
 
-import Direct3D11.Graphics;
-import Keyboard;
-import Mouse;
-import FatMath;
+import FatPound.Win32.Direct3D11.Graphics;
+import FatPound.Win32.IO;
+import FatPound.Math;
 
 import std;
 
@@ -82,7 +81,7 @@ export namespace fatpound::win32::d3d11
         private:
             HINSTANCE hInst_;
 
-            static constexpr auto wndClassName_ = L"FatPound Direct3D11 Engine Window";
+            static constexpr auto wndClassName_ = L"FatPound FatPound.Win32.Direct3D11 Engine Window";
         };
 
 

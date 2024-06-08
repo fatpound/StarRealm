@@ -2,7 +2,7 @@ module;
 
 #include "../FatWin32_Namespaces.hpp"
 
-export module Keyboard;
+export module FatPound.Win32.IO.Keyboard;
 
 import std;
 

@@ -6,11 +6,11 @@ module;
 
 #include <wrl.h>
 
-export module Direct3D11.Pipeline.PixelCBuffer;
+export module FatPound.Win32.Direct3D11.Pipeline.PixelCBuffer;
 
-import Direct3D11.Graphics;
-import Direct3D11.Pipeline.CBuffer;
-import Direct3D11.Pipeline.Bindable;
+import FatPound.Win32.Direct3D11.Graphics;
+import FatPound.Win32.Direct3D11.Pipeline.CBuffer;
+import FatPound.Win32.Direct3D11.Pipeline.Bindable;
 
 export namespace fatpound::win32::d3d11::pipeline
 {

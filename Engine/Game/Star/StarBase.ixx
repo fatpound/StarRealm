@@ -8,8 +8,8 @@ module;
 
 export module StarBase;
 
-import Direct3D11.Pipeline;
-import Drawable;
+import FatPound.Win32.Direct3D11.Pipeline;
+import FatPound.Win32.Direct3D11.Visual.Drawable;
 import Star;
 
 import std;

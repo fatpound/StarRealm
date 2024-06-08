@@ -8,8 +8,8 @@ module;
 
 module StarHollowSingle;
 
-import Direct3D11.Pipeline;
-import FatColor;
+import FatPound.Win32.Direct3D11.Pipeline;
+import FatPound.Util.Color;
 
 namespace dx = DirectX;
 

@@ -4,10 +4,10 @@ module;
 
 export module StarRealm;
 
-import Direct3D11;
+import FatPound.Win32.Direct3D11;
 import Camera;
 import CameraController;
-import AutoTimer;
+import FatPound.Util;
 import Star;
 
 import std;
