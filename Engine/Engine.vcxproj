@@ -200,7 +200,7 @@
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexCBuffer.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexShader.cpp" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexShader.ixx" />
-    <ClCompile Include="Win32_\DirectX\Camera\Camera.cpp">
+    <ClCompile Include="Util\Camera\Camera.cpp">
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </AdditionalModuleDependencies>
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -210,7 +210,7 @@
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </AdditionalModuleDependencies>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Camera\Camera.ixx">
+    <ClCompile Include="Util\Camera\Camera.ixx">
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </AdditionalModuleDependencies>
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -220,7 +220,7 @@
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </AdditionalModuleDependencies>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Camera\Controller.cpp">
+    <ClCompile Include="Util\Camera\Controller.cpp">
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </AdditionalModuleDependencies>
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -230,7 +230,7 @@
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </AdditionalModuleDependencies>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Camera\Controller.ixx">
+    <ClCompile Include="Util\Camera\Controller.ixx">
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </AdditionalModuleDependencies>
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -266,6 +266,7 @@
     <ClCompile Include="Util\AutoTimer.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Graphics.cpp" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Graphics.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Visual\Visual.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Window.cpp" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Window.ixx" />
     <ClCompile Include="Win32_\IO\IO.ixx" />

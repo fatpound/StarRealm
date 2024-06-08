@@ -4,7 +4,7 @@ module;
 
 #include <DirectXMath.h>
 
-module Star;
+module StarRealm.Entity.Star;
 
 namespace dx = DirectX;
 

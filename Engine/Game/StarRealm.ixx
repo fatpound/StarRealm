@@ -5,10 +5,9 @@ module;
 export module StarRealm;
 
 import FatPound.Win32.Direct3D11;
-import Camera;
-import CameraController;
 import FatPound.Util;
-import Star;
+
+import StarRealm.Entity.Star;
 
 import std;
 
@@ -42,9 +41,8 @@ export namespace fatpound::starrealm
         NAMESPACE_D3D11::Window wnd_;
         NAMESPACE_D3D11::Graphics& gfx_;
         
-        NAMESPACE_DIRECTX::Camera camera_;
-        NAMESPACE_DIRECTX::CameraController camera_controller_;
-
+        NAMESPACE_UTIL::Camera camera_;
+        NAMESPACE_UTIL::CameraController camera_controller_;
         NAMESPACE_UTIL::AutoTimer timer_;
         
         static constexpr std::size_t star_count_ = 150u;

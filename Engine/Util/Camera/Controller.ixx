@@ -1,15 +1,15 @@
 module;
 
-#include "../../../Win32_/FatWin32_.hpp"
+#include "../../Win32_/FatWin32_.hpp"
 
 #include <DirectXMath.h>
 
-export module CameraController;
+export module FatPound.Util.CameraController;
 
-import Camera;
+import FatPound.Util.Camera;
 import FatPound.Win32.IO;
 
-export namespace fatpound::win32::directx
+export namespace fatpound::util
 {
     class CameraController final
     {

@@ -4,7 +4,7 @@ module;
 
 #include <DirectXMath.h>
 
-export module Star;
+export module StarRealm.Entity.Star;
 
 import FatPound.Win32.Direct3D11.Visual.DrawableBase;
 

@@ -1,14 +1,14 @@
 module;
 
-#include "../../../Win32_/FatWin32_.hpp"
+#include "../../Win32_/FatWin32_.hpp"
 
 #include <DirectXMath.h>
 
-module Camera;
+module FatPound.Util.Camera;
 
 namespace dx = DirectX;
 
-namespace fatpound::win32::directx
+namespace fatpound::util
 {
     Camera::Camera(const float& min_depth, const float& max_depth) noexcept
         :

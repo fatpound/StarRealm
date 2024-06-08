@@ -1,14 +1,16 @@
 module;
 
-#include "../../../Win32_/FatWin32_.hpp"
+#include "../../Win32_/FatWin32_.hpp"
 
 #include <DirectXMath.h>
 
-module CameraController;
+module FatPound.Util.CameraController;
+
+import FatPound.Win32.IO;
 
 namespace dx = DirectX;
 
-namespace fatpound::win32::directx
+namespace fatpound::util
 {
     CameraController::CameraController(Camera& camera, NAMESPACE_IO::Mouse& mouse, const NAMESPACE_IO::Keyboard& kbd)
         :

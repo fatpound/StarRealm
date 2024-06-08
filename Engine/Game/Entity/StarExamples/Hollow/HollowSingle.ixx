@@ -4,8 +4,9 @@ module;
 
 export module StarRealm.Entity.HollowSingle;
 
+import StarRealm.Entity.StarBase;
+
 import FatPound.Win32.Direct3D11.Graphics;
-import StarBase;
 
 export namespace fatpound::starrealm::entity
 {
