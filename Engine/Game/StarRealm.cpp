@@ -16,8 +16,6 @@ module;
 
 module StarRealm;
 
-import StarRealm.Entity.StarExamples;
-
 namespace dx = DirectX;
 
 namespace fatpound::starrealm

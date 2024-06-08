@@ -10,8 +10,7 @@ export module StarRealm.Entity.StarBase;
 
 import StarRealm.Entity.Star;
 
-import FatPound.Win32.Direct3D11.Pipeline;
-import FatPound.Win32.Direct3D11.Visual.Drawable;
+import FatPound.Win32;
 
 import std;
 

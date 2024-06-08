@@ -6,8 +6,8 @@ module;
 
 export module FatPound.Win32.Direct3D11.Pipeline.Topology;
 
-import FatPound.Win32.Direct3D11.Graphics;
 import FatPound.Win32.Direct3D11.Pipeline.Bindable;
+import FatPound.Win32.Direct3D11.Graphics;
 
 export namespace fatpound::win32::d3d11::pipeline
 {

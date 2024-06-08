@@ -177,6 +177,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Entity\Entity.ixx" />
     <ClCompile Include="Game\Entity\StarExamples\StarExamples.ixx" />
     <ClCompile Include="Util\Util.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Direct3D11.ixx" />
@@ -274,6 +275,7 @@
     <ClCompile Include="Win32_\IO\Keyboard.ixx" />
     <ClCompile Include="Win32_\IO\Mouse.cpp" />
     <ClCompile Include="Win32_\IO\Mouse.ixx" />
+    <ClCompile Include="Win32_\Win32.ixx" />
     <ClCompile Include="wWinMain.cpp" />
   </ItemGroup>
   <ItemGroup>

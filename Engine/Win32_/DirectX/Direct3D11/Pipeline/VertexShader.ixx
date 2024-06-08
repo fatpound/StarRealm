@@ -8,8 +8,8 @@ module;
 
 export module FatPound.Win32.Direct3D11.Pipeline.VertexShader;
 
-import FatPound.Win32.Direct3D11.Graphics;
 import FatPound.Win32.Direct3D11.Pipeline.Bindable;
+import FatPound.Win32.Direct3D11.Graphics;
 
 import std;
 

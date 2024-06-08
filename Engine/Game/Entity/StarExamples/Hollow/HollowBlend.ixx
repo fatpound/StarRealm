@@ -6,7 +6,7 @@ export module StarRealm.Entity.HollowBlend;
 
 import StarRealm.Entity.StarBase;
 
-import FatPound.Win32.Direct3D11.Graphics;
+import FatPound.Win32;
 
 export namespace fatpound::starrealm::entity
 {

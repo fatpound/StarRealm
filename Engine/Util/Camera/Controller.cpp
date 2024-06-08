@@ -6,8 +6,6 @@ module;
 
 module FatPound.Util.CameraController;
 
-import FatPound.Win32.IO;
-
 namespace dx = DirectX;
 
 namespace fatpound::util

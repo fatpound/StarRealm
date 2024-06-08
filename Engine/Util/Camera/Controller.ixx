@@ -7,7 +7,7 @@ module;
 export module FatPound.Util.CameraController;
 
 import FatPound.Util.Camera;
-import FatPound.Win32.IO;
+import FatPound.Win32;
 
 export namespace fatpound::util
 {

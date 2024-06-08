@@ -4,10 +4,10 @@ module;
 
 export module StarRealm;
 
-import FatPound.Win32.Direct3D11;
+import FatPound.Win32;
 import FatPound.Util;
 
-import StarRealm.Entity.Star;
+import StarRealm.Entity;
 
 import std;
 
