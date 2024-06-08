@@ -10,14 +10,7 @@ import CameraController;
 import AutoTimer;
 import Star;
 
-#if _MSVC_LANG > 202002L
 import std;
-#elif _MSVC_LANG == 202002L
-import std.core;
-import std.memory;
-#else
-#error MSVC /std:c++20 or newer option required
-#endif // _MSVC_LANG > 202002L
 
 export namespace fatpound::starrealm
 {
