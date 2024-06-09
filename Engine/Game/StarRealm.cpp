@@ -78,22 +78,22 @@ namespace fatpound::starrealm
                 switch (mrng_() % 6u)
                 {
                 case 0:
-                    return std::make_unique<entity::HollowSingle>(gfx_, desc);
+                    return std::make_unique<entity::star::HollowSingle>(gfx_, desc);
                 
                 case 1:
-                    return std::make_unique<entity::HollowMulti>(gfx_, desc);
+                    return std::make_unique<entity::star::HollowMulti>(gfx_, desc);
                 
                 case 2:
-                    return std::make_unique<entity::HollowBlend>(gfx_, desc);
+                    return std::make_unique<entity::star::HollowBlend>(gfx_, desc);
                 
                 case 3:
-                    return std::make_unique<entity::FilledSingle>(gfx_, desc);
+                    return std::make_unique<entity::star::FilledSingle>(gfx_, desc);
                 
                 case 4:
-                    return std::make_unique<entity::FilledMulti>(gfx_, desc);
+                    return std::make_unique<entity::star::FilledMulti>(gfx_, desc);
                 
                 case 5:
-                    return std::make_unique<entity::FilledBlend>(gfx_, desc);
+                    return std::make_unique<entity::star::FilledBlend>(gfx_, desc);
                 
                 default:
                     return nullptr;

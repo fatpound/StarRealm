@@ -13,7 +13,7 @@ import FatPound.Util;
 
 namespace dx = DirectX;
 
-namespace fatpound::starrealm::entity
+namespace fatpound::starrealm::entity::star
 {
     HollowMulti::HollowMulti(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
         :

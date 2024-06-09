@@ -8,7 +8,7 @@ import StarRealm.Entity.Star.Base;
 
 import FatPound.Win32;
 
-export namespace fatpound::starrealm::entity
+export namespace fatpound::starrealm::entity::star
 {
     class HollowSingle final : public StarBase<HollowSingle>
     {
