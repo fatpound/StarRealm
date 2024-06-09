@@ -8,6 +8,10 @@ module;
 
 module StarRealm.Entity.Star.HollowBlend;
 
+<<<<<<< HEAD
+=======
+import FatPound.Win32;
+>>>>>>> cb7b75b5ac16d55dc27334b12e85c89149e0ec2f
 import FatPound.Util;
 
 namespace dx = DirectX;
