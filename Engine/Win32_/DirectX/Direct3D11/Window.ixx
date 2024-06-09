@@ -81,7 +81,7 @@ export namespace fatpound::win32::d3d11
         private:
             HINSTANCE hInst_;
 
-            static constexpr auto wndClassName_ = L"FatPound FatPound.Win32.Direct3D11 Engine Window";
+            static constexpr auto wndClassName_ = L"FatPound Direct3D11 Engine Window";
         };
 
 
