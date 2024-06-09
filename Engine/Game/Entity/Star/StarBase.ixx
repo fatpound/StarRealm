@@ -1,10 +1,10 @@
 module;
 
-#include "../../Win32_/FatWin32_.hpp"
+#include "../../../Win32_/FatWin32_.hpp"
 
 #include <DirectXMath.h>
 
-export module StarRealm.Entity.StarBase;
+export module StarRealm.Entity.Star.Base;
 
 import StarRealm.Entity.Star;
 

@@ -1,12 +1,12 @@
 module;
 
-#include "../../../../Win32_/FatWin32_.hpp"
+#include "../../../../../Win32_/FatWin32_.hpp"
 
 #include <DirectXMath.h>
 
 #include <d3d11.h>
 
-module StarRealm.Entity.FilledSingle;
+module StarRealm.Entity.Star.FilledBlend;
 
 import FatPound.Win32.Direct3D11.Pipeline;
 import FatPound.Util.Color;
@@ -15,16 +15,16 @@ namespace dx = DirectX;
 
 namespace fatpound::starrealm::entity
 {
-    FilledSingle::FilledSingle(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
+    FilledBlend::FilledBlend(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
         :
-        StarBase<FilledSingle>(desc)
+        StarBase<FilledBlend>(desc)
     {
         if (not StarBase::IsStaticInitialized_())
         {
-            auto pvs = std::make_unique<NAMESPACE_PIPELINE::VertexShader>(gfx, L"VSColorSingle.cso");
+            auto pvs = std::make_unique<NAMESPACE_PIPELINE::VertexShader>(gfx, L"VSColorBlend.cso");
             auto pvsbc = pvs->GetBytecode();
             StarBase::AddStaticBind_(std::move(pvs));
-            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::PixelShader>(gfx, L"PSColorSingle.cso"));
+            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::PixelShader>(gfx, L"PSColorBlend.cso"));
 
             const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
             {
@@ -36,7 +36,33 @@ namespace fatpound::starrealm::entity
             StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
         }
 
-        const auto& vertices = Star::MakeWithCentre(radius_, position_, desc.flare_count);
+        struct Vertex final
+        {
+            DirectX::XMFLOAT3 pos;
+
+            fatpound::util::Color color;
+        };
+
+        std::minstd_rand mrng(std::random_device{}());
+        std::uniform_int_distribution<int> rgb_dist(0, 255);
+
+        const auto& flare_count = desc.flare_count;
+
+        std::vector<Vertex> vertices;
+        vertices.reserve(flare_count * 2u + 1u);
+
+        for (const auto& vertex : Star::MakeWithCentre(radius_, position_, flare_count))
+        {
+            vertices.emplace_back(
+                vertex,
+                fatpound::util::Color(
+                    static_cast<unsigned char>(rgb_dist(mrng)),
+                    static_cast<unsigned char>(rgb_dist(mrng)),
+                    static_cast<unsigned char>(rgb_dist(mrng)),
+                    255 // not necessary because we set this Alpha value to 1.0f in the Pixel Shader
+                )
+            );
+        }
 
         const auto& vertex_count_no_centre = vertices.size() - 1u;
 
@@ -51,11 +77,11 @@ namespace fatpound::starrealm::entity
                     idx_arr.end(),
                     [&](const auto& idx0, const auto& idx1) -> bool
                     {
-                        return vertices[idx0].x < vertices[idx1].x;
+                        return vertices[idx0].pos.x < vertices[idx1].pos.x;
                     }
                 );
 
-                if (vertices[idx_arr[1u]].y < vertices[idx_arr[2u]].y)
+                if (vertices[idx_arr[1u]].pos.y < vertices[idx_arr[2u]].pos.y)
                 {
                     std::swap(idx_arr[1u], idx_arr[2u]);
                 }
@@ -80,25 +106,6 @@ namespace fatpound::starrealm::entity
             }
         }
 
-        struct ConstantBuffer2
-        {
-            dx::XMFLOAT4 the_color;
-        };
-
-        std::minstd_rand mrng(std::random_device{}());
-        std::uniform_real_distribution<float> rgb_dist(0.0f, 1.0f);
-
-        const ConstantBuffer2 cb2 =
-        {
-            dx::XMFLOAT4{
-                rgb_dist(mrng),
-                rgb_dist(mrng),
-                rgb_dist(mrng),
-                rgb_dist(mrng)
-            }
-        };
-
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE::PixelCBuffer<ConstantBuffer2>>(gfx, cb2));
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::VertexBuffer>(gfx, vertices));
         AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::TransformCBuffer>(gfx, *this));

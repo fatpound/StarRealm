@@ -1,10 +1,10 @@
 module;
 
-#include "../../../../Win32_/FatWin32_.hpp"
+#include "../../../../../Win32_/FatWin32_.hpp"
 
-export module StarRealm.Entity.HollowMulti;
+export module StarRealm.Entity.Star.HollowMulti;
 
-import StarRealm.Entity.StarBase;
+import StarRealm.Entity.Star.Base;
 
 import FatPound.Win32;
 

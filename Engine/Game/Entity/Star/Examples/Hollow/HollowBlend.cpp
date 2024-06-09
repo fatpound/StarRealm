@@ -1,12 +1,12 @@
 module;
 
-#include "../../../../Win32_/FatWin32_.hpp"
+#include "../../../../../Win32_/FatWin32_.hpp"
 
 #include <DirectXMath.h>
 
 #include <d3d11.h>
 
-module StarRealm.Entity.HollowBlend;
+module StarRealm.Entity.Star.HollowBlend;
 
 import FatPound.Win32.Direct3D11.Pipeline;
 import FatPound.Util.Color;
