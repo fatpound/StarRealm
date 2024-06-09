@@ -27,7 +27,7 @@ namespace fatpound::util
             camera_.Reset();
         }
 
-        while (!mouse_.EventBufferIsEmpty())
+        while (not mouse_.EventBufferIsEmpty())
         {
             const auto& mouse_event = mouse_.ReadFromBuffer();
 

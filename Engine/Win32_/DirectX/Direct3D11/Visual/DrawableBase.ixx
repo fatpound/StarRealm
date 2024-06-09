@@ -22,7 +22,7 @@ export namespace fatpound::win32::d3d11::visual
     protected:
         static bool IsStaticInitialized_() noexcept(IN_RELEASE)
         {
-            return !static_binds_.empty();
+            return not static_binds_.empty();
         }
 
         static void AddStaticBind_(std::unique_ptr<NAMESPACE_PIPELINE::Bindable> bind) noexcept(IN_RELEASE)

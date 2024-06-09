@@ -19,7 +19,7 @@ namespace fatpound::starrealm::entity
         :
         StarBase<FilledBlend>(desc)
     {
-        if (!StarBase::IsStaticInitialized_())
+        if (not StarBase::IsStaticInitialized_())
         {
             auto pvs = std::make_unique<NAMESPACE_PIPELINE::VertexShader>(gfx, L"VSColorBlend.cso");
             auto pvsbc = pvs->GetBytecode();

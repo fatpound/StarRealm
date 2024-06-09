@@ -96,7 +96,7 @@ export namespace fatpound
             }
             bool operator != (const Color src) const
             {
-                return !(dword == src.dword);
+                return not (dword == src.dword);
             }
 
 

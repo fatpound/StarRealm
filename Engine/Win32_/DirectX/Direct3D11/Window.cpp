@@ -198,7 +198,7 @@ namespace fatpound::win32::d3d11
             {
                 mouse.OnMouseMove_(pt.x, pt.y);
 
-                if (!mouse.IsInWindow())
+                if (not mouse.IsInWindow())
                 {
                     SetCapture(hWnd);
                     mouse.OnMouseEnter_();

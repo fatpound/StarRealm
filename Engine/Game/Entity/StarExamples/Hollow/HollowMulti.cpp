@@ -19,7 +19,7 @@ namespace fatpound::starrealm::entity
         :
         StarBase<HollowMulti>(desc)
     {
-        if (!StarBase::IsStaticInitialized_())
+        if (not StarBase::IsStaticInitialized_())
         {
             auto pvs = std::make_unique<NAMESPACE_PIPELINE::VertexShader>(gfx, L"VSColorIndexed.cso");
             auto pvsbc = pvs->GetBytecode();
