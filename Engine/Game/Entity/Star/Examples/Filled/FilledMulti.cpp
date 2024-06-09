@@ -8,8 +8,8 @@ module;
 
 module StarRealm.Entity.Star.FilledMulti;
 
-import FatPound.Win32.Direct3D11.Pipeline;
-import FatPound.Util.Color;
+import FatPound.Win32;
+import FatPound.Util;
 
 namespace dx = DirectX;
 
