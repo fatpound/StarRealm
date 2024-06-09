@@ -4,8 +4,6 @@ module;
 
 #include <DirectXMath.h>
 
-#include <cassert>
-
 export module StarRealm.Entity.StarBase;
 
 import StarRealm.Entity.Star;

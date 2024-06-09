@@ -8,8 +8,6 @@ module;
 
 #include <wrl.h>
 
-#include <cassert>
-
 #define RASTERIZATION_ENABLED
 
 #define MSAA_QUALITY 8u
