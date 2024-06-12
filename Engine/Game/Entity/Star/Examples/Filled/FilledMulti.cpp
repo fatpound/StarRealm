@@ -33,27 +33,7 @@ namespace fatpound::starrealm::entity::star
         std::vector<unsigned short int> indices;
         indices.reserve(vertex_count_no_centre * 3u);
 
-        const auto& sort_triangles = [&](std::array<std::size_t, 3u>& idx_arr) -> void
-            {
-                std::sort(
-                    idx_arr.begin(),
-                    idx_arr.end(),
-                    [&](const auto& idx0, const auto& idx1) -> bool
-                    {
-                        return vertices[idx0].x < vertices[idx1].x;
-                    }
-                );
-
-                if (vertices[idx_arr[1u]].y < vertices[idx_arr[2u]].y)
-                {
-                    std::swap(idx_arr[1u], idx_arr[2u]);
-                }
-
-                for (const std::size_t& idx : idx_arr)
-                {
-                    indices.emplace_back(static_cast<unsigned short int>(idx));
-                }
-            };
+        
 
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::VertexBuffer>(gfx, vertices));
 
@@ -67,7 +47,7 @@ namespace fatpound::starrealm::entity::star
                 temp_idx[1u] = ((j == 0) ? ((i + 1u) % vertex_count_no_centre) : (vertex_count_no_centre));
                 temp_idx[2u] = (i + 2u) % vertex_count_no_centre;
 
-                sort_triangles(temp_idx);
+                FilledBase::ReorderTriangles(vertices, temp_idx, indices);
             }
         }
 

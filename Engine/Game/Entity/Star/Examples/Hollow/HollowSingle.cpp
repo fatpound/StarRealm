@@ -36,18 +36,10 @@ namespace fatpound::starrealm::entity::star
         }
 
         const auto& vertices = Star::Make(radius_, position_, desc.flare_count);
+        AddBind_(std::make_unique<NAMESPACE_PIPELINE::VertexBuffer>(gfx, vertices));
 
-        const auto& vertex_count = vertices.size();
-
-        std::vector<unsigned short int> indices;
-        indices.reserve(vertex_count + 1u);
-
-        for (std::size_t i = 0u; i < vertex_count; ++i)
-        {
-            indices.emplace_back(static_cast<unsigned short int>(i));
-        }
-
-        indices.emplace_back(static_cast<unsigned short int>(0u));
+        const auto& indices = HollowBase::GenerateIndices(vertices.size());
+        AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
 
         struct ConstantBuffer2
         {
@@ -68,8 +60,6 @@ namespace fatpound::starrealm::entity::star
         };
 
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::PixelCBuffer<ConstantBuffer2>>(gfx, cb2));
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE::VertexBuffer>(gfx, vertices));
-        AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::TransformCBuffer>(gfx, *this));
     }
 }

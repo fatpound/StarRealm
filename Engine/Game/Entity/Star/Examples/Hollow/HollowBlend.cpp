@@ -25,19 +25,12 @@ namespace fatpound::starrealm::entity::star
             StarBase::InitHollow();
         }
 
-        struct Vertex final
-        {
-            DirectX::XMFLOAT3 pos;
-
-            fatpound::util::Color color;
-        };
-
         std::minstd_rand mrng(std::random_device{}());
         std::uniform_int_distribution<int> rgb_dist(0, 255);
 
         const auto& flare_count = desc.flare_count;
 
-        std::vector<Vertex> vertices;
+        std::vector<BlendBase::Vertex> vertices;
         vertices.reserve(flare_count * 2u + 1u);
 
         for (const auto& vertex : Star::Make(radius_, position_, flare_count))
@@ -48,25 +41,15 @@ namespace fatpound::starrealm::entity::star
                     static_cast<unsigned char>(rgb_dist(mrng)),
                     static_cast<unsigned char>(rgb_dist(mrng)),
                     static_cast<unsigned char>(rgb_dist(mrng)),
-                    255 // not necessary because we set this Alpha value to 1.0f in the Pixel Shader
+                    255
                 )
             );
         }
 
-        const auto& vertex_count = vertices.size();
-
-        std::vector<unsigned short int> indices;
-        indices.reserve(vertex_count + 1u);
-
-        for (std::size_t i = 0u; i < vertex_count; ++i)
-        {
-            indices.emplace_back(static_cast<unsigned short int>(i));
-        }
-
-        indices.emplace_back(static_cast<unsigned short int>(0u));
+        const auto& indices = HollowBase::GenerateIndices(vertices.size());
+        AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
 
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::VertexBuffer>(gfx, vertices));
-        AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::TransformCBuffer>(gfx, *this));
     }
 }

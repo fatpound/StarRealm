@@ -26,19 +26,9 @@ namespace fatpound::starrealm::entity::star
         }
 
         const auto& vertices = Star::Make(radius_, position_, desc.flare_count);
-        const auto& vertex_count = vertices.size();
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::VertexBuffer>(gfx, vertices));
 
-        std::vector<unsigned short int> indices;
-        indices.reserve(vertex_count + 1u);
-
-        for (std::size_t i = 0u; i < vertex_count; ++i)
-        {
-            indices.emplace_back(static_cast<unsigned short int>(i));
-        }
-
-        indices.emplace_back(static_cast<unsigned short int>(0u));
-
+        const auto& indices = HollowBase::GenerateIndices(vertices.size());
         AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
 
         std::minstd_rand mrng(std::random_device{}());
