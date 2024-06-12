@@ -14,7 +14,7 @@ import std;
 
 export namespace fatpound::starrealm::entity
 {
-    template <class C>
+    template <class... C>
     class StarBase : public Star
     {
         using Star::Star;
@@ -47,6 +47,6 @@ export namespace fatpound::starrealm::entity
         static std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>> static_binds_;
     };
 
-    template <class C>
-    std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>> StarBase<C>::static_binds_;
+    template <class... C>
+    std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>> StarBase<C...>::static_binds_;
 }

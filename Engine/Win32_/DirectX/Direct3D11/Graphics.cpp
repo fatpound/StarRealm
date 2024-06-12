@@ -22,10 +22,10 @@ namespace dx = DirectX;
 
 namespace fatpound::win32::d3d11
 {
-    Graphics::Graphics(HWND hWnd, std::size_t width, std::size_t height)
+    Graphics::Graphics(HWND hWnd, const SizeInfo& dimensions)
         :
-        width_(width),
-        height_(height)
+        width_(dimensions.width),
+        height_(dimensions.height)
     {
         DXGI_SWAP_CHAIN_DESC scd = {};
         scd.BufferDesc.Width = 0u;

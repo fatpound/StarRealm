@@ -22,7 +22,7 @@ namespace fatpound::starrealm
 {
     Game::Game()
         :
-        wnd_(L"StarRealm", SCREEN_WIDTH, SCREEN_HEIGHT),
+        wnd_(L"StarRealm", NAMESPACE_D3D11::Window::ClientSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
         gfx_(wnd_.Gfx()),
         camera_(Game::minStarDepth_, Game::maxStarDepth_),
         camera_controller_(camera_, wnd_.mouse, wnd_.kbd)
@@ -125,7 +125,7 @@ namespace fatpound::starrealm
         gfx_.SetProjection(
             dx::XMMatrixPerspectiveLH(
                 1.0f,
-                wnd_.GetHeight<float>() / wnd_.GetWidth<float>(), // 1 / Aspect Ratio
+                wnd_.GetClientHeight<float>() / wnd_.GetClientWidth<float>(), // 1 / Aspect Ratio
                 Game::minStarDepth_,
                 Game::maxStarDepth_ * 2.0f
             )

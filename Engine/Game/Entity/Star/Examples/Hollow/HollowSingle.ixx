@@ -5,12 +5,14 @@ module;
 export module StarRealm.Entity.Star.HollowSingle;
 
 import StarRealm.Entity.Star.Base;
+import StarRealm.Entity.Star.HollowBase;
+import StarRealm.Entity.Star.SingleColorBase;
 
 import FatPound.Win32;
 
 export namespace fatpound::starrealm::entity::star
 {
-    class HollowSingle final : public StarBase<HollowSingle>
+    class HollowSingle final : public StarBase<HollowBase, SingleColorBase>
     {
     public:
         HollowSingle(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);

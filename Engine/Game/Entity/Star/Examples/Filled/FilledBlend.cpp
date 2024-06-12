@@ -17,7 +17,7 @@ namespace fatpound::starrealm::entity::star
 {
     FilledBlend::FilledBlend(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
         :
-        StarBase<FilledBlend>(desc)
+        StarBase<FilledBase, BlendBase>(desc)
     {
         if (not StarBase::IsStaticInitialized_())
         {

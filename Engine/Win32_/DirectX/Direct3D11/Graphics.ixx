@@ -24,14 +24,22 @@ export namespace fatpound::win32::d3d11
         friend class pipeline::Bindable;
 
     public:
-        Graphics(HWND hWnd, std::size_t width, std::size_t height);
+        struct SizeInfo final
+        {
+            int width;
+            int height;
+        };
+
+
+    public:
+        Graphics(HWND hWnd, const SizeInfo& dimensions);
 
         Graphics() = delete;
         Graphics(const Graphics& src) = delete;
         Graphics& operator = (const Graphics& src) = delete;
         Graphics(Graphics&& src) = delete;
         Graphics& operator = (Graphics&& src) = delete;
-        ~Graphics() = default;
+        ~Graphics() noexcept = default;
 
 
     public:

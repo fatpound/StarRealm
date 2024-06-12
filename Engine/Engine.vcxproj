@@ -178,6 +178,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game\Entity\Entity.ixx" />
+    <ClCompile Include="Game\Entity\Star\Examples\BlendBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Examples\MultiColorBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Examples\SingleColorBase.ixx" />
     <ClCompile Include="Game\Entity\Star\Examples\StarExamples.ixx" />
     <ClCompile Include="Util\Util.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Direct3D11.ixx" />

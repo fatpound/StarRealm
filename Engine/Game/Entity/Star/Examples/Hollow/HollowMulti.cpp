@@ -17,7 +17,7 @@ namespace fatpound::starrealm::entity::star
 {
     HollowMulti::HollowMulti(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
         :
-        StarBase<HollowMulti>(desc)
+        StarBase<HollowBase, MultiColorBase>(desc)
     {
         if (not StarBase::IsStaticInitialized_())
         {

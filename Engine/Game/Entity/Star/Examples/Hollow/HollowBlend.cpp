@@ -17,7 +17,7 @@ namespace fatpound::starrealm::entity::star
 {
     HollowBlend::HollowBlend(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
         :
-        StarBase<HollowBlend>(desc)
+        StarBase<HollowBase, BlendBase>(desc)
     {
         if (not StarBase::IsStaticInitialized_())
         {

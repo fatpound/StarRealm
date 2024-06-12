@@ -15,14 +15,22 @@ export namespace fatpound::win32::d3d11
     class Window final
     {
     public:
-        Window(const wchar_t* const title, std::size_t width, std::size_t height);
+        struct ClientSizeInfo final
+        {
+            int width;
+            int height;
+        };
+
+
+    public:
+        Window(const wchar_t* const title, const ClientSizeInfo& dimensions);
 
         Window() = delete;
         Window(const Window& src) = delete;
         Window& operator = (const Window& src) = delete;
         Window(Window&& src) = delete;
         Window& operator = (Window&& src) = delete;
-        ~Window();
+        ~Window() noexcept;
 
 
     public:
@@ -31,15 +39,15 @@ export namespace fatpound::win32::d3d11
 
     public:
         template <NAMESPACE_MATH::Number N>
-        N GetWidth() const noexcept
+        auto GetClientWidth() const noexcept -> N
         {
-            return static_cast<N>(width_);
+            return static_cast<N>(client_size_.width);
         }
 
         template <NAMESPACE_MATH::Number N>
-        N GetHeight() const noexcept
+        auto GetClientHeight() const noexcept -> N
         {
-            return static_cast<N>(height_);
+            return static_cast<N>(client_size_.height);
         }
 
         Graphics& Gfx();
@@ -99,8 +107,7 @@ export namespace fatpound::win32::d3d11
 
         std::unique_ptr<Graphics> pGfx_;
 
-        const std::size_t width_;
-        const std::size_t height_;
+        const ClientSizeInfo client_size_;
 
         static constexpr bool cursor_enabled_ = true;
     };
