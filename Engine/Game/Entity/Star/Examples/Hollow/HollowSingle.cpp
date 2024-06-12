@@ -32,7 +32,7 @@ namespace fatpound::starrealm::entity::star
             };
 
             StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::InputLayout>(gfx, ied, pvsbc));
-            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::Topology>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
+            StarBase::InitHollow();
         }
 
         const auto& vertices = Star::Make(radius_, position_, desc.flare_count);

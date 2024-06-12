@@ -21,19 +21,8 @@ namespace fatpound::starrealm::entity::star
     {
         if (not StarBase::IsStaticInitialized_())
         {
-            auto pvs = std::make_unique<NAMESPACE_PIPELINE::VertexShader>(gfx, L"VSColorBlend.cso");
-            auto pvsbc = pvs->GetBytecode();
-            StarBase::AddStaticBind_(std::move(pvs));
-            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::PixelShader>(gfx, L"PSColorBlend.cso"));
-
-            const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
-            {
-                { "Position", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0u, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-                { "Color",    0, DXGI_FORMAT_R8G8B8A8_UNORM,  0, 12u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
-            };
-
-            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::InputLayout>(gfx, ied, pvsbc));
-            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
+            StarBase::InitBlend(gfx);
+            StarBase::InitFilled();
         }
 
         struct Vertex final
@@ -59,7 +48,7 @@ namespace fatpound::starrealm::entity::star
                     static_cast<unsigned char>(rgb_dist(mrng)),
                     static_cast<unsigned char>(rgb_dist(mrng)),
                     static_cast<unsigned char>(rgb_dist(mrng)),
-                    255 // not necessary because we set this Alpha value to 1.0f in the Pixel Shader
+                    255
                 )
             );
         }
