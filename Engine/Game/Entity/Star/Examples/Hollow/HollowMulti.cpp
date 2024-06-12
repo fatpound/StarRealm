@@ -21,8 +21,8 @@ namespace fatpound::starrealm::entity::star
     {
         if (not StarBase::IsStaticInitialized_())
         {
-            StarBase::InitMulti(gfx);
             StarBase::InitHollow();
+            StarBase::InitMulti(gfx);
         }
 
         const auto& vertices = Star::Make(radius_, position_, desc.flare_count);

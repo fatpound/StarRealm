@@ -21,8 +21,8 @@ namespace fatpound::starrealm::entity::star
     {
         if (not StarBase::IsStaticInitialized_())
         {
-            StarBase::InitBlend(gfx);
             StarBase::InitHollow();
+            StarBase::InitBlend(gfx);
         }
 
         std::minstd_rand mrng(std::random_device{}());

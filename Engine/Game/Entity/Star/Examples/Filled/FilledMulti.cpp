@@ -21,8 +21,8 @@ namespace fatpound::starrealm::entity::star
     {
         if (not StarBase::IsStaticInitialized_())
         {
-            StarBase::InitMulti(gfx);
             StarBase::InitFilled();
+            StarBase::InitMulti(gfx);
         }
 
         // The non-Blend effect Vertex is the same as Star::Make's dx::XMFLOAT3
