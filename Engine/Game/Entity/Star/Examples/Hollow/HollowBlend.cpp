@@ -21,7 +21,7 @@ namespace fatpound::starrealm::entity::star
     {
         if (not StarBase::IsStaticInitialized_())
         {
-            StarBase::InitHollow();
+            HollowBase::Init<StarBase>();
             StarBase::InitBlend(gfx);
         }
 

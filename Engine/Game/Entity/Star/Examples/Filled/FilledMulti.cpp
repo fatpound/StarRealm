@@ -21,7 +21,7 @@ namespace fatpound::starrealm::entity::star
     {
         if (not StarBase::IsStaticInitialized_())
         {
-            StarBase::InitFilled();
+            FilledBase::Init<StarBase>();
             StarBase::InitMulti(gfx);
         }
 

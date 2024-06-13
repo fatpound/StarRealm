@@ -9,16 +9,26 @@ module;
 export module StarRealm.Entity.Star.Base;
 
 import StarRealm.Entity.Star;
+import StarRealm.Entity.Star.FilledBase;
+import StarRealm.Entity.Star.HollowBase;
 
 import FatPound.Win32;
 
 import std;
+
+namespace fatpound::starrealm::entity::star
+{
+    class FilledBlend;
+}
 
 export namespace fatpound::starrealm::entity
 {
     template <class... C>
     class StarBase : public Star
     {
+        friend star::FilledBase;
+        friend star::HollowBase;
+
         using Star::Star;
 
     public:
@@ -54,14 +64,6 @@ export namespace fatpound::starrealm::entity
         static void InitSingle(NAMESPACE_D3D11::Graphics& gfx)
         {
             
-        }
-        static void InitFilled()
-        {
-            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
-        }
-        static void InitHollow()
-        {
-            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::Topology>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
         }
 
 

@@ -21,7 +21,7 @@ namespace fatpound::starrealm::entity::star
     {
         if (not StarBase::IsStaticInitialized_())
         {
-            StarBase::InitFilled();
+            FilledBase::Init<StarBase>();
             StarBase::InitBlend(gfx);
         }
 
@@ -45,6 +45,7 @@ namespace fatpound::starrealm::entity::star
                 )
             );
         }
+
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::VertexBuffer>(gfx, vertices));
 
         const auto& indices = FilledBase::GenerateIndices(vertices);

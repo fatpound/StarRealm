@@ -1,22 +1,29 @@
 module;
 
+#include "../../../../../Win32_/FatWin32_.hpp"
+
 #include <DirectXMath.h>
+
+#include <d3d11.h>
 
 export module StarRealm.Entity.Star.FilledBase;
 
+import FatPound.Win32.Direct3D11.Graphics;
+import FatPound.Win32.Direct3D11.Pipeline;
+
 import std;
+
+template <class V>
+concept MyVertex = requires(V vertex)
+{
+    requires
+        requires { requires std::is_same_v<V, DirectX::XMFLOAT3>; }
+        or
+        requires { vertex.pos; };
+};
 
 export namespace fatpound::starrealm::entity::star
 {
-    template <class V>
-    concept MyVertex = requires(V vertex)
-    {
-        requires
-            requires { requires std::is_same_v<V, DirectX::XMFLOAT3>; }
-                or
-            requires { vertex.pos; };
-    };
-
     class FilledBase final
     {
     public:
@@ -44,6 +51,12 @@ export namespace fatpound::starrealm::entity::star
             }
 
             return indices;
+        }
+
+        template <class C>
+        static void Init()
+        {
+            C::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
         }
 
 
