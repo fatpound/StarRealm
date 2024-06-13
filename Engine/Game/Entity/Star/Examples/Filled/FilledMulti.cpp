@@ -33,8 +33,6 @@ namespace fatpound::starrealm::entity::star
         std::vector<unsigned short int> indices;
         indices.reserve(vertex_count_no_centre * 3u);
 
-        
-
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::VertexBuffer>(gfx, vertices));
 
         for (std::size_t i = 1u; i <= vertex_count_no_centre - 1u; i += 2u)

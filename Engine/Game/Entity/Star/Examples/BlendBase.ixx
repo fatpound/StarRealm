@@ -16,24 +16,6 @@ export namespace fatpound::starrealm::entity::star
 			DirectX::XMFLOAT3 pos;
 
 			fatpound::util::Color color;
-
-			operator float ()
-			{
-
-			}
-
-			float GetXPos() const noexcept
-			{
-				return pos.x;
-			}
-			float GetYPos() const noexcept
-			{
-				return pos.y;
-			}
-			float GetZPos() const noexcept
-			{
-				return pos.z;
-			}
 		};
 
 
