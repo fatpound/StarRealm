@@ -25,27 +25,7 @@ namespace fatpound::starrealm::entity::star
             StarBase::InitBlend(gfx);
         }
 
-        std::minstd_rand mrng(std::random_device{}());
-        std::uniform_int_distribution<int> rgb_dist(0, 255);
-
-        const auto& flare_count = desc.flare_count;
-
-        std::vector<BlendBase::Vertex> vertices;
-        vertices.reserve(flare_count * 2u + 1u);
-
-        for (const auto& vertex : Star::MakeWithCentre(radius_, position_, flare_count))
-        {
-            vertices.emplace_back(
-                vertex,
-                fatpound::util::Color(
-                    static_cast<unsigned char>(rgb_dist(mrng)),
-                    static_cast<unsigned char>(rgb_dist(mrng)),
-                    static_cast<unsigned char>(rgb_dist(mrng)),
-                    255
-                )
-            );
-        }
-
+        const auto& vertices = BlendBase::GenerateVertices(radius_, position_, desc.flare_count);
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::VertexBuffer>(gfx, vertices));
 
         const auto& indices = FilledBase::GenerateIndices(vertices);
