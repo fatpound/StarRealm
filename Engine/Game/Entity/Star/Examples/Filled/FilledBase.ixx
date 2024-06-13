@@ -11,7 +11,10 @@ export namespace fatpound::starrealm::entity::star
     template <class V>
     concept MyVertex = requires(V vertex)
     {
-        requires requires { vertex.pos; } or requires{ requires std::is_same_v<V, DirectX::XMFLOAT3>; };
+        requires
+            requires { requires std::is_same_v<V, DirectX::XMFLOAT3>; }
+                or
+            requires { vertex.pos; };
     };
 
     class FilledBase final

@@ -19,6 +19,7 @@ export namespace fatpound::starrealm
         Game();
         Game(const Game& src) = delete;
         Game& operator = (const Game& src) = delete;
+
         Game(Game&& src) = delete;
         Game& operator = (Game&& src) = delete;
         ~Game() noexcept;
@@ -45,19 +46,19 @@ export namespace fatpound::starrealm
         NAMESPACE_UTIL::CameraController camera_controller_;
         NAMESPACE_UTIL::AutoTimer timer_;
         
-        static constexpr std::size_t star_count_ = 150u;
-        static constexpr std::size_t minFlareCount_ = 2u;
-        static constexpr std::size_t maxFlareCount_ = 7u;
+        static constexpr auto star_count_ = 150u;
+        static constexpr auto minFlareCount_ = 2u;
+        static constexpr auto maxFlareCount_ = 7u;
 
-        static constexpr float worldWidth_  = 15.0f;
-        static constexpr float worldHeight_ = 10.0f;
+        static constexpr auto worldWidth_  = 15.0f;
+        static constexpr auto worldHeight_ = 10.0f;
 
-        static constexpr float maxStarRadius_ = 1.5f;
-        static constexpr float minStarRadius_ = 0.4f;
-        static constexpr float minStarDepth_  = 0.2f;
-        static constexpr float maxStarDepth_  = 10.0f;
+        static constexpr auto maxStarRadius_ = 1.5f;
+        static constexpr auto minStarRadius_ = 0.4f;
+        static constexpr auto minStarDepth_  = 0.2f;
+        static constexpr auto maxStarDepth_  = 10.0f;
 
-        static constexpr float minRotationSpeed_ = -1.0f * std::numbers::pi_v<float>;
-        static constexpr float maxRotationSpeed_ =  1.0f * std::numbers::pi_v<float>;
+        static constexpr auto minRotationSpeed_ = -1.0f * std::numbers::pi_v<float>;
+        static constexpr auto maxRotationSpeed_ =  1.0f * std::numbers::pi_v<float>;
     };
 }

@@ -55,7 +55,7 @@ namespace fatpound::starrealm::entity::star
         {
             for (std::size_t j = 0u; j < 2u; ++j)
             {
-                std::array<std::size_t, 3u> temp_idx;
+                std::array<std::size_t, 3u> temp_idx = {};
 
                 temp_idx[0u] = i % vertex_count_no_centre;
                 temp_idx[1u] = ((j == 0) ? ((i + 1u) % vertex_count_no_centre) : (vertex_count_no_centre));
