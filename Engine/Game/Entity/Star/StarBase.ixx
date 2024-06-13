@@ -11,15 +11,11 @@ export module StarRealm.Entity.Star.Base;
 import StarRealm.Entity.Star;
 import StarRealm.Entity.Star.FilledBase;
 import StarRealm.Entity.Star.HollowBase;
+import StarRealm.Entity.Star.BlendBase;
 
 import FatPound.Win32;
 
 import std;
-
-namespace fatpound::starrealm::entity::star
-{
-    class FilledBlend;
-}
 
 export namespace fatpound::starrealm::entity
 {
@@ -28,25 +24,11 @@ export namespace fatpound::starrealm::entity
     {
         friend star::FilledBase;
         friend star::HollowBase;
+        friend star::BlendBase;
 
         using Star::Star;
 
     public:
-        static void InitBlend(NAMESPACE_D3D11::Graphics& gfx)
-        {
-            auto pvs = std::make_unique<NAMESPACE_PIPELINE::VertexShader>(gfx, L"VSColorBlend.cso");
-            auto pvsbc = pvs->GetBytecode();
-            StarBase::AddStaticBind_(std::move(pvs));
-            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::PixelShader>(gfx, L"PSColorBlend.cso"));
-
-            const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
-            {
-                { "Position", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0u, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-                { "Color",    0, DXGI_FORMAT_R8G8B8A8_UNORM,  0, 12u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
-            };
-
-            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::InputLayout>(gfx, ied, pvsbc));
-        }
         static void InitMulti(NAMESPACE_D3D11::Graphics& gfx)
         {
             auto pvs = std::make_unique<NAMESPACE_PIPELINE::VertexShader>(gfx, L"VSColorIndexed.cso");
