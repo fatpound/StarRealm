@@ -37,25 +37,10 @@ namespace fatpound::starrealm::entity::star
         }
 
         const auto& vertices = Star::MakeWithCentre(radius_, position_, desc.flare_count);
+        AddBind_(std::make_unique<NAMESPACE_PIPELINE::VertexBuffer>(gfx, vertices));
 
-        const auto& vertex_count_no_centre = vertices.size() - 1u;
-
-        std::vector<unsigned short int> indices;
-        indices.reserve(vertex_count_no_centre * 3u);
-
-        for (std::size_t i = 1u; i <= vertex_count_no_centre - 1u; i += 2u)
-        {
-            for (std::size_t j = 0u; j < 2u; ++j)
-            {
-                std::array<std::size_t, 3u> temp_idx = {};
-
-                temp_idx[0u] = i % vertex_count_no_centre;
-                temp_idx[1u] = ((j == 0) ? ((i + 1u) % vertex_count_no_centre) : (vertex_count_no_centre));
-                temp_idx[2u] = (i + 2u) % vertex_count_no_centre;
-
-                FilledBase::ReorderTriangles(vertices, temp_idx, indices);
-            }
-        }
+        const auto& indices = FilledBase::GenerateIndices(vertices);
+        AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
 
         struct ConstantBuffer2
         {
@@ -76,8 +61,6 @@ namespace fatpound::starrealm::entity::star
         };
 
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::PixelCBuffer<ConstantBuffer2>>(gfx, cb2));
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE::VertexBuffer>(gfx, vertices));
-        AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::TransformCBuffer>(gfx, *this));
     }
 }
