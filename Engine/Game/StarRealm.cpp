@@ -24,7 +24,7 @@ namespace fatpound::starrealm
         :
         wnd_(L"StarRealm", NAMESPACE_D3D11::Window::ClientSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
         gfx_(wnd_.Gfx()),
-        camera_(Game::minStarDepth_, Game::maxStarDepth_),
+        camera_(Settings::minStarDepth_, Settings::maxStarDepth_),
         camera_controller_(camera_, wnd_.mouse, wnd_.kbd)
     {
         class Factory final
@@ -107,27 +107,27 @@ namespace fatpound::starrealm
 
             std::uniform_real_distribution<float> outer_rad_dist_{ 0.4f, 0.8f };
             std::uniform_real_distribution<float> inner_rad_dist_{ 0.1f, 0.3f };
-            std::uniform_real_distribution<float> x_dist_{ -Game::worldWidth_,  Game::worldWidth_ };
-            std::uniform_real_distribution<float> y_dist_{ -Game::worldHeight_, Game::worldHeight_ };
-            std::uniform_real_distribution<float> zed_depth_dist_{ Game::minStarDepth_, Game::maxStarDepth_ };
-            std::uniform_real_distribution<float> rotation_speed_dist_{ Game::minRotationSpeed_, Game::maxRotationSpeed_ };
+            std::uniform_real_distribution<float> x_dist_{ -Settings::worldWidth_,  Settings::worldWidth_ };
+            std::uniform_real_distribution<float> y_dist_{ -Settings::worldHeight_, Settings::worldHeight_ };
+            std::uniform_real_distribution<float> zed_depth_dist_{ Settings::minStarDepth_, Settings::maxStarDepth_ };
+            std::uniform_real_distribution<float> rotation_speed_dist_{ Settings::minRotationSpeed_, Settings::maxRotationSpeed_ };
 
-            std::uniform_int_distribution<int> flare_count_dist_{ Game::minFlareCount_, Game::maxFlareCount_ };
+            std::uniform_int_distribution<int> flare_count_dist_{ Settings::minFlareCount_, Settings::maxFlareCount_ };
 
             NAMESPACE_D3D11::Graphics& gfx_;
             const Game& game_;
         };
         
-        stars_.reserve(Game::star_count_);
+        stars_.reserve(Settings::star_count_);
 
-        std::generate_n(std::back_inserter(stars_), Game::star_count_, Factory{gfx_, *this});
+        std::generate_n(std::back_inserter(stars_), Settings::star_count_, Factory{gfx_, *this});
 
         gfx_.SetProjection(
             dx::XMMatrixPerspectiveLH(
                 1.0f,
                 wnd_.GetClientHeight<float>() / wnd_.GetClientWidth<float>(), // 1 / Aspect Ratio
-                Game::minStarDepth_,
-                Game::maxStarDepth_ * 2.0f
+                Settings::minStarDepth_,
+                Settings::maxStarDepth_ * 2.0f
             )
         );
     }
