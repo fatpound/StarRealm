@@ -222,6 +222,9 @@
     <ClCompile Include="Game\Entity\Star\SingleColorBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Entity\Star\ColorBase.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Win32_\FatWin32_.hpp">

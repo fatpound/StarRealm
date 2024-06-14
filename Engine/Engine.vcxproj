@@ -179,6 +179,7 @@
   <ItemGroup>
     <ClCompile Include="Game\Entity\Entity.ixx" />
     <ClCompile Include="Game\Entity\Star\BlendBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\ColorBase.ixx" />
     <ClCompile Include="Game\Entity\Star\Filled\FilledBase.ixx" />
     <ClCompile Include="Game\Entity\Star\Hollow\HollowBase.ixx" />
     <ClCompile Include="Game\Entity\Star\MultiColorBase.ixx" />

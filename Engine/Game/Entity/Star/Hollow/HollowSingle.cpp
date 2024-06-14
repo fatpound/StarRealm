@@ -42,25 +42,9 @@ namespace fatpound::starrealm::entity::star
         const auto& indices = HollowBase::GenerateIndices(vertices.size());
         AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
 
-        struct ConstantBuffer2
-        {
-            dx::XMFLOAT4 the_color;
-        };
+        const auto& cbuf = SingleColorBase::ColorBase::GeneratePixelCBuffer();
 
-        std::minstd_rand mrng(std::random_device{}());
-        std::uniform_real_distribution<float> rgb_dist(0.0f, 1.0f);
-
-        const ConstantBuffer2 cb2 =
-        {
-            dx::XMFLOAT4{
-                rgb_dist(mrng),
-                rgb_dist(mrng),
-                rgb_dist(mrng),
-                rgb_dist(mrng)
-            }
-        };
-
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE::PixelCBuffer<ConstantBuffer2>>(gfx, cb2));
+        AddBind_(std::make_unique<NAMESPACE_PIPELINE::PixelCBuffer<SingleColorBase::ColorBase::CBuffer>>(gfx, cbuf));
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::TransformCBuffer>(gfx, *this));
     }
 }
