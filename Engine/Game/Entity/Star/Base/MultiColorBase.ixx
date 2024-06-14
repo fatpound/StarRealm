@@ -19,8 +19,6 @@ export namespace fatpound::starrealm::entity::star
 {
 	class MultiColorBase final : public ColorBase
 	{
-		using ColorBase::GeneratePixelSBuffer;
-
 	public:
 		template <class Base>
 		static void Init(NAMESPACE_D3D11::Graphics& gfx)

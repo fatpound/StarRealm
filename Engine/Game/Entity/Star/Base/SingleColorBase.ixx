@@ -19,16 +19,14 @@ export namespace fatpound::starrealm::entity::star
 {
 	class SingleColorBase final : public ColorBase
 	{
-		using ColorBase::GeneratePixelSBuffer;
-
 	public:
 		template <class Base, bool ForFilled = true>
 		static void Init(NAMESPACE_D3D11::Graphics& gfx)
 		{
-			auto pvs = std::make_unique<NAMESPACE_PIPELINE::VertexShader>(gfx, L"VSColorMulti.cso");
+			auto pvs = std::make_unique<NAMESPACE_PIPELINE::VertexShader>(gfx, L"VSColorSingle.cso");
 			auto pvsbc = pvs->GetBytecode();
 			Base::AddStaticBind_(std::move(pvs));
-			Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::PixelShader>(gfx, L"PSColorMulti.cso"));
+			Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::PixelShader>(gfx, L"PSColorSingle.cso"));
 
 			std::vector<D3D11_INPUT_ELEMENT_DESC> ied;
 

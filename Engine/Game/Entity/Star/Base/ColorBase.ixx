@@ -29,6 +29,24 @@ export namespace fatpound::starrealm::entity::star
         
 
     public:
+        static auto GeneratePixelCBuffer() -> CBuffer
+        {
+            std::minstd_rand mrng(std::random_device{}());
+            std::uniform_real_distribution<float> rgb_dist(0.0f, 1.0f);
+
+            CBuffer cbuf =
+            {
+                {
+                    rgb_dist(mrng),
+                    rgb_dist(mrng),
+                    rgb_dist(mrng),
+                    1.0f
+                }
+            };
+
+            return cbuf;
+        }
+
         static auto GeneratePixelSBuffer(std::size_t color_count) -> SBuffer
         {
             std::minstd_rand mrng(std::random_device{}());

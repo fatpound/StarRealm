@@ -31,9 +31,9 @@ namespace fatpound::starrealm::entity::star
         const auto& indices = FilledBase::GenerateIndices(vertices);
         AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
 
-        const auto& sbuf = SingleColorBase::ColorBase::GeneratePixelSBuffer(1);
+        const auto& cbuf = SingleColorBase::ColorBase::GeneratePixelCBuffer();
 
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE::PixelSBuffer<SingleColorBase::ColorBase::SBuffer::Type>>(gfx, sbuf.vertex_colors));
+        AddBind_(std::make_unique<NAMESPACE_PIPELINE::PixelCBuffer<SingleColorBase::ColorBase::CBuffer>>(gfx, cbuf));
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::TransformCBuffer>(gfx, *this));
     }
 }
