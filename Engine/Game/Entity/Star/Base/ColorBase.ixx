@@ -10,35 +10,45 @@ namespace dx = DirectX;
 
 export namespace fatpound::starrealm::entity::star
 {
-    template <std::size_t ColorCount>
     class ColorBase
     {
     public:
         struct CBuffer final
         {
-            dx::XMFLOAT4 vertex_colors[ColorCount];
+            using Type = dx::XMFLOAT4;
+
+            dx::XMFLOAT4 vertex_color;
+        };
+
+        struct SBuffer final
+        {
+            using Type = CBuffer::Type;
+
+            std::vector<Type> vertex_colors;
         };
         
 
     public:
-        static auto GeneratePixelCBuffer() -> CBuffer
+        static auto GeneratePixelSBuffer(std::size_t color_count) -> SBuffer
         {
             std::minstd_rand mrng(std::random_device{}());
             std::uniform_real_distribution<float> rgb_dist(0.0f, 1.0f);
 
-            CBuffer cbuf = {};
+            SBuffer sbuf = {};
 
-            for (std::size_t i = 0u; i < ColorCount; ++i)
+            sbuf.vertex_colors.reserve(color_count);
+
+            for (std::size_t i = 0u; i < color_count; ++i)
             {
-                cbuf.vertex_colors[i] = dx::XMFLOAT4{
+                sbuf.vertex_colors.emplace_back(
                     rgb_dist(mrng),
                     rgb_dist(mrng),
                     rgb_dist(mrng),
                     1.0f
-                };
+                );
             }
 
-            return cbuf;
+            return sbuf;
         }
 
 

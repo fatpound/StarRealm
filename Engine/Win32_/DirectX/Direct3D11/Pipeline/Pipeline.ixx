@@ -9,9 +9,11 @@ export import FatPound.Win32.Direct3D11.Pipeline.InputLayout;
 export import FatPound.Win32.Direct3D11.Pipeline.IndexBuffer;
 
 export import FatPound.Win32.Direct3D11.Pipeline.CBuffer;
+export import FatPound.Win32.Direct3D11.Pipeline.SBuffer;
 
 export import FatPound.Win32.Direct3D11.Pipeline.PixelShader;
 export import FatPound.Win32.Direct3D11.Pipeline.PixelCBuffer;
+export import FatPound.Win32.Direct3D11.Pipeline.PixelSBuffer;
 
 export import FatPound.Win32.Direct3D11.Pipeline.VertexBuffer;
 export import FatPound.Win32.Direct3D11.Pipeline.VertexShader;
