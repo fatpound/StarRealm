@@ -182,7 +182,6 @@
     <ClCompile Include="Game\Entity\Star\Base\BlendBase.ixx" />
     <ClCompile Include="Game\Entity\Star\Base\ColorBase.ixx" />
     <ClCompile Include="Game\Entity\Star\Base\FilledBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\Base\HollowBase.cpp" />
     <ClCompile Include="Game\Entity\Star\Base\HollowBase.ixx" />
     <ClCompile Include="Game\Entity\Star\Base\MultiColorBase.ixx" />
     <ClCompile Include="Game\Entity\Star\Base\SingleColorBase.ixx" />

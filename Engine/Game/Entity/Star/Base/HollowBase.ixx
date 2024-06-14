@@ -24,7 +24,22 @@ export namespace fatpound::starrealm::entity::star
 			Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::Topology>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
 		}
 
-		static auto GenerateIndices(std::size_t vertex_count) -> std::vector<unsigned short int>;
+		template <typename T>
+		static auto GenerateIndices(std::size_t vertex_count) -> std::vector<T>
+		{
+			std::vector<T> indices;
+
+			indices.reserve(vertex_count + 1u);
+
+			for (std::size_t i = 0u; i < vertex_count; ++i)
+			{
+				indices.emplace_back(static_cast<T>(i));
+			}
+
+			indices.emplace_back(static_cast<T>(0u));
+
+			return indices;
+		}
 
 
 	protected:

@@ -225,9 +225,6 @@
     <ClCompile Include="Game\Entity\Star\Base\ColorBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Base\HollowBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Entity\Star\Base\Bases.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>

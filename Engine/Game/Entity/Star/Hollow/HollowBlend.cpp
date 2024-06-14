@@ -28,7 +28,7 @@ namespace fatpound::starrealm::entity::star
         const auto& vertices = BlendBase::GenerateVertices<false>(radius_, position_, desc.flare_count);
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::VertexBuffer>(gfx, vertices));
 
-        const auto& indices = HollowBase::GenerateIndices(vertices.size());
+        const auto& indices = HollowBase::GenerateIndices<unsigned short int>(vertices.size());
         AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
 
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::TransformCBuffer>(gfx, *this));
