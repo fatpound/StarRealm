@@ -228,6 +228,9 @@
     <ClCompile Include="Game\Entity\Star\Base\Bases.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\SBuffer.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Win32_\FatWin32_.hpp">
