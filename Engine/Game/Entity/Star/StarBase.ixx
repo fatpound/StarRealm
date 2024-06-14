@@ -53,9 +53,6 @@ export namespace fatpound::starrealm::entity
 
 
     private:
-        static std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>> static_binds_;
+        inline static std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>> static_binds_ = {};
     };
-
-    template <class... C>
-    std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>> StarBase<C...>::static_binds_;
 }

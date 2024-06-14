@@ -70,9 +70,6 @@ export namespace fatpound::win32::d3d11::visual
 
 
     private:
-        static std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>> static_binds_;
+        inline static std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>> static_binds_ = {};
     };
-
-    template <class C>
-    std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>> DrawableBase<C>::static_binds_;
 }
