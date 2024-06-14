@@ -1,6 +1,6 @@
 module;
 
-#include "../../../../../Win32_/FatWin32_.hpp"
+#include "../../../../Win32_/FatWin32_.hpp"
 
 #include <DirectXMath.h>
 
@@ -27,6 +27,7 @@ export namespace fatpound::starrealm::entity::star
 		static auto GenerateIndices(std::size_t vertex_count) -> std::vector<unsigned short int>
 		{
 			std::vector<unsigned short int> indices;
+
 			indices.reserve(vertex_count + 1u);
 
 			for (std::size_t i = 0u; i < vertex_count; ++i)
