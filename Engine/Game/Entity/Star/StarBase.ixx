@@ -6,14 +6,10 @@ module;
 
 #include <d3d11.h>
 
-export module StarRealm.Entity.Star.Base;
+export module StarRealm.Entity.StarBase;
 
 import StarRealm.Entity.Star;
-import StarRealm.Entity.Star.FilledBase;
-import StarRealm.Entity.Star.HollowBase;
-import StarRealm.Entity.Star.BlendBase;
-import StarRealm.Entity.Star.MultiColorBase;
-import StarRealm.Entity.Star.SingleColorBase;
+import StarRealm.Entity.Star.Bases;
 
 import FatPound.Win32;
 

@@ -207,22 +207,28 @@
     <ClCompile Include="Game\Entity\Star\StarBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Filled\FilledBase.ixx">
+    <ClCompile Include="Game\Entity\Star\Base\FilledBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Hollow\HollowBase.ixx">
+    <ClCompile Include="Game\Entity\Star\Base\HollowBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\BlendBase.ixx">
+    <ClCompile Include="Game\Entity\Star\Base\BlendBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\MultiColorBase.ixx">
+    <ClCompile Include="Game\Entity\Star\Base\MultiColorBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\SingleColorBase.ixx">
+    <ClCompile Include="Game\Entity\Star\Base\SingleColorBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\ColorBase.ixx">
+    <ClCompile Include="Game\Entity\Star\Base\ColorBase.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Star\Base\HollowBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Star\Base\Bases.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

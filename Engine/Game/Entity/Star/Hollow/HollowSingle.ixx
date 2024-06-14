@@ -4,7 +4,7 @@ module;
 
 export module StarRealm.Entity.Star.HollowSingle;
 
-import StarRealm.Entity.Star.Base;
+import StarRealm.Entity.StarBase;
 import StarRealm.Entity.Star.HollowBase;
 import StarRealm.Entity.Star.SingleColorBase;
 

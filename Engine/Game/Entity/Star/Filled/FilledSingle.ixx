@@ -4,7 +4,7 @@ module;
 
 export module StarRealm.Entity.Star.FilledSingle;
 
-import StarRealm.Entity.Star.Base;
+import StarRealm.Entity.StarBase;
 import StarRealm.Entity.Star.FilledBase;
 import StarRealm.Entity.Star.SingleColorBase;
 

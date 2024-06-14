@@ -178,12 +178,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game\Entity\Entity.ixx" />
-    <ClCompile Include="Game\Entity\Star\BlendBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\ColorBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\Filled\FilledBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\Hollow\HollowBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\MultiColorBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\SingleColorBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Base\Bases.ixx" />
+    <ClCompile Include="Game\Entity\Star\Base\BlendBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Base\ColorBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Base\FilledBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Base\HollowBase.cpp" />
+    <ClCompile Include="Game\Entity\Star\Base\HollowBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Base\MultiColorBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Base\SingleColorBase.ixx" />
     <ClCompile Include="Game\Entity\Star\StarExamples.ixx" />
     <ClCompile Include="Util\Util.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Direct3D11.ixx" />
