@@ -12,6 +12,8 @@ import StarRealm.Entity.Star;
 import StarRealm.Entity.Star.FilledBase;
 import StarRealm.Entity.Star.HollowBase;
 import StarRealm.Entity.Star.BlendBase;
+import StarRealm.Entity.Star.MultiColorBase;
+import StarRealm.Entity.Star.SingleColorBase;
 
 import FatPound.Win32;
 
@@ -25,28 +27,12 @@ export namespace fatpound::starrealm::entity
         friend star::FilledBase;
         friend star::HollowBase;
         friend star::BlendBase;
+        friend star::MultiColorBase;
+        friend star::SingleColorBase;
 
         using Star::Star;
 
     public:
-        static void InitMulti(NAMESPACE_D3D11::Graphics& gfx)
-        {
-            auto pvs = std::make_unique<NAMESPACE_PIPELINE::VertexShader>(gfx, L"VSColorIndexed.cso");
-            auto pvsbc = pvs->GetBytecode();
-            StarBase::AddStaticBind_(std::move(pvs));
-            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::PixelShader>(gfx, L"PSColorIndexed.cso"));
-
-            const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
-            {
-                { "Position", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
-            };
-
-            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::InputLayout>(gfx, ied, pvsbc));
-        }
-        static void InitSingle(NAMESPACE_D3D11::Graphics& gfx)
-        {
-            
-        }
 
 
     protected:

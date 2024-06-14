@@ -22,19 +22,7 @@ namespace fatpound::starrealm::entity::star
         if (not StarBase::IsStaticInitialized_())
         {
             FilledBase::Init<StarBase>();
-
-            auto pvs = std::make_unique<NAMESPACE_PIPELINE::VertexShader>(gfx, L"VSColorSingle.cso");
-            auto pvsbc = pvs->GetBytecode();
-            StarBase::AddStaticBind_(std::move(pvs));
-            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::PixelShader>(gfx, L"PSColorSingle.cso"));
-
-            const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
-            {
-                { "Position", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0u, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-                { "Color",    0, DXGI_FORMAT_R8G8B8A8_UNORM,  0, 12u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
-            };
-
-            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::InputLayout>(gfx, ied, pvsbc));
+            SingleColorBase::Init<StarBase, true>(gfx);
         }
 
         const auto& vertices = Star::MakeWithCentre(radius_, position_, desc.flare_count);
