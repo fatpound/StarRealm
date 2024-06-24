@@ -63,11 +63,6 @@ namespace fatpound::starrealm::entity
             dx::XMMatrixTranslationFromVector(pos_vec);
     }
 
-    void Star::Update(float delta_time) noexcept
-    {
-        roll_ += (delta_time * rotation_speed_);
-    }
-
     auto Star::GetPosition() const noexcept -> dx::XMFLOAT3
     {
         return position_;
@@ -76,6 +71,11 @@ namespace fatpound::starrealm::entity
     float Star::GetOuterRadius() const noexcept
     {
         return radiuses_.outer_radius;
+    }
+
+    void Star::Update(float delta_time) noexcept
+    {
+        roll_ += (delta_time * rotation_speed_);
     }
 
     bool Star::IsWithinArea(const dx::XMFLOAT3& position, const float& radius) const noexcept

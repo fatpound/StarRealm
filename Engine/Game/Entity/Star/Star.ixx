@@ -52,11 +52,11 @@ export namespace fatpound::starrealm::entity
     public:
         virtual auto GetTransformXM() const noexcept -> DirectX::XMMATRIX override final;
 
-        virtual void Update(float delta_time) noexcept override final;
-
         virtual auto GetPosition() const noexcept -> DirectX::XMFLOAT3 final;
 
         virtual float GetOuterRadius() const noexcept final;
+
+        virtual void Update(float delta_time) noexcept override final;
 
 
     public:
