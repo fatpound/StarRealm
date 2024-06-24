@@ -12,8 +12,8 @@ import std;
 
 export namespace fatpound::starrealm
 {
-	class StarFactory final
-	{
+    class StarFactory final
+    {
     public:
         struct Settings final
         {
@@ -54,10 +54,10 @@ export namespace fatpound::starrealm
         auto operator () () -> std::unique_ptr<entity::Star>;
 
 
-	protected:
+    protected:
 
 
-	private:
+    private:
         NAMESPACE_D3D11::Graphics& gfx_;
 
         std::vector<std::unique_ptr<entity::Star>> stars_;
@@ -72,5 +72,5 @@ export namespace fatpound::starrealm
         std::uniform_real_distribution<float> rotation_speed_dist_{ Settings::minRotationSpeed_, Settings::maxRotationSpeed_ };
 
         std::uniform_int_distribution<int> flare_count_dist_{ Settings::minFlareCount_, Settings::maxFlareCount_ };
-	};
+    };
 }
