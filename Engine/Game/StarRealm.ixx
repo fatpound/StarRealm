@@ -7,7 +7,7 @@ export module StarRealm;
 import FatPound.Win32;
 import FatPound.Util;
 
-import StarRealm.Entity;
+import StarRealm.StarFactory;
 
 import std;
 
@@ -15,6 +15,8 @@ export namespace fatpound::starrealm
 {
     class Game final
     {
+        using Settings = StarFactory::Settings;
+
     public:
         Game();
         Game(const Game& src) = delete;
@@ -31,26 +33,6 @@ export namespace fatpound::starrealm
 
     protected:
         
-
-    private:
-        struct Settings final
-        {
-            static constexpr auto star_count_    = 150u;
-            static constexpr auto minFlareCount_ = 2u;
-            static constexpr auto maxFlareCount_ = 7u;
-
-            static constexpr auto worldWidth_  = 15.0f;
-            static constexpr auto worldHeight_ = 10.0f;
-
-            static constexpr auto maxStarRadius_ = 1.5f;
-            static constexpr auto minStarRadius_ = 0.4f;
-            static constexpr auto minStarDepth_  = 0.2f;
-            static constexpr auto maxStarDepth_  = 10.0f;
-
-            static constexpr auto minRotationSpeed_ = -1.0f * std::numbers::pi_v<float>;
-            static constexpr auto maxRotationSpeed_ =  1.0f * std::numbers::pi_v<float>;
-        };
-
 
     private:
         void DoFrame_();

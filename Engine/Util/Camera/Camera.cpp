@@ -18,7 +18,7 @@ namespace fatpound::util
 
     }
 
-    dx::XMMATRIX Camera::GetMatrix() const noexcept
+    auto Camera::GetMatrix() const noexcept -> dx::XMMATRIX
     {
         const auto& look =
             dx::XMMatrixTranslation(x_, y_, z_) *

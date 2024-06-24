@@ -32,9 +32,10 @@ export namespace fatpound::starrealm::entity
         Star() = default;
         Star(const Star& src) = delete;
         Star& operator = (const Star& src) = delete;
+
         Star(Star&& src) = delete;
         Star& operator = (Star&& src) = delete;
-        virtual ~Star() = default;
+        virtual ~Star() noexcept = default;
 
 
     public:
@@ -50,6 +51,10 @@ export namespace fatpound::starrealm::entity
         virtual auto GetPosition() const noexcept -> DirectX::XMFLOAT3 final;
 
         virtual float GetOuterRadius() const noexcept final;
+
+
+    public:
+        bool IsWithinArea(const DirectX::XMFLOAT3& position, const DirectX::XMFLOAT2& radius);
 
 
     protected:

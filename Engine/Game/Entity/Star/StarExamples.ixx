@@ -1,6 +1,6 @@
 module;
 
-export module StarRealm.Entity.Star.Examples;
+export module StarRealm.Entity.StarExamples;
 
 export import StarRealm.Entity.Star.FilledBlend;
 export import StarRealm.Entity.Star.FilledMulti;

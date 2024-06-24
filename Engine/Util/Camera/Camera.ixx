@@ -15,7 +15,7 @@ export namespace fatpound::util
 
 
     public:
-        auto GetMatrix() const noexcept -> ::DirectX::XMMATRIX;
+        auto GetMatrix() const noexcept -> DirectX::XMMATRIX;
 
         float GetR() const noexcept;
         float GetX() const noexcept;

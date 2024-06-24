@@ -21,7 +21,7 @@ int APIENTRY wWinMain(
 	catch (const std::exception& ex)
 	{
 		const std::string str = ex.what();
-		const std::wstring wstr{ str.cbegin(), str.cend() };
+		const std::wstring wstr(str.cbegin(), str.cend());
 
 		MessageBox(nullptr, wstr.c_str(), L"Error!", MB_OK | MB_ICONERROR);
 	}

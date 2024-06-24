@@ -231,6 +231,15 @@
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\SBuffer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\PixelSBuffer.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\StarFactory.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\StarFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Win32_\FatWin32_.hpp">
@@ -242,10 +251,10 @@
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\PSColorBlend.hlsl" />
-    <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\PSColorIndexed.hlsl" />
     <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\PSColorSingle.hlsl" />
     <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\VSColorBlend.hlsl" />
-    <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\VSColorIndexed.hlsl" />
     <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\VSColorSingle.hlsl" />
+    <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\PSColorMulti.hlsl" />
+    <FxCompile Include="Win32_\DirectX\Direct3D11\Shader\VSColorMulti.hlsl" />
   </ItemGroup>
 </Project>

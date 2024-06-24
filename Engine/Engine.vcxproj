@@ -186,6 +186,8 @@
     <ClCompile Include="Game\Entity\Star\Base\MultiColorBase.ixx" />
     <ClCompile Include="Game\Entity\Star\Base\SingleColorBase.ixx" />
     <ClCompile Include="Game\Entity\Star\StarExamples.ixx" />
+    <ClCompile Include="Game\StarFactory.cpp" />
+    <ClCompile Include="Game\StarFactory.ixx" />
     <ClCompile Include="Util\Util.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Direct3D11.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Bindable.cpp" />
