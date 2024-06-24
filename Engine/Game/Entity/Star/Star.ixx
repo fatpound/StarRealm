@@ -15,10 +15,16 @@ export namespace fatpound::starrealm::entity
     class Star : public NAMESPACE_VISUAL::DrawableBase<Star>
     {
     public:
+        struct RadiusPack final
+        {
+            float outer_radius;
+            float inner_radius;
+        };
         struct Descriptor final
         {
-            const DirectX::XMFLOAT2& radius;
             const DirectX::XMFLOAT3& position;
+
+            const RadiusPack& radiuses;
 
             const std::size_t flare_count;
 
@@ -39,8 +45,8 @@ export namespace fatpound::starrealm::entity
 
 
     public:
-        static auto Make(const DirectX::XMFLOAT2& radius, const DirectX::XMFLOAT3& centre, std::size_t flare_count = 4u) -> std::vector<DirectX::XMFLOAT3>;
-        static auto MakeWithCentre(const DirectX::XMFLOAT2& radius, const DirectX::XMFLOAT3& centre, std::size_t flare_count = 4u) -> std::vector<DirectX::XMFLOAT3>;
+        static auto Make(const RadiusPack& radius, const DirectX::XMFLOAT3& centre, std::size_t flare_count = 4u) -> std::vector<DirectX::XMFLOAT3>;
+        static auto MakeWithCentre(const RadiusPack& radius, const DirectX::XMFLOAT3& centre, std::size_t flare_count = 4u) -> std::vector<DirectX::XMFLOAT3>;
 
 
     public:
@@ -54,13 +60,13 @@ export namespace fatpound::starrealm::entity
 
 
     public:
-        bool IsWithinArea(const DirectX::XMFLOAT3& position, const DirectX::XMFLOAT2& radius);
+        bool IsWithinArea(const DirectX::XMFLOAT3& position, const float& radius) const noexcept;
 
 
     protected:
-        DirectX::XMFLOAT2 radius_; // outer_radius, inner_radius
-
         DirectX::XMFLOAT3 position_;
+
+        RadiusPack radiuses_;
 
         float rotation_speed_;
         float roll_;

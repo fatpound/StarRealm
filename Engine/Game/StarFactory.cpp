@@ -17,23 +17,23 @@ namespace fatpound::starrealm
 
     auto StarFactory::operator () () -> std::unique_ptr<entity::Star>
     {
-        dx::XMFLOAT2 radius;
+        entity::Star::RadiusPack radiuses;
         dx::XMFLOAT3 position;
 
         while (true)
         {
-            radius   = dx::XMFLOAT2(outer_rad_dist_(rng_), inner_rad_dist_(rng_));
+            radiuses = entity::Star::RadiusPack(outer_rad_dist_(rng_), inner_rad_dist_(rng_));
             position = dx::XMFLOAT3(x_dist_(rng_), y_dist_(rng_), zed_depth_dist_(rng_));
 
-            if (std::ranges::none_of(stars_, [&](const auto& pstar) constexpr -> bool { return pstar->IsWithinArea(position, radius); }))
+            if (std::ranges::none_of(stars_, [&](const auto& pstar) constexpr -> bool { return pstar->IsWithinArea(position, radiuses.outer_radius); }))
             {
                 break;
             }
         }
 
         const entity::Star::Descriptor desc{
-            radius,
             position,
+            radiuses,
             static_cast<std::size_t>(flare_count_dist_(rng_)),
             rotation_speed_dist_(rng_)
         };

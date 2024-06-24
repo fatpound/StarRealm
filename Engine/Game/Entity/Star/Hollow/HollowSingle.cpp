@@ -25,7 +25,7 @@ namespace fatpound::starrealm::entity::star
             SingleColorBase::Init<StarBase, false>(gfx);
         }
 
-        const auto& vertices = Star::Make(radius_, position_, desc.flare_count);
+        const auto& vertices = Star::Make(radiuses_, position_, desc.flare_count);
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::VertexBuffer>(gfx, vertices));
 
         const auto& indices = HollowBase::GenerateIndices<unsigned short int>(vertices.size());

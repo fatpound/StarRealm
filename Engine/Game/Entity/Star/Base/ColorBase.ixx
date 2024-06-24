@@ -19,7 +19,6 @@ export namespace fatpound::starrealm::entity::star
 
             dx::XMFLOAT4 vertex_color;
         };
-
         struct SBuffer final
         {
             using Type = CBuffer::Type;

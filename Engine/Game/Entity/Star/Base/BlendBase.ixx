@@ -31,7 +31,7 @@ export namespace fatpound::starrealm::entity::star
 
 	public:
 		template <bool with_centre = true>
-		static auto GenerateVertices(DirectX::XMFLOAT2 radius, DirectX::XMFLOAT3 position, std::size_t flare_count)
+		static auto GenerateVertices(Star::RadiusPack radiuses, DirectX::XMFLOAT3 position, std::size_t flare_count)
 		{
 			std::vector<BlendBase::Vertex> vertices;
 
@@ -40,17 +40,15 @@ export namespace fatpound::starrealm::entity::star
 			std::minstd_rand mrng(std::random_device{}());
 			std::uniform_int_distribution<int> rgb_dist(0, 255);
 
-			// IDEA: Star::Make could be a coroutine
-
 			std::vector<DirectX::XMFLOAT3> star_vertices;
 
 			if constexpr (with_centre)
 			{
-				star_vertices = Star::MakeWithCentre(radius, position, flare_count);
+				star_vertices = Star::MakeWithCentre(radiuses, position, flare_count);
 			}
 			else
 			{
-				star_vertices = Star::Make(radius, position, flare_count);
+				star_vertices = Star::Make(radiuses, position, flare_count);
 			}
 
 			for (const auto& vertex : star_vertices)

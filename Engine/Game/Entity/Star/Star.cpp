@@ -12,7 +12,7 @@ namespace fatpound::starrealm::entity
 {
     Star::Star(const Descriptor& desc)
         :
-        radius_(desc.radius),
+        radiuses_(desc.radiuses),
         position_(desc.position),
         rotation_speed_(desc.rotation_speed),
         roll_(0.0f)
@@ -20,7 +20,7 @@ namespace fatpound::starrealm::entity
 
     }
 
-    auto Star::Make(const dx::XMFLOAT2& radius, const dx::XMFLOAT3& centre, std::size_t flare_count) -> std::vector<dx::XMFLOAT3>
+    auto Star::Make(const RadiusPack& radiuses, const dx::XMFLOAT3& centre, std::size_t flare_count) -> std::vector<dx::XMFLOAT3>
     {
         std::vector<dx::XMFLOAT3> star;
         const std::size_t capacity = flare_count * 2u;
@@ -32,8 +32,8 @@ namespace fatpound::starrealm::entity
         for (std::size_t i = 0u; i < capacity; ++i)
         {
             const float rad = (i % 2u == 0u)
-                ? radius.x
-                : radius.y
+                ? radiuses.outer_radius
+                : radiuses.inner_radius
                 ;
 
             star.emplace_back(
@@ -45,9 +45,9 @@ namespace fatpound::starrealm::entity
 
         return star;
     }
-    auto Star::MakeWithCentre(const dx::XMFLOAT2& radius, const dx::XMFLOAT3& centre, std::size_t flare_count) -> std::vector<dx::XMFLOAT3>
+    auto Star::MakeWithCentre(const RadiusPack& radiuses, const dx::XMFLOAT3& centre, std::size_t flare_count) -> std::vector<dx::XMFLOAT3>
     {
-        auto star = Star::Make(radius, centre, flare_count);
+        auto star = Star::Make(radiuses, centre, flare_count);
         
         star.emplace_back(centre.x, centre.y, centre.z);
 
@@ -75,19 +75,17 @@ namespace fatpound::starrealm::entity
 
     float Star::GetOuterRadius() const noexcept
     {
-        return radius_.x;
+        return radiuses_.outer_radius;
     }
 
-    bool Star::IsWithinArea(const dx::XMFLOAT3& position, const dx::XMFLOAT2& radius)
+    bool Star::IsWithinArea(const dx::XMFLOAT3& position, const float& radius) const noexcept
     {
-        const dx::XMFLOAT3& this_pos = this->position_;
-
         const dx::XMVECTOR& position_vec = dx::XMLoadFloat3(&position);
-        const dx::XMVECTOR& this_pos_vec = dx::XMLoadFloat3(&this_pos);
+        const dx::XMVECTOR& this_pos_vec = dx::XMLoadFloat3(&this->position_);
         const dx::XMVECTOR& difference   = dx::XMVectorSubtract(this_pos_vec, position_vec);
 
         const float& length = dx::XMVectorGetX(dx::XMVector3Length(difference));
 
-        return length < (radius.x + this->radius_.x);
+        return length < (this->radiuses_.outer_radius + radius);
     }
 }
