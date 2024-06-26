@@ -135,10 +135,10 @@
     <ClCompile Include="Util\Camera\Camera.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Util\Camera\Controller.cpp">
+    <ClCompile Include="Util\Camera\CameraController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Util\Camera\Controller.ixx">
+    <ClCompile Include="Util\Camera\CameraController.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Math\Math.ixx">

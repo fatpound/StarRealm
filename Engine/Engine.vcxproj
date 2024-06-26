@@ -232,7 +232,7 @@
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </AdditionalModuleDependencies>
     </ClCompile>
-    <ClCompile Include="Util\Camera\Controller.cpp">
+    <ClCompile Include="Util\Camera\CameraController.cpp">
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </AdditionalModuleDependencies>
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -242,7 +242,7 @@
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </AdditionalModuleDependencies>
     </ClCompile>
-    <ClCompile Include="Util\Camera\Controller.ixx">
+    <ClCompile Include="Util\Camera\CameraController.ixx">
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </AdditionalModuleDependencies>
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

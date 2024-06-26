@@ -97,7 +97,7 @@ namespace fatpound::win32::d3d11
             DispatchMessage(&msg);
         }
 
-        return {};
+        return std::nullopt;
     }
 
     Graphics& Window::Gfx()
