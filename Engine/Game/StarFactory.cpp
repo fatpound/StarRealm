@@ -15,7 +15,7 @@ namespace fatpound::starrealm
         return std::move(stars_);
     }
 
-    auto StarFactory::operator () () -> std::unique_ptr<entity::Star>
+    auto StarFactory::GenerateStar_() -> std::unique_ptr<entity::Star>
     {
         entity::Star::RadiusPack radiuses;
         dx::XMFLOAT3 position;

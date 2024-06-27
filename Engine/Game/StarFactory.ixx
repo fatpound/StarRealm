@@ -43,7 +43,7 @@ export namespace fatpound::starrealm
 
             while (stars_.size() < Settings::star_count_)
             {
-                stars_.push_back(operator()());
+                stars_.push_back(GenerateStar_());
             }
         }
 
@@ -51,10 +51,12 @@ export namespace fatpound::starrealm
     public:
         auto GetStars() && -> std::vector<std::unique_ptr<entity::Star>>&&;
 
-        auto operator () () -> std::unique_ptr<entity::Star>;
-
 
     protected:
+
+
+    private:
+        auto GenerateStar_() -> std::unique_ptr<entity::Star>;
 
 
     private:
