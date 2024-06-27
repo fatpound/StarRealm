@@ -12,7 +12,7 @@ import std;
 
 export namespace fatpound::starrealm::entity
 {
-    class Star : public NAMESPACE_VISUAL::DrawableBase<Star>
+    class Star : public NAMESPACE_VISUAL::Drawable//Base<Star>
     {
     public:
         struct RadiusPack final
