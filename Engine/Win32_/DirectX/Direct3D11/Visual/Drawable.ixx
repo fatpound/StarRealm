@@ -20,9 +20,10 @@ export namespace fatpound::win32::d3d11::visual
         Drawable() = default;
         Drawable(const Drawable& src) = delete;
         Drawable& operator = (const Drawable& src) = delete;
+
         Drawable(Drawable&& src) = delete;
         Drawable& operator = (Drawable&& src) = delete;
-        virtual ~Drawable() = default;
+        virtual ~Drawable() noexcept = default;
 
 
     public:

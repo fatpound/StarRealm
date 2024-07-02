@@ -21,9 +21,10 @@ export namespace fatpound::win32::io
         Keyboard() = default;
         Keyboard(const Keyboard& src) = delete;
         Keyboard& operator = (const Keyboard& src) = delete;
+
         Keyboard(Keyboard&& src) = delete;
         Keyboard& operator = (Keyboard&& src) = delete;
-        ~Keyboard() = default;
+        ~Keyboard() noexcept = default;
 
 
     public:

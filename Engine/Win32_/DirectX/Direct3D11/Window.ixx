@@ -28,6 +28,7 @@ export namespace fatpound::win32::d3d11
         Window() = delete;
         Window(const Window& src) = delete;
         Window& operator = (const Window& src) = delete;
+
         Window(Window&& src) = delete;
         Window& operator = (Window&& src) = delete;
         ~Window() noexcept;

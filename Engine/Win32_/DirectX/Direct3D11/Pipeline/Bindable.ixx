@@ -13,7 +13,7 @@ export namespace fatpound::win32::d3d11::pipeline
     class Bindable
     {
     public:
-        virtual ~Bindable() = default;
+        virtual ~Bindable() noexcept = default;
         
 
     public:
