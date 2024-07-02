@@ -22,7 +22,7 @@ namespace fatpound::starrealm::entity::star
         if (not StarBase::IsStaticInitialized_())
         {
             FilledBase::Init<StarBase>();
-            SingleColorBase::Init<StarBase, true>(gfx);
+            SingleColorBase::Init<StarBase>(gfx);
         }
 
         const auto& vertices = Star::Make<true>(radiuses_, position_, desc.flare_count);
