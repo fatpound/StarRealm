@@ -30,15 +30,13 @@ export namespace fatpound::starrealm::entity::star
 
             std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
             {
-                { "Position",  0, DXGI_FORMAT_R32G32B32_FLOAT, 0,                           0u, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-                { "TEXCOORD",  0, DXGI_FORMAT_R32_UINT,        0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+                { "Position",  0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
             };
 
             if constexpr (ForFilled)
             {
-                ied.insert(
-                    ied.begin() + 1,
-                    { "Color", 0, DXGI_FORMAT_R8G8B8A8_UNORM,  0,                          12u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+                ied.push_back(
+                    { "Color", 0, DXGI_FORMAT_R8G8B8A8_UNORM,  0, 12u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
                 );
             }
 
