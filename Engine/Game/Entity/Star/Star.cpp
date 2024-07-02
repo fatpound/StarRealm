@@ -20,40 +20,6 @@ namespace fatpound::starrealm::entity
 
     }
 
-    auto Star::Make(const RadiusPack& radiuses, const dx::XMFLOAT3& centre, std::size_t flare_count) -> std::vector<dx::XMFLOAT3>
-    {
-        std::vector<dx::XMFLOAT3> star;
-        const std::size_t capacity = flare_count * 2u;
-
-        star.reserve(capacity + 1u);
-
-        const float dTheta = 2.0f * dx::XM_PI / static_cast<float>(capacity);
-
-        for (std::size_t i = 0u; i < capacity; ++i)
-        {
-            const float rad = (i % 2u == 0u)
-                ? radiuses.outer_radius
-                : radiuses.inner_radius
-                ;
-
-            star.emplace_back(
-                rad * std::cos(static_cast<float>(i) * dTheta) + centre.x,
-                rad * std::sin(static_cast<float>(i) * dTheta) + centre.y,
-                centre.z
-            );
-        }
-
-        return star;
-    }
-    auto Star::MakeWithCentre(const RadiusPack& radiuses, const dx::XMFLOAT3& centre, std::size_t flare_count) -> std::vector<dx::XMFLOAT3>
-    {
-        auto star = Star::Make(radiuses, centre, flare_count);
-        
-        star.emplace_back(centre.x, centre.y, centre.z);
-
-        return star;
-    }
-
     auto Star::GetTransformXM() const noexcept -> dx::XMMATRIX
     {
         const auto& pos_vec = dx::XMLoadFloat3(&position_);
