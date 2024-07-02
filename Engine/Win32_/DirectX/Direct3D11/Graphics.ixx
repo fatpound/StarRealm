@@ -21,7 +21,7 @@ export namespace fatpound::win32::d3d11
 {
     class Graphics final
     {
-        friend class pipeline::Bindable;
+        friend pipeline::Bindable;
 
     public:
         struct SizeInfo final

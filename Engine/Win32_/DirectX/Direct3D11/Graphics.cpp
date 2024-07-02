@@ -17,8 +17,8 @@ module;
 
 module FatPound.Win32.Direct3D11.Graphics;
 
-namespace wrl = Microsoft::WRL;
 namespace dx = DirectX;
+namespace wrl = Microsoft::WRL;
 
 namespace fatpound::win32::d3d11
 {

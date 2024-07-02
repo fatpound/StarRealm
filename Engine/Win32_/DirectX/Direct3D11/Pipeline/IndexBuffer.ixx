@@ -26,7 +26,7 @@ export namespace fatpound::win32::d3d11::pipeline
 
 
     public:
-        UINT GetCount() const noexcept;
+        auto GetCount() const noexcept -> UINT;
 
 
     protected:

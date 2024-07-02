@@ -28,7 +28,7 @@ namespace fatpound::win32::d3d11::pipeline
         Bindable::GetDevice_(gfx)->CreateBuffer(&bd, &sd, &pIndexBuffer_);
     }
 
-    UINT IndexBuffer::GetCount() const noexcept
+    auto IndexBuffer::GetCount() const noexcept -> UINT
     {
         return count_;
     }

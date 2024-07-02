@@ -26,7 +26,7 @@ export namespace fatpound::win32::d3d11::pipeline
 
 
     public:
-        ID3DBlob* GetBytecode() const noexcept;
+        auto GetBytecode() const noexcept -> ID3DBlob*;
 
 
     protected:

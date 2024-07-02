@@ -15,7 +15,7 @@ export namespace fatpound::win32::io
 {
     class Keyboard final
     {
-        friend class NAMESPACE_D3D11::Window;
+        friend NAMESPACE_D3D11::Window;
 
     public:
         Keyboard() = default;

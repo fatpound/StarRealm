@@ -21,8 +21,8 @@ export namespace fatpound::win32::d3d11::pipeline
 
 
     protected:
-        static ID3D11Device* GetDevice_(Graphics& gfx) noexcept;
-        static ID3D11DeviceContext* GetContext_(Graphics& gfx) noexcept;
+        static auto GetDevice_(Graphics& gfx)  noexcept -> ID3D11Device*;
+        static auto GetContext_(Graphics& gfx) noexcept -> ID3D11DeviceContext*;
 
 
     private:

@@ -13,7 +13,7 @@ namespace fatpound::win32::d3d11::pipeline
 {
     VertexShader::VertexShader(Graphics& gfx, const std::wstring& path)
     {
-        D3DReadFileToBlob(path.c_str(), &pBytecodeBlob_);
+        ::D3DReadFileToBlob(path.c_str(), &pBytecodeBlob_);
 
         Bindable::GetDevice_(gfx)->CreateVertexShader(
             pBytecodeBlob_->GetBufferPointer(),
@@ -23,7 +23,7 @@ namespace fatpound::win32::d3d11::pipeline
         );
     }
 
-    ID3DBlob* VertexShader::GetBytecode() const noexcept
+    auto VertexShader::GetBytecode() const noexcept -> ID3DBlob*
     {
         return pBytecodeBlob_.Get();
     }
