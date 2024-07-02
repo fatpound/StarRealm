@@ -32,21 +32,21 @@ export namespace fatpound::win32::d3d11::pipeline
             D3D11_SUBRESOURCE_DATA initData = {};
             initData.pSysMem = structures.data();
 
-            Bindable::GetDevice_(gfx)->CreateBuffer(&sbd, &initData, &pConstantBuffer_);
+            Bindable::GetDevice_(gfx)->CreateBuffer(&sbd, &initData, &pStructuredBuffer_);
 
             D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
             srvDesc.Format = DXGI_FORMAT_UNKNOWN;
             srvDesc.ViewDimension = D3D11_SRV_DIMENSION_BUFFER;
             srvDesc.Buffer.ElementWidth = static_cast<UINT>(structures.size());
 
-            Bindable::GetDevice_(gfx)->CreateShaderResourceView(pConstantBuffer_.Get(), &srvDesc, &pShaderResourceView_);
+            Bindable::GetDevice_(gfx)->CreateShaderResourceView(pStructuredBuffer_.Get(), &srvDesc, &pShaderResourceView_);
             Bindable::GetContext_(gfx)->VSSetShaderResources(0u, 1u, pShaderResourceView_.GetAddressOf());
         }
 
 
     protected:
         Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> pShaderResourceView_ = nullptr;
-        Microsoft::WRL::ComPtr<ID3D11Buffer>             pConstantBuffer_     = nullptr;
+        Microsoft::WRL::ComPtr<ID3D11Buffer>             pStructuredBuffer_   = nullptr;
 
 
     private:
