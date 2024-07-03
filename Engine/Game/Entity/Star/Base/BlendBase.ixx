@@ -25,7 +25,7 @@ export namespace fatpound::starrealm::entity::star
         {
             DirectX::XMFLOAT3 pos;
 
-            fatpound::util::Color color;
+            NAMESPACE_UTIL::Color color;
         };
 
 
