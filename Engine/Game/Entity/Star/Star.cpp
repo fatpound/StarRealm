@@ -46,12 +46,9 @@ namespace fatpound::starrealm::entity
 
     bool Star::IsWithinArea(const dx::XMFLOAT3& position, const float& radius) const noexcept
     {
-        const dx::XMVECTOR& position_vec = dx::XMLoadFloat3(&position);
-        const dx::XMVECTOR& this_pos_vec = dx::XMLoadFloat3(&this->position_);
-        const dx::XMVECTOR& difference   = dx::XMVectorSubtract(this_pos_vec, position_vec);
+        const float distance = NAMESPACE_MATH::GetDistanceBetweenXMF3(this->position_, position);
+        const float radsum = this->radiuses_.outer_radius + radius;
 
-        const float& length = dx::XMVectorGetX(dx::XMVector3Length(difference));
-
-        return length < (this->radiuses_.outer_radius + radius);
+        return radsum > distance;
     }
 }

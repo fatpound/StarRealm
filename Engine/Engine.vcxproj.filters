@@ -252,6 +252,9 @@
     <ClCompile Include="Game\Entity\Star\Style\Type\Type.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Math\Math.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Win32_\FatWin32_.hpp">

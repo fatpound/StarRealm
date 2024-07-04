@@ -192,6 +192,7 @@
     <ClCompile Include="Game\Entity\Star\Style\Type\Type.ixx" />
     <ClCompile Include="Game\StarFactory.cpp" />
     <ClCompile Include="Game\StarFactory.ixx" />
+    <ClCompile Include="Math\Math.cpp" />
     <ClCompile Include="Util\Util.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Direct3D11.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Bindable.cpp" />
