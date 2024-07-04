@@ -27,9 +27,9 @@ export namespace fatpound::starrealm::entity::star
     concept Effect =
         std::same_as<C, BlendBase>
         or
-        std::same_as<C, MultiColorBase>
+        std::same_as<C, SingleColorBase>
         or
-        std::same_as<C, SingleColorBase>;
+        std::same_as<C, MultiColorBase>;
 
     template <Type T, Effect E>
     class StarBase : public Star
@@ -37,8 +37,8 @@ export namespace fatpound::starrealm::entity::star
         friend FilledBase;
         friend HollowBase;
         friend BlendBase;
-        friend MultiColorBase;
         friend SingleColorBase;
+        friend MultiColorBase;
 
         using Star::Star;
 
