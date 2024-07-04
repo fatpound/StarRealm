@@ -2,7 +2,7 @@ module;
 
 #include <DirectXMath.h>
 
-export module StarRealm.Entity.Star.ColorBase;
+export module StarRealm.Entity.Star.Style.Effect.ColorBase;
 
 import std;
 

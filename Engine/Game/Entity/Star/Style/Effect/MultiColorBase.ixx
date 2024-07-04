@@ -1,14 +1,14 @@
 module;
 
-#include "../../../../Win32_/FatWin32_.hpp"
+#include "../../../../../Win32_/FatWin32_.hpp"
 
 #include <DirectXMath.h>
 
 #include <d3d11.h>
 
-export module StarRealm.Entity.Star.MultiColorBase;
+export module StarRealm.Entity.Star.Style.Effect.MultiColorBase;
 
-import StarRealm.Entity.Star.ColorBase;
+import StarRealm.Entity.Star.Style.Effect.ColorBase;
 
 import FatPound.Win32.Direct3D11.Graphics;
 import FatPound.Win32.Direct3D11.Pipeline;

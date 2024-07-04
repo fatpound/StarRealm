@@ -5,8 +5,8 @@ module;
 export module StarRealm.Entity.Star.HollowBlend;
 
 import StarRealm.Entity.StarBase;
-import StarRealm.Entity.Star.HollowBase;
-import StarRealm.Entity.Star.BlendBase;
+import StarRealm.Entity.Star.Style.Type.HollowBase;
+import StarRealm.Entity.Star.Style.Effect.BlendBase;
 
 import FatPound.Win32;
 

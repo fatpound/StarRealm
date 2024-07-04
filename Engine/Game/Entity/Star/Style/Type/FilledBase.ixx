@@ -1,12 +1,12 @@
 module;
 
-#include "../../../../Win32_/FatWin32_.hpp"
+#include "../../../../../Win32_/FatWin32_.hpp"
 
 #include <DirectXMath.h>
 
 #include <d3d11.h>
 
-export module StarRealm.Entity.Star.FilledBase;
+export module StarRealm.Entity.Star.Style.Type.FilledBase;
 
 import FatPound.Win32.Direct3D11.Graphics;
 import FatPound.Win32.Direct3D11.Pipeline;

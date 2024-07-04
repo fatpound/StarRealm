@@ -178,16 +178,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game\Entity\Entity.ixx" />
-    <ClCompile Include="Game\Entity\Star\Base\Bases.ixx" />
-    <ClCompile Include="Game\Entity\Star\Base\BlendBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\Base\ColorBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\Base\FilledBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\Base\HollowBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\Base\MultiColorBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\Base\SingleColorBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Effect\Effect.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Style.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Effect\BlendBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Effect\ColorBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Type\FilledBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Type\HollowBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Effect\MultiColorBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Effect\SingleColorBase.ixx" />
     <ClCompile Include="Game\Entity\Star\Examples\Examples.ixx" />
     <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledExamples.ixx" />
     <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowExamples.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Type\Type.ixx" />
     <ClCompile Include="Game\StarFactory.cpp" />
     <ClCompile Include="Game\StarFactory.ixx" />
     <ClCompile Include="Util\Util.ixx" />

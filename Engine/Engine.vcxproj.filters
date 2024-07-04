@@ -207,25 +207,25 @@
     <ClCompile Include="Game\Entity\Star\StarBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Base\FilledBase.ixx">
+    <ClCompile Include="Game\Entity\Star\Style\Type\FilledBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Base\HollowBase.ixx">
+    <ClCompile Include="Game\Entity\Star\Style\Type\HollowBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Base\BlendBase.ixx">
+    <ClCompile Include="Game\Entity\Star\Style\Effect\BlendBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Base\MultiColorBase.ixx">
+    <ClCompile Include="Game\Entity\Star\Style\Effect\MultiColorBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Base\SingleColorBase.ixx">
+    <ClCompile Include="Game\Entity\Star\Style\Effect\SingleColorBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Base\ColorBase.ixx">
+    <ClCompile Include="Game\Entity\Star\Style\Effect\ColorBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Base\Bases.ixx">
+    <ClCompile Include="Game\Entity\Star\Style\Style.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\SBuffer.ixx">
@@ -244,6 +244,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledExamples.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Star\Style\Effect\Effect.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Star\Style\Type\Type.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

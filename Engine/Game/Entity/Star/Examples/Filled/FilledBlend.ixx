@@ -5,8 +5,8 @@ module;
 export module StarRealm.Entity.Star.FilledBlend;
 
 import StarRealm.Entity.StarBase;
-import StarRealm.Entity.Star.FilledBase;
-import StarRealm.Entity.Star.BlendBase;
+import StarRealm.Entity.Star.Style.Type.FilledBase;
+import StarRealm.Entity.Star.Style.Effect.BlendBase;
 
 import FatPound.Win32;
 
