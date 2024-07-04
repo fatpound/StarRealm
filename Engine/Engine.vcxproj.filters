@@ -159,43 +159,43 @@
     <ClCompile Include="Win32_\Win32.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\StarExamples.ixx">
+    <ClCompile Include="Game\Entity\Star\Examples\Examples.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Filled\FilledBlend.cpp">
+    <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledBlend.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Filled\FilledBlend.ixx">
+    <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledBlend.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Filled\FilledMulti.cpp">
+    <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledMulti.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Filled\FilledMulti.ixx">
+    <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledMulti.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Filled\FilledSingle.cpp">
+    <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledSingle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Filled\FilledSingle.ixx">
+    <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledSingle.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Hollow\HollowBlend.cpp">
+    <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowBlend.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Hollow\HollowBlend.ixx">
+    <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowBlend.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Hollow\HollowMulti.cpp">
+    <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowMulti.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Hollow\HollowMulti.ixx">
+    <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowMulti.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Hollow\HollowSingle.cpp">
+    <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowSingle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Hollow\HollowSingle.ixx">
+    <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowSingle.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Star\Star.cpp">
@@ -238,6 +238,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game\StarFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowExamples.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledExamples.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

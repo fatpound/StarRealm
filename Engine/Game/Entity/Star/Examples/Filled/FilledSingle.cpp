@@ -1,12 +1,12 @@
 module;
 
-#include "../../../../Win32_/FatWin32_.hpp"
+#include "../../../../../Win32_/FatWin32_.hpp"
 
 #include <DirectXMath.h>
 
 #include <d3d11.h>
 
-module StarRealm.Entity.Star.HollowSingle;
+module StarRealm.Entity.Star.FilledSingle;
 
 import FatPound.Win32;
 import FatPound.Util;
@@ -15,20 +15,20 @@ namespace dx = DirectX;
 
 namespace fatpound::starrealm::entity::star
 {
-    HollowSingle::HollowSingle(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
+    FilledSingle::FilledSingle(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
         :
-        StarBase<HollowBase, SingleColorBase>(desc)
+        StarBase<FilledBase, SingleColorBase>(desc)
     {
         if (not StarBase::IsStaticInitialized_())
         {
-            HollowBase::Init<StarBase>();
-            SingleColorBase::Init<StarBase, false>(gfx);
+            FilledBase::Init<StarBase>();
+            SingleColorBase::Init<StarBase>(gfx);
         }
 
-        const auto& vertices = Star::Make(radiuses_, position_, desc.flare_count);
+        const auto& vertices = Star::Make<true>(radiuses_, position_, desc.flare_count);
         AddBind_(std::make_unique<NAMESPACE_PIPELINE::VertexBuffer>(gfx, vertices));
 
-        const auto& indices = HollowBase::GenerateIndices<unsigned short int>(vertices.size());
+        const auto& indices = FilledBase::GenerateIndices(vertices);
         AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
 
         const auto& cbuf = SingleColorBase::ColorBase::GeneratePixelCBuffer();
