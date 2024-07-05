@@ -17,7 +17,7 @@ namespace fatpound::starrealm::entity::star
 {
     HollowBlend::HollowBlend(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
         :
-        StarBase<HollowBase, BlendBase>(desc)
+        StarBase<HollowBase, BlendBase>(gfx, desc)
     {
         if (not StarBase::IsStaticInitialized_())
         {
@@ -30,7 +30,5 @@ namespace fatpound::starrealm::entity::star
 
         const auto& indices = HollowBase::GenerateIndices<unsigned short int>(vertices.size());
         AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
-
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::TransformCBuffer<HollowBlend>>(gfx, *this));
     }
 }

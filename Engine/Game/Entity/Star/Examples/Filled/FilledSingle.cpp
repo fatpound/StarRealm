@@ -17,7 +17,7 @@ namespace fatpound::starrealm::entity::star
 {
     FilledSingle::FilledSingle(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
         :
-        StarBase<FilledBase, SingleColorBase>(desc)
+        StarBase<FilledBase, SingleColorBase>(gfx, desc)
     {
         if (not StarBase::IsStaticInitialized_())
         {
@@ -34,6 +34,5 @@ namespace fatpound::starrealm::entity::star
         const auto& cbuf = SingleColorBase::ColorBase::GeneratePixelCBuffer();
 
         AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::PixelCBuffer<SingleColorBase::ColorBase::CBuffer>>(gfx, cbuf));
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::TransformCBuffer<FilledSingle>>(gfx, *this));
     }
 }

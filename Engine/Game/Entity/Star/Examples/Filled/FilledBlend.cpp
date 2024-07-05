@@ -17,7 +17,7 @@ namespace fatpound::starrealm::entity::star
 {
     FilledBlend::FilledBlend(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
         :
-        StarBase<FilledBase, BlendBase>(desc)
+        StarBase<FilledBase, BlendBase>(gfx, desc)
     {
         if (not StarBase::IsStaticInitialized_())
         {
@@ -30,7 +30,5 @@ namespace fatpound::starrealm::entity::star
 
         const auto& indices = FilledBase::GenerateIndices(vertices);
         AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
-
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::TransformCBuffer<FilledBlend>>(gfx, *this));
     }
 }

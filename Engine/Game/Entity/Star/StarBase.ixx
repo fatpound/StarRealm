@@ -23,9 +23,13 @@ export namespace fatpound::starrealm::entity::star
         friend T;
         friend E;
 
-        using Star::Star;
-
     public:
+        StarBase(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
+            :
+            Star(desc)
+        {
+            AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::TransformCBuffer<StarBase>>(gfx, *this));
+        }
 
 
     protected:
