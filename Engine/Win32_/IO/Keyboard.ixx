@@ -6,7 +6,7 @@ export module FatPound.Win32.IO.Keyboard;
 
 import std;
 
-namespace fatpound::win32::d3d11
+namespace fatpound::win32
 {
     class Window;
 }
@@ -15,7 +15,7 @@ export namespace fatpound::win32::io
 {
     class Keyboard final
     {
-        friend NAMESPACE_D3D11::Window;
+        friend NAMESPACE_WIN32::Window;
 
     public:
         Keyboard() = default;

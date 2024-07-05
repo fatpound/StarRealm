@@ -1,8 +1,8 @@
 module;
 
-#include "../../FatWin32_.hpp"
+#include "FatWin32_.hpp"
 
-export module FatPound.Win32.Direct3D11.Window;
+export module FatPound.Win32.Window;
 
 import FatPound.Win32.Direct3D11.Graphics;
 import FatPound.Win32.IO;
@@ -10,7 +10,7 @@ import FatPound.Math;
 
 import std;
 
-export namespace fatpound::win32::d3d11
+export namespace fatpound::win32
 {
     class Window final
     {
@@ -51,7 +51,7 @@ export namespace fatpound::win32::d3d11
             return static_cast<N>(client_size_.height);
         }
 
-        Graphics& Gfx();
+        auto GetHwnd() const noexcept -> HWND;
 
         bool IsActive() const noexcept;
         bool IsMinimized() const noexcept;
@@ -105,8 +105,6 @@ export namespace fatpound::win32::d3d11
 
     private:
         HWND hWnd_;
-
-        std::unique_ptr<Graphics> pGfx_;
 
         const ClientSizeInfo client_size_;
 

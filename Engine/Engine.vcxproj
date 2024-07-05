@@ -285,8 +285,8 @@
     <ClCompile Include="Win32_\DirectX\Direct3D11\Graphics.cpp" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Graphics.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Visual\Visual.ixx" />
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Window.cpp" />
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Window.ixx" />
+    <ClCompile Include="Win32_\Window.cpp" />
+    <ClCompile Include="Win32_\Window.ixx" />
     <ClCompile Include="Win32_\IO\IO.ixx" />
     <ClCompile Include="Win32_\IO\Keyboard.cpp" />
     <ClCompile Include="Win32_\IO\Keyboard.ixx" />

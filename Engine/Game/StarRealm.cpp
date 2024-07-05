@@ -20,8 +20,8 @@ namespace fatpound::starrealm
 {
     Game::Game()
         :
-        wnd_(L"StarRealm", NAMESPACE_D3D11::Window::ClientSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
-        gfx_(wnd_.Gfx()),
+        wnd_(L"StarRealm",   NAMESPACE_WIN32::Window::ClientSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
+        gfx_(wnd_.GetHwnd(), NAMESPACE_D3D11::Graphics::SizeInfo{ wnd_.GetClientWidth<int>(), wnd_.GetClientHeight<int>() }), // they are the same as SCREEN_ MACROS
         camera_(Settings::minStarDepth_, Settings::maxStarDepth_),
         camera_controller_(camera_, wnd_.mouse, wnd_.kbd),
         stars_{ StarFactory{gfx_}.GetStars() }
@@ -47,7 +47,7 @@ namespace fatpound::starrealm
 
         while (true)
         {
-            error_code = NAMESPACE_D3D11::Window::ProcessMessages();
+            error_code = NAMESPACE_WIN32::Window::ProcessMessages();
 
             if (error_code) [[unlikely]]
             {

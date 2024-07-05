@@ -39,8 +39,9 @@ export namespace fatpound::starrealm
 
 
     private:
-        NAMESPACE_D3D11::Window wnd_;
-        NAMESPACE_D3D11::Graphics& gfx_;
+        NAMESPACE_WIN32::Window wnd_;
+
+        NAMESPACE_D3D11::Graphics gfx_;
         
         NAMESPACE_UTIL::Camera camera_;
         NAMESPACE_UTIL::CameraController camera_controller_;

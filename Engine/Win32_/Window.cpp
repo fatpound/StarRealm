@@ -1,6 +1,6 @@
 module;
 
-#include "../../FatWin32_.hpp"
+#include "FatWin32_.hpp"
 
 #define WINDOW_RECT_WIDTH       rect.right  - rect.left
 #define WINDOW_RECT_HEIGHT      rect.bottom - rect.top
@@ -26,9 +26,9 @@ module;
 
 #endif // IN_RELEASE
 
-module FatPound.Win32.Direct3D11.Window;
+module FatPound.Win32.Window;
 
-namespace fatpound::win32::d3d11
+namespace fatpound::win32
 {
     // Window
 
@@ -67,13 +67,6 @@ namespace fatpound::win32::d3d11
             throw std::runtime_error("Error occured when creating HWND!");
         }
 
-        pGfx_ = std::make_unique<Graphics>(hWnd_, Graphics::SizeInfo{ CLIENT_WIDTH, CLIENT_HEIGHT });
-
-        if (pGfx_ == nullptr) [[unlikely]]
-        {
-            throw std::runtime_error("Error occured when creating Graphics!");
-        }
-
         ShowWindow(hWnd_, /*SW_SHOW*/ SW_SHOWDEFAULT);
         UpdateWindow(hWnd_);
     }
@@ -100,9 +93,9 @@ namespace fatpound::win32::d3d11
         return std::nullopt;
     }
 
-    Graphics& Window::Gfx()
+    auto Window::GetHwnd() const noexcept -> HWND
     {
-        return *pGfx_;
+        return hWnd_;
     }
 
     bool Window::IsActive() const noexcept
