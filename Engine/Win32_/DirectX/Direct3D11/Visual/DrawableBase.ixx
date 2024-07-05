@@ -4,10 +4,10 @@ module;
 
 #include <DirectXMath.h>
 
-export module FatPound.Win32.Direct3D11.Visual.DrawableBase;
+export module FatPound.Win32.D3D11.Visual.DrawableBase;
 
-import FatPound.Win32.Direct3D11.Visual.Drawable;
-import FatPound.Win32.Direct3D11.Pipeline;
+import FatPound.Win32.D3D11.Visual.Drawable;
+import FatPound.Win32.D3D11.Pipeline;
 
 import std;
 

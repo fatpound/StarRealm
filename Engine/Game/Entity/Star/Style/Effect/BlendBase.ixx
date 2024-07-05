@@ -10,8 +10,8 @@ export module StarRealm.Entity.Star.Style.Effect.BlendBase;
 
 import StarRealm.Entity.Star;
 
-import FatPound.Win32.Direct3D11.Graphics;
-import FatPound.Win32.Direct3D11.Pipeline;
+import FatPound.Win32.D3D11.Graphics;
+import FatPound.Win32.D3D11.Pipeline;
 import FatPound.Util.Color;
 
 import std;

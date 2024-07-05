@@ -15,7 +15,7 @@ module;
 #pragma comment(lib, "d3d11")
 #pragma comment(lib, "D3DCompiler")
 
-module FatPound.Win32.Direct3D11.Graphics;
+module FatPound.Win32.D3D11.Graphics;
 
 namespace dx = DirectX;
 namespace wrl = Microsoft::WRL;

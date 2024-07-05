@@ -4,7 +4,7 @@ module;
 
 export module FatPound.Win32.Window;
 
-import FatPound.Win32.Direct3D11.Graphics;
+import FatPound.Win32.D3D11.Graphics;
 import FatPound.Win32.IO;
 import FatPound.Math;
 

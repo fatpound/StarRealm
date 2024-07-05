@@ -6,10 +6,10 @@ module;
 
 #include <wrl.h>
 
-export module FatPound.Win32.Direct3D11.Pipeline.InputLayout;
+export module FatPound.Win32.D3D11.Pipeline.InputLayout;
 
-import FatPound.Win32.Direct3D11.Pipeline.Bindable;
-import FatPound.Win32.Direct3D11.Graphics;
+import FatPound.Win32.D3D11.Pipeline.Bindable;
+import FatPound.Win32.D3D11.Graphics;
 
 import std;
 
