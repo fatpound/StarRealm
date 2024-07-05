@@ -1,14 +1,14 @@
 module;
 
-#include "../../../FatWin32_.hpp"
+#include "../../../../FatWin32_.hpp"
 
 #include <d3d11.h>
 
 #include <wrl.h>
 
-export module FatPound.Win32.D3D11.Pipeline.VertexCBuffer;
+export module FatPound.Win32.D3D11.Pipeline.Resource.VertexCBuffer;
 
-import FatPound.Win32.D3D11.Pipeline.CBuffer;
+import FatPound.Win32.D3D11.Pipeline.Resource.CBuffer;
 import FatPound.Win32.D3D11.Pipeline.Bindable;
 import FatPound.Win32.D3D11.Graphics;
 
