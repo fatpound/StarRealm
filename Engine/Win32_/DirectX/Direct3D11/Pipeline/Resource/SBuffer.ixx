@@ -6,7 +6,7 @@ module;
 
 #include <wrl.h>
 
-export module FatPound.Win32.D3D11.Pipeline.Resource.SBuffer;
+export module FatPound.Win32.D3D11.Pipeline.Resource:SBuffer;
 
 import FatPound.Win32.D3D11.Pipeline.Bindable;
 import FatPound.Win32.D3D11.Graphics;

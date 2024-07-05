@@ -6,9 +6,9 @@ module;
 
 #include <wrl.h>
 
-export module FatPound.Win32.D3D11.Pipeline.Resource.PixelCBuffer;
+export module FatPound.Win32.D3D11.Pipeline.Resource:PixelCBuffer;
 
-import FatPound.Win32.D3D11.Pipeline.Resource.CBuffer;
+import :CBuffer;
 import FatPound.Win32.D3D11.Pipeline.Bindable;
 import FatPound.Win32.D3D11.Graphics;
 

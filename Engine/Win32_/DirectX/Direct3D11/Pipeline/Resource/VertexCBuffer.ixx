@@ -6,9 +6,9 @@ module;
 
 #include <wrl.h>
 
-export module FatPound.Win32.D3D11.Pipeline.Resource.VertexCBuffer;
+export module FatPound.Win32.D3D11.Pipeline.Resource:VertexCBuffer;
 
-import FatPound.Win32.D3D11.Pipeline.Resource.CBuffer;
+import :CBuffer;
 import FatPound.Win32.D3D11.Pipeline.Bindable;
 import FatPound.Win32.D3D11.Graphics;
 
