@@ -17,7 +17,7 @@ export namespace fatpound::starrealm
     public:
         struct Settings final
         {
-            static constexpr auto star_count_ = 150u;
+            static constexpr auto starCount_ = 150u;
             static constexpr auto minFlareCount_ = 2u;
             static constexpr auto maxFlareCount_ = 7u;
 
@@ -39,9 +39,9 @@ export namespace fatpound::starrealm
             :
             gfx_(gfx)
         {
-            stars_.reserve(Settings::star_count_);
+            stars_.reserve(Settings::starCount_);
 
-            while (stars_.size() < Settings::star_count_)
+            while (stars_.size() < Settings::starCount_)
             {
                 stars_.push_back(GenerateStar_());
             }
