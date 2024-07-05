@@ -10,7 +10,7 @@ module;
 
 module FatPound.Win32.D3D11.Pipeline.Resource.TransformCBuffer;
 
-namespace fatpound::win32::d3d11::pipeline
+namespace fatpound::win32::d3d11::pipeline::resource
 {
     TransformCBuffer::TransformCBuffer(Graphics& gfx, const NAMESPACE_VISUAL::Drawable& parent)
         :

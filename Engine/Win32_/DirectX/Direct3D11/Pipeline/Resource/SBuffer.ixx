@@ -13,7 +13,7 @@ import FatPound.Win32.D3D11.Graphics;
 
 import std;
 
-export namespace fatpound::win32::d3d11::pipeline
+export namespace fatpound::win32::d3d11::pipeline::resource
 {
     template <typename S>
     class SBuffer : public Bindable

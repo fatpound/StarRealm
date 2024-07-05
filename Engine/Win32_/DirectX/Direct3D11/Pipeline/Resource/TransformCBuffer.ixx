@@ -15,7 +15,7 @@ import FatPound.Win32.D3D11.Pipeline.Bindable;
 import FatPound.Win32.D3D11.Visual.Drawable;
 import FatPound.Win32.D3D11.Graphics;
 
-export namespace fatpound::win32::d3d11::pipeline
+export namespace fatpound::win32::d3d11::pipeline::resource
 {
     class TransformCBuffer final : public Bindable
     {

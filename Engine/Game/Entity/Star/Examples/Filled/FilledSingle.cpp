@@ -33,7 +33,7 @@ namespace fatpound::starrealm::entity::star
 
         const auto& cbuf = SingleColorBase::ColorBase::GeneratePixelCBuffer();
 
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE::PixelCBuffer<SingleColorBase::ColorBase::CBuffer>>(gfx, cbuf));
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE::TransformCBuffer>(gfx, *this));
+        AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::PixelCBuffer<SingleColorBase::ColorBase::CBuffer>>(gfx, cbuf));
+        AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::TransformCBuffer>(gfx, *this));
     }
 }
