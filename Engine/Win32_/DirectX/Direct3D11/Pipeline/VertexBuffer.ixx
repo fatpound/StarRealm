@@ -28,8 +28,8 @@ export namespace fatpound::win32::d3d11::pipeline
             bd.Usage = D3D11_USAGE_DEFAULT;
             bd.CPUAccessFlags = 0u;
             bd.MiscFlags = 0u;
-            bd.ByteWidth = static_cast<UINT>(sizeof(V) * vertices.size());
-            bd.StructureByteStride = sizeof(V);
+            bd.ByteWidth = static_cast<UINT>(stride_ * vertices.size());
+            bd.StructureByteStride = stride_;
 
             D3D11_SUBRESOURCE_DATA sd = {};
             sd.pSysMem = vertices.data();
