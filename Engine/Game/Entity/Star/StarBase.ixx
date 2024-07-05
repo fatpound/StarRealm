@@ -17,20 +17,6 @@ import std;
 
 export namespace fatpound::starrealm::entity::star
 {
-    template <class C>
-    concept Type =
-        std::same_as<C, FilledBase>
-        or
-        std::same_as<C, HollowBase>;
-
-    template <class C>
-    concept Effect =
-        std::same_as<C, BlendBase>
-        or
-        std::same_as<C, SingleColorBase>
-        or
-        std::same_as<C, MultiColorBase>;
-
     template <Type T, Effect E>
     class StarBase : public Star
     {
