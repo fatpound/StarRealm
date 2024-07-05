@@ -212,7 +212,6 @@
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\SBuffer.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Topology.cpp" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Topology.ixx" />
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\TransformCBuffer.cpp" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\TransformCBuffer.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexBuffer.cpp" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexBuffer.ixx" />

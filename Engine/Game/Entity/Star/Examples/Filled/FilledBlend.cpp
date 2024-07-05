@@ -31,6 +31,6 @@ namespace fatpound::starrealm::entity::star
         const auto& indices = FilledBase::GenerateIndices(vertices);
         AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
 
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::TransformCBuffer>(gfx, *this));
+        AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::TransformCBuffer<FilledBlend>>(gfx, *this));
     }
 }

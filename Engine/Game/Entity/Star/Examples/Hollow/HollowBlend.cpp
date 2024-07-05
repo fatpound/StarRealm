@@ -31,6 +31,6 @@ namespace fatpound::starrealm::entity::star
         const auto& indices = HollowBase::GenerateIndices<unsigned short int>(vertices.size());
         AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
 
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::TransformCBuffer>(gfx, *this));
+        AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::TransformCBuffer<HollowBlend>>(gfx, *this));
     }
 }
