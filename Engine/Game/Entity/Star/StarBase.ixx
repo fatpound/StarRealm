@@ -20,11 +20,8 @@ export namespace fatpound::starrealm::entity::star
     template <Type T, Effect E>
     class StarBase : public Star
     {
-        friend FilledBase;
-        friend HollowBase;
-        friend BlendBase;
-        friend SingleColorBase;
-        friend MultiColorBase;
+        friend T;
+        friend E;
 
         using Star::Star;
 
