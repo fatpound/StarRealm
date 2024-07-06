@@ -77,11 +77,7 @@ namespace fatpound::starrealm
 
         for (auto& star : stars_)
         {
-            if (wnd_.kbd.KeyIsPressed(VK_SPACE)) [[unlikely]]
-            {
-                star->Update(0.0f);
-            }
-            else [[likely]]
+            if (not wnd_.kbd.KeyIsPressed(VK_SPACE)) [[likely]]
             {
                 star->Update(delta_time);
             }
