@@ -4,7 +4,6 @@ module;
 
 export module FatPound.Win32.Window;
 
-import FatPound.Win32.D3D11.Graphics;
 import FatPound.Win32.IO;
 import FatPound.Math;
 
@@ -65,7 +64,7 @@ export namespace fatpound::win32
         NAMESPACE_IO::Keyboard kbd;
         NAMESPACE_IO::Mouse mouse;
 
-            
+        
     protected:
 
 
