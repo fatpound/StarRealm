@@ -18,12 +18,6 @@ export namespace fatpound::starrealm::entity::star
     class HollowBase final
     {
     public:
-        template <class Base>
-        static void Init()
-        {
-            Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::Topology>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
-        }
-
         template <typename T>
         static auto GenerateIndices(std::size_t vertex_count) -> std::vector<T>
         {
@@ -39,6 +33,12 @@ export namespace fatpound::starrealm::entity::star
             indices.emplace_back(static_cast<T>(0u));
 
             return indices;
+        }
+
+        template <class Base>
+        static void Init()
+        {
+            Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::Topology>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
         }
 
 

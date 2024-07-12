@@ -20,7 +20,10 @@ export namespace fatpound::starrealm::entity::star
     class SingleColorBase final : public ColorBase
     {
     public:
-        template <class Base, bool ForFilled = true>
+        template <
+            class Base,
+            bool ForFilled = true
+        >
         static void Init(NAMESPACE_D3D11::Graphics& gfx)
         {
             auto pvs = std::make_unique<NAMESPACE_PIPELINE::VertexShader>(gfx, L"VSColorSingle.cso");
