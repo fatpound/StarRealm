@@ -24,9 +24,6 @@
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Bindable.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\CBuffer.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\IndexBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -37,9 +34,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\InputLayout.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\PixelCBuffer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\PixelShader.cpp">
@@ -54,19 +48,10 @@
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Topology.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\TransformCBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\TransformCBuffer.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexBuffer.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexCBuffer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexShader.cpp">
@@ -228,12 +213,6 @@
     <ClCompile Include="Game\Entity\Star\Style\Style.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\SBuffer.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\PixelSBuffer.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Game\StarFactory.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -256,6 +235,30 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Star\Style\Effect\ColorBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\CBuffer.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\PixelCBuffer.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\PixelSBuffer.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\Resource.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\SBuffer.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\TransformCBuffer.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\VertexCBuffer.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\DirectX.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
