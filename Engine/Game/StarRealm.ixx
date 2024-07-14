@@ -24,7 +24,7 @@ export namespace fatpound::starrealm
 
         Game(Game&& src) = delete;
         Game& operator = (Game&& src) = delete;
-        ~Game() noexcept;
+        ~Game() noexcept = default;
 
 
     public:

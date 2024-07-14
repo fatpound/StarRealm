@@ -24,7 +24,7 @@ namespace fatpound::starrealm
         gfx_(wnd_.GetHwnd(), NAMESPACE_D3D11::Graphics::SizeInfo{ wnd_.GetClientWidth<int>(), wnd_.GetClientHeight<int>() }), // they are the same as SCREEN_ MACROS
         camera_(Settings::minStarDepth_, Settings::maxStarDepth_),
         camera_controller_(camera_, wnd_.mouse, wnd_.kbd),
-        stars_{ StarFactory{gfx_}.GetStars() }
+        stars_{ StarFactory{ gfx_ }.GetStars() }
     {
         gfx_.SetProjection(
             dx::XMMatrixPerspectiveLH(
@@ -34,11 +34,6 @@ namespace fatpound::starrealm
                 Settings::maxStarDepth_ * 2.0f
             )
         );
-    }
-
-    Game::~Game() noexcept
-    {
-
     }
 
     int Game::Go()

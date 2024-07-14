@@ -15,9 +15,9 @@ namespace fatpound::win32::d3d11::visual
             bindable->Bind(gfx);
         }
 
-        for (auto& bindable : this->GetStaticBinds_())
+        for (auto& static_bindable : this->GetStaticBinds_())
         {
-            bindable->Bind(gfx);
+            static_bindable->Bind(gfx);
         }
 
         gfx.DrawIndexed(pCIndexBuffer_->GetCount());
