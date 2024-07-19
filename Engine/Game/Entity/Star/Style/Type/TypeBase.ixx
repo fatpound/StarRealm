@@ -2,6 +2,8 @@ module;
 
 export module StarRealm.Entity.Star.Style.TypeBase;
 
+import StarRealm.Entity.Star.StyleBase;
+
 import std;
 
 export namespace fatpound::starrealm::entity::star
@@ -13,5 +15,5 @@ export namespace fatpound::starrealm::entity::star
     };
 
     template <class C>
-    concept Type = std::derived_from<C, StyleType<C>>;
+    concept Type = Style<C, StyleType>;
 }

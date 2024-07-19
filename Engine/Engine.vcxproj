@@ -183,6 +183,7 @@
     <ClCompile Include="Game\Entity\Star\Style\Style.ixx" />
     <ClCompile Include="Game\Entity\Star\Style\Effect\BlendBase.ixx" />
     <ClCompile Include="Game\Entity\Star\Style\Effect\ColorBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\StyleBase.ixx" />
     <ClCompile Include="Game\Entity\Star\Style\Type\FilledBase.ixx" />
     <ClCompile Include="Game\Entity\Star\Style\Type\HollowBase.ixx" />
     <ClCompile Include="Game\Entity\Star\Style\Effect\MultiColorBase.ixx" />
