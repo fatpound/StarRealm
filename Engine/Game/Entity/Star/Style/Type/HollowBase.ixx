@@ -8,6 +8,8 @@ module;
 
 export module StarRealm.Entity.Star.Style.Type.HollowBase;
 
+import StarRealm.Entity.Star.Style.TypeBase;
+
 import FatPound.Win32.D3D11.Graphics;
 import FatPound.Win32.D3D11.Pipeline;
 
@@ -15,7 +17,7 @@ import std;
 
 export namespace fatpound::starrealm::entity::star
 {
-    class HollowBase final
+    class HollowBase final : public StyleType<HollowBase>
     {
     public:
         template <typename T>
