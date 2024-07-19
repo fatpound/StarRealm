@@ -178,8 +178,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game\Entity\Entity.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Effect\ColorBase.cpp" />
     <ClCompile Include="Game\Entity\Star\Style\Effect\Effect.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Effect\EffectBase.ixx" />
     <ClCompile Include="Game\Entity\Star\Style\Style.ixx" />
     <ClCompile Include="Game\Entity\Star\Style\Effect\BlendBase.ixx" />
     <ClCompile Include="Game\Entity\Star\Style\Effect\ColorBase.ixx" />

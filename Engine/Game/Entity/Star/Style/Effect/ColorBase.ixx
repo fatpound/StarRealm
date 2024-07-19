@@ -4,11 +4,14 @@ module;
 
 export module StarRealm.Entity.Star.Style.Effect.ColorBase;
 
+import StarRealm.Entity.Star.Style.EffectBase;
+
 import std;
 
 export namespace fatpound::starrealm::entity::star
 {
-    class ColorBase
+    template <class C>
+    class ColorBase : public StyleEffect<C>
     {
     public:
         struct CBuffer final
@@ -26,9 +29,45 @@ export namespace fatpound::starrealm::entity::star
         
 
     public:
-        static auto GeneratePixelCBuffer() -> CBuffer;
+        static auto GeneratePixelCBuffer() -> CBuffer
+        {
+            std::minstd_rand mrng(std::random_device{}());
+            std::uniform_real_distribution<float> rgb_dist(0.0f, 1.0f);
 
-        static auto GeneratePixelSBuffer(std::size_t color_count) -> SBuffer;
+            CBuffer cbuf =
+            {
+                {
+                    rgb_dist(mrng),
+                    rgb_dist(mrng),
+                    rgb_dist(mrng),
+                    1.0f
+                }
+            };
+
+            return cbuf;
+        }
+
+        static auto GeneratePixelSBuffer(std::size_t color_count) -> SBuffer
+        {
+            std::minstd_rand mrng(std::random_device{}());
+            std::uniform_real_distribution<float> rgb_dist(0.0f, 1.0f);
+
+            SBuffer sbuf = {};
+
+            sbuf.vertex_colors.reserve(color_count);
+
+            for (std::size_t i = 0u; i < color_count; ++i)
+            {
+                sbuf.vertex_colors.emplace_back(
+                    rgb_dist(mrng),
+                    rgb_dist(mrng),
+                    rgb_dist(mrng),
+                    1.0f
+                );
+            }
+
+            return sbuf;
+        }
 
 
     protected:

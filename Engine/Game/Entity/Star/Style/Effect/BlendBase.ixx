@@ -8,6 +8,8 @@ module;
 
 export module StarRealm.Entity.Star.Style.Effect.BlendBase;
 
+import StarRealm.Entity.Star.Style.EffectBase;
+
 import StarRealm.Entity.Star;
 
 import FatPound.Win32.D3D11.Graphics;
@@ -18,7 +20,7 @@ import std;
 
 export namespace fatpound::starrealm::entity::star
 {
-    class BlendBase final
+    class BlendBase final : public StyleEffect<BlendBase>
     {
     public:
         struct Vertex final

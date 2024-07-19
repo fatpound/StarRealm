@@ -234,9 +234,6 @@
     <ClCompile Include="Math\Math.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Style\Effect\ColorBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\CBuffer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -262,6 +259,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Star\Style\Type\TypeBase.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Star\Style\Effect\EffectBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

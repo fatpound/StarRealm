@@ -17,7 +17,7 @@ import std;
 
 export namespace fatpound::starrealm::entity::star
 {
-    class MultiColorBase final : public ColorBase
+    class MultiColorBase final : public ColorBase<MultiColorBase>
     {
     public:
         template <
