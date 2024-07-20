@@ -189,8 +189,8 @@
     <ClCompile Include="Game\Entity\Star\Style\Effect\MultiColorBase.ixx" />
     <ClCompile Include="Game\Entity\Star\Style\Effect\SingleColorBase.ixx" />
     <ClCompile Include="Game\Entity\Star\Examples\Examples.ixx" />
-    <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledExamples.ixx" />
-    <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowExamples.ixx" />
+    <ClCompile Include="Game\Entity\Star\Examples\Filled\Filled.ixx" />
+    <ClCompile Include="Game\Entity\Star\Examples\Hollow\Hollow.ixx" />
     <ClCompile Include="Game\Entity\Star\Style\Type\Type.ixx" />
     <ClCompile Include="Game\Entity\Star\Style\Type\TypeBase.ixx" />
     <ClCompile Include="Game\StarFactory.cpp" />

@@ -11,6 +11,7 @@ module;
 export module FatPound.Win32.D3D11.Pipeline.Resource:TransformCBuffer;
 
 import :VertexCBuffer;
+
 import FatPound.Win32.D3D11.Pipeline.Bindable;
 import FatPound.Win32.D3D11.Graphics;
 
