@@ -8,7 +8,7 @@ import StarRealm.Entity.StarBase;
 import StarRealm.Entity.Star.Style.Type.FilledBase;
 import StarRealm.Entity.Star.Style.Effect.SingleColorBase;
 
-import FatPound.Win32;
+import FatPound;
 
 export namespace starrealm::entity::star
 {

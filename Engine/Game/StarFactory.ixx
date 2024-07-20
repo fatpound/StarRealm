@@ -6,7 +6,7 @@ export module StarRealm.StarFactory;
 
 export import StarRealm.Entity;
 
-import FatPound.Win32.D3D11;
+import FatPound;
 
 import std;
 

@@ -4,10 +4,9 @@ module;
 
 export module StarRealm;
 
-import FatPound.Win32;
-import FatPound.Util;
-
 import StarRealm.StarFactory;
+
+import FatPound;
 
 import std;
 

@@ -6,8 +6,7 @@ module;
 
 export module StarRealm.Entity.Star;
 
-import FatPound.Win32;
-import FatPound.Math;
+import FatPound;
 
 import std;
 

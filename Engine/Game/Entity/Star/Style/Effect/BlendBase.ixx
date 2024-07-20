@@ -9,12 +9,9 @@ module;
 export module StarRealm.Entity.Star.Style.Effect.BlendBase;
 
 import StarRealm.Entity.Star.Style.EffectBase;
-
 import StarRealm.Entity.Star;
 
-import FatPound.Win32.D3D11.Graphics;
-import FatPound.Win32.D3D11.Pipeline;
-import FatPound.Util.Color;
+import FatPound;
 
 import std;
 

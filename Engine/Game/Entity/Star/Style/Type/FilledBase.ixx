@@ -10,8 +10,7 @@ export module StarRealm.Entity.Star.Style.Type.FilledBase;
 
 import StarRealm.Entity.Star.Style.TypeBase;
 
-import FatPound.Win32.D3D11.Graphics;
-import FatPound.Win32.D3D11.Pipeline;
+import FatPound;
 
 import std;
 

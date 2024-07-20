@@ -219,12 +219,6 @@
     <ClCompile Include="Game\StarFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowExamples.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledExamples.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Entity\Star\Style\Effect\Effect.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -265,6 +259,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Star\Style\StyleBase.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Star\Examples\Filled\Filled.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Star\Examples\Hollow\Hollow.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FatPound.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

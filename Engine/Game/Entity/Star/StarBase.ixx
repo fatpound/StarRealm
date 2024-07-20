@@ -11,7 +11,7 @@ export module StarRealm.Entity.StarBase;
 import StarRealm.Entity.Star;
 import StarRealm.Entity.Star.Style;
 
-import FatPound.Win32;
+import FatPound;
 
 import std;
 

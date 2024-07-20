@@ -8,7 +8,7 @@ import StarRealm.Entity.StarBase;
 import StarRealm.Entity.Star.Style.Type.HollowBase;
 import StarRealm.Entity.Star.Style.Effect.BlendBase;
 
-import FatPound.Win32;
+import FatPound;
 
 export namespace starrealm::entity::star
 {

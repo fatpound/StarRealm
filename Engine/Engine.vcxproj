@@ -177,6 +177,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FatPound.ixx" />
     <ClCompile Include="Game\Entity\Entity.ixx" />
     <ClCompile Include="Game\Entity\Star\Style\Effect\Effect.ixx" />
     <ClCompile Include="Game\Entity\Star\Style\Effect\EffectBase.ixx" />

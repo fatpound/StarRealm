@@ -8,8 +8,7 @@ module;
 
 module StarRealm.Entity.Star.HollowSingle;
 
-import FatPound.Win32;
-import FatPound.Util;
+import FatPound;
 
 namespace dx = DirectX;
 
