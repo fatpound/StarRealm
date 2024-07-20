@@ -8,7 +8,7 @@ module StarRealm.StarFactory;
 
 namespace dx = DirectX;
 
-namespace fatpound::starrealm
+namespace starrealm
 {
     auto StarFactory::GetStars() && -> std::vector<std::unique_ptr<entity::Star>>&&
     {

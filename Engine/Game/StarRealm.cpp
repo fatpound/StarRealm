@@ -16,7 +16,7 @@ module StarRealm;
 
 namespace dx = DirectX;
 
-namespace fatpound::starrealm
+namespace starrealm
 {
     Game::Game()
         :

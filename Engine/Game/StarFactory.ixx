@@ -10,7 +10,7 @@ import FatPound.Win32.D3D11;
 
 import std;
 
-export namespace fatpound::starrealm
+export namespace starrealm
 {
     class StarFactory final
     {

@@ -10,7 +10,7 @@ import StarRealm.Entity.Star.Style.Effect.MultiColorBase;
 
 import FatPound.Win32;
 
-export namespace fatpound::starrealm::entity::star
+export namespace starrealm::entity::star
 {
     class FilledMulti final : public StarBase<FilledBase, MultiColorBase>
     {

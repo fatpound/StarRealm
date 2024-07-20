@@ -18,7 +18,7 @@ import FatPound.Util.Color;
 
 import std;
 
-export namespace fatpound::starrealm::entity::star
+export namespace starrealm::entity::star
 {
     class BlendBase final : public StyleEffect<BlendBase>
     {

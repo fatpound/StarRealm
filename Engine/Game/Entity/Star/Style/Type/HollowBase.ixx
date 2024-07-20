@@ -15,7 +15,7 @@ import FatPound.Win32.D3D11.Pipeline;
 
 import std;
 
-export namespace fatpound::starrealm::entity::star
+export namespace starrealm::entity::star
 {
     class HollowBase final : public StyleType<HollowBase>
     {

@@ -24,7 +24,7 @@ concept MyVertex = requires(V vertex)
         requires { vertex.pos; };
 };
 
-export namespace fatpound::starrealm::entity::star
+export namespace starrealm::entity::star
 {
     class FilledBase final : public StyleType<FilledBase>
     {

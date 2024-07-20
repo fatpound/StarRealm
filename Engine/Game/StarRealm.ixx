@@ -11,7 +11,7 @@ import StarRealm.StarFactory;
 
 import std;
 
-export namespace fatpound::starrealm
+export namespace starrealm
 {
     class Game final
     {

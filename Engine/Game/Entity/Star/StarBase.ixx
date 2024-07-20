@@ -15,7 +15,7 @@ import FatPound.Win32;
 
 import std;
 
-export namespace fatpound::starrealm::entity::star
+export namespace starrealm::entity::star
 {
     template <Type T, Effect E>
     class StarBase : public Star

@@ -4,7 +4,7 @@ export module StarRealm.Entity.Star.StyleBase;
 
 import std;
 
-export namespace fatpound::starrealm::entity::star
+export namespace starrealm::entity::star
 {
     template <
         class C,

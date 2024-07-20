@@ -16,7 +16,7 @@ int APIENTRY wWinMain(
 {
 	try
 	{
-		return fatpound::starrealm::Game{}.Go();
+		return starrealm::Game{}.Go();
 	}
 	catch (const std::exception& ex)
 	{

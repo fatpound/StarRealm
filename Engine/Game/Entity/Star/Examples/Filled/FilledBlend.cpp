@@ -13,7 +13,7 @@ import FatPound.Util;
 
 namespace dx = DirectX;
 
-namespace fatpound::starrealm::entity::star
+namespace starrealm::entity::star
 {
     FilledBlend::FilledBlend(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
         :

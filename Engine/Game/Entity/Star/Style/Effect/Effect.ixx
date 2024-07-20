@@ -10,7 +10,7 @@ export import StarRealm.Entity.Star.Style.Effect.MultiColorBase;
 
 import std;
 
-export namespace fatpound::starrealm::entity::star
+export namespace starrealm::entity::star
 {
     
 }

@@ -9,7 +9,7 @@ export import StarRealm.Entity.Star.Style.Type.HollowBase;
 
 import std;
 
-export namespace fatpound::starrealm::entity::star
+export namespace starrealm::entity::star
 {
 
 }

@@ -11,7 +11,7 @@ import FatPound.Math;
 
 import std;
 
-export namespace fatpound::starrealm::entity
+export namespace starrealm::entity
 {
     class Star : public NAMESPACE_VISUAL::Drawable
     {

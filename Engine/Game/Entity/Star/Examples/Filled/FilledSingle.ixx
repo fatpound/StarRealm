@@ -10,7 +10,7 @@ import StarRealm.Entity.Star.Style.Effect.SingleColorBase;
 
 import FatPound.Win32;
 
-export namespace fatpound::starrealm::entity::star
+export namespace starrealm::entity::star
 {
     class FilledSingle final : public StarBase<FilledBase, SingleColorBase>
     {

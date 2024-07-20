@@ -8,7 +8,7 @@ import StarRealm.Entity.Star.Style.EffectBase;
 
 import std;
 
-export namespace fatpound::starrealm::entity::star
+export namespace starrealm::entity::star
 {
     template <class C>
     class ColorBase : public StyleEffect<C>
