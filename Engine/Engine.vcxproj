@@ -221,7 +221,7 @@
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\VertexCBuffer.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexShader.cpp" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexShader.ixx" />
-    <ClCompile Include="Util\Camera\Camera.cpp">
+    <ClCompile Include="Util\Camera.cpp">
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </AdditionalModuleDependencies>
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -231,27 +231,7 @@
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </AdditionalModuleDependencies>
     </ClCompile>
-    <ClCompile Include="Util\Camera\Camera.ixx">
-      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </AdditionalModuleDependencies>
-      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </AdditionalModuleDependencies>
-      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </AdditionalModuleDependencies>
-      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </AdditionalModuleDependencies>
-    </ClCompile>
-    <ClCompile Include="Util\Camera\CameraController.cpp">
-      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </AdditionalModuleDependencies>
-      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </AdditionalModuleDependencies>
-      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </AdditionalModuleDependencies>
-      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </AdditionalModuleDependencies>
-    </ClCompile>
-    <ClCompile Include="Util\Camera\CameraController.ixx">
+    <ClCompile Include="Util\Camera.ixx">
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </AdditionalModuleDependencies>
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

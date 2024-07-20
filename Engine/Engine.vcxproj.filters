@@ -114,16 +114,10 @@
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Pipeline.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Util\Camera\Camera.cpp">
+    <ClCompile Include="Util\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Util\Camera\Camera.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Util\Camera\CameraController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Util\Camera\CameraController.ixx">
+    <ClCompile Include="Util\Camera.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Math\Math.ixx">
