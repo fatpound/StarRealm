@@ -10,6 +10,8 @@ module;
 
 export module FatPound.Win32.D3D11.Graphics;
 
+import FatPound.Win32.D3D11.Pipeline.System;
+
 import std;
 
 namespace fatpound::win32::d3d11::pipeline

@@ -4,6 +4,7 @@ export module FatPound.Win32.D3D11.Pipeline;
 
 export import FatPound.Win32.D3D11.Pipeline.Bindable;
 export import FatPound.Win32.D3D11.Pipeline.Resource;
+export import FatPound.Win32.D3D11.Pipeline.System;
 
 export import :Topology;
 export import :InputLayout;

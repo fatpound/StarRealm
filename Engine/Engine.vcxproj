@@ -213,6 +213,9 @@
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\PixelShader.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\Resource.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\SBuffer.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\System\System.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\System\Viewport.cxx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\System\Viewport.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Topology.cxx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Topology.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\TransformCBuffer.ixx" />

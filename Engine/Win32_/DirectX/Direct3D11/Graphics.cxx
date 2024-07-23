@@ -176,15 +176,7 @@ namespace fatpound::win32::d3d11
 
 #endif // RASTERIZATION_ENABLED
 
-        D3D11_VIEWPORT vp = {};
-        vp.Width = static_cast<FLOAT>(width_);
-        vp.Height = static_cast<FLOAT>(height_);
-        vp.MinDepth = 0.0f;
-        vp.MaxDepth = 1.0f;
-        vp.TopLeftX = 0.0f;
-        vp.TopLeftY = 0.0f;
-
-        pContext_->RSSetViewports(1u, &vp);
+        pipeline::system::Viewport::SetDefault(pContext_, width_, height_);
     }
 
     auto Graphics::GetProjectionXM() const noexcept -> dx::XMMATRIX
