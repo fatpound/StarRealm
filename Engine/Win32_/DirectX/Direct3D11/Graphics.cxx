@@ -8,8 +8,6 @@ module;
 
 #include <wrl.h>
 
-#define RASTERIZATION_ENABLED
-
 #define MSAA_QUALITY 8u
 
 #pragma comment(lib, "d3d11")
@@ -149,32 +147,10 @@ namespace fatpound::win32::d3d11
 
         pContext_->OMSetRenderTargets(1u, pTarget_.GetAddressOf(), pDSV_.Get());
 
-#ifdef RASTERIZATION_ENABLED
-
-        wrl::ComPtr<ID3D11RasterizerState> pRasterState;
-
-        D3D11_RASTERIZER_DESC rasterDesc = {};
-        rasterDesc.FillMode = D3D11_FILL_SOLID;
-        rasterDesc.CullMode = D3D11_CULL_BACK;
-        rasterDesc.FrontCounterClockwise = false;
-        rasterDesc.DepthBias = 0;
-        rasterDesc.DepthBiasClamp = 0.0f;
-        rasterDesc.SlopeScaledDepthBias = 0.0f;
-        rasterDesc.DepthClipEnable = true;
-        rasterDesc.ScissorEnable = false;
-        rasterDesc.MultisampleEnable = true;
-        rasterDesc.AntialiasedLineEnable = true;
-
-        hr = pDevice_->CreateRasterizerState(&rasterDesc, &pRasterState);
-
-        if (FAILED(hr)) [[unlikely]]
+        if constexpr (rasterization_enabled_)
         {
-            throw std::runtime_error("Could NOT create RasterizerState!");
+            pipeline::system::Rasterizer::SetDefault(pDevice_, pContext_);
         }
-
-        pContext_->RSSetState(pRasterState.Get());
-
-#endif // RASTERIZATION_ENABLED
 
         pipeline::system::Viewport::SetDefault(pContext_, width_, height_);
     }

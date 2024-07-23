@@ -76,5 +76,7 @@ export namespace fatpound::win32::d3d11
 
         const std::size_t width_;
         const std::size_t height_;
+
+        static constexpr bool rasterization_enabled_ = true;
     };
 }

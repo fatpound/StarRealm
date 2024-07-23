@@ -213,6 +213,8 @@
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\PixelShader.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\Resource.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\SBuffer.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\System\Rasterizer.cxx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\System\Rasterizer.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\System\System.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\System\Viewport.cxx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\System\Viewport.ixx" />
