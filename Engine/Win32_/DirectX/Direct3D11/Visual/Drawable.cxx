@@ -1,6 +1,7 @@
 module;
 
-#include "../../../../Win32_/FatWin32_.hpp"
+#include "../../../../Win32_/FatWin32_Settings.hpp"
+#include "../../../../Win32_/FatWin32_Namespaces.hpp"
 
 #include <cassert>
 

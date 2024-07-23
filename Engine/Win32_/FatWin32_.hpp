@@ -50,12 +50,5 @@
 
 #include <Windows.h>
 
-#ifdef NDEBUG
-#define IN_RELEASE true
-#define IN_DEBUG false
-#else
-#define IN_DEBUG true
-#define IN_RELEASE false
-#endif // NDEBUG
-
+#include "FatWin32_Settings.hpp"
 #include "FatWin32_Namespaces.hpp"
