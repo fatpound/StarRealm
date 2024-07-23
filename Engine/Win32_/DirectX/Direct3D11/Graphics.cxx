@@ -8,8 +8,6 @@ module;
 
 #include <wrl.h>
 
-#define MSAA_QUALITY 8u
-
 #pragma comment(lib, "d3d11")
 #pragma comment(lib, "D3DCompiler")
 
@@ -33,7 +31,7 @@ namespace fatpound::win32::d3d11
         scd.BufferDesc.RefreshRate.Denominator = 0u;
         scd.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
         scd.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
-        scd.SampleDesc.Count = MSAA_QUALITY;
+        scd.SampleDesc.Count = Graphics::msaa_quality_;
         scd.SampleDesc.Quality = 0u;
         scd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
         scd.BufferCount = 1u;
@@ -85,7 +83,7 @@ namespace fatpound::win32::d3d11
         }
 
         D3D11_TEXTURE2D_DESC backBufferDesc = {};
-        backBufferDesc.SampleDesc.Count = MSAA_QUALITY;
+        backBufferDesc.SampleDesc.Count = Graphics::msaa_quality_;
         backBufferDesc.SampleDesc.Quality = 0u;
 
         pBackBufferTexture->GetDesc(&backBufferDesc);
@@ -121,7 +119,7 @@ namespace fatpound::win32::d3d11
         descDepth.MipLevels = 1u;
         descDepth.ArraySize = 1u;
         descDepth.Format = DXGI_FORMAT_D32_FLOAT;
-        descDepth.SampleDesc.Count = MSAA_QUALITY;
+        descDepth.SampleDesc.Count = Graphics::msaa_quality_;
         descDepth.SampleDesc.Quality = 0u;
         descDepth.Usage = D3D11_USAGE_DEFAULT;
         descDepth.BindFlags = D3D11_BIND_DEPTH_STENCIL;
@@ -147,7 +145,7 @@ namespace fatpound::win32::d3d11
 
         pContext_->OMSetRenderTargets(1u, pTarget_.GetAddressOf(), pDSV_.Get());
 
-        if constexpr (rasterization_enabled_)
+        if constexpr (Graphics::rasterization_enabled_)
         {
             pipeline::system::Rasterizer::SetDefault(pDevice_, pContext_);
         }

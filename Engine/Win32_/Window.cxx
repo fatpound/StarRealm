@@ -8,7 +8,7 @@ module;
 #define CLIENT_WIDTH            client_size_.width
 #define CLIENT_HEIGHT           client_size_.height
 
-#if IN_RELEASE                  
+#if IN_RELEASE
 
 #define WINDOW_WIDTH            CLIENT_WIDTH
 #define WINDOW_HEIGHT           CLIENT_HEIGHT
@@ -16,7 +16,7 @@ module;
 #define WINDOW_POSITION_X       CW_USEDEFAULT
 #define WINDOW_POSITION_Y       CW_USEDEFAULT
 
-#else                           
+#else
 
 #define WINDOW_WIDTH            WINDOW_RECT_WIDTH
 #define WINDOW_HEIGHT           WINDOW_RECT_HEIGHT
