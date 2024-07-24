@@ -31,7 +31,6 @@ namespace starrealm::entity::star
         AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::IndexBuffer>(gfx, indices));
 
         const auto& cbuf = SingleColorBase::ColorBase::GeneratePixelCBuffer();
-
         AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::PixelCBuffer<SingleColorBase::ColorBase::CBuffer>>(gfx, cbuf));
     }
 }
