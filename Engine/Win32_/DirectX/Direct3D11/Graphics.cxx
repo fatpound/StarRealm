@@ -72,6 +72,22 @@ namespace fatpound::win32::d3d11
                 "Consider decreasing MSAA_QUALITY by half...");
         }
 
+        ///////////////////////////////////////
+        /// Disabling ALT+ENTER fullscreen mode
+        {
+            wrl::ComPtr<IDXGIDevice> pDXGIDevice = nullptr;
+            this->pDevice_->QueryInterface(__uuidof(IDXGIDevice), &pDXGIDevice);
+
+            wrl::ComPtr<IDXGIAdapter> pDXGIAdapter = nullptr;
+            pDXGIDevice->GetParent(__uuidof(IDXGIAdapter), &pDXGIAdapter);
+
+            wrl::ComPtr<IDXGIFactory> pIDXGIFactory = nullptr;
+            pDXGIAdapter->GetParent(__uuidof(IDXGIFactory), &pIDXGIFactory);
+
+            pIDXGIFactory->MakeWindowAssociation(hWnd, DXGI_MWA_NO_ALT_ENTER);
+        }
+        ///////////////////////////////////////
+
         wrl::ComPtr<ID3D11Resource> pBackBuffer = nullptr;
         wrl::ComPtr<ID3D11Texture2D> pBackBufferTexture = nullptr;
 
