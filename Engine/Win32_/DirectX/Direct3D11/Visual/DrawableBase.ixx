@@ -28,14 +28,14 @@ export namespace fatpound::win32::d3d11::visual
 
         static void AddStaticBind_(std::unique_ptr<NAMESPACE_PIPELINE::Bindable> bind) noexcept(IN_RELEASE)
         {
-            assert("*Must* use AddStaticIndexBuffer to bind index buffer" && typeid(*bind) != typeid(NAMESPACE_PIPELINE::IndexBuffer));
+            assert("*Must* use AddStaticIndexBuffer to bind index buffer" && typeid(*bind) != typeid(NAMESPACE_PIPELINE_ELEMENT::IndexBuffer));
 
             static_binds_.push_back(std::move(bind));
         }
 
 
     protected:
-        virtual void AddStaticIndexBuffer_(std::unique_ptr<NAMESPACE_PIPELINE::IndexBuffer> idxbuf) noexcept(IN_RELEASE) final
+        virtual void AddStaticIndexBuffer_(std::unique_ptr<NAMESPACE_PIPELINE_ELEMENT::IndexBuffer> idxbuf) noexcept(IN_RELEASE) final
         {
             assert("Attempting to add index buffer a second time" && pCIndexBuffer_ == nullptr);
 
@@ -49,7 +49,7 @@ export namespace fatpound::win32::d3d11::visual
 
             for (const auto& b : static_binds_)
             {
-                const auto ptr = dynamic_cast<NAMESPACE_PIPELINE::IndexBuffer*>(b.get());
+                const auto ptr = dynamic_cast<NAMESPACE_PIPELINE_ELEMENT::IndexBuffer*>(b.get());
 
                 if (ptr != nullptr)
                 {

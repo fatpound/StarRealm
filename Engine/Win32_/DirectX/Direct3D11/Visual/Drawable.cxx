@@ -26,12 +26,12 @@ namespace fatpound::win32::d3d11::visual
 
     void Drawable::AddBind_(std::unique_ptr<NAMESPACE_PIPELINE::Bindable> bind) noexcept(IN_RELEASE)
     {
-        assert((typeid(*bind) != typeid(NAMESPACE_PIPELINE::IndexBuffer)) && "*Must* use AddIndexBuffer_() method to bind it!");
+        assert((typeid(*bind) != typeid(NAMESPACE_PIPELINE_ELEMENT::IndexBuffer)) && "*Must* use AddIndexBuffer_() method to bind it!");
 
         binds_.push_back(std::move(bind));
     }
 
-    void Drawable::AddIndexBuffer_(std::unique_ptr<NAMESPACE_PIPELINE::IndexBuffer> idxbuf) noexcept(IN_RELEASE)
+    void Drawable::AddIndexBuffer_(std::unique_ptr<NAMESPACE_PIPELINE_ELEMENT::IndexBuffer> idxbuf) noexcept(IN_RELEASE)
     {
         assert((pCIndexBuffer_ == nullptr) && "Attempting to add index buffer a second time");
 

@@ -25,10 +25,10 @@ namespace starrealm::entity::star
         }
 
         const auto& vertices = Star::Make(radiuses_, position_, desc.flare_count);
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE::VertexBuffer>(gfx, vertices));
+        AddBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexBuffer>(gfx, vertices));
 
         const auto& indices = HollowBase::GenerateIndices<unsigned short int>(vertices.size());
-        AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE::IndexBuffer>(gfx, indices));
+        AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::IndexBuffer>(gfx, indices));
 
         const auto& cbuf = SingleColorBase::ColorBase::GeneratePixelCBuffer();
 

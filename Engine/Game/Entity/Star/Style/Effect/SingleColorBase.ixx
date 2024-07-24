@@ -25,10 +25,10 @@ export namespace starrealm::entity::star
         >
         static void Init(NAMESPACE_D3D11::Graphics& gfx)
         {
-            auto pvs = std::make_unique<NAMESPACE_PIPELINE::VertexShader>(gfx, L"VSColorSingle.cso");
+            auto pvs = std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexShader>(gfx, L"VSColorSingle.cso");
             auto pvsbc = pvs->GetBytecode();
             Base::AddStaticBind_(std::move(pvs));
-            Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::PixelShader>(gfx, L"PSColorSingle.cso"));
+            Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::PixelShader>(gfx, L"PSColorSingle.cso"));
 
             std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
             {
@@ -42,7 +42,7 @@ export namespace starrealm::entity::star
                 );
             }
 
-            Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::InputLayout>(gfx, ied, pvsbc));
+            Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::InputLayout>(gfx, ied, pvsbc));
         }
 
 

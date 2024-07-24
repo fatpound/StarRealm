@@ -201,16 +201,17 @@
     <ClCompile Include="Win32_\DirectX\Direct3D11\Direct3D11.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Bindable.cxx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Bindable.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Element\Element.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\CBuffer.ixx" />
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\IndexBuffer.cxx" />
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\IndexBuffer.ixx" />
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\InputLayout.cxx" />
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\InputLayout.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Element\IndexBuffer.cxx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Element\IndexBuffer.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Element\InputLayout.cxx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Element\InputLayout.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Pipeline.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\PixelCBuffer.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\PixelSBuffer.ixx" />
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\PixelShader.cxx" />
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\PixelShader.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Element\PixelShader.cxx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Element\PixelShader.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\Resource.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\SBuffer.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\System\Rasterizer.cxx" />
@@ -218,14 +219,14 @@
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\System\System.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\System\Viewport.cxx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\System\Viewport.ixx" />
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Topology.cxx" />
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Topology.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Element\Topology.cxx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Element\Topology.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\TransformCBuffer.ixx" />
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexBuffer.cxx" />
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexBuffer.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Element\VertexBuffer.cxx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Element\VertexBuffer.ixx" />
     <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Resource\VertexCBuffer.ixx" />
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexShader.cxx" />
-    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\VertexShader.ixx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Element\VertexShader.cxx" />
+    <ClCompile Include="Win32_\DirectX\Direct3D11\Pipeline\Element\VertexShader.ixx" />
     <ClCompile Include="Util\Camera.cxx">
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </AdditionalModuleDependencies>

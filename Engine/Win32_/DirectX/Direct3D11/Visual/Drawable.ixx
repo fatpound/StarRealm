@@ -36,11 +36,11 @@ export namespace fatpound::win32::d3d11::visual
         
     protected:
         virtual void AddBind_(std::unique_ptr<NAMESPACE_PIPELINE::Bindable> bind) noexcept(IN_RELEASE) final;
-        virtual void AddIndexBuffer_(std::unique_ptr<NAMESPACE_PIPELINE::IndexBuffer> idxbuf) noexcept(IN_RELEASE) final;
+        virtual void AddIndexBuffer_(std::unique_ptr<NAMESPACE_PIPELINE_ELEMENT::IndexBuffer> idxbuf) noexcept(IN_RELEASE) final;
 
 
     protected:
-        const NAMESPACE_PIPELINE::IndexBuffer* pCIndexBuffer_ = nullptr;
+        const NAMESPACE_PIPELINE_ELEMENT::IndexBuffer* pCIndexBuffer_ = nullptr;
 
 
     private:
