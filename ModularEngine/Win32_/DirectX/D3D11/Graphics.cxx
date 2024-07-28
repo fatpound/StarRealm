@@ -20,7 +20,7 @@ namespace fatpound::win32::d3d11
 {
     Graphics::Graphics(const Window& wnd)
         :
-        Graphics(wnd.GetHwnd(), SizeInfo{ wnd.GetClientWidth(), wnd.GetClientHeight() })
+        Graphics(wnd.GetHwnd(), SizeInfo{ wnd.GetClientWidth<int>(), wnd.GetClientHeight<int>()})
     {
 
     }

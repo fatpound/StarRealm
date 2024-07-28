@@ -38,12 +38,12 @@ export namespace fatpound::win32
 
 
     public:
-        template <NAMESPACE_MATH::Number N = decltype(ClientSizeInfo::width)>
+        template <NAMESPACE_MATH::Number N>
         auto GetClientWidth() const noexcept
         {
             return static_cast<N>(client_size_.width);
         }
-        template <NAMESPACE_MATH::Number N = decltype(ClientSizeInfo::height)>
+        template <NAMESPACE_MATH::Number N>
         auto GetClientHeight() const noexcept
         {
             return static_cast<N>(client_size_.height);
