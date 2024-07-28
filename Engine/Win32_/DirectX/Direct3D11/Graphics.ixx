@@ -12,6 +12,9 @@ export module FatPound.Win32.D3D11.Graphics;
 
 import FatPound.Win32.D3D11.Pipeline.System;
 
+import FatPound.Win32.Window;
+import FatPound.Math;
+
 import std;
 
 namespace fatpound::win32::d3d11::pipeline
@@ -34,6 +37,7 @@ export namespace fatpound::win32::d3d11
 
 
     public:
+        Graphics(const Window& wnd);
         Graphics(HWND hWnd, const SizeInfo& dimensions);
 
         Graphics() = delete;
@@ -46,6 +50,17 @@ export namespace fatpound::win32::d3d11
 
 
     public:
+        template <NAMESPACE_MATH::Number N = decltype(SizeInfo::width)>
+        auto GetWidth() const noexcept
+        {
+            return static_cast<N>(width_);
+        }
+        template <NAMESPACE_MATH::Number N = decltype(SizeInfo::height)>
+        auto GetHeight() const noexcept
+        {
+            return static_cast<N>(height_);
+        }
+
         auto GetProjectionXM() const noexcept -> DirectX::XMMATRIX;
         auto GetCameraXM()     const noexcept -> DirectX::XMMATRIX;
 
@@ -74,8 +89,8 @@ export namespace fatpound::win32::d3d11
         Microsoft::WRL::ComPtr<ID3D11RenderTargetView>    pTarget_    = nullptr;
         Microsoft::WRL::ComPtr<ID3D11DepthStencilView>    pDSV_       = nullptr;
 
-        const std::size_t width_;
-        const std::size_t height_;
+        const decltype(SizeInfo::width)  width_;
+        const decltype(SizeInfo::height) height_;
 
         static constexpr auto msaa_quality_ = 8u;
 

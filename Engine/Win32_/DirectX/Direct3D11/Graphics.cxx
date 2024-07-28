@@ -18,6 +18,12 @@ namespace wrl = Microsoft::WRL;
 
 namespace fatpound::win32::d3d11
 {
+    Graphics::Graphics(const Window& wnd)
+        :
+        Graphics(wnd.GetHwnd(), SizeInfo{ wnd.GetClientWidth(), wnd.GetClientHeight() })
+    {
+
+    }
     Graphics::Graphics(HWND hWnd, const SizeInfo& dimensions)
         :
         width_(dimensions.width),

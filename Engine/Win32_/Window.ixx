@@ -38,14 +38,13 @@ export namespace fatpound::win32
 
 
     public:
-        template <NAMESPACE_MATH::Number N>
-        auto GetClientWidth() const noexcept -> N
+        template <NAMESPACE_MATH::Number N = decltype(ClientSizeInfo::width)>
+        auto GetClientWidth() const noexcept
         {
             return static_cast<N>(client_size_.width);
         }
-
-        template <NAMESPACE_MATH::Number N>
-        auto GetClientHeight() const noexcept -> N
+        template <NAMESPACE_MATH::Number N = decltype(ClientSizeInfo::height)>
+        auto GetClientHeight() const noexcept
         {
             return static_cast<N>(client_size_.height);
         }
@@ -82,6 +81,7 @@ export namespace fatpound::win32
             WndClass_() noexcept;
             WndClass_(const WndClass_& src) = delete;
             WndClass_& operator = (const WndClass_& src) = delete;
+
             WndClass_(WndClass_&& src) = delete;
             WndClass_& operator = (WndClass_&& src) = delete;
             ~WndClass_();
@@ -89,7 +89,7 @@ export namespace fatpound::win32
         private:
             HINSTANCE hInst_;
 
-            static constexpr auto wndClassName_ = L"FatPound Direct3D11 Engine Window";
+            static constexpr auto wndClassName_ = L"FatPound Default WndClass";
         };
 
 

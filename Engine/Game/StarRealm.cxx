@@ -21,7 +21,7 @@ namespace starrealm
     Game::Game()
         :
         wnd_(L"StarRealm",   NAMESPACE_WIN32::Window::ClientSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
-        gfx_(wnd_.GetHwnd(), NAMESPACE_D3D11::Graphics::SizeInfo{ wnd_.GetClientWidth<int>(), wnd_.GetClientHeight<int>() }), // they are the same as SCREEN_ MACROS
+        gfx_(wnd_),
         camera_(Settings::minStarDepth_, Settings::maxStarDepth_, wnd_.mouse, wnd_.kbd),
         stars_{ StarFactory{ gfx_ }.GetStars() }
     {
