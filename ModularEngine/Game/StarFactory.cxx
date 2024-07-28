@@ -25,7 +25,7 @@ namespace starrealm
             radiuses = entity::Star::RadiusPack(outer_rad_dist_(rng_), inner_rad_dist_(rng_));
             position = dx::XMFLOAT3(x_dist_(rng_), y_dist_(rng_), zed_depth_dist_(rng_));
 
-            if (std::ranges::none_of(stars_, [&](const auto& pstar) constexpr -> bool { return pstar->IsWithinArea(position, radiuses.outer_radius); }))
+            if (std::ranges::none_of(stars_, [&](const auto& pstar) -> bool { return pstar->IsWithinArea(position, radiuses.outer_radius); }))
             {
                 break;
             }
