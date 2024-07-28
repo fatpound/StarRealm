@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{9459bfb9-5b36-46f1-8480-fe9d44bb0d12}</ProjectGuid>
-    <RootNamespace>Engine</RootNamespace>
+    <ProjectGuid>{8edafada-94b8-4999-a5cb-8971fef7c18d}</ProjectGuid>
+    <RootNamespace>ModularEngine</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -86,17 +86,13 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <DiagnosticsFormat>Column</DiagnosticsFormat>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
-      <FloatingPointModel>Precise</FloatingPointModel>
-      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -109,41 +105,32 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <DiagnosticsFormat>Column</DiagnosticsFormat>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
-      <FloatingPointModel>Precise</FloatingPointModel>
-      <AdditionalOptions>/Qvec-report:1 %(AdditionalOptions)</AdditionalOptions>
-      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <DiagnosticsFormat>Column</DiagnosticsFormat>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
-      <FloatingPointModel>Precise</FloatingPointModel>
-      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -156,106 +143,33 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <DiagnosticsFormat>Column</DiagnosticsFormat>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
-      <FloatingPointModel>Precise</FloatingPointModel>
-      <AdditionalOptions>/Qvec-report:1 %(AdditionalOptions)</AdditionalOptions>
-      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FatPound.ixx" />
     <ClCompile Include="Game\Entity\Entity.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Effect\Effect.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Effect\EffectBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Style.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Effect\BlendBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Effect\ColorBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\StyleBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Type\FilledBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Type\HollowBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Effect\MultiColorBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Effect\SingleColorBase.ixx" />
     <ClCompile Include="Game\Entity\Star\Examples\Examples.ixx" />
     <ClCompile Include="Game\Entity\Star\Examples\Filled\Filled.ixx" />
-    <ClCompile Include="Game\Entity\Star\Examples\Hollow\Hollow.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Type\Type.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Type\TypeBase.ixx" />
-    <ClCompile Include="Game\StarFactory.cxx" />
-    <ClCompile Include="Game\StarFactory.ixx" />
-    <ClCompile Include="Math\Math.cxx" />
-    <ClCompile Include="Util\Util.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\D3D11.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Bindable.cxx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Bindable.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\Element.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Resource\CBuffer.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\IndexBuffer.cxx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\IndexBuffer.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\InputLayout.cxx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\InputLayout.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Pipeline.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Resource\PixelCBuffer.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Resource\PixelSBuffer.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\PixelShader.cxx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\PixelShader.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Resource\Resource.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Resource\SBuffer.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Rasterizer.cxx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Rasterizer.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\System.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Viewport.cxx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Viewport.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\Topology.cxx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\Topology.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Resource\TransformCBuffer.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\VertexBuffer.cxx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\VertexBuffer.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Resource\VertexCBuffer.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\VertexShader.cxx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\VertexShader.ixx" />
-    <ClCompile Include="Util\Camera.cxx">
-      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </AdditionalModuleDependencies>
-      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </AdditionalModuleDependencies>
-      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </AdditionalModuleDependencies>
-      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </AdditionalModuleDependencies>
-    </ClCompile>
-    <ClCompile Include="Util\Camera.ixx">
-      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </AdditionalModuleDependencies>
-      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </AdditionalModuleDependencies>
-      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </AdditionalModuleDependencies>
-      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </AdditionalModuleDependencies>
-    </ClCompile>
-    <ClCompile Include="Win32_\DirectX\D3D11\Visual\Drawable.cxx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Visual\Drawable.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Visual\DrawableBase.ixx" />
     <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledBlend.cxx" />
     <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledBlend.ixx" />
     <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledMulti.cxx" />
     <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledMulti.ixx" />
     <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledSingle.cxx" />
     <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledSingle.ixx" />
+    <ClCompile Include="Game\Entity\Star\Examples\Hollow\Hollow.ixx" />
     <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowBlend.cxx" />
     <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowBlend.ixx" />
     <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowMulti.cxx" />
@@ -265,24 +179,74 @@
     <ClCompile Include="Game\Entity\Star\Star.cxx" />
     <ClCompile Include="Game\Entity\Star\Star.ixx" />
     <ClCompile Include="Game\Entity\Star\StarBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Effect\BlendBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Effect\ColorBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Effect\Effect.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Effect\EffectBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Effect\MultiColorBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Effect\SingleColorBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Style.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\StyleBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Type\FilledBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Type\HollowBase.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Type\Type.ixx" />
+    <ClCompile Include="Game\Entity\Star\Style\Type\TypeBase.ixx" />
+    <ClCompile Include="Game\StarFactory.cxx" />
+    <ClCompile Include="Game\StarFactory.ixx" />
     <ClCompile Include="Game\StarRealm.cxx" />
     <ClCompile Include="Game\StarRealm.ixx" />
+    <ClCompile Include="Math\Math.cxx" />
     <ClCompile Include="Math\Math.ixx" />
-    <ClCompile Include="Util\Color.ixx" />
     <ClCompile Include="Util\AutoTimer.cxx" />
     <ClCompile Include="Util\AutoTimer.ixx" />
+    <ClCompile Include="Util\Camera.cxx" />
+    <ClCompile Include="Util\Camera.ixx" />
+    <ClCompile Include="Util\Color.ixx" />
+    <ClCompile Include="Util\Util.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\D3D11.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Graphics.cxx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Graphics.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Bindable.cxx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Bindable.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\Element.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\IndexBuffer.cxx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\IndexBuffer.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\InputLayout.cxx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\InputLayout.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\PixelShader.cxx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\PixelShader.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\Topology.cxx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\Topology.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\VertexBuffer.cxx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\VertexBuffer.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\VertexShader.cxx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\VertexShader.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Pipeline.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Resource\CBuffer.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Resource\PixelCBuffer.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Resource\PixelSBuffer.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Resource\Resource.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Resource\SBuffer.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Resource\TransformCBuffer.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Resource\VertexCBuffer.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Rasterizer.cxx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Rasterizer.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\System.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Viewport.cxx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Viewport.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Visual\Drawable.cxx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Visual\Drawable.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Visual\DrawableBase.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Visual\Visual.ixx" />
     <ClCompile Include="Win32_\DirectX\DirectX.ixx" />
-    <ClCompile Include="Win32_\Window.cxx" />
-    <ClCompile Include="Win32_\Window.ixx" />
     <ClCompile Include="Win32_\IO\IO.ixx" />
     <ClCompile Include="Win32_\IO\Keyboard.cxx" />
     <ClCompile Include="Win32_\IO\Keyboard.ixx" />
     <ClCompile Include="Win32_\IO\Mouse.cxx" />
     <ClCompile Include="Win32_\IO\Mouse.ixx" />
     <ClCompile Include="Win32_\Win32.ixx" />
+    <ClCompile Include="Win32_\Window.cxx" />
+    <ClCompile Include="Win32_\Window.ixx" />
     <ClCompile Include="wWinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -292,9 +256,9 @@
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Win32_\DirectX\D3D11\Shader\PSColorBlend.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
@@ -302,28 +266,28 @@
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
     </FxCompile>
     <FxCompile Include="Win32_\DirectX\D3D11\Shader\PSColorMulti.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
     </FxCompile>
     <FxCompile Include="Win32_\DirectX\D3D11\Shader\PSColorSingle.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
     </FxCompile>
     <FxCompile Include="Win32_\DirectX\D3D11\Shader\VSColorBlend.hlsl">
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
@@ -336,28 +300,24 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
     <FxCompile Include="Win32_\DirectX\D3D11\Shader\VSColorMulti.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
     <FxCompile Include="Win32_\DirectX\D3D11\Shader\VSColorSingle.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
