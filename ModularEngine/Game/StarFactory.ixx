@@ -2,7 +2,7 @@ module;
 
 #include "../Win32_/FatWin32_Namespaces.hpp"
 
-export module StarRealm.StarFactory;
+export module StarRealm:StarFactory;
 
 export import StarRealm.Entity;
 

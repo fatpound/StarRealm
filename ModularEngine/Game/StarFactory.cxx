@@ -6,7 +6,7 @@ module;
 
 #include <algorithm>
 
-module StarRealm.StarFactory;
+module StarRealm:StarFactory;
 
 namespace dx = DirectX;
 

@@ -4,7 +4,7 @@ module;
 
 export module StarRealm;
 
-import StarRealm.StarFactory;
+import :StarFactory;
 
 import FatPound;
 
