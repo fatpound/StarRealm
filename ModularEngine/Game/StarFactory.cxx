@@ -1,5 +1,7 @@
 module;
 
+#include "../Win32_/FatWin32_Namespaces.hpp"
+
 #include <DirectXMath.h>
 
 #include <algorithm>
@@ -10,6 +12,18 @@ namespace dx = DirectX;
 
 namespace starrealm
 {
+    StarFactory::StarFactory(NAMESPACE_D3D11::Graphics& gfx)
+        :
+        gfx_(gfx)
+    {
+        stars_.reserve(Settings::starCount_);
+
+        while (stars_.size() < Settings::starCount_)
+        {
+            stars_.push_back(GenerateStar_());
+        }
+    }
+
     auto StarFactory::GetStars() && -> std::vector<std::unique_ptr<entity::Star>>&&
     {
         return std::move(stars_);
@@ -17,25 +31,29 @@ namespace starrealm
 
     auto StarFactory::GenerateStar_() -> std::unique_ptr<entity::Star>
     {
-        entity::Star::RadiusPack radiuses;
         dx::XMFLOAT3 position;
+        entity::Star::RadiusPack radiusPack;
 
         while (true)
         {
-            radiuses = entity::Star::RadiusPack(outer_rad_dist_(rng_), inner_rad_dist_(rng_));
-            position = dx::XMFLOAT3(x_dist_(rng_), y_dist_(rng_), zed_depth_dist_(rng_));
+            position   = GeneratePosition3_();
+            radiusPack = GenerateRadiusPack_();
 
-            if (std::ranges::none_of(stars_, [&](const auto& pstar) -> bool { return pstar->IsWithinArea(position, radiuses.outer_radius); }))
+            if (std::ranges::none_of(stars_, [&](const auto& pstar) -> bool { return pstar->IsWithinArea(position, radiusPack.outer_radius); }))
             {
                 break;
             }
         }
 
-        const entity::Star::Descriptor desc{
+        const auto& flareCount = static_cast<std::size_t>(flare_count_dist_(rng_));
+        const auto& rotationSpeed = rotation_speed_dist_(rng_);
+
+        const entity::Star::Descriptor& desc =
+        {
             position,
-            radiuses,
-            static_cast<std::size_t>(flare_count_dist_(rng_)),
-            rotation_speed_dist_(rng_)
+            radiusPack,
+            flareCount,
+            rotationSpeed
         };
 
         switch (rng_() % 6u)
@@ -60,6 +78,36 @@ namespace starrealm
 
         default:
             return nullptr;
+        }
+    }
+
+    auto StarFactory::GenerateRadiusPack_() -> entity::Star::RadiusPack
+    {
+        return { outer_rad_dist_(rng_), inner_rad_dist_(rng_) };
+    }
+
+    auto StarFactory::GeneratePosition3_() -> ::DirectX::XMFLOAT3
+    {
+        const auto& z = z_dist_(rng_);
+
+        if constexpr (StarFactory::distribute_circular_)
+        {
+            const auto& maxWorldRadius = std::max(Settings::worldWidth_, Settings::worldHeight_) * 0.5f;
+
+            const auto& worldRadius = std::sqrt(world_radius_dist_(rng_)) * maxWorldRadius;
+            const auto& angle = angle_dist_(rng_);
+
+            const auto& x = worldRadius * std::cos(angle) + normal_dist_(rng_);
+            const auto& y = worldRadius * std::sin(angle) + normal_dist_(rng_);
+
+            return { x, y, z };
+        }
+        else
+        {
+            const auto& x = x_dist_(rng_);
+            const auto& y = y_dist_(rng_);
+
+            return { x, y, z };
         }
     }
 }
