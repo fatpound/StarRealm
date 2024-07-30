@@ -22,15 +22,15 @@ namespace starrealm
         :
         wnd_(L"StarRealm",   NAMESPACE_WIN32::Window::ClientSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
         gfx_(wnd_),
-        camera_(Settings::minStarDepth_, Settings::maxStarDepth_, wnd_.mouse, wnd_.kbd),
+        camera_(Settings::minStarDepth, Settings::maxStarDepth, wnd_.mouse, wnd_.kbd),
         stars_{ StarFactory{ gfx_ }.GetStars() }
     {
         gfx_.SetProjection(
             dx::XMMatrixPerspectiveLH(
                 1.0f,
                 wnd_.GetClientHeight<float>() / wnd_.GetClientWidth<float>(), // 1 / Aspect Ratio
-                Settings::minStarDepth_,
-                Settings::maxStarDepth_ * 2.0f
+                Settings::minStarDepth,
+                Settings::maxStarDepth * 2.0f
             )
         );
     }

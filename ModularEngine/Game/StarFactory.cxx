@@ -16,9 +16,9 @@ namespace starrealm
         :
         gfx_(gfx)
     {
-        stars_.reserve(Settings::starCount_);
+        stars_.reserve(Settings::starCount);
 
-        while (stars_.size() < Settings::starCount_)
+        while (stars_.size() < Settings::starCount)
         {
             stars_.push_back(GenerateStar_());
         }
@@ -83,8 +83,8 @@ namespace starrealm
 
     auto StarFactory::GenerateRadiusPack_() -> entity::Star::RadiusPack
     {
-        const auto& outerRadius      = std::clamp(outer_rad_dist_(rng_),       Settings::minStarOuterRadius_, Settings::maxStarOuterRadius_);
-        const auto& innerRadiusRatio = std::clamp(inner_rad_ratio_dist_(rng_), Settings::minStarInnerRatio_,  Settings::maxStarInnerRatio_);
+        const auto& outerRadius      = std::clamp(outer_rad_dist_(rng_),       Settings::minStarOuterRadius, Settings::maxStarOuterRadius);
+        const auto& innerRadiusRatio = std::clamp(inner_rad_ratio_dist_(rng_), Settings::minStarInnerRatio,  Settings::maxStarInnerRatio);
 
         return { outerRadius, outerRadius * innerRadiusRatio };
     }
@@ -95,7 +95,7 @@ namespace starrealm
 
         if constexpr (StarFactory::distribute_circular_)
         {
-            const auto& maxWorldRadius = std::max(Settings::worldWidth_, Settings::worldHeight_) * 0.5f;
+            const auto& maxWorldRadius = std::max(Settings::worldWidth, Settings::worldHeight) * 0.5f;
 
             const auto& worldRadius = std::sqrt(world_radius_dist_(rng_)) * maxWorldRadius;
             const auto& angle = angle_dist_(rng_);
