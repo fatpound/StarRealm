@@ -83,7 +83,10 @@ namespace starrealm
 
     auto StarFactory::GenerateRadiusPack_() -> entity::Star::RadiusPack
     {
-        return { outer_rad_dist_(rng_), inner_rad_dist_(rng_) };
+        const auto& outerRadius      = std::clamp(outer_rad_dist_(rng_),       Settings::minStarOuterRadius_, Settings::maxStarOuterRadius_);
+        const auto& innerRadiusRatio = std::clamp(inner_rad_ratio_dist_(rng_), Settings::minStarInnerRatio_,  Settings::maxStarInnerRatio_);
+
+        return { outerRadius, outerRadius * innerRadiusRatio };
     }
 
     auto StarFactory::GeneratePosition3_() -> ::DirectX::XMFLOAT3

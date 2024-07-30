@@ -24,10 +24,16 @@ export namespace starrealm
             static constexpr auto worldWidth_  = 16.0f;
             static constexpr auto worldHeight_ =  9.0f;
 
-            static constexpr auto minStarOuterRadius_ = 0.4f;
-            static constexpr auto maxStarOuterRadius_ = 0.8f;
-            static constexpr auto minStarInnerRadius_ = 0.1f;
-            static constexpr auto maxStarInnerRadius_ = 0.3f;
+            static constexpr auto meanStarOuterRadius_ = 0.6f;
+            static constexpr auto devStarOuterRadius_  = 0.7f;
+            static constexpr auto minStarOuterRadius_  = 0.5f;
+            static constexpr auto maxStarOuterRadius_  = 1.0f;
+
+            static constexpr auto meanStarInnerRatio_ = 0.4f;
+            static constexpr auto devStarInnerRatio_  = 0.25f;
+            static constexpr auto minStarInnerRatio_  = 0.2f;
+            static constexpr auto maxStarInnerRatio_  = 0.5f;
+
             static constexpr auto minStarDepth_ = 0.4f;
             static constexpr auto maxStarDepth_ = 10.0f;
 
@@ -60,9 +66,6 @@ export namespace starrealm
 
         std::minstd_rand rng_{ std::random_device{}() };
 
-        std::uniform_real_distribution<float> outer_rad_dist_{ Settings::minStarOuterRadius_, Settings::maxStarOuterRadius_ };
-        std::uniform_real_distribution<float> inner_rad_dist_{ Settings::minStarInnerRadius_, Settings::maxStarInnerRadius_ };
-
         std::uniform_real_distribution<float> x_dist_{ -Settings::worldWidth_,   Settings::worldWidth_ };
         std::uniform_real_distribution<float> y_dist_{ -Settings::worldHeight_,  Settings::worldHeight_ };
         std::uniform_real_distribution<float> z_dist_{  Settings::minStarDepth_, Settings::maxStarDepth_ };
@@ -73,6 +76,8 @@ export namespace starrealm
 
         std::uniform_int_distribution<int> flare_count_dist_{ Settings::minFlareCount_, Settings::maxFlareCount_ };
 
+        std::normal_distribution<float> outer_rad_dist_{ Settings::meanStarOuterRadius_, Settings::devStarOuterRadius_ };
+        std::normal_distribution<float> inner_rad_ratio_dist_{ Settings::meanStarInnerRatio_,  Settings::devStarInnerRatio_ };
         std::normal_distribution<float> normal_dist_{ 0.0f, 1.0f };
 
         std::vector<std::unique_ptr<entity::Star>> stars_;
