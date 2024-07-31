@@ -4,7 +4,11 @@ module;
 
 #include <d3d11.h>
 
+#include <wrl.h>
+
 export module FatPound.Win32.D3D11.Factory:Texture2D;
+
+import std;
 
 export namespace fatpound::win32::d3d11::factory
 {
@@ -27,6 +31,14 @@ export namespace fatpound::win32::d3d11::factory
 
             return desc;
         }
+
+
+    public:
+        static void Init(
+            Microsoft::WRL::ComPtr<ID3D11Device>&    pDevice,
+            Microsoft::WRL::ComPtr<ID3D11Texture2D>& pDepthStencil,
+            const D3D11_TEXTURE2D_DESC&              desc
+        );
 
 
     protected:

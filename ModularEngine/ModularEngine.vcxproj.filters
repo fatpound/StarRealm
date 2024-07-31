@@ -291,6 +291,18 @@
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\DepthStencilView.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Win32_\DirectX\D3D11\Factory\DepthStencilState.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\D3D11\Factory\Texture2D.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\D3D11\Factory\DepthStencilView.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\D3D11\Factory\DepthStencilState.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Win32_\FatWin32_.hpp">

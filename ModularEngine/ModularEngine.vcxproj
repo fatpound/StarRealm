@@ -204,7 +204,11 @@
     <ClCompile Include="Util\Color.ixx" />
     <ClCompile Include="Util\Util.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\D3D11.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Factory\DepthStencilState.cxx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Factory\DepthStencilState.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Factory\DepthStencilView.cxx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\DepthStencilView.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Factory\Texture2D.cxx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\Texture2D.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\Factory.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Graphics.cxx" />

@@ -98,35 +98,26 @@ namespace fatpound::win32::d3d11
             throw std::runtime_error("Could NOT create RenderTargetView!");
         }
 
-        D3D11_DEPTH_STENCIL_DESC dsDesc = {};
-        dsDesc.DepthEnable = true;
-        dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
-        dsDesc.DepthFunc = D3D11_COMPARISON_LESS;
-
-        wrl::ComPtr<ID3D11DepthStencilState> pDSState;
-        hr = pDevice_->CreateDepthStencilState(&dsDesc, &pDSState);
-
-        if (FAILED(hr)) [[unlikely]]
         {
-            throw std::runtime_error("Could NOT create DepthStencilState!");
-        }
+            wrl::ComPtr<ID3D11DepthStencilState> pDSState = nullptr;
 
-        pImmediateContext_->OMSetDepthStencilState(pDSState.Get(), 1u);
+            const auto& dssDesc = factory::DepthStencilState::CreateDESC<true>();
+            factory::DepthStencilState::Init(pDevice_, pDSState, dssDesc);
+
+            pImmediateContext_->OMSetDepthStencilState(pDSState.Get(), 1u);
+        }
         
-        const auto& descDepth = factory::Texture2D::CreateDESC<Graphics::msaa_quality_>(width_, height_);
-        
-        wrl::ComPtr<ID3D11Texture2D> pDepthStencil = nullptr;
-        hr = pDevice_->CreateTexture2D(&descDepth, nullptr, &pDepthStencil);
-        
-        if (FAILED(hr)) [[unlikely]]
         {
-            throw std::runtime_error("Could NOT create Texture2D!");
+            wrl::ComPtr<ID3D11Texture2D> pDepthStencil = nullptr;
+
+            const auto& descDepth = factory::Texture2D::CreateDESC<Graphics::msaa_quality_>(width_, height_);
+            factory::Texture2D::Init(pDevice_, pDepthStencil, descDepth);
+
+            const auto& descDSV = factory::DepthStencilView::CreateDESC<Graphics::msaa_quality_>();
+            factory::DepthStencilView::Init(pDevice_, pDepthStencil, pDSV_, descDSV);
+
+            pImmediateContext_->OMSetRenderTargets(1u, pTarget_.GetAddressOf(), pDSV_.Get());
         }
-
-        const auto& descDSV = factory::DepthStencilView::CreateDESC<Graphics::msaa_quality_>();
-        factory::DepthStencilView::Init(pDevice_, pDepthStencil, pDSV_, descDSV);
-
-        pImmediateContext_->OMSetRenderTargets(1u, pTarget_.GetAddressOf(), pDSV_.Get());
 
         if constexpr (Graphics::rasterization_enabled_)
         {

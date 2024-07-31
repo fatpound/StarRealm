@@ -34,19 +34,14 @@ export namespace fatpound::win32::d3d11::factory
             return desc;
         }
 
+
+    public:
         static void Init(
             Microsoft::WRL::ComPtr<ID3D11Device>&           pDevice,
-            Microsoft::WRL::ComPtr<ID3D11Texture2D>&        pDepthStencil,
+            Microsoft::WRL::ComPtr<ID3D11Texture2D>&        DepthStencil,
             Microsoft::WRL::ComPtr<ID3D11DepthStencilView>& pDSV,
-            const D3D11_DEPTH_STENCIL_VIEW_DESC&            desc)
-        {
-            HRESULT hr = pDevice->CreateDepthStencilView(pDepthStencil.Get(), &desc, &pDSV);
-
-            if (FAILED(hr)) [[unlikely]]
-            {
-                throw std::runtime_error("Could NOT create DepthStencilView!");
-            }
-        }
+            const D3D11_DEPTH_STENCIL_VIEW_DESC&            desc
+        );
 
 
     protected:
