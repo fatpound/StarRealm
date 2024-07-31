@@ -30,8 +30,8 @@ namespace fatpound::win32::d3d11
         height_(dimensions.height)
     {
         DXGI_SWAP_CHAIN_DESC scd = {};
-        scd.BufferDesc.Width = 0u;
-        scd.BufferDesc.Height = 0u;
+        scd.BufferDesc.Width = width_;
+        scd.BufferDesc.Height = height_;
         scd.BufferDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
         scd.BufferDesc.RefreshRate.Numerator = 0u;
         scd.BufferDesc.RefreshRate.Denominator = 0u;
@@ -80,21 +80,13 @@ namespace fatpound::win32::d3d11
 
         ToggleAltEnterMode_();
 
-        wrl::ComPtr<ID3D11Resource> pBackBuffer = nullptr;
         wrl::ComPtr<ID3D11Texture2D> pBackBufferTexture = nullptr;
-
         hr = pSwapChain_->GetBuffer(0, __uuidof(ID3D11Texture2D), &pBackBufferTexture);
 
         if (FAILED(hr)) [[unlikely]]
         {
             throw std::runtime_error("Could NOT get the buffer from SwapChain!");
         }
-
-        D3D11_TEXTURE2D_DESC backBufferDesc = {};
-        backBufferDesc.SampleDesc.Count = Graphics::msaa_quality_;
-        backBufferDesc.SampleDesc.Quality = 0u;
-
-        pBackBufferTexture->GetDesc(&backBufferDesc);
 
         hr = pDevice_->CreateRenderTargetView(pBackBufferTexture.Get(), nullptr, &pTarget_);
 
@@ -103,13 +95,12 @@ namespace fatpound::win32::d3d11
             throw std::runtime_error("Could NOT create RenderTargetView!");
         }
 
-        wrl::ComPtr<ID3D11DepthStencilState> pDSState;
-
         D3D11_DEPTH_STENCIL_DESC dsDesc = {};
         dsDesc.DepthEnable = TRUE;
         dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
         dsDesc.DepthFunc = D3D11_COMPARISON_LESS;
 
+        wrl::ComPtr<ID3D11DepthStencilState> pDSState;
         hr = pDevice_->CreateDepthStencilState(&dsDesc, &pDSState);
 
         if (FAILED(hr)) [[unlikely]]
@@ -118,9 +109,10 @@ namespace fatpound::win32::d3d11
         }
 
         pImmediateContext_->OMSetDepthStencilState(pDSState.Get(), 1u);
-
-        wrl::ComPtr<ID3D11Texture2D> pDepthStencil;
         
+        D3D11_TEXTURE2D_DESC backBufferDesc = {};
+        pBackBufferTexture->GetDesc(&backBufferDesc);
+
         D3D11_TEXTURE2D_DESC descDepth = {};
         descDepth.Width = backBufferDesc.Width;
         descDepth.Height = backBufferDesc.Height;
@@ -132,6 +124,7 @@ namespace fatpound::win32::d3d11
         descDepth.Usage = D3D11_USAGE_DEFAULT;
         descDepth.BindFlags = D3D11_BIND_DEPTH_STENCIL;
         
+        wrl::ComPtr<ID3D11Texture2D> pDepthStencil = nullptr;
         hr = pDevice_->CreateTexture2D(&descDepth, nullptr, &pDepthStencil);
         
         if (FAILED(hr)) [[unlikely]]
@@ -141,8 +134,16 @@ namespace fatpound::win32::d3d11
 
         D3D11_DEPTH_STENCIL_VIEW_DESC descDSV = {};
         descDSV.Format = DXGI_FORMAT_D32_FLOAT;
-        descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DMS;
         descDSV.Texture2D.MipSlice = 0u;
+
+        if constexpr (Graphics::msaa_quality_ == 1u)
+        {
+            descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
+        }
+        else
+        {
+            descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DMS;
+        }
         
         hr = pDevice_->CreateDepthStencilView(pDepthStencil.Get(), &descDSV, &pDSV_);
 
