@@ -34,7 +34,7 @@ export namespace starrealm
             static constexpr auto minStarInnerRatio  = 0.2f;
             static constexpr auto maxStarInnerRatio  = 0.5f;
 
-            static constexpr auto minStarDepth = 0.4f;
+            static constexpr auto minStarDepth = 0.25f;
             static constexpr auto maxStarDepth = 10.0f;
 
             static constexpr auto minRotationSpeed = -1.0f * std::numbers::pi_v<float>;

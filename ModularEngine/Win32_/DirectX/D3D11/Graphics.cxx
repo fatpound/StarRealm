@@ -113,19 +113,7 @@ namespace fatpound::win32::d3d11
 
         pImmediateContext_->OMSetDepthStencilState(pDSState.Get(), 1u);
         
-        D3D11_TEXTURE2D_DESC backBufferDesc = {};
-        pBackBufferTexture->GetDesc(&backBufferDesc);
-
-        D3D11_TEXTURE2D_DESC descDepth = {};
-        descDepth.Width = backBufferDesc.Width;
-        descDepth.Height = backBufferDesc.Height;
-        descDepth.MipLevels = 1u;
-        descDepth.ArraySize = 1u;
-        descDepth.Format = DXGI_FORMAT_D32_FLOAT;
-        descDepth.SampleDesc.Count = Graphics::msaa_quality_;
-        descDepth.SampleDesc.Quality = 0u;
-        descDepth.Usage = D3D11_USAGE_DEFAULT;
-        descDepth.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+        const auto& descDepth = factory::Texture2D::CreateDESC<Graphics::msaa_quality_>(width_, height_);
         
         wrl::ComPtr<ID3D11Texture2D> pDepthStencil = nullptr;
         hr = pDevice_->CreateTexture2D(&descDepth, nullptr, &pDepthStencil);
@@ -135,25 +123,8 @@ namespace fatpound::win32::d3d11
             throw std::runtime_error("Could NOT create Texture2D!");
         }
 
-        D3D11_DEPTH_STENCIL_VIEW_DESC descDSV = {};
-        descDSV.Format = DXGI_FORMAT_D32_FLOAT;
-        descDSV.Texture2D.MipSlice = 0u;
-
-        if constexpr (Graphics::msaa_quality_ == 1u)
-        {
-            descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
-        }
-        else
-        {
-            descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DMS;
-        }
-        
-        hr = pDevice_->CreateDepthStencilView(pDepthStencil.Get(), &descDSV, &pDSV_);
-
-        if (FAILED(hr)) [[unlikely]]
-        {
-            throw std::runtime_error("Could NOT create DepthStencilView!");
-        }
+        const auto& descDSV = factory::DepthStencilView::CreateDESC<Graphics::msaa_quality_>();
+        factory::DepthStencilView::Init(pDevice_, pDepthStencil, pDSV_, descDSV);
 
         pImmediateContext_->OMSetRenderTargets(1u, pTarget_.GetAddressOf(), pDSV_.Get());
 
