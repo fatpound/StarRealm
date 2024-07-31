@@ -14,15 +14,15 @@ namespace wrl = Microsoft::WRL;
 
 namespace fatpound::win32::d3d11::factory
 {
-    void RenderTargetView::Init(
+    void RenderTargetView::Create(
         wrl::ComPtr<ID3D11Device>& pDevice,
         wrl::ComPtr<IDXGISwapChain>& pSwapChain,
         wrl::ComPtr<ID3D11RenderTargetView>& pTarget
     )
     {
-        HRESULT hr;
-
         wrl::ComPtr<ID3D11Texture2D> pBackBufferTexture = nullptr;
+
+        HRESULT hr;
 
         hr = pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), &pBackBufferTexture);
 

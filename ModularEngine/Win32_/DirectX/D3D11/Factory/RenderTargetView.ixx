@@ -15,9 +15,9 @@ export namespace fatpound::win32::d3d11::factory
     class RenderTargetView final
     {
     public:
-        static void Init(
-            Microsoft::WRL::ComPtr<ID3D11Device>& pDevice,
-            Microsoft::WRL::ComPtr<IDXGISwapChain>& pSwapChain,
+        static void Create(
+            Microsoft::WRL::ComPtr<ID3D11Device>&           pDevice,
+            Microsoft::WRL::ComPtr<IDXGISwapChain>&         pSwapChain,
             Microsoft::WRL::ComPtr<ID3D11RenderTargetView>& pTarget
         );
 

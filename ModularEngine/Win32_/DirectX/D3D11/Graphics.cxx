@@ -83,7 +83,7 @@ namespace fatpound::win32::d3d11
 
         ToggleAltEnterMode_();
 
-        factory::RenderTargetView::Init(pDevice_, pSwapChain_, pTarget_);
+        factory::RenderTargetView::Create(pDevice_, pSwapChain_, pTarget_);
 
         {
             wrl::ComPtr<ID3D11DepthStencilState> pDSState = nullptr;
