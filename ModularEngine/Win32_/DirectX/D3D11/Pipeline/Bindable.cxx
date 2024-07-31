@@ -17,6 +17,6 @@ namespace fatpound::win32::d3d11::pipeline
 
     auto Bindable::GetContext_(Graphics& gfx) noexcept -> ID3D11DeviceContext*
     {
-        return gfx.pContext_.Get();
+        return gfx.pImmediateContext_.Get();
     }
 }

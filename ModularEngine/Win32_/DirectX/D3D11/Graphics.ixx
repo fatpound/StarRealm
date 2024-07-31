@@ -83,11 +83,11 @@ export namespace fatpound::win32::d3d11
         DirectX::XMMATRIX projection_;
         DirectX::XMMATRIX camera_;
 
-        Microsoft::WRL::ComPtr<ID3D11Device>              pDevice_    = nullptr;
-        Microsoft::WRL::ComPtr<IDXGISwapChain>            pSwapChain_ = nullptr;
-        Microsoft::WRL::ComPtr<ID3D11DeviceContext>       pContext_   = nullptr;
-        Microsoft::WRL::ComPtr<ID3D11RenderTargetView>    pTarget_    = nullptr;
-        Microsoft::WRL::ComPtr<ID3D11DepthStencilView>    pDSV_       = nullptr;
+        Microsoft::WRL::ComPtr<ID3D11Device>              pDevice_           = nullptr;
+        Microsoft::WRL::ComPtr<IDXGISwapChain>            pSwapChain_        = nullptr;
+        Microsoft::WRL::ComPtr<ID3D11DeviceContext>       pImmediateContext_ = nullptr;
+        Microsoft::WRL::ComPtr<ID3D11RenderTargetView>    pTarget_           = nullptr;
+        Microsoft::WRL::ComPtr<ID3D11DepthStencilView>    pDSV_              = nullptr;
 
         const decltype(SizeInfo::width)  width_;
         const decltype(SizeInfo::height) height_;

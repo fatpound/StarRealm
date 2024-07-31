@@ -69,7 +69,7 @@ namespace fatpound::win32::d3d11
             &pSwapChain_,
             &pDevice_,
             nullptr,
-            &pContext_
+            &pImmediateContext_
         );
 
         if (FAILED(hr)) [[unlikely]]
@@ -131,7 +131,7 @@ namespace fatpound::win32::d3d11
             throw std::runtime_error("Could NOT create DepthStencilState!");
         }
 
-        pContext_->OMSetDepthStencilState(pDSState.Get(), 1u);
+        pImmediateContext_->OMSetDepthStencilState(pDSState.Get(), 1u);
 
         wrl::ComPtr<ID3D11Texture2D> pDepthStencil;
         
@@ -165,14 +165,14 @@ namespace fatpound::win32::d3d11
             throw std::runtime_error("Could NOT create DepthStencilView!");
         }
 
-        pContext_->OMSetRenderTargets(1u, pTarget_.GetAddressOf(), pDSV_.Get());
+        pImmediateContext_->OMSetRenderTargets(1u, pTarget_.GetAddressOf(), pDSV_.Get());
 
         if constexpr (Graphics::rasterization_enabled_)
         {
-            pipeline::system::Rasterizer::SetDefault(pDevice_, pContext_);
+            pipeline::system::Rasterizer::SetDefault(pDevice_, pImmediateContext_);
         }
 
-        pipeline::system::Viewport::SetDefault(pContext_, width_, height_);
+        pipeline::system::Viewport::SetDefault(pImmediateContext_, width_, height_);
     }
 
     auto Graphics::GetProjectionXM() const noexcept -> dx::XMMATRIX
@@ -201,7 +201,7 @@ namespace fatpound::win32::d3d11
     }
     void Graphics::DrawIndexed(UINT count) noexcept(IN_RELEASE)
     {
-        pContext_->DrawIndexed(count, 0u, 0);
+        pImmediateContext_->DrawIndexed(count, 0u, 0);
     }
 
     void Graphics::SetProjection(const dx::XMMATRIX& projection) noexcept
@@ -217,7 +217,7 @@ namespace fatpound::win32::d3d11
     {
         const std::array<float, 4> colors{ red, green, blue, 1.0f };
 
-        pContext_->ClearRenderTargetView(pTarget_.Get(), colors.data());
-        pContext_->ClearDepthStencilView(pDSV_.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
+        pImmediateContext_->ClearRenderTargetView(pTarget_.Get(), colors.data());
+        pImmediateContext_->ClearDepthStencilView(pDSV_.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
     }
 }
