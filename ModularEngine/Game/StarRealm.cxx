@@ -5,11 +5,11 @@ module;
 #include <DirectXMath.h>
 
 #if IN_RELEASE
-#define SCREEN_WIDTH    GetSystemMetrics(SM_CXSCREEN)
-#define SCREEN_HEIGHT   GetSystemMetrics(SM_CYSCREEN)
+#define SCREEN_WIDTH    static_cast<UINT>(GetSystemMetrics(SM_CXSCREEN))
+#define SCREEN_HEIGHT   static_cast<UINT>(GetSystemMetrics(SM_CYSCREEN))
 #else
-#define SCREEN_WIDTH    800
-#define SCREEN_HEIGHT   600
+#define SCREEN_WIDTH    800u
+#define SCREEN_HEIGHT   600u
 #endif // IN_RELEASE
 
 module StarRealm;
