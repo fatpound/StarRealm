@@ -182,7 +182,11 @@ namespace fatpound::win32
         {
             const POINTS pt = MAKEPOINTS(lParam);
 
-            if (pt.x >= 0 && pt.x < client_size_.width && pt.y >= 0 && pt.y < client_size_.height)
+            if (pt.x >= 0 &&
+                pt.x < static_cast<SHORT>(client_size_.width) &&
+                pt.y >= 0 &&
+                pt.y < static_cast<SHORT>(client_size_.height)
+            )
             {
                 mouse.OnMouseMove_(pt.x, pt.y);
 

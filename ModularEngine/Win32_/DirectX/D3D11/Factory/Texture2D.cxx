@@ -16,13 +16,13 @@ namespace fatpound::win32::d3d11::factory
 {
     void Texture2D::Create(
         wrl::ComPtr<ID3D11Device>&    pDevice,
-        wrl::ComPtr<ID3D11Texture2D>& pDepthStencil,
+        wrl::ComPtr<ID3D11Texture2D>& pTexture2D,
         const D3D11_TEXTURE2D_DESC&   desc
     )
     {
         HRESULT hr;
 
-        hr = pDevice->CreateTexture2D(&desc, nullptr, &pDepthStencil);
+        hr = pDevice->CreateTexture2D(&desc, nullptr, &pTexture2D);
 
         if (FAILED(hr)) [[unlikely]]
         {

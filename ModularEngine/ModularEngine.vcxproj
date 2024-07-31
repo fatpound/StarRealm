@@ -240,8 +240,11 @@
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Resource\SBuffer.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Resource\TransformCBuffer.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Resource\VertexCBuffer.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\DepthStencil.cxx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\DepthStencil.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Rasterizer.cxx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Rasterizer.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\RenderTarget.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\System.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Viewport.cxx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Viewport.ixx" />

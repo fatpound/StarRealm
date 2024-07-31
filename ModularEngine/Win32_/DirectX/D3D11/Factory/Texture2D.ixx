@@ -36,7 +36,7 @@ export namespace fatpound::win32::d3d11::factory
     public:
         static void Create(
             Microsoft::WRL::ComPtr<ID3D11Device>&    pDevice,
-            Microsoft::WRL::ComPtr<ID3D11Texture2D>& pDepthStencil,
+            Microsoft::WRL::ComPtr<ID3D11Texture2D>& pTexture2D,
             const D3D11_TEXTURE2D_DESC&              desc
         );
 

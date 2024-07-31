@@ -16,8 +16,8 @@ export namespace fatpound::win32
     public:
         struct ClientSizeInfo final
         {
-            int width;
-            int height;
+            unsigned int width;
+            unsigned int height;
         };
 
 
