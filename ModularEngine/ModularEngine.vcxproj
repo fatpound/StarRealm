@@ -208,6 +208,8 @@
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\DepthStencilState.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\DepthStencilView.cxx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\DepthStencilView.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Factory\RasterizerState.cxx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Factory\RasterizerState.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\RenderTargetView.cxx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\RenderTargetView.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\Texture2D.cxx" />

@@ -15,12 +15,14 @@ namespace wrl = Microsoft::WRL;
 namespace fatpound::win32::d3d11::factory
 {
     void Texture2D::Create(
-        wrl::ComPtr<ID3D11Device>& pDevice,
+        wrl::ComPtr<ID3D11Device>&    pDevice,
         wrl::ComPtr<ID3D11Texture2D>& pDepthStencil,
-        const D3D11_TEXTURE2D_DESC& desc
+        const D3D11_TEXTURE2D_DESC&   desc
     )
     {
-        HRESULT hr = pDevice->CreateTexture2D(&desc, nullptr, &pDepthStencil);
+        HRESULT hr;
+
+        hr = pDevice->CreateTexture2D(&desc, nullptr, &pDepthStencil);
 
         if (FAILED(hr)) [[unlikely]]
         {

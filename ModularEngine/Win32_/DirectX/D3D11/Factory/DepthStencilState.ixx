@@ -15,16 +15,7 @@ export namespace fatpound::win32::d3d11::factory
     class DepthStencilState final
     {
     public:
-        template <bool DepthEnabled>
-        static auto CreateDESC() -> D3D11_DEPTH_STENCIL_DESC
-        {
-            D3D11_DEPTH_STENCIL_DESC desc = {};
-            desc.DepthEnable = DepthEnabled;
-            desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
-            desc.DepthFunc = D3D11_COMPARISON_LESS;
-
-            return desc;
-        }
+        static auto CreateDESC() -> D3D11_DEPTH_STENCIL_DESC;
 
 
     public:

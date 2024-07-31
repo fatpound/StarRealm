@@ -77,8 +77,7 @@ namespace fatpound::win32::d3d11
 
         if (FAILED(hr)) [[unlikely]]
         {
-            throw std::runtime_error("Could NOT create the Device and SwapChain!\n"
-                "Consider decreasing MSAA_QUALITY by half...");
+            throw std::runtime_error("Could NOT create the Device and SwapChain!");
         }
 
         ToggleAltEnterMode_();
@@ -88,8 +87,8 @@ namespace fatpound::win32::d3d11
         {
             wrl::ComPtr<ID3D11DepthStencilState> pDSState = nullptr;
 
-            const auto& dssDesc = factory::DepthStencilState::CreateDESC<true>();
-            factory::DepthStencilState::Create(pDevice_, pDSState, dssDesc);
+            const auto& descDSS = factory::DepthStencilState::CreateDESC();
+            factory::DepthStencilState::Create(pDevice_, pDSState, descDSS);
 
             pImmediateContext_->OMSetDepthStencilState(pDSState.Get(), 1u);
         }
@@ -97,8 +96,8 @@ namespace fatpound::win32::d3d11
         {
             wrl::ComPtr<ID3D11Texture2D> pDepthStencil = nullptr;
 
-            const auto& descDepth = factory::Texture2D::CreateDESC<Graphics::msaa_quality_>(width_, height_);
-            factory::Texture2D::Create(pDevice_, pDepthStencil, descDepth);
+            const auto& descTex2D = factory::Texture2D::CreateDESC<Graphics::msaa_quality_>(width_, height_);
+            factory::Texture2D::Create(pDevice_, pDepthStencil, descTex2D);
 
             const auto& descDSV = factory::DepthStencilView::CreateDESC<Graphics::msaa_quality_>();
             factory::DepthStencilView::Create(pDevice_, pDepthStencil, pDSV_, descDSV);
@@ -108,7 +107,12 @@ namespace fatpound::win32::d3d11
 
         if constexpr (Graphics::rasterization_enabled_)
         {
-            pipeline::system::Rasterizer::SetDefault(pDevice_, pImmediateContext_);
+            wrl::ComPtr<ID3D11RasterizerState> pRasterizerState = nullptr;
+
+            const auto& descRS = factory::RasterizerState::CreateDESC();
+            factory::RasterizerState::Create(pDevice_,pRasterizerState, descRS);
+
+            pipeline::system::Rasterizer::SetDefault(pImmediateContext_, pRasterizerState);
         }
 
         pipeline::system::Viewport::SetDefault(pImmediateContext_, width_, height_);

@@ -6,3 +6,4 @@ export import :Texture2D;
 export import :RenderTargetView;
 export import :DepthStencilView;
 export import :DepthStencilState;
+export import :RasterizerState;
