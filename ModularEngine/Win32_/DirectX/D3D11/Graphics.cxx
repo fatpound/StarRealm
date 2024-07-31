@@ -89,7 +89,7 @@ namespace fatpound::win32::d3d11
             wrl::ComPtr<ID3D11DepthStencilState> pDSState = nullptr;
 
             const auto& dssDesc = factory::DepthStencilState::CreateDESC<true>();
-            factory::DepthStencilState::Init(pDevice_, pDSState, dssDesc);
+            factory::DepthStencilState::Create(pDevice_, pDSState, dssDesc);
 
             pImmediateContext_->OMSetDepthStencilState(pDSState.Get(), 1u);
         }
@@ -98,10 +98,10 @@ namespace fatpound::win32::d3d11
             wrl::ComPtr<ID3D11Texture2D> pDepthStencil = nullptr;
 
             const auto& descDepth = factory::Texture2D::CreateDESC<Graphics::msaa_quality_>(width_, height_);
-            factory::Texture2D::Init(pDevice_, pDepthStencil, descDepth);
+            factory::Texture2D::Create(pDevice_, pDepthStencil, descDepth);
 
             const auto& descDSV = factory::DepthStencilView::CreateDESC<Graphics::msaa_quality_>();
-            factory::DepthStencilView::Init(pDevice_, pDepthStencil, pDSV_, descDSV);
+            factory::DepthStencilView::Create(pDevice_, pDepthStencil, pDSV_, descDSV);
 
             pImmediateContext_->OMSetRenderTargets(1u, pTarget_.GetAddressOf(), pDSV_.Get());
         }

@@ -14,7 +14,7 @@ namespace wrl = Microsoft::WRL;
 
 namespace fatpound::win32::d3d11::factory
 {
-    void DepthStencilView::Init(
+    void DepthStencilView::Create(
         wrl::ComPtr<ID3D11Device>& pDevice,
         wrl::ComPtr<ID3D11Texture2D>& pDepthStencil,
         wrl::ComPtr<ID3D11DepthStencilView>& pDSV,
