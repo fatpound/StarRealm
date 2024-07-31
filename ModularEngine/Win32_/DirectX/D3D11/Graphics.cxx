@@ -83,20 +83,7 @@ namespace fatpound::win32::d3d11
 
         ToggleAltEnterMode_();
 
-        wrl::ComPtr<ID3D11Texture2D> pBackBufferTexture = nullptr;
-        hr = pSwapChain_->GetBuffer(0, __uuidof(ID3D11Texture2D), &pBackBufferTexture);
-
-        if (FAILED(hr)) [[unlikely]]
-        {
-            throw std::runtime_error("Could NOT get the buffer from SwapChain!");
-        }
-
-        hr = pDevice_->CreateRenderTargetView(pBackBufferTexture.Get(), nullptr, &pTarget_);
-
-        if (FAILED(hr)) [[unlikely]]
-        {
-            throw std::runtime_error("Could NOT create RenderTargetView!");
-        }
+        factory::RenderTargetView::Init(pDevice_, pSwapChain_, pTarget_);
 
         {
             wrl::ComPtr<ID3D11DepthStencilState> pDSState = nullptr;

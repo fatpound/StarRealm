@@ -10,11 +10,13 @@ module FatPound.Win32.D3D11.Factory:Texture2D;
 
 import std;
 
+namespace wrl = Microsoft::WRL;
+
 namespace fatpound::win32::d3d11::factory
 {
     void Texture2D::Init(
-        Microsoft::WRL::ComPtr<ID3D11Device>& pDevice,
-        Microsoft::WRL::ComPtr<ID3D11Texture2D>& pDepthStencil,
+        wrl::ComPtr<ID3D11Device>& pDevice,
+        wrl::ComPtr<ID3D11Texture2D>& pDepthStencil,
         const D3D11_TEXTURE2D_DESC& desc
     )
     {
