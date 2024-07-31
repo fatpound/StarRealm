@@ -45,15 +45,18 @@ namespace fatpound::win32::d3d11
         scd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
         scd.Flags = 0u;
 
-#if IN_RELEASE
+        static constinit UINT swapCreateFlags;
 
-        scd.Windowed = FALSE;
-        constexpr UINT swapCreateFlags = 0u;
-#else
-        scd.Windowed = TRUE;
-        constexpr UINT swapCreateFlags = D3D11_CREATE_DEVICE_DEBUG;
-
-#endif // IN_RELEASE
+        if constexpr (IN_RELEASE)
+        {
+            scd.Windowed = false;
+            swapCreateFlags = 0u;
+        }
+        else
+        {
+            scd.Windowed = true;
+            swapCreateFlags = D3D11_CREATE_DEVICE_DEBUG;
+        }
 
         HRESULT hr;
 
