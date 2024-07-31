@@ -78,21 +78,7 @@ namespace fatpound::win32::d3d11
                 "Consider decreasing MSAA_QUALITY by half...");
         }
 
-        ///////////////////////////////////////
-        /// Disabling ALT+ENTER fullscreen mode
-        {
-            wrl::ComPtr<IDXGIDevice> pDXGIDevice = nullptr;
-            this->pDevice_->QueryInterface(__uuidof(IDXGIDevice), &pDXGIDevice);
-
-            wrl::ComPtr<IDXGIAdapter> pDXGIAdapter = nullptr;
-            pDXGIDevice->GetParent(__uuidof(IDXGIAdapter), &pDXGIAdapter);
-
-            wrl::ComPtr<IDXGIFactory> pIDXGIFactory = nullptr;
-            pDXGIAdapter->GetParent(__uuidof(IDXGIFactory), &pIDXGIFactory);
-
-            pIDXGIFactory->MakeWindowAssociation(hWnd, DXGI_MWA_NO_ALT_ENTER);
-        }
-        ///////////////////////////////////////
+        ToggleAltEnterMode_();
 
         wrl::ComPtr<ID3D11Resource> pBackBuffer = nullptr;
         wrl::ComPtr<ID3D11Texture2D> pBackBufferTexture = nullptr;
@@ -213,6 +199,37 @@ namespace fatpound::win32::d3d11
         camera_ = camera;
     }
 
+    void Graphics::ToggleAltEnterMode_()
+    {
+        wrl::ComPtr<IDXGIDevice> pDXGIDevice = nullptr;
+        pDevice_->QueryInterface(__uuidof(IDXGIDevice), &pDXGIDevice);
+
+        wrl::ComPtr<IDXGIAdapter> pDXGIAdapter = nullptr;
+        pDXGIDevice->GetParent(__uuidof(IDXGIAdapter), &pDXGIAdapter);
+
+        wrl::ComPtr<IDXGIFactory> pIDXGIFactory = nullptr;
+        pDXGIAdapter->GetParent(__uuidof(IDXGIFactory), &pIDXGIFactory);
+
+        DXGI_SWAP_CHAIN_DESC desc = {};
+        pSwapChain_->GetDesc(&desc);
+
+        const auto& hWnd = desc.OutputWindow;
+
+        static UINT flag = 0u;
+
+        static constexpr UINT magic_value = static_cast<UINT>(DXGI_MWA_NO_ALT_ENTER);
+
+        if ((flag bitand magic_value) not_eq 0u)
+        {
+            flag &= ~(magic_value);
+        }
+        else
+        {
+            flag |= magic_value;
+        }
+
+        pIDXGIFactory->MakeWindowAssociation(hWnd, flag);
+    }
     void Graphics::ClearBuffer_(const float& red, const float& green, const float& blue) noexcept
     {
         const std::array<float, 4> colors{ red, green, blue, 1.0f };

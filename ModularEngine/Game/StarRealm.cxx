@@ -20,7 +20,7 @@ namespace starrealm
 {
     Game::Game()
         :
-        wnd_(L"StarRealm",   NAMESPACE_WIN32::Window::ClientSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
+        wnd_(L"StarRealm", NAMESPACE_WIN32::Window::ClientSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
         gfx_(wnd_),
         camera_(Settings::minStarDepth, Settings::maxStarDepth, wnd_.mouse, wnd_.kbd),
         stars_{ StarFactory{ gfx_ }.GetStars() }
