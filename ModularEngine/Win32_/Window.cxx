@@ -128,10 +128,10 @@ namespace fatpound::win32
         if (msg == WM_NCCREATE)
         {
             const CREATESTRUCTW* const pCreate = reinterpret_cast<CREATESTRUCTW*>(lParam);
-            Window* const pWnd = static_cast<Window*>(pCreate->lpCreateParams);
+            Window* const pWnd = reinterpret_cast<Window*>(pCreate->lpCreateParams);
 
             SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pWnd));
-            SetWindowLongPtr(hWnd, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(&Window::HandleMsgThunk_));
+            SetWindowLongPtr(hWnd, GWLP_WNDPROC,  reinterpret_cast<LONG_PTR>(&Window::HandleMsgThunk_));
 
             return pWnd->HandleMsg_(hWnd, msg, wParam, lParam);
         }
