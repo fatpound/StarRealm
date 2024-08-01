@@ -1,7 +1,9 @@
 module;
 
-#include "../../../../Win32_/FatWin32_Settings.hpp"
-#include "../../../../Win32_/FatWin32_Namespaces.hpp"
+#include <FatWin32_Settings.hpp>
+#include <FatWin32_Namespaces.hpp>
+
+#include <FatWin32_.hpp>
 
 #include <DirectXMath.h>
 

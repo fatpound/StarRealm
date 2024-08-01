@@ -1,6 +1,6 @@
 module;
 
-#include "FatWin32_.hpp"
+#include <FatWin32_.hpp>
 
 #define WINDOW_RECT_WIDTH       (rect.right - rect.left)
 #define WINDOW_RECT_HEIGHT      (rect.bottom - rect.top)

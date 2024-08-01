@@ -1,6 +1,6 @@
 module;
 
-#include "../FatWin32_Namespaces.hpp"
+#include <FatWin32_Namespaces.hpp>
 
 export module FatPound.Win32.IO.Mouse;
 

@@ -1,10 +1,9 @@
 module;
 
-#include "../../../Win32_/FatWin32_.hpp"
+#include <FatWin32_Settings.hpp>
+#include <FatWin32_Namespaces.hpp>
 
-#include <DirectXMath.h>
-
-#include <d3d11.h>
+#include <cassert>
 
 export module StarRealm.Entity.StarBase;
 

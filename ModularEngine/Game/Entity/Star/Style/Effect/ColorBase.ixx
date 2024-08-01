@@ -1,5 +1,7 @@
 module;
 
+#include <FatWin32_.hpp>
+
 #include <DirectXMath.h>
 
 export module StarRealm.Entity.Star.Style.Effect.ColorBase;

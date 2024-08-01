@@ -1,6 +1,6 @@
 module;
 
-#include "../../../../FatWin32_.hpp"
+#include <FatWin32_.hpp>
 
 #include <d3d11.h>
 #include <d3dcompiler.h>
