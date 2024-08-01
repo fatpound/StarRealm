@@ -17,6 +17,14 @@ export namespace starrealm::entity::star
     public:
         FilledBlend(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
 
+        FilledBlend() = delete;
+        FilledBlend(const FilledBlend& src) = delete;
+        FilledBlend& operator = (const FilledBlend& src) = delete;
+
+        FilledBlend(FilledBlend&& src) = delete;
+        FilledBlend& operator = (FilledBlend&& src) = delete;
+        virtual ~FilledBlend() = default;
+
 
     protected:
 

@@ -17,6 +17,14 @@ export namespace starrealm::entity::star
     public:
         HollowMulti(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
 
+        HollowMulti() = delete;
+        HollowMulti(const HollowMulti& src) = delete;
+        HollowMulti& operator = (const HollowMulti& src) = delete;
+
+        HollowMulti(HollowMulti&& src) = delete;
+        HollowMulti& operator = (HollowMulti&& src) = delete;
+        virtual ~HollowMulti() = default;
+
 
     protected:
 

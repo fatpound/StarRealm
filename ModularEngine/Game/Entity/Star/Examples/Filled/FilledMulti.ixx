@@ -17,6 +17,14 @@ export namespace starrealm::entity::star
     public:
         FilledMulti(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
 
+        FilledMulti() = delete;
+        FilledMulti(const FilledMulti& src) = delete;
+        FilledMulti& operator = (const FilledMulti& src) = delete;
+
+        FilledMulti(FilledMulti&& src) = delete;
+        FilledMulti& operator = (FilledMulti&& src) = delete;
+        virtual ~FilledMulti() = default;
+
 
     protected:
 

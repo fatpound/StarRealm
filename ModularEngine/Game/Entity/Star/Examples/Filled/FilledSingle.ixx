@@ -17,6 +17,14 @@ export namespace starrealm::entity::star
     public:
         FilledSingle(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
 
+        FilledSingle() = delete;
+        FilledSingle(const FilledSingle& src) = delete;
+        FilledSingle& operator = (const FilledSingle& src) = delete;
+
+        FilledSingle(FilledSingle&& src) = delete;
+        FilledSingle& operator = (FilledSingle&& src) = delete;
+        virtual ~FilledSingle() = default;
+
 
     protected:
 

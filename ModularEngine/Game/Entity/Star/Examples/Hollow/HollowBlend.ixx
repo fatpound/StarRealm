@@ -17,6 +17,14 @@ export namespace starrealm::entity::star
     public:
         HollowBlend(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
 
+        HollowBlend() = delete;
+        HollowBlend(const HollowBlend& src) = delete;
+        HollowBlend& operator = (const HollowBlend& src) = delete;
+
+        HollowBlend(HollowBlend&& src) = delete;
+        HollowBlend& operator = (HollowBlend&& src) = delete;
+        virtual ~HollowBlend() = default;
+
 
     protected:
 
