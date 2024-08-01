@@ -2,8 +2,8 @@ module;
 
 #include "FatWin32_.hpp"
 
-#define WINDOW_RECT_WIDTH       rect.right  - rect.left
-#define WINDOW_RECT_HEIGHT      rect.bottom - rect.top
+#define WINDOW_RECT_WIDTH       (rect.right - rect.left)
+#define WINDOW_RECT_HEIGHT      (rect.bottom - rect.top)
 
 #define CLIENT_WIDTH            client_size_.width
 #define CLIENT_HEIGHT           client_size_.height

@@ -78,11 +78,13 @@ namespace fatpound::util
 
     void Camera::Reset() noexcept
     {
+        static constexpr auto zero = 0.0f;
+
         r_ = 0.1f;
 
-        x_ = 0.0f;
-        y_ = 0.0f;
-        z_ = 0.0f;
+        x_ = zero;
+        y_ = zero;
+        z_ = zero;
     }
 
     // Camera::Controller
