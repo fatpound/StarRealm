@@ -205,8 +205,8 @@
     <ClCompile Include="Game\Entity\Star\Style\Type\TypeBase.ixx" />
     <ClCompile Include="Game\StarFactory.cxx" />
     <ClCompile Include="Game\StarFactory.ixx" />
-    <ClCompile Include="Game\StarRealm.cxx" />
-    <ClCompile Include="Game\StarRealm.ixx" />
+    <ClCompile Include="Game\Game.cxx" />
+    <ClCompile Include="Game\Game.ixx" />
     <ClCompile Include="Math\Math.cxx" />
     <ClCompile Include="Math\Math.ixx" />
     <ClCompile Include="Util\AutoTimer.cxx" />

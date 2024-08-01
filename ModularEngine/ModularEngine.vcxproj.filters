@@ -117,10 +117,10 @@
     <ClCompile Include="Game\StarFactory.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\StarRealm.cxx">
+    <ClCompile Include="Game\Game.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\StarRealm.ixx">
+    <ClCompile Include="Game\Game.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Math\Math.cxx">
