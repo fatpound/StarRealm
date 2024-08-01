@@ -14,9 +14,9 @@ export namespace fatpound::win32
     class Window final
     {
 #ifdef UNICODE
-        using str_t = const wchar_t* const;
+        using str_t = const wchar_t*;
 #else
-        using str_t = const char* const;
+        using str_t = const char*;
 #endif // UNICODE
 
     public:
