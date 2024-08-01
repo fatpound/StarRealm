@@ -32,7 +32,7 @@ namespace fatpound::win32
 {
     // Window
 
-    Window::Window(str_t title, const ClientSizeInfo& dimensions)
+    Window::Window(const str_t title, const ClientSizeInfo& dimensions)
         :
         client_size_{ dimensions }
     {

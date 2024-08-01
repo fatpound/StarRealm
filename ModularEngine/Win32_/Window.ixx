@@ -28,7 +28,7 @@ export namespace fatpound::win32
 
 
     public:
-        Window(str_t title, const ClientSizeInfo& dimensions);
+        Window(const str_t title, const ClientSizeInfo& dimensions);
 
         Window() = delete;
         Window(const Window& src) = delete;
