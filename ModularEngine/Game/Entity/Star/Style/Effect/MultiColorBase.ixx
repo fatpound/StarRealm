@@ -20,15 +20,15 @@ export namespace starrealm::entity::star
     {
     public:
         template <
-            class Base,
-            bool ForFilled = true
+            class Star_Base,
+            bool For_Filled = true
         >
         static void Init(NAMESPACE_D3D11::Graphics& gfx)
         {
             auto pvs = std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexShader>(gfx, L"VSColorMulti.cso");
             auto pvsbc = pvs->GetBytecode();
-            Base::AddStaticBind_(std::move(pvs));
-            Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::PixelShader>(gfx, L"PSColorMulti.cso"));
+            Star_Base::AddStaticBind_(std::move(pvs));
+            Star_Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::PixelShader>(gfx, L"PSColorMulti.cso"));
 
             std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
             {
@@ -36,7 +36,7 @@ export namespace starrealm::entity::star
                 { "TEXCOORD",  0, DXGI_FORMAT_R32_UINT,        0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }
             };
 
-            if constexpr (ForFilled)
+            if constexpr (For_Filled)
             {
                 ied.insert(
                     ied.begin() + 1,
@@ -44,7 +44,7 @@ export namespace starrealm::entity::star
                 );
             }
 
-            Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::InputLayout>(gfx, ied, pvsbc));
+            Star_Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::InputLayout>(gfx, ied, pvsbc));
         }
 
 

@@ -54,10 +54,10 @@ export namespace starrealm::entity::star
             return indices;
         }
 
-        template <class Base>
+        template <class Star_Base>
         static void Init()
         {
-            Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
+            Star_Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
         }
 
 

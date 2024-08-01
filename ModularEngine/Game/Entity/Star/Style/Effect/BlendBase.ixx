@@ -29,7 +29,7 @@ export namespace starrealm::entity::star
 
 
     public:
-        template <bool WithCentre = true>
+        template <bool With_Centre = true>
         static auto GenerateVertices(Star::RadiusPack radiuses, DirectX::XMFLOAT3 position, std::size_t flare_count)
         {
             std::vector<BlendBase::Vertex> vertices;
@@ -41,7 +41,7 @@ export namespace starrealm::entity::star
 
             std::vector<DirectX::XMFLOAT3> star_vertices;
 
-            star_vertices = Star::Make<WithCentre>(radiuses, position, flare_count);
+            star_vertices = Star::Make<With_Centre>(radiuses, position, flare_count);
 
             for (const auto& vertex : star_vertices)
             {
@@ -59,13 +59,13 @@ export namespace starrealm::entity::star
             return vertices;
         }
 
-        template <class Base>
+        template <class Star_Base>
         static void Init(NAMESPACE_D3D11::Graphics& gfx)
         {
             auto pvs = std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexShader>(gfx, L"VSColorBlend.cso");
             auto pvsbc = pvs->GetBytecode();
-            Base::AddStaticBind_(std::move(pvs));
-            Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::PixelShader>(gfx, L"PSColorBlend.cso"));
+            Star_Base::AddStaticBind_(std::move(pvs));
+            Star_Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::PixelShader>(gfx, L"PSColorBlend.cso"));
 
             const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
             {
@@ -73,7 +73,7 @@ export namespace starrealm::entity::star
                 { "Color",    0, DXGI_FORMAT_R8G8B8A8_UNORM,  0, 12u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
             };
 
-            Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::InputLayout>(gfx, ied, pvsbc));
+            Star_Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::InputLayout>(gfx, ied, pvsbc));
         }
 
 
