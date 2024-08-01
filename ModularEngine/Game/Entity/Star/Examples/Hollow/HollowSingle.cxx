@@ -4,8 +4,6 @@ module;
 
 #include <DirectXMath.h>
 
-#include <d3d11.h>
-
 module StarRealm.Entity.Star.HollowSingle;
 
 import FatPound;
