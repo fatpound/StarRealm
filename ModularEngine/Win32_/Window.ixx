@@ -13,7 +13,7 @@ export namespace fatpound::win32
 {
     class Window final
     {
-#if UNICODE
+#ifdef UNICODE
         using str_t = const wchar_t* const;
 #else
         using str_t = const char* const;
@@ -95,7 +95,7 @@ export namespace fatpound::win32
         private:
             HINSTANCE hInst_;
 
-#if UNICODE
+#ifdef UNICODE
             static constexpr str_t wndClassName_ = L"FatPound Default WndClass";
 #else
             static constexpr str_t wndClassName_ =  "FatPound Default WndClass";
