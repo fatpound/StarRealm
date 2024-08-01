@@ -8,8 +8,6 @@ module;
 
 module FatPound.Win32.D3D11.Factory:Texture2D;
 
-import std;
-
 namespace wrl = Microsoft::WRL;
 
 namespace fatpound::win32::d3d11::factory

@@ -29,56 +29,8 @@ namespace fatpound::win32::d3d11
         width_(dimensions.width),
         height_(dimensions.height)
     {
-        DXGI_SWAP_CHAIN_DESC scd = {};
-        scd.BufferDesc.Width = width_;
-        scd.BufferDesc.Height = height_;
-        scd.BufferDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
-        scd.BufferDesc.RefreshRate.Numerator = 0u;
-        scd.BufferDesc.RefreshRate.Denominator = 0u;
-        scd.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
-        scd.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
-        scd.SampleDesc.Count = Graphics::msaa_quality_;
-        scd.SampleDesc.Quality = 0u;
-        scd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-        scd.BufferCount = 1u;
-        scd.OutputWindow = hWnd;
-        scd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
-        scd.Flags = 0u;
-
-        static constinit UINT swapCreateFlags;
-
-        if constexpr (IN_RELEASE)
-        {
-            scd.Windowed = false;
-            swapCreateFlags = 0u;
-        }
-        else
-        {
-            scd.Windowed = true;
-            swapCreateFlags = D3D11_CREATE_DEVICE_DEBUG;
-        }
-
-        HRESULT hr;
-
-        hr = D3D11CreateDeviceAndSwapChain(
-            nullptr,
-            D3D_DRIVER_TYPE_HARDWARE,
-            nullptr,
-            swapCreateFlags,
-            nullptr,
-            0u,
-            D3D11_SDK_VERSION,
-            &scd,
-            &pSwapChain_,
-            &pDevice_,
-            nullptr,
-            &pImmediateContext_
-        );
-
-        if (FAILED(hr)) [[unlikely]]
-        {
-            throw std::runtime_error("Could NOT create the Device and SwapChain!");
-        }
+        const auto& scdesc = factory::SwapChain::CreateDESC<Graphics::msaa_quality_>(hWnd, width_, height_);
+        factory::Device::CreateWithSwapChain(pDevice_, pSwapChain_, pImmediateContext_, scdesc);
 
         ToggleAltEnterMode_();
 
