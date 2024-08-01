@@ -12,8 +12,8 @@ namespace starrealm::entity
 {
     Star::Star(const Descriptor& desc)
         :
-        radiuses_(desc.radiuses),
         position_(desc.position),
+        radiuses_(desc.radiuses),
         rotation_speed_(desc.rotation_speed),
         roll_(0.0f)
     {

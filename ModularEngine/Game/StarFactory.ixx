@@ -45,6 +45,14 @@ export namespace starrealm
     public:
         StarFactory(NAMESPACE_D3D11::Graphics& gfx);
 
+        StarFactory() = delete;
+        StarFactory(const StarFactory& src) = delete;
+        StarFactory& operator = (const StarFactory& src) = delete;
+
+        StarFactory(StarFactory&& src) = delete;
+        StarFactory& operator = (StarFactory&& src) = delete;
+        ~StarFactory() noexcept = default;
+
 
     public:
         auto GetStars() && -> std::vector<std::unique_ptr<entity::Star>>&&;

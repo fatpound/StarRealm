@@ -94,7 +94,7 @@
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
       <AdditionalIncludeDirectories>C:\Users\Administrator\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>/wd4820 /wd4514 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/wd4820 /wd4514 /wd5045 %(AdditionalOptions)</AdditionalOptions>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
     </ClCompile>
     <Link>
@@ -116,7 +116,7 @@
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
       <AdditionalIncludeDirectories>C:\Users\Administrator\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>/wd4820 /wd4514 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/wd4820 /wd4514 /wd5045 %(AdditionalOptions)</AdditionalOptions>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
     </ClCompile>
     <Link>
@@ -138,7 +138,7 @@
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
       <AdditionalIncludeDirectories>C:\Users\Administrator\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>/wd4820 /wd4514 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/wd4820 /wd4514 /wd5045 %(AdditionalOptions)</AdditionalOptions>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
     </ClCompile>
     <Link>
@@ -160,7 +160,7 @@
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
       <AdditionalIncludeDirectories>C:\Users\Administrator\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>/wd4820 /wd4514 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/wd4820 /wd4514 /wd5045 %(AdditionalOptions)</AdditionalOptions>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
     </ClCompile>
     <Link>
@@ -213,6 +213,8 @@
     <ClCompile Include="Util\AutoTimer.ixx" />
     <ClCompile Include="Util\Camera.cxx" />
     <ClCompile Include="Util\Camera.ixx" />
+    <ClCompile Include="Util\CameraController.cxx" />
+    <ClCompile Include="Util\CameraController.ixx" />
     <ClCompile Include="Util\Color.ixx" />
     <ClCompile Include="Util\Util.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\D3D11.ixx" />

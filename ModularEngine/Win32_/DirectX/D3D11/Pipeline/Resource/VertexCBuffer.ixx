@@ -21,6 +21,16 @@ export namespace fatpound::win32::d3d11::pipeline::resource
         using CBuffer<C>::CBuffer;
 
     public:
+        VertexCBuffer() = delete;
+        VertexCBuffer(const VertexCBuffer& src) = delete;
+        VertexCBuffer& operator = (const VertexCBuffer& src) = delete;
+
+        VertexCBuffer(VertexCBuffer&& src) = delete;
+        VertexCBuffer& operator = (VertexCBuffer&& src) = delete;
+        virtual ~VertexCBuffer() noexcept = default;
+
+
+    public:
         virtual void Bind(Graphics& gfx) noexcept override final
         {
             Bindable::GetContext_(gfx)->VSSetConstantBuffers(0u, 1u, this->pConstantBuffer_.GetAddressOf());

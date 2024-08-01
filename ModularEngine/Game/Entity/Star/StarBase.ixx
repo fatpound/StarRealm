@@ -30,6 +30,14 @@ export namespace starrealm::entity::star
             AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::TransformCBuffer<StarBase>>(gfx, *this));
         }
 
+        StarBase() = delete;
+        StarBase(const StarBase&) = delete;
+        StarBase& operator = (const StarBase&) = delete;
+
+        StarBase(StarBase&&) = delete;
+        StarBase& operator = (StarBase&&) = delete;
+        virtual ~StarBase() noexcept = default;
+
 
     protected:
         static bool IsStaticInitialized_() noexcept(IN_RELEASE)

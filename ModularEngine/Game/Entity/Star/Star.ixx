@@ -15,6 +15,8 @@ export namespace starrealm::entity
     class Star : public NAMESPACE_VISUAL::Drawable
     {
     public:
+#pragma warning (push)
+#pragma warning (disable : 4623 4626 5027)
         struct RadiusPack final
         {
             float outer_radius;
@@ -30,6 +32,7 @@ export namespace starrealm::entity
 
             const float rotation_speed;
         };
+#pragma warning (pop)
 
 
     public:

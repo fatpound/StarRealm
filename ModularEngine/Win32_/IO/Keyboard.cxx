@@ -19,11 +19,11 @@ namespace fatpound::win32::io
         return {};
     }
 
-    char Keyboard::ReadCharFromBuffer() noexcept
+    auto Keyboard::ReadCharFromBuffer() noexcept -> unsigned char
     {
         if (char_buffer_.size() > 0u)
         {
-            unsigned char charcode = char_buffer_.front();
+            const auto& charcode = char_buffer_.front();
             char_buffer_.pop();
 
             return charcode;
@@ -55,7 +55,7 @@ namespace fatpound::win32::io
     }
     void Keyboard::FlushCharBuffer() noexcept
     {
-        char_buffer_ = std::queue<char>{};
+        char_buffer_ = std::queue<unsigned char>{};
     }
     void Keyboard::FlushBuffers() noexcept
     {
@@ -87,7 +87,7 @@ namespace fatpound::win32::io
 
         TrimBuffer_(event_buffer_);
     }
-    void Keyboard::OnChar_(char character) noexcept
+    void Keyboard::OnChar_(unsigned char character) noexcept
     {
         char_buffer_.push(character);
 

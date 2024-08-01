@@ -43,6 +43,7 @@ export namespace starrealm
         NAMESPACE_D3D11::Graphics gfx_;
         
         NAMESPACE_UTIL::Camera camera_;
+        NAMESPACE_UTIL::CameraController camera_controller_;
         NAMESPACE_UTIL::AutoTimer timer_;
         
         std::vector<std::unique_ptr<entity::Star>> stars_;

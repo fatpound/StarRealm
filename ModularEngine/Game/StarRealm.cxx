@@ -21,8 +21,9 @@ namespace starrealm
     Game::Game()
         :
         wnd_(L"StarRealm", NAMESPACE_WIN32::Window::ClientSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
-        gfx_(wnd_),
-        camera_(Settings::minStarDepth, Settings::maxStarDepth, wnd_.mouse, wnd_.kbd),
+        gfx_(wnd_.GetHwnd(), NAMESPACE_D3D11::Graphics::SizeInfo{ wnd_.GetClientWidth<UINT>(), wnd_.GetClientHeight<UINT>() }),
+        camera_(Settings::minStarDepth, Settings::maxStarDepth),
+        camera_controller_(camera_, wnd_.mouse, wnd_.kbd),
         stars_{ StarFactory{ gfx_ }.GetStars() }
     {
         gfx_.SetProjection(
@@ -63,9 +64,9 @@ namespace starrealm
 
     void Game::DoFrame_()
     {
-        const auto& delta_time = timer_.Mark();
+        camera_controller_.Update();
 
-        camera_.Update(delta_time);
+        const auto& delta_time = timer_.Mark();
         
         gfx_.SetCamera(camera_.GetMatrix());
 

@@ -62,7 +62,7 @@ export namespace fatpound::win32::io
     public:
         Event ReadKeyFromBuffer() noexcept;
 
-        char ReadCharFromBuffer() noexcept;
+        auto ReadCharFromBuffer() noexcept -> unsigned char;
 
         bool KeyIsPressed(unsigned char keycode) const noexcept;
         bool KeyBufferIsEmpty() const noexcept;
@@ -93,7 +93,7 @@ export namespace fatpound::win32::io
     private:
         void OnKeyPressed_(unsigned char keycode) noexcept;
         void OnKeyReleased_(unsigned char keycode) noexcept;
-        void OnChar_(char character) noexcept;
+        void OnChar_(unsigned char character) noexcept;
 
         void ClearKeyStateBitset_() noexcept;
 
@@ -104,7 +104,7 @@ export namespace fatpound::win32::io
         std::bitset<Keyboard::key_count_> key_states_;
 
         std::queue<Event> event_buffer_;
-        std::queue<char>   char_buffer_;
+        std::queue<unsigned char> char_buffer_;
 
         bool auto_repeat_enabled_ = false;
 
