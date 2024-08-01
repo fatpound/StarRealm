@@ -13,6 +13,12 @@ export namespace fatpound::win32
 {
     class Window final
     {
+#if UNICODE
+        using str_t = const wchar_t* const;
+#else
+        using str_t = const char* const;
+#endif // UNICODE
+
     public:
         struct ClientSizeInfo final
         {
@@ -22,7 +28,7 @@ export namespace fatpound::win32
 
 
     public:
-        Window(const wchar_t* const title, const ClientSizeInfo& dimensions);
+        Window(str_t title, const ClientSizeInfo& dimensions);
 
         Window() = delete;
         Window(const Window& src) = delete;
@@ -71,9 +77,9 @@ export namespace fatpound::win32
         class WndClass_ final
         {
         public:
-            static HINSTANCE GetInstance() noexcept;
+            static auto GetInstance() noexcept -> HINSTANCE;
 
-            static const wchar_t* const GetName() noexcept;
+            static auto GetName() noexcept -> str_t;
 
         protected:
 
@@ -89,7 +95,11 @@ export namespace fatpound::win32
         private:
             HINSTANCE hInst_;
 
-            static constexpr auto wndClassName_ = L"FatPound Default WndClass";
+#if UNICODE
+            static constexpr str_t wndClassName_ = L"FatPound Default WndClass";
+#else
+            static constexpr str_t wndClassName_ =  "FatPound Default WndClass";
+#endif // UNICODE
         };
 
 

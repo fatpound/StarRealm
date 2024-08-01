@@ -32,7 +32,7 @@ namespace fatpound::win32
 {
     // Window
 
-    Window::Window(const wchar_t* const title, const ClientSizeInfo& dimensions)
+    Window::Window(str_t title, const ClientSizeInfo& dimensions)
         :
         client_size_{ dimensions }
     {
@@ -248,7 +248,7 @@ namespace fatpound::win32
     }
 
 
-    // WndClass_
+    // Window::WndClass_
 
     Window::WndClass_::WndClass_() noexcept
         :
@@ -273,7 +273,7 @@ namespace fatpound::win32
         }
         else
         {
-            ShowCursor(false);
+            ::ShowCursor(false);
         }
 
         RegisterClassEx(&wc);
@@ -283,14 +283,14 @@ namespace fatpound::win32
         UnregisterClass(WndClass_::wndClassName_, WndClass_::GetInstance());
     }
 
-    HINSTANCE Window::WndClass_::GetInstance() noexcept
+    auto Window::WndClass_::GetInstance() noexcept -> HINSTANCE
     {
         static WndClass_ wndClass_;
 
         return wndClass_.hInst_;
     }
 
-    const wchar_t* const Window::WndClass_::GetName() noexcept
+    auto Window::WndClass_::GetName() noexcept -> str_t
     {
         return wndClassName_;
     }
