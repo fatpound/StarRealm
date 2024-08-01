@@ -5,8 +5,8 @@ module;
 #define WINDOW_RECT_WIDTH       (rect.right - rect.left)
 #define WINDOW_RECT_HEIGHT      (rect.bottom - rect.top)
 
-#define CLIENT_WIDTH            client_size_.width
-#define CLIENT_HEIGHT           client_size_.height
+#define CLIENT_WIDTH            static_cast<LONG>(client_size_.width)
+#define CLIENT_HEIGHT           static_cast<LONG>(client_size_.height)
 
 #if IN_RELEASE
 
