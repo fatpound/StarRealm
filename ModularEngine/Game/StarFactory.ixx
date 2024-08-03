@@ -21,8 +21,12 @@ export namespace starrealm
             static constexpr auto minFlareCount = 2u;
             static constexpr auto maxFlareCount = 7u;
 
-            static constexpr auto worldWidth  = 16.0f;
-            static constexpr auto worldHeight =  9.0f;
+            static constexpr auto worldWidth = 16.0f;
+            static constexpr auto worldHeight = 9.0f;
+
+            static constexpr auto worldDensityFactor = 1.0f;
+            static constexpr auto worldArea = worldDensityFactor * static_cast<float>(Settings::starCount);
+            static constexpr auto maxWorldRadius = NAMESPACE_MATH::ConstevalSqrt<decltype(Settings::worldArea)>(Settings::worldArea / std::numbers::pi_v<float>);
 
             static constexpr auto meanStarOuterRadius = 0.6f;
             static constexpr auto devStarOuterRadius  = 0.7f;
@@ -79,7 +83,7 @@ export namespace starrealm
         std::uniform_real_distribution<float> z_dist_{  Settings::minStarDepth, Settings::maxStarDepth };
 
         std::uniform_real_distribution<float> rotation_speed_dist_{ Settings::minRotationSpeed, Settings::maxRotationSpeed };
-        std::uniform_real_distribution<float> world_radius_dist_{ 0.0f, std::min(Settings::worldWidth, Settings::worldHeight) * 2.0f };
+        std::uniform_real_distribution<float> world_radius_dist_{ 0.0f, std::min(Settings::worldWidth, Settings::worldHeight) * std::numbers::pi_v<float> };
         std::uniform_real_distribution<float> angle_dist_{ 0.0f, 2.0f * std::numbers::pi_v<float> };
 
         std::uniform_int_distribution<int> flare_count_dist_{ Settings::minFlareCount, Settings::maxFlareCount };

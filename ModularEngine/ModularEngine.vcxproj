@@ -94,7 +94,7 @@
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
       <AdditionalIncludeDirectories>C:\Users\Administrator\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>/wd4820 /wd4514 /wd5045 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/wd4820 /wd4514 /wd5045 /wd4710 /wd4711 %(AdditionalOptions)</AdditionalOptions>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
     </ClCompile>
@@ -117,7 +117,7 @@
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
       <AdditionalIncludeDirectories>C:\Users\Administrator\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>/wd4820 /wd4514 /wd5045 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/wd4820 /wd4514 /wd5045 /wd4710 /wd4711 %(AdditionalOptions)</AdditionalOptions>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
     </ClCompile>
@@ -140,7 +140,7 @@
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
       <AdditionalIncludeDirectories>C:\Users\Administrator\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>/wd4820 /wd4514 /wd5045 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/wd4820 /wd4514 /wd5045 /wd4710 /wd4711 %(AdditionalOptions)</AdditionalOptions>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
     </ClCompile>
@@ -163,7 +163,7 @@
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
       <AdditionalIncludeDirectories>C:\Users\Administrator\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>/wd4820 /wd4514 /wd5045 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/wd4820 /wd4514 /wd5045 /wd4710 /wd4711 %(AdditionalOptions)</AdditionalOptions>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
     </ClCompile>

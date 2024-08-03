@@ -95,9 +95,7 @@ namespace starrealm
 
         if constexpr (StarFactory::distribute_circular_)
         {
-            const auto& maxWorldRadius = std::max(Settings::worldWidth, Settings::worldHeight) * 0.5f;
-
-            const auto& worldRadius = std::sqrt(world_radius_dist_(rng_)) * maxWorldRadius;
+            const auto& worldRadius = std::sqrt(world_radius_dist_(rng_)) * Settings::maxWorldRadius;
             const auto& angle = angle_dist_(rng_);
 
             const auto& x = worldRadius * std::cos(angle) + normal_dist_(rng_);
