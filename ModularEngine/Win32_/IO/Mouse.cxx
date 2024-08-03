@@ -189,14 +189,14 @@ namespace fatpound::win32::io
 
     void Mouse::TrimBuffer_() noexcept
     {
-        while (event_buffer_.size() > Mouse::buffer_size_)
+        while (event_buffer_.size() > Mouse::s_bufferSize_)
         {
             event_buffer_.pop();
         }
     }
     void Mouse::TrimRawInputBuffer_() noexcept
     {
-        while (raw_delta_buffer_.size() > Mouse::buffer_size_)
+        while (raw_delta_buffer_.size() > Mouse::s_bufferSize_)
         {
             raw_delta_buffer_.pop();
         }

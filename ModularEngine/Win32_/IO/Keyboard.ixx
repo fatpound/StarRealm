@@ -83,7 +83,7 @@ export namespace fatpound::win32::io
         template <typename T>
         static void TrimBuffer_(std::queue<T>& buffer) noexcept
         {
-            while (buffer.size() > Keyboard::buffer_size_)
+            while (buffer.size() > s_bufferSize_)
             {
                 buffer.pop();
             }
@@ -99,15 +99,15 @@ export namespace fatpound::win32::io
 
 
     private:
-        static constexpr unsigned int key_count_ = 256u;
+        static constexpr unsigned int s_keyCount_ = 256u;
 
-        std::bitset<Keyboard::key_count_> key_states_;
+        std::bitset<Keyboard::s_keyCount_> key_states_;
 
         std::queue<Event> event_buffer_;
         std::queue<unsigned char> char_buffer_;
 
         bool auto_repeat_enabled_ = false;
 
-        static constexpr unsigned int buffer_size_ = 16u;
+        static constexpr unsigned int s_bufferSize_ = 16u;
     };
 }

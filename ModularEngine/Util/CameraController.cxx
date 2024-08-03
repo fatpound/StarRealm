@@ -46,11 +46,11 @@ namespace fatpound::util
                 break;
 
             case NAMESPACE_IO::Mouse::Event::Type::WheelUp:
-                camera_.SetR(camera_.GetR() - zoom_increment_ * 5.0f);
+                camera_.SetR(camera_.GetR() - s_zoomIncrement_ * 5.0f);
                 break;
 
             case NAMESPACE_IO::Mouse::Event::Type::WheelDown:
-                camera_.SetR(camera_.GetR() + zoom_increment_ * 5.0f);
+                camera_.SetR(camera_.GetR() + s_zoomIncrement_ * 5.0f);
                 break;
 
             case NAMESPACE_IO::Mouse::Event::Type::RPress:       [[fallthrough]];
@@ -79,8 +79,8 @@ namespace fatpound::util
 
             deltaPositionVec = dx::XMVectorSetX(deltaPositionVec, -dx::XMVectorGetX(deltaPositionVec));
 
-            camera_.SetX(camera_.GetX() + -dx::XMVectorGetX(deltaPositionVec) * zoom_increment_);
-            camera_.SetY(camera_.GetY() + -dx::XMVectorGetY(deltaPositionVec) * zoom_increment_);
+            camera_.SetX(camera_.GetX() + -dx::XMVectorGetX(deltaPositionVec) * s_zoomIncrement_);
+            camera_.SetY(camera_.GetY() + -dx::XMVectorGetY(deltaPositionVec) * s_zoomIncrement_);
 
             last_position_ = currentPosition;
         }

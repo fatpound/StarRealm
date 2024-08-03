@@ -265,9 +265,9 @@ namespace fatpound::win32
         wc.hIconSm = nullptr;
         wc.hbrBackground = nullptr;
         wc.lpszMenuName = nullptr;
-        wc.lpszClassName = WndClass_::wndClassName_;
+        wc.lpszClassName = s_wndClassName_;
 
-        if constexpr (Window::cursor_enabled_)
+        if constexpr (s_cursorEnabled_)
         {
             wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
         }
@@ -280,7 +280,7 @@ namespace fatpound::win32
     }
     Window::WndClass_::~WndClass_()
     {
-        UnregisterClass(WndClass_::wndClassName_, WndClass_::GetInstance());
+        UnregisterClass(s_wndClassName_, WndClass_::GetInstance());
     }
 
     auto Window::WndClass_::GetInstance() noexcept -> HINSTANCE
@@ -292,6 +292,6 @@ namespace fatpound::win32
 
     auto Window::WndClass_::GetName() noexcept -> str_t
     {
-        return wndClassName_;
+        return s_wndClassName_;
     }
 }

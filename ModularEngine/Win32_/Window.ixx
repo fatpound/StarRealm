@@ -96,9 +96,9 @@ export namespace fatpound::win32
             HINSTANCE hInst_;
 
 #ifdef UNICODE
-            static constexpr str_t wndClassName_ = L"FatPound Default WndClass";
+            static constexpr str_t s_wndClassName_ = L"FatPound Default WndClass";
 #else
-            static constexpr str_t wndClassName_ =  "FatPound Default WndClass";
+            static constexpr str_t s_wndClassName_ =  "FatPound Default WndClass";
 #endif // UNICODE
         };
 
@@ -117,6 +117,6 @@ export namespace fatpound::win32
 
         const ClientSizeInfo client_size_;
 
-        static constexpr bool cursor_enabled_ = true;
+        static constexpr bool s_cursorEnabled_ = true;
     };
 }

@@ -144,6 +144,6 @@ export namespace fatpound::win32::io
         bool right_is_pressed_ = false;
         bool wheel_is_pressed_ = false;
 
-        static constexpr unsigned int buffer_size_ = 16u;
+        static constexpr unsigned int s_bufferSize_ = 16u;
     };
 }

@@ -24,17 +24,17 @@ namespace fatpound::win32::d3d11
         height_(dimensions.height)
     {
         {
-            const auto& scdesc = factory::SwapChain::CreateDESC<Graphics::msaa_quality_>(hWnd, width_, height_);
+            const auto& scdesc = factory::SwapChain::CreateDESC<Graphics::s_msaaQuality_>(hWnd, width_, height_);
             factory::Device::CreateWithSwapChain(pDevice_, pSwapChain_, pImmediateContext_, scdesc);
         }
 
         ToggleAltEnterMode_();
 
-        pipeline::system::RenderTarget::SetDefault<Graphics::msaa_quality_>(pDevice_, pSwapChain_, pImmediateContext_, pTarget_, pDSV_, width_, height_);
+        pipeline::system::RenderTarget::SetDefault<Graphics::s_msaaQuality_>(pDevice_, pSwapChain_, pImmediateContext_, pTarget_, pDSV_, width_, height_);
         pipeline::system::DepthStencil::SetDefault(pDevice_, pImmediateContext_);
         pipeline::system::Viewport::SetDefault(pImmediateContext_, width_, height_);
 
-        if constexpr (Graphics::rasterization_enabled_)
+        if constexpr (Graphics::s_rasterizationEnabled_)
         {
             pipeline::system::Rasterizer::SetDefault(pDevice_, pImmediateContext_);
         }

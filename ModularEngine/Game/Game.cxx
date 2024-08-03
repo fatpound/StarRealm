@@ -22,7 +22,7 @@ namespace starrealm
         :
         wnd_(L"StarRealm", NAMESPACE_WIN32::Window::ClientSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
         gfx_(wnd_.GetHwnd(), NAMESPACE_D3D11::Graphics::SizeInfo{ wnd_.GetClientWidth<UINT>(), wnd_.GetClientHeight<UINT>() }),
-        camera_(Settings::minStarDepth, Settings::maxStarDepth),
+        camera_(Settings::s_minStarDepth, Settings::s_maxStarDepth),
         camera_controller_(camera_, wnd_.mouse, wnd_.kbd),
         stars_{ StarFactory{ gfx_ }.GetStars() }
     {
@@ -30,8 +30,8 @@ namespace starrealm
             dx::XMMatrixPerspectiveLH(
                 1.0f,
                 wnd_.GetClientHeight<float>() / wnd_.GetClientWidth<float>(), // 1 / Aspect Ratio
-                Settings::minStarDepth,
-                Settings::maxStarDepth * 2.0f
+                Settings::s_minStarDepth,
+                Settings::s_maxStarDepth * 2.0f
             )
         );
     }

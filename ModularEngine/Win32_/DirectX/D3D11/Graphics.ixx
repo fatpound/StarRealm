@@ -92,8 +92,8 @@ export namespace fatpound::win32::d3d11
         const decltype(SizeInfo::width)  width_;
         const decltype(SizeInfo::height) height_;
 
-        static constexpr auto msaa_quality_ = 8u;
+        static constexpr auto s_msaaQuality_ = 8u;
 
-        static constexpr bool rasterization_enabled_ = true;
+        static constexpr bool s_rasterizationEnabled_ = true;
     };
 }
