@@ -94,6 +94,6 @@ export namespace starrealm
 
         std::vector<std::unique_ptr<entity::Star>> stars_;
 
-        static constexpr bool distribute_circular_ = true;
+        static constexpr bool s_distributeCircular_ = true;
     };
 }
