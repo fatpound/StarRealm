@@ -93,13 +93,13 @@ namespace starrealm
     {
         const auto& z = z_dist_(rng_);
 
-        if constexpr (StarFactory::s_distributeCircular_)
+        if constexpr (s_distributeCircular_)
         {
-            const auto& worldRadius = std::sqrt(world_radius_dist_(rng_)) * Settings::s_maxWorldRadius;
+            const auto& radius = std::sqrt(radius_dist_(rng_)) * Settings::s_worldRadiusFactor;
             const auto& angle = angle_dist_(rng_);
 
-            const auto& x = worldRadius * std::cos(angle) + normal_dist_(rng_);
-            const auto& y = worldRadius * std::sin(angle) + normal_dist_(rng_);
+            const auto& x = radius * std::cos(angle) + normal_dist_(rng_);
+            const auto& y = radius * std::sin(angle) + normal_dist_(rng_);
 
             return { x, y, z };
         }

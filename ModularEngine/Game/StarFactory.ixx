@@ -26,7 +26,9 @@ export namespace starrealm
 
             static constexpr auto s_worldDensityFactor = 1.0f;
             static constexpr auto s_worldArea = s_worldDensityFactor * static_cast<float>(s_starCount);
-            static constexpr auto s_maxWorldRadius = NAMESPACE_MATH::ConstevalSqrt<decltype(s_worldArea)>(s_worldArea / std::numbers::pi_v<float>);
+            static constexpr auto s_meanWorldRadius = 0.1f;
+            static constexpr auto s_devWorldRadius = std::min(s_worldWidth, s_worldHeight) * 2.0f;
+            static constexpr auto s_worldRadiusFactor = NAMESPACE_MATH::ConstevalSqrt<decltype(s_worldArea)>(s_worldArea / std::numbers::pi_v<float>);
 
             static constexpr auto s_meanStarOuterRadius = 0.6f;
             static constexpr auto s_devStarOuterRadius  = 0.7f;
@@ -83,13 +85,13 @@ export namespace starrealm
         std::uniform_real_distribution<float> z_dist_{  Settings::s_minStarDepth, Settings::s_maxStarDepth };
 
         std::uniform_real_distribution<float> rotation_speed_dist_{ Settings::s_minRotationSpeed, Settings::s_maxRotationSpeed };
-        std::uniform_real_distribution<float> world_radius_dist_{ 0.0f, std::min(Settings::s_worldWidth, Settings::s_worldHeight) * std::numbers::pi_v<float> };
         std::uniform_real_distribution<float> angle_dist_{ 0.0f, 2.0f * std::numbers::pi_v<float> };
 
         std::uniform_int_distribution<int> flare_count_dist_{ Settings::s_minFlareCount, Settings::s_maxFlareCount };
 
         std::normal_distribution<float> outer_rad_dist_{ Settings::s_meanStarOuterRadius, Settings::s_devStarOuterRadius };
-        std::normal_distribution<float> inner_rad_ratio_dist_{ Settings::s_meanStarInnerRatio,  Settings::s_devStarInnerRatio };
+        std::normal_distribution<float> inner_rad_ratio_dist_{ Settings::s_meanStarInnerRatio, Settings::s_devStarInnerRatio };
+        std::normal_distribution<float> radius_dist_{ Settings::s_meanWorldRadius, Settings::s_devWorldRadius };
         std::normal_distribution<float> normal_dist_{ 0.0f, 1.0f };
 
         std::vector<std::unique_ptr<entity::Star>> stars_;
