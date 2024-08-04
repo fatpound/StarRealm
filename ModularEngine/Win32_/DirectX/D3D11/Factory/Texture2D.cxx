@@ -18,9 +18,7 @@ namespace fatpound::win32::d3d11::factory
         const ::D3D11_TEXTURE2D_DESC&     desc
     )
     {
-        ::HRESULT hr;
-
-        hr = pDevice->CreateTexture2D(&desc, nullptr, &pTexture2D);
+        const auto hr = pDevice->CreateTexture2D(&desc, nullptr, &pTexture2D);
 
         if (FAILED(hr)) [[unlikely]]
         {

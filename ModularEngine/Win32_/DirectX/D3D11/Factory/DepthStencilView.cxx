@@ -19,9 +19,7 @@ namespace fatpound::win32::d3d11::factory
         const ::D3D11_DEPTH_STENCIL_VIEW_DESC&   desc
     )
     {
-        ::HRESULT hr;
-
-        hr = pDevice->CreateDepthStencilView(pDepthStencil.Get(), &desc, &pDSV);
+        const auto hr = pDevice->CreateDepthStencilView(pDepthStencil.Get(), &desc, &pDSV);
 
         if (FAILED(hr)) [[unlikely]]
         {

@@ -25,12 +25,10 @@ namespace fatpound::win32::d3d11::factory
     void DepthStencilState::Create(
         ::wrl::ComPtr<::ID3D11Device>&            pDevice,
         ::wrl::ComPtr<::ID3D11DepthStencilState>& pDSState,
-        const D3D11_DEPTH_STENCIL_DESC&           desc
+        const ::D3D11_DEPTH_STENCIL_DESC&         desc
     )
     {
-        ::HRESULT hr;
-
-        hr = pDevice->CreateDepthStencilState(&desc, &pDSState);
+        const auto hr = pDevice->CreateDepthStencilState(&desc, &pDSState);
 
         if (FAILED(hr)) [[unlikely]]
         {

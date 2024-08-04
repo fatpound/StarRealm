@@ -55,9 +55,7 @@ namespace fatpound::win32::d3d11
     }
     void Graphics::EndFrame()
     {
-        ::HRESULT hr;
-
-        hr = m_pSwapChain_->Present(1u, 0u);
+        const auto hr = m_pSwapChain_->Present(1u, 0u);
 
         if (FAILED(hr)) [[unlikely]]
         {

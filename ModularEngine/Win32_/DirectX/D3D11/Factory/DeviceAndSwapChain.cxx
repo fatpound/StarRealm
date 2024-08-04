@@ -30,9 +30,7 @@ namespace fatpound::win32::d3d11::factory
             swapCreateFlags = D3D11_CREATE_DEVICE_DEBUG;
         }
 
-        ::HRESULT hr;
-
-        hr = D3D11CreateDeviceAndSwapChain(
+        const auto hr = D3D11CreateDeviceAndSwapChain(
             nullptr,
             D3D_DRIVER_TYPE_HARDWARE,
             nullptr,
