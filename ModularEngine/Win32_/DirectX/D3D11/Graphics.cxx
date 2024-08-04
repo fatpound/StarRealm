@@ -23,7 +23,10 @@ namespace fatpound::win32::d3d11
         m_width_(dimensions.width),
         m_height_(dimensions.height)
     {
-        InitWRLs_(hWnd);
+        {
+            const auto& scdesc = factory::DeviceAndSwapChain::CreateDESC<s_msaaQuality_>(hWnd, m_width_, m_height_);
+            factory::DeviceAndSwapChain::Create(m_pDevice_, m_pSwapChain_, m_pImmediateContext_, scdesc);
+        }
 
         ToggleAltEnterMode_();
 
@@ -75,12 +78,6 @@ namespace fatpound::win32::d3d11
         m_camera_ = camera;
     }
 
-    void Graphics::InitWRLs_(HWND hWnd)
-    {
-        const auto& scdesc = factory::DeviceAndSwapChain::CreateDESC<s_msaaQuality_>(hWnd, m_width_, m_height_);
-        factory::DeviceAndSwapChain::Create(m_pDevice_, m_pSwapChain_, m_pImmediateContext_, scdesc);
-    }
-
     void Graphics::ToggleAltEnterMode_()
     {
         ::wrl::ComPtr<IDXGIDevice> pDXGIDevice = nullptr;
@@ -112,7 +109,6 @@ namespace fatpound::win32::d3d11
 
         pIDXGIFactory->MakeWindowAssociation(hWnd, flag);
     }
-
     void Graphics::ClearBuffer_(const float& red, const float& green, const float& blue) noexcept
     {
         const std::array<float, 4> colors{ red, green, blue, 1.0f };

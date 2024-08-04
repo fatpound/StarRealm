@@ -75,8 +75,6 @@ export namespace fatpound::win32::d3d11
 
 
     private:
-        void InitWRLs_(HWND hWnd);
-
         void ToggleAltEnterMode_();
 
         void ClearBuffer_(const float& red, const float& green, const float& blue) noexcept;
