@@ -22,8 +22,8 @@ export namespace fatpound::win32
     public:
         struct ClientSizeInfo final
         {
-            unsigned int width;
-            unsigned int height;
+            unsigned int m_width;
+            unsigned int m_height;
         };
 
 
@@ -40,34 +40,34 @@ export namespace fatpound::win32
 
 
     public:
-        static auto ProcessMessages() noexcept -> std::optional<WPARAM>;
+        static auto ProcessMessages() noexcept -> ::std::optional<::WPARAM>;
+
+
+    public:
+        auto GetMouse()    -> NAMESPACE_IO::Mouse&;
+        auto GetKeyboard() -> NAMESPACE_IO::Keyboard&;
+
+        auto GetHwnd() const noexcept -> ::HWND;
+
+        bool IsActive() const noexcept;
+        bool IsMinimized() const noexcept;
+
+        void SetTitle(const ::std::wstring& title);
+        void ShowMessageBox(const ::std::wstring& message, const ::std::wstring& title, ::UINT error_flags) noexcept;
+        void Kill();
 
 
     public:
         template <NAMESPACE_MATH::Number N>
         auto GetClientWidth() const noexcept
         {
-            return static_cast<N>(m_client_size_.width);
+            return static_cast<N>(m_client_size_.m_width);
         }
         template <NAMESPACE_MATH::Number N>
         auto GetClientHeight() const noexcept
         {
-            return static_cast<N>(m_client_size_.height);
+            return static_cast<N>(m_client_size_.m_height);
         }
-
-        auto GetHwnd() const noexcept -> HWND;
-
-        bool IsActive() const noexcept;
-        bool IsMinimized() const noexcept;
-
-        void SetTitle(const std::wstring& title);
-        void ShowMessageBox(const std::wstring& message, const std::wstring& title, UINT error_flags) noexcept;
-        void Kill();
-
-
-    public:
-        NAMESPACE_IO::Keyboard m_keyboard;
-        NAMESPACE_IO::Mouse m_mouse;
 
         
     protected:
@@ -77,7 +77,7 @@ export namespace fatpound::win32
         class WndClass_ final
         {
         public:
-            static auto GetInstance() noexcept -> HINSTANCE;
+            static auto GetInstance() noexcept -> ::HINSTANCE;
 
             static auto GetName() noexcept -> str_t;
 
@@ -93,7 +93,7 @@ export namespace fatpound::win32
             ~WndClass_();
 
         private:
-            HINSTANCE m_hInst_;
+            ::HINSTANCE m_hInst_;
 
 #ifdef UNICODE
             static constexpr str_t s_wndClassName_ = L"FatPound Default WndClass";
@@ -104,18 +104,21 @@ export namespace fatpound::win32
 
 
     private:
-        static LRESULT CALLBACK HandleMsgSetup_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
-        static LRESULT CALLBACK HandleMsgThunk_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
+        static auto CALLBACK HandleMsgSetup_(::HWND hWnd, ::UINT msg, ::WPARAM wParam, ::LPARAM lParam) noexcept -> ::LRESULT;
+        static auto CALLBACK HandleMsgThunk_(::HWND hWnd, ::UINT msg, ::WPARAM wParam, ::LPARAM lParam) noexcept -> ::LRESULT;
 
 
     private:
-        LRESULT HandleMsg_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
+        auto HandleMsg_(::HWND hWnd, ::UINT msg, ::WPARAM wParam, ::LPARAM lParam) noexcept -> ::LRESULT;
 
 
     private:
-        HWND m_hWnd_;
+        ::HWND m_hWnd_;
 
         const ClientSizeInfo m_client_size_;
+
+        NAMESPACE_IO::Mouse m_mouse_;
+        NAMESPACE_IO::Keyboard m_keyboard_;
 
         static constexpr bool s_cursorEnabled_ = true;
     };
