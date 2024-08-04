@@ -18,7 +18,7 @@ namespace wrl = Microsoft::WRL;
 
 namespace fatpound::win32::d3d11
 {
-    Graphics::Graphics(HWND hWnd, const SizeInfo& dimensions)
+    Graphics::Graphics(::HWND hWnd, const SizeInfo& dimensions)
         :
         width_(dimensions.width),
         height_(dimensions.height)
@@ -30,21 +30,21 @@ namespace fatpound::win32::d3d11
 
         ToggleAltEnterMode_();
 
-        pipeline::system::RenderTarget::SetDefault<Graphics::s_msaaQuality_>(pDevice_, pSwapChain_, pImmediateContext_, pTarget_, pDSV_, width_, height_);
+        pipeline::system::RenderTarget::SetDefault<s_msaaQuality_>(pDevice_, pSwapChain_, pImmediateContext_, pTarget_, pDSV_, width_, height_);
         pipeline::system::DepthStencil::SetDefault(pDevice_, pImmediateContext_);
         pipeline::system::Viewport::SetDefault(pImmediateContext_, width_, height_);
 
-        if constexpr (Graphics::s_rasterizationEnabled_)
+        if constexpr (s_rasterizationEnabled_)
         {
             pipeline::system::Rasterizer::SetDefault(pDevice_, pImmediateContext_);
         }
     }
 
-    auto Graphics::GetProjectionXM() const noexcept -> dx::XMMATRIX
+    auto Graphics::GetProjectionXM() const noexcept -> ::dx::XMMATRIX
     {
         return projection_;
     }
-    auto Graphics::GetCameraXM() const noexcept -> dx::XMMATRIX
+    auto Graphics::GetCameraXM() const noexcept -> ::dx::XMMATRIX
     {
         return camera_;
     }
@@ -80,13 +80,13 @@ namespace fatpound::win32::d3d11
 
     void Graphics::ToggleAltEnterMode_()
     {
-        wrl::ComPtr<IDXGIDevice> pDXGIDevice = nullptr;
+        ::wrl::ComPtr<IDXGIDevice> pDXGIDevice = nullptr;
         pDevice_->QueryInterface(__uuidof(IDXGIDevice), &pDXGIDevice);
 
-        wrl::ComPtr<IDXGIAdapter> pDXGIAdapter = nullptr;
+        ::wrl::ComPtr<IDXGIAdapter> pDXGIAdapter = nullptr;
         pDXGIDevice->GetParent(__uuidof(IDXGIAdapter), &pDXGIAdapter);
 
-        wrl::ComPtr<IDXGIFactory> pIDXGIFactory = nullptr;
+        ::wrl::ComPtr<IDXGIFactory> pIDXGIFactory = nullptr;
         pDXGIAdapter->GetParent(__uuidof(IDXGIFactory), &pIDXGIFactory);
 
         DXGI_SWAP_CHAIN_DESC desc = {};

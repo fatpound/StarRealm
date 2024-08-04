@@ -37,7 +37,7 @@ export namespace fatpound::win32::d3d11
 
 
     public:
-        Graphics(HWND hWnd, const SizeInfo& dimensions);
+        Graphics(::HWND hWnd, const SizeInfo& dimensions);
 
         Graphics() = delete;
         Graphics(const Graphics& src) = delete;
@@ -60,15 +60,15 @@ export namespace fatpound::win32::d3d11
             return static_cast<N>(height_);
         }
 
-        auto GetProjectionXM() const noexcept -> DirectX::XMMATRIX;
-        auto GetCameraXM()     const noexcept -> DirectX::XMMATRIX;
+        auto GetProjectionXM() const noexcept -> ::DirectX::XMMATRIX;
+        auto GetCameraXM()     const noexcept -> ::DirectX::XMMATRIX;
 
         void BeginFrame() noexcept;
         void EndFrame();
         void DrawIndexed(UINT count) noexcept(IN_RELEASE);
 
-        void SetProjection(const DirectX::XMMATRIX& projection) noexcept;
-        void SetCamera(const DirectX::XMMATRIX& camera) noexcept;
+        void SetProjection(const ::DirectX::XMMATRIX& projection) noexcept;
+        void SetCamera(const ::DirectX::XMMATRIX& camera) noexcept;
 
 
     protected:
@@ -80,14 +80,14 @@ export namespace fatpound::win32::d3d11
 
 
     private:
-        DirectX::XMMATRIX projection_;
-        DirectX::XMMATRIX camera_;
+        ::Microsoft::WRL::ComPtr<ID3D11Device>           pDevice_           = nullptr;
+        ::Microsoft::WRL::ComPtr<IDXGISwapChain>         pSwapChain_        = nullptr;
+        ::Microsoft::WRL::ComPtr<ID3D11DeviceContext>    pImmediateContext_ = nullptr;
+        ::Microsoft::WRL::ComPtr<ID3D11RenderTargetView> pTarget_           = nullptr;
+        ::Microsoft::WRL::ComPtr<ID3D11DepthStencilView> pDSV_              = nullptr;
 
-        Microsoft::WRL::ComPtr<ID3D11Device>              pDevice_           = nullptr;
-        Microsoft::WRL::ComPtr<IDXGISwapChain>            pSwapChain_        = nullptr;
-        Microsoft::WRL::ComPtr<ID3D11DeviceContext>       pImmediateContext_ = nullptr;
-        Microsoft::WRL::ComPtr<ID3D11RenderTargetView>    pTarget_           = nullptr;
-        Microsoft::WRL::ComPtr<ID3D11DepthStencilView>    pDSV_              = nullptr;
+        ::DirectX::XMMATRIX projection_;
+        ::DirectX::XMMATRIX camera_;
 
         const decltype(SizeInfo::width)  width_;
         const decltype(SizeInfo::height) height_;
