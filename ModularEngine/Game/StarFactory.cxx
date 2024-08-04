@@ -14,7 +14,7 @@ namespace starrealm
 {
     StarFactory::StarFactory(NAMESPACE_D3D11::Graphics& gfx)
         :
-        gfx_(gfx)
+        m_gfx_(gfx)
     {
         m_stars_.reserve(Settings::s_starCount);
 
@@ -59,22 +59,22 @@ namespace starrealm
         switch (m_rng_() % 6u)
         {
         case 0:
-            return std::make_unique<entity::star::HollowSingle>(gfx_, desc);
+            return std::make_unique<entity::star::HollowSingle>(m_gfx_, desc);
 
         case 1:
-            return std::make_unique<entity::star::HollowMulti>(gfx_, desc);
+            return std::make_unique<entity::star::HollowMulti>(m_gfx_, desc);
 
         case 2:
-            return std::make_unique<entity::star::HollowBlend>(gfx_, desc);
+            return std::make_unique<entity::star::HollowBlend>(m_gfx_, desc);
 
         case 3:
-            return std::make_unique<entity::star::FilledSingle>(gfx_, desc);
+            return std::make_unique<entity::star::FilledSingle>(m_gfx_, desc);
 
         case 4:
-            return std::make_unique<entity::star::FilledMulti>(gfx_, desc);
+            return std::make_unique<entity::star::FilledMulti>(m_gfx_, desc);
 
         case 5:
-            return std::make_unique<entity::star::FilledBlend>(gfx_, desc);
+            return std::make_unique<entity::star::FilledBlend>(m_gfx_, desc);
 
         default:
             return nullptr;

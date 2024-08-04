@@ -76,7 +76,7 @@ export namespace starrealm
 
 
     private:
-        NAMESPACE_D3D11::Graphics& gfx_;
+        NAMESPACE_D3D11::Graphics& m_gfx_;
 
         std::minstd_rand m_rng_{ std::random_device{}() };
 
