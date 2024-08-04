@@ -24,7 +24,7 @@ export namespace starrealm::entity
         };
         struct Descriptor final
         {
-            const DirectX::XMFLOAT3& position;
+            const ::DirectX::XMFLOAT3& position;
 
             const RadiusPack& radiuses;
 
@@ -49,9 +49,9 @@ export namespace starrealm::entity
 
     public:
         template <bool WithCentre = false>
-        static auto Make(const RadiusPack& radiuses, const DirectX::XMFLOAT3& centre, std::size_t flare_count = 4u) -> std::vector<DirectX::XMFLOAT3>
+        static auto Make(const RadiusPack& radiuses, const ::DirectX::XMFLOAT3& centre, std::size_t flare_count = 4u) -> std::vector<::DirectX::XMFLOAT3>
         {
-            std::vector<DirectX::XMFLOAT3> star;
+            std::vector<::DirectX::XMFLOAT3> star;
             const std::size_t capacity = flare_count * 2u;
 
             star.reserve(capacity + 1u);
@@ -82,9 +82,9 @@ export namespace starrealm::entity
 
 
     public:
-        virtual auto GetTransformXM() const noexcept -> DirectX::XMMATRIX override final;
+        virtual auto GetTransformXM() const noexcept -> ::DirectX::XMMATRIX override final;
 
-        virtual auto GetPosition() const noexcept -> DirectX::XMFLOAT3 final;
+        virtual auto GetPosition() const noexcept -> ::DirectX::XMFLOAT3 final;
 
         virtual float GetOuterRadius() const noexcept final;
 
@@ -92,11 +92,11 @@ export namespace starrealm::entity
 
 
     public:
-        bool IsWithinArea(const DirectX::XMFLOAT3& position, const float& radius) const noexcept;
+        bool IsWithinArea(const ::DirectX::XMFLOAT3& position, const float& radius) const noexcept;
 
 
     protected:
-        DirectX::XMFLOAT3 m_position_;
+        ::DirectX::XMFLOAT3 m_position_;
 
         RadiusPack m_radiuses_;
 

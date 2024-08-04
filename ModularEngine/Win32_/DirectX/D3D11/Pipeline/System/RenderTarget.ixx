@@ -17,20 +17,20 @@ export namespace fatpound::win32::d3d11::pipeline::system
 	class RenderTarget final
 	{
 	public:
-		template <UINT MSAA_Quality>
+		template <::UINT MSAA_Quality>
 		static void SetDefault(
-			Microsoft::WRL::ComPtr<ID3D11Device>&           pDevice,
-			Microsoft::WRL::ComPtr<IDXGISwapChain>&         pSwapChain,
-			Microsoft::WRL::ComPtr<ID3D11DeviceContext>&    pImmediateContext,
-			Microsoft::WRL::ComPtr<ID3D11RenderTargetView>& pRenderTargetView,
-			Microsoft::WRL::ComPtr<ID3D11DepthStencilView>& pDSV,
-			UINT width,
-			UINT height
+			::Microsoft::WRL::ComPtr<::ID3D11Device>&           pDevice,
+			::Microsoft::WRL::ComPtr<::IDXGISwapChain>&         pSwapChain,
+			::Microsoft::WRL::ComPtr<::ID3D11DeviceContext>&    pImmediateContext,
+			::Microsoft::WRL::ComPtr<::ID3D11RenderTargetView>& pRenderTargetView,
+			::Microsoft::WRL::ComPtr<::ID3D11DepthStencilView>& pDSV,
+			::UINT width,
+			::UINT height
 		)
 		{
 			factory::RenderTargetView::Create(pDevice, pSwapChain, pRenderTargetView);
 
-			Microsoft::WRL::ComPtr<ID3D11Texture2D> pTexture2D = nullptr;
+			::Microsoft::WRL::ComPtr<::ID3D11Texture2D> pTexture2D = nullptr;
 
 			const auto& descTex2D = factory::Texture2D::CreateDESC<MSAA_Quality>(width, height);
 			factory::Texture2D::Create(pDevice, pTexture2D, descTex2D);

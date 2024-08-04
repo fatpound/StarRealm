@@ -26,12 +26,12 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
 
     public:
-        auto GetBytecode() const noexcept -> ID3DBlob*;
+        auto GetBytecode() const noexcept -> ::ID3DBlob*;
 
 
     protected:
-        ::Microsoft::WRL::ComPtr<ID3DBlob>           m_pBytecodeBlob_;
-        ::Microsoft::WRL::ComPtr<ID3D11VertexShader> m_pVertexShader_;
+        ::Microsoft::WRL::ComPtr<::ID3DBlob>           m_pBytecodeBlob_;
+        ::Microsoft::WRL::ComPtr<::ID3D11VertexShader> m_pVertexShader_;
 
 
     private:

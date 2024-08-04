@@ -69,18 +69,18 @@ namespace fatpound::util
 
         if (engaged_)
         {
-            dx::XMVECTOR lastPositionVec = dx::XMLoadFloat2(&last_position_);
+            ::dx::XMVECTOR lastPositionVec = ::dx::XMLoadFloat2(&last_position_);
 
             const auto& pos = mouse_.GetPos();
-            dx::XMFLOAT2 currentPosition = { static_cast<float>(pos.first), static_cast<float>(pos.second) };
+            ::dx::XMFLOAT2 currentPosition = { static_cast<float>(pos.first), static_cast<float>(pos.second) };
 
-            dx::XMVECTOR currentPositionVec = dx::XMLoadFloat2(&currentPosition);
-            dx::XMVECTOR deltaPositionVec = dx::XMVectorSubtract(currentPositionVec, lastPositionVec);
+            ::dx::XMVECTOR currentPositionVec = ::dx::XMLoadFloat2(&currentPosition);
+            ::dx::XMVECTOR deltaPositionVec   = ::dx::XMVectorSubtract(currentPositionVec, lastPositionVec);
 
-            deltaPositionVec = dx::XMVectorSetX(deltaPositionVec, -dx::XMVectorGetX(deltaPositionVec));
+            deltaPositionVec = ::dx::XMVectorSetX(deltaPositionVec, -::dx::XMVectorGetX(deltaPositionVec));
 
-            camera_.SetX(camera_.GetX() + -dx::XMVectorGetX(deltaPositionVec) * s_zoomIncrement_);
-            camera_.SetY(camera_.GetY() + -dx::XMVectorGetY(deltaPositionVec) * s_zoomIncrement_);
+            camera_.SetX(camera_.GetX() + -::dx::XMVectorGetX(deltaPositionVec) * s_zoomIncrement_);
+            camera_.SetY(camera_.GetY() + -::dx::XMVectorGetY(deltaPositionVec) * s_zoomIncrement_);
 
             last_position_ = currentPosition;
         }

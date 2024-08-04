@@ -27,7 +27,7 @@ namespace starrealm
         m_stars_{ StarFactory{ m_gfx_ }.GetStars() }
     {
         m_gfx_.SetProjectionXM(
-            dx::XMMatrixPerspectiveLH(
+            ::dx::XMMatrixPerspectiveLH(
                 1.0f,
                 m_wnd_.GetClientHeight<float>() / m_wnd_.GetClientWidth<float>(), // 1 / Aspect Ratio
                 Settings::s_minStarDepth,
@@ -38,7 +38,7 @@ namespace starrealm
 
     int Game::Go()
     {
-        std::optional<WPARAM> error_code;
+        std::optional<::WPARAM> error_code;
 
         while (true)
         {

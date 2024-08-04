@@ -55,7 +55,7 @@ namespace fatpound::win32::d3d11
     }
     void Graphics::EndFrame()
     {
-        HRESULT hr;
+        ::HRESULT hr;
 
         hr = m_pSwapChain_->Present(1u, 0u);
 
@@ -64,39 +64,39 @@ namespace fatpound::win32::d3d11
             throw std::runtime_error("The Graphics Device Failed to Present/Draw!");
         }
     }
-    void Graphics::DrawIndexed(UINT count) noexcept(IN_RELEASE)
+    void Graphics::DrawIndexed(::UINT count) noexcept(IN_RELEASE)
     {
         m_pImmediateContext_->DrawIndexed(count, 0u, 0);
     }
 
-    void Graphics::SetProjectionXM(const dx::XMMATRIX& projection) noexcept
+    void Graphics::SetProjectionXM(const ::dx::XMMATRIX& projection) noexcept
     {
         m_projection_ = projection;
     }
-    void Graphics::SetCameraXM(const dx::XMMATRIX& camera) noexcept
+    void Graphics::SetCameraXM(const ::dx::XMMATRIX& camera) noexcept
     {
         m_camera_ = camera;
     }
 
     void Graphics::ToggleAltEnterMode_()
     {
-        ::wrl::ComPtr<IDXGIDevice> pDXGIDevice = nullptr;
-        m_pDevice_->QueryInterface(__uuidof(IDXGIDevice), &pDXGIDevice);
+        ::wrl::ComPtr<::IDXGIDevice> pDXGIDevice = nullptr;
+        m_pDevice_->QueryInterface(__uuidof(::IDXGIDevice), &pDXGIDevice);
 
-        ::wrl::ComPtr<IDXGIAdapter> pDXGIAdapter = nullptr;
-        pDXGIDevice->GetParent(__uuidof(IDXGIAdapter), &pDXGIAdapter);
+        ::wrl::ComPtr<::IDXGIAdapter> pDXGIAdapter = nullptr;
+        pDXGIDevice->GetParent(__uuidof(::IDXGIAdapter), &pDXGIAdapter);
 
-        ::wrl::ComPtr<IDXGIFactory> pIDXGIFactory = nullptr;
-        pDXGIAdapter->GetParent(__uuidof(IDXGIFactory), &pIDXGIFactory);
+        ::wrl::ComPtr<::IDXGIFactory> pIDXGIFactory = nullptr;
+        pDXGIAdapter->GetParent(__uuidof(::IDXGIFactory), &pIDXGIFactory);
 
-        DXGI_SWAP_CHAIN_DESC desc = {};
+        ::DXGI_SWAP_CHAIN_DESC desc = {};
         m_pSwapChain_->GetDesc(&desc);
 
         const auto& hWnd = desc.OutputWindow;
 
-        static UINT flag = 0u;
+        static ::UINT flag = 0u;
 
-        static constexpr UINT magic_value = static_cast<UINT>(DXGI_MWA_NO_ALT_ENTER);
+        static constexpr auto magic_value = static_cast<::UINT>(DXGI_MWA_NO_ALT_ENTER);
 
         if ((flag bitand magic_value) not_eq 0u)
         {

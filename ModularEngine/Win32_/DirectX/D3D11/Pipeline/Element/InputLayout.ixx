@@ -18,7 +18,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
     class InputLayout final : public Bindable
     {
     public:
-        InputLayout(Graphics& gfx, const std::vector<D3D11_INPUT_ELEMENT_DESC>& layout, ID3DBlob* pVertexShaderBytecode);
+        InputLayout(Graphics& gfx, const std::vector<::D3D11_INPUT_ELEMENT_DESC>& layout, ::ID3DBlob* pVertexShaderBytecode);
 
 
     public:
@@ -26,7 +26,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
 
     protected:
-        ::Microsoft::WRL::ComPtr<ID3D11InputLayout> m_pInputLayout_;
+        ::Microsoft::WRL::ComPtr<::ID3D11InputLayout> m_pInputLayout_;
 
 
     private:

@@ -75,7 +75,7 @@ namespace fatpound::win32
         ::DestroyWindow(m_hWnd_);
     }
 
-    auto Window::ProcessMessages() noexcept -> ::std::optional<::WPARAM>
+    auto Window::ProcessMessages() noexcept -> std::optional<::WPARAM>
     {
         ::MSG msg;
 
@@ -90,7 +90,7 @@ namespace fatpound::win32
             ::DispatchMessage(&msg);
         }
 
-        return ::std::nullopt;
+        return std::nullopt;
     }
 
     auto Window::GetMouse() -> NAMESPACE_IO::Mouse&
@@ -116,14 +116,14 @@ namespace fatpound::win32
         return ::IsIconic(m_hWnd_) != 0;
     }
 
-    void Window::SetTitle(const ::std::wstring& title)
+    void Window::SetTitle(const std::wstring& title)
     {
         if (::SetWindowText(m_hWnd_, title.c_str()) == 0) [[unlikely]]
         {
             throw std::runtime_error("Could NOT set the Window Text!");
         }
     }
-    void Window::ShowMessageBox(const ::std::wstring& message, const ::std::wstring& title, ::UINT error_flags) noexcept
+    void Window::ShowMessageBox(const std::wstring& message, const std::wstring& title, ::UINT error_flags) noexcept
     {
         ::MessageBox(m_hWnd_, message.c_str(), title.c_str(), error_flags);
     }

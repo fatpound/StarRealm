@@ -12,9 +12,9 @@ namespace wrl = Microsoft::WRL;
 
 namespace fatpound::win32::d3d11::factory
 {
-    auto RasterizerState::CreateDESC() -> D3D11_RASTERIZER_DESC
+    auto RasterizerState::CreateDESC() -> ::D3D11_RASTERIZER_DESC
     {
-        D3D11_RASTERIZER_DESC desc = {};
+        ::D3D11_RASTERIZER_DESC desc = {};
         desc.FillMode = D3D11_FILL_SOLID;
         desc.CullMode = D3D11_CULL_BACK;
         desc.FrontCounterClockwise = false;
@@ -30,12 +30,12 @@ namespace fatpound::win32::d3d11::factory
     }
 
     void RasterizerState::Create(
-        wrl::ComPtr<ID3D11Device>&          pDevice,
-        wrl::ComPtr<ID3D11RasterizerState>& pRasterizerState,
-        const D3D11_RASTERIZER_DESC&        desc
+        ::wrl::ComPtr<::ID3D11Device>&          pDevice,
+        ::wrl::ComPtr<::ID3D11RasterizerState>& pRasterizerState,
+        const ::D3D11_RASTERIZER_DESC&          desc
     )
     {
-        HRESULT hr;
+        ::HRESULT hr;
 
         hr = pDevice->CreateRasterizerState(&desc, &pRasterizerState);
 

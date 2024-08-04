@@ -40,7 +40,7 @@ export namespace fatpound::win32
 
 
     public:
-        static auto ProcessMessages() noexcept -> ::std::optional<::WPARAM>;
+        static auto ProcessMessages() noexcept -> std::optional<::WPARAM>;
 
 
     public:
@@ -52,8 +52,8 @@ export namespace fatpound::win32
         bool IsActive() const noexcept;
         bool IsMinimized() const noexcept;
 
-        void SetTitle(const ::std::wstring& title);
-        void ShowMessageBox(const ::std::wstring& message, const ::std::wstring& title, ::UINT error_flags) noexcept;
+        void SetTitle(const std::wstring& title);
+        void ShowMessageBox(const std::wstring& message, const std::wstring& title, ::UINT error_flags) noexcept;
         void Kill();
 
 

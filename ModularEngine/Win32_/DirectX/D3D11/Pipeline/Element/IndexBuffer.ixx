@@ -26,13 +26,13 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
 
     public:
-        auto GetCount() const noexcept -> UINT;
+        auto GetCount() const noexcept -> ::UINT;
 
 
     protected:
-        ::Microsoft::WRL::ComPtr<ID3D11Buffer> m_pIndexBuffer_;
+        ::Microsoft::WRL::ComPtr<::ID3D11Buffer> m_pIndexBuffer_;
 
-        UINT m_count_;
+        ::UINT m_count_;
 
 
     private:

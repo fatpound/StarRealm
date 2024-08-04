@@ -16,7 +16,7 @@ export namespace fatpound::win32::d3d11::pipeline::system
 	{
 	public:
 		static void SetDefault(
-			Microsoft::WRL::ComPtr<ID3D11DeviceContext>& pContext,
+			::Microsoft::WRL::ComPtr<::ID3D11DeviceContext>& pContext,
 			std::size_t width,
 			std::size_t height
 		);

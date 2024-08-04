@@ -16,9 +16,9 @@ export namespace fatpound::win32::d3d11::factory
     {
     public:
         static void Create(
-            Microsoft::WRL::ComPtr<ID3D11Device>&           pDevice,
-            Microsoft::WRL::ComPtr<IDXGISwapChain>&         pSwapChain,
-            Microsoft::WRL::ComPtr<ID3D11RenderTargetView>& pTarget
+            ::Microsoft::WRL::ComPtr<::ID3D11Device>&           pDevice,
+            ::Microsoft::WRL::ComPtr<::IDXGISwapChain>&         pSwapChain,
+            ::Microsoft::WRL::ComPtr<::ID3D11RenderTargetView>& pTarget
         );
 
 

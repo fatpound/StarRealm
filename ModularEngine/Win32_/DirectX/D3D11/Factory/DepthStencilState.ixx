@@ -15,14 +15,14 @@ export namespace fatpound::win32::d3d11::factory
     class DepthStencilState final
     {
     public:
-        static auto CreateDESC() -> D3D11_DEPTH_STENCIL_DESC;
+        static auto CreateDESC() -> ::D3D11_DEPTH_STENCIL_DESC;
 
 
     public:
         static void Create(
-            Microsoft::WRL::ComPtr<ID3D11Device>&            pDevice,
-            Microsoft::WRL::ComPtr<ID3D11DepthStencilState>& pDSState,
-            const D3D11_DEPTH_STENCIL_DESC&                  desc
+            ::Microsoft::WRL::ComPtr<::ID3D11Device>&            pDevice,
+            ::Microsoft::WRL::ComPtr<::ID3D11DepthStencilState>& pDSState,
+            const ::D3D11_DEPTH_STENCIL_DESC&                    desc
         );
 
 

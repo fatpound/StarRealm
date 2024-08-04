@@ -21,23 +21,23 @@ export namespace fatpound::win32::d3d11::pipeline::resource
     public:
         SBuffer(Graphics& gfx, const std::vector<S>& structures)
         {
-            D3D11_BUFFER_DESC sbd = {};
+            ::D3D11_BUFFER_DESC sbd = {};
             sbd.BindFlags = D3D11_BIND_SHADER_RESOURCE;
             sbd.Usage = D3D11_USAGE_DEFAULT;
             sbd.CPUAccessFlags = 0u;
             sbd.MiscFlags = D3D11_RESOURCE_MISC_BUFFER_STRUCTURED;
-            sbd.ByteWidth = sizeof(S) * static_cast<UINT>(structures.size());
+            sbd.ByteWidth = sizeof(S) * static_cast<::UINT>(structures.size());
             sbd.StructureByteStride = sizeof(S);
 
-            D3D11_SUBRESOURCE_DATA initData = {};
+            ::D3D11_SUBRESOURCE_DATA initData = {};
             initData.pSysMem = structures.data();
 
             Bindable::GetDevice_(gfx)->CreateBuffer(&sbd, &initData, &m_pStructuredBuffer_);
 
-            D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
+            ::D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
             srvDesc.Format = DXGI_FORMAT_UNKNOWN;
             srvDesc.ViewDimension = D3D11_SRV_DIMENSION_BUFFER;
-            srvDesc.Buffer.ElementWidth = static_cast<UINT>(structures.size());
+            srvDesc.Buffer.ElementWidth = static_cast<::UINT>(structures.size());
 
             Bindable::GetDevice_(gfx)->CreateShaderResourceView(m_pStructuredBuffer_.Get(), &srvDesc, &m_pShaderResourceView_);
             Bindable::GetContext_(gfx)->VSSetShaderResources(0u, 1u, m_pShaderResourceView_.GetAddressOf());
@@ -45,8 +45,8 @@ export namespace fatpound::win32::d3d11::pipeline::resource
 
 
     protected:
-        Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pShaderResourceView_ = nullptr;
-        Microsoft::WRL::ComPtr<ID3D11Buffer>             m_pStructuredBuffer_   = nullptr;
+        ::Microsoft::WRL::ComPtr<::ID3D11ShaderResourceView> m_pShaderResourceView_ = nullptr;
+        ::Microsoft::WRL::ComPtr<::ID3D11Buffer>             m_pStructuredBuffer_   = nullptr;
 
 
     private:

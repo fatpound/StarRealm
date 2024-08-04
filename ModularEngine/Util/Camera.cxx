@@ -21,14 +21,14 @@ namespace fatpound::util
 
     }
 
-    auto Camera::GetMatrix() const noexcept -> dx::XMMATRIX
+    auto Camera::GetMatrix() const noexcept -> ::dx::XMMATRIX
     {
         const auto& look =
-            dx::XMMatrixTranslation(x_, y_, z_) *
-            dx::XMMatrixLookAtLH(
-                dx::XMVectorSet(0.0f, 0.0f, -r_, 0.0f),        // position to go n look from
-                dx::XMVectorSet(0.0f, 0.0f, max_depth_, 0.0f), // position to go n look at
-                dx::XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f)        // y should be pointing towards up
+            ::dx::XMMatrixTranslation(x_, y_, z_) *
+            ::dx::XMMatrixLookAtLH(
+                ::dx::XMVectorSet(0.0f, 0.0f, -r_, 0.0f),        // position to go n look from
+                ::dx::XMVectorSet(0.0f, 0.0f, max_depth_, 0.0f), // position to go n look at
+                ::dx::XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f)        // y should be pointing towards up
         );
 
         return look;

@@ -13,9 +13,9 @@ namespace fatpound::win32::d3d11::pipeline::element
 {
     PixelShader::PixelShader(Graphics& gfx, const std::wstring& path)
     {
-        Microsoft::WRL::ComPtr<ID3DBlob> pBlob;
+        ::Microsoft::WRL::ComPtr<::ID3DBlob> pBlob;
 
-        D3DReadFileToBlob(path.c_str(), &pBlob);
+        ::D3DReadFileToBlob(path.c_str(), &pBlob);
 
         Bindable::GetDevice_(gfx)->CreatePixelShader(
             pBlob->GetBufferPointer(),

@@ -13,13 +13,13 @@ namespace wrl = Microsoft::WRL;
 namespace fatpound::win32::d3d11::factory
 {
     void DeviceAndSwapChain::Create(
-        Microsoft::WRL::ComPtr<ID3D11Device>&        pDevice,
-        Microsoft::WRL::ComPtr<IDXGISwapChain>&      pSwapChain,
-        Microsoft::WRL::ComPtr<ID3D11DeviceContext>& pImmediateContext_,
-        const DXGI_SWAP_CHAIN_DESC&                  desc
+        ::Microsoft::WRL::ComPtr<::ID3D11Device>&        pDevice,
+        ::Microsoft::WRL::ComPtr<::IDXGISwapChain>&      pSwapChain,
+        ::Microsoft::WRL::ComPtr<::ID3D11DeviceContext>& pImmediateContext_,
+        const ::DXGI_SWAP_CHAIN_DESC&                    desc
     )
     {
-        static constinit UINT swapCreateFlags;
+        static constinit ::UINT swapCreateFlags;
 
         if constexpr (IN_RELEASE)
         {
@@ -30,7 +30,7 @@ namespace fatpound::win32::d3d11::factory
             swapCreateFlags = D3D11_CREATE_DEVICE_DEBUG;
         }
 
-        HRESULT hr;
+        ::HRESULT hr;
 
         hr = D3D11CreateDeviceAndSwapChain(
             nullptr,
