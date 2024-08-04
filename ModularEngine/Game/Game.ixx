@@ -38,14 +38,15 @@ export namespace starrealm
 
 
     private:
-        NAMESPACE_WIN32::Window wnd_;
+        NAMESPACE_WIN32::Window m_wnd_;
 
-        NAMESPACE_D3D11::Graphics gfx_;
+        NAMESPACE_D3D11::Graphics m_gfx_;
         
-        NAMESPACE_UTIL::Camera camera_;
-        NAMESPACE_UTIL::CameraController camera_controller_;
-        NAMESPACE_UTIL::AutoTimer timer_;
+        NAMESPACE_UTIL::Camera           m_camera_;
+        NAMESPACE_UTIL::CameraController m_camera_controller_;
+
+        NAMESPACE_UTIL::AutoTimer m_timer_;
         
-        std::vector<std::unique_ptr<entity::Star>> stars_;
+        std::vector<std::unique_ptr<entity::Star>> m_stars_;
     };
 }

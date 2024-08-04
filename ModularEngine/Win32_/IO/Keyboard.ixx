@@ -39,9 +39,15 @@ export namespace fatpound::win32::io
             };
 
         public:
-            Event() noexcept;
-
             Event(Type type, unsigned char code) noexcept;
+
+            Event() = default;
+            Event(const Event& src) = default;
+            Event& operator = (const Event& src) = default;
+
+            Event(Event&& src) = default;
+            Event& operator = (Event&& src) = default;
+            ~Event() = default;
 
         public:
             unsigned char GetCode() const noexcept;
@@ -53,9 +59,9 @@ export namespace fatpound::win32::io
         protected:
 
         private:
-            Type type_;
+            Type m_type_ = Type::Invalid;
 
-            unsigned char code_;
+            unsigned char m_code_ = 0u;
         };
 
 
@@ -101,12 +107,12 @@ export namespace fatpound::win32::io
     private:
         static constexpr unsigned int s_keyCount_ = 256u;
 
-        std::bitset<Keyboard::s_keyCount_> key_states_;
+        std::bitset<s_keyCount_> m_key_states_;
+        
+        std::queue<Event> m_event_buffer_;
+        std::queue<unsigned char> m_char_buffer_;
 
-        std::queue<Event> event_buffer_;
-        std::queue<unsigned char> char_buffer_;
-
-        bool auto_repeat_enabled_ = false;
+        bool m_auto_repeat_enabled_ = false;
 
         static constexpr unsigned int s_bufferSize_ = 16u;
     };

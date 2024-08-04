@@ -20,16 +20,16 @@ namespace starrealm
 {
     Game::Game()
         :
-        wnd_(L"StarRealm", NAMESPACE_WIN32::Window::ClientSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
-        gfx_(wnd_.GetHwnd(), NAMESPACE_D3D11::Graphics::SizeInfo{ wnd_.GetClientWidth<UINT>(), wnd_.GetClientHeight<UINT>() }),
-        camera_(Settings::s_minStarDepth, Settings::s_maxStarDepth),
-        camera_controller_(camera_, wnd_.mouse, wnd_.kbd),
-        stars_{ StarFactory{ gfx_ }.GetStars() }
+        m_wnd_(L"StarRealm", NAMESPACE_WIN32::Window::ClientSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
+        m_gfx_(m_wnd_.GetHwnd(), NAMESPACE_D3D11::Graphics::SizeInfo{ m_wnd_.GetClientWidth<UINT>(), m_wnd_.GetClientHeight<UINT>() }),
+        m_camera_(Settings::s_minStarDepth, Settings::s_maxStarDepth),
+        m_camera_controller_(m_camera_, m_wnd_.m_mouse, m_wnd_.m_keyboard),
+        m_stars_{ StarFactory{ m_gfx_ }.GetStars() }
     {
-        gfx_.SetProjection(
+        m_gfx_.SetProjection(
             dx::XMMatrixPerspectiveLH(
                 1.0f,
-                wnd_.GetClientHeight<float>() / wnd_.GetClientWidth<float>(), // 1 / Aspect Ratio
+                m_wnd_.GetClientHeight<float>() / m_wnd_.GetClientWidth<float>(), // 1 / Aspect Ratio
                 Settings::s_minStarDepth,
                 Settings::s_maxStarDepth * 2.0f
             )
@@ -49,35 +49,35 @@ namespace starrealm
                 return static_cast<int>(*error_code);
             }
 
-            if (wnd_.kbd.KeyIsPressed(VK_ESCAPE)) [[unlikely]]
+            if (m_wnd_.m_keyboard.KeyIsPressed(VK_ESCAPE)) [[unlikely]]
             {
-                wnd_.Kill();
+                m_wnd_.Kill();
 
                 return 0;
             }
 
-            gfx_.BeginFrame();
+            m_gfx_.BeginFrame();
             DoFrame_();
-            gfx_.EndFrame();
+            m_gfx_.EndFrame();
         }
     }
 
     void Game::DoFrame_()
     {
-        camera_controller_.Update();
+        m_camera_controller_.Update();
 
-        const auto& delta_time = timer_.Mark();
+        const auto& delta_time = m_timer_.Mark();
         
-        gfx_.SetCamera(camera_.GetMatrix());
+        m_gfx_.SetCamera(m_camera_.GetMatrix());
 
-        for (auto& star : stars_)
+        for (auto& star : m_stars_)
         {
-            if (not wnd_.kbd.KeyIsPressed(VK_SPACE)) [[likely]]
+            if (not m_wnd_.m_keyboard.KeyIsPressed(VK_SPACE)) [[likely]]
             {
                 star->Update(delta_time);
             }
 
-            star->Draw(gfx_);
+            star->Draw(m_gfx_);
         }
     }
 }

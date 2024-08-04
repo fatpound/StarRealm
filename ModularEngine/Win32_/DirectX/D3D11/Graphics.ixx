@@ -52,12 +52,12 @@ export namespace fatpound::win32::d3d11
         template <NAMESPACE_MATH::Number N>
         auto GetWidth() const noexcept
         {
-            return static_cast<N>(width_);
+            return static_cast<N>(m_width_);
         }
         template <NAMESPACE_MATH::Number N>
         auto GetHeight() const noexcept
         {
-            return static_cast<N>(height_);
+            return static_cast<N>(m_height_);
         }
 
         auto GetProjectionXM() const noexcept -> ::DirectX::XMMATRIX;
@@ -76,21 +76,22 @@ export namespace fatpound::win32::d3d11
 
     private:
         void ToggleAltEnterMode_();
+
         void ClearBuffer_(const float& red, const float& green, const float& blue) noexcept;
 
 
     private:
-        ::Microsoft::WRL::ComPtr<ID3D11Device>           pDevice_           = nullptr;
-        ::Microsoft::WRL::ComPtr<IDXGISwapChain>         pSwapChain_        = nullptr;
-        ::Microsoft::WRL::ComPtr<ID3D11DeviceContext>    pImmediateContext_ = nullptr;
-        ::Microsoft::WRL::ComPtr<ID3D11RenderTargetView> pTarget_           = nullptr;
-        ::Microsoft::WRL::ComPtr<ID3D11DepthStencilView> pDSV_              = nullptr;
+        ::Microsoft::WRL::ComPtr<ID3D11Device>           m_pDevice_           = nullptr;
+        ::Microsoft::WRL::ComPtr<IDXGISwapChain>         m_pSwapChain_        = nullptr;
+        ::Microsoft::WRL::ComPtr<ID3D11DeviceContext>    m_pImmediateContext_ = nullptr;
+        ::Microsoft::WRL::ComPtr<ID3D11RenderTargetView> m_pTarget_           = nullptr;
+        ::Microsoft::WRL::ComPtr<ID3D11DepthStencilView> m_pDSV_              = nullptr;
 
-        ::DirectX::XMMATRIX projection_;
-        ::DirectX::XMMATRIX camera_;
+        ::DirectX::XMMATRIX m_projection_;
+        ::DirectX::XMMATRIX m_camera_;
 
-        const decltype(SizeInfo::width)  width_;
-        const decltype(SizeInfo::height) height_;
+        const decltype(SizeInfo::width)  m_width_;
+        const decltype(SizeInfo::height) m_height_;
 
         static constexpr auto s_msaaQuality_ = 8u;
 

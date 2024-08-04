@@ -12,11 +12,11 @@ namespace fatpound::win32::d3d11::pipeline
 {
     auto Bindable::GetDevice_(Graphics& gfx) noexcept -> ID3D11Device*
     {
-        return gfx.pDevice_.Get();
+        return gfx.m_pDevice_.Get();
     }
 
     auto Bindable::GetContext_(Graphics& gfx) noexcept -> ID3D11DeviceContext*
     {
-        return gfx.pImmediateContext_.Get();
+        return gfx.m_pImmediateContext_.Get();
     }
 }

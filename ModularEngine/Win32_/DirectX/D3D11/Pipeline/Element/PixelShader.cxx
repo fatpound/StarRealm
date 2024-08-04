@@ -21,12 +21,12 @@ namespace fatpound::win32::d3d11::pipeline::element
             pBlob->GetBufferPointer(),
             pBlob->GetBufferSize(),
             nullptr,
-            &pPixelShader_
+            &m_pPixelShader_
         );
     }
 
     void PixelShader::Bind(Graphics& gfx) noexcept
     {
-        Bindable::GetContext_(gfx)->PSSetShader(pPixelShader_.Get(), nullptr, 0u);
+        Bindable::GetContext_(gfx)->PSSetShader(m_pPixelShader_.Get(), nullptr, 0u);
     }
 }

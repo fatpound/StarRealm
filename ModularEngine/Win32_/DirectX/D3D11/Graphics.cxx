@@ -20,33 +20,33 @@ namespace fatpound::win32::d3d11
 {
     Graphics::Graphics(::HWND hWnd, const SizeInfo& dimensions)
         :
-        width_(dimensions.width),
-        height_(dimensions.height)
+        m_width_(dimensions.width),
+        m_height_(dimensions.height)
     {
         {
-            const auto& scdesc = factory::SwapChain::CreateDESC<Graphics::s_msaaQuality_>(hWnd, width_, height_);
-            factory::Device::CreateWithSwapChain(pDevice_, pSwapChain_, pImmediateContext_, scdesc);
+            const auto& scdesc = factory::SwapChain::CreateDESC<Graphics::s_msaaQuality_>(hWnd, m_width_, m_height_);
+            factory::Device::CreateWithSwapChain(m_pDevice_, m_pSwapChain_, m_pImmediateContext_, scdesc);
         }
 
         ToggleAltEnterMode_();
 
-        pipeline::system::RenderTarget::SetDefault<s_msaaQuality_>(pDevice_, pSwapChain_, pImmediateContext_, pTarget_, pDSV_, width_, height_);
-        pipeline::system::DepthStencil::SetDefault(pDevice_, pImmediateContext_);
-        pipeline::system::Viewport::SetDefault(pImmediateContext_, width_, height_);
+        pipeline::system::RenderTarget::SetDefault<s_msaaQuality_>(m_pDevice_, m_pSwapChain_, m_pImmediateContext_, m_pTarget_, m_pDSV_, m_width_, m_height_);
+        pipeline::system::DepthStencil::SetDefault(m_pDevice_, m_pImmediateContext_);
+        pipeline::system::Viewport::SetDefault(m_pImmediateContext_, m_width_, m_height_);
 
         if constexpr (s_rasterizationEnabled_)
         {
-            pipeline::system::Rasterizer::SetDefault(pDevice_, pImmediateContext_);
+            pipeline::system::Rasterizer::SetDefault(m_pDevice_, m_pImmediateContext_);
         }
     }
 
     auto Graphics::GetProjectionXM() const noexcept -> ::dx::XMMATRIX
     {
-        return projection_;
+        return m_projection_;
     }
     auto Graphics::GetCameraXM() const noexcept -> ::dx::XMMATRIX
     {
-        return camera_;
+        return m_camera_;
     }
 
     void Graphics::BeginFrame() noexcept
@@ -57,7 +57,7 @@ namespace fatpound::win32::d3d11
     {
         HRESULT hr;
 
-        hr = pSwapChain_->Present(1u, 0u);
+        hr = m_pSwapChain_->Present(1u, 0u);
 
         if (FAILED(hr)) [[unlikely]]
         {
@@ -66,22 +66,22 @@ namespace fatpound::win32::d3d11
     }
     void Graphics::DrawIndexed(UINT count) noexcept(IN_RELEASE)
     {
-        pImmediateContext_->DrawIndexed(count, 0u, 0);
+        m_pImmediateContext_->DrawIndexed(count, 0u, 0);
     }
 
     void Graphics::SetProjection(const dx::XMMATRIX& projection) noexcept
     {
-        projection_ = projection;
+        m_projection_ = projection;
     }
     void Graphics::SetCamera(const dx::XMMATRIX& camera) noexcept
     {
-        camera_ = camera;
+        m_camera_ = camera;
     }
 
     void Graphics::ToggleAltEnterMode_()
     {
         ::wrl::ComPtr<IDXGIDevice> pDXGIDevice = nullptr;
-        pDevice_->QueryInterface(__uuidof(IDXGIDevice), &pDXGIDevice);
+        m_pDevice_->QueryInterface(__uuidof(IDXGIDevice), &pDXGIDevice);
 
         ::wrl::ComPtr<IDXGIAdapter> pDXGIAdapter = nullptr;
         pDXGIDevice->GetParent(__uuidof(IDXGIAdapter), &pDXGIAdapter);
@@ -90,7 +90,7 @@ namespace fatpound::win32::d3d11
         pDXGIAdapter->GetParent(__uuidof(IDXGIFactory), &pIDXGIFactory);
 
         DXGI_SWAP_CHAIN_DESC desc = {};
-        pSwapChain_->GetDesc(&desc);
+        m_pSwapChain_->GetDesc(&desc);
 
         const auto& hWnd = desc.OutputWindow;
 
@@ -100,7 +100,7 @@ namespace fatpound::win32::d3d11
 
         if ((flag bitand magic_value) not_eq 0u)
         {
-            flag &= ~(magic_value);
+            flag &= ~magic_value;
         }
         else
         {
@@ -113,7 +113,7 @@ namespace fatpound::win32::d3d11
     {
         const std::array<float, 4> colors{ red, green, blue, 1.0f };
 
-        pImmediateContext_->ClearRenderTargetView(pTarget_.Get(), colors.data());
-        pImmediateContext_->ClearDepthStencilView(pDSV_.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
+        m_pImmediateContext_->ClearRenderTargetView(m_pTarget_.Get(), colors.data());
+        m_pImmediateContext_->ClearDepthStencilView(m_pDSV_.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
     }
 }

@@ -47,12 +47,12 @@ export namespace fatpound::win32
         template <NAMESPACE_MATH::Number N>
         auto GetClientWidth() const noexcept
         {
-            return static_cast<N>(client_size_.width);
+            return static_cast<N>(m_client_size_.width);
         }
         template <NAMESPACE_MATH::Number N>
         auto GetClientHeight() const noexcept
         {
-            return static_cast<N>(client_size_.height);
+            return static_cast<N>(m_client_size_.height);
         }
 
         auto GetHwnd() const noexcept -> HWND;
@@ -66,8 +66,8 @@ export namespace fatpound::win32
 
 
     public:
-        NAMESPACE_IO::Keyboard kbd;
-        NAMESPACE_IO::Mouse mouse;
+        NAMESPACE_IO::Keyboard m_keyboard;
+        NAMESPACE_IO::Mouse m_mouse;
 
         
     protected:
@@ -93,7 +93,7 @@ export namespace fatpound::win32
             ~WndClass_();
 
         private:
-            HINSTANCE hInst_;
+            HINSTANCE m_hInst_;
 
 #ifdef UNICODE
             static constexpr str_t s_wndClassName_ = L"FatPound Default WndClass";
@@ -113,9 +113,9 @@ export namespace fatpound::win32
 
 
     private:
-        HWND hWnd_;
+        HWND m_hWnd_;
 
-        const ClientSizeInfo client_size_;
+        const ClientSizeInfo m_client_size_;
 
         static constexpr bool s_cursorEnabled_ = true;
     };

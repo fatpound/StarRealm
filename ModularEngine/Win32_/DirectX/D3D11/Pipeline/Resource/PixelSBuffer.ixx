@@ -23,7 +23,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
     public:
         virtual void Bind(Graphics& gfx) noexcept override final
         {
-            Bindable::GetContext_(gfx)->PSSetShaderResources(0u, 1u, this->pShaderResourceView_.GetAddressOf());
+            Bindable::GetContext_(gfx)->PSSetShaderResources(0u, 1u, this->m_pShaderResourceView_.GetAddressOf());
         }
 
 

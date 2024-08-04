@@ -23,8 +23,8 @@ export namespace fatpound::win32::d3d11::pipeline::resource
     public:
         TransformCBuffer(Graphics& gfx, const C& parent)
             :
-            vcbuf_(gfx),
-            parent_(parent)
+            m_vcbuf_(gfx),
+            m_parent_(parent)
         {
 
         }
@@ -41,16 +41,16 @@ export namespace fatpound::win32::d3d11::pipeline::resource
     public:
         virtual void Bind(Graphics& gfx) noexcept override final
         {
-            vcbuf_.Update(
+            m_vcbuf_.Update(
                 gfx,
                 DirectX::XMMatrixTranspose(
-                    parent_.GetTransformXM() *
+                    m_parent_.GetTransformXM() *
                     gfx.GetCameraXM() *
                     gfx.GetProjectionXM()
                 )
             );
 
-            vcbuf_.Bind(gfx);
+            m_vcbuf_.Bind(gfx);
         }
 
 
@@ -58,8 +58,8 @@ export namespace fatpound::win32::d3d11::pipeline::resource
 
 
     private:
-        VertexCBuffer<DirectX::XMMATRIX> vcbuf_;
+        VertexCBuffer<DirectX::XMMATRIX> m_vcbuf_;
 
-        const C& parent_;
+        const C& m_parent_;
     };
 }

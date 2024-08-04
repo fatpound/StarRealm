@@ -22,7 +22,7 @@ namespace starrealm::entity::star
             SingleColorBase::Init<StarBase>(gfx);
         }
 
-        const auto& vertices = Star::Make<true>(radiuses_, position_, desc.flare_count);
+        const auto& vertices = Star::Make<true>(m_radiuses_, m_position_, desc.flare_count);
         AddBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexBuffer>(gfx, vertices));
 
         const auto& indices = FilledBase::GenerateIndices(vertices);

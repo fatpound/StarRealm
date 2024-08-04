@@ -32,7 +32,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
             D3D11_SUBRESOURCE_DATA csd = {};
             csd.pSysMem = &consts;
 
-            Bindable::GetDevice_(gfx)->CreateBuffer(&cbd, &csd, &pConstantBuffer_);
+            Bindable::GetDevice_(gfx)->CreateBuffer(&cbd, &csd, &m_pConstantBuffer_);
         }
         CBuffer(Graphics& gfx)
         {
@@ -44,7 +44,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
             cbd.ByteWidth = sizeof(C);
             cbd.StructureByteStride = 0u;
 
-            Bindable::GetDevice_(gfx)->CreateBuffer(&cbd, nullptr, &pConstantBuffer_);
+            Bindable::GetDevice_(gfx)->CreateBuffer(&cbd, nullptr, &m_pConstantBuffer_);
         }
 
 
@@ -54,7 +54,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
             D3D11_MAPPED_SUBRESOURCE msr;
 
             Bindable::GetContext_(gfx)->Map(
-                pConstantBuffer_.Get(),
+                m_pConstantBuffer_.Get(),
                 0u,
                 D3D11_MAP_WRITE_DISCARD,
                 0u,
@@ -63,12 +63,12 @@ export namespace fatpound::win32::d3d11::pipeline::resource
 
             std::memcpy(msr.pData, &consts, sizeof(consts));
 
-            Bindable::GetContext_(gfx)->Unmap(pConstantBuffer_.Get(), 0u);
+            Bindable::GetContext_(gfx)->Unmap(m_pConstantBuffer_.Get(), 0u);
         }
 
 
     protected:
-        Microsoft::WRL::ComPtr<ID3D11Buffer> pConstantBuffer_;
+        Microsoft::WRL::ComPtr<ID3D11Buffer> m_pConstantBuffer_;
 
 
     private:

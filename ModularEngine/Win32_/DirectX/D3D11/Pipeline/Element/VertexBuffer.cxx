@@ -14,6 +14,6 @@ namespace fatpound::win32::d3d11::pipeline::element
     {
         constexpr UINT offset = 0u;
 
-        Bindable::GetContext_(gfx)->IASetVertexBuffers(0u, 1u, pVertexBuffer_.GetAddressOf(), &stride_, &offset);
+        Bindable::GetContext_(gfx)->IASetVertexBuffers(0u, 1u, m_pVertexBuffer_.GetAddressOf(), &m_stride_, &offset);
     }
 }

@@ -17,12 +17,12 @@ namespace fatpound::win32::d3d11::pipeline::element
             static_cast<UINT>(layout.size()),
             pVertexShaderBytecode->GetBufferPointer(),
             pVertexShaderBytecode->GetBufferSize(),
-            &pInputLayout_
+            &m_pInputLayout_
         );
     }
 
     void InputLayout::Bind(Graphics& gfx) noexcept
     {
-        Bindable::GetContext_(gfx)->IASetInputLayout(pInputLayout_.Get());
+        Bindable::GetContext_(gfx)->IASetInputLayout(m_pInputLayout_.Get());
     }
 }

@@ -23,14 +23,14 @@ export namespace fatpound::win32::d3d11::visual
     protected:
         static bool IsStaticInitialized_() noexcept(IN_RELEASE)
         {
-            return not static_binds_.empty();
+            return not m_static_binds_.empty();
         }
 
         static void AddStaticBind_(std::unique_ptr<NAMESPACE_PIPELINE::Bindable> bind) noexcept(IN_RELEASE)
         {
             assert("*Must* use AddStaticIndexBuffer to bind index buffer" && typeid(*bind) != typeid(NAMESPACE_PIPELINE_ELEMENT::IndexBuffer));
 
-            static_binds_.push_back(std::move(bind));
+            m_static_binds_.push_back(std::move(bind));
         }
 
 
@@ -41,13 +41,13 @@ export namespace fatpound::win32::d3d11::visual
 
             pCIndexBuffer_ = idxbuf.get();
 
-            static_binds_.push_back(std::move(idxbuf));
+            m_static_binds_.push_back(std::move(idxbuf));
         }
         virtual void SetIndexFromStatic_() noexcept(IN_RELEASE) final
         {
             assert("Attempting to add index buffer a second time" && pCIndexBuffer_ == nullptr);
 
-            for (const auto& b : static_binds_)
+            for (const auto& b : m_static_binds_)
             {
                 const auto ptr = dynamic_cast<NAMESPACE_PIPELINE_ELEMENT::IndexBuffer*>(b.get());
 
@@ -66,11 +66,11 @@ export namespace fatpound::win32::d3d11::visual
     private:
         virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>>& override
         {
-            return static_binds_;
+            return m_static_binds_;
         }
 
 
     private:
-        inline static std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>> static_binds_ = {};
+        inline static std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>> m_static_binds_ = {};
     };
 }

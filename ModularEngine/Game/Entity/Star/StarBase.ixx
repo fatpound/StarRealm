@@ -42,25 +42,25 @@ export namespace starrealm::entity::star
     protected:
         static bool IsStaticInitialized_() noexcept(IN_RELEASE)
         {
-            return not static_binds_.empty();
+            return not m_static_binds_.empty();
         }
 
         static void AddStaticBind_(std::unique_ptr<NAMESPACE_PIPELINE::Bindable> bind) noexcept(IN_RELEASE)
         {
             assert("*Must* use AddStaticIndexBuffer to bind index buffer" && typeid(*bind) != typeid(NAMESPACE_PIPELINE_ELEMENT::IndexBuffer));
 
-            static_binds_.push_back(std::move(bind));
+            m_static_binds_.push_back(std::move(bind));
         }
 
 
     private:
         virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>>& override final
         {
-            return static_binds_;
+            return m_static_binds_;
         }
 
 
     private:
-        inline static std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>> static_binds_ = {};
+        inline static std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>> m_static_binds_ = {};
     };
 }

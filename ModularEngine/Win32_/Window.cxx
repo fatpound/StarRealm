@@ -5,8 +5,8 @@ module;
 #define WINDOW_RECT_WIDTH       (rect.right - rect.left)
 #define WINDOW_RECT_HEIGHT      (rect.bottom - rect.top)
 
-#define CLIENT_WIDTH            static_cast<LONG>(client_size_.width)
-#define CLIENT_HEIGHT           static_cast<LONG>(client_size_.height)
+#define CLIENT_WIDTH            static_cast<LONG>(m_client_size_.width)
+#define CLIENT_HEIGHT           static_cast<LONG>(m_client_size_.height)
 
 #if IN_RELEASE
 
@@ -34,7 +34,7 @@ namespace fatpound::win32
 
     Window::Window(const str_t title, const ClientSizeInfo& dimensions)
         :
-        client_size_{ dimensions }
+        m_client_size_{ dimensions }
     {
 #if IN_DEBUG
 
@@ -48,7 +48,7 @@ namespace fatpound::win32
 
 #endif // IN_DEBUG
 
-        hWnd_ = CreateWindow(
+        m_hWnd_ = CreateWindow(
             WndClass_::GetName(),
             title,
             WINDOW_STYLE,
@@ -62,17 +62,17 @@ namespace fatpound::win32
             this
         );
 
-        if (hWnd_ == nullptr) [[unlikely]]
+        if (m_hWnd_ == nullptr) [[unlikely]]
         {
             throw std::runtime_error("Error occured when creating HWND!");
         }
 
-        ShowWindow(hWnd_, /*SW_SHOW*/ SW_SHOWDEFAULT);
-        UpdateWindow(hWnd_);
+        ShowWindow(m_hWnd_, /*SW_SHOW*/ SW_SHOWDEFAULT);
+        UpdateWindow(m_hWnd_);
     }
     Window::~Window()
     {
-        DestroyWindow(hWnd_);
+        DestroyWindow(m_hWnd_);
     }
 
     auto Window::ProcessMessages() noexcept -> std::optional<WPARAM>
@@ -95,28 +95,28 @@ namespace fatpound::win32
 
     auto Window::GetHwnd() const noexcept -> HWND
     {
-        return hWnd_;
+        return m_hWnd_;
     }
 
     bool Window::IsActive() const noexcept
     {
-        return GetActiveWindow() == hWnd_;
+        return GetActiveWindow() == m_hWnd_;
     }
     bool Window::IsMinimized() const noexcept
     {
-        return IsIconic(hWnd_) != 0;
+        return IsIconic(m_hWnd_) != 0;
     }
 
     void Window::SetTitle(const std::wstring& title)
     {
-        if (SetWindowText(hWnd_, title.c_str()) == 0) [[unlikely]]
+        if (SetWindowText(m_hWnd_, title.c_str()) == 0) [[unlikely]]
         {
             throw std::runtime_error("Could NOT set the Window Text!");
         }
     }
     void Window::ShowMessageBox(const std::wstring& message, const std::wstring& title, UINT error_flags) noexcept
     {
-        MessageBox(hWnd_, message.c_str(), title.c_str(), error_flags);
+        MessageBox(m_hWnd_, message.c_str(), title.c_str(), error_flags);
     }
     void Window::Kill()
     {
@@ -154,25 +154,25 @@ namespace fatpound::win32
             return 0;
 
         case WM_KILLFOCUS:
-            kbd.ClearKeyStateBitset_();
+            m_keyboard.ClearKeyStateBitset_();
             break;
 
             /******** KEYBOARD MESSAGES ********/
         case WM_KEYDOWN: [[fallthrough]];
         case WM_SYSKEYDOWN:
-            if (!(lParam & 0x40000000) || kbd.AutoRepeatIsEnabled())
+            if (!(lParam & 0x40000000) || m_keyboard.AutoRepeatIsEnabled())
             {
-                kbd.OnKeyPressed_(static_cast<unsigned char>(wParam));
+                m_keyboard.OnKeyPressed_(static_cast<unsigned char>(wParam));
             }
             break;
 
         case WM_KEYUP: [[fallthrough]];
         case WM_SYSKEYUP:
-            kbd.OnKeyReleased_(static_cast<unsigned char>(wParam));
+            m_keyboard.OnKeyReleased_(static_cast<unsigned char>(wParam));
             break;
 
         case WM_CHAR:
-            kbd.OnChar_(static_cast<unsigned char>(wParam));
+            m_keyboard.OnChar_(static_cast<unsigned char>(wParam));
             break;
             /******** END KEYBOARD MESSAGES ********/
 
@@ -183,60 +183,60 @@ namespace fatpound::win32
             const POINTS pt = MAKEPOINTS(lParam);
 
             if (pt.x >= 0 &&
-                pt.x < static_cast<SHORT>(client_size_.width) &&
+                pt.x < static_cast<SHORT>(m_client_size_.width) &&
                 pt.y >= 0 &&
-                pt.y < static_cast<SHORT>(client_size_.height)
+                pt.y < static_cast<SHORT>(m_client_size_.height)
             )
             {
-                mouse.OnMouseMove_(pt.x, pt.y);
+                m_mouse.OnMouseMove_(pt.x, pt.y);
 
-                if (not mouse.IsInWindow())
+                if (not m_mouse.IsInWindow())
                 {
                     SetCapture(hWnd);
-                    mouse.OnMouseEnter_();
+                    m_mouse.OnMouseEnter_();
                 }
             }
             else
             {
                 if (wParam & (MK_LBUTTON | MK_RBUTTON))
                 {
-                    mouse.OnMouseMove_(pt.x, pt.y);
+                    m_mouse.OnMouseMove_(pt.x, pt.y);
                 }
                 else
                 {
                     ReleaseCapture();
-                    mouse.OnMouseLeave_();
+                    m_mouse.OnMouseLeave_();
                 }
             }
         }
         break;
 
         case WM_LBUTTONDOWN:
-            mouse.OnLeftPressed_();
+            m_mouse.OnLeftPressed_();
             break;
 
         case WM_LBUTTONUP:
-            mouse.OnLeftReleased_();
+            m_mouse.OnLeftReleased_();
             break;
 
         case WM_RBUTTONDOWN:
-            mouse.OnRightPressed_();
+            m_mouse.OnRightPressed_();
             break;
 
         case WM_RBUTTONUP:
-            mouse.OnRightReleased_();
+            m_mouse.OnRightReleased_();
             break;
 
         case WM_MBUTTONDOWN:
-            mouse.OnWheelPressed_();
+            m_mouse.OnWheelPressed_();
             break;
 
         case WM_MBUTTONUP:
-            mouse.OnWheelReleased_();
+            m_mouse.OnWheelReleased_();
             break;
 
         case WM_MOUSEWHEEL:
-            mouse.OnWheelDelta_(GET_WHEEL_DELTA_WPARAM(wParam));
+            m_mouse.OnWheelDelta_(GET_WHEEL_DELTA_WPARAM(wParam));
             break;
             /******* END MOUSE MESSAGES *******/
 
@@ -252,7 +252,7 @@ namespace fatpound::win32
 
     Window::WndClass_::WndClass_() noexcept
         :
-        hInst_(GetModuleHandle(nullptr))
+        m_hInst_(GetModuleHandle(nullptr))
     {
         WNDCLASSEX wc = {};
         wc.cbSize = sizeof(wc);
@@ -260,7 +260,7 @@ namespace fatpound::win32
         wc.lpfnWndProc = &Window::HandleMsgSetup_;
         wc.cbClsExtra = 0;
         wc.cbWndExtra = 0;
-        wc.hInstance = hInst_;
+        wc.hInstance = m_hInst_;
         wc.hIcon = nullptr;
         wc.hIconSm = nullptr;
         wc.hbrBackground = nullptr;
@@ -287,7 +287,7 @@ namespace fatpound::win32
     {
         static WndClass_ wndClass_;
 
-        return wndClass_.hInst_;
+        return wndClass_.m_hInst_;
     }
 
     auto Window::WndClass_::GetName() noexcept -> str_t

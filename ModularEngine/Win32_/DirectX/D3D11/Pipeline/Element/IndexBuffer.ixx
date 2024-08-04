@@ -30,9 +30,9 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
 
     protected:
-        Microsoft::WRL::ComPtr<ID3D11Buffer> pIndexBuffer_;
+        ::Microsoft::WRL::ComPtr<ID3D11Buffer> m_pIndexBuffer_;
 
-        UINT count_;
+        UINT m_count_;
 
 
     private:

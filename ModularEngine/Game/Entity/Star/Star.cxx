@@ -12,42 +12,42 @@ namespace starrealm::entity
 {
     Star::Star(const Descriptor& desc)
         :
-        position_(desc.position),
-        radiuses_(desc.radiuses),
-        rotation_speed_(desc.rotation_speed),
-        roll_(0.0f)
+        m_position_(desc.position),
+        m_radiuses_(desc.radiuses),
+        m_rotation_speed_(desc.rotation_speed),
+        m_roll_(0.0f)
     {
 
     }
 
     auto Star::GetTransformXM() const noexcept -> dx::XMMATRIX
     {
-        const auto& pos_vec = dx::XMLoadFloat3(&position_);
+        const auto& pos_vec = dx::XMLoadFloat3(&m_position_);
 
         return dx::XMMatrixTranslationFromVector(dx::XMVectorNegate(pos_vec)) *
-            dx::XMMatrixRotationZ(roll_) *
+            dx::XMMatrixRotationZ(m_roll_) *
             dx::XMMatrixTranslationFromVector(pos_vec);
     }
 
     auto Star::GetPosition() const noexcept -> dx::XMFLOAT3
     {
-        return position_;
+        return m_position_;
     }
 
     float Star::GetOuterRadius() const noexcept
     {
-        return radiuses_.outer_radius;
+        return m_radiuses_.outer_radius;
     }
 
     void Star::Update(float delta_time) noexcept
     {
-        roll_ += (delta_time * rotation_speed_);
+        m_roll_ += (delta_time * m_rotation_speed_);
     }
 
     bool Star::IsWithinArea(const dx::XMFLOAT3& position, const float& radius) const noexcept
     {
-        const float distance = NAMESPACE_MATH::GetDistanceBetweenXMF3(this->position_, position);
-        const float radsum = this->radiuses_.outer_radius + radius;
+        const float distance = NAMESPACE_MATH::GetDistanceBetweenXMF3(this->m_position_, position);
+        const float radsum = this->m_radiuses_.outer_radius + radius;
 
         return radsum > distance;
     }

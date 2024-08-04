@@ -21,6 +21,7 @@ export namespace fatpound::win32::io
         Mouse() = default;
         Mouse(const Mouse& src) = delete;
         Mouse& operator = (const Mouse& src) = delete;
+
         Mouse(Mouse&& src) = delete;
         Mouse& operator = (Mouse&& src) = delete;
         ~Mouse() noexcept = default;
@@ -55,9 +56,15 @@ export namespace fatpound::win32::io
             };
 
         public:
-            Event() noexcept;
-
             Event(Type type, const Mouse& parent) noexcept;
+
+            Event() = default;
+            Event(const Event& src) = default;
+            Event& operator = (const Event& src) = default;
+
+            Event(Event&& src) = default;
+            Event& operator = (Event&& src) = default;
+            ~Event() = default;
 
         public:
             auto GetPos() const noexcept -> std::pair<int, int>;
@@ -75,14 +82,14 @@ export namespace fatpound::win32::io
         protected:
 
         private:
-            Type type_;
+            Type type_ = Type::Invalid;
 
-            int x_;
-            int y_;
+            int x_{};
+            int y_{};
 
-            bool  left_is_pressed_;
-            bool right_is_pressed_;
-            bool wheel_is_pressed_;
+            bool  left_is_pressed_{false};
+            bool right_is_pressed_{false};
+            bool wheel_is_pressed_{false};
         };
 
 
@@ -131,18 +138,18 @@ export namespace fatpound::win32::io
 
 
     private:
-        std::queue<Event> event_buffer_;
-        std::queue<RawDelta> raw_delta_buffer_;
+        std::queue<Event> m_event_buffer_;
+        std::queue<RawDelta> m_raw_delta_buffer_;
 
-        int x_ = 0;
-        int y_ = 0;
-        int wheel_delta_carry_ = 0;
+        int m_x_ = 0;
+        int m_y_ = 0;
+        int m_wheel_delta_carry_ = 0;
 
-        bool is_in_window_ = false;
+        bool m_is_in_window_ = false;
 
-        bool  left_is_pressed_ = false;
-        bool right_is_pressed_ = false;
-        bool wheel_is_pressed_ = false;
+        bool  m_left_is_pressed_ = false;
+        bool m_right_is_pressed_ = false;
+        bool m_wheel_is_pressed_ = false;
 
         static constexpr unsigned int s_bufferSize_ = 16u;
     };

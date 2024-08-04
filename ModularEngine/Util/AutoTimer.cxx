@@ -15,11 +15,11 @@ namespace fatpound::util
 {
     float AutoTimer::Mark() noexcept
     {
-        const auto old = last_;
+        const auto old = m_last_;
 
-        last_ = std::chrono::steady_clock::now();
+        m_last_ = std::chrono::steady_clock::now();
 
-        const std::chrono::duration<float> frame_time = last_ - old;
+        const std::chrono::duration<float> frame_time = m_last_ - old;
 
         return frame_time.count();
     }
@@ -27,6 +27,6 @@ namespace fatpound::util
     {
         const auto& now = std::chrono::steady_clock::now();
 
-        return std::chrono::duration<float>(now - last_).count();
+        return std::chrono::duration<float>(now - m_last_).count();
     }
 }
