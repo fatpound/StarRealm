@@ -8,5 +8,4 @@ export import :DepthStencilView;
 export import :DepthStencilState;
 export import :RasterizerState;
 
-export import :SwapChain;
-export import :Device;
+export import :DeviceAndSwapChain;

@@ -24,8 +24,8 @@ namespace fatpound::win32::d3d11
         m_height_(dimensions.height)
     {
         {
-            const auto& scdesc = factory::SwapChain::CreateDESC<Graphics::s_msaaQuality_>(hWnd, m_width_, m_height_);
-            factory::Device::CreateWithSwapChain(m_pDevice_, m_pSwapChain_, m_pImmediateContext_, scdesc);
+            const auto& scdesc = factory::DeviceAndSwapChain::CreateDESC<s_msaaQuality_>(hWnd, m_width_, m_height_);
+            factory::DeviceAndSwapChain::Create(m_pDevice_, m_pSwapChain_, m_pImmediateContext_, scdesc);
         }
 
         ToggleAltEnterMode_();

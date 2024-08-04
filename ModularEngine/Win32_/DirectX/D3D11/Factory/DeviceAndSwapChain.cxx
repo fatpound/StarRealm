@@ -6,13 +6,13 @@ module;
 
 #include <wrl.h>
 
-module FatPound.Win32.D3D11.Factory:Device;
+module FatPound.Win32.D3D11.Factory:DeviceAndSwapChain;
 
 namespace wrl = Microsoft::WRL;
 
 namespace fatpound::win32::d3d11::factory
 {
-    void Device::CreateWithSwapChain(
+    void DeviceAndSwapChain::Create(
         Microsoft::WRL::ComPtr<ID3D11Device>&        pDevice,
         Microsoft::WRL::ComPtr<IDXGISwapChain>&      pSwapChain,
         Microsoft::WRL::ComPtr<ID3D11DeviceContext>& pImmediateContext_,
