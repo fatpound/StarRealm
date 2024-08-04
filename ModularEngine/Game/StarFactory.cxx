@@ -16,17 +16,17 @@ namespace starrealm
         :
         gfx_(gfx)
     {
-        stars_.reserve(Settings::s_starCount);
+        m_stars_.reserve(Settings::s_starCount);
 
-        while (stars_.size() < Settings::s_starCount)
+        while (m_stars_.size() < Settings::s_starCount)
         {
-            stars_.push_back(GenerateStar_());
+            m_stars_.push_back(GenerateStar_());
         }
     }
 
     auto StarFactory::GetStars() && -> std::vector<std::unique_ptr<entity::Star>>&&
     {
-        return std::move(stars_);
+        return std::move(m_stars_);
     }
 
     auto StarFactory::GenerateStar_() -> std::unique_ptr<entity::Star>
@@ -39,14 +39,14 @@ namespace starrealm
             position   = GeneratePosition3_();
             radiusPack = GenerateRadiusPack_();
 
-            if (std::ranges::none_of(stars_, [&](const auto& pstar) -> bool { return pstar->IsWithinArea(position, radiusPack.outer_radius); }))
+            if (std::ranges::none_of(m_stars_, [&](const auto& pstar) -> bool { return pstar->IsWithinArea(position, radiusPack.outer_radius); }))
             {
                 break;
             }
         }
 
-        const auto& flareCount = static_cast<std::size_t>(flare_count_dist_(rng_));
-        const auto& rotationSpeed = rotation_speed_dist_(rng_);
+        const auto& flareCount = static_cast<std::size_t>(m_flare_count_dist_(m_rng_));
+        const auto& rotationSpeed = m_rotation_speed_dist_(m_rng_);
 
         const entity::Star::Descriptor& desc =
         {
@@ -56,7 +56,7 @@ namespace starrealm
             rotationSpeed
         };
 
-        switch (rng_() % 6u)
+        switch (m_rng_() % 6u)
         {
         case 0:
             return std::make_unique<entity::star::HollowSingle>(gfx_, desc);
@@ -83,30 +83,30 @@ namespace starrealm
 
     auto StarFactory::GenerateRadiusPack_() -> entity::Star::RadiusPack
     {
-        const auto& outerRadius      = std::clamp(outer_rad_dist_(rng_),       Settings::s_minStarOuterRadius, Settings::s_maxStarOuterRadius);
-        const auto& innerRadiusRatio = std::clamp(inner_rad_ratio_dist_(rng_), Settings::s_minStarInnerRatio,  Settings::s_maxStarInnerRatio);
+        const auto& outerRadius      = std::clamp(m_outer_rad_dist_(m_rng_),       Settings::s_minStarOuterRadius, Settings::s_maxStarOuterRadius);
+        const auto& innerRadiusRatio = std::clamp(m_inner_rad_ratio_dist_(m_rng_), Settings::s_minStarInnerRatio,  Settings::s_maxStarInnerRatio);
 
         return { outerRadius, outerRadius * innerRadiusRatio };
     }
 
     auto StarFactory::GeneratePosition3_() -> ::DirectX::XMFLOAT3
     {
-        const auto& z = z_dist_(rng_);
+        const auto& z = m_z_dist_(m_rng_);
 
         if constexpr (s_distributeCircular_)
         {
-            const auto& radius = std::sqrt(radius_dist_(rng_)) * Settings::s_worldRadiusFactor;
-            const auto& angle = angle_dist_(rng_);
+            const auto& radius = std::sqrt(m_radius_dist_(m_rng_)) * Settings::s_worldRadiusFactor;
+            const auto& angle = m_angle_dist_(m_rng_);
 
-            const auto& x = radius * std::cos(angle) + normal_dist_(rng_);
-            const auto& y = radius * std::sin(angle) + normal_dist_(rng_);
+            const auto& x = radius * std::cos(angle) + m_normal_dist_(m_rng_);
+            const auto& y = radius * std::sin(angle) + m_normal_dist_(m_rng_);
 
             return { x, y, z };
         }
         else
         {
-            const auto& x = x_dist_(rng_);
-            const auto& y = y_dist_(rng_);
+            const auto& x = m_x_dist_(m_rng_);
+            const auto& y = m_y_dist_(m_rng_);
 
             return { x, y, z };
         }

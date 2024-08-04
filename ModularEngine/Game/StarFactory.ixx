@@ -78,23 +78,23 @@ export namespace starrealm
     private:
         NAMESPACE_D3D11::Graphics& gfx_;
 
-        std::minstd_rand rng_{ std::random_device{}() };
+        std::minstd_rand m_rng_{ std::random_device{}() };
 
-        std::uniform_real_distribution<float> x_dist_{ -Settings::s_worldWidth,   Settings::s_worldWidth };
-        std::uniform_real_distribution<float> y_dist_{ -Settings::s_worldHeight,  Settings::s_worldHeight };
-        std::uniform_real_distribution<float> z_dist_{  Settings::s_minStarDepth, Settings::s_maxStarDepth };
+        std::uniform_real_distribution<float> m_x_dist_{ -Settings::s_worldWidth,   Settings::s_worldWidth };
+        std::uniform_real_distribution<float> m_y_dist_{ -Settings::s_worldHeight,  Settings::s_worldHeight };
+        std::uniform_real_distribution<float> m_z_dist_{  Settings::s_minStarDepth, Settings::s_maxStarDepth };
 
-        std::uniform_real_distribution<float> rotation_speed_dist_{ Settings::s_minRotationSpeed, Settings::s_maxRotationSpeed };
-        std::uniform_real_distribution<float> angle_dist_{ 0.0f, 2.0f * std::numbers::pi_v<float> };
+        std::uniform_real_distribution<float> m_rotation_speed_dist_{ Settings::s_minRotationSpeed, Settings::s_maxRotationSpeed };
+        std::uniform_real_distribution<float> m_angle_dist_{ 0.0f, 2.0f * std::numbers::pi_v<float> };
 
-        std::uniform_int_distribution<int> flare_count_dist_{ Settings::s_minFlareCount, Settings::s_maxFlareCount };
+        std::uniform_int_distribution<int> m_flare_count_dist_{ Settings::s_minFlareCount, Settings::s_maxFlareCount };
 
-        std::normal_distribution<float> outer_rad_dist_{ Settings::s_meanStarOuterRadius, Settings::s_devStarOuterRadius };
-        std::normal_distribution<float> inner_rad_ratio_dist_{ Settings::s_meanStarInnerRatio, Settings::s_devStarInnerRatio };
-        std::normal_distribution<float> radius_dist_{ Settings::s_meanWorldRadius, Settings::s_devWorldRadius };
-        std::normal_distribution<float> normal_dist_{ 0.0f, 1.0f };
+        std::normal_distribution<float> m_outer_rad_dist_{ Settings::s_meanStarOuterRadius, Settings::s_devStarOuterRadius };
+        std::normal_distribution<float> m_inner_rad_ratio_dist_{ Settings::s_meanStarInnerRatio, Settings::s_devStarInnerRatio };
+        std::normal_distribution<float> m_radius_dist_{ Settings::s_meanWorldRadius, Settings::s_devWorldRadius };
+        std::normal_distribution<float> m_normal_dist_{ 0.0f, 1.0f };
 
-        std::vector<std::unique_ptr<entity::Star>> stars_;
+        std::vector<std::unique_ptr<entity::Star>> m_stars_;
 
         static constexpr bool s_distributeCircular_ = true;
     };
