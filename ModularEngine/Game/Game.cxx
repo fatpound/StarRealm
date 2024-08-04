@@ -26,7 +26,7 @@ namespace starrealm
         m_camera_controller_(m_camera_, m_wnd_.GetMouse(), m_wnd_.GetKeyboard()),
         m_stars_{ StarFactory{ m_gfx_ }.GetStars() }
     {
-        m_gfx_.SetProjection(
+        m_gfx_.SetProjectionXM(
             dx::XMMatrixPerspectiveLH(
                 1.0f,
                 m_wnd_.GetClientHeight<float>() / m_wnd_.GetClientWidth<float>(), // 1 / Aspect Ratio
@@ -68,7 +68,7 @@ namespace starrealm
 
         const auto& delta_time = m_timer_.Mark();
         
-        m_gfx_.SetCamera(m_camera_.GetMatrix());
+        m_gfx_.SetCameraXM(m_camera_.GetMatrix());
 
         for (auto& star : m_stars_)
         {

@@ -67,8 +67,8 @@ export namespace fatpound::win32::d3d11
         void EndFrame();
         void DrawIndexed(UINT count) noexcept(IN_RELEASE);
 
-        void SetProjection(const ::DirectX::XMMATRIX& projection) noexcept;
-        void SetCamera(const ::DirectX::XMMATRIX& camera) noexcept;
+        void SetProjectionXM(const ::DirectX::XMMATRIX& projection) noexcept;
+        void SetCameraXM(const ::DirectX::XMMATRIX& camera) noexcept;
 
 
     protected:

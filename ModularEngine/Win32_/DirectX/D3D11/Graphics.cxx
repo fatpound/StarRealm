@@ -69,11 +69,11 @@ namespace fatpound::win32::d3d11
         m_pImmediateContext_->DrawIndexed(count, 0u, 0);
     }
 
-    void Graphics::SetProjection(const dx::XMMATRIX& projection) noexcept
+    void Graphics::SetProjectionXM(const dx::XMMATRIX& projection) noexcept
     {
         m_projection_ = projection;
     }
-    void Graphics::SetCamera(const dx::XMMATRIX& camera) noexcept
+    void Graphics::SetCameraXM(const dx::XMMATRIX& camera) noexcept
     {
         m_camera_ = camera;
     }
