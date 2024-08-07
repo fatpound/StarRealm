@@ -18,7 +18,7 @@ namespace fatpound::win32::d3d11::pipeline::system
         std::size_t height
     )
     {
-        ::D3D11_VIEWPORT vp = {};
+        D3D11_VIEWPORT vp = {};
         vp.Width  = static_cast<FLOAT>(width);
         vp.Height = static_cast<FLOAT>(height);
         vp.MinDepth = 0.0f;

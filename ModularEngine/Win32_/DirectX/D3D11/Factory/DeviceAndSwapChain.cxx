@@ -16,7 +16,7 @@ namespace fatpound::win32::d3d11::factory
         ::Microsoft::WRL::ComPtr<ID3D11Device>&        pDevice,
         ::Microsoft::WRL::ComPtr<IDXGISwapChain>&      pSwapChain,
         ::Microsoft::WRL::ComPtr<ID3D11DeviceContext>& pImmediateContext_,
-        const ::DXGI_SWAP_CHAIN_DESC&                    desc
+        const DXGI_SWAP_CHAIN_DESC&                    desc
     )
     {
         static constinit UINT swapCreateFlags;

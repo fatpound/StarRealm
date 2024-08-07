@@ -16,9 +16,9 @@ export namespace fatpound::win32::d3d11::factory
     {
     public:
         template <UINT MSAA_Quality>
-        static auto CreateDESC() -> ::D3D11_DEPTH_STENCIL_VIEW_DESC
+        static auto CreateDESC() -> D3D11_DEPTH_STENCIL_VIEW_DESC
         {
-            ::D3D11_DEPTH_STENCIL_VIEW_DESC desc = {};
+            D3D11_DEPTH_STENCIL_VIEW_DESC desc = {};
             desc.Format = DXGI_FORMAT_D32_FLOAT;
             desc.Texture2D.MipSlice = 0u;
 
@@ -40,7 +40,7 @@ export namespace fatpound::win32::d3d11::factory
             ::Microsoft::WRL::ComPtr<ID3D11Device>&           pDevice,
             ::Microsoft::WRL::ComPtr<ID3D11Texture2D>&        DepthStencil,
             ::Microsoft::WRL::ComPtr<ID3D11DepthStencilView>& pDSV,
-            const ::D3D11_DEPTH_STENCIL_VIEW_DESC&              desc
+            const D3D11_DEPTH_STENCIL_VIEW_DESC&              desc
         );
 
 

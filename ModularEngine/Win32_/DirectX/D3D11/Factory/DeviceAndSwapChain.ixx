@@ -16,9 +16,9 @@ export namespace fatpound::win32::d3d11::factory
     {
     public:
         template <UINT MSAA_Quality>
-        static auto CreateDESC(HWND hWnd, UINT width, UINT height) -> ::DXGI_SWAP_CHAIN_DESC
+        static auto CreateDESC(HWND hWnd, UINT width, UINT height) -> DXGI_SWAP_CHAIN_DESC
         {
-            ::DXGI_SWAP_CHAIN_DESC desc = {};
+            DXGI_SWAP_CHAIN_DESC desc = {};
             desc.BufferDesc.Width = width;
             desc.BufferDesc.Height = height;
             desc.BufferDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
@@ -52,7 +52,7 @@ export namespace fatpound::win32::d3d11::factory
             ::Microsoft::WRL::ComPtr<ID3D11Device>&        pDevice,
             ::Microsoft::WRL::ComPtr<IDXGISwapChain>&      pSwapChain,
             ::Microsoft::WRL::ComPtr<ID3D11DeviceContext>& pImmediateContext_,
-            const ::DXGI_SWAP_CHAIN_DESC&                    desc
+            const DXGI_SWAP_CHAIN_DESC&                    desc
         );
 
 

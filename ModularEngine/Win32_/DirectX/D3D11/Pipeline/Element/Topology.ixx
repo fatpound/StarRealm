@@ -14,7 +14,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
     class Topology final : public Bindable
     {
     public:
-        Topology(::D3D11_PRIMITIVE_TOPOLOGY type);
+        Topology(D3D11_PRIMITIVE_TOPOLOGY type);
 
 
     public:
@@ -22,7 +22,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
 
     protected:
-        ::D3D11_PRIMITIVE_TOPOLOGY m_type_;
+        D3D11_PRIMITIVE_TOPOLOGY m_type_;
 
 
     private:

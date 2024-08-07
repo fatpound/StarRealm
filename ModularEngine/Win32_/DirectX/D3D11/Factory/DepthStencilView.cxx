@@ -16,7 +16,7 @@ namespace fatpound::win32::d3d11::factory
         ::wrl::ComPtr<ID3D11Device>&           pDevice,
         ::wrl::ComPtr<ID3D11Texture2D>&        pDepthStencil,
         ::wrl::ComPtr<ID3D11DepthStencilView>& pDSV,
-        const ::D3D11_DEPTH_STENCIL_VIEW_DESC&   desc
+        const D3D11_DEPTH_STENCIL_VIEW_DESC&   desc
     )
     {
         const auto hr = pDevice->CreateDepthStencilView(pDepthStencil.Get(), &desc, &pDSV);

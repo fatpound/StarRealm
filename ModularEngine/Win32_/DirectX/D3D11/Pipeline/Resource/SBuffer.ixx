@@ -21,7 +21,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
     public:
         SBuffer(Graphics& gfx, const std::vector<S>& structures)
         {
-            ::D3D11_BUFFER_DESC sbd = {};
+            D3D11_BUFFER_DESC sbd = {};
             sbd.BindFlags = D3D11_BIND_SHADER_RESOURCE;
             sbd.Usage = D3D11_USAGE_DEFAULT;
             sbd.CPUAccessFlags = 0u;
@@ -29,12 +29,12 @@ export namespace fatpound::win32::d3d11::pipeline::resource
             sbd.ByteWidth = sizeof(S) * static_cast<UINT>(structures.size());
             sbd.StructureByteStride = sizeof(S);
 
-            ::D3D11_SUBRESOURCE_DATA initData = {};
+            D3D11_SUBRESOURCE_DATA initData = {};
             initData.pSysMem = structures.data();
 
             Bindable::GetDevice_(gfx)->CreateBuffer(&sbd, &initData, &m_pStructuredBuffer_);
 
-            ::D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
+            D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
             srvDesc.Format = DXGI_FORMAT_UNKNOWN;
             srvDesc.ViewDimension = D3D11_SRV_DIMENSION_BUFFER;
             srvDesc.Buffer.ElementWidth = static_cast<UINT>(structures.size());

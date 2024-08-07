@@ -87,7 +87,7 @@ namespace fatpound::win32::d3d11
         ::wrl::ComPtr<IDXGIFactory> pIDXGIFactory = nullptr;
         pDXGIAdapter->GetParent(__uuidof(IDXGIFactory), &pIDXGIFactory);
 
-        ::DXGI_SWAP_CHAIN_DESC desc = {};
+        DXGI_SWAP_CHAIN_DESC desc = {};
         m_pSwapChain_->GetDesc(&desc);
 
         const auto& hWnd = desc.OutputWindow;
