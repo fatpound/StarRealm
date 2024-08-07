@@ -23,7 +23,7 @@ namespace fatpound::win32::d3d11::pipeline::element
         );
     }
 
-    auto VertexShader::GetBytecode() const noexcept -> ::ID3DBlob*
+    auto VertexShader::GetBytecode() const noexcept -> ID3DBlob*
     {
         return m_pBytecodeBlob_.Get();
     }
