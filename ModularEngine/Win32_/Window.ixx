@@ -93,7 +93,7 @@ export namespace fatpound::win32
             ~WndClass_();
 
         private:
-            ::HINSTANCE m_hInst_;
+            HINSTANCE m_hInst_;
 
 #ifdef UNICODE
             static constexpr str_t s_wndClassName_ = L"FatPound Default WndClass";
@@ -104,12 +104,12 @@ export namespace fatpound::win32
 
 
     private:
-        static auto CALLBACK HandleMsgSetup_(HWND hWnd, UINT msg, ::WPARAM wParam, ::LPARAM lParam) noexcept -> ::LRESULT;
-        static auto CALLBACK HandleMsgThunk_(HWND hWnd, UINT msg, ::WPARAM wParam, ::LPARAM lParam) noexcept -> ::LRESULT;
+        static auto CALLBACK HandleMsgSetup_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept -> LRESULT;
+        static auto CALLBACK HandleMsgThunk_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept -> LRESULT;
 
 
     private:
-        auto HandleMsg_(HWND hWnd, UINT msg, ::WPARAM wParam, ::LPARAM lParam) noexcept -> ::LRESULT;
+        auto HandleMsg_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept -> LRESULT;
 
 
     private:

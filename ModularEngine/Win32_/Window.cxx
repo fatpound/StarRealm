@@ -38,7 +38,7 @@ namespace fatpound::win32
     {
 #if IN_DEBUG
 
-        ::RECT rect = {};
+        RECT rect = {};
         rect.left = 150;
         rect.right = CLIENT_WIDTH + rect.left;
         rect.top = 150;
@@ -77,7 +77,7 @@ namespace fatpound::win32
 
     auto Window::ProcessMessages() noexcept -> std::optional<WPARAM>
     {
-        ::MSG msg;
+        MSG msg;
 
         while (::PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
         {
@@ -132,11 +132,11 @@ namespace fatpound::win32
         ::PostQuitMessage(0);
     }
 
-    auto CALLBACK Window::HandleMsgSetup_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept -> ::LRESULT
+    auto CALLBACK Window::HandleMsgSetup_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept -> LRESULT
     {
         if (msg == WM_NCCREATE)
         {
-            const ::CREATESTRUCTW* const pCreate = reinterpret_cast<CREATESTRUCTW*>(lParam);
+            const CREATESTRUCTW* const pCreate = reinterpret_cast<CREATESTRUCTW*>(lParam);
             Window* const pWnd = reinterpret_cast<Window*>(pCreate->lpCreateParams);
 
             ::SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pWnd));
@@ -147,14 +147,14 @@ namespace fatpound::win32
 
         return ::DefWindowProc(hWnd, msg, wParam, lParam);
     }
-    auto CALLBACK Window::HandleMsgThunk_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept -> ::LRESULT
+    auto CALLBACK Window::HandleMsgThunk_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept -> LRESULT
     {
         Window* const pWnd = reinterpret_cast<Window*>(::GetWindowLongPtr(hWnd, GWLP_USERDATA));
 
         return pWnd->HandleMsg_(hWnd, msg, wParam, lParam);
     }
 
-    auto Window::HandleMsg_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept -> ::LRESULT
+    auto Window::HandleMsg_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept -> LRESULT
     {
         switch (msg)
         {
@@ -189,7 +189,7 @@ namespace fatpound::win32
             /******** MOUSE MESSAGES ********/
         case WM_MOUSEMOVE:
         {
-            const ::POINTS pt = MAKEPOINTS(lParam);
+            const POINTS pt = MAKEPOINTS(lParam);
 
             if (pt.x >= 0 &&
                 pt.x < static_cast<SHORT>(m_client_size_.m_width) &&
@@ -292,7 +292,7 @@ namespace fatpound::win32
         ::UnregisterClass(s_wndClassName_, WndClass_::GetInstance());
     }
 
-    auto Window::WndClass_::GetInstance() noexcept -> ::HINSTANCE
+    auto Window::WndClass_::GetInstance() noexcept -> HINSTANCE
     {
         static WndClass_ wndClass_;
 
