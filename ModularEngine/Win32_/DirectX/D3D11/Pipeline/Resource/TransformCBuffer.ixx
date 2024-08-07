@@ -58,7 +58,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
 
 
     private:
-        VertexCBuffer<::DirectX::XMMATRIX> m_vcbuf_;
+        VertexCBuffer<DirectX::XMMATRIX> m_vcbuf_;
 
         const C& m_parent_;
     };

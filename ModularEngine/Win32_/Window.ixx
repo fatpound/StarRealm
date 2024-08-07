@@ -40,20 +40,20 @@ export namespace fatpound::win32
 
 
     public:
-        static auto ProcessMessages() noexcept -> std::optional<::WPARAM>;
+        static auto ProcessMessages() noexcept -> std::optional<WPARAM>;
 
 
     public:
         auto GetMouse()    -> NAMESPACE_IO::Mouse&;
         auto GetKeyboard() -> NAMESPACE_IO::Keyboard&;
 
-        auto GetHwnd() const noexcept -> ::HWND;
+        auto GetHwnd() const noexcept -> HWND;
 
         bool IsActive() const noexcept;
         bool IsMinimized() const noexcept;
 
         void SetTitle(const std::wstring& title);
-        void ShowMessageBox(const std::wstring& message, const std::wstring& title, ::UINT error_flags) noexcept;
+        void ShowMessageBox(const std::wstring& message, const std::wstring& title, UINT error_flags) noexcept;
         void Kill();
 
 
@@ -104,16 +104,16 @@ export namespace fatpound::win32
 
 
     private:
-        static auto CALLBACK HandleMsgSetup_(::HWND hWnd, ::UINT msg, ::WPARAM wParam, ::LPARAM lParam) noexcept -> ::LRESULT;
-        static auto CALLBACK HandleMsgThunk_(::HWND hWnd, ::UINT msg, ::WPARAM wParam, ::LPARAM lParam) noexcept -> ::LRESULT;
+        static auto CALLBACK HandleMsgSetup_(HWND hWnd, UINT msg, ::WPARAM wParam, ::LPARAM lParam) noexcept -> ::LRESULT;
+        static auto CALLBACK HandleMsgThunk_(HWND hWnd, UINT msg, ::WPARAM wParam, ::LPARAM lParam) noexcept -> ::LRESULT;
 
 
     private:
-        auto HandleMsg_(::HWND hWnd, ::UINT msg, ::WPARAM wParam, ::LPARAM lParam) noexcept -> ::LRESULT;
+        auto HandleMsg_(HWND hWnd, UINT msg, ::WPARAM wParam, ::LPARAM lParam) noexcept -> ::LRESULT;
 
 
     private:
-        ::HWND m_hWnd_;
+        HWND m_hWnd_;
 
         const ClientSizeInfo m_client_size_;
 

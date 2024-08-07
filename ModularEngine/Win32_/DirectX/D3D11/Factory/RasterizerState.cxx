@@ -30,8 +30,8 @@ namespace fatpound::win32::d3d11::factory
     }
 
     void RasterizerState::Create(
-        ::wrl::ComPtr<::ID3D11Device>&          pDevice,
-        ::wrl::ComPtr<::ID3D11RasterizerState>& pRasterizerState,
+        ::wrl::ComPtr<ID3D11Device>&          pDevice,
+        ::wrl::ComPtr<ID3D11RasterizerState>& pRasterizerState,
         const ::D3D11_RASTERIZER_DESC&          desc
     )
     {

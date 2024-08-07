@@ -5,8 +5,8 @@ module;
 #define WINDOW_RECT_WIDTH       (rect.right - rect.left)
 #define WINDOW_RECT_HEIGHT      (rect.bottom - rect.top)
 
-#define CLIENT_WIDTH            static_cast<::LONG>(m_client_size_.m_width)
-#define CLIENT_HEIGHT           static_cast<::LONG>(m_client_size_.m_height)
+#define CLIENT_WIDTH            static_cast<LONG>(m_client_size_.m_width)
+#define CLIENT_HEIGHT           static_cast<LONG>(m_client_size_.m_height)
 
 #if IN_RELEASE
 
@@ -75,7 +75,7 @@ namespace fatpound::win32
         ::DestroyWindow(m_hWnd_);
     }
 
-    auto Window::ProcessMessages() noexcept -> std::optional<::WPARAM>
+    auto Window::ProcessMessages() noexcept -> std::optional<WPARAM>
     {
         ::MSG msg;
 
@@ -102,7 +102,7 @@ namespace fatpound::win32
         return m_keyboard_;
     }
 
-    auto Window::GetHwnd() const noexcept -> ::HWND
+    auto Window::GetHwnd() const noexcept -> HWND
     {
         return m_hWnd_;
     }
@@ -123,7 +123,7 @@ namespace fatpound::win32
             throw std::runtime_error("Could NOT set the Window Text!");
         }
     }
-    void Window::ShowMessageBox(const std::wstring& message, const std::wstring& title, ::UINT error_flags) noexcept
+    void Window::ShowMessageBox(const std::wstring& message, const std::wstring& title, UINT error_flags) noexcept
     {
         ::MessageBox(m_hWnd_, message.c_str(), title.c_str(), error_flags);
     }
@@ -136,11 +136,11 @@ namespace fatpound::win32
     {
         if (msg == WM_NCCREATE)
         {
-            const ::CREATESTRUCTW* const pCreate = reinterpret_cast<::CREATESTRUCTW*>(lParam);
+            const ::CREATESTRUCTW* const pCreate = reinterpret_cast<CREATESTRUCTW*>(lParam);
             Window* const pWnd = reinterpret_cast<Window*>(pCreate->lpCreateParams);
 
-            ::SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<::LONG_PTR>(pWnd));
-            ::SetWindowLongPtr(hWnd, GWLP_WNDPROC,  reinterpret_cast<::LONG_PTR>(&Window::HandleMsgThunk_));
+            ::SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pWnd));
+            ::SetWindowLongPtr(hWnd, GWLP_WNDPROC,  reinterpret_cast<LONG_PTR>(&Window::HandleMsgThunk_));
 
             return pWnd->HandleMsg_(hWnd, msg, wParam, lParam);
         }
@@ -192,9 +192,9 @@ namespace fatpound::win32
             const ::POINTS pt = MAKEPOINTS(lParam);
 
             if (pt.x >= 0 &&
-                pt.x < static_cast<::SHORT>(m_client_size_.m_width) &&
+                pt.x < static_cast<SHORT>(m_client_size_.m_width) &&
                 pt.y >= 0 &&
-                pt.y < static_cast<::SHORT>(m_client_size_.m_height)
+                pt.y < static_cast<SHORT>(m_client_size_.m_height)
             )
             {
                 m_mouse_.OnMouseMove_(pt.x, pt.y);

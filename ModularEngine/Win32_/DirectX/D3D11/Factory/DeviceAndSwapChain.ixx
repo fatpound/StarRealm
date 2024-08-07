@@ -15,8 +15,8 @@ export namespace fatpound::win32::d3d11::factory
     class DeviceAndSwapChain final
     {
     public:
-        template <::UINT MSAA_Quality>
-        static auto CreateDESC(::HWND hWnd, ::UINT width, ::UINT height) -> ::DXGI_SWAP_CHAIN_DESC
+        template <UINT MSAA_Quality>
+        static auto CreateDESC(HWND hWnd, UINT width, UINT height) -> ::DXGI_SWAP_CHAIN_DESC
         {
             ::DXGI_SWAP_CHAIN_DESC desc = {};
             desc.BufferDesc.Width = width;
@@ -49,9 +49,9 @@ export namespace fatpound::win32::d3d11::factory
 
     public:
         static void Create(
-            ::Microsoft::WRL::ComPtr<::ID3D11Device>&        pDevice,
-            ::Microsoft::WRL::ComPtr<::IDXGISwapChain>&      pSwapChain,
-            ::Microsoft::WRL::ComPtr<::ID3D11DeviceContext>& pImmediateContext_,
+            ::Microsoft::WRL::ComPtr<ID3D11Device>&        pDevice,
+            ::Microsoft::WRL::ComPtr<IDXGISwapChain>&      pSwapChain,
+            ::Microsoft::WRL::ComPtr<ID3D11DeviceContext>& pImmediateContext_,
             const ::DXGI_SWAP_CHAIN_DESC&                    desc
         );
 

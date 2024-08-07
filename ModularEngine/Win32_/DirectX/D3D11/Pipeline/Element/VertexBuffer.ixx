@@ -28,7 +28,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
             bd.Usage = D3D11_USAGE_DEFAULT;
             bd.CPUAccessFlags = 0u;
             bd.MiscFlags = 0u;
-            bd.ByteWidth = static_cast<::UINT>(m_stride_ * vertices.size());
+            bd.ByteWidth = static_cast<UINT>(m_stride_ * vertices.size());
             bd.StructureByteStride = m_stride_;
 
             ::D3D11_SUBRESOURCE_DATA sd = {};
@@ -43,9 +43,9 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
 
     protected:
-        ::Microsoft::WRL::ComPtr<::ID3D11Buffer> m_pVertexBuffer_;
+        ::Microsoft::WRL::ComPtr<ID3D11Buffer> m_pVertexBuffer_;
 
-        ::UINT m_stride_;
+        UINT m_stride_;
 
 
     private:

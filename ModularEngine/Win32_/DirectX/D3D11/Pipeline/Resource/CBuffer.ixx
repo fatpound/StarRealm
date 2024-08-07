@@ -68,7 +68,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
 
 
     protected:
-        ::Microsoft::WRL::ComPtr<::ID3D11Buffer> m_pConstantBuffer_;
+        ::Microsoft::WRL::ComPtr<ID3D11Buffer> m_pConstantBuffer_;
 
 
     private:

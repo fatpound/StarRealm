@@ -37,7 +37,7 @@ export namespace fatpound::win32::d3d11
 
 
     public:
-        Graphics(::HWND hWnd, const SizeInfo& dimensions);
+        Graphics(HWND hWnd, const SizeInfo& dimensions);
 
         Graphics() = delete;
         Graphics(const Graphics& src) = delete;
@@ -65,7 +65,7 @@ export namespace fatpound::win32::d3d11
 
         void BeginFrame() noexcept;
         void EndFrame();
-        void DrawIndexed(::UINT count) noexcept(IN_RELEASE);
+        void DrawIndexed(UINT count) noexcept(IN_RELEASE);
 
         void SetProjectionXM(const ::DirectX::XMMATRIX& projection) noexcept;
         void SetCameraXM(const ::DirectX::XMMATRIX& camera) noexcept;
@@ -81,11 +81,11 @@ export namespace fatpound::win32::d3d11
 
 
     private:
-        ::Microsoft::WRL::ComPtr<::ID3D11Device>           m_pDevice_           = nullptr;
-        ::Microsoft::WRL::ComPtr<::IDXGISwapChain>         m_pSwapChain_        = nullptr;
-        ::Microsoft::WRL::ComPtr<::ID3D11DeviceContext>    m_pImmediateContext_ = nullptr;
-        ::Microsoft::WRL::ComPtr<::ID3D11RenderTargetView> m_pTarget_           = nullptr;
-        ::Microsoft::WRL::ComPtr<::ID3D11DepthStencilView> m_pDSV_              = nullptr;
+        ::Microsoft::WRL::ComPtr<ID3D11Device>           m_pDevice_           = nullptr;
+        ::Microsoft::WRL::ComPtr<IDXGISwapChain>         m_pSwapChain_        = nullptr;
+        ::Microsoft::WRL::ComPtr<ID3D11DeviceContext>    m_pImmediateContext_ = nullptr;
+        ::Microsoft::WRL::ComPtr<ID3D11RenderTargetView> m_pTarget_           = nullptr;
+        ::Microsoft::WRL::ComPtr<ID3D11DepthStencilView> m_pDSV_              = nullptr;
 
         ::DirectX::XMMATRIX m_projection_;
         ::DirectX::XMMATRIX m_camera_;

@@ -12,7 +12,7 @@ namespace fatpound::win32::d3d11::pipeline::element
 {
     IndexBuffer::IndexBuffer(Graphics& gfx, const std::vector<unsigned short int>& indices)
         :
-        m_count_(static_cast<::UINT>(indices.size()))
+        m_count_(static_cast<UINT>(indices.size()))
     {
         ::D3D11_BUFFER_DESC bd = {};
         bd.BindFlags = D3D11_BIND_INDEX_BUFFER;
@@ -28,7 +28,7 @@ namespace fatpound::win32::d3d11::pipeline::element
         Bindable::GetDevice_(gfx)->CreateBuffer(&bd, &sd, &m_pIndexBuffer_);
     }
 
-    auto IndexBuffer::GetCount() const noexcept -> ::UINT
+    auto IndexBuffer::GetCount() const noexcept -> UINT
     {
         return m_count_;
     }

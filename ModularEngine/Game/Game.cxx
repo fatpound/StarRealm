@@ -38,7 +38,7 @@ namespace starrealm
 
     int Game::Go()
     {
-        std::optional<::WPARAM> error_code;
+        std::optional<WPARAM> error_code;
 
         while (true)
         {

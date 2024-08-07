@@ -15,8 +15,8 @@ export namespace fatpound::win32::d3d11::factory
     class Texture2D final
     {
     public:
-        template <::UINT MSAA_Quality>
-        static auto CreateDESC(::UINT width, ::UINT height) -> ::D3D11_TEXTURE2D_DESC
+        template <UINT MSAA_Quality>
+        static auto CreateDESC(UINT width, UINT height) -> ::D3D11_TEXTURE2D_DESC
         {
             ::D3D11_TEXTURE2D_DESC desc = {};
             desc.Width = width;
@@ -35,8 +35,8 @@ export namespace fatpound::win32::d3d11::factory
 
     public:
         static void Create(
-            ::Microsoft::WRL::ComPtr<::ID3D11Device>&    pDevice,
-            ::Microsoft::WRL::ComPtr<::ID3D11Texture2D>& pTexture2D,
+            ::Microsoft::WRL::ComPtr<ID3D11Device>&    pDevice,
+            ::Microsoft::WRL::ComPtr<ID3D11Texture2D>& pTexture2D,
             const ::D3D11_TEXTURE2D_DESC&                desc
         );
 
