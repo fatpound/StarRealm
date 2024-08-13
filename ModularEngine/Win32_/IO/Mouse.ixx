@@ -18,9 +18,9 @@ export namespace fatpound::win32::io
         friend NAMESPACE_WIN32::Window;
 
     public:
-        Mouse() = default;
-        Mouse(const Mouse& src) = delete;
-        Mouse(Mouse&& src) = delete;
+        explicit Mouse() = default;
+        explicit Mouse(const Mouse& src) = delete;
+        explicit Mouse(Mouse&& src) = delete;
 
         Mouse& operator = (const Mouse& src) = delete;
         Mouse& operator = (Mouse&& src) = delete;
@@ -56,9 +56,9 @@ export namespace fatpound::win32::io
             };
 
         public:
-            Event(Type type, const Mouse& parent) noexcept;
+            explicit Event(Type type, const Mouse& parent) noexcept;
 
-            Event() = default;
+            explicit Event() = default;
             Event(const Event& src) = default;
             Event(Event&& src) = default;
 

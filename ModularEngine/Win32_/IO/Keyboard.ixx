@@ -18,9 +18,9 @@ export namespace fatpound::win32::io
         friend NAMESPACE_WIN32::Window;
 
     public:
-        Keyboard() = default;
-        Keyboard(const Keyboard& src) = delete;
-        Keyboard(Keyboard&& src) = delete;
+        explicit Keyboard() = default;
+        explicit Keyboard(const Keyboard& src) = delete;
+        explicit Keyboard(Keyboard&& src) = delete;
 
         Keyboard& operator = (const Keyboard& src) = delete;
         Keyboard& operator = (Keyboard&& src) = delete;
@@ -39,9 +39,9 @@ export namespace fatpound::win32::io
             };
 
         public:
-            Event(Type type, unsigned char code) noexcept;
+            explicit Event(Type type, unsigned char code) noexcept;
 
-            Event() = default;
+            explicit Event() = default;
             Event(const Event& src) = default;
             Event(Event&& src) = default;
 

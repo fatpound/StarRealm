@@ -16,7 +16,7 @@ namespace fatpound::win32::io
             return e;
         }
 
-        return {};
+        return Event{};
     }
 
     auto Keyboard::ReadCharFromBuffer() noexcept -> unsigned char
@@ -75,7 +75,7 @@ namespace fatpound::win32::io
     {
         m_key_states_[keycode] = true;
 
-        m_event_buffer_.push({ Event::Type::Press, keycode });
+        m_event_buffer_.push(Event{ Event::Type::Press, keycode });
 
         TrimBuffer_(m_event_buffer_);
     }
@@ -83,7 +83,7 @@ namespace fatpound::win32::io
     {
         m_key_states_[keycode] = false;
 
-        m_event_buffer_.push({ Event::Type::Release, keycode });
+        m_event_buffer_.push(Event{ Event::Type::Release, keycode });
 
         TrimBuffer_(m_event_buffer_);
     }

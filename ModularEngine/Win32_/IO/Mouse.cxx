@@ -36,7 +36,7 @@ namespace fatpound::win32::io
             return e;
         }
 
-        return {};
+        return Event{};
     }
 
     int Mouse::GetPosX() const noexcept
@@ -80,7 +80,7 @@ namespace fatpound::win32::io
         m_x_ = x;
         m_y_ = y;
 
-        m_event_buffer_.push({ Event::Type::Move, *this });
+        m_event_buffer_.push(Event{ Event::Type::Move, *this });
 
         TrimBuffer_();
     }
@@ -88,7 +88,7 @@ namespace fatpound::win32::io
     {
         m_is_in_window_ = true;
 
-        m_event_buffer_.push({ Event::Type::Enter, *this });
+        m_event_buffer_.push(Event{ Event::Type::Enter, *this });
 
         TrimBuffer_();
     }
@@ -96,7 +96,7 @@ namespace fatpound::win32::io
     {
         m_is_in_window_ = false;
 
-        m_event_buffer_.push({ Event::Type::Leave, *this });
+        m_event_buffer_.push(Event{ Event::Type::Leave, *this });
 
         TrimBuffer_();
     }
@@ -112,7 +112,7 @@ namespace fatpound::win32::io
     {
         m_left_is_pressed_ = true;
 
-        m_event_buffer_.push({ Event::Type::LPress, *this });
+        m_event_buffer_.push(Event{ Event::Type::LPress, *this });
 
         TrimBuffer_();
     }
@@ -120,7 +120,7 @@ namespace fatpound::win32::io
     {
         m_left_is_pressed_ = false;
 
-        m_event_buffer_.push({ Event::Type::LRelease, *this });
+        m_event_buffer_.push(Event{ Event::Type::LRelease, *this });
 
         TrimBuffer_();
     }
@@ -128,7 +128,7 @@ namespace fatpound::win32::io
     {
         m_right_is_pressed_ = true;
 
-        m_event_buffer_.push({ Event::Type::RPress, *this });
+        m_event_buffer_.push(Event{ Event::Type::RPress, *this });
 
         TrimBuffer_();
     }
@@ -136,7 +136,7 @@ namespace fatpound::win32::io
     {
         m_right_is_pressed_ = false;
 
-        m_event_buffer_.push({ Event::Type::RRelease, *this });
+        m_event_buffer_.push(Event{ Event::Type::RRelease, *this });
 
         TrimBuffer_();
     }
@@ -144,7 +144,7 @@ namespace fatpound::win32::io
     {
         m_wheel_is_pressed_ = true;
 
-        m_event_buffer_.push({ Event::Type::WheelPress, *this });
+        m_event_buffer_.push(Event{ Event::Type::WheelPress, *this });
 
         TrimBuffer_();
     }
@@ -152,19 +152,19 @@ namespace fatpound::win32::io
     {
         m_wheel_is_pressed_ = false;
 
-        m_event_buffer_.push({ Event::Type::WheelRelease, *this });
+        m_event_buffer_.push(Event{ Event::Type::WheelRelease, *this });
 
         TrimBuffer_();
     }
     void Mouse::OnWheelUp_() noexcept
     {
-        m_event_buffer_.push({ Event::Type::WheelUp, *this });
+        m_event_buffer_.push(Event{ Event::Type::WheelUp, *this });
 
         TrimBuffer_();
     }
     void Mouse::OnWheelDown_() noexcept
     {
-        m_event_buffer_.push({ Event::Type::WheelDown, *this });
+        m_event_buffer_.push(Event{ Event::Type::WheelDown, *this });
 
         TrimBuffer_();
     }
