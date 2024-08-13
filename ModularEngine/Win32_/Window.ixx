@@ -86,9 +86,9 @@ export namespace fatpound::win32
         private:
             WndClass_() noexcept;
             WndClass_(const WndClass_& src) = delete;
-            WndClass_& operator = (const WndClass_& src) = delete;
-
             WndClass_(WndClass_&& src) = delete;
+
+            WndClass_& operator = (const WndClass_& src) = delete;
             WndClass_& operator = (WndClass_&& src) = delete;
             ~WndClass_();
 
