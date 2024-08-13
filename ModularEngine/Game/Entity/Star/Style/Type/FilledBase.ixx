@@ -28,9 +28,9 @@ export namespace starrealm::entity::star
     class FilledBase final : public StyleType_<FilledBase>
     {
     public:
-        FilledBase() = delete;
-        FilledBase(const FilledBase& src) = delete;
-        FilledBase(FilledBase&& src) = delete;
+        explicit FilledBase() = delete;
+        explicit FilledBase(const FilledBase& src) = delete;
+        explicit FilledBase(FilledBase&& src) = delete;
 
         FilledBase& operator = (const FilledBase& src) = delete;
         FilledBase& operator = (FilledBase&& src) = delete;

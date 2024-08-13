@@ -15,11 +15,11 @@ export namespace starrealm::entity::star
     class FilledMulti final : public StarBase<FilledBase, MultiColorBase>
     {
     public:
-        FilledMulti(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
+        explicit FilledMulti(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
 
-        FilledMulti() = delete;
-        FilledMulti(const FilledMulti& src) = delete;
-        FilledMulti(FilledMulti&& src) = delete;
+        explicit FilledMulti() = delete;
+        explicit FilledMulti(const FilledMulti& src) = delete;
+        explicit FilledMulti(FilledMulti&& src) = delete;
 
         FilledMulti& operator = (const FilledMulti& src) = delete;
         FilledMulti& operator = (FilledMulti&& src) = delete;

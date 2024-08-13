@@ -15,11 +15,11 @@ export namespace starrealm::entity::star
     class HollowBlend final : public StarBase<HollowBase, BlendBase>
     {
     public:
-        HollowBlend(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
+        explicit HollowBlend(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
 
-        HollowBlend() = delete;
-        HollowBlend(const HollowBlend& src) = delete;
-        HollowBlend(HollowBlend&& src) = delete;
+        explicit HollowBlend() = delete;
+        explicit HollowBlend(const HollowBlend& src) = delete;
+        explicit HollowBlend(HollowBlend&& src) = delete;
 
         HollowBlend& operator = (const HollowBlend& src) = delete;
         HollowBlend& operator = (HollowBlend&& src) = delete;

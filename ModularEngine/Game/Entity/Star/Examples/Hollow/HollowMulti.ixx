@@ -15,11 +15,11 @@ export namespace starrealm::entity::star
     class HollowMulti final : public StarBase<HollowBase, MultiColorBase>
     {
     public:
-        HollowMulti(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
+        explicit HollowMulti(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
 
-        HollowMulti() = delete;
-        HollowMulti(const HollowMulti& src) = delete;
-        HollowMulti(HollowMulti&& src) = delete;
+        explicit HollowMulti() = delete;
+        explicit HollowMulti(const HollowMulti& src) = delete;
+        explicit HollowMulti(HollowMulti&& src) = delete;
 
         HollowMulti& operator = (const HollowMulti& src) = delete;
         HollowMulti& operator = (HollowMulti&& src) = delete;

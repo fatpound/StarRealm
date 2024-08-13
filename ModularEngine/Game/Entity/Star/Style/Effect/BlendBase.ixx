@@ -20,9 +20,9 @@ export namespace starrealm::entity::star
     class BlendBase final : public StyleEffect_<BlendBase>
     {
     public:
-        BlendBase() = delete;
-        BlendBase(const BlendBase& src) = delete;
-        BlendBase(BlendBase&& src) = delete;
+        explicit BlendBase() = delete;
+        explicit BlendBase(const BlendBase& src) = delete;
+        explicit BlendBase(BlendBase&& src) = delete;
 
         BlendBase& operator = (const BlendBase& src) = delete;
         BlendBase& operator = (BlendBase&& src) = delete;
@@ -32,7 +32,7 @@ export namespace starrealm::entity::star
     public:
         struct Vertex final
         {
-            DirectX::XMFLOAT3 pos;
+            ::DirectX::XMFLOAT3 pos;
 
             NAMESPACE_UTIL::Color color;
         };
@@ -57,7 +57,7 @@ export namespace starrealm::entity::star
             {
                 vertices.emplace_back(
                     vertex,
-                    fatpound::util::Color(
+                    NAMESPACE_UTIL::Color(
                         static_cast<unsigned char>(rgb_dist(mrng)),
                         static_cast<unsigned char>(rgb_dist(mrng)),
                         static_cast<unsigned char>(rgb_dist(mrng)),

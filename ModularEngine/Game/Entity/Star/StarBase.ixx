@@ -23,16 +23,16 @@ export namespace starrealm::entity::star
         friend E;
 
     public:
-        StarBase(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
+        explicit StarBase(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
             :
             Star(desc)
         {
             AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::TransformCBuffer<StarBase>>(gfx, *this));
         }
 
-        StarBase() = delete;
-        StarBase(const StarBase& src) = delete;
-        StarBase(StarBase&& src) = delete;
+        explicit StarBase() = delete;
+        explicit StarBase(const StarBase& src) = delete;
+        explicit StarBase(StarBase&& src) = delete;
 
         StarBase& operator = (const StarBase& src) = delete;
         StarBase& operator = (StarBase&& src) = delete;

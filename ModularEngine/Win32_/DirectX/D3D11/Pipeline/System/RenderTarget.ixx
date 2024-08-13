@@ -17,9 +17,9 @@ export namespace fatpound::win32::d3d11::pipeline::system
 	class RenderTarget final
 	{
 	public:
-		RenderTarget() = delete;
-		RenderTarget(const RenderTarget& src) = delete;
-		RenderTarget(RenderTarget&& src) = delete;
+		explicit RenderTarget() = delete;
+		explicit RenderTarget(const RenderTarget& src) = delete;
+		explicit RenderTarget(RenderTarget&& src) = delete;
 
 		RenderTarget& operator = (const RenderTarget& src) = delete;
 		RenderTarget& operator = (RenderTarget&& src) = delete;

@@ -21,9 +21,9 @@ export namespace fatpound::win32::d3d11::pipeline::resource
         using CBuffer<C>::CBuffer;
 
     public:
-        PixelCBuffer() = delete;
-        PixelCBuffer(const PixelCBuffer& src) = delete;
-        PixelCBuffer(PixelCBuffer&& src) = delete;
+        explicit PixelCBuffer() = delete;
+        explicit PixelCBuffer(const PixelCBuffer& src) = delete;
+        explicit PixelCBuffer(PixelCBuffer&& src) = delete;
 
         PixelCBuffer& operator = (const PixelCBuffer& src) = delete;
         PixelCBuffer& operator = (PixelCBuffer&& src) = delete;

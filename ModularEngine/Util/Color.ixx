@@ -11,33 +11,33 @@ export namespace fatpound
         class Color final
         {
         public:
-            constexpr Color(unsigned char r, unsigned char g, unsigned char b, unsigned char alpha = 0xFFui8)
+            explicit constexpr Color(unsigned char r, unsigned char g, unsigned char b, unsigned char alpha = 0xFFui8)
             {
                 dword = (static_cast<std::uint32_t>(alpha) << 24)
                     | (static_cast<std::uint32_t>(r) << 16)
                     | (static_cast<std::uint32_t>(g) << 8)
                     | (static_cast<std::uint32_t>(b));
             }
-            constexpr Color(int r, int g, int b)
+            explicit constexpr Color(int r, int g, int b)
                 :
                 Color(static_cast<unsigned char>(r), static_cast<unsigned char>(g), static_cast<unsigned char>(b))
             {
 
             }
-            constexpr Color(std::uint32_t dw)
+            explicit constexpr Color(std::uint32_t dw)
                 :
                 dword(dw | 0xFF'00'00'00u)
             {
 
             }
-            constexpr Color(Color col, unsigned char alpha)
+            explicit constexpr Color(Color col, unsigned char alpha)
                 :
                 Color((static_cast<std::uint32_t>(alpha) << 24) | col.dword)
             {
 
             }
 
-            constexpr Color() = default;
+            explicit constexpr Color() = default;
             constexpr Color(const Color& src) noexcept
                 :
                 dword(src.dword)
@@ -114,11 +114,13 @@ export namespace fatpound
 
     namespace colors
     {
-        constexpr auto MakeRGB(unsigned char r, unsigned char g, unsigned char b) -> ::fatpound::util::Color
+        constexpr auto MakeRGB(unsigned char r, unsigned char g, unsigned char b) -> util::Color
         {
-            return ((static_cast<std::uint32_t>(r) << 16) |
+            return util::Color{
+                (static_cast<std::uint32_t>(r) << 16) |
                 (static_cast<std::uint32_t>(g) << 8) |
-                static_cast<std::uint32_t>(b));
+                static_cast<std::uint32_t>(b)
+            };
         }
 
         constexpr auto Black     = MakeRGB(  0u,   0u,   0u);

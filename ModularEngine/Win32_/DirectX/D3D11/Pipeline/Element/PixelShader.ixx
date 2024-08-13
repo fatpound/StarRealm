@@ -18,11 +18,11 @@ export namespace fatpound::win32::d3d11::pipeline::element
     class PixelShader final : public Bindable
     {
     public:
-        PixelShader(Graphics& gfx, const std::wstring& path);
+        explicit PixelShader(Graphics& gfx, const std::wstring& path);
 
-        PixelShader() = delete;
-        PixelShader(const PixelShader& src) = delete;
-        PixelShader(PixelShader&& src) = delete;
+        explicit PixelShader() = delete;
+        explicit PixelShader(const PixelShader& src) = delete;
+        explicit PixelShader(PixelShader&& src) = delete;
 
         PixelShader& operator = (const PixelShader& src) = delete;
         PixelShader& operator = (PixelShader&& src) = delete;

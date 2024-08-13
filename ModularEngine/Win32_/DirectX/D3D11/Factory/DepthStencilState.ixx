@@ -15,9 +15,9 @@ export namespace fatpound::win32::d3d11::factory
     class DepthStencilState final
     {
     public:
-        DepthStencilState() = delete;
-        DepthStencilState(const DepthStencilState& src) = delete;
-        DepthStencilState(DepthStencilState&& src) = delete;
+        explicit DepthStencilState() = delete;
+        explicit DepthStencilState(const DepthStencilState& src) = delete;
+        explicit DepthStencilState(DepthStencilState&& src) = delete;
 
         DepthStencilState& operator = (const DepthStencilState& src) = delete;
         DepthStencilState& operator = (DepthStencilState&& src) = delete;

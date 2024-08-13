@@ -17,9 +17,9 @@ export namespace fatpound::win32::d3d11::pipeline::system
 	class DepthStencil final
 	{
 	public:
-		DepthStencil() = delete;
-		DepthStencil(const DepthStencil& src) = delete;
-		DepthStencil(DepthStencil&& src) = delete;
+		explicit DepthStencil() = delete;
+		explicit DepthStencil(const DepthStencil& src) = delete;
+		explicit DepthStencil(DepthStencil&& src) = delete;
 
 		DepthStencil& operator = (const DepthStencil& src) = delete;
 		DepthStencil& operator = (DepthStencil&& src) = delete;

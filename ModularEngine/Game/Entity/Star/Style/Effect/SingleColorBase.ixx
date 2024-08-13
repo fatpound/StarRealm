@@ -19,9 +19,9 @@ export namespace starrealm::entity::star
     class SingleColorBase final : public ColorBase<SingleColorBase>
     {
     public:
-        SingleColorBase() = delete;
-        SingleColorBase(const SingleColorBase& src) = delete;
-        SingleColorBase(SingleColorBase&& src) = delete;
+        explicit SingleColorBase() = delete;
+        explicit SingleColorBase(const SingleColorBase& src) = delete;
+        explicit SingleColorBase(SingleColorBase&& src) = delete;
 
         SingleColorBase& operator = (const SingleColorBase& src) = delete;
         SingleColorBase& operator = (SingleColorBase&& src) = delete;

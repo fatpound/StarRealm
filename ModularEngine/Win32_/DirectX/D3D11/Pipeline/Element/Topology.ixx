@@ -14,11 +14,11 @@ export namespace fatpound::win32::d3d11::pipeline::element
     class Topology final : public Bindable
     {
     public:
-        Topology(D3D11_PRIMITIVE_TOPOLOGY type);
+        explicit Topology(D3D11_PRIMITIVE_TOPOLOGY type);
 
-        Topology() = delete;
-        Topology(const Topology& src) = delete;
-        Topology(Topology&& src) = delete;
+        explicit Topology() = delete;
+        explicit Topology(const Topology& src) = delete;
+        explicit Topology(Topology&& src) = delete;
 
         Topology& operator = (const Topology& src) = delete;
         Topology& operator = (Topology&& src) = delete;

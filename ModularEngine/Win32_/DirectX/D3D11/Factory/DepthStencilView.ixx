@@ -15,9 +15,9 @@ export namespace fatpound::win32::d3d11::factory
     class DepthStencilView final
     {
     public:
-        DepthStencilView() = delete;
-        DepthStencilView(const DepthStencilView& src) = delete;
-        DepthStencilView(DepthStencilView&& src) = delete;
+        explicit DepthStencilView() = delete;
+        explicit DepthStencilView(const DepthStencilView& src) = delete;
+        explicit DepthStencilView(DepthStencilView&& src) = delete;
 
         DepthStencilView& operator = (const DepthStencilView& src) = delete;
         DepthStencilView& operator = (DepthStencilView&& src) = delete;

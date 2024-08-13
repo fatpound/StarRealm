@@ -16,9 +16,9 @@ export namespace starrealm::entity::star
     class ColorBase : public StyleEffect_<C>
     {
     public:
-        ColorBase() = delete;
-        ColorBase(const ColorBase& src) = delete;
-        ColorBase(ColorBase&& src) = delete;
+        explicit ColorBase() = delete;
+        explicit ColorBase(const ColorBase& src) = delete;
+        explicit ColorBase(ColorBase&& src) = delete;
 
         ColorBase& operator = (const ColorBase& src) = delete;
         ColorBase& operator = (ColorBase&& src) = delete;

@@ -15,9 +15,9 @@ export namespace fatpound::win32::d3d11::pipeline::system
 	class Rasterizer final
 	{
 	public:
-		Rasterizer() = delete;
-		Rasterizer(const Rasterizer& src) = delete;
-		Rasterizer(Rasterizer&& src) = delete;
+		explicit Rasterizer() = delete;
+		explicit Rasterizer(const Rasterizer& src) = delete;
+		explicit Rasterizer(Rasterizer&& src) = delete;
 
 		Rasterizer& operator = (const Rasterizer& src) = delete;
 		Rasterizer& operator = (Rasterizer&& src) = delete;

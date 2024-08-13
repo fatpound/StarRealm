@@ -17,9 +17,9 @@ export namespace starrealm
         using Settings = StarFactory::Settings;
 
     public:
-        Game();
-        Game(const Game& src) = delete;
-        Game(Game&& src) = delete;
+        explicit Game();
+        explicit Game(const Game& src) = delete;
+        explicit Game(Game&& src) = delete;
 
         Game& operator = (const Game& src) = delete;
         Game& operator = (Game&& src) = delete;

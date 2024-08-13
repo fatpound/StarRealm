@@ -15,9 +15,9 @@ export namespace fatpound::win32::d3d11::factory
     class DeviceAndSwapChain final
     {
     public:
-        DeviceAndSwapChain() = delete;
-        DeviceAndSwapChain(const DeviceAndSwapChain& src) = delete;
-        DeviceAndSwapChain(DeviceAndSwapChain&& src) = delete;
+        explicit DeviceAndSwapChain() = delete;
+        explicit DeviceAndSwapChain(const DeviceAndSwapChain& src) = delete;
+        explicit DeviceAndSwapChain(DeviceAndSwapChain&& src) = delete;
 
         DeviceAndSwapChain& operator = (const DeviceAndSwapChain& src) = delete;
         DeviceAndSwapChain& operator = (DeviceAndSwapChain&& src) = delete;

@@ -18,11 +18,11 @@ export namespace fatpound::win32::d3d11::pipeline::element
     class IndexBuffer final : public Bindable
     {
     public:
-        IndexBuffer(Graphics& gfx, const std::vector<unsigned short int>& indices);
+        explicit IndexBuffer(Graphics& gfx, const std::vector<unsigned short int>& indices);
 
-        IndexBuffer() = delete;
-        IndexBuffer(const IndexBuffer& src) = delete;
-        IndexBuffer(IndexBuffer&& src) = delete;
+        explicit IndexBuffer() = delete;
+        explicit IndexBuffer(const IndexBuffer& src) = delete;
+        explicit IndexBuffer(IndexBuffer&& src) = delete;
 
         IndexBuffer& operator = (const IndexBuffer& src) = delete;
         IndexBuffer& operator = (IndexBuffer&& src) = delete;

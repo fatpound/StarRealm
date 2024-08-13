@@ -15,9 +15,9 @@ export namespace fatpound::win32::d3d11::factory
     class Texture2D final
     {
     public:
-        Texture2D() = delete;
-        Texture2D(const Texture2D& src) = delete;
-        Texture2D(Texture2D&& src) = delete;
+        explicit Texture2D() = delete;
+        explicit Texture2D(const Texture2D& src) = delete;
+        explicit Texture2D(Texture2D&& src) = delete;
 
         Texture2D& operator = (const Texture2D& src) = delete;
         Texture2D& operator = (Texture2D&& src) = delete;

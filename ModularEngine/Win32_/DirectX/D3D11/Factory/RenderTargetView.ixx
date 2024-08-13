@@ -15,9 +15,9 @@ export namespace fatpound::win32::d3d11::factory
     class RenderTargetView final
     {
     public:
-        RenderTargetView() = delete;
-        RenderTargetView(const RenderTargetView& src) = delete;
-        RenderTargetView(RenderTargetView&& src) = delete;
+        explicit RenderTargetView() = delete;
+        explicit RenderTargetView(const RenderTargetView& src) = delete;
+        explicit RenderTargetView(RenderTargetView&& src) = delete;
 
         RenderTargetView& operator = (const RenderTargetView& src) = delete;
         RenderTargetView& operator = (RenderTargetView&& src) = delete;

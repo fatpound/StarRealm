@@ -18,9 +18,9 @@ export namespace fatpound::win32::d3d11::visual
     class DrawableBase : public Drawable
     {
     public:
-        DrawableBase() = default;
-        DrawableBase(const DrawableBase& src) = delete;
-        DrawableBase(DrawableBase&& src) = delete;
+        explicit DrawableBase() = default;
+        explicit DrawableBase(const DrawableBase& src) = delete;
+        explicit DrawableBase(DrawableBase&& src) = delete;
 
         DrawableBase& operator = (const DrawableBase& src) = delete;
         DrawableBase& operator = (DrawableBase&& src) = delete;

@@ -18,11 +18,11 @@ export namespace fatpound::win32::d3d11::pipeline::element
     class VertexShader final : public Bindable
     {
     public:
-        VertexShader(Graphics& gfx, const std::wstring& path);
+        explicit VertexShader(Graphics& gfx, const std::wstring& path);
 
-        VertexShader() = delete;
-        VertexShader(const VertexShader& src) = delete;
-        VertexShader(VertexShader&& src) = delete;
+        explicit VertexShader() = delete;
+        explicit VertexShader(const VertexShader& src) = delete;
+        explicit VertexShader(VertexShader&& src) = delete;
 
         VertexShader& operator = (const VertexShader& src) = delete;
         VertexShader& operator = (VertexShader&& src) = delete;

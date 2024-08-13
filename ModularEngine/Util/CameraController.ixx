@@ -15,11 +15,11 @@ export namespace fatpound::util
 	class CameraController final
 	{
 	public:
-		CameraController(Camera& camera, NAMESPACE_IO::Mouse& mouse, const NAMESPACE_IO::Keyboard& keyboard);
+		explicit CameraController(Camera& camera, NAMESPACE_IO::Mouse& mouse, const NAMESPACE_IO::Keyboard& keyboard);
 
-		CameraController() = delete;
-		CameraController(const CameraController& src) = delete;
-		CameraController(CameraController&& src) = delete;
+		explicit CameraController() = delete;
+		explicit CameraController(const CameraController& src) = delete;
+		explicit CameraController(CameraController&& src) = delete;
 
 		CameraController& operator = (const CameraController& src) = delete;
 		CameraController& operator = (CameraController&& src) = delete;

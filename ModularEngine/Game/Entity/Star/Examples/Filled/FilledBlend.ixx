@@ -15,11 +15,11 @@ export namespace starrealm::entity::star
     class FilledBlend final : public StarBase<FilledBase, BlendBase>
     {
     public:
-        FilledBlend(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
+        explicit FilledBlend(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
 
-        FilledBlend() = delete;
-        FilledBlend(const FilledBlend& src) = delete;
-        FilledBlend(FilledBlend&& src) = delete;
+        explicit FilledBlend() = delete;
+        explicit FilledBlend(const FilledBlend& src) = delete;
+        explicit FilledBlend(FilledBlend&& src) = delete;
 
         FilledBlend& operator = (const FilledBlend& src) = delete;
         FilledBlend& operator = (FilledBlend&& src) = delete;

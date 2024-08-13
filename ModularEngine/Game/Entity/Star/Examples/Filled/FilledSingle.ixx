@@ -15,11 +15,11 @@ export namespace starrealm::entity::star
     class FilledSingle final : public StarBase<FilledBase, SingleColorBase>
     {
     public:
-        FilledSingle(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
+        explicit FilledSingle(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
 
-        FilledSingle() = delete;
-        FilledSingle(const FilledSingle& src) = delete;
-        FilledSingle(FilledSingle&& src) = delete;
+        explicit FilledSingle() = delete;
+        explicit FilledSingle(const FilledSingle& src) = delete;
+        explicit FilledSingle(FilledSingle&& src) = delete;
 
         FilledSingle& operator = (const FilledSingle& src) = delete;
         FilledSingle& operator = (FilledSingle&& src) = delete;

@@ -19,9 +19,9 @@ export namespace starrealm::entity::star
     class HollowBase final : public StyleType_<HollowBase>
     {
     public:
-        HollowBase() = delete;
-        HollowBase(const HollowBase& src) = delete;
-        HollowBase(HollowBase&& src) = delete;
+        explicit HollowBase() = delete;
+        explicit HollowBase(const HollowBase& src) = delete;
+        explicit HollowBase(HollowBase&& src) = delete;
 
         HollowBase& operator = (const HollowBase& src) = delete;
         HollowBase& operator = (HollowBase&& src) = delete;

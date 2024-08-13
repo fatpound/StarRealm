@@ -21,7 +21,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
     class TransformCBuffer final : public Bindable
     {
     public:
-        TransformCBuffer(Graphics& gfx, const C& parent)
+        explicit TransformCBuffer(Graphics& gfx, const C& parent)
             :
             m_vcbuf_(gfx),
             m_parent_(parent)
@@ -29,9 +29,9 @@ export namespace fatpound::win32::d3d11::pipeline::resource
 
         }
 
-        TransformCBuffer() = delete;
-        TransformCBuffer(const TransformCBuffer& src) = delete;
-        TransformCBuffer(TransformCBuffer&& src) = delete;
+        explicit TransformCBuffer() = delete;
+        explicit TransformCBuffer(const TransformCBuffer& src) = delete;
+        explicit TransformCBuffer(TransformCBuffer&& src) = delete;
 
         TransformCBuffer& operator = (const TransformCBuffer& src) = delete;
         TransformCBuffer& operator = (TransformCBuffer&& src) = delete;

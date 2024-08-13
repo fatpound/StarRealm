@@ -15,9 +15,9 @@ export namespace fatpound::win32::d3d11::factory
     class RasterizerState final
     {
     public:
-        RasterizerState() = delete;
-        RasterizerState(const RasterizerState& src) = delete;
-        RasterizerState(RasterizerState&& src) = delete;
+        explicit RasterizerState() = delete;
+        explicit RasterizerState(const RasterizerState& src) = delete;
+        explicit RasterizerState(RasterizerState&& src) = delete;
 
         RasterizerState& operator = (const RasterizerState& src) = delete;
         RasterizerState& operator = (RasterizerState&& src) = delete;

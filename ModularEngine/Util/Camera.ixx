@@ -12,11 +12,11 @@ export namespace fatpound::util
     class Camera final
     {
     public:
-        Camera(const float& min_depth, const float& max_depth);
+        explicit Camera(const float& min_depth, const float& max_depth);
 
-        Camera() = delete;
-        Camera(const Camera& src) = delete;
-        Camera(Camera&& src) = delete;
+        explicit Camera() = delete;
+        explicit Camera(const Camera& src) = delete;
+        explicit Camera(Camera&& src) = delete;
 
         Camera& operator = (const Camera& src) = delete;
         Camera& operator = (Camera&& src) = delete;

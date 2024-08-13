@@ -19,9 +19,9 @@ export namespace starrealm::entity::star
     class MultiColorBase final : public ColorBase<MultiColorBase>
     {
     public:
-        MultiColorBase() = delete;
-        MultiColorBase(const MultiColorBase& src) = delete;
-        MultiColorBase(MultiColorBase&& src) = delete;
+        explicit MultiColorBase() = delete;
+        explicit MultiColorBase(const MultiColorBase& src) = delete;
+        explicit MultiColorBase(MultiColorBase&& src) = delete;
 
         MultiColorBase& operator = (const MultiColorBase& src) = delete;
         MultiColorBase& operator = (MultiColorBase&& src) = delete;

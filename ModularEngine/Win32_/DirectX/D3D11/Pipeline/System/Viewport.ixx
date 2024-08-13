@@ -15,9 +15,9 @@ export namespace fatpound::win32::d3d11::pipeline::system
 	class Viewport final
 	{
 	public:
-		Viewport() = delete;
-		Viewport(const Viewport& src) = delete;
-		Viewport(Viewport&& src) = delete;
+		explicit Viewport() = delete;
+		explicit Viewport(const Viewport& src) = delete;
+		explicit Viewport(Viewport&& src) = delete;
 
 		Viewport& operator = (const Viewport& src) = delete;
 		Viewport& operator = (Viewport&& src) = delete;

@@ -15,7 +15,7 @@ export namespace starrealm
     class StarFactory final
     {
     public:
-        struct Settings final
+        struct __declspec(empty_bases) Settings final
         {
             static constexpr auto s_starCount = 200u;
             static constexpr auto s_minFlareCount = 2u;
@@ -49,11 +49,11 @@ export namespace starrealm
 
 
     public:
-        StarFactory(NAMESPACE_D3D11::Graphics& gfx);
+        explicit StarFactory(NAMESPACE_D3D11::Graphics& gfx);
 
-        StarFactory() = delete;
-        StarFactory(const StarFactory& src) = delete;
-        StarFactory(StarFactory&& src) = delete;
+        explicit StarFactory() = delete;
+        explicit StarFactory(const StarFactory& src) = delete;
+        explicit StarFactory(StarFactory&& src) = delete;
 
         StarFactory& operator = (const StarFactory& src) = delete;
         StarFactory& operator = (StarFactory&& src) = delete;

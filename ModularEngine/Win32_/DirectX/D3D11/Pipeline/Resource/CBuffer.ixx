@@ -19,7 +19,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
     class CBuffer : public Bindable
     {
     public:
-        CBuffer(Graphics& gfx, const C& consts)
+        explicit CBuffer(Graphics& gfx, const C& consts)
         {
             D3D11_BUFFER_DESC cbd = {};
             cbd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
@@ -34,7 +34,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
 
             Bindable::GetDevice_(gfx)->CreateBuffer(&cbd, &csd, &m_pConstantBuffer_);
         }
-        CBuffer(Graphics& gfx)
+        explicit CBuffer(Graphics& gfx)
         {
             D3D11_BUFFER_DESC cbd = {};
             cbd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
@@ -47,9 +47,9 @@ export namespace fatpound::win32::d3d11::pipeline::resource
             Bindable::GetDevice_(gfx)->CreateBuffer(&cbd, nullptr, &m_pConstantBuffer_);
         }
 
-        CBuffer() = delete;
-        CBuffer(const CBuffer& src) = delete;
-        CBuffer(CBuffer&& src) = delete;
+        explicit CBuffer() = delete;
+        explicit CBuffer(const CBuffer& src) = delete;
+        explicit CBuffer(CBuffer&& src) = delete;
 
         CBuffer& operator = (const CBuffer& src) = delete;
         CBuffer& operator = (CBuffer&& src) = delete;

@@ -37,11 +37,11 @@ export namespace fatpound::win32::d3d11
 
 
     public:
-        Graphics(HWND hWnd, const SizeInfo& dimensions);
+        explicit Graphics(HWND hWnd, const SizeInfo& dimensions);
 
-        Graphics() = delete;
-        Graphics(const Graphics& src) = delete;
-        Graphics(Graphics&& src) = delete;
+        explicit Graphics() = delete;
+        explicit Graphics(const Graphics& src) = delete;
+        explicit Graphics(Graphics&& src) = delete;
 
         Graphics& operator = (const Graphics& src) = delete;
         Graphics& operator = (Graphics&& src) = delete;
