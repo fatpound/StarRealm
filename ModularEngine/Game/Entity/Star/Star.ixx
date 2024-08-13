@@ -14,14 +14,14 @@ export namespace starrealm::entity
 {
     class Star : public NAMESPACE_VISUAL::Drawable
     {
-#pragma warning (push)
-#pragma warning (disable : 4623 4626 5027)
     public:
         struct RadiusPack final
         {
             float outer_radius;
             float inner_radius;
         };
+#pragma warning (push)
+#pragma warning (disable : 4623 4626 5027)
         struct Descriptor final
         {
             const ::DirectX::XMFLOAT3 position;
