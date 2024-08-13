@@ -20,6 +20,14 @@ export namespace fatpound::win32::d3d11::pipeline::element
     public:
         PixelShader(Graphics& gfx, const std::wstring& path);
 
+        PixelShader() = delete;
+        PixelShader(const PixelShader& src) = delete;
+        PixelShader(PixelShader&& src) = delete;
+
+        PixelShader& operator = (const PixelShader& src) = delete;
+        PixelShader& operator = (PixelShader&& src) = delete;
+        virtual ~PixelShader() noexcept = default;
+
 
     public:
         virtual void Bind(Graphics& gfx) noexcept override final;

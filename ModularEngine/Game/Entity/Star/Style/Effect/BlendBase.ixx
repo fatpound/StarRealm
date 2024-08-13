@@ -17,8 +17,18 @@ import std;
 
 export namespace starrealm::entity::star
 {
-    class BlendBase final : public StyleEffect<BlendBase>
+    class BlendBase final : public StyleEffect_<BlendBase>
     {
+    public:
+        BlendBase() = delete;
+        BlendBase(const BlendBase& src) = delete;
+        BlendBase(BlendBase&& src) = delete;
+
+        BlendBase& operator = (const BlendBase& src) = delete;
+        BlendBase& operator = (BlendBase&& src) = delete;
+        ~BlendBase() noexcept = delete;
+
+
     public:
         struct Vertex final
         {

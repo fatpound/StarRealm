@@ -15,6 +15,16 @@ export namespace fatpound::win32::d3d11::factory
     class Texture2D final
     {
     public:
+        Texture2D() = delete;
+        Texture2D(const Texture2D& src) = delete;
+        Texture2D(Texture2D&& src) = delete;
+
+        Texture2D& operator = (const Texture2D& src) = delete;
+        Texture2D& operator = (Texture2D&& src) = delete;
+        ~Texture2D() noexcept = delete;
+
+
+    public:
         template <UINT MSAA_Quality>
         static auto CreateDESC(UINT width, UINT height) -> D3D11_TEXTURE2D_DESC
         {

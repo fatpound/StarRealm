@@ -15,6 +15,16 @@ export namespace fatpound::win32::d3d11::pipeline::system
 	class Rasterizer final
 	{
 	public:
+		Rasterizer() = delete;
+		Rasterizer(const Rasterizer& src) = delete;
+		Rasterizer(Rasterizer&& src) = delete;
+
+		Rasterizer& operator = (const Rasterizer& src) = delete;
+		Rasterizer& operator = (Rasterizer&& src) = delete;
+		~Rasterizer() noexcept = delete;
+
+
+	public:
 		static void SetDefault(
 			::Microsoft::WRL::ComPtr<ID3D11Device>&          pDevice,
 			::Microsoft::WRL::ComPtr<ID3D11DeviceContext>&   pContext

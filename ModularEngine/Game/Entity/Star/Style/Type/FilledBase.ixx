@@ -25,8 +25,18 @@ concept MyVertex = requires(V vertex)
 
 export namespace starrealm::entity::star
 {
-    class FilledBase final : public StyleType<FilledBase>
+    class FilledBase final : public StyleType_<FilledBase>
     {
+    public:
+        FilledBase() = delete;
+        FilledBase(const FilledBase& src) = delete;
+        FilledBase(FilledBase&& src) = delete;
+
+        FilledBase& operator = (const FilledBase& src) = delete;
+        FilledBase& operator = (FilledBase&& src) = delete;
+        ~FilledBase() noexcept = delete;
+
+
     public:
         template <MyVertex V>
         static auto GenerateIndices(const std::vector<V>& vertices) -> std::vector<unsigned short int>

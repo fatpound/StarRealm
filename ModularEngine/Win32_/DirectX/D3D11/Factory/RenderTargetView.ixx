@@ -15,6 +15,16 @@ export namespace fatpound::win32::d3d11::factory
     class RenderTargetView final
     {
     public:
+        RenderTargetView() = delete;
+        RenderTargetView(const RenderTargetView& src) = delete;
+        RenderTargetView(RenderTargetView&& src) = delete;
+
+        RenderTargetView& operator = (const RenderTargetView& src) = delete;
+        RenderTargetView& operator = (RenderTargetView&& src) = delete;
+        ~RenderTargetView() noexcept = delete;
+
+
+    public:
         static void Create(
             ::Microsoft::WRL::ComPtr<ID3D11Device>&           pDevice,
             ::Microsoft::WRL::ComPtr<IDXGISwapChain>&         pSwapChain,

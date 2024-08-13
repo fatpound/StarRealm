@@ -21,6 +21,16 @@ export namespace fatpound::win32::d3d11::pipeline::resource
         using CBuffer<C>::CBuffer;
 
     public:
+        PixelCBuffer() = delete;
+        PixelCBuffer(const PixelCBuffer& src) = delete;
+        PixelCBuffer(PixelCBuffer&& src) = delete;
+
+        PixelCBuffer& operator = (const PixelCBuffer& src) = delete;
+        PixelCBuffer& operator = (PixelCBuffer&& src) = delete;
+        virtual ~PixelCBuffer() noexcept = default;
+
+
+    public:
         virtual void Bind(Graphics& gfx) noexcept override final
         {
             Bindable::GetContext_(gfx)->PSSetConstantBuffers(0u, 1u, this->m_pConstantBuffer_.GetAddressOf());

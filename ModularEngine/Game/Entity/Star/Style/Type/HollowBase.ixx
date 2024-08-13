@@ -16,8 +16,18 @@ import std;
 
 export namespace starrealm::entity::star
 {
-    class HollowBase final : public StyleType<HollowBase>
+    class HollowBase final : public StyleType_<HollowBase>
     {
+    public:
+        HollowBase() = delete;
+        HollowBase(const HollowBase& src) = delete;
+        HollowBase(HollowBase&& src) = delete;
+
+        HollowBase& operator = (const HollowBase& src) = delete;
+        HollowBase& operator = (HollowBase&& src) = delete;
+        ~HollowBase() noexcept = delete;
+
+
     public:
         template <typename T>
         static auto GenerateIndices(std::size_t vertex_count) -> std::vector<T>

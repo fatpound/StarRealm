@@ -7,11 +7,11 @@ import StarRealm.Entity.Star.StyleBase;
 export namespace starrealm::entity::star
 {
     template <class C>
-    struct __declspec(empty_bases) StyleType
+    struct __declspec(empty_bases) StyleType_
     {
 
     };
 
     template <class C>
-    concept Type = Style<C, StyleType>;
+    concept Type = Style<C, StyleType_>;
 }

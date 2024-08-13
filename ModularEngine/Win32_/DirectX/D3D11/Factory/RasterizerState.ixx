@@ -15,10 +15,18 @@ export namespace fatpound::win32::d3d11::factory
     class RasterizerState final
     {
     public:
-        static auto CreateDESC() -> D3D11_RASTERIZER_DESC;
+        RasterizerState() = delete;
+        RasterizerState(const RasterizerState& src) = delete;
+        RasterizerState(RasterizerState&& src) = delete;
+
+        RasterizerState& operator = (const RasterizerState& src) = delete;
+        RasterizerState& operator = (RasterizerState&& src) = delete;
+        ~RasterizerState() noexcept = delete;
 
 
     public:
+        static auto CreateDESC() -> D3D11_RASTERIZER_DESC;
+
         static void Create(
             ::Microsoft::WRL::ComPtr<ID3D11Device>&          pDevice,
             ::Microsoft::WRL::ComPtr<ID3D11RasterizerState>& pRasterizerState,

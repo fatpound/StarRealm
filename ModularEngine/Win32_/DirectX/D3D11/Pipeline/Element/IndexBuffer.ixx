@@ -20,6 +20,14 @@ export namespace fatpound::win32::d3d11::pipeline::element
     public:
         IndexBuffer(Graphics& gfx, const std::vector<unsigned short int>& indices);
 
+        IndexBuffer() = delete;
+        IndexBuffer(const IndexBuffer& src) = delete;
+        IndexBuffer(IndexBuffer&& src) = delete;
+
+        IndexBuffer& operator = (const IndexBuffer& src) = delete;
+        IndexBuffer& operator = (IndexBuffer&& src) = delete;
+        virtual ~IndexBuffer() noexcept = default;
+
 
     public:
         virtual void Bind(Graphics& gfx) noexcept override final;

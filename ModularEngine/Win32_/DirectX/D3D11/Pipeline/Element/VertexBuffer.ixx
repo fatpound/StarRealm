@@ -37,6 +37,14 @@ export namespace fatpound::win32::d3d11::pipeline::element
             Bindable::GetDevice_(gfx)->CreateBuffer(&bd, &sd, &m_pVertexBuffer_);
         }
 
+        VertexBuffer() = delete;
+        VertexBuffer(const VertexBuffer& src) = delete;
+        VertexBuffer(VertexBuffer&& src) = delete;
+
+        VertexBuffer& operator = (const VertexBuffer& src) = delete;
+        VertexBuffer& operator = (VertexBuffer&& src) = delete;
+        virtual ~VertexBuffer() noexcept = default;
+
 
     public:
         virtual void Bind(Graphics& gfx) noexcept override final;

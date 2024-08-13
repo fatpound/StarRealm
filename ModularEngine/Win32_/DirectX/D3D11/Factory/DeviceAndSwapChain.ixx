@@ -15,6 +15,16 @@ export namespace fatpound::win32::d3d11::factory
     class DeviceAndSwapChain final
     {
     public:
+        DeviceAndSwapChain() = delete;
+        DeviceAndSwapChain(const DeviceAndSwapChain& src) = delete;
+        DeviceAndSwapChain(DeviceAndSwapChain&& src) = delete;
+
+        DeviceAndSwapChain& operator = (const DeviceAndSwapChain& src) = delete;
+        DeviceAndSwapChain& operator = (DeviceAndSwapChain&& src) = delete;
+        ~DeviceAndSwapChain() noexcept = delete;
+
+
+    public:
         template <UINT MSAA_Quality>
         static auto CreateDESC(HWND hWnd, UINT width, UINT height) -> DXGI_SWAP_CHAIN_DESC
         {

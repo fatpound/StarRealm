@@ -31,11 +31,11 @@ export namespace starrealm::entity::star
         }
 
         StarBase() = delete;
-        StarBase(const StarBase&) = delete;
-        StarBase(StarBase&&) = delete;
+        StarBase(const StarBase& src) = delete;
+        StarBase(StarBase&& src) = delete;
 
-        StarBase& operator = (const StarBase&) = delete;
-        StarBase& operator = (StarBase&&) = delete;
+        StarBase& operator = (const StarBase& src) = delete;
+        StarBase& operator = (StarBase&& src) = delete;
         virtual ~StarBase() noexcept = default;
 
 

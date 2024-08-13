@@ -43,6 +43,14 @@ export namespace fatpound::win32::d3d11::pipeline::resource
             Bindable::GetContext_(gfx)->VSSetShaderResources(0u, 1u, m_pShaderResourceView_.GetAddressOf());
         }
 
+        SBuffer() = delete;
+        SBuffer(const SBuffer& src) = delete;
+        SBuffer(SBuffer&& src) = delete;
+
+        SBuffer& operator = (const SBuffer& src) = delete;
+        SBuffer& operator = (SBuffer&& src) = delete;
+        virtual ~SBuffer() noexcept = default;
+
 
     protected:
         ::Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pShaderResourceView_ = nullptr;

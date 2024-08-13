@@ -47,6 +47,14 @@ export namespace fatpound::win32::d3d11::pipeline::resource
             Bindable::GetDevice_(gfx)->CreateBuffer(&cbd, nullptr, &m_pConstantBuffer_);
         }
 
+        CBuffer() = delete;
+        CBuffer(const CBuffer& src) = delete;
+        CBuffer(CBuffer&& src) = delete;
+
+        CBuffer& operator = (const CBuffer& src) = delete;
+        CBuffer& operator = (CBuffer&& src) = delete;
+        virtual ~CBuffer() noexcept = default;
+
 
     public:
         virtual void Update(Graphics& gfx, const C& consts) final

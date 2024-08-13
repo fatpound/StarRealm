@@ -20,6 +20,14 @@ export namespace fatpound::win32::d3d11::pipeline::element
     public:
         VertexShader(Graphics& gfx, const std::wstring& path);
 
+        VertexShader() = delete;
+        VertexShader(const VertexShader& src) = delete;
+        VertexShader(VertexShader&& src) = delete;
+
+        VertexShader& operator = (const VertexShader& src) = delete;
+        VertexShader& operator = (VertexShader&& src) = delete;
+        virtual ~VertexShader() noexcept = default;
+
 
     public:
         virtual void Bind(Graphics& gfx) noexcept override final;

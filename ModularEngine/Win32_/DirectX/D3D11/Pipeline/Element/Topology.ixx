@@ -16,6 +16,14 @@ export namespace fatpound::win32::d3d11::pipeline::element
     public:
         Topology(D3D11_PRIMITIVE_TOPOLOGY type);
 
+        Topology() = delete;
+        Topology(const Topology& src) = delete;
+        Topology(Topology&& src) = delete;
+
+        Topology& operator = (const Topology& src) = delete;
+        Topology& operator = (Topology&& src) = delete;
+        virtual ~Topology() noexcept = default;
+
 
     public:
         virtual void Bind(Graphics& gfx) noexcept override final;

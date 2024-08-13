@@ -21,6 +21,16 @@ export namespace fatpound::win32::d3d11::pipeline::resource
         using SBuffer<S>::SBuffer;
 
     public:
+        PixelSBuffer() = delete;
+        PixelSBuffer(const PixelSBuffer& src) = delete;
+        PixelSBuffer(PixelSBuffer&& src) = delete;
+
+        PixelSBuffer& operator = (const PixelSBuffer& src) = delete;
+        PixelSBuffer& operator = (PixelSBuffer&& src) = delete;
+        virtual ~PixelSBuffer() noexcept = default;
+
+
+    public:
         virtual void Bind(Graphics& gfx) noexcept override final
         {
             Bindable::GetContext_(gfx)->PSSetShaderResources(0u, 1u, this->m_pShaderResourceView_.GetAddressOf());

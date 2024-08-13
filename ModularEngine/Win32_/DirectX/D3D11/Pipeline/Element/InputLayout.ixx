@@ -20,6 +20,14 @@ export namespace fatpound::win32::d3d11::pipeline::element
     public:
         InputLayout(Graphics& gfx, const std::vector<D3D11_INPUT_ELEMENT_DESC>& layout, ID3DBlob* pVertexShaderBytecode);
 
+        InputLayout() = delete;
+        InputLayout(const InputLayout& src) = delete;
+        InputLayout(InputLayout&& src) = delete;
+
+        InputLayout& operator = (const InputLayout& src) = delete;
+        InputLayout& operator = (InputLayout&& src) = delete;
+        virtual ~InputLayout() noexcept = default;
+
 
     public:
         virtual void Bind(Graphics& gfx) noexcept override final;

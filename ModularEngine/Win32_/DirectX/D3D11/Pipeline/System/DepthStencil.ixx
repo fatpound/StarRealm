@@ -17,6 +17,16 @@ export namespace fatpound::win32::d3d11::pipeline::system
 	class DepthStencil final
 	{
 	public:
+		DepthStencil() = delete;
+		DepthStencil(const DepthStencil& src) = delete;
+		DepthStencil(DepthStencil&& src) = delete;
+
+		DepthStencil& operator = (const DepthStencil& src) = delete;
+		DepthStencil& operator = (DepthStencil&& src) = delete;
+		~DepthStencil() noexcept = delete;
+
+
+	public:
 		static void SetDefault(
 			::Microsoft::WRL::ComPtr<ID3D11Device>&        pDevice,
 			::Microsoft::WRL::ComPtr<ID3D11DeviceContext>& pImmediateContext

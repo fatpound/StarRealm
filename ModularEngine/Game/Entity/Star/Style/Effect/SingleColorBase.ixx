@@ -19,6 +19,16 @@ export namespace starrealm::entity::star
     class SingleColorBase final : public ColorBase<SingleColorBase>
     {
     public:
+        SingleColorBase() = delete;
+        SingleColorBase(const SingleColorBase& src) = delete;
+        SingleColorBase(SingleColorBase&& src) = delete;
+
+        SingleColorBase& operator = (const SingleColorBase& src) = delete;
+        SingleColorBase& operator = (SingleColorBase&& src) = delete;
+        ~SingleColorBase() noexcept = delete;
+
+
+    public:
         template <
             class Star_Base,
             bool For_Filled = true
