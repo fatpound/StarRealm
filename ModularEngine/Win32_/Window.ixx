@@ -28,11 +28,11 @@ export namespace fatpound::win32
 
 
     public:
-        Window(const str_t title, const ClientSizeInfo& dimensions);
+        explicit Window(const str_t title, const ClientSizeInfo& dimensions);
 
-        Window() = delete;
-        Window(const Window& src) = delete;
-        Window(Window&& src) = delete;
+        explicit Window() = delete;
+        explicit Window(const Window& src) = delete;
+        explicit Window(Window&& src) = delete;
 
         Window& operator = (const Window& src) = delete;
         Window& operator = (Window&& src) = delete;
@@ -84,9 +84,9 @@ export namespace fatpound::win32
         protected:
 
         private:
-            WndClass_() noexcept;
-            WndClass_(const WndClass_& src) = delete;
-            WndClass_(WndClass_&& src) = delete;
+            explicit WndClass_() noexcept;
+            explicit WndClass_(const WndClass_& src) = delete;
+            explicit WndClass_(WndClass_&& src) = delete;
 
             WndClass_& operator = (const WndClass_& src) = delete;
             WndClass_& operator = (WndClass_&& src) = delete;

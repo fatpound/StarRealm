@@ -60,9 +60,9 @@ export namespace fatpound::win32::io
 
             Event() = default;
             Event(const Event& src) = default;
-            Event& operator = (const Event& src) = default;
-
             Event(Event&& src) = default;
+
+            Event& operator = (const Event& src) = default;
             Event& operator = (Event&& src) = default;
             ~Event() = default;
 
