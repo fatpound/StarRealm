@@ -5,14 +5,14 @@ module;
 export module StarRealm.Entity.Star.FilledSingle;
 
 import StarRealm.Entity.StarBase;
-import StarRealm.Entity.Star.Style.Type.FilledBase;
-import StarRealm.Entity.Star.Style.Effect.SingleColorBase;
+import StarRealm.Entity.Star.Style.Type.Filled;
+import StarRealm.Entity.Star.Style.Effect.SingleColor;
 
 import FatPound;
 
 export namespace starrealm::entity::star
 {
-    class FilledSingle final : public StarBase<FilledBase, SingleColorBase>
+    class FilledSingle final : public StarBase<style::type::Filled, style::effect::SingleColor>
     {
     public:
         explicit FilledSingle(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);

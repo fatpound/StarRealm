@@ -5,14 +5,14 @@ module;
 export module StarRealm.Entity.Star.HollowBlend;
 
 import StarRealm.Entity.StarBase;
-import StarRealm.Entity.Star.Style.Type.HollowBase;
-import StarRealm.Entity.Star.Style.Effect.BlendBase;
+import StarRealm.Entity.Star.Style.Type.Hollow;
+import StarRealm.Entity.Star.Style.Effect.Blend;
 
 import FatPound;
 
 export namespace starrealm::entity::star
 {
-    class HollowBlend final : public StarBase<HollowBase, BlendBase>
+    class HollowBlend final : public StarBase<style::type::Hollow, style::effect::Blend>
     {
     public:
         explicit HollowBlend(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);

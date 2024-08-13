@@ -5,14 +5,14 @@ module;
 export module StarRealm.Entity.Star.FilledMulti;
 
 import StarRealm.Entity.StarBase;
-import StarRealm.Entity.Star.Style.Type.FilledBase;
-import StarRealm.Entity.Star.Style.Effect.MultiColorBase;
+import StarRealm.Entity.Star.Style.Type.Filled;
+import StarRealm.Entity.Star.Style.Effect.MultiColor;
 
 import FatPound;
 
 export namespace starrealm::entity::star
 {
-    class FilledMulti final : public StarBase<FilledBase, MultiColorBase>
+    class FilledMulti final : public StarBase<style::type::Filled, style::effect::MultiColor>
     {
     public:
         explicit FilledMulti(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);

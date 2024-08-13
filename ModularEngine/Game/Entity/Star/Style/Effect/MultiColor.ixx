@@ -6,7 +6,7 @@ module;
 
 #include <d3d11.h>
 
-export module StarRealm.Entity.Star.Style.Effect.MultiColorBase;
+export module StarRealm.Entity.Star.Style.Effect.MultiColor;
 
 import StarRealm.Entity.Star.Style.Effect.ColorBase;
 
@@ -14,18 +14,18 @@ import FatPound;
 
 import std;
 
-export namespace starrealm::entity::star
+export namespace starrealm::entity::star::style::effect
 {
-    class MultiColorBase final : public ColorBase<MultiColorBase>
+    class MultiColor final : public ColorBase_<MultiColor>
     {
     public:
-        explicit MultiColorBase() = delete;
-        explicit MultiColorBase(const MultiColorBase& src) = delete;
-        explicit MultiColorBase(MultiColorBase&& src) = delete;
+        explicit MultiColor() = delete;
+        explicit MultiColor(const MultiColor& src) = delete;
+        explicit MultiColor(MultiColor&& src) = delete;
 
-        MultiColorBase& operator = (const MultiColorBase& src) = delete;
-        MultiColorBase& operator = (MultiColorBase&& src) = delete;
-        ~MultiColorBase() noexcept = delete;
+        MultiColor& operator = (const MultiColor& src) = delete;
+        MultiColor& operator = (MultiColor&& src) = delete;
+        ~MultiColor() noexcept = delete;
 
 
     public:

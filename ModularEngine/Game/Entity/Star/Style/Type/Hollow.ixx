@@ -6,7 +6,7 @@ module;
 
 #include <d3d11.h>
 
-export module StarRealm.Entity.Star.Style.Type.HollowBase;
+export module StarRealm.Entity.Star.Style.Type.Hollow;
 
 import StarRealm.Entity.Star.Style.TypeBase;
 
@@ -14,18 +14,18 @@ import FatPound;
 
 import std;
 
-export namespace starrealm::entity::star
+export namespace starrealm::entity::star::style::type
 {
-    class HollowBase final : public StyleType_<HollowBase>
+    class Hollow final : public TypeBase_<Hollow>
     {
     public:
-        explicit HollowBase() = delete;
-        explicit HollowBase(const HollowBase& src) = delete;
-        explicit HollowBase(HollowBase&& src) = delete;
+        explicit Hollow() = delete;
+        explicit Hollow(const Hollow& src) = delete;
+        explicit Hollow(Hollow&& src) = delete;
 
-        HollowBase& operator = (const HollowBase& src) = delete;
-        HollowBase& operator = (HollowBase&& src) = delete;
-        ~HollowBase() noexcept = delete;
+        Hollow& operator = (const Hollow& src) = delete;
+        Hollow& operator = (Hollow&& src) = delete;
+        ~Hollow() noexcept = delete;
 
 
     public:

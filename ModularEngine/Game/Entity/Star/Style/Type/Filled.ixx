@@ -6,7 +6,7 @@ module;
 
 #include <d3d11.h>
 
-export module StarRealm.Entity.Star.Style.Type.FilledBase;
+export module StarRealm.Entity.Star.Style.Type.Filled;
 
 import StarRealm.Entity.Star.Style.TypeBase;
 
@@ -23,18 +23,18 @@ concept MyVertex = requires(V vertex)
         requires { vertex.pos; };
 };
 
-export namespace starrealm::entity::star
+export namespace starrealm::entity::star::style::type
 {
-    class FilledBase final : public StyleType_<FilledBase>
+    class Filled final : public TypeBase_<Filled>
     {
     public:
-        explicit FilledBase() = delete;
-        explicit FilledBase(const FilledBase& src) = delete;
-        explicit FilledBase(FilledBase&& src) = delete;
+        explicit Filled() = delete;
+        explicit Filled(const Filled& src) = delete;
+        explicit Filled(Filled&& src) = delete;
 
-        FilledBase& operator = (const FilledBase& src) = delete;
-        FilledBase& operator = (FilledBase&& src) = delete;
-        ~FilledBase() noexcept = delete;
+        Filled& operator = (const Filled& src) = delete;
+        Filled& operator = (Filled&& src) = delete;
+        ~Filled() noexcept = delete;
 
 
     public:
@@ -57,7 +57,7 @@ export namespace starrealm::entity::star
                     temp_idx[1u] = ((j == 0) ? ((i + 1u) % vertex_count_no_centre) : (vertex_count_no_centre));
                     temp_idx[2u] = (i + 2u) % vertex_count_no_centre;
 
-                    FilledBase::ReorderTriangles_(vertices, temp_idx, indices);
+                    Filled::ReorderTriangles_(vertices, temp_idx, indices);
                 }
             }
 
@@ -109,11 +109,11 @@ export namespace starrealm::entity::star
                 idx_arr.end(),
                 [&](const auto& idx0, const auto& idx1) -> bool
                 {
-                    return FilledBase::GetVertex_X_(vertices[idx0]) < FilledBase::GetVertex_X_(vertices[idx1]);
+                    return Filled::GetVertex_X_(vertices[idx0]) < Filled::GetVertex_X_(vertices[idx1]);
                 }
             );
 
-            if (FilledBase::GetVertex_Y_(vertices[idx_arr[1u]]) < FilledBase::GetVertex_Y_(vertices[idx_arr[2u]]))
+            if (Filled::GetVertex_Y_(vertices[idx_arr[1u]]) < Filled::GetVertex_Y_(vertices[idx_arr[2u]]))
             {
                 std::swap(idx_arr[1u], idx_arr[2u]);
             }

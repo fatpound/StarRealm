@@ -18,7 +18,7 @@
     <ClCompile Include="wWinMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Examples\Filled\Filled.ixx">
+    <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledExamples.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledBlend.cxx">
@@ -39,7 +39,7 @@
     <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledSingle.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Examples\Hollow\Hollow.ixx">
+    <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowExamples.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowBlend.cxx">
@@ -63,7 +63,7 @@
     <ClCompile Include="Game\Entity\Star\Examples\Examples.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Style\Effect\BlendBase.ixx">
+    <ClCompile Include="Game\Entity\Star\Style\Effect\Blend.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Star\Style\Effect\ColorBase.ixx">
@@ -75,16 +75,16 @@
     <ClCompile Include="Game\Entity\Star\Style\Effect\EffectBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Style\Effect\MultiColorBase.ixx">
+    <ClCompile Include="Game\Entity\Star\Style\Effect\MultiColor.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Style\Effect\SingleColorBase.ixx">
+    <ClCompile Include="Game\Entity\Star\Style\Effect\SingleColor.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Style\Type\FilledBase.ixx">
+    <ClCompile Include="Game\Entity\Star\Style\Type\Filled.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Star\Style\Type\HollowBase.ixx">
+    <ClCompile Include="Game\Entity\Star\Style\Type\Hollow.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Star\Style\Type\Type.ixx">

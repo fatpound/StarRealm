@@ -10,19 +10,19 @@ import StarRealm.Entity.Star.Style.EffectBase;
 
 import std;
 
-export namespace starrealm::entity::star
+export namespace starrealm::entity::star::style::effect
 {
     template <class C>
-    class ColorBase : public StyleEffect_<C>
+    class ColorBase_ : public EffectBase_<C>
     {
     public:
-        explicit ColorBase() = delete;
-        explicit ColorBase(const ColorBase& src) = delete;
-        explicit ColorBase(ColorBase&& src) = delete;
+        explicit ColorBase_() = delete;
+        explicit ColorBase_(const ColorBase_& src) = delete;
+        explicit ColorBase_(ColorBase_&& src) = delete;
 
-        ColorBase& operator = (const ColorBase& src) = delete;
-        ColorBase& operator = (ColorBase&& src) = delete;
-        ~ColorBase() noexcept = delete;
+        ColorBase_& operator = (const ColorBase_& src) = delete;
+        ColorBase_& operator = (ColorBase_&& src) = delete;
+        ~ColorBase_() noexcept = delete;
 
 
     public:

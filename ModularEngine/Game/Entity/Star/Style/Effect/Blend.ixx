@@ -6,7 +6,7 @@ module;
 
 #include <d3d11.h>
 
-export module StarRealm.Entity.Star.Style.Effect.BlendBase;
+export module StarRealm.Entity.Star.Style.Effect.Blend;
 
 import StarRealm.Entity.Star.Style.EffectBase;
 import StarRealm.Entity.Star;
@@ -15,18 +15,18 @@ import FatPound;
 
 import std;
 
-export namespace starrealm::entity::star
+export namespace starrealm::entity::star::style::effect
 {
-    class BlendBase final : public StyleEffect_<BlendBase>
+    class Blend final : public EffectBase_<Blend>
     {
     public:
-        explicit BlendBase() = delete;
-        explicit BlendBase(const BlendBase& src) = delete;
-        explicit BlendBase(BlendBase&& src) = delete;
+        explicit Blend() = delete;
+        explicit Blend(const Blend& src) = delete;
+        explicit Blend(Blend&& src) = delete;
 
-        BlendBase& operator = (const BlendBase& src) = delete;
-        BlendBase& operator = (BlendBase&& src) = delete;
-        ~BlendBase() noexcept = delete;
+        Blend& operator = (const Blend& src) = delete;
+        Blend& operator = (Blend&& src) = delete;
+        ~Blend() noexcept = delete;
 
 
     public:
@@ -42,7 +42,7 @@ export namespace starrealm::entity::star
         template <bool With_Centre = true>
         static auto GenerateVertices(Star::RadiusPack radiuses, DirectX::XMFLOAT3 position, std::size_t flare_count)
         {
-            std::vector<BlendBase::Vertex> vertices;
+            std::vector<Blend::Vertex> vertices;
 
             vertices.reserve(flare_count * 2u + 1u);
 

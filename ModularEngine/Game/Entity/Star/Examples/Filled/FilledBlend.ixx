@@ -5,14 +5,14 @@ module;
 export module StarRealm.Entity.Star.FilledBlend;
 
 import StarRealm.Entity.StarBase;
-import StarRealm.Entity.Star.Style.Type.FilledBase;
-import StarRealm.Entity.Star.Style.Effect.BlendBase;
+import StarRealm.Entity.Star.Style.Type.Filled;
+import StarRealm.Entity.Star.Style.Effect.Blend;
 
 import FatPound;
 
 export namespace starrealm::entity::star
 {
-    class FilledBlend final : public StarBase<FilledBase, BlendBase>
+    class FilledBlend final : public StarBase<style::type::Filled, style::effect::Blend>
     {
     public:
         explicit FilledBlend(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);

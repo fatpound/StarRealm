@@ -2,16 +2,11 @@ module;
 
 export module StarRealm.Entity.Star.Style.TypeBase;
 
-import StarRealm.Entity.Star.StyleBase;
-
-export namespace starrealm::entity::star
+export namespace starrealm::entity::star::style
 {
     template <class C>
-    struct __declspec(empty_bases) StyleType_
+    struct __declspec(empty_bases) TypeBase_
     {
 
     };
-
-    template <class C>
-    concept Type = Style<C, StyleType_>;
 }

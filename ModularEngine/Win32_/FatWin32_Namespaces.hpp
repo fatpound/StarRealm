@@ -13,3 +13,9 @@
 #define NAMESPACE_PIPELINE_RESOURCE   NAMESPACE_PIPELINE::resource
 #define NAMESPACE_PIPELINE_SYSTEM     NAMESPACE_PIPELINE::system
 #define NAMESPACE_VISUAL              NAMESPACE_D3D11::visual
+
+#define NAMESPACE_ENTITY              ::starrealm::entity
+#define NAMESPACE_STAR                NAMESPACE_ENTITY::star
+#define NAMESPACE_STAR_STYLE          NAMESPACE_STAR::style
+#define NAMESPACE_STAR_TYPE           NAMESPACE_STAR_STYLE::type
+#define NAMESPACE_STAR_EFFECT         NAMESPACE_STAR_STYLE::effect

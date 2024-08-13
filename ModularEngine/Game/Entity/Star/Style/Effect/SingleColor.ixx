@@ -6,7 +6,7 @@ module;
 
 #include <d3d11.h>
 
-export module StarRealm.Entity.Star.Style.Effect.SingleColorBase;
+export module StarRealm.Entity.Star.Style.Effect.SingleColor;
 
 import StarRealm.Entity.Star.Style.Effect.ColorBase;
 
@@ -14,18 +14,18 @@ import FatPound;
 
 import std;
 
-export namespace starrealm::entity::star
+export namespace starrealm::entity::star::style::effect
 {
-    class SingleColorBase final : public ColorBase<SingleColorBase>
+    class SingleColor final : public ColorBase_<SingleColor>
     {
     public:
-        explicit SingleColorBase() = delete;
-        explicit SingleColorBase(const SingleColorBase& src) = delete;
-        explicit SingleColorBase(SingleColorBase&& src) = delete;
+        explicit SingleColor() = delete;
+        explicit SingleColor(const SingleColor& src) = delete;
+        explicit SingleColor(SingleColor&& src) = delete;
 
-        SingleColorBase& operator = (const SingleColorBase& src) = delete;
-        SingleColorBase& operator = (SingleColorBase&& src) = delete;
-        ~SingleColorBase() noexcept = delete;
+        SingleColor& operator = (const SingleColor& src) = delete;
+        SingleColor& operator = (SingleColor&& src) = delete;
+        ~SingleColor() noexcept = delete;
 
 
     public:

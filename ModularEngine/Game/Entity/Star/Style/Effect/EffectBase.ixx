@@ -2,16 +2,11 @@ module;
 
 export module StarRealm.Entity.Star.Style.EffectBase;
 
-import StarRealm.Entity.Star.StyleBase;
-
-export namespace starrealm::entity::star
+export namespace starrealm::entity::star::style
 {
     template <class C>
-    struct __declspec(empty_bases) StyleEffect_
+    struct __declspec(empty_bases) EffectBase_
     {
 
     };
-
-    template <class C>
-    concept Effect = Style<C, StyleEffect_>;
 }
