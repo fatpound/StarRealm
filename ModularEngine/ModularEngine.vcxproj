@@ -96,7 +96,7 @@
       <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
-      <AdditionalOptions>/wd4820 /wd5045 /wd4514 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/wd4820 /wd5045 /wd4514 /Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -119,7 +119,7 @@
       <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
-      <AdditionalOptions>/wd4820 /wd5045 /wd4514 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/wd4820 /wd5045 /wd4514 /Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -142,7 +142,7 @@
       <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
-      <AdditionalOptions>/wd4820 /wd5045 /wd4514 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/wd4820 /wd5045 /wd4514 /Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -165,7 +165,7 @@
       <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
-      <AdditionalOptions>/wd4820 /wd5045 /wd4514 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/wd4820 /wd5045 /wd4514 /Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
