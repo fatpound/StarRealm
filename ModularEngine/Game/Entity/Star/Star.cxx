@@ -44,7 +44,7 @@ namespace starrealm::entity
         m_roll_ += (delta_time * m_rotation_speed_);
     }
 
-    bool Star::IsWithinArea(const ::dx::XMFLOAT3& position, const float& radius) const noexcept
+    bool Star::IsWithinArea(const ::dx::XMFLOAT3& position, const float radius) const noexcept
     {
         const float distance = NAMESPACE_MATH::GetDistanceBetweenXMF3(this->m_position_, position);
         const float radsum = m_radiuses_.outer_radius + radius;

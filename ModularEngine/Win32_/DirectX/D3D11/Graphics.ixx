@@ -77,7 +77,7 @@ export namespace fatpound::win32::d3d11
     private:
         void ToggleAltEnterMode_();
 
-        void ClearBuffer_(const float& red, const float& green, const float& blue) noexcept;
+        void ClearBuffer_(const float red, const float green, const float blue) noexcept;
 
 
     private:

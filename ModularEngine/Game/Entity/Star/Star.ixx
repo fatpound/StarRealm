@@ -92,7 +92,7 @@ export namespace starrealm::entity
 
 
     public:
-        bool IsWithinArea(const ::DirectX::XMFLOAT3& position, const float& radius) const noexcept;
+        bool IsWithinArea(const ::DirectX::XMFLOAT3& position, const float radius) const noexcept;
 
 
     protected:

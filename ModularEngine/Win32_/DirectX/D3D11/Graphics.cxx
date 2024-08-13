@@ -107,7 +107,7 @@ namespace fatpound::win32::d3d11
 
         pIDXGIFactory->MakeWindowAssociation(hWnd, flag);
     }
-    void Graphics::ClearBuffer_(const float& red, const float& green, const float& blue) noexcept
+    void Graphics::ClearBuffer_(const float red, const float green, const float blue) noexcept
     {
         const std::array<float, 4> colors{ red, green, blue, 1.0f };
 

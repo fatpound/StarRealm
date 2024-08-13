@@ -22,7 +22,7 @@ export namespace fatpound::math
         return (num >= 0.0f && num < std::numeric_limits<float>::infinity()) ? ConstevalSqrt<N>(num, num, 0.0f) : std::numeric_limits<float>::quiet_NaN();
     }
 
-    auto GetDifferenceVector(const ::DirectX::XMVECTOR& pos1_vec, const ::DirectX::XMVECTOR& pos2_vec) -> ::DirectX::XMVECTOR;
+    auto GetDifferenceVector(const ::DirectX::XMVECTOR pos1_vec, const ::DirectX::XMVECTOR pos2_vec) -> ::DirectX::XMVECTOR;
 
     float GetDistanceBetweenXMF3(const ::DirectX::XMFLOAT3& pos1, const ::DirectX::XMFLOAT3& pos2);
 }
