@@ -53,9 +53,9 @@ export namespace starrealm
 
         StarFactory() = delete;
         StarFactory(const StarFactory& src) = delete;
-        StarFactory& operator = (const StarFactory& src) = delete;
-
         StarFactory(StarFactory&& src) = delete;
+
+        StarFactory& operator = (const StarFactory& src) = delete;
         StarFactory& operator = (StarFactory&& src) = delete;
         ~StarFactory() noexcept = default;
 

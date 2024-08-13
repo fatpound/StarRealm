@@ -19,10 +19,10 @@ export namespace fatpound::util
 
 		CameraController() = delete;
 		CameraController(const CameraController& src) = delete;
-		CameraController& operator = (const CameraController& src) = delete;
-
-		CameraController& operator = (CameraController&& src) = delete;
 		CameraController(CameraController&& src) = delete;
+
+		CameraController& operator = (const CameraController& src) = delete;
+		CameraController& operator = (CameraController&& src) = delete;
 		~CameraController() noexcept = default;
 
 

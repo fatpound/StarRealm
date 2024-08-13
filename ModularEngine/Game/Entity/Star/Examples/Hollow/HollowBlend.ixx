@@ -19,9 +19,9 @@ export namespace starrealm::entity::star
 
         HollowBlend() = delete;
         HollowBlend(const HollowBlend& src) = delete;
-        HollowBlend& operator = (const HollowBlend& src) = delete;
-
         HollowBlend(HollowBlend&& src) = delete;
+
+        HollowBlend& operator = (const HollowBlend& src) = delete;
         HollowBlend& operator = (HollowBlend&& src) = delete;
         virtual ~HollowBlend() = default;
 

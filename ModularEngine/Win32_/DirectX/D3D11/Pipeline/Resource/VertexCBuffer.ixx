@@ -23,9 +23,9 @@ export namespace fatpound::win32::d3d11::pipeline::resource
     public:
         VertexCBuffer() = delete;
         VertexCBuffer(const VertexCBuffer& src) = delete;
-        VertexCBuffer& operator = (const VertexCBuffer& src) = delete;
-
         VertexCBuffer(VertexCBuffer&& src) = delete;
+
+        VertexCBuffer& operator = (const VertexCBuffer& src) = delete;
         VertexCBuffer& operator = (VertexCBuffer&& src) = delete;
         virtual ~VertexCBuffer() noexcept = default;
 

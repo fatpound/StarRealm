@@ -19,9 +19,9 @@ export namespace starrealm::entity::star
 
         HollowSingle() = delete;
         HollowSingle(const HollowSingle& src) = delete;
-        HollowSingle& operator = (const HollowSingle& src) = delete;
-
         HollowSingle(HollowSingle&& src) = delete;
+
+        HollowSingle& operator = (const HollowSingle& src) = delete;
         HollowSingle& operator = (HollowSingle&& src) = delete;
         virtual ~HollowSingle() = default;
 

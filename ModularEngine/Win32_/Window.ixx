@@ -32,9 +32,9 @@ export namespace fatpound::win32
 
         Window() = delete;
         Window(const Window& src) = delete;
-        Window& operator = (const Window& src) = delete;
-
         Window(Window&& src) = delete;
+
+        Window& operator = (const Window& src) = delete;
         Window& operator = (Window&& src) = delete;
         ~Window() noexcept;
 

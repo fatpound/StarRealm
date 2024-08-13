@@ -16,10 +16,10 @@ export namespace fatpound::util
 
         Camera() = delete;
         Camera(const Camera& src) = delete;
-        Camera& operator = (const Camera& src) = delete;
-
-        Camera& operator = (Camera&& src) = delete;
         Camera(Camera&& src) = delete;
+
+        Camera& operator = (const Camera& src) = delete;
+        Camera& operator = (Camera&& src) = delete;
         ~Camera() noexcept = default;
 
 

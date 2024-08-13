@@ -19,9 +19,9 @@ export namespace starrealm::entity::star
 
         FilledSingle() = delete;
         FilledSingle(const FilledSingle& src) = delete;
-        FilledSingle& operator = (const FilledSingle& src) = delete;
-
         FilledSingle(FilledSingle&& src) = delete;
+
+        FilledSingle& operator = (const FilledSingle& src) = delete;
         FilledSingle& operator = (FilledSingle&& src) = delete;
         virtual ~FilledSingle() = default;
 

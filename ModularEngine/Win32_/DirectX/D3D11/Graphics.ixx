@@ -41,9 +41,9 @@ export namespace fatpound::win32::d3d11
 
         Graphics() = delete;
         Graphics(const Graphics& src) = delete;
-        Graphics& operator = (const Graphics& src) = delete;
-
         Graphics(Graphics&& src) = delete;
+
+        Graphics& operator = (const Graphics& src) = delete;
         Graphics& operator = (Graphics&& src) = delete;
         ~Graphics() noexcept = default;
 

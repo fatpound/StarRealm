@@ -40,9 +40,9 @@ export namespace starrealm::entity
 
         Star() = default;
         Star(const Star& src) = delete;
-        Star& operator = (const Star& src) = delete;
-
         Star(Star&& src) = delete;
+
+        Star& operator = (const Star& src) = delete;
         Star& operator = (Star&& src) = delete;
         virtual ~Star() noexcept = default;
 

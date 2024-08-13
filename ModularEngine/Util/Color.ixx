@@ -45,6 +45,7 @@ export namespace fatpound
 
             }
             constexpr Color(Color&& src) noexcept = default;
+
             constexpr Color& operator = (const Color& src) noexcept
             {
                 dword = src.dword;
