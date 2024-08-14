@@ -1,7 +1,6 @@
 module;
 
-#include <FatWin32_.hpp>
-
+#include <FatWin32_Settings.hpp>
 #include <d3d11.h>
 
 #include <wrl.h>

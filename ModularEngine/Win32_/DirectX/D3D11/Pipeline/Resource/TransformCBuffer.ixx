@@ -1,6 +1,6 @@
 module;
 
-#include <FatWin32_.hpp>
+#include <FatWin32_Settings.hpp>
 
 #include <DirectXMath.h>
 
