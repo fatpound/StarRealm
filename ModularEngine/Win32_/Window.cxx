@@ -1,7 +1,5 @@
 module;
 
-#include <FatBuildSettings.hpp>
-
 #include <FatWin32_.hpp>
 
 #define WINDOW_RECT_WIDTH       (rect.right - rect.left)

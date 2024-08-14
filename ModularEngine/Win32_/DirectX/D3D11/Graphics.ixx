@@ -1,7 +1,5 @@
 module;
 
-#include <FatBuildSettings.hpp>
-
 #include <FatWin32_.hpp>
 
 #include <DirectXMath.h>

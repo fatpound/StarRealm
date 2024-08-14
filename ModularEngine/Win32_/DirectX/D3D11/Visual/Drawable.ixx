@@ -1,7 +1,5 @@
 module;
 
-#include <FatBuildSettings.hpp>
-
 #include <FatWin32_Namespaces.hpp>
 
 #include <DirectXMath.h>
