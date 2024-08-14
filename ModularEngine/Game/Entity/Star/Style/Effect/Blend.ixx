@@ -6,9 +6,10 @@ module;
 
 #include <d3d11.h>
 
-export module StarRealm.Entity.Star.Style.Effect.Blend;
+export module StarRealm.Entity.Star.Style.Effect:Blend;
 
-import StarRealm.Entity.Star.Style.EffectBase;
+import :Base;
+
 import StarRealm.Entity.Star;
 
 import FatPound;

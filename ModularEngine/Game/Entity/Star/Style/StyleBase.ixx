@@ -1,6 +1,6 @@
 module;
 
-export module StarRealm.Entity.Star.StyleBase;
+export module StarRealm.Entity.Star.Style.Base;
 
 import std;
 

@@ -1,13 +1,13 @@
 module;
 
-export module StarRealm.Entity.Star.Style:Type;
+export module StarRealm.Entity.Star.Style.Type;
 
-export import StarRealm.Entity.Star.StyleBase;
+import StarRealm.Entity.Star.Style.Base;
 
-export import StarRealm.Entity.Star.Style.TypeBase;
+import :Base;
 
-export import StarRealm.Entity.Star.Style.Type.Filled;
-export import StarRealm.Entity.Star.Style.Type.Hollow;
+export import :Filled;
+export import :Hollow;
 
 export namespace starrealm::entity::star::style
 {

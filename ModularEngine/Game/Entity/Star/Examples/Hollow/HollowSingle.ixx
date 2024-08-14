@@ -5,8 +5,7 @@ module;
 export module StarRealm.Entity.Star.HollowSingle;
 
 import StarRealm.Entity.StarBase;
-import StarRealm.Entity.Star.Style.Type.Hollow;
-import StarRealm.Entity.Star.Style.Effect.SingleColor;
+import StarRealm.Entity.Star.Style;
 
 import FatPound;
 

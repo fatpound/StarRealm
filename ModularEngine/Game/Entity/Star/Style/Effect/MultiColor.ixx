@@ -6,9 +6,11 @@ module;
 
 #include <d3d11.h>
 
-export module StarRealm.Entity.Star.Style.Effect.MultiColor;
+export module StarRealm.Entity.Star.Style.Effect:Color.Multi;
 
-import StarRealm.Entity.Star.Style.Effect.ColorBase;
+import :Base;
+
+import :Color.Base;
 
 import FatPound;
 
@@ -29,7 +31,8 @@ export namespace starrealm::entity::star::style::effect
 
 
     public:
-        template <
+        template
+        <
             class Star_Base,
             bool For_Filled = true
         >

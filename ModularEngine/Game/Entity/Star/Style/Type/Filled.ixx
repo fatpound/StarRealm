@@ -6,9 +6,9 @@ module;
 
 #include <d3d11.h>
 
-export module StarRealm.Entity.Star.Style.Type.Filled;
+export module StarRealm.Entity.Star.Style.Type:Filled;
 
-import StarRealm.Entity.Star.Style.TypeBase;
+import :Base;
 
 import FatPound;
 

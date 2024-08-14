@@ -1,14 +1,14 @@
 module;
 
-export module StarRealm.Entity.Star.Style:Effect;
+export module StarRealm.Entity.Star.Style.Effect;
 
-export import StarRealm.Entity.Star.StyleBase;
+import :Base;
 
-export import StarRealm.Entity.Star.Style.EffectBase;
+import StarRealm.Entity.Star.Style.Base;
 
-export import StarRealm.Entity.Star.Style.Effect.Blend;
-export import StarRealm.Entity.Star.Style.Effect.SingleColor;
-export import StarRealm.Entity.Star.Style.Effect.MultiColor;
+export import :Blend;
+export import :Color.Single;
+export import :Color.Multi;
 
 export namespace starrealm::entity::star::style
 {

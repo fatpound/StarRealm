@@ -1,6 +1,6 @@
 module;
 
-export module StarRealm.Entity.Star.Style.EffectBase;
+export module StarRealm.Entity.Star.Style.Effect:Base;
 
 export namespace starrealm::entity::star::style
 {

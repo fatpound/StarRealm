@@ -4,9 +4,9 @@ module;
 
 #include <DirectXMath.h>
 
-export module StarRealm.Entity.Star.Style.Effect.ColorBase;
+export module StarRealm.Entity.Star.Style.Effect:Color.Base;
 
-import StarRealm.Entity.Star.Style.EffectBase;
+import :Base;
 
 import std;
 
