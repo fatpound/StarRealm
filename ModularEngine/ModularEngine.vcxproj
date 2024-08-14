@@ -93,7 +93,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\ModularEngine\;C:\Users\$(USERNAME)\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
       <AdditionalOptions>/wd4820 /wd5045 /wd4514 /Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
@@ -116,7 +116,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\ModularEngine\;C:\Users\$(USERNAME)\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
       <AdditionalOptions>/wd4820 /wd5045 /wd4514 /Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
@@ -139,7 +139,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\ModularEngine\;C:\Users\$(USERNAME)\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
       <AdditionalOptions>/wd4820 /wd5045 /wd4514 /Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
@@ -162,7 +162,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\ModularEngine\;C:\Users\$(USERNAME)\source\repos\StarRealm\ModularEngine\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
       <AdditionalOptions>/wd4820 /wd5045 /wd4514 /Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
@@ -286,7 +286,7 @@
   <ItemGroup>
     <ClInclude Include="Win32_\FatWin32_.hpp" />
     <ClInclude Include="Win32_\FatWin32_Namespaces.hpp" />
-    <ClInclude Include="Win32_\FatWin32_Settings.hpp" />
+    <ClInclude Include="FatBuildSettings.hpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Win32_\DirectX\D3D11\Shader\PSColorBlend.hlsl">

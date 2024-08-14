@@ -50,5 +50,4 @@
 
 #include <Windows.h>
 
-#include "FatWin32_Settings.hpp"
 #include "FatWin32_Namespaces.hpp"
