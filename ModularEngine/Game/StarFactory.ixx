@@ -17,12 +17,12 @@ export namespace starrealm
     public:
         struct __declspec(empty_bases) Settings final
         {
-            static constexpr auto s_starCount = 200u;
+            static constexpr auto s_starCount = 1000u;
             static constexpr auto s_minFlareCount = 2u;
             static constexpr auto s_maxFlareCount = 7u;
 
-            static constexpr auto s_worldWidth = 16.0f;
-            static constexpr auto s_worldHeight = 9.0f;
+            static constexpr auto s_worldWidth  = 40.0f;
+            static constexpr auto s_worldHeight = 40.0f;
 
             static constexpr auto s_worldDensityFactor = 1.0f;
             static constexpr auto s_worldArea = s_worldDensityFactor * static_cast<float>(s_starCount);
@@ -40,11 +40,11 @@ export namespace starrealm
             static constexpr auto s_minStarInnerRatio  = 0.2f;
             static constexpr auto s_maxStarInnerRatio  = 0.5f;
 
-            static constexpr auto s_minStarDepth = 0.25f;
-            static constexpr auto s_maxStarDepth = 10.0f;
+            static constexpr auto s_minStarDepth = 0.1f;
+            static constexpr auto s_maxStarDepth = 20.0f;
 
-            static constexpr auto s_minRotationSpeed = -1.0f * std::numbers::pi_v<float>;
-            static constexpr auto s_maxRotationSpeed =  1.0f * std::numbers::pi_v<float>;
+            static constexpr auto s_minRotationSpeed = -1.5f * std::numbers::pi_v<float>;
+            static constexpr auto s_maxRotationSpeed =  1.5f * std::numbers::pi_v<float>;
         };
 
 

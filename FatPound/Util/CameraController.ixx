@@ -42,6 +42,6 @@ export namespace fatpound::util
 
 		bool engaged_ = false;
 
-		static constexpr float s_zoomIncrement_ = 0.01f;
+		static constexpr float s_zoomIncrement_ = 0.1f;
 	};
 }

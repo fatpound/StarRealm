@@ -51,7 +51,7 @@ namespace fatpound::win32::d3d11
 
     void Graphics::BeginFrame() noexcept
     {
-        ClearBuffer_(0.0f, 0.0f, 0.25f);
+        ClearBuffer_(0.0f, 0.0f, 0.0f);
     }
     void Graphics::EndFrame()
     {
