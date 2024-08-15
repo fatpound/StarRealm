@@ -20,6 +20,8 @@ namespace starrealm::entity::star
         using namespace style::type;
         using namespace style::effect;
 
+        using StarBase = StarBase<Filled, MultiColor>;
+
         if (not StarBase::IsStaticInitialized_())
         {
             Filled::Init<StarBase>();

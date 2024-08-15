@@ -20,6 +20,8 @@ namespace starrealm::entity::star
         using namespace style::type;
         using namespace style::effect;
 
+        using StarBase = StarBase<Hollow, SingleColor>;
+
         if (not StarBase::IsStaticInitialized_())
         {
             Hollow::Init<StarBase>();
