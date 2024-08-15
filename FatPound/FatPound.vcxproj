@@ -239,7 +239,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <AdditionalIncludeDirectories>C:\Users\Administrator\source\repos\StarRealm\FatPound;C:\Users\Administrator\source\repos\StarRealm\FatPound\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound;C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/wd4820 /wd5045 /wd4514 /wd4061 /wd4668 /wd5039 /wd4365 /wd4265 /wd5220 /wd4625 /wd4626 /wd5204 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -263,7 +263,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <AdditionalIncludeDirectories>C:\Users\Administrator\source\repos\StarRealm\FatPound;C:\Users\Administrator\source\repos\StarRealm\FatPound\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound;C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/wd4820 /wd5045 /wd4514 /wd4061 /wd4668 /wd5039 /wd4365 /wd4265 /wd5220 /wd4625 /wd4626 /wd5204 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -287,7 +287,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <AdditionalIncludeDirectories>C:\Users\Administrator\source\repos\StarRealm\FatPound;C:\Users\Administrator\source\repos\StarRealm\FatPound\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound;C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/wd4820 /wd5045 /wd4514 /wd4061 /wd4668 /wd5039 /wd4365 /wd4265 /wd5220 /wd4625 /wd4626 /wd5204 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -311,7 +311,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <AdditionalIncludeDirectories>C:\Users\Administrator\source\repos\StarRealm\FatPound;C:\Users\Administrator\source\repos\StarRealm\FatPound\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound;C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/wd4820 /wd5045 /wd4514 /wd4061 /wd4668 /wd5039 /wd4365 /wd4265 /wd5220 /wd4625 /wd4626 /wd5204 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
