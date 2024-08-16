@@ -49,6 +49,10 @@ export namespace starrealm::entity
 
 
     public:
+        auto operator <=> (const Star& src) const noexcept;
+
+
+    public:
         template <bool WithCentre = false>
         static auto Make(const RadiusPack& radiuses, const ::DirectX::XMFLOAT3& centre, std::size_t flare_count = 4u) -> std::vector<DirectX::XMFLOAT3>
         {

@@ -21,6 +21,11 @@ namespace starrealm::entity
 
     }
 
+    auto Star::operator <=> (const Star& src) const noexcept
+    {
+        return m_radiuses_.outer_radius <=> src.m_radiuses_.outer_radius;
+    }
+
     auto Star::GetTransformXM() const noexcept -> ::dx::XMMATRIX
     {
         const auto& pos_vec = ::dx::XMLoadFloat3(&m_position_);
