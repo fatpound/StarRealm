@@ -17,24 +17,13 @@ namespace starrealm::entity::star
         :
         StarBase<style::type::Hollow, style::effect::SingleColor>(gfx, desc)
     {
-        using namespace style::type;
-        using namespace style::effect;
-
-        using StarBase = StarBase<Hollow, SingleColor>;
-
-        if (not StarBase::IsStaticInitialized_())
-        {
-            Hollow::Init<StarBase>();
-            SingleColor::Init<StarBase, false>(gfx);
-        }
-
         const auto& vertices = Star::Make(m_radiuses_, m_position_, desc.flare_count);
         AddBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexBuffer>(gfx, vertices));
 
-        const auto& indices = Hollow::GenerateIndices<unsigned short int>(vertices.size());
+        const auto& indices = NAMESPACE_STAR_TYPE::Hollow::GenerateIndices<unsigned short int>(vertices.size());
         AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::IndexBuffer>(gfx, indices));
 
-        const auto& cbuf = SingleColor::ColorBase_::GeneratePixelCBuffer();
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::PixelCBuffer<SingleColor::ColorBase_::CBuffer>>(gfx, cbuf));
+        const auto& cbuf = NAMESPACE_STAR_EFFECT::SingleColor::ColorBase_::GeneratePixelCBuffer();
+        AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::PixelCBuffer<NAMESPACE_STAR_EFFECT::SingleColor::ColorBase_::CBuffer>>(gfx, cbuf));
     }
 }

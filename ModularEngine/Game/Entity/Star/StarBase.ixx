@@ -30,6 +30,20 @@ export namespace starrealm::entity::star
             :
             Star(desc)
         {
+            if (not IsStaticInitialized_())
+            {
+                T::template Init<StarBase<T, E>>();
+
+                if constexpr (std::derived_from<E, style::effect::Blend>)
+                {
+                    E::template Init<StarBase<T, E>>(gfx);
+                }
+                else
+                {
+                    E::template Init<StarBase<T, E>, std::same_as<T, style::type::Filled>>(gfx);
+                }
+            }
+
             AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::TransformCBuffer<StarBase>>(gfx, *this));
         }
 

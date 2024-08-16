@@ -17,21 +17,10 @@ namespace starrealm::entity::star
         :
         StarBase<style::type::Filled, style::effect::Blend>(gfx, desc)
     {
-        using namespace style::type;
-        using namespace style::effect;
-
-        using StarBase = StarBase<Filled, Blend>;
-
-        if (not StarBase::IsStaticInitialized_())
-        {
-            Filled::Init<StarBase>();
-            Blend::Init<StarBase>(gfx);
-        }
-
-        const auto& vertices = Blend::GenerateVertices(m_radiuses_, m_position_, desc.flare_count);
+        const auto& vertices = NAMESPACE_STAR_EFFECT::Blend::GenerateVertices(m_radiuses_, m_position_, desc.flare_count);
         AddBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexBuffer>(gfx, vertices));
 
-        const auto& indices = Filled::GenerateIndices(vertices);
+        const auto& indices = NAMESPACE_STAR_TYPE::Filled::GenerateIndices(vertices);
         AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::IndexBuffer>(gfx, indices));
     }
 }
