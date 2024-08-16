@@ -228,6 +228,9 @@
     <ClCompile Include="FatPound.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\StaticBindableVec.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Win32_\DirectX\D3D11\Shader\PSColorBlend.hlsl" />

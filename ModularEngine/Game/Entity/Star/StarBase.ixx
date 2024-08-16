@@ -20,7 +20,7 @@ export namespace starrealm::entity::star
         style::Type T,
         style::Effect E
     >
-    class StarBase : public Star
+    class StarBase : public Star, public NAMESPACE_PIPELINE::StaticBindableVec<StarBase<T, E>>
     {
         friend T;
         friend E;
@@ -30,7 +30,7 @@ export namespace starrealm::entity::star
             :
             Star(desc)
         {
-            if (not IsStaticInitialized_())
+            if (not NAMESPACE_PIPELINE::StaticBindableVec<StarBase>::IsStaticInitialized_())
             {
                 T::template InitStaticBinds<StarBase>();
 
@@ -57,27 +57,12 @@ export namespace starrealm::entity::star
 
 
     protected:
-        static bool IsStaticInitialized_() noexcept(IN_RELEASE)
-        {
-            return not m_static_binds_.empty();
-        }
-
-        static void AddStaticBind_(std::unique_ptr<NAMESPACE_PIPELINE::Bindable> bind) noexcept(IN_RELEASE)
-        {
-            assert("*Must* use AddStaticIndexBuffer to bind index buffer" && typeid(*bind) != typeid(NAMESPACE_PIPELINE_ELEMENT::IndexBuffer));
-
-            m_static_binds_.push_back(std::move(bind));
-        }
 
 
     private:
         virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>>& override final
         {
-            return m_static_binds_;
+            return this->m_static_binds_;
         }
-
-
-    private:
-        inline static std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>> m_static_binds_ = {};
     };
 }

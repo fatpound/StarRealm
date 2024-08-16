@@ -2,7 +2,7 @@ module;
 
 #include <FatWin32_Namespaces.hpp>
 
-#include <DirectXMath.h>
+#include <cassert>
 
 export module FatPound.Win32.D3D11.Visual.DrawableBase;
 
@@ -14,7 +14,7 @@ import std;
 export namespace fatpound::win32::d3d11::visual
 {
     template <class C>
-    class DrawableBase : public Drawable
+    class DrawableBase : public Drawable, public NAMESPACE_PIPELINE::StaticBindableVec<DrawableBase<C>>
     {
     public:
         explicit DrawableBase() = default;
@@ -27,33 +27,19 @@ export namespace fatpound::win32::d3d11::visual
 
 
     protected:
-        static bool IsStaticInitialized_() noexcept(IN_RELEASE)
-        {
-            return not m_static_binds_.empty();
-        }
-
-        static void AddStaticBind_(std::unique_ptr<NAMESPACE_PIPELINE::Bindable> bind) noexcept(IN_RELEASE)
-        {
-            assert("*Must* use AddStaticIndexBuffer to bind index buffer" && typeid(*bind) != typeid(NAMESPACE_PIPELINE_ELEMENT::IndexBuffer));
-
-            m_static_binds_.push_back(std::move(bind));
-        }
-
-
-    protected:
         virtual void AddStaticIndexBuffer_(std::unique_ptr<NAMESPACE_PIPELINE_ELEMENT::IndexBuffer> idxbuf) noexcept(IN_RELEASE) final
         {
             assert("Attempting to add index buffer a second time" && pCIndexBuffer_ == nullptr);
 
             pCIndexBuffer_ = idxbuf.get();
 
-            m_static_binds_.push_back(std::move(idxbuf));
+            this->m_static_binds_.push_back(std::move(idxbuf));
         }
         virtual void SetIndexFromStatic_() noexcept(IN_RELEASE) final
         {
             assert("Attempting to add index buffer a second time" && pCIndexBuffer_ == nullptr);
 
-            for (const auto& b : m_static_binds_)
+            for (const auto& b : this->m_static_binds_)
             {
                 const auto ptr = dynamic_cast<NAMESPACE_PIPELINE_ELEMENT::IndexBuffer*>(b.get());
 
@@ -72,11 +58,7 @@ export namespace fatpound::win32::d3d11::visual
     private:
         virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>>& override
         {
-            return m_static_binds_;
+            return this->m_static_binds_;
         }
-
-
-    private:
-        inline static std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>> m_static_binds_ = {};
     };
 }
