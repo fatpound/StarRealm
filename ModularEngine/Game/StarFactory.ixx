@@ -15,7 +15,7 @@ export namespace starrealm
     class StarFactory final
     {
     public:
-        struct __declspec(empty_bases) Settings final
+        struct Settings final
         {
             static constexpr auto s_starCount = 1000u;
             static constexpr auto s_minFlareCount = 2u;

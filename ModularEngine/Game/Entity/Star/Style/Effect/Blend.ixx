@@ -72,7 +72,7 @@ export namespace starrealm::entity::star::style::effect
         }
 
         template <class Star_Base>
-        static void Init(NAMESPACE_D3D11::Graphics& gfx)
+        static void InitStaticBinds(NAMESPACE_D3D11::Graphics& gfx)
         {
             auto pvs = std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexShader>(gfx, L"VSColorBlend.cso");
             auto pvsbc = pvs->GetBytecode();

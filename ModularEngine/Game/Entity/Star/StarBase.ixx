@@ -32,15 +32,15 @@ export namespace starrealm::entity::star
         {
             if (not IsStaticInitialized_())
             {
-                T::template Init<StarBase<T, E>>();
+                T::template InitStaticBinds<StarBase>();
 
                 if constexpr (std::derived_from<E, style::effect::Blend>)
                 {
-                    E::template Init<StarBase<T, E>>(gfx);
+                    E::template InitStaticBinds<StarBase>(gfx);
                 }
                 else
                 {
-                    E::template Init<StarBase<T, E>, std::same_as<T, style::type::Filled>>(gfx);
+                    E::template InitStaticBinds<StarBase, std::same_as<T, style::type::Filled>>(gfx);
                 }
             }
 
