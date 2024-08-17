@@ -46,6 +46,7 @@
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\Texture2D.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Graphics.cxx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Graphics.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\GraphicsResource.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Bindable.cxx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Bindable.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\Element.ixx" />

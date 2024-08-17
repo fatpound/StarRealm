@@ -8,6 +8,7 @@ module;
 
 export module FatPound.Win32.D3D11.Pipeline.System:RenderTarget;
 
+import FatPound.Win32.D3D11.Graphics.Resource;
 import FatPound.Win32.D3D11.Factory;
 
 import std;
@@ -28,27 +29,19 @@ export namespace fatpound::win32::d3d11::pipeline::system
 
 	public:
 		template <UINT MSAA_Quality>
-		static void SetDefault(
-			::Microsoft::WRL::ComPtr<ID3D11Device>&           pDevice,
-			::Microsoft::WRL::ComPtr<IDXGISwapChain>&         pSwapChain,
-			::Microsoft::WRL::ComPtr<ID3D11DeviceContext>&    pImmediateContext,
-			::Microsoft::WRL::ComPtr<ID3D11RenderTargetView>& pRenderTargetView,
-			::Microsoft::WRL::ComPtr<ID3D11DepthStencilView>& pDSV,
-			UINT width,
-			UINT height
-		)
+		static void SetDefault(GfxResource& gfxres, UINT width, UINT height)
 		{
-			factory::RenderTargetView::Create(pDevice, pSwapChain, pRenderTargetView);
+			factory::RenderTargetView::Create(gfxres);
 
 			::Microsoft::WRL::ComPtr<ID3D11Texture2D> pTexture2D = nullptr;
 
 			const auto& descTex2D = factory::Texture2D::CreateDESC<MSAA_Quality>(width, height);
-			factory::Texture2D::Create(pDevice, pTexture2D, descTex2D);
+			factory::Texture2D::Create(gfxres, pTexture2D, descTex2D);
 
 			const auto& descDSV = factory::DepthStencilView::CreateDESC<MSAA_Quality>();
-			factory::DepthStencilView::Create(pDevice, pTexture2D, pDSV, descDSV);
+			factory::DepthStencilView::Create(gfxres, pTexture2D, descDSV);
 
-			pImmediateContext->OMSetRenderTargets(1u, pRenderTargetView.GetAddressOf(), pDSV.Get());
+			gfxres.m_pImmediateContext->OMSetRenderTargets(1u, gfxres.m_pTarget.GetAddressOf(), gfxres.m_pDSV.Get());
 		}
 
 

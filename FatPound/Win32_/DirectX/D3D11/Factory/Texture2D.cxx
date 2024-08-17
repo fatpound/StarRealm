@@ -13,12 +13,12 @@ namespace wrl = Microsoft::WRL;
 namespace fatpound::win32::d3d11::factory
 {
     void Texture2D::Create(
-        ::wrl::ComPtr<ID3D11Device>&    pDevice,
+        const GfxResource& gfxres,
         ::wrl::ComPtr<ID3D11Texture2D>& pTexture2D,
-        const D3D11_TEXTURE2D_DESC&     desc
+        const D3D11_TEXTURE2D_DESC& desc
     )
     {
-        const auto hr = pDevice->CreateTexture2D(&desc, nullptr, &pTexture2D);
+        const auto hr = gfxres.m_pDevice->CreateTexture2D(&desc, nullptr, &pTexture2D);
 
         if (FAILED(hr)) [[unlikely]]
         {

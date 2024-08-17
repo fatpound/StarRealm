@@ -8,6 +8,8 @@ module;
 
 export module FatPound.Win32.D3D11.Factory:DepthStencilView;
 
+import FatPound.Win32.D3D11.Graphics.Resource;
+
 import std;
 
 export namespace fatpound::win32::d3d11::factory
@@ -47,10 +49,9 @@ export namespace fatpound::win32::d3d11::factory
 
     public:
         static void Create(
-            ::Microsoft::WRL::ComPtr<ID3D11Device>&           pDevice,
-            ::Microsoft::WRL::ComPtr<ID3D11Texture2D>&        DepthStencil,
-            ::Microsoft::WRL::ComPtr<ID3D11DepthStencilView>& pDSV,
-            const D3D11_DEPTH_STENCIL_VIEW_DESC&              desc
+            GfxResource& gfxres,
+            Microsoft::WRL::ComPtr<ID3D11Texture2D>& pDepthStencil,
+            const D3D11_DEPTH_STENCIL_VIEW_DESC& desc
         );
 
 

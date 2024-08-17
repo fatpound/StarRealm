@@ -23,12 +23,12 @@ namespace fatpound::win32::d3d11::factory
     }
 
     void DepthStencilState::Create(
-        ::wrl::ComPtr<ID3D11Device>&            pDevice,
+        const GfxResource& gfxres,
         ::wrl::ComPtr<ID3D11DepthStencilState>& pDSState,
-        const D3D11_DEPTH_STENCIL_DESC&         desc
-    )
+        const D3D11_DEPTH_STENCIL_DESC& desc
+        )
     {
-        const auto hr = pDevice->CreateDepthStencilState(&desc, &pDSState);
+        const auto hr = gfxres.m_pDevice->CreateDepthStencilState(&desc, &pDSState);
 
         if (FAILED(hr)) [[unlikely]]
         {

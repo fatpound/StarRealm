@@ -8,6 +8,8 @@ module;
 
 export module FatPound.Win32.D3D11.Pipeline.System:Viewport;
 
+import FatPound.Win32.D3D11.Graphics.Resource;
+
 import std;
 
 export namespace fatpound::win32::d3d11::pipeline::system
@@ -25,11 +27,7 @@ export namespace fatpound::win32::d3d11::pipeline::system
 
 
 	public:
-		static void SetDefault(
-			::Microsoft::WRL::ComPtr<ID3D11DeviceContext>& pContext,
-			std::size_t width,
-			std::size_t height
-		);
+		static void SetDefault(const GfxResource& gfxres, std::size_t width, std::size_t height);
 
 
 	protected:

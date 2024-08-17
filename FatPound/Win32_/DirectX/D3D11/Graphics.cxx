@@ -25,18 +25,18 @@ namespace fatpound::win32::d3d11
     {
         {
             const auto& scdesc = factory::DeviceAndSwapChain::CreateDESC<s_msaaQuality_>(hWnd, m_width_, m_height_);
-            factory::DeviceAndSwapChain::Create(m_pDevice_, m_pSwapChain_, m_pImmediateContext_, scdesc);
+            factory::DeviceAndSwapChain::Create(m_gfxres_, scdesc);
         }
 
         ToggleAltEnterMode_();
 
-        pipeline::system::RenderTarget::SetDefault<s_msaaQuality_>(m_pDevice_, m_pSwapChain_, m_pImmediateContext_, m_pTarget_, m_pDSV_, m_width_, m_height_);
-        pipeline::system::DepthStencil::SetDefault(m_pDevice_, m_pImmediateContext_);
-        pipeline::system::Viewport::SetDefault(m_pImmediateContext_, m_width_, m_height_);
+        pipeline::system::RenderTarget::SetDefault<s_msaaQuality_>(m_gfxres_, m_width_, m_height_);
+        pipeline::system::DepthStencil::SetDefault(m_gfxres_);
+        pipeline::system::Viewport::SetDefault(m_gfxres_, m_width_, m_height_);
 
         if constexpr (s_rasterizationEnabled_)
         {
-            pipeline::system::Rasterizer::SetDefault(m_pDevice_, m_pImmediateContext_);
+            pipeline::system::Rasterizer::SetDefault(m_gfxres_);
         }
     }
 
@@ -55,7 +55,7 @@ namespace fatpound::win32::d3d11
     }
     void Graphics::EndFrame()
     {
-        const auto hr = m_pSwapChain_->Present(1u, 0u);
+        const auto hr = m_gfxres_.m_pSwapChain->Present(1u, 0u);
 
         if (FAILED(hr)) [[unlikely]]
         {
@@ -64,7 +64,7 @@ namespace fatpound::win32::d3d11
     }
     void Graphics::DrawIndexed(UINT count) noexcept(IN_RELEASE)
     {
-        m_pImmediateContext_->DrawIndexed(count, 0u, 0);
+        m_gfxres_.m_pImmediateContext->DrawIndexed(count, 0u, 0);
     }
 
     void Graphics::SetProjectionXM(const ::dx::XMMATRIX& projection) noexcept
@@ -79,7 +79,7 @@ namespace fatpound::win32::d3d11
     void Graphics::ToggleAltEnterMode_()
     {
         ::wrl::ComPtr<IDXGIDevice> pDXGIDevice = nullptr;
-        m_pDevice_->QueryInterface(__uuidof(IDXGIDevice), &pDXGIDevice);
+        m_gfxres_.m_pDevice->QueryInterface(__uuidof(IDXGIDevice), &pDXGIDevice);
 
         ::wrl::ComPtr<IDXGIAdapter> pDXGIAdapter = nullptr;
         pDXGIDevice->GetParent(__uuidof(IDXGIAdapter), &pDXGIAdapter);
@@ -88,7 +88,7 @@ namespace fatpound::win32::d3d11
         pDXGIAdapter->GetParent(__uuidof(IDXGIFactory), &pIDXGIFactory);
 
         DXGI_SWAP_CHAIN_DESC desc = {};
-        m_pSwapChain_->GetDesc(&desc);
+        m_gfxres_.m_pSwapChain->GetDesc(&desc);
 
         const auto& hWnd = desc.OutputWindow;
 
@@ -111,7 +111,7 @@ namespace fatpound::win32::d3d11
     {
         const std::array<float, 4> colors{ red, green, blue, 1.0f };
 
-        m_pImmediateContext_->ClearRenderTargetView(m_pTarget_.Get(), colors.data());
-        m_pImmediateContext_->ClearDepthStencilView(m_pDSV_.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
+        m_gfxres_.m_pImmediateContext->ClearRenderTargetView(m_gfxres_.m_pTarget.Get(), colors.data());
+        m_gfxres_.m_pImmediateContext->ClearDepthStencilView(m_gfxres_.m_pDSV.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
     }
 }

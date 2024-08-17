@@ -8,6 +8,7 @@ module;
 
 export module FatPound.Win32.D3D11.Pipeline.System:DepthStencil;
 
+import FatPound.Win32.D3D11.Graphics.Resource;
 import FatPound.Win32.D3D11.Factory;
 
 import std;
@@ -27,10 +28,7 @@ export namespace fatpound::win32::d3d11::pipeline::system
 
 
 	public:
-		static void SetDefault(
-			::Microsoft::WRL::ComPtr<ID3D11Device>&        pDevice,
-			::Microsoft::WRL::ComPtr<ID3D11DeviceContext>& pImmediateContext
-		);
+		static void SetDefault(const GfxResource& gfxres);
 
 
 	protected:

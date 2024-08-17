@@ -12,12 +12,7 @@ namespace wrl = Microsoft::WRL;
 
 namespace fatpound::win32::d3d11::factory
 {
-    void DeviceAndSwapChain::Create(
-        ::Microsoft::WRL::ComPtr<ID3D11Device>&        pDevice,
-        ::Microsoft::WRL::ComPtr<IDXGISwapChain>&      pSwapChain,
-        ::Microsoft::WRL::ComPtr<ID3D11DeviceContext>& pImmediateContext_,
-        const DXGI_SWAP_CHAIN_DESC&                    desc
-    )
+    void DeviceAndSwapChain::Create(GfxResource& gfxres, const DXGI_SWAP_CHAIN_DESC& desc)
     {
         static constinit UINT swapCreateFlags;
 
@@ -39,10 +34,10 @@ namespace fatpound::win32::d3d11::factory
             0u,
             D3D11_SDK_VERSION,
             &desc,
-            &pSwapChain,
-            &pDevice,
+            &gfxres.m_pSwapChain,
+            &gfxres.m_pDevice,
             nullptr,
-            &pImmediateContext_
+            &gfxres.m_pImmediateContext
         );
 
         if (FAILED(hr)) [[unlikely]]

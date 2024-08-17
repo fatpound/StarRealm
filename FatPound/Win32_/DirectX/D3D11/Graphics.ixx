@@ -10,6 +10,7 @@ module;
 
 export module FatPound.Win32.D3D11.Graphics;
 
+import FatPound.Win32.D3D11.Graphics.Resource;
 import FatPound.Win32.D3D11.Pipeline.System;
 import FatPound.Win32.D3D11.Factory;
 
@@ -81,11 +82,7 @@ export namespace fatpound::win32::d3d11
 
 
     private:
-        ::Microsoft::WRL::ComPtr<ID3D11Device>           m_pDevice_           = nullptr;
-        ::Microsoft::WRL::ComPtr<IDXGISwapChain>         m_pSwapChain_        = nullptr;
-        ::Microsoft::WRL::ComPtr<ID3D11DeviceContext>    m_pImmediateContext_ = nullptr;
-        ::Microsoft::WRL::ComPtr<ID3D11RenderTargetView> m_pTarget_           = nullptr;
-        ::Microsoft::WRL::ComPtr<ID3D11DepthStencilView> m_pDSV_              = nullptr;
+        GfxResource m_gfxres_;
 
         ::DirectX::XMMATRIX m_projection_;
         ::DirectX::XMMATRIX m_camera_;
