@@ -163,6 +163,11 @@
     <ClInclude Include="Win32_\FatWin32_Namespaces.hpp" />
     <ClInclude Include="Win32_\FatWin32_Settings.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="FatSettings.props" />
+    <None Include="FatSettings_Debug.props" />
+    <None Include="FatSettings_Release.props" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -204,15 +209,23 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="FatSettings.props" />
+    <Import Project="FatSettings_Debug.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="FatSettings.props" />
+    <Import Project="FatSettings_Release.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="FatSettings.props" />
+    <Import Project="FatSettings_Debug.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="FatSettings.props" />
+    <Import Project="FatSettings_Release.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -240,7 +253,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound;C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/wd4820 /wd5045 /wd4514 /wd4061 /wd4668 /wd5039 /wd4365 /wd4265 /wd5220 /wd4625 /wd4626 /wd5204 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -264,7 +277,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound;C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/wd4820 /wd5045 /wd4514 /wd4061 /wd4668 /wd5039 /wd4365 /wd4265 /wd5220 /wd4625 /wd4626 /wd5204 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -288,7 +301,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound;C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/wd4820 /wd5045 /wd4514 /wd4061 /wd4668 /wd5039 /wd4365 /wd4265 /wd5220 /wd4625 /wd4626 /wd5204 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -312,7 +325,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound;C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/wd4820 /wd5045 /wd4514 /wd4061 /wd4668 /wd5039 /wd4365 /wd4265 /wd5220 /wd4625 /wd4626 /wd5204 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>

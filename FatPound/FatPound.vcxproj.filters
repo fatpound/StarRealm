@@ -251,4 +251,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="FatSettings.props" />
+    <None Include="FatSettings_Debug.props" />
+    <None Include="FatSettings_Release.props" />
+  </ItemGroup>
 </Project>

@@ -59,15 +59,23 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\FatPound\FatSettings.props" />
+    <Import Project="..\FatPound\FatSettings_Debug.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\FatPound\FatSettings.props" />
+    <Import Project="..\FatPound\FatSettings_Release.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\FatPound\FatSettings.props" />
+    <Import Project="..\FatPound\FatSettings_Debug.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\FatPound\FatSettings.props" />
+    <Import Project="..\FatPound\FatSettings_Release.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -86,14 +94,14 @@
     <ClCompile>
       <WarningLevel>EnableAllWarnings</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions);IN_DEBUG=true;IN_RELEASE=false</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions);</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdclatest</LanguageStandard_C>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound;C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
       <AdditionalOptions>/wd4820 /wd5045 /wd4514 /Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
@@ -109,14 +117,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions);IN_DEBUG=false;IN_RELEASE=true</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions);</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdclatest</LanguageStandard_C>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound;C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
       <AdditionalOptions>/wd4820 /wd5045 /wd4514 /Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
@@ -132,14 +140,14 @@
     <ClCompile>
       <WarningLevel>EnableAllWarnings</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions);IN_DEBUG=true;IN_RELEASE=false</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions);</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdclatest</LanguageStandard_C>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound;C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
       <AdditionalOptions>/wd4820 /wd5045 /wd4514 /Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
@@ -155,14 +163,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions);IN_DEBUG=false;IN_RELEASE=true</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions);</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdclatest</LanguageStandard_C>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound;C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
       <AdditionalOptions>/wd4820 /wd5045 /wd4514 /Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
