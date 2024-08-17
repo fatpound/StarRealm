@@ -1,10 +1,13 @@
 module;
 
+#include <FatWin32_Settings.hpp>
 #include <FatWin32_Namespaces.hpp>
+
+#include <DirectXMath.h>
 
 export module StarRealm:StarFactory;
 
-export import StarRealm.Entity;
+import StarRealm.Entity;
 
 import FatPound;
 

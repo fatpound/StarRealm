@@ -18,6 +18,8 @@ namespace dx = DirectX;
 
 namespace starrealm
 {
+    using Settings = StarFactory::Settings;
+
     Game::Game()
         :
         m_wnd_(L"StarRealm", NAMESPACE_WIN32::Window::ClientSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
