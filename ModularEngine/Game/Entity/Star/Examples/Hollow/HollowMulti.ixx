@@ -22,7 +22,7 @@ export namespace starrealm::entity::star
 
         HollowMulti& operator = (const HollowMulti& src) = delete;
         HollowMulti& operator = (HollowMulti&& src) = delete;
-        virtual ~HollowMulti() = default;
+        virtual ~HollowMulti() noexcept final = default;
 
 
     protected:

@@ -22,7 +22,7 @@ export namespace starrealm::entity::star
 
         HollowSingle& operator = (const HollowSingle& src) = delete;
         HollowSingle& operator = (HollowSingle&& src) = delete;
-        virtual ~HollowSingle() = default;
+        virtual ~HollowSingle() noexcept final = default;
 
 
     protected:

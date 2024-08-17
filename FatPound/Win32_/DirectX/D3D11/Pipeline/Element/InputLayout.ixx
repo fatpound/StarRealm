@@ -26,7 +26,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
         InputLayout& operator = (const InputLayout& src) = delete;
         InputLayout& operator = (InputLayout&& src) = delete;
-        virtual ~InputLayout() noexcept = default;
+        virtual ~InputLayout() noexcept final = default;
 
 
     public:

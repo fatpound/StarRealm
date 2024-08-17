@@ -22,7 +22,7 @@ export namespace starrealm::entity::star
 
         FilledSingle& operator = (const FilledSingle& src) = delete;
         FilledSingle& operator = (FilledSingle&& src) = delete;
-        virtual ~FilledSingle() = default;
+        virtual ~FilledSingle() noexcept final = default;
 
 
     protected:

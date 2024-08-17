@@ -43,7 +43,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
         VertexBuffer& operator = (const VertexBuffer& src) = delete;
         VertexBuffer& operator = (VertexBuffer&& src) = delete;
-        virtual ~VertexBuffer() noexcept = default;
+        virtual ~VertexBuffer() noexcept final = default;
 
 
     public:

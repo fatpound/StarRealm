@@ -22,7 +22,7 @@ export namespace starrealm::entity::star
 
         FilledMulti& operator = (const FilledMulti& src) = delete;
         FilledMulti& operator = (FilledMulti&& src) = delete;
-        virtual ~FilledMulti() = default;
+        virtual ~FilledMulti() noexcept final = default;
 
 
     protected:

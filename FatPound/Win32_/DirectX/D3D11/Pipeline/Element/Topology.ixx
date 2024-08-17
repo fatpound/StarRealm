@@ -22,7 +22,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
         Topology& operator = (const Topology& src) = delete;
         Topology& operator = (Topology&& src) = delete;
-        virtual ~Topology() noexcept = default;
+        virtual ~Topology() noexcept final = default;
 
 
     public:

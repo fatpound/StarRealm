@@ -27,7 +27,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
 
         PixelSBuffer& operator = (const PixelSBuffer& src) = delete;
         PixelSBuffer& operator = (PixelSBuffer&& src) = delete;
-        virtual ~PixelSBuffer() noexcept = default;
+        virtual ~PixelSBuffer() noexcept final = default;
 
 
     public:
