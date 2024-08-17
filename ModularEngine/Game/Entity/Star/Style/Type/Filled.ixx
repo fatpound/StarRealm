@@ -102,9 +102,8 @@ export namespace starrealm::entity::star::style::type
         template <MyVertex V>
         static void ReorderTriangles_(const std::vector<V>& vertices, std::array<std::size_t, 3u>& idx_arr, std::vector<unsigned short int>& indices)
         {
-            std::sort(
-                idx_arr.begin(),
-                idx_arr.end(),
+            std::ranges::sort(
+                idx_arr,
                 [&](const auto& idx0, const auto& idx1) -> bool
                 {
                     return Filled::GetVertex_X_(vertices[idx0]) < Filled::GetVertex_X_(vertices[idx1]);
@@ -116,9 +115,9 @@ export namespace starrealm::entity::star::style::type
                 std::swap(idx_arr[1u], idx_arr[2u]);
             }
 
-            for (const std::size_t& idx : idx_arr)
+            for (const auto& idx : idx_arr)
             {
-                indices.emplace_back(static_cast<unsigned short int>(idx));
+                indices.push_back(static_cast<unsigned short int>(idx));
             }
         };
     };
