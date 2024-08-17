@@ -19,7 +19,7 @@ import std;
 
 export namespace starrealm::entity::star::style::effect
 {
-    class Blend final : public EffectBase_<Blend>
+    class Blend final : public Base_<Blend>
     {
     public:
         explicit Blend() = delete;

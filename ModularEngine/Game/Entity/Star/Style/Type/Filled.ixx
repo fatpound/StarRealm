@@ -23,7 +23,7 @@ concept MyVertex = std::same_as<V, DirectX::XMFLOAT3> or requires(V vertex)
 
 export namespace starrealm::entity::star::style::type
 {
-    class Filled final : public TypeBase_<Filled>
+    class Filled final : public Base_<Filled>
     {
     public:
         explicit Filled() = delete;

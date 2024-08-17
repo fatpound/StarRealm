@@ -12,5 +12,5 @@ export import :Hollow;
 export namespace starrealm::entity::star::style
 {
     template <class C>
-    concept Type = Style<C, TypeBase_>;
+    concept Type = Style<C, type::Base_>;
 }

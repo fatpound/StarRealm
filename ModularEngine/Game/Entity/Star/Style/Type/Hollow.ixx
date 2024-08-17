@@ -17,7 +17,7 @@ import std;
 
 export namespace starrealm::entity::star::style::type
 {
-    class Hollow final : public TypeBase_<Hollow>
+    class Hollow final : public Base_<Hollow>
     {
     public:
         explicit Hollow() = delete;

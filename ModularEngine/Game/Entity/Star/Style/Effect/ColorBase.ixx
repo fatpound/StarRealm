@@ -14,7 +14,7 @@ import std;
 export namespace starrealm::entity::star::style::effect
 {
     template <class C>
-    class ColorBase_ : public EffectBase_<C>
+    class ColorBase_ : public Base_<C>
     {
     public:
         explicit ColorBase_() = delete;
