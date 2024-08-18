@@ -236,14 +236,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Win32_\DirectX\D3D11\Shader\PSColorBlend.hlsl" />
-    <FxCompile Include="Win32_\DirectX\D3D11\Shader\PSColorMulti.hlsl" />
-    <FxCompile Include="Win32_\DirectX\D3D11\Shader\PSColorSingle.hlsl" />
-    <FxCompile Include="Win32_\DirectX\D3D11\Shader\VSColorBlend.hlsl" />
-    <FxCompile Include="Win32_\DirectX\D3D11\Shader\VSColorMulti.hlsl" />
-    <FxCompile Include="Win32_\DirectX\D3D11\Shader\VSColorSingle.hlsl" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Win32_\FatWin32_.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>

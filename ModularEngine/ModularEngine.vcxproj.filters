@@ -124,4 +124,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Game\Entity\Star\Shader\PSColorBlend.hlsl" />
+    <FxCompile Include="Game\Entity\Star\Shader\PSColorMulti.hlsl" />
+    <FxCompile Include="Game\Entity\Star\Shader\PSColorSingle.hlsl" />
+    <FxCompile Include="Game\Entity\Star\Shader\VSColorBlend.hlsl" />
+    <FxCompile Include="Game\Entity\Star\Shader\VSColorMulti.hlsl" />
+    <FxCompile Include="Game\Entity\Star\Shader\VSColorSingle.hlsl" />
+  </ItemGroup>
 </Project>
