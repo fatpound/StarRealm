@@ -148,15 +148,15 @@ export namespace fatpound::win32::d3d11
             return GetDevicePack().m_pImmediateContext.Get();
         }
 
-        auto GetResource() -> GfxResource&
+        auto GetResource() noexcept -> GfxResource&
         {
             return m_gfxres_;
         }
-        auto GetDevicePack() -> GfxDevicePack&
+        auto GetDevicePack() noexcept -> GfxDevicePack&
         {
             return GetResource().m_device_pack;
         }
-        auto GetSceneXMPack() -> visual::SceneXMPack&
+        auto GetSceneXMPack() noexcept -> visual::SceneXMPack&
         {
             return m_sceneXM_pack_;
         }
