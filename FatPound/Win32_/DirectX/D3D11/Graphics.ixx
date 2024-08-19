@@ -138,11 +138,11 @@ export namespace fatpound::win32::d3d11
             return static_cast<N>(m_height_);
         }
 
-        auto GetDevice() -> ID3D11Device*
+        auto GetDevice() noexcept -> ID3D11Device*
         {
             return m_gfxres_.m_pDevice.Get();
         }
-        auto GetImmediateContext() -> ID3D11DeviceContext*
+        auto GetImmediateContext() noexcept -> ID3D11DeviceContext*
         {
             return m_gfxres_.m_pImmediateContext.Get();
         }
