@@ -133,19 +133,11 @@ export namespace fatpound::win32::d3d11
         {
             return static_cast<N>(m_width_);
         }
+
         template <NAMESPACE_MATH::Number N>
         auto GetHeight() const noexcept
         {
             return static_cast<N>(m_height_);
-        }
-
-        auto GetDevice() noexcept -> ID3D11Device*
-        {
-            return GetDevicePack().m_pDevice.Get();
-        }
-        auto GetImmediateContext() noexcept -> ID3D11DeviceContext*
-        {
-            return GetDevicePack().m_pImmediateContext.Get();
         }
 
         auto GetResource() noexcept -> GfxResource&
@@ -159,6 +151,15 @@ export namespace fatpound::win32::d3d11
         auto GetSceneXMPack() noexcept -> visual::SceneXMPack&
         {
             return m_sceneXM_pack_;
+        }
+
+        auto GetDevice() noexcept -> ID3D11Device*
+        {
+            return GetDevicePack().m_pDevice.Get();
+        }
+        auto GetImmediateContext() noexcept -> ID3D11DeviceContext*
+        {
+            return GetDevicePack().m_pImmediateContext.Get();
         }
 
         auto GetCameraXM()     const noexcept -> ::DirectX::XMMATRIX requires(not Framework)
@@ -198,7 +199,7 @@ export namespace fatpound::win32::d3d11
         }
         void EndFrame() requires(Framework)
         {
-            HRESULT hr = m_gfxres_.m_pImmediateContext->Map(
+            HRESULT hr = GetImmediateContext()->Map(
                 m_gfxres_.m_pSysBufferTexture.Get(),
                 0u,
                 D3D11_MAP_WRITE_DISCARD,
@@ -226,8 +227,8 @@ export namespace fatpound::win32::d3d11
                 );
             }
 
-            m_gfxres_.m_pImmediateContext->Unmap(m_gfxres_.m_pSysBufferTexture.Get(), 0u);
-            m_gfxres_.m_pImmediateContext->Draw(6u, 0u);
+            GetImmediateContext()->Unmap(m_gfxres_.m_pSysBufferTexture.Get(), 0u);
+            GetImmediateContext()->Draw(6u, 0u);
 
             hr = m_gfxres_.m_pSwapChain->Present(1u, 0u);
 
