@@ -21,8 +21,8 @@ namespace fatpound::win32::d3d11::pipeline::element
         );
     }
 
-    void InputLayout::Bind([[maybe_unused]] ID3D11Device* pDevice, [[maybe_unused]] ID3D11DeviceContext* pImmediateContext)
+    void InputLayout::Bind(GfxDevicePack& gfx_devicePack)
     {
-        pImmediateContext->IASetInputLayout(m_pInputLayout_.Get());
+        gfx_devicePack.m_pImmediateContext->IASetInputLayout(m_pInputLayout_.Get());
     }
 }

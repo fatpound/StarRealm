@@ -44,7 +44,7 @@ export namespace fatpound::win32::d3d11::pipeline::system
 				factory::DepthStencilView::Create(gfxres, pTexture2D, descDSV);
 			}
 
-			gfxres.m_pImmediateContext->OMSetRenderTargets(1u, gfxres.m_pTarget.GetAddressOf(), gfxres.m_pDSV.Get());
+			gfxres.m_device_pack.m_pImmediateContext->OMSetRenderTargets(1u, gfxres.m_pTarget.GetAddressOf(), gfxres.m_pDSV.Get());
 		}
 
 

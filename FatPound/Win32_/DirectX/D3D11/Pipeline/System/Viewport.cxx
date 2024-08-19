@@ -22,6 +22,6 @@ namespace fatpound::win32::d3d11::pipeline::system
         vp.TopLeftX = 0.0f;
         vp.TopLeftY = 0.0f;
 
-        gfxres.m_pImmediateContext->RSSetViewports(1u, &vp);
+        gfxres.m_device_pack.m_pImmediateContext->RSSetViewports(1u, &vp);
     }
 }

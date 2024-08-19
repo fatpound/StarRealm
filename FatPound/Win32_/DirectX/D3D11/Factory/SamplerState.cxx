@@ -20,7 +20,7 @@ namespace fatpound::win32::d3d11::factory
     {
         HRESULT hr;
 
-        hr = gfxres.m_pDevice->CreateSamplerState(&desc, &pSamplerState);
+        hr = gfxres.m_device_pack.m_pDevice->CreateSamplerState(&desc, &pSamplerState);
 
         if (FAILED(hr)) [[unlikely]]
         {

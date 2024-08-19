@@ -21,6 +21,6 @@ namespace fatpound::win32::d3d11::pipeline::system
 		const auto& descDSS = factory::DepthStencilState::CreateDESC();
 		factory::DepthStencilState::Create(gfxres, pDSState, descDSS);
 
-		gfxres.m_pImmediateContext->OMSetDepthStencilState(pDSState.Get(), 1u);
+		gfxres.m_device_pack.m_pImmediateContext->OMSetDepthStencilState(pDSState.Get(), 1u);
 	}
 }

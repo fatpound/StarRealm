@@ -18,7 +18,7 @@ namespace fatpound::win32::d3d11::factory
         const D3D11_RASTERIZER_DESC& desc
     )
     {
-        const auto hr = gfxres.m_pDevice->CreateRasterizerState(&desc, &pRasterizerState);
+        const auto hr = gfxres.m_device_pack.m_pDevice->CreateRasterizerState(&desc, &pRasterizerState);
 
         if (FAILED(hr)) [[unlikely]]
         {

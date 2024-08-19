@@ -4,7 +4,11 @@ module;
 
 #include <d3d11.h>
 
+#include <wrl.h>
+
 export module FatPound.Win32.D3D11.Pipeline.Bindable;
+
+export import FatPound.Win32.D3D11.Graphics.DevicePack;
 
 export namespace fatpound::win32::d3d11::pipeline
 {
@@ -21,7 +25,7 @@ export namespace fatpound::win32::d3d11::pipeline
         
 
     public:
-        virtual void Bind([[maybe_unused]] ID3D11Device* pDevice, [[maybe_unused]] ID3D11DeviceContext* pImmediateContext) = 0;
+        virtual void Bind(GfxDevicePack& gfx_devicePack) = 0;
 
 
     protected:

@@ -39,7 +39,7 @@ export namespace fatpound::win32::d3d11::pipeline::system
 			const auto& srvDesc = factory::ShaderResourceView::CreateDESC<MSAA_Quality>(t2dDesc.Format);
 			factory::ShaderResourceView::Create(gfxres, pSysBufferTextureView_, srvDesc);
 
-			gfxres.m_pImmediateContext->PSSetShaderResources(0u, 1u, pSysBufferTextureView_.GetAddressOf());
+			gfxres.m_device_pack.m_pImmediateContext->PSSetShaderResources(0u, 1u, pSysBufferTextureView_.GetAddressOf());
 		}
 
 

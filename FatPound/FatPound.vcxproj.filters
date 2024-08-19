@@ -252,6 +252,9 @@
     <ClCompile Include="Win32_\DirectX\D3D11\Visual\SceneXMPack.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Win32_\DirectX\D3D11\GfxDevicePack.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Win32_\FatWin32_.hpp">

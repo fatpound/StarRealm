@@ -39,7 +39,7 @@ export namespace fatpound::win32::d3d11::factory
 
         static void Create(
             const GfxResource& gfxres,
-            Microsoft::WRL::ComPtr<ID3D11DepthStencilState>& pDSState,
+            ::Microsoft::WRL::ComPtr<ID3D11DepthStencilState>& pDSState,
             const D3D11_DEPTH_STENCIL_DESC& desc
         );
 

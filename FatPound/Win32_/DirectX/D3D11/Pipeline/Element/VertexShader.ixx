@@ -29,7 +29,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
 
     public:
-        virtual void Bind([[maybe_unused]] ID3D11Device* pDevice, [[maybe_unused]] ID3D11DeviceContext* pImmediateContext) override final;
+        virtual void Bind(GfxDevicePack& gfx_devicePack) override final;
 
 
     public:

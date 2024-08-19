@@ -35,9 +35,9 @@ namespace fatpound::win32::d3d11::factory
             D3D11_SDK_VERSION,
             &desc,
             &gfxres.m_pSwapChain,
-            &gfxres.m_pDevice,
+            &gfxres.m_device_pack.m_pDevice,
             nullptr,
-            &gfxres.m_pImmediateContext
+            &gfxres.m_device_pack.m_pImmediateContext
         );
 
         if (FAILED(hr)) [[unlikely]]

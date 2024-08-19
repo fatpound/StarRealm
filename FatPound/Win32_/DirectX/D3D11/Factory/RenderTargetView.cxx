@@ -25,7 +25,7 @@ namespace fatpound::win32::d3d11::factory
             throw std::runtime_error("Could NOT get the buffer from SwapChain!");
         }
 
-        hr = gfxres.m_pDevice->CreateRenderTargetView(pBackBufferTexture.Get(), nullptr, &gfxres.m_pTarget);
+        hr = gfxres.m_device_pack.m_pDevice->CreateRenderTargetView(pBackBufferTexture.Get(), nullptr, &gfxres.m_pTarget);
 
         if (FAILED(hr)) [[unlikely]]
         {

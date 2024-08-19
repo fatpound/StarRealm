@@ -79,7 +79,7 @@ namespace starrealm
                 star->Update(delta_time);
             }
 
-            star->Draw(m_gfx_);
+            star->Draw(m_gfx_.GetDevicePack());
         }
     }
 }

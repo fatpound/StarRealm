@@ -14,8 +14,10 @@ module;
 export module FatPound.Win32.D3D11.Graphics;
 
 import FatPound.Win32.D3D11.Graphics.Resource;
+import FatPound.Win32.D3D11.Graphics.DevicePack;
+
 import FatPound.Win32.D3D11.Pipeline;
-import FatPound.Win32.D3D11.Visual.SceneXMPack;
+import FatPound.Win32.D3D11.Visual;
 import FatPound.Win32.D3D11.Factory;
 
 import FatPound.Math;
@@ -139,13 +141,21 @@ export namespace fatpound::win32::d3d11
 
         auto GetDevice() noexcept -> ID3D11Device*
         {
-            return m_gfxres_.m_pDevice.Get();
+            return GetDevicePack().m_pDevice.Get();
         }
         auto GetImmediateContext() noexcept -> ID3D11DeviceContext*
         {
-            return m_gfxres_.m_pImmediateContext.Get();
+            return GetDevicePack().m_pImmediateContext.Get();
         }
 
+        auto GetResource() -> GfxResource&
+        {
+            return m_gfxres_;
+        }
+        auto GetDevicePack() -> GfxDevicePack&
+        {
+            return GetResource().m_device_pack;
+        }
         auto GetSceneXMPack() -> visual::SceneXMPack&
         {
             return m_sceneXM_pack_;
@@ -153,20 +163,20 @@ export namespace fatpound::win32::d3d11
 
         auto GetCameraXM()     const noexcept -> ::DirectX::XMMATRIX requires(not Framework)
         {
-            return m_sceneXM_pack_.GetCameraXM();
+            return GetSceneXMPack().GetCameraXM();
         }
         auto GetProjectionXM() const noexcept -> ::DirectX::XMMATRIX requires(not Framework)
         {
-            return m_sceneXM_pack_.GetProjectionXM();
+            return GetSceneXMPack().GetProjectionXM();
         }
 
         void SetCameraXM(const ::DirectX::XMMATRIX& camera)         noexcept requires(not Framework)
         {
-            m_sceneXM_pack_.SetCameraXM(camera);
+            GetSceneXMPack().SetCameraXM(camera);
         }
         void SetProjectionXM(const ::DirectX::XMMATRIX& projection) noexcept requires(not Framework)
         {
-            m_sceneXM_pack_.SetProjectionXM(projection);
+            GetSceneXMPack().SetProjectionXM(projection);
         }
 
         void BeginFrame() noexcept
@@ -236,10 +246,6 @@ export namespace fatpound::win32::d3d11
 
             m_gfxres_.m_pSysBuffer[m_width_ * y + x] = color;
         }
-        void DrawIndexed(UINT count) requires(not Framework)
-        {
-            m_gfxres_.m_pImmediateContext->DrawIndexed(count, 0u, 0);
-        }
 
 
     protected:
@@ -294,7 +300,7 @@ export namespace fatpound::win32::d3d11
         void ToggleAltEnterMode_()
         {
             ::wrl::ComPtr<IDXGIDevice> pDXGIDevice = nullptr;
-            m_gfxres_.m_pDevice->QueryInterface(__uuidof(IDXGIDevice), &pDXGIDevice);
+            GetDevicePack().m_pDevice->QueryInterface(__uuidof(IDXGIDevice), &pDXGIDevice);
 
             ::wrl::ComPtr<IDXGIAdapter> pDXGIAdapter = nullptr;
             pDXGIDevice->GetParent(__uuidof(IDXGIAdapter), &pDXGIAdapter);
@@ -303,7 +309,7 @@ export namespace fatpound::win32::d3d11
             pDXGIAdapter->GetParent(__uuidof(IDXGIFactory), &pIDXGIFactory);
 
             DXGI_SWAP_CHAIN_DESC desc = {};
-            m_gfxres_.m_pSwapChain->GetDesc(&desc);
+            GetResource().m_pSwapChain->GetDesc(&desc);
 
             const auto& hWnd = desc.OutputWindow;
 
@@ -327,8 +333,8 @@ export namespace fatpound::win32::d3d11
         {
             const std::array<float, 4> colors{ red, green, blue, 1.0f };
 
-            m_gfxres_.m_pImmediateContext->ClearRenderTargetView(m_gfxres_.m_pTarget.Get(), colors.data());
-            m_gfxres_.m_pImmediateContext->ClearDepthStencilView(m_gfxres_.m_pDSV.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
+            GetDevicePack().m_pImmediateContext->ClearRenderTargetView(m_gfxres_.m_pTarget.Get(), colors.data());
+            GetDevicePack().m_pImmediateContext->ClearDepthStencilView(m_gfxres_.m_pDSV.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
         }
 
 

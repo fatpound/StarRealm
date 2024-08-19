@@ -28,8 +28,8 @@ namespace fatpound::win32::d3d11::pipeline::element
         return m_pBytecodeBlob_.Get();
     }
 
-    void VertexShader::Bind([[maybe_unused]] ID3D11Device* pDevice, [[maybe_unused]] ID3D11DeviceContext* pImmediateContext)
+    void VertexShader::Bind(GfxDevicePack& gfx_devicePack)
     {
-        pImmediateContext->VSSetShader(m_pVertexShader_.Get(), nullptr, 0u);
+        gfx_devicePack.m_pImmediateContext->VSSetShader(m_pVertexShader_.Get(), nullptr, 0u);
     }
 }

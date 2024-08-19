@@ -21,6 +21,6 @@ namespace fatpound::win32::d3d11::pipeline::system
         const auto& descRS = factory::RasterizerState::CreateDESC();
         factory::RasterizerState::Create(gfxres, pRasterizerState, descRS);
 
-        gfxres.m_pImmediateContext->RSSetState(pRasterizerState.Get());
+        gfxres.m_device_pack.m_pImmediateContext->RSSetState(pRasterizerState.Get());
     }
 }
