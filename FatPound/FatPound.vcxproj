@@ -99,6 +99,7 @@
     <ClInclude Include="Win32_\FatWin32_Settings.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="FatRules.ruleset" />
     <None Include="FatSettings.props" />
     <None Include="FatSettings_Debug.props" />
     <None Include="FatSettings_Release.props" />
@@ -165,15 +166,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <UseStructuredOutput>false</UseStructuredOutput>
+    <CodeAnalysisRuleSet>C:\Users\Administrator\source\repos\StarRealm\FatPound\FatRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <UseStructuredOutput>false</UseStructuredOutput>
+    <CodeAnalysisRuleSet>C:\Users\Administrator\source\repos\StarRealm\FatPound\FatRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <UseStructuredOutput>false</UseStructuredOutput>
+    <CodeAnalysisRuleSet>C:\Users\Administrator\source\repos\StarRealm\FatPound\FatRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <UseStructuredOutput>false</UseStructuredOutput>
+    <CodeAnalysisRuleSet>C:\Users\Administrator\source\repos\StarRealm\FatPound\FatRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

@@ -250,5 +250,6 @@
     <None Include="FatSettings.props" />
     <None Include="FatSettings_Debug.props" />
     <None Include="FatSettings_Release.props" />
+    <None Include="FatRules.ruleset" />
   </ItemGroup>
 </Project>
