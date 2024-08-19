@@ -16,7 +16,7 @@
       <ConformanceMode>true</ConformanceMode>
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <AdditionalIncludeDirectories>C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound\;C:\Users\$(USERNAME)\source\repos\StarRealm\FatPound\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)FatPound;$(SolutionDir)FatPound\Win32_;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup />
