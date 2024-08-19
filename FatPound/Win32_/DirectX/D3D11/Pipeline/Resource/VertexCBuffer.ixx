@@ -31,7 +31,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
 
 
     public:
-        virtual void Bind(Graphics& gfx) noexcept override final
+        virtual void Bind(Graphics& gfx) override final
         {
             Bindable::GetContext_(gfx)->VSSetConstantBuffers(0u, 1u, this->m_pConstantBuffer_.GetAddressOf());
         }

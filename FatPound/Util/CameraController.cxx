@@ -10,7 +10,7 @@ namespace dx = DirectX;
 
 namespace fatpound::util
 {
-    CameraController::CameraController(Camera& camera, NAMESPACE_IO::Mouse& mouse, const NAMESPACE_IO::Keyboard& keyboard)
+    CameraController::CameraController(Camera& camera, NAMESPACE_IO::Mouse& mouse, const NAMESPACE_IO::Keyboard& keyboard) noexcept
         :
         camera_(camera),
         mouse_(mouse),
@@ -19,7 +19,7 @@ namespace fatpound::util
 
     }
 
-    void CameraController::Update()
+    void CameraController::Update() noexcept
     {
         if (keyboard_.KeyIsPressed('R'))
         {

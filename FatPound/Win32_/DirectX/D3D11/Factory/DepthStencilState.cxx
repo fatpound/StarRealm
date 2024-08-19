@@ -12,16 +12,6 @@ namespace wrl = Microsoft::WRL;
 
 namespace fatpound::win32::d3d11::factory
 {
-    auto DepthStencilState::CreateDESC() -> D3D11_DEPTH_STENCIL_DESC
-    {
-        D3D11_DEPTH_STENCIL_DESC desc = {};
-        desc.DepthEnable = true;
-        desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
-        desc.DepthFunc = D3D11_COMPARISON_LESS;
-
-        return desc;
-    }
-
     void DepthStencilState::Create(
         const GfxResource& gfxres,
         ::wrl::ComPtr<ID3D11DepthStencilState>& pDSState,

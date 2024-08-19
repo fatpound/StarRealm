@@ -93,11 +93,11 @@ namespace fatpound::win32
         return std::nullopt;
     }
 
-    auto Window::GetMouse() -> NAMESPACE_IO::Mouse&
+    auto Window::GetMouse() noexcept -> NAMESPACE_IO::Mouse&
     {
         return m_mouse_;
     }
-    auto Window::GetKeyboard() -> NAMESPACE_IO::Keyboard&
+    auto Window::GetKeyboard() noexcept -> NAMESPACE_IO::Keyboard&
     {
         return m_keyboard_;
     }
@@ -127,7 +127,7 @@ namespace fatpound::win32
     {
         ::MessageBox(m_hWnd_, message.c_str(), title.c_str(), error_flags);
     }
-    void Window::Kill()
+    void Window::Kill() noexcept
     {
         ::PostQuitMessage(0);
     }

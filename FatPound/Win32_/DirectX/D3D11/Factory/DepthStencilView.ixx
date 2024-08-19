@@ -28,19 +28,20 @@ export namespace fatpound::win32::d3d11::factory
 
     public:
         template <UINT MSAA_Quality>
-        static auto CreateDESC() -> D3D11_DEPTH_STENCIL_VIEW_DESC
+        static constexpr auto CreateDESC() noexcept -> D3D11_DEPTH_STENCIL_VIEW_DESC
         {
             D3D11_DEPTH_STENCIL_VIEW_DESC desc = {};
             desc.Format = DXGI_FORMAT_D32_FLOAT;
-            desc.Texture2D.MipSlice = 0u;
 
             if constexpr (MSAA_Quality == 1u)
             {
                 desc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
+                desc.Texture2D.MipSlice = 0u;
             }
             else
             {
                 desc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DMS;
+                desc.Texture2D.MipSlice = 1u;
             }
 
             return desc;
@@ -50,7 +51,7 @@ export namespace fatpound::win32::d3d11::factory
     public:
         static void Create(
             GfxResource& gfxres,
-            Microsoft::WRL::ComPtr<ID3D11Texture2D>& pDepthStencil,
+            const ::Microsoft::WRL::ComPtr<ID3D11Texture2D>& pDepthStencil,
             const D3D11_DEPTH_STENCIL_VIEW_DESC& desc
         );
 

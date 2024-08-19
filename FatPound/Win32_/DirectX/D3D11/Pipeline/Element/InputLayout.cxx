@@ -21,7 +21,7 @@ namespace fatpound::win32::d3d11::pipeline::element
         );
     }
 
-    void InputLayout::Bind(Graphics& gfx) noexcept
+    void InputLayout::Bind(Graphics& gfx)
     {
         Bindable::GetContext_(gfx)->IASetInputLayout(m_pInputLayout_.Get());
     }

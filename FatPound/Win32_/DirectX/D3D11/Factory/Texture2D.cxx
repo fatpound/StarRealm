@@ -25,4 +25,12 @@ namespace fatpound::win32::d3d11::factory
             throw std::runtime_error("Could NOT create Texture2D!");
         }
     }
+
+    void Texture2D::Create(
+        GfxResource& gfxres,
+        const D3D11_TEXTURE2D_DESC& desc
+    )
+    {
+        Create(gfxres, gfxres.m_pSysBufferTexture, desc);
+    }
 }

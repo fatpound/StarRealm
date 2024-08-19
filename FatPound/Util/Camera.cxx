@@ -12,7 +12,7 @@ namespace fatpound::util
 {
     // Camera
 
-    Camera::Camera(const float min_depth, const float max_depth)
+    Camera::Camera(const float min_depth, const float max_depth) noexcept
         :
         min_depth_(min_depth),
         max_depth_(max_depth)

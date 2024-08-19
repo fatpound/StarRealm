@@ -14,7 +14,7 @@ namespace fatpound::win32::d3d11::factory
 {
     void DepthStencilView::Create(
             GfxResource& gfxres,
-            ::wrl::ComPtr<ID3D11Texture2D>& pDepthStencil,
+            const ::wrl::ComPtr<ID3D11Texture2D>& pDepthStencil,
             const D3D11_DEPTH_STENCIL_VIEW_DESC& desc
         )
     {

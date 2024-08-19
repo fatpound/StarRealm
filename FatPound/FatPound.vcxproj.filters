@@ -234,6 +234,27 @@
     <ClCompile Include="Win32_\DirectX\D3D11\GraphicsResource.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Win32_\DirectX\D3D11\Factory\SamplerState.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\D3D11\Factory\SamplerState.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\D3D11\Factory\ShaderResourceView.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\D3D11\Factory\ShaderResourceView.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Sampler.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Sampler.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\ShaderResource.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Win32_\FatWin32_.hpp">

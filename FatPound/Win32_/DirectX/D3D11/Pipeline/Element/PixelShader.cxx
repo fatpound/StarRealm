@@ -25,7 +25,7 @@ namespace fatpound::win32::d3d11::pipeline::element
         );
     }
 
-    void PixelShader::Bind(Graphics& gfx) noexcept
+    void PixelShader::Bind(Graphics& gfx)
     {
         Bindable::GetContext_(gfx)->PSSetShader(m_pPixelShader_.Get(), nullptr, 0u);
     }

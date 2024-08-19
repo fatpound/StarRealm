@@ -23,7 +23,7 @@ namespace fatpound::win32::io
     {
         if (m_char_buffer_.size() > 0u)
         {
-            const auto& charcode = m_char_buffer_.front();
+            const auto charcode = m_char_buffer_.front();
             m_char_buffer_.pop();
 
             return charcode;
@@ -71,7 +71,7 @@ namespace fatpound::win32::io
         m_auto_repeat_enabled_ = false;
     }
 
-    void Keyboard::OnKeyPressed_(unsigned char keycode) noexcept
+    void Keyboard::OnKeyPressed_(unsigned char keycode)
     {
         m_key_states_[keycode] = true;
 
@@ -79,7 +79,7 @@ namespace fatpound::win32::io
 
         TrimBuffer_(m_event_buffer_);
     }
-    void Keyboard::OnKeyReleased_(unsigned char keycode) noexcept
+    void Keyboard::OnKeyReleased_(unsigned char keycode)
     {
         m_key_states_[keycode] = false;
 
@@ -87,7 +87,7 @@ namespace fatpound::win32::io
 
         TrimBuffer_(m_event_buffer_);
     }
-    void Keyboard::OnChar_(unsigned char character) noexcept
+    void Keyboard::OnChar_(unsigned char character)
     {
         m_char_buffer_.push(character);
 

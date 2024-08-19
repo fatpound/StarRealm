@@ -66,7 +66,7 @@ export namespace fatpound::win32::d3d11
 
         void BeginFrame() noexcept;
         void EndFrame();
-        void DrawIndexed(UINT count) noexcept(IN_RELEASE);
+        void DrawIndexed(UINT count);
 
         void SetProjectionXM(const ::DirectX::XMMATRIX& projection) noexcept;
         void SetCameraXM(const ::DirectX::XMMATRIX& camera) noexcept;
@@ -78,7 +78,7 @@ export namespace fatpound::win32::d3d11
     private:
         void ToggleAltEnterMode_();
 
-        void ClearBuffer_(const float red, const float green, const float blue) noexcept;
+        void ClearBuffer_(const float red, const float green, const float blue);
 
 
     private:

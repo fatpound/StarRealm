@@ -27,7 +27,15 @@ export namespace fatpound::win32::d3d11::factory
 
 
     public:
-        static auto CreateDESC() -> D3D11_DEPTH_STENCIL_DESC;
+        static constexpr auto CreateDESC() noexcept -> D3D11_DEPTH_STENCIL_DESC
+        {
+            D3D11_DEPTH_STENCIL_DESC desc = {};
+            desc.DepthEnable = true;
+            desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+            desc.DepthFunc = D3D11_COMPARISON_LESS;
+
+            return desc;
+        }
 
         static void Create(
             const GfxResource& gfxres,

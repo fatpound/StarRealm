@@ -28,7 +28,7 @@ namespace fatpound::win32::d3d11::pipeline::element
         return m_pBytecodeBlob_.Get();
     }
 
-    void VertexShader::Bind(Graphics& gfx) noexcept
+    void VertexShader::Bind(Graphics& gfx)
     {
         Bindable::GetContext_(gfx)->VSSetShader(m_pVertexShader_.Get(), nullptr, 0u);
     }

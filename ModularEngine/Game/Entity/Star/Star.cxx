@@ -11,7 +11,7 @@ namespace dx = DirectX;
 
 namespace starrealm::entity
 {
-    Star::Star(const Descriptor& desc)
+    Star::Star(const Descriptor& desc) noexcept
         :
         m_position_(desc.position),
         m_radiuses_(desc.radiuses),

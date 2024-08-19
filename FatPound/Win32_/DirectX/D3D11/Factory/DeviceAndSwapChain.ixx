@@ -28,7 +28,7 @@ export namespace fatpound::win32::d3d11::factory
 
     public:
         template <UINT MSAA_Quality>
-        static auto CreateDESC(HWND hWnd, UINT width, UINT height) -> DXGI_SWAP_CHAIN_DESC
+        static auto CreateDESC(HWND hWnd, UINT width, UINT height) noexcept -> DXGI_SWAP_CHAIN_DESC
         {
             DXGI_SWAP_CHAIN_DESC desc = {};
             desc.BufferDesc.Width = width;

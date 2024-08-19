@@ -27,7 +27,7 @@ export namespace fatpound::win32::d3d11::factory
 
     public:
         template <UINT MSAA_Quality>
-        static auto CreateDESC(UINT width, UINT height) -> D3D11_TEXTURE2D_DESC
+        static constexpr auto CreateDESC(UINT width, UINT height) noexcept -> D3D11_TEXTURE2D_DESC
         {
             D3D11_TEXTURE2D_DESC desc = {};
             desc.Width = width;
@@ -43,6 +43,19 @@ export namespace fatpound::win32::d3d11::factory
             return desc;
         }
 
+        template <UINT MSAA_Quality>
+        static constexpr auto CreateDESCForFramework(UINT width, UINT height) noexcept -> D3D11_TEXTURE2D_DESC
+        {
+            auto desc = Texture2D::CreateDESC<MSAA_Quality>(width, height);
+
+            desc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
+            desc.Usage = D3D11_USAGE_DYNAMIC;
+            desc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+            desc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+
+            return desc;
+        }
+
 
     public:
         static void Create(
@@ -50,6 +63,8 @@ export namespace fatpound::win32::d3d11::factory
             ::Microsoft::WRL::ComPtr<ID3D11Texture2D>& pTexture2D,
             const D3D11_TEXTURE2D_DESC& desc
         );
+
+        static void Create(GfxResource& gfxres, const D3D11_TEXTURE2D_DESC& desc);
 
 
     protected:

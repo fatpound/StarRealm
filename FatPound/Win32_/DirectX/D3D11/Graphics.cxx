@@ -62,7 +62,7 @@ namespace fatpound::win32::d3d11
             throw std::runtime_error("The Graphics Device Failed to Present/Draw!");
         }
     }
-    void Graphics::DrawIndexed(UINT count) noexcept(IN_RELEASE)
+    void Graphics::DrawIndexed(UINT count)
     {
         m_gfxres_.m_pImmediateContext->DrawIndexed(count, 0u, 0);
     }
@@ -107,7 +107,7 @@ namespace fatpound::win32::d3d11
 
         pIDXGIFactory->MakeWindowAssociation(hWnd, flag);
     }
-    void Graphics::ClearBuffer_(const float red, const float green, const float blue) noexcept
+    void Graphics::ClearBuffer_(const float red, const float green, const float blue)
     {
         const std::array<float, 4> colors{ red, green, blue, 1.0f };
 

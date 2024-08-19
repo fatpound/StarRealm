@@ -37,7 +37,7 @@ export namespace starrealm::entity
 
 
     public:
-        explicit Star(const Descriptor& desc);
+        explicit Star(const Descriptor& desc) noexcept;
 
         explicit Star() = default;
         explicit Star(const Star& src) = delete;

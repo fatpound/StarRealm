@@ -2,10 +2,6 @@ module;
 
 #include <FatWin32_Settings.hpp>
 
-#include <d3d11.h>
-
-#include <wrl.h>
-
 export module FatPound.Win32.D3D11.Pipeline.System:DepthStencil;
 
 import FatPound.Win32.D3D11.Graphics.Resource;

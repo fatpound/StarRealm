@@ -44,8 +44,8 @@ export namespace fatpound::win32
 
 
     public:
-        auto GetMouse()    -> NAMESPACE_IO::Mouse&;
-        auto GetKeyboard() -> NAMESPACE_IO::Keyboard&;
+        auto GetMouse()    noexcept -> NAMESPACE_IO::Mouse&;
+        auto GetKeyboard() noexcept -> NAMESPACE_IO::Keyboard&;
 
         auto GetHwnd() const noexcept -> HWND;
 
@@ -54,7 +54,7 @@ export namespace fatpound::win32
 
         void SetTitle(const std::wstring& title);
         void ShowMessageBox(const std::wstring& message, const std::wstring& title, UINT error_flags) noexcept;
-        void Kill();
+        void Kill() noexcept;
 
 
     public:

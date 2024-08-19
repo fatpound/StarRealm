@@ -117,21 +117,21 @@ export namespace fatpound::win32::io
 
 
     private:
-        void OnMouseMove_(int x, int y) noexcept;
-        void OnMouseEnter_() noexcept;
-        void OnMouseLeave_() noexcept;
+        void OnMouseMove_(int x, int y);
+        void OnMouseEnter_();
+        void OnMouseLeave_();
 
-        void OnRawDelta_(int dx, int dy) noexcept;
+        void OnRawDelta_(int dx, int dy);
 
-        void OnLeftPressed_() noexcept;
-        void OnLeftReleased_() noexcept;
-        void OnRightPressed_() noexcept;
-        void OnRightReleased_() noexcept;
-        void OnWheelPressed_() noexcept;
-        void OnWheelReleased_() noexcept;
-        void OnWheelUp_() noexcept;
-        void OnWheelDown_() noexcept;
-        void OnWheelDelta_(int delta) noexcept;
+        void OnLeftPressed_();
+        void OnLeftReleased_();
+        void OnRightPressed_();
+        void OnRightReleased_();
+        void OnWheelPressed_();
+        void OnWheelReleased_();
+        void OnWheelUp_();
+        void OnWheelDown_();
+        void OnWheelDelta_(int delta);
 
         void TrimBuffer_() noexcept;
         void TrimRawInputBuffer_() noexcept;

@@ -6,3 +6,5 @@ export import :DepthStencil;
 export import :Rasterizer;
 export import :RenderTarget;
 export import :Viewport;
+export import :ShaderResource;
+export import :Sampler;

@@ -9,3 +9,6 @@ export import :DepthStencilState;
 export import :RasterizerState;
 
 export import :DeviceAndSwapChain;
+
+export import :SamplerState;
+export import :ShaderResourceView;

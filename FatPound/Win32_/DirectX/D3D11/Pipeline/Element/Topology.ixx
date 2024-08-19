@@ -14,7 +14,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
     class Topology final : public Bindable
     {
     public:
-        explicit Topology(D3D11_PRIMITIVE_TOPOLOGY type);
+        explicit Topology(D3D11_PRIMITIVE_TOPOLOGY type) noexcept;
 
         explicit Topology() = delete;
         explicit Topology(const Topology& src) = delete;
@@ -26,7 +26,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
 
     public:
-        virtual void Bind(Graphics& gfx) noexcept override final;
+        virtual void Bind(Graphics& gfx) override final;
 
 
     protected:

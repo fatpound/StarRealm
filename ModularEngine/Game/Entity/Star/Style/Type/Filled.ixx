@@ -74,7 +74,7 @@ export namespace starrealm::entity::star::style::type
 
     private:
         template <MyVertex V>
-        static float GetVertex_X_(const V& vertex)
+        static float GetVertex_X_(const V& vertex) noexcept
         {
             if constexpr (std::is_same_v<V, DirectX::XMFLOAT3>)
             {
@@ -87,7 +87,7 @@ export namespace starrealm::entity::star::style::type
         }
 
         template <MyVertex V>
-        static float GetVertex_Y_(const V& vertex)
+        static float GetVertex_Y_(const V& vertex) noexcept
         {
             if constexpr (std::is_same_v<V, DirectX::XMFLOAT3>)
             {
@@ -104,7 +104,7 @@ export namespace starrealm::entity::star::style::type
         {
             std::ranges::sort(
                 idx_arr,
-                [&](const auto& idx0, const auto& idx1) -> bool
+                [&](const auto& idx0, const auto& idx1) noexcept -> bool
                 {
                     return Filled::GetVertex_X_(vertices[idx0]) < Filled::GetVertex_X_(vertices[idx1]);
                 }

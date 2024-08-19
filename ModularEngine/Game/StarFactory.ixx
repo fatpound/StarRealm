@@ -64,7 +64,7 @@ export namespace starrealm
 
 
     public:
-        auto GetStars() && -> std::vector<std::unique_ptr<entity::Star>>&&;
+        auto GetStars() && noexcept -> std::vector<std::unique_ptr<entity::Star>>&&;
 
 
     protected:

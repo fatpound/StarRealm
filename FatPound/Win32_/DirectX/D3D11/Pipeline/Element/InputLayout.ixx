@@ -30,7 +30,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
 
     public:
-        virtual void Bind(Graphics& gfx) noexcept override final;
+        virtual void Bind(Graphics& gfx) override final;
 
 
     protected:

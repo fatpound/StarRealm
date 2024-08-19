@@ -16,7 +16,7 @@ namespace fatpound::win32::d3d11::factory
     {
         ::wrl::ComPtr<ID3D11Texture2D> pBackBufferTexture = nullptr;
 
-        ::HRESULT hr;
+        HRESULT hr;
 
         hr = gfxres.m_pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), &pBackBufferTexture);
 

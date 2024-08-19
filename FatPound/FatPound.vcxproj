@@ -42,6 +42,10 @@
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\RasterizerState.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\RenderTargetView.cxx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\RenderTargetView.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Factory\SamplerState.cxx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Factory\SamplerState.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Factory\ShaderResourceView.cxx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Factory\ShaderResourceView.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\Texture2D.cxx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\Texture2D.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Graphics.cxx" />
@@ -76,6 +80,9 @@
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Rasterizer.cxx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Rasterizer.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\RenderTarget.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Sampler.cxx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Sampler.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\ShaderResource.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\System.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Viewport.cxx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Viewport.ixx" />

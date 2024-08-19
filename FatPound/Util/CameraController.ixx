@@ -7,14 +7,14 @@ module;
 export module FatPound.Util.CameraController;
 
 import FatPound.Util.Camera;
-import FatPound.Win32;
+import FatPound.Win32.IO;
 
 export namespace fatpound::util
 {
 	class CameraController final
 	{
 	public:
-		explicit CameraController(Camera& camera, NAMESPACE_IO::Mouse& mouse, const NAMESPACE_IO::Keyboard& keyboard);
+		explicit CameraController(Camera& camera, NAMESPACE_IO::Mouse& mouse, const NAMESPACE_IO::Keyboard& keyboard) noexcept;
 
 		explicit CameraController() = delete;
 		explicit CameraController(const CameraController& src) = delete;
@@ -26,7 +26,7 @@ export namespace fatpound::util
 
 
 	public:
-		void Update();
+		void Update() noexcept;
 
 
 	protected:

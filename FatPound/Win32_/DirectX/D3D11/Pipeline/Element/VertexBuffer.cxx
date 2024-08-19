@@ -10,7 +10,7 @@ module FatPound.Win32.D3D11.Pipeline.Element:VertexBuffer;
 
 namespace fatpound::win32::d3d11::pipeline::element
 {
-    void VertexBuffer::Bind(Graphics& gfx) noexcept
+    void VertexBuffer::Bind(Graphics& gfx)
     {
         constexpr UINT offset = 0u;
 

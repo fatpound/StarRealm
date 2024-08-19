@@ -12,26 +12,9 @@ namespace wrl = Microsoft::WRL;
 
 namespace fatpound::win32::d3d11::factory
 {
-    auto RasterizerState::CreateDESC() -> D3D11_RASTERIZER_DESC
-    {
-        D3D11_RASTERIZER_DESC desc = {};
-        desc.FillMode = D3D11_FILL_SOLID;
-        desc.CullMode = D3D11_CULL_BACK;
-        desc.FrontCounterClockwise = false;
-        desc.DepthBias = 0;
-        desc.DepthBiasClamp = 0.0f;
-        desc.SlopeScaledDepthBias = 0.0f;
-        desc.DepthClipEnable = true;
-        desc.ScissorEnable = false;
-        desc.MultisampleEnable = true;
-        desc.AntialiasedLineEnable = true;
-
-        return desc;
-    }
-
     void RasterizerState::Create(
-        GfxResource& gfxres,
-        Microsoft::WRL::ComPtr<ID3D11RasterizerState>& pRasterizerState,
+        const GfxResource& gfxres,
+        ::Microsoft::WRL::ComPtr<ID3D11RasterizerState>& pRasterizerState,
         const D3D11_RASTERIZER_DESC& desc
     )
     {

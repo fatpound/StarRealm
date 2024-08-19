@@ -24,7 +24,7 @@ namespace starrealm
         }
     }
 
-    auto StarFactory::GetStars() && -> std::vector<std::unique_ptr<entity::Star>>&&
+    auto StarFactory::GetStars() && noexcept -> std::vector<std::unique_ptr<entity::Star>>&&
     {
         return std::move(m_stars_);
     }
@@ -39,7 +39,7 @@ namespace starrealm
             position   = GeneratePosition3_();
             radiusPack = GenerateRadiusPack_();
 
-            if (std::ranges::none_of(m_stars_, [&](const auto& pstar) -> bool { return pstar->IsWithinArea(position, radiusPack.outer_radius); }))
+            if (std::ranges::none_of(m_stars_, [&](const auto& pstar) noexcept -> bool { return pstar->IsWithinArea(position, radiusPack.outer_radius); }))
             {
                 break;
             }
