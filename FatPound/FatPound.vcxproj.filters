@@ -168,9 +168,6 @@
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\Viewport.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Bindable.cxx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Bindable.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>

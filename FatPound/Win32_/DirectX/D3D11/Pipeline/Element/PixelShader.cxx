@@ -11,13 +11,13 @@ module FatPound.Win32.D3D11.Pipeline.Element:PixelShader;
 
 namespace fatpound::win32::d3d11::pipeline::element
 {
-    PixelShader::PixelShader(Graphics<>& gfx, const std::wstring& path)
+    PixelShader::PixelShader(ID3D11Device* pDevice, const std::wstring& path)
     {
         ::Microsoft::WRL::ComPtr<ID3DBlob> pBlob;
 
         ::D3DReadFileToBlob(path.c_str(), &pBlob);
 
-        Bindable::GetDevice_(gfx)->CreatePixelShader(
+        pDevice->CreatePixelShader(
             pBlob->GetBufferPointer(),
             pBlob->GetBufferSize(),
             nullptr,
@@ -25,8 +25,8 @@ namespace fatpound::win32::d3d11::pipeline::element
         );
     }
 
-    void PixelShader::Bind(Graphics<>& gfx)
+    void PixelShader::Bind([[maybe_unused]] ID3D11Device* pDevice, [[maybe_unused]] ID3D11DeviceContext* pImmediateContext)
     {
-        Bindable::GetContext_(gfx)->PSSetShader(m_pPixelShader_.Get(), nullptr, 0u);
+        pImmediateContext->PSSetShader(m_pPixelShader_.Get(), nullptr, 0u);
     }
 }

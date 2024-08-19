@@ -10,7 +10,7 @@ module FatPound.Win32.D3D11.Pipeline.Element:IndexBuffer;
 
 namespace fatpound::win32::d3d11::pipeline::element
 {
-    IndexBuffer::IndexBuffer(Graphics<>& gfx, const std::vector<unsigned short int>& indices)
+    IndexBuffer::IndexBuffer(ID3D11Device* pDevice, const std::vector<unsigned short int>& indices)
         :
         m_count_(static_cast<UINT>(indices.size()))
     {
@@ -25,7 +25,7 @@ namespace fatpound::win32::d3d11::pipeline::element
         D3D11_SUBRESOURCE_DATA sd = {};
         sd.pSysMem = indices.data();
 
-        Bindable::GetDevice_(gfx)->CreateBuffer(&bd, &sd, &m_pIndexBuffer_);
+        pDevice->CreateBuffer(&bd, &sd, &m_pIndexBuffer_);
     }
 
     auto IndexBuffer::GetCount() const noexcept -> UINT
@@ -33,8 +33,8 @@ namespace fatpound::win32::d3d11::pipeline::element
         return m_count_;
     }
 
-    void IndexBuffer::Bind(Graphics<>& gfx)
+    void IndexBuffer::Bind([[maybe_unused]] ID3D11Device* pDevice, [[maybe_unused]] ID3D11DeviceContext* pImmediateContext)
     {
-        Bindable::GetContext_(gfx)->IASetIndexBuffer(m_pIndexBuffer_.Get(), DXGI_FORMAT_R16_UINT, 0u);
+        pImmediateContext->IASetIndexBuffer(m_pIndexBuffer_.Get(), DXGI_FORMAT_R16_UINT, 0u);
     }
 }

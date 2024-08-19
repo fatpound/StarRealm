@@ -11,11 +11,11 @@ module FatPound.Win32.D3D11.Pipeline.Element:VertexShader;
 
 namespace fatpound::win32::d3d11::pipeline::element
 {
-    VertexShader::VertexShader(Graphics<>& gfx, const std::wstring& path)
+    VertexShader::VertexShader(ID3D11Device* pDevice, const std::wstring& path)
     {
         ::D3DReadFileToBlob(path.c_str(), &m_pBytecodeBlob_);
 
-        Bindable::GetDevice_(gfx)->CreateVertexShader(
+        pDevice->CreateVertexShader(
             m_pBytecodeBlob_->GetBufferPointer(),
             m_pBytecodeBlob_->GetBufferSize(),
             nullptr,
@@ -28,8 +28,8 @@ namespace fatpound::win32::d3d11::pipeline::element
         return m_pBytecodeBlob_.Get();
     }
 
-    void VertexShader::Bind(Graphics<>& gfx)
+    void VertexShader::Bind([[maybe_unused]] ID3D11Device* pDevice, [[maybe_unused]] ID3D11DeviceContext* pImmediateContext)
     {
-        Bindable::GetContext_(gfx)->VSSetShader(m_pVertexShader_.Get(), nullptr, 0u);
+        pImmediateContext->VSSetShader(m_pVertexShader_.Get(), nullptr, 0u);
     }
 }

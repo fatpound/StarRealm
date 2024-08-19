@@ -39,10 +39,10 @@ export namespace starrealm::entity::star::style::effect
         >
         static void InitStaticBinds(NAMESPACE_D3D11::Graphics<>& gfx)
         {
-            auto pvs = std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexShader>(gfx, L"VSColorMulti.cso");
+            auto pvs = std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexShader>(gfx.GetDevice(), L"VSColorMulti.cso");
             auto pvsbc = pvs->GetBytecode();
             Star_Base::AddStaticBind_(std::move(pvs));
-            Star_Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::PixelShader>(gfx, L"PSColorMulti.cso"));
+            Star_Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::PixelShader>(gfx.GetDevice(), L"PSColorMulti.cso"));
 
             std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
             {
@@ -58,7 +58,7 @@ export namespace starrealm::entity::star::style::effect
                 );
             }
 
-            Star_Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::InputLayout>(gfx, ied, pvsbc));
+            Star_Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::InputLayout>(gfx.GetDevice(), ied, pvsbc));
         }
 
 

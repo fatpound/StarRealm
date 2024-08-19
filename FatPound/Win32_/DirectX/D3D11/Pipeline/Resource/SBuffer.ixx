@@ -9,7 +9,6 @@ module;
 export module FatPound.Win32.D3D11.Pipeline.Resource:SBuffer;
 
 import FatPound.Win32.D3D11.Pipeline.Bindable;
-import FatPound.Win32.D3D11.Graphics;
 
 import std;
 
@@ -19,7 +18,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
     class SBuffer : public Bindable
     {
     public:
-        explicit SBuffer(Graphics<>& gfx, const std::vector<S>& structures)
+        explicit SBuffer(ID3D11Device* pDevice, ID3D11DeviceContext* pImmediateContext, const std::vector<S>& structures)
         {
             D3D11_BUFFER_DESC sbd = {};
             sbd.BindFlags = D3D11_BIND_SHADER_RESOURCE;
@@ -32,15 +31,15 @@ export namespace fatpound::win32::d3d11::pipeline::resource
             D3D11_SUBRESOURCE_DATA initData = {};
             initData.pSysMem = structures.data();
 
-            Bindable::GetDevice_(gfx)->CreateBuffer(&sbd, &initData, &m_pStructuredBuffer_);
+            pDevice->CreateBuffer(&sbd, &initData, &m_pStructuredBuffer_);
 
             D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
             srvDesc.Format = DXGI_FORMAT_UNKNOWN;
             srvDesc.ViewDimension = D3D11_SRV_DIMENSION_BUFFER;
             srvDesc.Buffer.ElementWidth = static_cast<UINT>(structures.size());
 
-            Bindable::GetDevice_(gfx)->CreateShaderResourceView(m_pStructuredBuffer_.Get(), &srvDesc, &m_pShaderResourceView_);
-            Bindable::GetContext_(gfx)->VSSetShaderResources(0u, 1u, m_pShaderResourceView_.GetAddressOf());
+            pDevice->CreateShaderResourceView(m_pStructuredBuffer_.Get(), &srvDesc, &m_pShaderResourceView_);
+            pImmediateContext->VSSetShaderResources(0u, 1u, m_pShaderResourceView_.GetAddressOf());
         }
 
         explicit SBuffer() = delete;

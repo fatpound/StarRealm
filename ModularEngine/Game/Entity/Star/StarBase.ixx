@@ -44,7 +44,7 @@ export namespace starrealm::entity::star
                 }
             }
 
-            AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::TransformCBuffer<StarBase>>(gfx, *this));
+            AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::TransformCBuffer<StarBase>>(gfx.GetDevice(), *this, gfx));
         }
 
         explicit StarBase() = delete;

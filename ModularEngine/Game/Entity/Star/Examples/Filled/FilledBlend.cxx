@@ -18,9 +18,9 @@ namespace starrealm::entity::star
         StarBase<style::type::Filled, style::effect::Blend>(gfx, desc)
     {
         const auto& vertices = NAMESPACE_STAR_EFFECT::Blend::GenerateVertices(m_radiuses_, m_position_, desc.flare_count);
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexBuffer>(gfx, vertices));
+        AddBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexBuffer>(gfx.GetDevice(), vertices));
 
         const auto& indices = NAMESPACE_STAR_TYPE::Filled::GenerateIndices(vertices);
-        AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::IndexBuffer>(gfx, indices));
+        AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::IndexBuffer>(gfx.GetDevice(), indices));
     }
 }

@@ -21,12 +21,12 @@ export namespace fatpound::win32::d3d11::pipeline::resource
     class TransformCBuffer final : public Bindable
     {
     public:
-        explicit TransformCBuffer(Graphics<>& gfx, const C& parent)
+        explicit TransformCBuffer(ID3D11Device* pDevice, const C& parent, Graphics<>& gfx)
             :
-            m_vcbuf_(gfx),
+            m_vcbuf_(pDevice),
             m_parent_(parent)
         {
-
+            s_pGfx_ = std::addressof(gfx);
         }
 
         explicit TransformCBuffer() = delete;
@@ -39,18 +39,18 @@ export namespace fatpound::win32::d3d11::pipeline::resource
 
 
     public:
-        virtual void Bind(Graphics<>& gfx) override final
+        virtual void Bind([[maybe_unused]] ID3D11Device* pDevice, [[maybe_unused]] ID3D11DeviceContext* pImmediateContext) override final
         {
             m_vcbuf_.Update(
-                gfx,
+                pImmediateContext,
                 ::DirectX::XMMatrixTranspose(
                     m_parent_.GetTransformXM() *
-                    gfx.GetCameraXM() *
-                    gfx.GetProjectionXM()
+                    s_pGfx_->GetCameraXM() *
+                    s_pGfx_->GetProjectionXM()
                 )
             );
 
-            m_vcbuf_.Bind(gfx);
+            m_vcbuf_.Bind(pDevice, pImmediateContext);
         }
 
 
@@ -61,5 +61,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
         VertexCBuffer<DirectX::XMMATRIX> m_vcbuf_;
 
         const C& m_parent_;
+
+        inline static Graphics<>* s_pGfx_{};
     };
 }

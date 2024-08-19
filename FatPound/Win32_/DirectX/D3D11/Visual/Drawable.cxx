@@ -2,6 +2,10 @@ module;
 
 #include <FatWin32_Namespaces.hpp>
 
+#include <d3d11.h>
+
+#include <wrl.h>
+
 #include <cassert>
 
 module FatPound.Win32.D3D11.Visual.Drawable;
@@ -10,14 +14,17 @@ namespace fatpound::win32::d3d11::visual
 {
     void Drawable::Draw(Graphics<>& gfx) const noexcept(IN_RELEASE)
     {
+        auto pDevice           = gfx.GetDevice();
+        auto pImmediateContext = gfx.GetImmediateContext();
+
         for (auto& bindable : m_binds_)
         {
-            bindable->Bind(gfx);
+            bindable->Bind(pDevice, pImmediateContext);
         }
 
         for (auto& static_bindable : this->GetStaticBinds_())
         {
-            static_bindable->Bind(gfx);
+            static_bindable->Bind(pDevice, pImmediateContext);
         }
 
         gfx.DrawIndexed(pCIndexBuffer_->GetCount());

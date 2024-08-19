@@ -15,8 +15,8 @@ namespace fatpound::win32::d3d11::pipeline::element
 
     }
 
-    void Topology::Bind(Graphics<>& gfx)
+    void Topology::Bind([[maybe_unused]] ID3D11Device* pDevice, [[maybe_unused]] ID3D11DeviceContext* pImmediateContext)
     {
-        Bindable::GetContext_(gfx)->IASetPrimitiveTopology(m_type_);
+        pImmediateContext->IASetPrimitiveTopology(m_type_);
     }
 }

@@ -6,8 +6,6 @@ module;
 
 export module FatPound.Win32.D3D11.Pipeline.Bindable;
 
-import FatPound.Win32.D3D11.Graphics;
-
 export namespace fatpound::win32::d3d11::pipeline
 {
     class Bindable
@@ -23,12 +21,10 @@ export namespace fatpound::win32::d3d11::pipeline
         
 
     public:
-        virtual void Bind(Graphics<>& gfx) = 0;
+        virtual void Bind([[maybe_unused]] ID3D11Device* pDevice, [[maybe_unused]] ID3D11DeviceContext* pImmediateContext) = 0;
 
 
     protected:
-        static auto GetDevice_(const Graphics<>& gfx)  noexcept -> ID3D11Device*;
-        static auto GetContext_(const Graphics<>& gfx) noexcept -> ID3D11DeviceContext*;
 
 
     private:

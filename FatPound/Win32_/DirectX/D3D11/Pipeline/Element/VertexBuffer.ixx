@@ -9,7 +9,6 @@ module;
 export module FatPound.Win32.D3D11.Pipeline.Element:VertexBuffer;
 
 import FatPound.Win32.D3D11.Pipeline.Bindable;
-import FatPound.Win32.D3D11.Graphics;
 
 import std;
 
@@ -19,7 +18,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
     {
     public:
         template <class V>
-        explicit VertexBuffer(Graphics<>& gfx, const std::vector<V>& vertices)
+        explicit VertexBuffer(ID3D11Device* pDevice, const std::vector<V>& vertices)
             :
             m_stride_(sizeof(V))
         {
@@ -34,7 +33,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
             D3D11_SUBRESOURCE_DATA sd = {};
             sd.pSysMem = vertices.data();
 
-            Bindable::GetDevice_(gfx)->CreateBuffer(&bd, &sd, &m_pVertexBuffer_);
+            pDevice->CreateBuffer(&bd, &sd, &m_pVertexBuffer_);
         }
 
         explicit VertexBuffer() = delete;
@@ -47,7 +46,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
 
     public:
-        virtual void Bind(Graphics<>& gfx) override final;
+        virtual void Bind([[maybe_unused]] ID3D11Device* pDevice, [[maybe_unused]] ID3D11DeviceContext* pImmediateContext) override final;
 
 
     protected:

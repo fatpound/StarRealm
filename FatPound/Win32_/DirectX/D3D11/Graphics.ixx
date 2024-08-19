@@ -14,7 +14,9 @@ module;
 export module FatPound.Win32.D3D11.Graphics;
 
 import FatPound.Win32.D3D11.Graphics.Resource;
+import FatPound.Win32.D3D11.Pipeline.Element;
 import FatPound.Win32.D3D11.Pipeline.System;
+import FatPound.Win32.D3D11.Pipeline.StaticBindableVec;
 import FatPound.Win32.D3D11.Factory;
 
 import FatPound.Math;
@@ -27,18 +29,16 @@ namespace wrl = Microsoft::WRL;
 
 using NAMESPACE_UTIL::Color;
 
-namespace fatpound::win32::d3d11::pipeline
+struct __declspec(empty_bases) SEmpty_
 {
-    class Bindable;
-}
+
+};
 
 export namespace fatpound::win32::d3d11
 {
     template <bool Framework = false>
-    class Graphics final
+    class Graphics final : public std::conditional_t<Framework, NAMESPACE_PIPELINE::StaticBindableVec<Graphics<Framework>>, SEmpty_>
     {
-        friend pipeline::Bindable;
-
     public:
         struct FullScreenQuad final
         {
@@ -136,6 +136,15 @@ export namespace fatpound::win32::d3d11
         auto GetHeight() const noexcept
         {
             return static_cast<N>(m_height_);
+        }
+
+        auto GetDevice() -> ID3D11Device*
+        {
+            return m_gfxres_.m_pDevice.Get();
+        }
+        auto GetImmediateContext() -> ID3D11DeviceContext*
+        {
+            return m_gfxres_.m_pImmediateContext.Get();
         }
 
         auto GetProjectionXM() const noexcept -> ::DirectX::XMMATRIX requires(not Framework)
@@ -245,32 +254,37 @@ export namespace fatpound::win32::d3d11
             pipeline::system::RenderTarget::SetDefault<s_msaaQuality_>(m_gfxres_, m_width_, m_height_);
             pipeline::system::Viewport::SetDefault(m_gfxres_, m_width_, m_height_);
         }
-        void InitFramework_()
+        void InitFramework_() requires(Framework)
         {
-            // using SBinds = NAMESPACE_PIPELINE::StaticBindableVec<Graphics>;
-            // 
-            // auto pvs = std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexShader>(m_gfx_, L"VSFrameBuffer.cso");
-            // auto pvsbc = pvs->GetBytecode();
-            // 
-            // SBinds::AddStaticBind_(std::move(pvs));
-            // SBinds::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::element::PixelShader>(m_gfx_, L"PSFrameBuffer.cso"));
-            // SBinds::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::element::VertexBuffer>(m_gfx_, FullScreenQuad::vertices));
-            // SBinds::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::element::Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
-            // 
-            // const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
-            // {
-            //     {
-            //         { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-            //         { "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,    0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 }
-            //     }
-            // };
-            // 
-            // SBinds::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::element::InputLayout>(m_gfx_, ied, pvsbc));
-            // 
-            // for (auto& sbind : m_static_binds_)
-            // {
-            //     sbind->Bind(m_gfx_);
-            // }
+            using SBinds = NAMESPACE_PIPELINE::StaticBindableVec<Graphics<Framework>>;
+            
+            auto pvs = std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexShader>(GetDevice(), L"VSFrameBuffer.cso");
+            auto pvsbc = pvs->GetBytecode();
+            
+            SBinds::AddStaticBind_(std::move(pvs));
+            SBinds::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::element::PixelShader>(GetDevice(), L"PSFrameBuffer.cso"));
+            SBinds::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::element::VertexBuffer>(GetDevice(), FullScreenQuad::vertices));
+            SBinds::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::element::Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
+            
+            const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
+            {
+                {
+                    { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+                    { "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,    0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+                }
+            };
+            
+            SBinds::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::element::InputLayout>(GetDevice(), ied, pvsbc));
+            
+            auto pDevice = GetDevice();
+            auto pImmediateContext = GetImmediateContext();
+
+            auto& sbinds = SBinds::GetStaticBinds_();
+
+            for (auto& sbind : sbinds)
+            {
+                sbind->Bind(pDevice, pImmediateContext);
+            }
         }
 
         void ToggleAltEnterMode_()

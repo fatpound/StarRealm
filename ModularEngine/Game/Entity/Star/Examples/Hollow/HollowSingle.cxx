@@ -18,12 +18,12 @@ namespace starrealm::entity::star
         StarBase<style::type::Hollow, style::effect::SingleColor>(gfx, desc)
     {
         const auto& vertices = Star::Make(m_radiuses_, m_position_, desc.flare_count);
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexBuffer>(gfx, vertices));
+        AddBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexBuffer>(gfx.GetDevice(), vertices));
 
         const auto& indices = NAMESPACE_STAR_TYPE::Hollow::GenerateIndices<unsigned short int>(vertices.size());
-        AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::IndexBuffer>(gfx, indices));
+        AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::IndexBuffer>(gfx.GetDevice(), indices));
 
         const auto& cbuf = NAMESPACE_STAR_EFFECT::SingleColor::ColorBase_::GeneratePixelCBuffer();
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::PixelCBuffer<NAMESPACE_STAR_EFFECT::SingleColor::ColorBase_::CBuffer>>(gfx, cbuf));
+        AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::PixelCBuffer<NAMESPACE_STAR_EFFECT::SingleColor::ColorBase_::CBuffer>>(gfx.GetDevice(), cbuf));
     }
 }

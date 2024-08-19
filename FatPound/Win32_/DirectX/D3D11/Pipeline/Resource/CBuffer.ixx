@@ -9,7 +9,6 @@ module;
 export module FatPound.Win32.D3D11.Pipeline.Resource:CBuffer;
 
 import FatPound.Win32.D3D11.Pipeline.Bindable;
-import FatPound.Win32.D3D11.Graphics;
 
 import std;
 
@@ -19,7 +18,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
     class CBuffer : public Bindable
     {
     public:
-        explicit CBuffer(Graphics<>& gfx, const C& consts)
+        explicit CBuffer(ID3D11Device* pDevice, const C& consts)
         {
             D3D11_BUFFER_DESC cbd = {};
             cbd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
@@ -32,9 +31,9 @@ export namespace fatpound::win32::d3d11::pipeline::resource
             D3D11_SUBRESOURCE_DATA csd = {};
             csd.pSysMem = &consts;
 
-            Bindable::GetDevice_(gfx)->CreateBuffer(&cbd, &csd, &m_pConstantBuffer_);
+            pDevice->CreateBuffer(&cbd, &csd, &m_pConstantBuffer_);
         }
-        explicit CBuffer(Graphics<>& gfx)
+        explicit CBuffer(ID3D11Device* pDevice)
         {
             D3D11_BUFFER_DESC cbd = {};
             cbd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
@@ -44,7 +43,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
             cbd.ByteWidth = sizeof(C);
             cbd.StructureByteStride = 0u;
 
-            Bindable::GetDevice_(gfx)->CreateBuffer(&cbd, nullptr, &m_pConstantBuffer_);
+            pDevice->CreateBuffer(&cbd, nullptr, &m_pConstantBuffer_);
         }
 
         explicit CBuffer() = delete;
@@ -57,11 +56,11 @@ export namespace fatpound::win32::d3d11::pipeline::resource
 
 
     public:
-        virtual void Update(Graphics<>& gfx, const C& consts) final
+        virtual void Update(ID3D11DeviceContext* pImmediateContext, const C& consts) final
         {
             D3D11_MAPPED_SUBRESOURCE msr;
 
-            Bindable::GetContext_(gfx)->Map(
+            pImmediateContext->Map(
                 m_pConstantBuffer_.Get(),
                 0u,
                 D3D11_MAP_WRITE_DISCARD,
@@ -71,7 +70,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
 
             std::memcpy(msr.pData, &consts, sizeof(consts));
 
-            Bindable::GetContext_(gfx)->Unmap(m_pConstantBuffer_.Get(), 0u);
+            pImmediateContext->Unmap(m_pConstantBuffer_.Get(), 0u);
         }
 
 

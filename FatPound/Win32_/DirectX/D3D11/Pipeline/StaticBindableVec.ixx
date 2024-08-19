@@ -25,6 +25,11 @@ export namespace fatpound::win32::d3d11::pipeline
 
 
     protected:
+        static auto& GetStaticBinds_()
+        {
+            return m_static_binds_;
+        }
+
         static bool IsStaticInitialized_() noexcept(IN_RELEASE)
         {
             return not m_static_binds_.empty();

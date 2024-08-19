@@ -7,7 +7,6 @@ module;
 export module FatPound.Win32.D3D11.Pipeline.Element:Topology;
 
 import FatPound.Win32.D3D11.Pipeline.Bindable;
-import FatPound.Win32.D3D11.Graphics;
 
 export namespace fatpound::win32::d3d11::pipeline::element
 {
@@ -26,7 +25,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
 
     public:
-        virtual void Bind(Graphics<>& gfx) override final;
+        virtual void Bind([[maybe_unused]] ID3D11Device* pDevice, [[maybe_unused]] ID3D11DeviceContext* pImmediateContext) override final;
 
 
     protected:
