@@ -68,13 +68,13 @@ namespace fatpound::util
 
         if (engaged_)
         {
-            ::dx::XMVECTOR lastPositionVec = ::dx::XMLoadFloat2(&last_position_);
-
             const auto& pos = mouse_.GetPos();
-            ::dx::XMFLOAT2 currentPosition = { static_cast<float>(pos.first), static_cast<float>(pos.second) };
 
-            ::dx::XMVECTOR currentPositionVec = ::dx::XMLoadFloat2(&currentPosition);
-            ::dx::XMVECTOR deltaPositionVec   = ::dx::XMVectorSubtract(currentPositionVec, lastPositionVec);
+            const auto& lastPositionVec = ::dx::XMLoadFloat2(&last_position_);
+            const auto& currentPosition = ::dx::XMFLOAT2{ static_cast<float>(pos.first), static_cast<float>(pos.second) };
+
+            const auto& currentPositionVec = ::dx::XMLoadFloat2(&currentPosition);
+            auto deltaPositionVec          = ::dx::XMVectorSubtract(currentPositionVec, lastPositionVec);
 
             deltaPositionVec = ::dx::XMVectorSetX(deltaPositionVec, -::dx::XMVectorGetX(deltaPositionVec));
 

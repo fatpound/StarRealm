@@ -33,7 +33,7 @@ export namespace fatpound::util
 
 
 	private:
-		::DirectX::XMFLOAT2 last_position_;
+		::DirectX::XMFLOAT2 last_position_{};
 
 		Camera& camera_;
 

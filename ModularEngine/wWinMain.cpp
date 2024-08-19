@@ -23,7 +23,7 @@ int APIENTRY wWinMain(
     {
         const std::string str = ex.what();
 
-        int sizeNeeded = MultiByteToWideChar(CP_UTF8, 0, str.c_str(), static_cast<int>(str.size()), nullptr, 0);
+        const int sizeNeeded = MultiByteToWideChar(CP_UTF8, 0, str.c_str(), static_cast<int>(str.size()), nullptr, 0);
 
         std::wstring wstr(static_cast<std::uint64_t>(sizeNeeded), 0);
 

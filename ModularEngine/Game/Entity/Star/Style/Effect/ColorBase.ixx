@@ -47,7 +47,7 @@ export namespace starrealm::entity::star::style::effect
             std::minstd_rand mrng(std::random_device{}());
             std::uniform_real_distribution<float> rgb_dist(0.0f, 1.0f);
 
-            CBuffer cbuf =
+            const CBuffer cbuf =
             {
                 {
                     rgb_dist(mrng),

@@ -31,8 +31,8 @@ namespace starrealm
 
     auto StarFactory::GenerateStar_() -> std::unique_ptr<entity::Star>
     {
-        dx::XMFLOAT3 position;
-        entity::Star::RadiusPack radiusPack;
+        dx::XMFLOAT3 position{};
+        entity::Star::RadiusPack radiusPack{};
 
         while (true)
         {
