@@ -14,9 +14,8 @@ module;
 export module FatPound.Win32.D3D11.Graphics;
 
 import FatPound.Win32.D3D11.Graphics.Resource;
-import FatPound.Win32.D3D11.Pipeline.Element;
-import FatPound.Win32.D3D11.Pipeline.System;
-import FatPound.Win32.D3D11.Pipeline.StaticBindableVec;
+import FatPound.Win32.D3D11.Pipeline;
+import FatPound.Win32.D3D11.Visual.SceneXMPack;
 import FatPound.Win32.D3D11.Factory;
 
 import FatPound.Math;
@@ -147,13 +146,27 @@ export namespace fatpound::win32::d3d11
             return m_gfxres_.m_pImmediateContext.Get();
         }
 
-        auto GetProjectionXM() const noexcept -> ::DirectX::XMMATRIX requires(not Framework)
+        auto GetSceneXMPack() -> visual::SceneXMPack&
         {
-            return m_projection_;
+            return m_sceneXM_pack_;
         }
+
         auto GetCameraXM()     const noexcept -> ::DirectX::XMMATRIX requires(not Framework)
         {
-            return m_camera_;
+            return m_sceneXM_pack_.GetCameraXM();
+        }
+        auto GetProjectionXM() const noexcept -> ::DirectX::XMMATRIX requires(not Framework)
+        {
+            return m_sceneXM_pack_.GetProjectionXM();
+        }
+
+        void SetCameraXM(const ::DirectX::XMMATRIX& camera)         noexcept requires(not Framework)
+        {
+            m_sceneXM_pack_.SetCameraXM(camera);
+        }
+        void SetProjectionXM(const ::DirectX::XMMATRIX& projection) noexcept requires(not Framework)
+        {
+            m_sceneXM_pack_.SetProjectionXM(projection);
         }
 
         void BeginFrame() noexcept
@@ -226,15 +239,6 @@ export namespace fatpound::win32::d3d11
         void DrawIndexed(UINT count) requires(not Framework)
         {
             m_gfxres_.m_pImmediateContext->DrawIndexed(count, 0u, 0);
-        }
-
-        void SetProjectionXM(const ::DirectX::XMMATRIX& projection) noexcept requires(not Framework)
-        {
-            m_projection_ = projection;
-        }
-        void SetCameraXM(const ::DirectX::XMMATRIX& camera)         noexcept requires(not Framework)
-        {
-            m_camera_ = camera;
         }
 
 
@@ -331,8 +335,7 @@ export namespace fatpound::win32::d3d11
     private:
         GfxResource m_gfxres_;
 
-        [[maybe_unused]] ::DirectX::XMMATRIX m_projection_;
-        [[maybe_unused]] ::DirectX::XMMATRIX m_camera_;
+        [[maybe_unused]] visual::SceneXMPack m_sceneXM_pack_;
 
         const decltype(SizeInfo::width)  m_width_;
         const decltype(SizeInfo::height) m_height_;
