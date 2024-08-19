@@ -15,7 +15,7 @@ namespace fatpound::win32::d3d11::pipeline::element
 
     }
 
-    void Topology::Bind(Graphics& gfx)
+    void Topology::Bind(Graphics<>& gfx)
     {
         Bindable::GetContext_(gfx)->IASetPrimitiveTopology(m_type_);
     }

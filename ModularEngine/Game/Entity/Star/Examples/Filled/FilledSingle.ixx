@@ -14,7 +14,7 @@ export namespace starrealm::entity::star
     class FilledSingle final : public StarBase<style::type::Filled, style::effect::SingleColor>
     {
     public:
-        explicit FilledSingle(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
+        explicit FilledSingle(NAMESPACE_D3D11::Graphics<>& gfx, const Descriptor& desc);
 
         explicit FilledSingle() = delete;
         explicit FilledSingle(const FilledSingle& src) = delete;

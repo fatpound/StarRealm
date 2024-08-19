@@ -13,7 +13,7 @@ namespace dx = DirectX;
 
 namespace starrealm::entity::star
 {
-    FilledBlend::FilledBlend(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
+    FilledBlend::FilledBlend(NAMESPACE_D3D11::Graphics<>& gfx, const Descriptor& desc)
         :
         StarBase<style::type::Filled, style::effect::Blend>(gfx, desc)
     {

@@ -14,7 +14,7 @@ export namespace starrealm::entity::star
     class HollowBlend final : public StarBase<style::type::Hollow, style::effect::Blend>
     {
     public:
-        explicit HollowBlend(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc);
+        explicit HollowBlend(NAMESPACE_D3D11::Graphics<>& gfx, const Descriptor& desc);
 
         explicit HollowBlend() = delete;
         explicit HollowBlend(const HollowBlend& src) = delete;

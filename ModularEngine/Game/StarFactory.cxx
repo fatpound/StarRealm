@@ -12,7 +12,7 @@ namespace dx = DirectX;
 
 namespace starrealm
 {
-    StarFactory::StarFactory(NAMESPACE_D3D11::Graphics& gfx)
+    StarFactory::StarFactory(NAMESPACE_D3D11::Graphics<>& gfx)
         :
         m_gfx_(gfx)
     {

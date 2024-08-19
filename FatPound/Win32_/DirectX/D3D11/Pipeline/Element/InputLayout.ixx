@@ -18,7 +18,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
     class InputLayout final : public Bindable
     {
     public:
-        explicit InputLayout(Graphics& gfx, const std::vector<D3D11_INPUT_ELEMENT_DESC>& layout, ID3DBlob* pVertexShaderBytecode);
+        explicit InputLayout(Graphics<>& gfx, const std::vector<D3D11_INPUT_ELEMENT_DESC>& layout, ID3DBlob* pVertexShaderBytecode);
 
         explicit InputLayout() = delete;
         explicit InputLayout(const InputLayout& src) = delete;
@@ -30,7 +30,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
 
     public:
-        virtual void Bind(Graphics& gfx) override final;
+        virtual void Bind(Graphics<>& gfx) override final;
 
 
     protected:

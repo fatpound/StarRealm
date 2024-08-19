@@ -18,7 +18,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
     class IndexBuffer final : public Bindable
     {
     public:
-        explicit IndexBuffer(Graphics& gfx, const std::vector<unsigned short int>& indices);
+        explicit IndexBuffer(Graphics<>& gfx, const std::vector<unsigned short int>& indices);
 
         explicit IndexBuffer() = delete;
         explicit IndexBuffer(const IndexBuffer& src) = delete;
@@ -30,7 +30,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
 
     public:
-        virtual void Bind(Graphics& gfx) override final;
+        virtual void Bind(Graphics<>& gfx) override final;
 
 
     public:

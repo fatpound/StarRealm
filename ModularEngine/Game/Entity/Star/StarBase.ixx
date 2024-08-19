@@ -26,7 +26,7 @@ export namespace starrealm::entity::star
         friend E;
 
     public:
-        explicit StarBase(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
+        explicit StarBase(NAMESPACE_D3D11::Graphics<>& gfx, const Descriptor& desc)
             :
             Star(desc)
         {

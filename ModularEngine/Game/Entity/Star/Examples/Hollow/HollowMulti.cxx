@@ -13,7 +13,7 @@ namespace dx = DirectX;
 
 namespace starrealm::entity::star
 {
-    HollowMulti::HollowMulti(NAMESPACE_D3D11::Graphics& gfx, const Descriptor& desc)
+    HollowMulti::HollowMulti(NAMESPACE_D3D11::Graphics<>& gfx, const Descriptor& desc)
         :
         StarBase<style::type::Hollow, style::effect::MultiColor>(gfx, desc)
     {

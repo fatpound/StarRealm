@@ -10,12 +10,12 @@ module FatPound.Win32.D3D11.Pipeline.Bindable;
 
 namespace fatpound::win32::d3d11::pipeline
 {
-    auto Bindable::GetDevice_(const Graphics& gfx) noexcept -> ID3D11Device*
+    auto Bindable::GetDevice_(const Graphics<>& gfx) noexcept -> ID3D11Device*
     {
         return gfx.m_gfxres_.m_pDevice.Get();
     }
 
-    auto Bindable::GetContext_(const Graphics& gfx) noexcept -> ID3D11DeviceContext*
+    auto Bindable::GetContext_(const Graphics<>& gfx) noexcept -> ID3D11DeviceContext*
     {
         return gfx.m_gfxres_.m_pImmediateContext.Get();
     }

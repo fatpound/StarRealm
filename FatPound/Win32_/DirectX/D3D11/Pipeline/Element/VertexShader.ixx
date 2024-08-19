@@ -18,7 +18,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
     class VertexShader final : public Bindable
     {
     public:
-        explicit VertexShader(Graphics& gfx, const std::wstring& path);
+        explicit VertexShader(Graphics<>& gfx, const std::wstring& path);
 
         explicit VertexShader() = delete;
         explicit VertexShader(const VertexShader& src) = delete;
@@ -30,7 +30,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
 
     public:
-        virtual void Bind(Graphics& gfx) override final;
+        virtual void Bind(Graphics<>& gfx) override final;
 
 
     public:

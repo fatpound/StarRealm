@@ -21,7 +21,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
     class TransformCBuffer final : public Bindable
     {
     public:
-        explicit TransformCBuffer(Graphics& gfx, const C& parent)
+        explicit TransformCBuffer(Graphics<>& gfx, const C& parent)
             :
             m_vcbuf_(gfx),
             m_parent_(parent)
@@ -39,7 +39,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
 
 
     public:
-        virtual void Bind(Graphics& gfx) override final
+        virtual void Bind(Graphics<>& gfx) override final
         {
             m_vcbuf_.Update(
                 gfx,

@@ -23,12 +23,12 @@ export namespace fatpound::win32::d3d11::pipeline
         
 
     public:
-        virtual void Bind(Graphics& gfx) = 0;
+        virtual void Bind(Graphics<>& gfx) = 0;
 
 
     protected:
-        static auto GetDevice_(const Graphics& gfx)  noexcept -> ID3D11Device*;
-        static auto GetContext_(const Graphics& gfx) noexcept -> ID3D11DeviceContext*;
+        static auto GetDevice_(const Graphics<>& gfx)  noexcept -> ID3D11Device*;
+        static auto GetContext_(const Graphics<>& gfx) noexcept -> ID3D11DeviceContext*;
 
 
     private:

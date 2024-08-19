@@ -52,7 +52,7 @@ export namespace starrealm
 
 
     public:
-        explicit StarFactory(NAMESPACE_D3D11::Graphics& gfx);
+        explicit StarFactory(NAMESPACE_D3D11::Graphics<>& gfx);
 
         explicit StarFactory() = delete;
         explicit StarFactory(const StarFactory& src) = delete;
@@ -79,7 +79,7 @@ export namespace starrealm
 
 
     private:
-        NAMESPACE_D3D11::Graphics& m_gfx_;
+        NAMESPACE_D3D11::Graphics<>& m_gfx_;
 
         std::minstd_rand m_rng_{ std::random_device{}() };
 

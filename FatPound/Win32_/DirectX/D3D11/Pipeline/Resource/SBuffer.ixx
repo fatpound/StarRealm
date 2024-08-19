@@ -19,7 +19,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
     class SBuffer : public Bindable
     {
     public:
-        explicit SBuffer(Graphics& gfx, const std::vector<S>& structures)
+        explicit SBuffer(Graphics<>& gfx, const std::vector<S>& structures)
         {
             D3D11_BUFFER_DESC sbd = {};
             sbd.BindFlags = D3D11_BIND_SHADER_RESOURCE;

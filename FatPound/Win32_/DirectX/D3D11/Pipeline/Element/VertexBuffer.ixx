@@ -19,7 +19,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
     {
     public:
         template <class V>
-        explicit VertexBuffer(Graphics& gfx, const std::vector<V>& vertices)
+        explicit VertexBuffer(Graphics<>& gfx, const std::vector<V>& vertices)
             :
             m_stride_(sizeof(V))
         {
@@ -47,7 +47,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
 
     public:
-        virtual void Bind(Graphics& gfx) override final;
+        virtual void Bind(Graphics<>& gfx) override final;
 
 
     protected:

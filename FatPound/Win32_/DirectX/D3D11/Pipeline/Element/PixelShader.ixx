@@ -18,7 +18,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
     class PixelShader final : public Bindable
     {
     public:
-        explicit PixelShader(Graphics& gfx, const std::wstring& path);
+        explicit PixelShader(Graphics<>& gfx, const std::wstring& path);
 
         explicit PixelShader() = delete;
         explicit PixelShader(const PixelShader& src) = delete;
@@ -30,7 +30,7 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
 
     public:
-        virtual void Bind(Graphics& gfx) override final;
+        virtual void Bind(Graphics<>& gfx) override final;
 
 
     protected:

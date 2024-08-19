@@ -192,9 +192,6 @@
     <ClCompile Include="Win32_\DirectX\D3D11\D3D11.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\D3D11\Graphics.cxx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Win32_\DirectX\D3D11\Graphics.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
