@@ -25,7 +25,7 @@ export namespace fatpound::win32::d3d11::pipeline
 
 
     protected:
-        static auto& GetStaticBinds_()
+        static auto& GetStaticBinds_() noexcept
         {
             return m_static_binds_;
         }
