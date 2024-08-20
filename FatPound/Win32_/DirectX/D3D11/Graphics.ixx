@@ -120,9 +120,9 @@ export namespace fatpound::win32::d3d11
                 m_gfxres_.m_pSysBuffer = nullptr;
             }
 
-            if (m_gfxres_.m_pImmediateContext != nullptr) [[likely]]
+            if (GetDevicePack().m_pImmediateContext != nullptr) [[likely]]
             {
-                m_gfxres_.m_pImmediateContext->ClearState();
+                GetDevicePack().m_pImmediateContext->ClearState();
             }
         }
 
@@ -262,12 +262,12 @@ export namespace fatpound::win32::d3d11
 
             ToggleAltEnterMode_();
 
-            pipeline::system::RenderTarget::SetDefault<s_msaaQuality_>(m_gfxres_, m_width_, m_height_);
+            pipeline::system::RenderTarget::SetDefault<s_msaaQuality_, Framework>(m_gfxres_, m_width_, m_height_);
             pipeline::system::Viewport::SetDefault(m_gfxres_, m_width_, m_height_);
         }
         void InitFramework_() requires(Framework)
         {
-            using SBinds = NAMESPACE_PIPELINE::StaticBindableVec<Graphics<Framework>>;
+            using SBinds = NAMESPACE_PIPELINE::StaticBindableVec<Graphics>;
             
             auto pvs = std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexShader>(GetDevice(), L"VSFrameBuffer.cso");
             auto pvsbc = pvs->GetBytecode();
@@ -277,24 +277,25 @@ export namespace fatpound::win32::d3d11
             SBinds::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::element::VertexBuffer>(GetDevice(), FullScreenQuad::vertices));
             SBinds::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::element::Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
             
-            const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
             {
+                const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
                 {
-                    { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-                    { "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,    0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 }
-                }
-            };
+                    {
+                        { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+                        { "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,    0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+                    }
+                };
+
+                SBinds::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::element::InputLayout>(GetDevice(), ied, pvsbc));
+            }
             
-            SBinds::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::element::InputLayout>(GetDevice(), ied, pvsbc));
-            
-            auto pDevice = GetDevice();
-            auto pImmediateContext = GetImmediateContext();
+            auto& devicePack = GetDevicePack();
 
             auto& sbinds = SBinds::GetStaticBinds_();
 
             for (auto& sbind : sbinds)
             {
-                sbind->Bind(pDevice, pImmediateContext);
+                sbind->Bind(devicePack);
             }
         }
 
@@ -347,7 +348,7 @@ export namespace fatpound::win32::d3d11
         const decltype(SizeInfo::width)  m_width_;
         const decltype(SizeInfo::height) m_height_;
 
-        static constexpr auto s_msaaQuality_ = 8u;
+        static constexpr UINT s_msaaQuality_ = std::conditional_t<Framework, std::integral_constant<UINT, 1u>, std::integral_constant<UINT, 8u>>::value;
 
         static constexpr bool s_rasterizationEnabled_ = true;
     };

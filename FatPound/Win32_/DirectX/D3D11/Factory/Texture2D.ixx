@@ -26,7 +26,7 @@ export namespace fatpound::win32::d3d11::factory
 
 
     public:
-        template <UINT MSAA_Quality>
+        template <UINT MSAA_Quality, bool ForShaderResource = false>
         static constexpr auto CreateDESC(UINT width, UINT height) noexcept -> D3D11_TEXTURE2D_DESC
         {
             D3D11_TEXTURE2D_DESC desc = {};
@@ -34,24 +34,22 @@ export namespace fatpound::win32::d3d11::factory
             desc.Height = height;
             desc.MipLevels = 1u;
             desc.ArraySize = 1u;
-            desc.Format = DXGI_FORMAT_D32_FLOAT;
             desc.SampleDesc.Count = MSAA_Quality;
             desc.SampleDesc.Quality = 0u;
-            desc.Usage = D3D11_USAGE_DEFAULT;
-            desc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
 
-            return desc;
-        }
-
-        template <UINT MSAA_Quality>
-        static constexpr auto CreateDESCForFramework(UINT width, UINT height) noexcept -> D3D11_TEXTURE2D_DESC
-        {
-            auto desc = Texture2D::CreateDESC<MSAA_Quality>(width, height);
-
-            desc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
-            desc.Usage = D3D11_USAGE_DYNAMIC;
-            desc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
-            desc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+            if constexpr (ForShaderResource)
+            {
+                desc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
+                desc.Usage = D3D11_USAGE_DYNAMIC;
+                desc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+                desc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+            }
+            else
+            {
+                desc.Format = DXGI_FORMAT_D32_FLOAT;
+                desc.Usage = D3D11_USAGE_DEFAULT;
+                desc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+            }
 
             return desc;
         }

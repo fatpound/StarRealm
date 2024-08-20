@@ -28,7 +28,7 @@ export namespace fatpound::win32::d3d11::pipeline::system
 
 
 	public:
-		template <UINT MSAA_Quality, bool For_Framework = false>
+		template <UINT MSAA_Quality, bool ForFramework = false>
 		static void SetDefault(GfxResource& gfxres, UINT width, UINT height)
 		{
 			factory::RenderTargetView::Create(gfxres);
@@ -38,7 +38,7 @@ export namespace fatpound::win32::d3d11::pipeline::system
 			const auto& descTex2D = factory::Texture2D::CreateDESC<MSAA_Quality>(width, height);
 			factory::Texture2D::Create(gfxres, pTexture2D, descTex2D);
 
-			if constexpr (not For_Framework)
+			if constexpr (not ForFramework)
 			{
 				const auto& descDSV = factory::DepthStencilView::CreateDESC<MSAA_Quality>();
 				factory::DepthStencilView::Create(gfxres, pTexture2D, descDSV);
