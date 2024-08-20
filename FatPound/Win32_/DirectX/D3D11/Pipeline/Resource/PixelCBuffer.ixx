@@ -14,10 +14,10 @@ import FatPound.Win32.D3D11.Pipeline.Bindable;
 
 export namespace fatpound::win32::d3d11::pipeline::resource
 {
-    template <typename C>
-    class PixelCBuffer final : public CBuffer<C>
+    template <typename T>
+    class PixelCBuffer final : public CBuffer<T>
     {
-        using CBuffer<C>::CBuffer;
+        using CBuffer<T>::CBuffer;
 
     public:
         explicit PixelCBuffer() = delete;

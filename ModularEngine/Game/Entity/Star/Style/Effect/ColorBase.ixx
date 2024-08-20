@@ -13,8 +13,8 @@ import std;
 
 export namespace starrealm::entity::star::style::effect
 {
-    template <class C>
-    class ColorBase_ : public Base_<C>
+    template <typename T>
+    class ColorBase_ : public Base_<T>
     {
     public:
         explicit ColorBase_() = delete;

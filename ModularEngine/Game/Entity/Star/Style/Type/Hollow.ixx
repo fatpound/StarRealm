@@ -47,10 +47,10 @@ export namespace starrealm::entity::star::style::type
             return indices;
         }
 
-        template <class Star_Base>
+        template <typename StarBase>
         static void InitStaticBinds()
         {
-            Star_Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::Topology>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
+            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::Topology>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
         }
 
 

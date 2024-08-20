@@ -18,11 +18,11 @@ import FatPound.Win32.D3D11.Visual.SceneXMPack;
 
 export namespace fatpound::win32::d3d11::pipeline::resource
 {
-    template <class C>
+    template <typename T>
     class TransformCBuffer final : public Bindable
     {
     public:
-        explicit TransformCBuffer(ID3D11Device* pDevice, const C& parent, NAMESPACE_VISUAL::SceneXMPack& sceneXMpack)
+        explicit TransformCBuffer(ID3D11Device* pDevice, const T& parent, NAMESPACE_VISUAL::SceneXMPack& sceneXMpack)
             :
             m_vcbuf_(pDevice),
             m_parent_(parent),
@@ -62,7 +62,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
     private:
         VertexCBuffer<DirectX::XMMATRIX> m_vcbuf_;
 
-        const C& m_parent_;
+        const T& m_parent_;
 
         NAMESPACE_VISUAL::SceneXMPack& m_sceneXMpack_;
     };

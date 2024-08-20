@@ -14,11 +14,11 @@ import std;
 
 export namespace fatpound::win32::d3d11::pipeline::resource
 {
-    template <typename C>
+    template <typename T>
     class CBuffer : public Bindable
     {
     public:
-        explicit CBuffer(ID3D11Device* pDevice, const C& consts)
+        explicit CBuffer(ID3D11Device* pDevice, const T& consts)
         {
             D3D11_BUFFER_DESC cbd = {};
             cbd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
@@ -40,7 +40,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
             cbd.Usage = D3D11_USAGE_DYNAMIC;
             cbd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
             cbd.MiscFlags = 0u;
-            cbd.ByteWidth = sizeof(C);
+            cbd.ByteWidth = sizeof(T);
             cbd.StructureByteStride = 0u;
 
             pDevice->CreateBuffer(&cbd, nullptr, &m_pConstantBuffer_);
@@ -56,7 +56,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
 
 
     public:
-        virtual void Update(ID3D11DeviceContext* pImmediateContext, const C& consts) final
+        virtual void Update(ID3D11DeviceContext* pImmediateContext, const T& consts) final
         {
             D3D11_MAPPED_SUBRESOURCE msr;
 

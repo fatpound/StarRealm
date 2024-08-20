@@ -12,6 +12,6 @@ export import :Color.Multi;
 
 export namespace starrealm::entity::star::style
 {
-    template <class C>
-    concept Effect = Style<C, effect::Base_>;
+    template <typename T>
+    concept Effect = Style<T, effect::Base_>;
 }

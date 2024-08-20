@@ -14,19 +14,19 @@ import std;
 
 export namespace fatpound::win32::d3d11::pipeline::resource
 {
-    template <typename S>
+    template <typename T>
     class SBuffer : public Bindable
     {
     public:
-        explicit SBuffer(ID3D11Device* pDevice, ID3D11DeviceContext* pImmediateContext, const std::vector<S>& structures)
+        explicit SBuffer(ID3D11Device* pDevice, ID3D11DeviceContext* pImmediateContext, const std::vector<T>& structures)
         {
             D3D11_BUFFER_DESC sbd = {};
             sbd.BindFlags = D3D11_BIND_SHADER_RESOURCE;
             sbd.Usage = D3D11_USAGE_DEFAULT;
             sbd.CPUAccessFlags = 0u;
             sbd.MiscFlags = D3D11_RESOURCE_MISC_BUFFER_STRUCTURED;
-            sbd.ByteWidth = sizeof(S) * static_cast<UINT>(structures.size());
-            sbd.StructureByteStride = sizeof(S);
+            sbd.ByteWidth = sizeof(T) * static_cast<UINT>(structures.size());
+            sbd.StructureByteStride = sizeof(T);
 
             D3D11_SUBRESOURCE_DATA initData = {};
             initData.pSysMem = structures.data();

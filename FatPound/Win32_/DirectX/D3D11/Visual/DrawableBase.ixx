@@ -13,8 +13,8 @@ import std;
 
 export namespace fatpound::win32::d3d11::visual
 {
-    template <class C>
-    class DrawableBase : public Drawable, public NAMESPACE_PIPELINE::StaticBindableVec<DrawableBase<C>>
+    template <typename T>
+    class DrawableBase : public Drawable, public NAMESPACE_PIPELINE::StaticBindableVec<DrawableBase<T>>
     {
     public:
         explicit DrawableBase() = default;

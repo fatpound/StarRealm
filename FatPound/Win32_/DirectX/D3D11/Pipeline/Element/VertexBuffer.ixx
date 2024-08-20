@@ -17,10 +17,10 @@ export namespace fatpound::win32::d3d11::pipeline::element
     class VertexBuffer final : public Bindable
     {
     public:
-        template <class V>
-        explicit VertexBuffer(ID3D11Device* pDevice, const std::vector<V>& vertices)
+        template <typename T>
+        explicit VertexBuffer(ID3D11Device* pDevice, const std::vector<T>& vertices)
             :
-            m_stride_(sizeof(V))
+            m_stride_(sizeof(T))
         {
             D3D11_BUFFER_DESC bd = {};
             bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;

@@ -15,8 +15,8 @@ import FatPound;
 
 import std;
 
-template <class V>
-concept MyVertex = std::same_as<V, DirectX::XMFLOAT3> or requires(V vertex)
+template <typename T>
+concept MyVertex = std::same_as<T, DirectX::XMFLOAT3> or requires(T vertex)
 {
     vertex.pos;
 };
@@ -62,10 +62,10 @@ export namespace starrealm::entity::star::style::type
             return indices;
         }
 
-        template <class Star_Base>
+        template <typename StarBase>
         static void InitStaticBinds()
         {
-            Star_Base::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
+            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
         }
 
 

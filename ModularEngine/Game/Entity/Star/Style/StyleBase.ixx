@@ -8,8 +8,8 @@ export namespace starrealm::entity::star
 {
     template
     <
-        class C,
-        template <class S> class StyleBase_
+        typename T,
+        template <typename S> class StyleBase_
     >
-    concept Style = std::derived_from<C, StyleBase_<C>>;
+    concept Style = std::derived_from<T, StyleBase_<T>>;
 }
