@@ -21,9 +21,9 @@ namespace starrealm::entity
 
     }
 
-    auto Star::operator <=> (const Star& src) const noexcept
+    auto Star::operator <=> (const Star& rhs) const noexcept
     {
-        return m_radiuses_.outer_radius <=> src.m_radiuses_.outer_radius;
+        return m_radiuses_.outer_radius <=> rhs.m_radiuses_.outer_radius;
     }
 
     auto Star::GetTransformXM() const noexcept -> ::dx::XMMATRIX

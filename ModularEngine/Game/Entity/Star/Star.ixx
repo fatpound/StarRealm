@@ -49,7 +49,7 @@ export namespace starrealm::entity
 
 
     public:
-        auto operator <=> (const Star& src) const noexcept;
+        auto operator <=> (const Star& rhs) const noexcept;
 
 
     public:
