@@ -141,9 +141,9 @@ export namespace fatpound::win32::d3d11
         {
             return GetResource().m_device_pack;
         }
-        auto GetSceneXMPack() noexcept -> visual::ViewXM&
+        auto GetViewXM() noexcept -> visual::ViewXM&
         {
-            return m_sceneXM_pack_;
+            return m_viewXM_;
         }
 
         auto GetDevice() noexcept -> ID3D11Device*
@@ -157,20 +157,20 @@ export namespace fatpound::win32::d3d11
 
         auto GetCameraXM()     const noexcept -> ::DirectX::XMMATRIX requires(not Framework)
         {
-            return GetSceneXMPack().GetCameraXM();
+            return GetViewXM().GetCameraXM();
         }
         auto GetProjectionXM() const noexcept -> ::DirectX::XMMATRIX requires(not Framework)
         {
-            return GetSceneXMPack().GetProjectionXM();
+            return GetViewXM().GetProjectionXM();
         }
 
         void SetCameraXM(const ::DirectX::XMMATRIX& camera)         noexcept requires(not Framework)
         {
-            GetSceneXMPack().SetCameraXM(camera);
+            GetViewXM().SetCameraXM(camera);
         }
         void SetProjectionXM(const ::DirectX::XMMATRIX& projection) noexcept requires(not Framework)
         {
-            GetSceneXMPack().SetProjectionXM(projection);
+            GetViewXM().SetProjectionXM(projection);
         }
 
         void BeginFrame() noexcept
@@ -350,7 +350,7 @@ export namespace fatpound::win32::d3d11
     private:
         GfxResource m_gfxres_;
 
-        [[maybe_unused]] visual::ViewXM m_sceneXM_pack_;
+        [[maybe_unused]] visual::ViewXM m_viewXM_;
 
         const decltype(SizeInfo::width)  m_width_;
         const decltype(SizeInfo::height) m_height_;
