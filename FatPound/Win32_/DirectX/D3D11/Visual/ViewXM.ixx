@@ -4,7 +4,7 @@ module;
 
 #include <DirectXMath.h>
 
-export module FatPound.Win32.D3D11.Visual.SceneXMPack;
+export module FatPound.Win32.D3D11.Visual.ViewXM;
 
 import FatPound.Util;
 
@@ -12,7 +12,7 @@ import std;
 
 export namespace fatpound::win32::d3d11::visual
 {
-    class SceneXMPack final
+    class ViewXM final
     {
     public:
         auto GetCameraXM() const noexcept -> ::DirectX::XMMATRIX
@@ -35,8 +35,8 @@ export namespace fatpound::win32::d3d11::visual
 
 
     public:
-        auto operator <=> (const SceneXMPack& rhs) const = delete;
-        bool operator ==  (const SceneXMPack& rhs) const = delete;
+        auto operator <=> (const ViewXM& rhs) const = delete;
+        bool operator ==  (const ViewXM& rhs) const = delete;
 
 
     protected:

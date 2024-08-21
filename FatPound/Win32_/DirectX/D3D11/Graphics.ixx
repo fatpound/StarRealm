@@ -141,7 +141,7 @@ export namespace fatpound::win32::d3d11
         {
             return GetResource().m_device_pack;
         }
-        auto GetSceneXMPack() noexcept -> visual::SceneXMPack&
+        auto GetSceneXMPack() noexcept -> visual::ViewXM&
         {
             return m_sceneXM_pack_;
         }
@@ -179,7 +179,7 @@ export namespace fatpound::win32::d3d11
         }
         void BeginFrame() noexcept requires(Framework)
         {
-            std::memset(reinterpret_cast<void*>(m_gfxres_.m_pSysBuffer), 0u, sizeof(Color) * m_width_ * m_height_);
+            std::memset(static_cast<void*>(m_gfxres_.m_pSysBuffer), 0u, sizeof(Color) * m_width_ * m_height_);
         }
         void EndFrame()
         {
@@ -350,12 +350,12 @@ export namespace fatpound::win32::d3d11
     private:
         GfxResource m_gfxres_;
 
-        [[maybe_unused]] visual::SceneXMPack m_sceneXM_pack_;
+        [[maybe_unused]] visual::ViewXM m_sceneXM_pack_;
 
         const decltype(SizeInfo::width)  m_width_;
         const decltype(SizeInfo::height) m_height_;
 
-        static constexpr UINT s_msaaQuality_ = std::conditional_t<Framework, std::integral_constant<UINT, 1u>, std::integral_constant<UINT, 8u>>::value;
+        static constexpr auto s_msaaQuality_ = std::conditional_t<Framework, std::integral_constant<UINT, 1u>, std::integral_constant<UINT, 8u>>::value;
 
         static constexpr bool s_rasterizationEnabled_ = true;
     };

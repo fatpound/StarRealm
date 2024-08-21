@@ -27,7 +27,7 @@ export namespace fatpound::win32::d3d11
 
         [[maybe_unused]] ::Microsoft::WRL::ComPtr<ID3D11Texture2D> m_pSysBufferTexture = nullptr;
 
-        [[maybe_unused]] ::D3D11_MAPPED_SUBRESOURCE                m_mappedSysBufferTexture = {};
+        [[maybe_unused]] D3D11_MAPPED_SUBRESOURCE m_mappedSysBufferTexture = {};
 
         [[maybe_unused]] NAMESPACE_UTIL::Color* m_pSysBuffer = nullptr;
     };

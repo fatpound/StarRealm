@@ -249,7 +249,7 @@
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\System\ShaderResource.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\D3D11\Visual\SceneXMPack.ixx">
+    <ClCompile Include="Win32_\DirectX\D3D11\Visual\ViewXM.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Win32_\DirectX\D3D11\GfxDevicePack.ixx">

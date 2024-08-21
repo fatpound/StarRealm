@@ -88,7 +88,7 @@
     <ClCompile Include="Win32_\DirectX\D3D11\Visual\Drawable.cxx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Visual\Drawable.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Visual\DrawableBase.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\Visual\SceneXMPack.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\Visual\ViewXM.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Visual\Visual.ixx" />
     <ClCompile Include="Win32_\DirectX\DirectX.ixx" />
     <ClCompile Include="Win32_\IO\IO.ixx" />

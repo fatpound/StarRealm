@@ -14,7 +14,7 @@ export module FatPound.Win32.D3D11.Pipeline.Resource:TransformCBuffer;
 import :VertexCBuffer;
 
 import FatPound.Win32.D3D11.Pipeline.Bindable;
-import FatPound.Win32.D3D11.Visual.SceneXMPack;
+import FatPound.Win32.D3D11.Visual.ViewXM;
 
 export namespace fatpound::win32::d3d11::pipeline::resource
 {
@@ -22,11 +22,11 @@ export namespace fatpound::win32::d3d11::pipeline::resource
     class TransformCBuffer final : public Bindable
     {
     public:
-        explicit TransformCBuffer(ID3D11Device* pDevice, const T& parent, NAMESPACE_VISUAL::SceneXMPack& sceneXMpack)
+        explicit TransformCBuffer(ID3D11Device* pDevice, const T& parent, NAMESPACE_VISUAL::ViewXM& viewXM)
             :
             m_vcbuf_(pDevice),
             m_parent_(parent),
-            m_sceneXMpack_(sceneXMpack)
+            m_viewXM_(viewXM)
         {
             
         }
@@ -52,8 +52,8 @@ export namespace fatpound::win32::d3d11::pipeline::resource
                 gfx_devicePack.m_pImmediateContext.Get(),
                 ::DirectX::XMMatrixTranspose(
                     m_parent_.GetTransformXM() *
-                    m_sceneXMpack_.GetCameraXM() *
-                    m_sceneXMpack_.GetProjectionXM()
+                    m_viewXM_.GetCameraXM() *
+                    m_viewXM_.GetProjectionXM()
                 )
             );
 
@@ -69,6 +69,6 @@ export namespace fatpound::win32::d3d11::pipeline::resource
 
         const T& m_parent_;
 
-        NAMESPACE_VISUAL::SceneXMPack& m_sceneXMpack_;
+        NAMESPACE_VISUAL::ViewXM& m_viewXM_;
     };
 }
