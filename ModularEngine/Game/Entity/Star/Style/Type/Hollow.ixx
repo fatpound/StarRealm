@@ -30,6 +30,11 @@ export namespace starrealm::entity::star::style::type
 
 
     public:
+        auto operator <=> (const Hollow& rhs) const = delete;
+        bool operator ==  (const Hollow& rhs) const = delete;
+
+
+    public:
         template <typename T>
         static auto GenerateIndices(std::size_t vertex_count) -> std::vector<T>
         {

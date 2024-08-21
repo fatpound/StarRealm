@@ -36,6 +36,11 @@ export namespace starrealm::entity::star::style::type
 
 
     public:
+        auto operator <=> (const Filled& rhs) const = delete;
+        bool operator ==  (const Filled& rhs) const = delete;
+
+
+    public:
         template <MyVertex V>
         static auto GenerateIndices(const std::vector<V>& vertices) -> std::vector<unsigned short int>
         {

@@ -17,16 +17,6 @@ export namespace starrealm::entity::star::style::effect
     class ColorBase_ : public Base_<T>
     {
     public:
-        explicit ColorBase_() = delete;
-        explicit ColorBase_(const ColorBase_& src) = delete;
-        explicit ColorBase_(ColorBase_&& src) = delete;
-
-        ColorBase_& operator = (const ColorBase_& src) = delete;
-        ColorBase_& operator = (ColorBase_&& src) = delete;
-        ~ColorBase_() noexcept = delete;
-
-
-    public:
         struct CBuffer final
         {
             using Type = ::DirectX::XMFLOAT4;
@@ -39,6 +29,21 @@ export namespace starrealm::entity::star::style::effect
 
             std::vector<Type> vertex_colors;
         };
+
+
+    public:
+        explicit ColorBase_() = delete;
+        explicit ColorBase_(const ColorBase_& src) = delete;
+        explicit ColorBase_(ColorBase_&& src) = delete;
+
+        ColorBase_& operator = (const ColorBase_& src) = delete;
+        ColorBase_& operator = (ColorBase_&& src) = delete;
+        ~ColorBase_() noexcept = delete;
+
+
+    public:
+        auto operator <=> (const ColorBase_& rhs) const = delete;
+        bool operator ==  (const ColorBase_& rhs) const = delete;
         
 
     public:

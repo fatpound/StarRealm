@@ -67,6 +67,11 @@ export namespace starrealm
         auto GetStars() && noexcept -> std::vector<std::unique_ptr<entity::Star>>&&;
 
 
+    public:
+        auto operator <=> (const StarFactory& rhs) const = delete;
+        bool operator ==  (const StarFactory& rhs) const = delete;
+
+
     protected:
 
 

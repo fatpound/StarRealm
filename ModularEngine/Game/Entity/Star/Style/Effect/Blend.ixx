@@ -22,6 +22,15 @@ export namespace starrealm::entity::star::style::effect
     class Blend final : public Base_<Blend>
     {
     public:
+        struct Vertex final
+        {
+            ::DirectX::XMFLOAT3 pos;
+
+            NAMESPACE_UTIL::Color color;
+        };
+
+
+    public:
         explicit Blend() = delete;
         explicit Blend(const Blend& src) = delete;
         explicit Blend(Blend&& src) = delete;
@@ -32,12 +41,8 @@ export namespace starrealm::entity::star::style::effect
 
 
     public:
-        struct Vertex final
-        {
-            ::DirectX::XMFLOAT3 pos;
-
-            NAMESPACE_UTIL::Color color;
-        };
+        auto operator <=> (const Blend& rhs) const = delete;
+        bool operator ==  (const Blend& rhs) const = delete;
 
 
     public:
