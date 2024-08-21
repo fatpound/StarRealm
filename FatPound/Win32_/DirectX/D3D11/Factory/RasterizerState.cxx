@@ -13,12 +13,12 @@ namespace wrl = Microsoft::WRL;
 namespace fatpound::win32::d3d11::factory
 {
     void RasterizerState::Create(
-        const GfxResource& gfxres,
+        const GfxResourcePack& gfxResPack,
         ::Microsoft::WRL::ComPtr<ID3D11RasterizerState>& pRasterizerState,
         const D3D11_RASTERIZER_DESC& desc
     )
     {
-        const auto hr = gfxres.m_device_pack.m_pDevice->CreateRasterizerState(&desc, &pRasterizerState);
+        const auto hr = gfxResPack.m_device_pack.m_pDevice->CreateRasterizerState(&desc, &pRasterizerState);
 
         if (FAILED(hr)) [[unlikely]]
         {

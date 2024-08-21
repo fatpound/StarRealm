@@ -13,12 +13,12 @@ namespace wrl = Microsoft::WRL;
 namespace fatpound::win32::d3d11::factory
 {
     void DepthStencilView::Create(
-            GfxResource& gfxres,
+            GfxResourcePack& gfxResPack,
             const ::wrl::ComPtr<ID3D11Texture2D>& pDepthStencil,
             const D3D11_DEPTH_STENCIL_VIEW_DESC& desc
         )
     {
-        const auto hr = gfxres.m_device_pack.m_pDevice->CreateDepthStencilView(pDepthStencil.Get(), &desc, &gfxres.m_pDSV);
+        const auto hr = gfxResPack.m_device_pack.m_pDevice->CreateDepthStencilView(pDepthStencil.Get(), &desc, &gfxResPack.m_pDSV);
 
         if (FAILED(hr)) [[unlikely]]
         {

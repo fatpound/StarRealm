@@ -12,7 +12,7 @@ namespace wrl = Microsoft::WRL;
 
 namespace fatpound::win32::d3d11::pipeline::system
 {
-    void Viewport::SetDefault(const GfxResource& gfxres, std::size_t width, std::size_t height)
+    void Viewport::SetDefault(const GfxResourcePack& gfxResPack, std::size_t width, std::size_t height)
     {
         D3D11_VIEWPORT vp = {};
         vp.Width  = static_cast<FLOAT>(width);
@@ -22,6 +22,6 @@ namespace fatpound::win32::d3d11::pipeline::system
         vp.TopLeftX = 0.0f;
         vp.TopLeftY = 0.0f;
 
-        gfxres.m_device_pack.m_pImmediateContext->RSSetViewports(1u, &vp);
+        gfxResPack.m_device_pack.m_pImmediateContext->RSSetViewports(1u, &vp);
     }
 }

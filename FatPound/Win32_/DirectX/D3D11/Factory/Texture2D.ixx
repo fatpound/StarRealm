@@ -7,7 +7,7 @@ module;
 
 export module FatPound.Win32.D3D11.Factory:Texture2D;
 
-import FatPound.Win32.D3D11.Graphics.Resource;
+import FatPound.Win32.D3D11.Graphics.ResourcePack;
 
 import std;
 
@@ -62,12 +62,12 @@ export namespace fatpound::win32::d3d11::factory
 
     public:
         static void Create(
-            const GfxResource& gfxres,
+            const GfxResourcePack& gfxResPack,
             ::Microsoft::WRL::ComPtr<ID3D11Texture2D>& pTexture2D,
             const D3D11_TEXTURE2D_DESC& desc
         );
 
-        static void Create(GfxResource& gfxres, const D3D11_TEXTURE2D_DESC& desc);
+        static void Create(GfxResourcePack& gfxResPack, const D3D11_TEXTURE2D_DESC& desc);
 
 
     protected:

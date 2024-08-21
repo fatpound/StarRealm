@@ -8,7 +8,7 @@ module;
 
 export module FatPound.Win32.D3D11.Pipeline.System:Rasterizer;
 
-import FatPound.Win32.D3D11.Graphics.Resource;
+import FatPound.Win32.D3D11.Graphics.ResourcePack;
 
 import std;
 
@@ -32,7 +32,7 @@ export namespace fatpound::win32::d3d11::pipeline::system
 
 
 	public:
-		static void SetDefault(GfxResource& gfxres);
+		static void SetDefault(GfxResourcePack& gfxResPack);
 
 
 	protected:

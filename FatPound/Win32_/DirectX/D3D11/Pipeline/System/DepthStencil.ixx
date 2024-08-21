@@ -4,7 +4,7 @@ module;
 
 export module FatPound.Win32.D3D11.Pipeline.System:DepthStencil;
 
-import FatPound.Win32.D3D11.Graphics.Resource;
+import FatPound.Win32.D3D11.Graphics.ResourcePack;
 import FatPound.Win32.D3D11.Factory;
 
 import std;
@@ -29,7 +29,7 @@ export namespace fatpound::win32::d3d11::pipeline::system
 
 
 	public:
-		static void SetDefault(const GfxResource& gfxres);
+		static void SetDefault(const GfxResourcePack& gfxResPack);
 
 
 	protected:

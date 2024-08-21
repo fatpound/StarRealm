@@ -8,7 +8,7 @@ module;
 
 export module FatPound.Win32.D3D11.Factory:DepthStencilState;
 
-import FatPound.Win32.D3D11.Graphics.Resource;
+import FatPound.Win32.D3D11.Graphics.ResourcePack;
 
 import std;
 
@@ -43,7 +43,7 @@ export namespace fatpound::win32::d3d11::factory
         }
 
         static void Create(
-            const GfxResource& gfxres,
+            const GfxResourcePack& gfxResPack,
             ::Microsoft::WRL::ComPtr<ID3D11DepthStencilState>& pDSState,
             const D3D11_DEPTH_STENCIL_DESC& desc
         );

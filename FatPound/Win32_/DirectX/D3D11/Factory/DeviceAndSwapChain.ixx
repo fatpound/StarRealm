@@ -8,7 +8,7 @@ module;
 
 export module FatPound.Win32.D3D11.Factory:DeviceAndSwapChain;
 
-import FatPound.Win32.D3D11.Graphics.Resource;
+import FatPound.Win32.D3D11.Graphics.ResourcePack;
 
 import std;
 
@@ -65,7 +65,7 @@ export namespace fatpound::win32::d3d11::factory
 
 
     public:
-        static void Create(GfxResource& gfxres, const DXGI_SWAP_CHAIN_DESC& desc);
+        static void Create(GfxResourcePack& gfxResPack, const DXGI_SWAP_CHAIN_DESC& desc);
 
 
     protected:

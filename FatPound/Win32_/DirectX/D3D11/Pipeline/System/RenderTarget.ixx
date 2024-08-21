@@ -8,7 +8,7 @@ module;
 
 export module FatPound.Win32.D3D11.Pipeline.System:RenderTarget;
 
-import FatPound.Win32.D3D11.Graphics.Resource;
+import FatPound.Win32.D3D11.Graphics.ResourcePack;
 import FatPound.Win32.D3D11.Factory;
 
 import std;
@@ -34,22 +34,22 @@ export namespace fatpound::win32::d3d11::pipeline::system
 
 	public:
 		template <UINT MSAA_Quality, bool ForFramework = false>
-		static void SetDefault(GfxResource& gfxres, UINT width, UINT height)
+		static void SetDefault(GfxResourcePack& gfxResPack, UINT width, UINT height)
 		{
-			factory::RenderTargetView::Create(gfxres);
+			factory::RenderTargetView::Create(gfxResPack);
 
 			::Microsoft::WRL::ComPtr<ID3D11Texture2D> pTexture2D = nullptr;
 
 			const auto& descTex2D = factory::Texture2D::CreateDESC<MSAA_Quality>(width, height);
-			factory::Texture2D::Create(gfxres, pTexture2D, descTex2D);
+			factory::Texture2D::Create(gfxResPack, pTexture2D, descTex2D);
 
 			if constexpr (not ForFramework)
 			{
 				const auto& descDSV = factory::DepthStencilView::CreateDESC<MSAA_Quality>();
-				factory::DepthStencilView::Create(gfxres, pTexture2D, descDSV);
+				factory::DepthStencilView::Create(gfxResPack, pTexture2D, descDSV);
 			}
 
-			gfxres.m_device_pack.m_pImmediateContext->OMSetRenderTargets(1u, gfxres.m_pTarget.GetAddressOf(), gfxres.m_pDSV.Get());
+			gfxResPack.m_device_pack.m_pImmediateContext->OMSetRenderTargets(1u, gfxResPack.m_pTarget.GetAddressOf(), gfxResPack.m_pDSV.Get());
 		}
 
 

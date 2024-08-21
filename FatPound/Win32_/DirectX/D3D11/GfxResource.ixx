@@ -7,7 +7,7 @@ module;
 
 #include <wrl.h>
 
-export module FatPound.Win32.D3D11.Graphics.Resource;
+export module FatPound.Win32.D3D11.Graphics.ResourcePack;
 
 import FatPound.Win32.D3D11.Graphics.DevicePack;
 
@@ -17,7 +17,7 @@ import std;
 
 export namespace fatpound::win32::d3d11
 {
-    struct GfxResource final
+    struct GfxResourcePack final
     {
         GfxDevicePack m_device_pack;
 

@@ -4,7 +4,7 @@ module;
 
 export module FatPound.Win32.D3D11.Factory:RenderTargetView;
 
-import FatPound.Win32.D3D11.Graphics.Resource;
+import FatPound.Win32.D3D11.Graphics.ResourcePack;
 
 import std;
 
@@ -28,7 +28,7 @@ export namespace fatpound::win32::d3d11::factory
 
 
     public:
-        static void Create(GfxResource& gfxres);
+        static void Create(GfxResourcePack& gfxResPack);
 
 
     protected:
