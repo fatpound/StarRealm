@@ -56,6 +56,11 @@ export namespace fatpound::win32::d3d11::pipeline::resource
 
 
     public:
+        auto operator <=> (const CBuffer& rhs) const = delete;
+        bool operator ==  (const CBuffer& rhs) const = delete;
+
+
+    public:
         virtual void Update(ID3D11DeviceContext* pImmediateContext, const T& consts) final
         {
             D3D11_MAPPED_SUBRESOURCE msr;

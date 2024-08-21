@@ -25,6 +25,11 @@ export namespace fatpound::win32::d3d11::pipeline::element
 
 
     public:
+        auto operator <=> (const Topology& rhs) const = delete;
+        bool operator ==  (const Topology& rhs) const = delete;
+
+
+    public:
         virtual void Bind(GfxDevicePack& gfx_devicePack) override final;
 
 

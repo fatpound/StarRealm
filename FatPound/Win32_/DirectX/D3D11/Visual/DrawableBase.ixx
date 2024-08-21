@@ -26,6 +26,11 @@ export namespace fatpound::win32::d3d11::visual
         virtual ~DrawableBase() noexcept = default;
 
 
+    public:
+        auto operator <=> (const DrawableBase& rhs) const = delete;
+        bool operator ==  (const DrawableBase& rhs) const = delete;
+
+
     protected:
         virtual void AddStaticIndexBuffer_(std::unique_ptr<NAMESPACE_PIPELINE_ELEMENT::IndexBuffer> idxbuf) noexcept(IN_RELEASE) final
         {

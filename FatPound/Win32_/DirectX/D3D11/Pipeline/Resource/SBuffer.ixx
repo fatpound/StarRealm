@@ -51,6 +51,11 @@ export namespace fatpound::win32::d3d11::pipeline::resource
         virtual ~SBuffer() noexcept = default;
 
 
+    public:
+        auto operator <=> (const SBuffer& rhs) const = delete;
+        bool operator ==  (const SBuffer& rhs) const = delete;
+
+
     protected:
         ::Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pShaderResourceView_ = nullptr;
         ::Microsoft::WRL::ComPtr<ID3D11Buffer>             m_pStructuredBuffer_   = nullptr;

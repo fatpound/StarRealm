@@ -41,6 +41,11 @@ export namespace fatpound::win32::d3d11::pipeline::resource
 
 
     public:
+        auto operator <=> (const TransformCBuffer& rhs) const = delete;
+        bool operator ==  (const TransformCBuffer& rhs) const = delete;
+
+
+    public:
         virtual void Bind(GfxDevicePack& gfx_devicePack) override final
         {
             m_vcbuf_.Update(
