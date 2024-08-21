@@ -25,6 +25,11 @@ export namespace fatpound::win32::d3d11::pipeline
         
 
     public:
+        auto operator <=> (const Bindable& rhs) const = delete;
+        bool operator ==  (const Bindable& rhs) const = delete;
+
+
+    public:
         virtual void Bind(GfxDevicePack& gfx_devicePack) = 0;
 
 

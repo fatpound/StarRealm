@@ -40,6 +40,11 @@ export namespace fatpound::win32
 
 
     public:
+        auto operator <=> (const Window& rhs) const = delete;
+        bool operator ==  (const Window& rhs) const = delete;
+
+
+    public:
         static auto ProcessMessages() noexcept -> std::optional<WPARAM>;
 
 
@@ -63,6 +68,7 @@ export namespace fatpound::win32
         {
             return static_cast<N>(m_client_size_.m_width);
         }
+
         template <NAMESPACE_MATH::Number N>
         auto GetClientHeight() const noexcept
         {
@@ -77,9 +83,13 @@ export namespace fatpound::win32
         class WndClass_ final
         {
         public:
-            static auto GetInstance() noexcept -> ::HINSTANCE;
+            static auto GetInstance() noexcept -> HINSTANCE;
 
             static auto GetName() noexcept -> str_t;
+
+        public:
+            auto operator <=> (const WndClass_& rhs) const = delete;
+            bool operator ==  (const WndClass_& rhs) const = delete;
 
         protected:
 

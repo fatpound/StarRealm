@@ -18,16 +18,6 @@ export namespace fatpound::win32::io
         friend NAMESPACE_WIN32::Window;
 
     public:
-        explicit Mouse() = default;
-        explicit Mouse(const Mouse& src) = delete;
-        explicit Mouse(Mouse&& src) = delete;
-
-        Mouse& operator = (const Mouse& src) = delete;
-        Mouse& operator = (Mouse&& src) = delete;
-        ~Mouse() noexcept = default;
-
-
-    public:
         struct RawDelta final
         {
             int x;
@@ -67,6 +57,10 @@ export namespace fatpound::win32::io
             ~Event() = default;
 
         public:
+            auto operator <=> (const Event& rhs) const = delete;
+            bool operator ==  (const Event& rhs) const = delete;
+
+        public:
             auto GetPos() const noexcept -> std::pair<int, int>;
 
             Type GetType() const noexcept;
@@ -91,6 +85,21 @@ export namespace fatpound::win32::io
             bool right_is_pressed_{false};
             bool wheel_is_pressed_{false};
         };
+
+
+    public:
+        explicit Mouse() = default;
+        explicit Mouse(const Mouse& src) = delete;
+        explicit Mouse(Mouse&& src) = delete;
+
+        Mouse& operator = (const Mouse& src) = delete;
+        Mouse& operator = (Mouse&& src) = delete;
+        ~Mouse() noexcept = default;
+
+
+    public:
+        auto operator <=> (const Mouse& rhs) const = delete;
+        bool operator ==  (const Mouse& rhs) const = delete;
 
 
     public:

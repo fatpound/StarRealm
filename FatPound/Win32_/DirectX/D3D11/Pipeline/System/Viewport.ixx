@@ -27,6 +27,11 @@ export namespace fatpound::win32::d3d11::pipeline::system
 
 
 	public:
+		auto operator <=> (const Viewport& rhs) const = delete;
+		bool operator ==  (const Viewport& rhs) const = delete;
+
+
+	public:
 		static void SetDefault(const GfxResource& gfxres, std::size_t width, std::size_t height);
 
 

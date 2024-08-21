@@ -24,6 +24,11 @@ export namespace fatpound::win32::d3d11::pipeline::system
 
 
 	public:
+		auto operator <=> (const DepthStencil& rhs) const = delete;
+		bool operator ==  (const DepthStencil& rhs) const = delete;
+
+
+	public:
 		static void SetDefault(const GfxResource& gfxres);
 
 

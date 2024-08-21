@@ -26,6 +26,11 @@ export namespace fatpound::win32::d3d11::visual
 
 
     public:
+        auto operator <=> (const Drawable& rhs) const = delete;
+        bool operator ==  (const Drawable& rhs) const = delete;
+
+
+    public:
         virtual auto GetTransformXM() const noexcept -> ::DirectX::XMMATRIX = 0;
 
         virtual void Update(float delta_time) noexcept = 0;

@@ -27,6 +27,11 @@ export namespace fatpound::win32::d3d11::pipeline::system
 
 
 	public:
+		auto operator <=> (const Rasterizer& rhs) const = delete;
+		bool operator ==  (const Rasterizer& rhs) const = delete;
+
+
+	public:
 		static void SetDefault(GfxResource& gfxres);
 
 

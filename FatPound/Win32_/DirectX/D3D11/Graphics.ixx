@@ -128,18 +128,11 @@ export namespace fatpound::win32::d3d11
 
 
     public:
-        template <NAMESPACE_MATH::Number N>
-        auto GetWidth() const noexcept
-        {
-            return static_cast<N>(m_width_);
-        }
+        auto operator <=> (const Graphics& rhs) const = delete;
+        bool operator ==  (const Graphics& rhs) const = delete;
 
-        template <NAMESPACE_MATH::Number N>
-        auto GetHeight() const noexcept
-        {
-            return static_cast<N>(m_height_);
-        }
 
+    public:
         auto GetResource() noexcept -> GfxResource&
         {
             return m_gfxres_;
@@ -246,6 +239,20 @@ export namespace fatpound::win32::d3d11
             assert(y < static_cast<int>(m_height_));
 
             m_gfxres_.m_pSysBuffer[m_width_ * y + x] = color;
+        }
+
+
+    public:
+        template <NAMESPACE_MATH::Number N>
+        auto GetWidth() const noexcept
+        {
+            return static_cast<N>(m_width_);
+        }
+
+        template <NAMESPACE_MATH::Number N>
+        auto GetHeight() const noexcept
+        {
+            return static_cast<N>(m_height_);
         }
 
 

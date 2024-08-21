@@ -24,6 +24,11 @@ export namespace fatpound::win32::d3d11::pipeline
         ~StaticBindableVec() noexcept = default;
 
 
+    public:
+        auto operator <=> (const StaticBindableVec& rhs) const = delete;
+        bool operator ==  (const StaticBindableVec& rhs) const = delete;
+
+
     protected:
         static auto& GetStaticBinds_() noexcept
         {

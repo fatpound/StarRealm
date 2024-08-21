@@ -23,6 +23,11 @@ export namespace fatpound::util
 
 
     public:
+        auto operator <=> (const Camera& rhs) const = delete;
+        bool operator ==  (const Camera& rhs) const = delete;
+
+
+    public:
         auto GetMatrix() const noexcept -> ::DirectX::XMMATRIX;
 
         float GetR() const noexcept;

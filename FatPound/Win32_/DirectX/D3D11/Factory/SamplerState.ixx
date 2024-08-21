@@ -27,6 +27,11 @@ export namespace fatpound::win32::d3d11::factory
 
 
     public:
+        auto operator <=> (const SamplerState& rhs) const = delete;
+        bool operator ==  (const SamplerState& rhs) const = delete;
+
+
+    public:
         static auto CreateDESC() -> D3D11_SAMPLER_DESC
         {
             D3D11_SAMPLER_DESC desc = {};

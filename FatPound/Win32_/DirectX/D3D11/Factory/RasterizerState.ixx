@@ -27,6 +27,11 @@ export namespace fatpound::win32::d3d11::factory
 
 
     public:
+        auto operator <=> (const RasterizerState& rhs) const = delete;
+        bool operator ==  (const RasterizerState& rhs) const = delete;
+
+
+    public:
         static constexpr auto CreateDESC() noexcept -> D3D11_RASTERIZER_DESC
         {
             D3D11_RASTERIZER_DESC desc = {};

@@ -28,6 +28,11 @@ export namespace fatpound::win32::d3d11::pipeline::system
 
 
 	public:
+		auto operator <=> (const ShaderResource& rhs) const = delete;
+		bool operator ==  (const ShaderResource& rhs) const = delete;
+
+
+	public:
 		template <UINT MSAA_Quality, bool ForFramework = true>
 		static void SetDefault(GfxResource& gfxres, UINT width, UINT height)
 		{

@@ -34,6 +34,11 @@ export namespace fatpound::win32::d3d11::visual
         }
 
 
+    public:
+        auto operator <=> (const SceneXMPack& rhs) const = delete;
+        bool operator ==  (const SceneXMPack& rhs) const = delete;
+
+
     protected:
 
 

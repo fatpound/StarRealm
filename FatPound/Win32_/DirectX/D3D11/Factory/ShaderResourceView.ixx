@@ -27,6 +27,11 @@ export namespace fatpound::win32::d3d11::factory
 
 
     public:
+        auto operator <=> (const ShaderResourceView& rhs) const = delete;
+        bool operator ==  (const ShaderResourceView& rhs) const = delete;
+
+
+    public:
         template <UINT MSAA_Quality>
         static constexpr auto CreateDESC(DXGI_FORMAT format) noexcept -> D3D11_SHADER_RESOURCE_VIEW_DESC
         {

@@ -18,16 +18,6 @@ export namespace fatpound::win32::io
         friend NAMESPACE_WIN32::Window;
 
     public:
-        explicit Keyboard() = default;
-        explicit Keyboard(const Keyboard& src) = delete;
-        explicit Keyboard(Keyboard&& src) = delete;
-
-        Keyboard& operator = (const Keyboard& src) = delete;
-        Keyboard& operator = (Keyboard&& src) = delete;
-        ~Keyboard() noexcept = default;
-
-
-    public:
         class Event final
         {
         public:
@@ -50,6 +40,10 @@ export namespace fatpound::win32::io
             ~Event() = default;
 
         public:
+            auto operator <=> (const Event& rhs) const = delete;
+            bool operator ==  (const Event& rhs) const = delete;
+
+        public:
             unsigned char GetCode() const noexcept;
 
             bool IsPress() const noexcept;
@@ -63,6 +57,21 @@ export namespace fatpound::win32::io
 
             unsigned char m_code_ = 0u;
         };
+
+
+    public:
+        explicit Keyboard() = default;
+        explicit Keyboard(const Keyboard& src) = delete;
+        explicit Keyboard(Keyboard&& src) = delete;
+
+        Keyboard& operator = (const Keyboard& src) = delete;
+        Keyboard& operator = (Keyboard&& src) = delete;
+        ~Keyboard() noexcept = default;
+
+
+    public:
+        auto operator <=> (const Keyboard& rhs) const = delete;
+        bool operator ==  (const Keyboard& rhs) const = delete;
 
 
     public:

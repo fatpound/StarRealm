@@ -27,6 +27,11 @@ export namespace fatpound::win32::d3d11::factory
 
 
     public:
+        auto operator <=> (const DepthStencilState& rhs) const = delete;
+        bool operator ==  (const DepthStencilState& rhs) const = delete;
+
+
+    public:
         static constexpr auto CreateDESC() noexcept -> D3D11_DEPTH_STENCIL_DESC
         {
             D3D11_DEPTH_STENCIL_DESC desc = {};

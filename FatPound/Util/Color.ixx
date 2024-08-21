@@ -57,6 +57,13 @@ export namespace fatpound
 
 
         public:
+            bool operator == (const Color src) const
+            {
+                return dword == src.dword;
+            }
+
+
+        public:
             void SetAlpha(unsigned char x)
             {
                 dword = (dword & 0x00'FF'FF'FFu) | (std::uint32_t(x) << 24);
@@ -89,15 +96,6 @@ export namespace fatpound
             constexpr unsigned char GetB()     const
             {
                 return dword & 0xFFu;
-            }
-
-            bool operator == (const Color src) const
-            {
-                return dword == src.dword;
-            }
-            bool operator != (const Color src) const
-            {
-                return not (dword == src.dword);
             }
 
 

@@ -27,6 +27,11 @@ export namespace fatpound::win32::d3d11::factory
 
 
     public:
+        auto operator <=> (const DepthStencilView& rhs) const = delete;
+        bool operator ==  (const DepthStencilView& rhs) const = delete;
+
+
+    public:
         template <UINT MSAA_Quality>
         static constexpr auto CreateDESC() noexcept -> D3D11_DEPTH_STENCIL_VIEW_DESC
         {
