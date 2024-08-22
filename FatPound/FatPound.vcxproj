@@ -29,6 +29,7 @@
     <ClCompile Include="Util\CameraController.cxx" />
     <ClCompile Include="Util\CameraController.ixx" />
     <ClCompile Include="Util\Color.ixx" />
+    <ClCompile Include="Util\ScreenSizeInfo.ixx" />
     <ClCompile Include="Util\Util.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\D3D11.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\DepthStencilState.cxx" />

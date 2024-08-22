@@ -45,7 +45,7 @@ namespace starrealm::entity
         return m_radiuses_.outer_radius;
     }
 
-    void Star::Update(float delta_time) noexcept
+    void Star::Update(const float delta_time) noexcept
     {
         m_roll_ += (delta_time * m_rotation_speed_);
     }

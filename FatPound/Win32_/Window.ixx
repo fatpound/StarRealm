@@ -6,6 +6,7 @@ export module FatPound.Win32.Window;
 
 import FatPound.Win32.IO;
 import FatPound.Math;
+import FatPound.Util;
 
 import std;
 
@@ -20,15 +21,7 @@ export namespace fatpound::win32
 #endif // UNICODE
 
     public:
-        struct ClientSizeInfo final
-        {
-            unsigned int m_width;
-            unsigned int m_height;
-        };
-
-
-    public:
-        explicit Window(const str_t title, const ClientSizeInfo& dimensions);
+        explicit Window(const str_t title, const NAMESPACE_UTIL::ScreenSizeInfo& dimensions);
 
         explicit Window() = delete;
         explicit Window(const Window& src) = delete;
@@ -114,18 +107,18 @@ export namespace fatpound::win32
 
 
     private:
-        static auto CALLBACK HandleMsgSetup_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept -> LRESULT;
-        static auto CALLBACK HandleMsgThunk_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept -> LRESULT;
+        static auto CALLBACK HandleMsgSetup_(const HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept -> LRESULT;
+        static auto CALLBACK HandleMsgThunk_(const HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept -> LRESULT;
 
 
     private:
-        auto HandleMsg_(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept -> LRESULT;
+        auto HandleMsg_(const HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept -> LRESULT;
 
 
     private:
         HWND m_hWnd_;
 
-        const ClientSizeInfo m_client_size_;
+        const NAMESPACE_UTIL::ScreenSizeInfo m_client_size_;
 
         NAMESPACE_IO::Mouse m_mouse_;
         NAMESPACE_IO::Keyboard m_keyboard_;

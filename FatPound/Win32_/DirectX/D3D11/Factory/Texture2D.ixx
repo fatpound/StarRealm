@@ -1,6 +1,8 @@
 module;
 
 #include <FatWin32_Settings.hpp>
+#include <FatWin32_Namespaces.hpp>
+
 #include <d3d11.h>
 
 #include <wrl.h>
@@ -8,6 +10,8 @@ module;
 export module FatPound.Win32.D3D11.Factory:Texture2D;
 
 import FatPound.Win32.D3D11.Graphics.ResourcePack;
+
+import FatPound.Util;
 
 import std;
 
@@ -32,11 +36,11 @@ export namespace fatpound::win32::d3d11::factory
 
     public:
         template <UINT MSAA_Quality, bool ForShaderResource = false>
-        static constexpr auto CreateDESC(UINT width, UINT height) noexcept -> D3D11_TEXTURE2D_DESC
+        static constexpr auto CreateDESC(const NAMESPACE_UTIL::ScreenSizeInfo gfxDimensions) noexcept -> D3D11_TEXTURE2D_DESC
         {
             D3D11_TEXTURE2D_DESC desc = {};
-            desc.Width = width;
-            desc.Height = height;
+            desc.Width = gfxDimensions.m_width;
+            desc.Height = gfxDimensions.m_height;
             desc.MipLevels = 1u;
             desc.ArraySize = 1u;
             desc.SampleDesc.Count = MSAA_Quality;

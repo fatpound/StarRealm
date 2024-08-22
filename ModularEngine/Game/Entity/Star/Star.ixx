@@ -93,7 +93,7 @@ export namespace starrealm::entity
 
         virtual float GetOuterRadius() const noexcept final;
 
-        virtual void Update(float delta_time) noexcept override final;
+        virtual void Update(const float delta_time) noexcept override final;
 
 
     public:

@@ -22,8 +22,8 @@ namespace starrealm
 
     Game::Game()
         :
-        m_wnd_(L"StarRealm", NAMESPACE_WIN32::Window::ClientSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
-        m_gfx_(m_wnd_.GetHwnd(), NAMESPACE_D3D11::Graphics<>::SizeInfo{ m_wnd_.GetClientWidth<UINT>(), m_wnd_.GetClientHeight<UINT>() }),
+        m_wnd_(L"StarRealm", NAMESPACE_UTIL::ScreenSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
+        m_gfx_(m_wnd_.GetHwnd(), NAMESPACE_UTIL::ScreenSizeInfo{ m_wnd_.GetClientWidth<UINT>(), m_wnd_.GetClientHeight<UINT>() }),
         m_camera_(Settings::s_minStarDepth, Settings::s_maxStarDepth),
         m_camera_controller_(m_camera_, m_wnd_.GetMouse(), m_wnd_.GetKeyboard()),
         m_stars_{ StarFactory{ m_gfx_ }.GetStars() }

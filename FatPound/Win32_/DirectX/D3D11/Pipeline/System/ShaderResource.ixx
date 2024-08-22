@@ -11,6 +11,8 @@ export module FatPound.Win32.D3D11.Pipeline.System:ShaderResource;
 import FatPound.Win32.D3D11.Graphics.ResourcePack;
 import FatPound.Win32.D3D11.Factory;
 
+import FatPound.Util;
+
 import std;
 
 export namespace fatpound::win32::d3d11::pipeline::system
@@ -34,9 +36,9 @@ export namespace fatpound::win32::d3d11::pipeline::system
 
 	public:
 		template <UINT MSAA_Quality, bool ForFramework = true>
-		static void SetDefault(GraphicsResourcePack& gfxResPack, UINT width, UINT height)
+		static void SetDefault(GraphicsResourcePack& gfxResPack, const NAMESPACE_UTIL::ScreenSizeInfo gfxDimensions)
 		{
-			const auto& t2dDesc = factory::Texture2D::CreateDESC<MSAA_Quality, ForFramework>(width, height);
+			const auto& t2dDesc = factory::Texture2D::CreateDESC<MSAA_Quality, ForFramework>(gfxDimensions);
 			factory::Texture2D::Create(gfxResPack, t2dDesc);
 
 			::Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> pSysBufferTextureView_ = nullptr;

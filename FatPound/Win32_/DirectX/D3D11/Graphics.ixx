@@ -28,52 +28,17 @@ namespace dx = DirectX;
 namespace wrl = Microsoft::WRL;
 
 using NAMESPACE_UTIL::Color;
-
-struct __declspec(empty_bases) SEmpty_
-{
-
-};
+using NAMESPACE_UTIL::ScreenSizeInfo;
 
 export namespace fatpound::win32::d3d11
 {
     template <bool Framework = false>
-    class Graphics final : public std::conditional_t<Framework, NAMESPACE_PIPELINE::StaticBindableVec<Graphics<Framework>>, SEmpty_>
+    class Graphics final
     {
     public:
-        struct FullScreenQuad final
-        {
-            struct Vertex final
-            {
-                float x;
-                float y;
-                float z;
-
-                float u;
-                float v;
-            };
-
-            inline static const std::vector<Vertex> vertices =
-            {
-                Vertex{ -1.0f,  1.0f,  0.5f,  0.0f,  0.0f },
-                Vertex{  1.0f,  1.0f,  0.5f,  1.0f,  0.0f },
-                Vertex{  1.0f, -1.0f,  0.5f,  1.0f,  1.0f },
-                Vertex{ -1.0f,  1.0f,  0.5f,  0.0f,  0.0f },
-                Vertex{  1.0f, -1.0f,  0.5f,  1.0f,  1.0f },
-                Vertex{ -1.0f, -1.0f,  0.5f,  0.0f,  1.0f }
-            };
-        };
-        struct SizeInfo final
-        {
-            unsigned int width;
-            unsigned int height;
-        };
-
-
-    public:
-        explicit Graphics(HWND hWnd, const SizeInfo& dimensions)
+        explicit Graphics(const HWND hWnd, const ScreenSizeInfo& dimensions)
             :
-            m_width_(dimensions.width),
-            m_height_(dimensions.height)
+            m_dimensions_{ dimensions }
         {
             InitCommon_(hWnd);
             
@@ -84,17 +49,16 @@ export namespace fatpound::win32::d3d11
                 pipeline::system::Rasterizer::SetDefault(m_res_pack_);
             }
         }
-        explicit Graphics(HWND hWnd, const SizeInfo& dimensions) requires(Framework)
+        explicit Graphics(const HWND hWnd, const ScreenSizeInfo& dimensions) requires(Framework)
             :
-            m_width_(dimensions.width),
-            m_height_(dimensions.height)
+            m_dimensions_{ dimensions }
         {
             InitCommon_(hWnd);
 
-            pipeline::system::ShaderResource::SetDefault<s_msaaQuality_>(m_res_pack_, m_width_, m_height_);
+            pipeline::system::ShaderResource::SetDefault<s_msaaQuality_>(m_res_pack_, m_dimensions_);
             pipeline::system::Sampler::SetDefault(m_res_pack_);
 
-            m_res_pack_.m_pSysBuffer = static_cast<Color*>(_aligned_malloc(sizeof(Color) * m_width_ * m_height_, 16u));
+            m_res_pack_.m_pSysBuffer = static_cast<Color*>(_aligned_malloc(sizeof(Color) * m_dimensions_.m_width * m_dimensions_.m_height, 16u));
 
             if (m_res_pack_.m_pSysBuffer == nullptr) [[unlikely]]
             {
@@ -170,7 +134,7 @@ export namespace fatpound::win32::d3d11
         }
         void BeginFrame() noexcept requires(Framework)
         {
-            std::memset(static_cast<void*>(m_res_pack_.m_pSysBuffer), 0u, sizeof(Color) * m_width_ * m_height_);
+            std::memset(static_cast<void*>(m_res_pack_.m_pSysBuffer), 0u, sizeof(Color) * m_dimensions_.m_width * m_dimensions_.m_height);
         }
         void EndFrame()
         {
@@ -199,10 +163,10 @@ export namespace fatpound::win32::d3d11
             Color* pDst = static_cast<Color*>(m_res_pack_.m_mappedSysBufferTexture.pData);
 
             const auto& dstPitch = m_res_pack_.m_mappedSysBufferTexture.RowPitch / sizeof(Color);
-            const auto& srcPitch = m_width_;
+            const auto& srcPitch = m_dimensions_.m_width;
             const auto& rowBytes = srcPitch * sizeof(Color);
 
-            for (auto y = 0u; y < m_height_; ++y)
+            for (auto y = 0u; y < m_dimensions_.m_height; ++y)
             {
                 std::memcpy(
                     static_cast<void*>(&pDst[y * dstPitch]),
@@ -225,11 +189,11 @@ export namespace fatpound::win32::d3d11
         void PutPixel(int x, int y, Color color) noexcept requires(Framework)
         {
             assert(x >= 0);
-            assert(x < static_cast<int>(m_width_));
+            assert(x < static_cast<int>(m_dimensions_.m_width));
             assert(y >= 0);
-            assert(y < static_cast<int>(m_height_));
+            assert(y < static_cast<int>(m_dimensions_.m_height));
 
-            m_res_pack_.m_pSysBuffer[m_width_ * y + x] = color;
+            m_res_pack_.m_pSysBuffer[m_dimensions_.m_width * y + x] = color;
         }
 
 
@@ -237,13 +201,13 @@ export namespace fatpound::win32::d3d11
         template <NAMESPACE_MATH::Number N>
         auto GetWidth() const noexcept
         {
-            return static_cast<N>(m_width_);
+            return static_cast<N>(m_dimensions_.m_width);
         }
 
         template <NAMESPACE_MATH::Number N>
         auto GetHeight() const noexcept
         {
-            return static_cast<N>(m_height_);
+            return static_cast<N>(m_dimensions_.m_height);
         }
 
 
@@ -251,30 +215,66 @@ export namespace fatpound::win32::d3d11
 
 
     private:
-        void InitCommon_(HWND hWnd)
+        struct FullScreenQuad_ final
+        {
+            struct Vertex final
+            {
+                float x;
+                float y;
+                float z;
+
+                float u;
+                float v;
+            };
+
+            inline static const std::vector<Vertex> vertices =
+            {
+                Vertex{ -1.0f,  1.0f,  0.5f,  0.0f,  0.0f },
+                Vertex{  1.0f,  1.0f,  0.5f,  1.0f,  0.0f },
+                Vertex{  1.0f, -1.0f,  0.5f,  1.0f,  1.0f },
+                Vertex{ -1.0f,  1.0f,  0.5f,  0.0f,  0.0f },
+                Vertex{  1.0f, -1.0f,  0.5f,  1.0f,  1.0f },
+                Vertex{ -1.0f, -1.0f,  0.5f,  0.0f,  1.0f }
+            };
+        };
+
+
+    private:
+        void InitCommon_(const HWND hWnd)
         {
             {
-                const auto& scdesc = factory::DeviceAndSwapChain::CreateDESC<s_msaaQuality_>(hWnd, m_width_, m_height_);
+                const auto& scdesc = factory::DeviceAndSwapChain::CreateDESC<s_msaaQuality_>(hWnd, m_dimensions_);
                 factory::DeviceAndSwapChain::Create(m_res_pack_, scdesc);
             }
 
             ToggleAltEnterMode_();
 
-            pipeline::system::RenderTarget::SetDefault<s_msaaQuality_, Framework>(m_res_pack_, m_width_, m_height_);
-            pipeline::system::Viewport::SetDefault(m_res_pack_, m_width_, m_height_);
+            pipeline::system::RenderTarget::SetDefault<s_msaaQuality_, Framework>(m_res_pack_, m_dimensions_);
+            pipeline::system::Viewport::SetDefault(m_res_pack_, m_dimensions_);
         }
         void InitFramework_() requires(Framework)
         {
-            using SBinds = NAMESPACE_PIPELINE::StaticBindableVec<Graphics>;
-            
+            std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>> binds;
+
+            InitFrameworkBinds_(binds);
+
+            const auto pImmediateContext = GetImmediateContext();
+
+            for (auto& sbind : binds)
+            {
+                sbind->Bind(pImmediateContext);
+            }
+        }
+        void InitFrameworkBinds_(auto& binds) requires(Framework)
+        {
             auto pvs = std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexShader>(GetDevice(), L"VSFrameBuffer.cso");
             auto pvsbc = pvs->GetBytecode();
-            
-            SBinds::AddStaticBind_(std::move(pvs));
-            SBinds::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::element::PixelShader>(GetDevice(), L"PSFrameBuffer.cso"));
-            SBinds::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::element::VertexBuffer>(GetDevice(), FullScreenQuad::vertices));
-            SBinds::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::element::Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
-            
+
+            binds.push_back(std::move(pvs));
+            binds.push_back(std::make_unique<NAMESPACE_PIPELINE::element::PixelShader>(GetDevice(), L"PSFrameBuffer.cso"));
+            binds.push_back(std::make_unique<NAMESPACE_PIPELINE::element::VertexBuffer>(GetDevice(), FullScreenQuad_::vertices));
+            binds.push_back(std::make_unique<NAMESPACE_PIPELINE::element::Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
+
             {
                 const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
                 {
@@ -284,16 +284,7 @@ export namespace fatpound::win32::d3d11
                     }
                 };
 
-                SBinds::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::element::InputLayout>(GetDevice(), ied, pvsbc));
-            }
-            
-            auto pImmediateContext = GetImmediateContext();
-
-            auto& sbinds = SBinds::GetStaticBinds_();
-
-            for (auto& sbind : sbinds)
-            {
-                sbind->Bind(pImmediateContext);
+                binds.push_back(std::make_unique<NAMESPACE_PIPELINE::element::InputLayout>(GetDevice(), ied, pvsbc));
             }
         }
 
@@ -343,8 +334,7 @@ export namespace fatpound::win32::d3d11
 
         visual::ViewXM m_viewXM_;
 
-        const decltype(SizeInfo::width)  m_width_;
-        const decltype(SizeInfo::height) m_height_;
+        const ScreenSizeInfo m_dimensions_;
 
         static constexpr auto s_msaaQuality_ = std::conditional_t<Framework, std::integral_constant<UINT, 1u>, std::integral_constant<UINT, 8u>>::value;
 
