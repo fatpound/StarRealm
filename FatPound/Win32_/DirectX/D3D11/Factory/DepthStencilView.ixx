@@ -55,7 +55,7 @@ export namespace fatpound::win32::d3d11::factory
 
     public:
         static void Create(
-            GfxResourcePack& gfxResPack,
+            GraphicsResourcePack& gfxResPack,
             const ::Microsoft::WRL::ComPtr<ID3D11Texture2D>& pDepthStencil,
             const D3D11_DEPTH_STENCIL_VIEW_DESC& desc
         );

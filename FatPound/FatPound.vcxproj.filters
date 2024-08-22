@@ -225,9 +225,6 @@
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\StaticBindableVec.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\D3D11\GfxResource.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\SamplerState.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -252,7 +249,7 @@
     <ClCompile Include="Win32_\DirectX\D3D11\Visual\ViewXM.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Win32_\DirectX\D3D11\GfxDevicePack.ixx">
+    <ClCompile Include="Win32_\DirectX\D3D11\GraphicsResourcePack.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

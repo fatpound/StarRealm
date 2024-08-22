@@ -34,7 +34,7 @@ export namespace fatpound::win32::d3d11::pipeline::system
 
 	public:
 		template <UINT MSAA_Quality, bool ForFramework = false>
-		static void SetDefault(GfxResourcePack& gfxResPack, UINT width, UINT height)
+		static void SetDefault(GraphicsResourcePack& gfxResPack, UINT width, UINT height)
 		{
 			factory::RenderTargetView::Create(gfxResPack);
 
@@ -49,7 +49,7 @@ export namespace fatpound::win32::d3d11::pipeline::system
 				factory::DepthStencilView::Create(gfxResPack, pTexture2D, descDSV);
 			}
 
-			gfxResPack.m_device_pack.m_pImmediateContext->OMSetRenderTargets(1u, gfxResPack.m_pTarget.GetAddressOf(), gfxResPack.m_pDSV.Get());
+			gfxResPack.m_pImmediateContext->OMSetRenderTargets(1u, gfxResPack.m_pTarget.GetAddressOf(), gfxResPack.m_pDSV.Get());
 		}
 
 

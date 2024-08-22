@@ -14,7 +14,6 @@ module;
 export module FatPound.Win32.D3D11.Graphics;
 
 import FatPound.Win32.D3D11.Graphics.ResourcePack;
-import FatPound.Win32.D3D11.Graphics.DevicePack;
 
 import FatPound.Win32.D3D11.Pipeline;
 import FatPound.Win32.D3D11.Visual;
@@ -78,11 +77,11 @@ export namespace fatpound::win32::d3d11
         {
             InitCommon_(hWnd);
             
-            pipeline::system::DepthStencil::SetDefault(m_gfxResPack_);
+            pipeline::system::DepthStencil::SetDefault(m_res_pack_);
 
             if constexpr (s_rasterizationEnabled_)
             {
-                pipeline::system::Rasterizer::SetDefault(m_gfxResPack_);
+                pipeline::system::Rasterizer::SetDefault(m_res_pack_);
             }
         }
         explicit Graphics(HWND hWnd, const SizeInfo& dimensions) requires(Framework)
@@ -92,12 +91,12 @@ export namespace fatpound::win32::d3d11
         {
             InitCommon_(hWnd);
 
-            pipeline::system::ShaderResource::SetDefault<s_msaaQuality_>(m_gfxResPack_, m_width_, m_height_);
-            pipeline::system::Sampler::SetDefault(m_gfxResPack_);
+            pipeline::system::ShaderResource::SetDefault<s_msaaQuality_>(m_res_pack_, m_width_, m_height_);
+            pipeline::system::Sampler::SetDefault(m_res_pack_);
 
-            m_gfxResPack_.m_pSysBuffer = static_cast<Color*>(_aligned_malloc(sizeof(Color) * m_width_ * m_height_, 16u));
+            m_res_pack_.m_pSysBuffer = static_cast<Color*>(_aligned_malloc(sizeof(Color) * m_width_ * m_height_, 16u));
 
-            if (m_gfxResPack_.m_pSysBuffer == nullptr) [[unlikely]]
+            if (m_res_pack_.m_pSysBuffer == nullptr) [[unlikely]]
             {
                 throw std::runtime_error("Could NOT allocate memory for sysBuffer");
             }
@@ -114,15 +113,15 @@ export namespace fatpound::win32::d3d11
         ~Graphics() noexcept = default;
         ~Graphics() noexcept(false) requires(Framework)
         {
-            if (m_gfxResPack_.m_pSysBuffer != nullptr) [[likely]]
+            if (m_res_pack_.m_pSysBuffer != nullptr) [[likely]]
             {
-                _aligned_free(m_gfxResPack_.m_pSysBuffer);
-                m_gfxResPack_.m_pSysBuffer = nullptr;
+                _aligned_free(m_res_pack_.m_pSysBuffer);
+                m_res_pack_.m_pSysBuffer = nullptr;
             }
 
-            if (GetDevicePack().m_pImmediateContext != nullptr) [[likely]]
+            if (m_res_pack_.m_pImmediateContext != nullptr) [[likely]]
             {
-                GetDevicePack().m_pImmediateContext->ClearState();
+                m_res_pack_.m_pImmediateContext->ClearState();
             }
         }
 
@@ -133,14 +132,6 @@ export namespace fatpound::win32::d3d11
 
 
     public:
-        auto GetResourcePack() noexcept -> GfxResourcePack&
-        {
-            return m_gfxResPack_;
-        }
-        auto GetDevicePack() noexcept -> GfxDevicePack&
-        {
-            return GetResourcePack().m_device_pack;
-        }
         auto GetViewXM() noexcept -> visual::ViewXM&
         {
             return m_viewXM_;
@@ -148,11 +139,11 @@ export namespace fatpound::win32::d3d11
 
         auto GetDevice() noexcept -> ID3D11Device*
         {
-            return GetDevicePack().m_pDevice.Get();
+            return m_res_pack_.m_pDevice.Get();
         }
         auto GetImmediateContext() noexcept -> ID3D11DeviceContext*
         {
-            return GetDevicePack().m_pImmediateContext.Get();
+            return m_res_pack_.m_pImmediateContext.Get();
         }
 
         auto GetCameraXM()     const noexcept -> ::DirectX::XMMATRIX requires(not Framework)
@@ -179,11 +170,11 @@ export namespace fatpound::win32::d3d11
         }
         void BeginFrame() noexcept requires(Framework)
         {
-            std::memset(static_cast<void*>(m_gfxResPack_.m_pSysBuffer), 0u, sizeof(Color) * m_width_ * m_height_);
+            std::memset(static_cast<void*>(m_res_pack_.m_pSysBuffer), 0u, sizeof(Color) * m_width_ * m_height_);
         }
         void EndFrame()
         {
-            const auto hr = m_gfxResPack_.m_pSwapChain->Present(1u, 0u);
+            const auto hr = m_res_pack_.m_pSwapChain->Present(1u, 0u);
 
             if (FAILED(hr)) [[unlikely]]
             {
@@ -193,11 +184,11 @@ export namespace fatpound::win32::d3d11
         void EndFrame() requires(Framework)
         {
             HRESULT hr = GetImmediateContext()->Map(
-                m_gfxResPack_.m_pSysBufferTexture.Get(),
+                m_res_pack_.m_pSysBufferTexture.Get(),
                 0u,
                 D3D11_MAP_WRITE_DISCARD,
                 0u,
-                &m_gfxResPack_.m_mappedSysBufferTexture
+                &m_res_pack_.m_mappedSysBufferTexture
             );
 
             if (FAILED(hr)) [[unlikely]]
@@ -205,9 +196,9 @@ export namespace fatpound::win32::d3d11
                 throw std::exception("Could NOT Map the ImmediateContext!");
             }
 
-            Color* pDst = static_cast<Color*>(m_gfxResPack_.m_mappedSysBufferTexture.pData);
+            Color* pDst = static_cast<Color*>(m_res_pack_.m_mappedSysBufferTexture.pData);
 
-            const auto& dstPitch = m_gfxResPack_.m_mappedSysBufferTexture.RowPitch / sizeof(Color);
+            const auto& dstPitch = m_res_pack_.m_mappedSysBufferTexture.RowPitch / sizeof(Color);
             const auto& srcPitch = m_width_;
             const auto& rowBytes = srcPitch * sizeof(Color);
 
@@ -215,15 +206,15 @@ export namespace fatpound::win32::d3d11
             {
                 std::memcpy(
                     static_cast<void*>(&pDst[y * dstPitch]),
-                    static_cast<void*>(&m_gfxResPack_.m_pSysBuffer[y * srcPitch]),
+                    static_cast<void*>(&m_res_pack_.m_pSysBuffer[y * srcPitch]),
                     rowBytes
                 );
             }
 
-            GetImmediateContext()->Unmap(m_gfxResPack_.m_pSysBufferTexture.Get(), 0u);
+            GetImmediateContext()->Unmap(m_res_pack_.m_pSysBufferTexture.Get(), 0u);
             GetImmediateContext()->Draw(6u, 0u);
 
-            hr = m_gfxResPack_.m_pSwapChain->Present(1u, 0u);
+            hr = m_res_pack_.m_pSwapChain->Present(1u, 0u);
 
             if (FAILED(hr)) [[unlikely]]
             {
@@ -238,7 +229,7 @@ export namespace fatpound::win32::d3d11
             assert(y >= 0);
             assert(y < static_cast<int>(m_height_));
 
-            m_gfxResPack_.m_pSysBuffer[m_width_ * y + x] = color;
+            m_res_pack_.m_pSysBuffer[m_width_ * y + x] = color;
         }
 
 
@@ -264,13 +255,13 @@ export namespace fatpound::win32::d3d11
         {
             {
                 const auto& scdesc = factory::DeviceAndSwapChain::CreateDESC<s_msaaQuality_>(hWnd, m_width_, m_height_);
-                factory::DeviceAndSwapChain::Create(m_gfxResPack_, scdesc);
+                factory::DeviceAndSwapChain::Create(m_res_pack_, scdesc);
             }
 
             ToggleAltEnterMode_();
 
-            pipeline::system::RenderTarget::SetDefault<s_msaaQuality_, Framework>(m_gfxResPack_, m_width_, m_height_);
-            pipeline::system::Viewport::SetDefault(m_gfxResPack_, m_width_, m_height_);
+            pipeline::system::RenderTarget::SetDefault<s_msaaQuality_, Framework>(m_res_pack_, m_width_, m_height_);
+            pipeline::system::Viewport::SetDefault(m_res_pack_, m_width_, m_height_);
         }
         void InitFramework_() requires(Framework)
         {
@@ -296,20 +287,20 @@ export namespace fatpound::win32::d3d11
                 SBinds::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE::element::InputLayout>(GetDevice(), ied, pvsbc));
             }
             
-            auto& devicePack = GetDevicePack();
+            auto pImmediateContext = GetImmediateContext();
 
             auto& sbinds = SBinds::GetStaticBinds_();
 
             for (auto& sbind : sbinds)
             {
-                sbind->Bind(devicePack);
+                sbind->Bind(pImmediateContext);
             }
         }
 
         void ToggleAltEnterMode_()
         {
             ::wrl::ComPtr<IDXGIDevice> pDXGIDevice = nullptr;
-            GetDevicePack().m_pDevice->QueryInterface(__uuidof(IDXGIDevice), &pDXGIDevice);
+            m_res_pack_.m_pDevice->QueryInterface(__uuidof(IDXGIDevice), &pDXGIDevice);
 
             ::wrl::ComPtr<IDXGIAdapter> pDXGIAdapter = nullptr;
             pDXGIDevice->GetParent(__uuidof(IDXGIAdapter), &pDXGIAdapter);
@@ -318,7 +309,7 @@ export namespace fatpound::win32::d3d11
             pDXGIAdapter->GetParent(__uuidof(IDXGIFactory), &pIDXGIFactory);
 
             DXGI_SWAP_CHAIN_DESC desc = {};
-            m_gfxResPack_.m_pSwapChain->GetDesc(&desc);
+            m_res_pack_.m_pSwapChain->GetDesc(&desc);
 
             const auto& hWnd = desc.OutputWindow;
 
@@ -342,15 +333,15 @@ export namespace fatpound::win32::d3d11
         {
             const std::array<float, 4> colors{ red, green, blue, 1.0f };
 
-            GetDevicePack().m_pImmediateContext->ClearRenderTargetView(m_gfxResPack_.m_pTarget.Get(), colors.data());
-            GetDevicePack().m_pImmediateContext->ClearDepthStencilView(m_gfxResPack_.m_pDSV.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
+            m_res_pack_.m_pImmediateContext->ClearRenderTargetView(m_res_pack_.m_pTarget.Get(), colors.data());
+            m_res_pack_.m_pImmediateContext->ClearDepthStencilView(m_res_pack_.m_pDSV.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
         }
 
 
     private:
-        GfxResourcePack m_gfxResPack_;
+        GraphicsResourcePack m_res_pack_;
 
-        [[maybe_unused]] visual::ViewXM m_viewXM_;
+        visual::ViewXM m_viewXM_;
 
         const decltype(SizeInfo::width)  m_width_;
         const decltype(SizeInfo::height) m_height_;

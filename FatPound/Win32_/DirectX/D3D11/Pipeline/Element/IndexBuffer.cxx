@@ -33,8 +33,8 @@ namespace fatpound::win32::d3d11::pipeline::element
         return m_count_;
     }
 
-    void IndexBuffer::Bind(GfxDevicePack& gfx_devicePack)
+    void IndexBuffer::Bind(ID3D11DeviceContext* pImmediateContext)
     {
-        gfx_devicePack.m_pImmediateContext->IASetIndexBuffer(m_pIndexBuffer_.Get(), DXGI_FORMAT_R16_UINT, 0u);
+        pImmediateContext->IASetIndexBuffer(m_pIndexBuffer_.Get(), DXGI_FORMAT_R16_UINT, 0u);
     }
 }

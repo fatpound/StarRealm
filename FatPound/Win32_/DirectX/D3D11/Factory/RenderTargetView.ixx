@@ -28,7 +28,7 @@ export namespace fatpound::win32::d3d11::factory
 
 
     public:
-        static void Create(GfxResourcePack& gfxResPack);
+        static void Create(GraphicsResourcePack& gfxResPack);
 
 
     protected:

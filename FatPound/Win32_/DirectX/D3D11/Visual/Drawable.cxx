@@ -12,19 +12,19 @@ module FatPound.Win32.D3D11.Visual.Drawable;
 
 namespace fatpound::win32::d3d11::visual
 {
-    void Drawable::Draw(GfxDevicePack& gfx_devicePack) const noexcept(IN_RELEASE)
+    void Drawable::Draw(ID3D11DeviceContext* const pImmediateContext) const noexcept(IN_RELEASE)
     {
         for (auto& bindable : m_binds_)
         {
-            bindable->Bind(gfx_devicePack);
+            bindable->Bind(pImmediateContext);
         }
 
         for (auto& static_bindable : this->GetStaticBinds_())
         {
-            static_bindable->Bind(gfx_devicePack);
+            static_bindable->Bind(pImmediateContext);
         }
 
-        gfx_devicePack.m_pImmediateContext->DrawIndexed(pCIndexBuffer_->GetCount(), 0u, 0);
+        pImmediateContext->DrawIndexed(pCIndexBuffer_->GetCount(), 0u, 0);
     }
 
     void Drawable::AddBind_(std::unique_ptr<NAMESPACE_PIPELINE::Bindable> bind) noexcept(IN_RELEASE)

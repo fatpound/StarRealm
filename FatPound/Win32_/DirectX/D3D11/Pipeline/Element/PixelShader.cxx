@@ -25,8 +25,8 @@ namespace fatpound::win32::d3d11::pipeline::element
         );
     }
 
-    void PixelShader::Bind(GfxDevicePack& gfx_devicePack)
+    void PixelShader::Bind(ID3D11DeviceContext* pImmediateContext)
     {
-        gfx_devicePack.m_pImmediateContext->PSSetShader(m_pPixelShader_.Get(), nullptr, 0u);
+        pImmediateContext->PSSetShader(m_pPixelShader_.Get(), nullptr, 0u);
     }
 }

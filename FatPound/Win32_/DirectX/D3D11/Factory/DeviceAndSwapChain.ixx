@@ -65,7 +65,7 @@ export namespace fatpound::win32::d3d11::factory
 
 
     public:
-        static void Create(GfxResourcePack& gfxResPack, const DXGI_SWAP_CHAIN_DESC& desc);
+        static void Create(GraphicsResourcePack& gfxResPack, const DXGI_SWAP_CHAIN_DESC& desc);
 
 
     protected:

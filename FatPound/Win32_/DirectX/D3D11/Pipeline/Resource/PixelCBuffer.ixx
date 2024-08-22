@@ -35,9 +35,9 @@ export namespace fatpound::win32::d3d11::pipeline::resource
 
 
     public:
-        virtual void Bind(GfxDevicePack& gfx_devicePack) override final
+        virtual void Bind(ID3D11DeviceContext* pImmediateContext) override final
         {
-            gfx_devicePack.m_pImmediateContext->PSSetConstantBuffers(0u, 1u, this->m_pConstantBuffer_.GetAddressOf());
+            pImmediateContext->PSSetConstantBuffers(0u, 1u, this->m_pConstantBuffer_.GetAddressOf());
         }
 
 

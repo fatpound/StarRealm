@@ -46,10 +46,10 @@ export namespace fatpound::win32::d3d11::pipeline::resource
 
 
     public:
-        virtual void Bind(GfxDevicePack& gfx_devicePack) override final
+        virtual void Bind(ID3D11DeviceContext* pImmediateContext) override final
         {
             m_vcbuf_.Update(
-                gfx_devicePack.m_pImmediateContext.Get(),
+                pImmediateContext,
                 ::DirectX::XMMatrixTranspose(
                     m_parent_.GetTransformXM() *
                     m_viewXM_.GetCameraXM() *
@@ -57,7 +57,7 @@ export namespace fatpound::win32::d3d11::pipeline::resource
                 )
             );
 
-            m_vcbuf_.Bind(gfx_devicePack);
+            m_vcbuf_.Bind(pImmediateContext);
         }
 
 

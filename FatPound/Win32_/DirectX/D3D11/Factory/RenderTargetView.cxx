@@ -12,7 +12,7 @@ namespace wrl = Microsoft::WRL;
 
 namespace fatpound::win32::d3d11::factory
 {
-    void RenderTargetView::Create(GfxResourcePack& gfxResPack)
+    void RenderTargetView::Create(GraphicsResourcePack& gfxResPack)
     {
         ::wrl::ComPtr<ID3D11Texture2D> pBackBufferTexture = nullptr;
 
@@ -25,7 +25,7 @@ namespace fatpound::win32::d3d11::factory
             throw std::runtime_error("Could NOT get the buffer from SwapChain!");
         }
 
-        hr = gfxResPack.m_device_pack.m_pDevice->CreateRenderTargetView(pBackBufferTexture.Get(), nullptr, &gfxResPack.m_pTarget);
+        hr = gfxResPack.m_pDevice->CreateRenderTargetView(pBackBufferTexture.Get(), nullptr, &gfxResPack.m_pTarget);
 
         if (FAILED(hr)) [[unlikely]]
         {

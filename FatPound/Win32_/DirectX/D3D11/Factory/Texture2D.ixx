@@ -62,12 +62,12 @@ export namespace fatpound::win32::d3d11::factory
 
     public:
         static void Create(
-            const GfxResourcePack& gfxResPack,
+            const GraphicsResourcePack& gfxResPack,
             ::Microsoft::WRL::ComPtr<ID3D11Texture2D>& pTexture2D,
             const D3D11_TEXTURE2D_DESC& desc
         );
 
-        static void Create(GfxResourcePack& gfxResPack, const D3D11_TEXTURE2D_DESC& desc);
+        static void Create(GraphicsResourcePack& gfxResPack, const D3D11_TEXTURE2D_DESC& desc);
 
 
     protected:

@@ -34,7 +34,7 @@ export namespace fatpound::win32::d3d11::pipeline::system
 
 	public:
 		template <UINT MSAA_Quality, bool ForFramework = true>
-		static void SetDefault(GfxResourcePack& gfxResPack, UINT width, UINT height)
+		static void SetDefault(GraphicsResourcePack& gfxResPack, UINT width, UINT height)
 		{
 			const auto& t2dDesc = factory::Texture2D::CreateDESC<MSAA_Quality, ForFramework>(width, height);
 			factory::Texture2D::Create(gfxResPack, t2dDesc);
@@ -44,7 +44,7 @@ export namespace fatpound::win32::d3d11::pipeline::system
 			const auto& srvDesc = factory::ShaderResourceView::CreateDESC<MSAA_Quality>(t2dDesc.Format);
 			factory::ShaderResourceView::Create(gfxResPack, pSysBufferTextureView_, srvDesc);
 
-			gfxResPack.m_device_pack.m_pImmediateContext->PSSetShaderResources(0u, 1u, pSysBufferTextureView_.GetAddressOf());
+			gfxResPack.m_pImmediateContext->PSSetShaderResources(0u, 1u, pSysBufferTextureView_.GetAddressOf());
 		}
 
 

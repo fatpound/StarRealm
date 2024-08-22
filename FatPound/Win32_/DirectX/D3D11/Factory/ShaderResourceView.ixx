@@ -54,7 +54,7 @@ export namespace fatpound::win32::d3d11::factory
 
     public:
         static void Create(
-            const GfxResourcePack& gfxResPack,
+            const GraphicsResourcePack& gfxResPack,
             ::Microsoft::WRL::ComPtr<ID3D11ShaderResourceView>& pSysBufferTextureView,
             D3D11_SHADER_RESOURCE_VIEW_DESC desc
         );

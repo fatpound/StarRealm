@@ -50,7 +50,7 @@ export namespace fatpound::win32::d3d11::factory
         }
 
         static void Create(
-            const GfxResourcePack& gfxResPack,
+            const GraphicsResourcePack& gfxResPack,
             ::Microsoft::WRL::ComPtr<ID3D11RasterizerState>& pRasterizerState,
             const D3D11_RASTERIZER_DESC& desc
         );

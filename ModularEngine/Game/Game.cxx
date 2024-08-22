@@ -72,6 +72,8 @@ namespace starrealm
         
         m_gfx_.SetCameraXM(m_camera_.GetMatrix());
 
+        const auto pImmediateContext = m_gfx_.GetImmediateContext();
+
         for (auto& star : m_stars_)
         {
             if (not m_wnd_.GetKeyboard().KeyIsPressed(VK_SPACE)) [[likely]]
@@ -79,7 +81,7 @@ namespace starrealm
                 star->Update(delta_time);
             }
 
-            star->Draw(m_gfx_.GetDevicePack());
+            star->Draw(pImmediateContext);
         }
     }
 }

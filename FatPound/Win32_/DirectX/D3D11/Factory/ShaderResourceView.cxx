@@ -13,14 +13,14 @@ namespace wrl = Microsoft::WRL;
 namespace fatpound::win32::d3d11::factory
 {
     void ShaderResourceView::Create(
-        const GfxResourcePack& gfxResPack,
+        const GraphicsResourcePack& gfxResPack,
         ::wrl::ComPtr<ID3D11ShaderResourceView>& pSysBufferTextureView,
         D3D11_SHADER_RESOURCE_VIEW_DESC desc
     )
     {
         HRESULT hr;
 
-        hr = gfxResPack.m_device_pack.m_pDevice->CreateShaderResourceView(gfxResPack.m_pSysBufferTexture.Get(), &desc, &pSysBufferTextureView);
+        hr = gfxResPack.m_pDevice->CreateShaderResourceView(gfxResPack.m_pSysBufferTexture.Get(), &desc, &pSysBufferTextureView);
 
         if (FAILED(hr)) [[unlikely]]
         {

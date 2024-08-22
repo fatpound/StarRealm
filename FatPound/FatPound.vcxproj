@@ -48,9 +48,8 @@
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\ShaderResourceView.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\Texture2D.cxx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Factory\Texture2D.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\GfxDevicePack.ixx" />
+    <ClCompile Include="Win32_\DirectX\D3D11\GraphicsResourcePack.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Graphics.ixx" />
-    <ClCompile Include="Win32_\DirectX\D3D11\GfxResource.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Bindable.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\Element.ixx" />
     <ClCompile Include="Win32_\DirectX\D3D11\Pipeline\Element\IndexBuffer.cxx" />

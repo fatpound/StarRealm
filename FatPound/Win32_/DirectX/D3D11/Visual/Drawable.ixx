@@ -4,9 +4,10 @@ module;
 
 #include <DirectXMath.h>
 
+#include <d3d11.h>
+
 export module FatPound.Win32.D3D11.Visual.Drawable;
 
-import FatPound.Win32.D3D11.Graphics.DevicePack;
 import FatPound.Win32.D3D11.Pipeline;
 
 import std;
@@ -35,7 +36,7 @@ export namespace fatpound::win32::d3d11::visual
 
         virtual void Update(float delta_time) noexcept = 0;
 
-        virtual void Draw(GfxDevicePack& gfx_devicePack) const noexcept(IN_RELEASE) final;
+        virtual void Draw(ID3D11DeviceContext* const pImmediateContext) const noexcept(IN_RELEASE) final;
 
         
     protected:
