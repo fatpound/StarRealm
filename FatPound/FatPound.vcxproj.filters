@@ -255,6 +255,45 @@
     <ClCompile Include="Util\ScreenSizeInfo.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Automata\Automata.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Automata\CFG.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Automata\CFG.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Automata\TLT.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Automata\TLT.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Automata\TLT_v2.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Automata\TLT_v2.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DSA\LinkedList\Doubly.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DSA\LinkedList\DoublyCircular.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DSA\LinkedList\LinkedList.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DSA\LinkedList\Singly.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DSA\LinkedList\SinglyCircular.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DSA\DSA.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Win32_\FatWin32_.hpp">
@@ -272,5 +311,6 @@
     <None Include="FatSettings_Debug.props" />
     <None Include="FatSettings_Release.props" />
     <None Include="FatRules.ruleset" />
+    <None Include="FatSettings_Library.props" />
   </ItemGroup>
 </Project>

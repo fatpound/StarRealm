@@ -19,6 +19,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Automata\Automata.ixx" />
+    <ClCompile Include="Automata\CFG.cxx" />
+    <ClCompile Include="Automata\CFG.ixx" />
+    <ClCompile Include="Automata\TLT.cxx" />
+    <ClCompile Include="Automata\TLT.ixx" />
+    <ClCompile Include="Automata\TLT_v2.cxx" />
+    <ClCompile Include="Automata\TLT_v2.ixx" />
+    <ClCompile Include="DSA\DSA.ixx" />
+    <ClCompile Include="DSA\LinkedList\Doubly.ixx" />
+    <ClCompile Include="DSA\LinkedList\DoublyCircular.ixx" />
+    <ClCompile Include="DSA\LinkedList\LinkedList.ixx" />
+    <ClCompile Include="DSA\LinkedList\Singly.ixx" />
+    <ClCompile Include="DSA\LinkedList\SinglyCircular.ixx" />
     <ClCompile Include="FatPound.ixx" />
     <ClCompile Include="Math\Math.cxx" />
     <ClCompile Include="Math\Math.ixx" />
@@ -109,6 +122,7 @@
     <None Include="FatRules.ruleset" />
     <None Include="FatSettings.props" />
     <None Include="FatSettings_Debug.props" />
+    <None Include="FatSettings_Library.props" />
     <None Include="FatSettings_Release.props" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -154,21 +168,25 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="FatSettings.props" />
     <Import Project="FatSettings_Debug.props" />
+    <Import Project="FatSettings_Library.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="FatSettings.props" />
     <Import Project="FatSettings_Release.props" />
+    <Import Project="FatSettings_Library.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="FatSettings.props" />
     <Import Project="FatSettings_Debug.props" />
+    <Import Project="FatSettings_Library.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="FatSettings.props" />
     <Import Project="FatSettings_Release.props" />
+    <Import Project="FatSettings_Library.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -201,7 +219,6 @@
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>/wd4820 /wd5045 /wd4514 /wd4061 /wd4668 /wd5039 /wd4365 /wd4265 /wd5220 /wd4625 /wd4626 /wd5204 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -225,7 +242,6 @@
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>/wd4820 /wd5045 /wd4514 /wd4061 /wd4668 /wd5039 /wd4365 /wd4265 /wd5220 /wd4625 /wd4626 /wd5204 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -249,7 +265,6 @@
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>/wd4820 /wd5045 /wd4514 /wd4061 /wd4668 /wd5039 /wd4365 /wd4265 /wd5220 /wd4625 /wd4626 /wd5204 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -273,7 +288,6 @@
       <EnableModules>true</EnableModules>
       <BuildStlModules>true</BuildStlModules>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>/wd4820 /wd5045 /wd4514 /wd4061 /wd4668 /wd5039 /wd4365 /wd4265 /wd5220 /wd4625 /wd4626 /wd5204 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>

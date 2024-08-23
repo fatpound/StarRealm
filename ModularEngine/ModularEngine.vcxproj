@@ -108,7 +108,7 @@
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
-      <AdditionalOptions>/wd4820 /wd5045 /wd4514 /Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -131,7 +131,7 @@
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
-      <AdditionalOptions>/wd4820 /wd5045 /wd4514 /Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -154,7 +154,7 @@
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
-      <AdditionalOptions>/wd4820 /wd5045 /wd4514 /Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -177,7 +177,7 @@
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ErrorReporting>None</ErrorReporting>
-      <AdditionalOptions>/wd4820 /wd5045 /wd4514 /Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/Qvec-report:2 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
