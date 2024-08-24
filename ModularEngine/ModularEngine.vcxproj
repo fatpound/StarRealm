@@ -59,40 +59,40 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\FatPound\FatSettings.props" />
-    <Import Project="..\FatPound\FatSettings_Debug.props" />
+    <Import Project="..\FatModules\FatSettings.props" />
+    <Import Project="..\FatModules\FatSettings_Debug.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\FatPound\FatSettings.props" />
-    <Import Project="..\FatPound\FatSettings_Release.props" />
+    <Import Project="..\FatModules\FatSettings.props" />
+    <Import Project="..\FatModules\FatSettings_Release.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\FatPound\FatSettings.props" />
-    <Import Project="..\FatPound\FatSettings_Debug.props" />
+    <Import Project="..\FatModules\FatSettings.props" />
+    <Import Project="..\FatModules\FatSettings_Debug.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\FatPound\FatSettings.props" />
-    <Import Project="..\FatPound\FatSettings_Release.props" />
+    <Import Project="..\FatModules\FatSettings.props" />
+    <Import Project="..\FatModules\FatSettings_Release.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <UseStructuredOutput>false</UseStructuredOutput>
-    <CodeAnalysisRuleSet>$(SolutionDir)\FatPound\FatRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\..\FatModules\FatModules\FatRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <UseStructuredOutput>false</UseStructuredOutput>
-    <CodeAnalysisRuleSet>$(SolutionDir)\FatPound\FatRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\..\FatModules\FatModules\FatRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <UseStructuredOutput>false</UseStructuredOutput>
-    <CodeAnalysisRuleSet>$(SolutionDir)\FatPound\FatRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\..\FatModules\FatModules\FatRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <UseStructuredOutput>false</UseStructuredOutput>
-    <CodeAnalysisRuleSet>$(SolutionDir)\FatPound\FatRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\..\FatModules\FatModules\FatRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -289,6 +289,11 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FatModules\FatModules.vcxproj">
+      <Project>{064e2dd0-aee6-4af4-ae1a-64fdd79d9fb7}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
