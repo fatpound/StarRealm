@@ -1,4 +1,4 @@
 [submodule "FatModules"]
 	path = FatModules
-	url = https://github.com/fatpound/FatModules
+	url = https://github.com/fatpound/FatModules.git
 	update = main
