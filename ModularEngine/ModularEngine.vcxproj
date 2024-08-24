@@ -225,11 +225,6 @@
     <ClCompile Include="wWinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FatPound\FatPound.vcxproj">
-      <Project>{f30a0914-80be-46fa-8864-4962b5351266}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <FxCompile Include="Game\Entity\Star\Shader\PSColorBlend.hlsl">
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
