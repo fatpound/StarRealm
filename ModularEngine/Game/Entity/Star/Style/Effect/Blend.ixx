@@ -41,11 +41,6 @@ export namespace starrealm::entity::star::style::effect
 
 
     public:
-        auto operator <=> (const Blend& rhs) const = delete;
-        bool operator ==  (const Blend& rhs) const = delete;
-
-
-    public:
         template <bool WithCentre = true>
         static auto GenerateVertices(Star::RadiusPack radiuses, DirectX::XMFLOAT3 position, std::size_t flare_count)
         {

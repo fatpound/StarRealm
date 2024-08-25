@@ -28,11 +28,6 @@ export namespace starrealm
         int Go();
 
 
-    public:
-        auto operator <=> (const Game& rhs) const = delete;
-        bool operator ==  (const Game& rhs) const = delete;
-
-
     protected:
         
 

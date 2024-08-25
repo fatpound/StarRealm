@@ -42,11 +42,6 @@ export namespace starrealm::entity::star::style::effect
 
 
     public:
-        auto operator <=> (const ColorBase_& rhs) const = delete;
-        bool operator ==  (const ColorBase_& rhs) const = delete;
-        
-
-    public:
         static auto GeneratePixelCBuffer() -> CBuffer
         {
             std::minstd_rand mrng(std::random_device{}());
