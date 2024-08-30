@@ -4,7 +4,7 @@ module;
 
 export module StarRealm;
 
-import StarRealm.Entity;
+import :StarFactory;
 
 import FatPound;
 
@@ -14,6 +14,8 @@ export namespace starrealm
 {
     class Game final
     {
+        using Settings = StarFactory<>::Settings;
+
     public:
         explicit Game();
         explicit Game(const Game& src) = delete;
@@ -36,6 +38,8 @@ export namespace starrealm
 
 
     private:
+        Settings m_settings_;
+
         NAMESPACE_WIN32::Window m_wnd_;
 
         NAMESPACE_D3D11::Graphics<> m_gfx_;
@@ -48,7 +52,3 @@ export namespace starrealm
         std::vector<std::unique_ptr<entity::Star>> m_stars_;
     };
 }
-
-module : private;
-
-import :StarFactory;

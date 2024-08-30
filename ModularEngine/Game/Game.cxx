@@ -18,13 +18,11 @@ namespace dx = DirectX;
 
 namespace starrealm
 {
-    using Settings = StarFactory::Settings;
-
     Game::Game()
         :
         m_wnd_(L"StarRealm", NAMESPACE_UTIL::ScreenSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
         m_gfx_(m_wnd_.GetHwnd(), NAMESPACE_UTIL::ScreenSizeInfo{ m_wnd_.GetClientWidth<UINT>(), m_wnd_.GetClientHeight<UINT>() }),
-        m_camera_(Settings::s_minStarDepth, Settings::s_maxStarDepth),
+        m_camera_(m_settings_.m_minStarDepth, m_settings_.m_maxStarDepth),
         m_camera_controller_(m_camera_, m_wnd_.GetMouse(), m_wnd_.GetKeyboard()),
         m_stars_{ StarFactory{ m_gfx_ }.GetStars() }
     {
@@ -32,8 +30,8 @@ namespace starrealm
             ::dx::XMMatrixPerspectiveLH(
                 1.0f,
                 m_wnd_.GetClientHeight<float>() / m_wnd_.GetClientWidth<float>(), // 1 / Aspect Ratio
-                Settings::s_minStarDepth,
-                Settings::s_maxStarDepth * 10.0f
+                m_settings_.m_minStarDepth,
+                m_settings_.m_maxStarDepth * 10.0f
             )
         );
     }
