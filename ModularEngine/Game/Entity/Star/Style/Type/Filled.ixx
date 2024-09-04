@@ -73,29 +73,24 @@ export namespace starrealm::entity::star::style::type
 
 
     private:
-        template <MyVertex V>
-        static float GetVertex_X_(const V& vertex) noexcept
+        template <MyVertex V, char axis>
+        static float GetVertex_(const V& vertex) noexcept
         {
-            if constexpr (std::is_same_v<V, DirectX::XMFLOAT3>)
-            {
-                return vertex.x;
-            }
-            else
-            {
-                return vertex.pos.x;
-            }
-        }
+            static_assert(axis == 'x' or axis == 'y');
 
-        template <MyVertex V>
-        static float GetVertex_Y_(const V& vertex) noexcept
-        {
-            if constexpr (std::is_same_v<V, DirectX::XMFLOAT3>)
+            if constexpr (std::is_same_v<V, ::DirectX::XMFLOAT3>)
             {
-                return vertex.y;
+                return axis == 'x'
+                    ? vertex.x
+                    : vertex.y
+                    ;
             }
             else
             {
-                return vertex.pos.y;
+                return axis == 'x'
+                    ? vertex.pos.x
+                    : vertex.pos.y
+                    ;
             }
         }
 
@@ -106,11 +101,11 @@ export namespace starrealm::entity::star::style::type
                 idx_arr,
                 [&](const auto& idx0, const auto& idx1) noexcept -> bool
                 {
-                    return Filled::GetVertex_X_(vertices[idx0]) < Filled::GetVertex_X_(vertices[idx1]);
+                    return GetVertex_<V, 'x'>(vertices[idx0]) < GetVertex_<V, 'x'>(vertices[idx1]);
                 }
             );
 
-            if (Filled::GetVertex_Y_(vertices[idx_arr[1u]]) < Filled::GetVertex_Y_(vertices[idx_arr[2u]]))
+            if (GetVertex_<V, 'y'>(vertices[idx_arr[1u]]) < GetVertex_<V, 'y'>(vertices[idx_arr[2u]]))
             {
                 std::swap(idx_arr[1u], idx_arr[2u]);
             }
