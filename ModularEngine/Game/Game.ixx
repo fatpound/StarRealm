@@ -44,8 +44,7 @@ export namespace starrealm
 
         NAMESPACE_D3D11::Graphics<> m_gfx_;
         
-        NAMESPACE_UTIL::Camera           m_camera_;
-        NAMESPACE_UTIL::CameraController m_camera_controller_;
+        NAMESPACE_UTIL::Camera m_camera_;
 
         NAMESPACE_UTIL::AutoTimer m_timer_;
         

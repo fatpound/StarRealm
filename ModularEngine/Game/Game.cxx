@@ -22,8 +22,7 @@ namespace starrealm
         :
         m_wnd_(L"StarRealm", NAMESPACE_UTIL::ScreenSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
         m_gfx_(m_wnd_.GetHwnd(), NAMESPACE_UTIL::ScreenSizeInfo{ m_wnd_.GetClientWidth<UINT>(), m_wnd_.GetClientHeight<UINT>() }),
-        m_camera_(m_settings_.m_minStarDepth, m_settings_.m_maxStarDepth),
-        m_camera_controller_(m_camera_, m_wnd_.GetMouse(), m_wnd_.GetKeyboard()),
+        m_camera_(m_settings_.m_minStarDepth, m_settings_.m_maxStarDepth, m_wnd_.GetMouse(), m_wnd_.GetKeyboard()),
         m_stars_{ StarFactory{ m_gfx_ }.GetStars() }
     {
         m_gfx_.SetProjectionXM(
@@ -64,7 +63,7 @@ namespace starrealm
 
     void Game::DoFrame_()
     {
-        m_camera_controller_.Update();
+        m_camera_.Update();
 
         const auto& delta_time = m_timer_.Mark();
         
