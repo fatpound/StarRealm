@@ -19,7 +19,7 @@ export namespace starrealm
 {
     template
     <
-        std::integral size_t = unsigned int,
+        std::integral       size_t  = unsigned int,
         std::floating_point float_t = float
     >
     class StarFactory final
@@ -90,11 +90,11 @@ export namespace starrealm
 
 
     public:
-        auto GetStars() &  noexcept -> auto
+        auto GetStars() & noexcept
         {
             return m_stars_;
         }
-        auto GetStars() && noexcept -> auto&&
+        auto&& GetStars() && noexcept
         {
             return std::move(m_stars_);
         }
