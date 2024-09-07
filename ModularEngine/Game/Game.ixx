@@ -27,7 +27,7 @@ export namespace starrealm
 
 
     public:
-        int Go();
+        auto Go() -> int;
 
 
     protected:

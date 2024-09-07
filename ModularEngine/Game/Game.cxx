@@ -35,7 +35,7 @@ namespace starrealm
         );
     }
 
-    int Game::Go()
+    auto Game::Go() -> int
     {
         std::optional<WPARAM> error_code;
 
