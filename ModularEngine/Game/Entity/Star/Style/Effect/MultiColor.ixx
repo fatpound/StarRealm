@@ -26,8 +26,8 @@ export namespace starrealm::entity::star::style::effect
         explicit MultiColor(const MultiColor& src) = delete;
         explicit MultiColor(MultiColor&& src) = delete;
 
-        MultiColor& operator = (const MultiColor& src) = delete;
-        MultiColor& operator = (MultiColor&& src) = delete;
+        auto operator = (const MultiColor& src) -> MultiColor& = delete;
+        auto operator = (MultiColor&& src)      -> MultiColor& = delete;
         ~MultiColor() noexcept = delete;
 
 

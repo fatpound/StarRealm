@@ -20,8 +20,8 @@ export namespace starrealm::entity::star
         explicit HollowMulti(const HollowMulti& src) = delete;
         explicit HollowMulti(HollowMulti&& src) = delete;
 
-        HollowMulti& operator = (const HollowMulti& src) = delete;
-        HollowMulti& operator = (HollowMulti&& src) = delete;
+        auto operator = (const HollowMulti& src) -> HollowMulti& = delete;
+        auto operator = (HollowMulti&& src)      -> HollowMulti& = delete;
         virtual ~HollowMulti() noexcept final = default;
 
 

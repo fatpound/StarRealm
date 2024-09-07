@@ -43,8 +43,8 @@ export namespace starrealm::entity
         explicit Star(const Star& src) = delete;
         explicit Star(Star&& src) = delete;
 
-        Star& operator = (const Star& src) = delete;
-        Star& operator = (Star&& src) = delete;
+        auto operator = (const Star& src) -> Star& = delete;
+        auto operator = (Star&& src)      -> Star& = delete;
         virtual ~Star() noexcept = default;
 
 
@@ -91,13 +91,13 @@ export namespace starrealm::entity
 
         virtual auto GetPosition() const noexcept -> ::DirectX::XMFLOAT3 final;
 
-        virtual float GetOuterRadius() const noexcept final;
+        virtual auto GetOuterRadius() const noexcept -> float final;
 
         virtual void Update(const float delta_time) noexcept override final;
 
 
     public:
-        bool IsWithinArea(const ::DirectX::XMFLOAT3& position, const float radius) const noexcept;
+        auto IsWithinArea(const ::DirectX::XMFLOAT3& position, const float radius) const noexcept -> bool;
 
 
     protected:

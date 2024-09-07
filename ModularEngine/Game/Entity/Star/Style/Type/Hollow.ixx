@@ -24,8 +24,8 @@ export namespace starrealm::entity::star::style::type
         explicit Hollow(const Hollow& src) = delete;
         explicit Hollow(Hollow&& src) = delete;
 
-        Hollow& operator = (const Hollow& src) = delete;
-        Hollow& operator = (Hollow&& src) = delete;
+        auto operator = (const Hollow& src) -> Hollow& = delete;
+        auto operator = (Hollow&& src)      -> Hollow& = delete;
         ~Hollow() noexcept = delete;
 
 

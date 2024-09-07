@@ -20,8 +20,8 @@ export namespace starrealm::entity::star
         explicit FilledSingle(const FilledSingle& src) = delete;
         explicit FilledSingle(FilledSingle&& src) = delete;
 
-        FilledSingle& operator = (const FilledSingle& src) = delete;
-        FilledSingle& operator = (FilledSingle&& src) = delete;
+        auto operator = (const FilledSingle& src) -> FilledSingle& = delete;
+        auto operator = (FilledSingle&& src)      -> FilledSingle& = delete;
         virtual ~FilledSingle() noexcept final = default;
 
 

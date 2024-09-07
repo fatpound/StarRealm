@@ -30,8 +30,8 @@ export namespace starrealm::entity::star::style::type
         explicit Filled(const Filled& src) = delete;
         explicit Filled(Filled&& src) = delete;
 
-        Filled& operator = (const Filled& src) = delete;
-        Filled& operator = (Filled&& src) = delete;
+        auto operator = (const Filled& src) -> Filled& = delete;
+        auto operator = (Filled&& src)      -> Filled& = delete;
         ~Filled() noexcept = delete;
 
 
@@ -74,7 +74,7 @@ export namespace starrealm::entity::star::style::type
 
     private:
         template <MyVertex V, char axis>
-        static float GetVertex_(const V& vertex) noexcept
+        static auto GetVertex_(const V& vertex) noexcept -> float
         {
             static_assert(axis == 'x' or axis == 'y');
 

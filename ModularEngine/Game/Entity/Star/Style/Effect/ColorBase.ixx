@@ -36,8 +36,8 @@ export namespace starrealm::entity::star::style::effect
         explicit ColorBase_(const ColorBase_& src) = delete;
         explicit ColorBase_(ColorBase_&& src) = delete;
 
-        ColorBase_& operator = (const ColorBase_& src) = delete;
-        ColorBase_& operator = (ColorBase_&& src) = delete;
+        auto operator = (const ColorBase_& src) -> ColorBase_& = delete;
+        auto operator = (ColorBase_&& src)      -> ColorBase_& = delete;
         ~ColorBase_() noexcept = delete;
 
 

@@ -51,8 +51,8 @@ export namespace starrealm::entity::star
         explicit StarBase(const StarBase& src) = delete;
         explicit StarBase(StarBase&& src) = delete;
 
-        StarBase& operator = (const StarBase& src) = delete;
-        StarBase& operator = (StarBase&& src) = delete;
+        auto operator = (const StarBase& src) -> StarBase& = delete;
+        auto operator = (StarBase&& src)      -> StarBase& = delete;
         virtual ~StarBase() noexcept = default;
 
 
@@ -60,7 +60,7 @@ export namespace starrealm::entity::star
 
 
     private:
-        virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const std::vector<std::unique_ptr<NAMESPACE_PIPELINE::Bindable>>& override final
+        virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const bind_vec_t& override final
         {
             return this->m_static_binds_;
         }

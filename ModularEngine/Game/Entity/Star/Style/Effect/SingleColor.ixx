@@ -26,8 +26,8 @@ export namespace starrealm::entity::star::style::effect
         explicit SingleColor(const SingleColor& src) = delete;
         explicit SingleColor(SingleColor&& src) = delete;
 
-        SingleColor& operator = (const SingleColor& src) = delete;
-        SingleColor& operator = (SingleColor&& src) = delete;
+        auto operator = (const SingleColor& src) -> SingleColor& = delete;
+        auto operator = (SingleColor&& src)      -> SingleColor& = delete;
         ~SingleColor() noexcept = delete;
 
 

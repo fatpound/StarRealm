@@ -35,8 +35,8 @@ export namespace starrealm::entity::star::style::effect
         explicit Blend(const Blend& src) = delete;
         explicit Blend(Blend&& src) = delete;
 
-        Blend& operator = (const Blend& src) = delete;
-        Blend& operator = (Blend&& src) = delete;
+        auto operator = (const Blend& src) -> Blend& = delete;
+        auto operator = (Blend&& src)      -> Blend& = delete;
         ~Blend() noexcept = delete;
 
 

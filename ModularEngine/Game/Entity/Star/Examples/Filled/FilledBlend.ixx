@@ -20,8 +20,8 @@ export namespace starrealm::entity::star
         explicit FilledBlend(const FilledBlend& src) = delete;
         explicit FilledBlend(FilledBlend&& src) = delete;
 
-        FilledBlend& operator = (const FilledBlend& src) = delete;
-        FilledBlend& operator = (FilledBlend&& src) = delete;
+        auto operator = (const FilledBlend& src) -> FilledBlend& = delete;
+        auto operator = (FilledBlend&& src)      -> FilledBlend& = delete;
         virtual ~FilledBlend() noexcept final = default;
 
 
