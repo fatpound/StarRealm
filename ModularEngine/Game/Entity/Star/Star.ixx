@@ -54,7 +54,12 @@ export namespace starrealm::entity
 
     public:
         template <bool WithCentre = false>
-        static auto Make(const RadiusPack& radiuses, const ::DirectX::XMFLOAT3& centre, std::size_t flare_count = 4u) -> std::vector<DirectX::XMFLOAT3>
+        static auto Make(
+                const RadiusPack& radiuses,
+                const ::DirectX::XMFLOAT3& centre,
+                const std::size_t flare_count = 4u
+            )
+            -> std::vector<DirectX::XMFLOAT3>
         {
             std::vector<DirectX::XMFLOAT3> star;
             const std::size_t capacity = flare_count * 2u;

@@ -42,7 +42,11 @@ export namespace starrealm::entity::star::style::effect
 
     public:
         template <bool WithCentre = true>
-        static auto GenerateVertices(Star::RadiusPack radiuses, DirectX::XMFLOAT3 position, std::size_t flare_count)
+        static auto GenerateVertices(
+                const Star::RadiusPack radiuses,
+                const DirectX::XMFLOAT3 position,
+                const std::size_t flare_count
+            )
         {
             std::vector<Blend::Vertex> vertices;
 

@@ -60,7 +60,7 @@ export namespace starrealm::entity::star::style::effect
             return cbuf;
         }
 
-        static auto GeneratePixelSBuffer(std::size_t color_count) -> SBuffer
+        static auto GeneratePixelSBuffer(const std::size_t color_count) -> SBuffer
         {
             std::minstd_rand mrng(std::random_device{}());
             std::uniform_real_distribution<float> rgb_dist(0.0f, 1.0f);

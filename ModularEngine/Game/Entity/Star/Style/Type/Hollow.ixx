@@ -31,7 +31,7 @@ export namespace starrealm::entity::star::style::type
 
     public:
         template <typename T>
-        static auto GenerateIndices(std::size_t vertex_count) -> std::vector<T>
+        static auto GenerateIndices(const std::size_t vertex_count) -> std::vector<T>
         {
             std::vector<T> indices;
 
