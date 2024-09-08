@@ -180,14 +180,11 @@ export namespace starrealm
         std::uniform_real_distribution<float_t> m_z_dist_{  m_settings_.m_minStarDepth, m_settings_.m_maxStarDepth };
 
         std::uniform_real_distribution<float_t> m_rotation_speed_dist_{ m_settings_.m_minRotationSpeed, m_settings_.m_maxRotationSpeed };
-        std::uniform_real_distribution<float_t> m_angle_dist_{ 0.0f, 2.0f * std::numbers::pi_v<float_t> };
 
         std::uniform_int_distribution<size_t> m_flare_count_dist_{ m_settings_.m_minFlareCount, m_settings_.m_maxFlareCount };
 
         std::normal_distribution<float_t> m_outer_rad_dist_{ m_settings_.m_meanStarOuterRadius, m_settings_.m_devStarOuterRadius };
         std::normal_distribution<float_t> m_inner_rad_ratio_dist_{ m_settings_.m_meanStarInnerRatio, m_settings_.m_devStarInnerRatio };
-
-        std::normal_distribution<float_t> m_normal_dist_{ 0.0f, 1.0f };
 
         std::vector<unique_pstar> m_stars_;
     };
