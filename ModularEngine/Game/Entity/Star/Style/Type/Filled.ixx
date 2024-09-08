@@ -43,21 +43,23 @@ export namespace starrealm::entity::star::style::type
         >
         static auto GenerateIndices(const std::vector<V>& vertices) -> std::vector<unsigned short int>
         {
-            const auto vertex_count_no_centre = vertices.size() - 1u;
+            using idx_val_t = unsigned short int;
 
-            std::vector<unsigned short int> indices;
+            const auto vertex_count_no_centre = static_cast<idx_val_t>(vertices.size() - 1u);
+
+            std::vector<idx_val_t> indices;
 
             indices.reserve(vertex_count_no_centre * 3u);
 
-            for (std::size_t i = 1u; i <= vertex_count_no_centre - 1u; i += 2u)
+            for (idx_val_t i = 1u; i <= vertex_count_no_centre - 1u; i += 2u)
             {
-                for (std::size_t j = 0u; j < 2u; ++j)
+                for (idx_val_t j = 0u; j < 2u; ++j)
                 {
-                    std::array<std::size_t, 3u> temp_idx{};
+                    std::array<idx_val_t, 3u> temp_idx{};
 
-                    temp_idx[0u] = i % vertex_count_no_centre;
-                    temp_idx[1u] = ((j == 0) ? ((i + 1u) % vertex_count_no_centre) : (vertex_count_no_centre));
-                    temp_idx[2u] = (i + 2u) % vertex_count_no_centre;
+                    temp_idx[0u] = static_cast<idx_val_t>(i % vertex_count_no_centre);
+                    temp_idx[1u] = static_cast<idx_val_t>(((j == 0) ? ((i + 1u) % vertex_count_no_centre) : (vertex_count_no_centre)));
+                    temp_idx[2u] = static_cast<idx_val_t>((i + 2u) % vertex_count_no_centre);
 
                     ReorderVertices_(vertices, temp_idx);
 
@@ -106,7 +108,7 @@ export namespace starrealm::entity::star::style::type
         }
 
         template <MyVertex V>
-        static void ReorderVertices_(const std::vector<V>& vertices, std::array<std::size_t, 3u>& idx_arr)
+        static void ReorderVertices_(const std::vector<V>& vertices, std::array<unsigned short int, 3u>& idx_arr)
         {
             std::ranges::sort(
                 idx_arr,
