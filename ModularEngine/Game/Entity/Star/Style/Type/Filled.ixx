@@ -114,8 +114,8 @@ export namespace starrealm::entity::star::style::type
                 idx_arr,
                 [&](const auto& idx0, const auto& idx1) noexcept -> bool
                 {
-                    auto y0 = GetVertex_Y_(vertices[idx0]);
-                    auto y1 = GetVertex_Y_(vertices[idx1]);
+                    const auto y0 = GetVertex_Y_(vertices[idx0]);
+                    const auto y1 = GetVertex_Y_(vertices[idx1]);
 
                     if (y0 not_eq y1)
                     {
@@ -126,7 +126,7 @@ export namespace starrealm::entity::star::style::type
                 }
             );
 
-            auto isClockwise = [](const V& v0, const V& v1, const V& v2) -> bool
+            auto isClockwise = [](const V& v0, const V& v1, const V& v2) noexcept -> bool
             {
                 return ((GetVertex_X_(v1) - GetVertex_X_(v0)) * (GetVertex_Y_(v2) - GetVertex_Y_(v0))
                         -
