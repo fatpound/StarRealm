@@ -9,7 +9,7 @@ module;
 
 export module StarRealm.Entity.Star.Style.Type:Hollow;
 
-import :Base;
+export import :Base;
 
 import FatPound;
 

@@ -9,9 +9,9 @@ module;
 
 export module StarRealm.Entity.Star.Style.Effect:Color.Single;
 
-import :Base;
+export import :Base;
 
-import :Color.Base;
+export import :Color.Base;
 
 import FatPound;
 

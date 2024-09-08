@@ -7,7 +7,7 @@ module;
 
 export module StarRealm.Entity.Star.Style.Effect:Color.Base;
 
-import :Base;
+export import :Base;
 
 import std;
 

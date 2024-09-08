@@ -2,7 +2,7 @@ module;
 
 export module StarRealm.Entity.Star.Style.Effect;
 
-import :Base;
+export import :Base;
 
 import StarRealm.Entity.Star.Style.Base;
 

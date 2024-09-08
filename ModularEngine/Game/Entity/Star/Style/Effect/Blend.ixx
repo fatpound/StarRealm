@@ -9,7 +9,7 @@ module;
 
 export module StarRealm.Entity.Star.Style.Effect:Blend;
 
-import :Base;
+export import :Base;
 
 import StarRealm.Entity.Star;
 
