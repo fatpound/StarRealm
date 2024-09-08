@@ -29,18 +29,12 @@ export namespace starrealm
     public:
         struct Settings final
         {
-            size_t m_starCount = 1000u;
+            size_t m_starCount = 150u;
             size_t m_minFlareCount = 2u;
             size_t m_maxFlareCount = 7u;
 
-            float_t m_worldWidth  = 40.0f;
-            float_t m_worldHeight = 40.0f;
-
-            float_t m_worldDensityFactor = 1.0f;
-            float_t m_worldArea = m_worldDensityFactor * static_cast<float_t>(m_starCount);
-            float_t m_meanWorldRadius = 0.1f;
-            float_t m_devWorldRadius = std::min(m_worldWidth, m_worldHeight) * 2.0f;
-            float_t m_worldRadiusFactor = std::sqrt(m_worldArea / std::numbers::pi_v<float_t>);
+            float_t m_worldWidth  = 30.0f;
+            float_t m_worldHeight = 20.0f;
 
             float_t m_meanStarOuterRadius = 0.6f;
             float_t m_devStarOuterRadius  = 0.7f;
@@ -53,10 +47,10 @@ export namespace starrealm
             float_t m_maxStarInnerRatio  = 0.5f;
 
             float_t m_minStarDepth = 0.1f;
-            float_t m_maxStarDepth = 20.0f;
+            float_t m_maxStarDepth = 1.0f;
 
-            float_t m_minRotationSpeed = -1.5f * std::numbers::pi_v<float_t>;
-            float_t m_maxRotationSpeed =  1.5f * std::numbers::pi_v<float_t>;
+            float_t m_minRotationSpeed = -1.0f * std::numbers::pi_v<float_t>;
+            float_t m_maxRotationSpeed =  1.0f * std::numbers::pi_v<float_t>;
         };
 
 
@@ -166,25 +160,11 @@ export namespace starrealm
 
         auto GeneratePosition3_() -> ::DirectX::XMFLOAT3
         {
-            const auto& z = m_z_dist_(m_rng_);
-
-            if constexpr (s_distributeCircular_)
-            {
-                const auto& radius = std::sqrt(m_radius_dist_(m_rng_)) * m_settings_.m_worldRadiusFactor;
-                const auto& angle = m_angle_dist_(m_rng_);
-
-                const auto& x = radius * std::cos(angle) + m_normal_dist_(m_rng_);
-                const auto& y = radius * std::sin(angle) + m_normal_dist_(m_rng_);
-
-                return { x, y, z };
-            }
-            else
-            {
-                const auto& x = m_x_dist_(m_rng_);
-                const auto& y = m_y_dist_(m_rng_);
-
-                return { x, y, z };
-            }
+            return {
+                m_x_dist_(m_rng_),
+                m_y_dist_(m_rng_),
+                m_z_dist_(m_rng_)
+            };
         }
 
 
@@ -206,11 +186,9 @@ export namespace starrealm
 
         std::normal_distribution<float_t> m_outer_rad_dist_{ m_settings_.m_meanStarOuterRadius, m_settings_.m_devStarOuterRadius };
         std::normal_distribution<float_t> m_inner_rad_ratio_dist_{ m_settings_.m_meanStarInnerRatio, m_settings_.m_devStarInnerRatio };
-        std::normal_distribution<float_t> m_radius_dist_{ m_settings_.m_meanWorldRadius, m_settings_.m_devWorldRadius };
+
         std::normal_distribution<float_t> m_normal_dist_{ 0.0f, 1.0f };
 
         std::vector<unique_pstar> m_stars_;
-
-        static constexpr bool s_distributeCircular_ = true;
     };
 }

@@ -30,7 +30,7 @@ namespace starrealm
                 1.0f,
                 m_wnd_.GetClientHeight<float>() / m_wnd_.GetClientWidth<float>(), // 1 / Aspect Ratio
                 m_settings_.m_minStarDepth,
-                m_settings_.m_maxStarDepth * 10.0f
+                m_settings_.m_maxStarDepth * 100.0f
             )
         );
     }
