@@ -36,10 +36,14 @@ export namespace starrealm::entity::star::style::type
 
 
     public:
-        template <MyVertex V>
+        template
+        <
+            MyVertex V,
+            bool WithCentre = true
+        >
         static auto GenerateIndices(const std::vector<V>& vertices) -> std::vector<unsigned short int>
         {
-            const auto& vertex_count_no_centre = vertices.size() - 1u;
+            const auto vertex_count_no_centre = vertices.size() - 1u;
 
             std::vector<unsigned short int> indices;
 
@@ -49,13 +53,15 @@ export namespace starrealm::entity::star::style::type
             {
                 for (std::size_t j = 0u; j < 2u; ++j)
                 {
-                    std::array<std::size_t, 3u> temp_idx = {};
+                    std::array<std::size_t, 3u> temp_idx{};
 
                     temp_idx[0u] = i % vertex_count_no_centre;
                     temp_idx[1u] = ((j == 0) ? ((i + 1u) % vertex_count_no_centre) : (vertex_count_no_centre));
                     temp_idx[2u] = (i + 2u) % vertex_count_no_centre;
 
-                    Filled::ReorderTriangles_(vertices, temp_idx, indices);
+                    ReorderVertices_(vertices, temp_idx);
+
+                    indices.append_range(temp_idx);
                 }
             }
 
@@ -73,46 +79,63 @@ export namespace starrealm::entity::star::style::type
 
 
     private:
-        template <MyVertex V, char axis>
-        static auto GetVertex_(const V& vertex) noexcept -> float
+        template <MyVertex V>
+        static float GetVertex_X_(const V& vertex) noexcept
         {
-            static_assert(axis == 'x' or axis == 'y');
-
             if constexpr (std::is_same_v<V, ::DirectX::XMFLOAT3>)
             {
-                return axis == 'x'
-                    ? vertex.x
-                    : vertex.y
-                    ;
+                return vertex.x;
             }
             else
             {
-                return axis == 'x'
-                    ? vertex.pos.x
-                    : vertex.pos.y
-                    ;
+                return vertex.pos.x;
             }
         }
 
         template <MyVertex V>
-        static void ReorderTriangles_(const std::vector<V>& vertices, std::array<std::size_t, 3u>& idx_arr, std::vector<unsigned short int>& indices)
+        static float GetVertex_Y_(const V& vertex) noexcept
+        {
+            if constexpr (std::is_same_v<V, ::DirectX::XMFLOAT3>)
+            {
+                return vertex.y;
+            }
+            else
+            {
+                return vertex.pos.y;
+            }
+        }
+
+        template <MyVertex V>
+        static void ReorderVertices_(const std::vector<V>& vertices, std::array<std::size_t, 3u>& idx_arr)
         {
             std::ranges::sort(
                 idx_arr,
                 [&](const auto& idx0, const auto& idx1) noexcept -> bool
                 {
-                    return GetVertex_<V, 'x'>(vertices[idx0]) < GetVertex_<V, 'x'>(vertices[idx1]);
+                    auto y0 = GetVertex_Y_(vertices[idx0]);
+                    auto y1 = GetVertex_Y_(vertices[idx1]);
+
+                    if (y0 not_eq y1)
+                    {
+                        return y0 < y1;
+                    }
+
+                    return GetVertex_X_(vertices[idx0]) < GetVertex_X_(vertices[idx1]);
                 }
             );
 
-            if (GetVertex_<V, 'y'>(vertices[idx_arr[1u]]) < GetVertex_<V, 'y'>(vertices[idx_arr[2u]]))
+            auto isClockwise = [](const V& v0, const V& v1, const V& v2) -> bool
             {
-                std::swap(idx_arr[1u], idx_arr[2u]);
-            }
+                return ((GetVertex_X_(v1) - GetVertex_X_(v0)) * (GetVertex_Y_(v2) - GetVertex_Y_(v0))
+                        -
+                        (GetVertex_Y_(v1) - GetVertex_Y_(v0)) * (GetVertex_X_(v2) - GetVertex_X_(v0))
+                    )
+                    < 0;
+            };
 
-            for (const auto& idx : idx_arr)
+            if (not isClockwise(vertices[idx_arr[0]], vertices[idx_arr[1]], vertices[idx_arr[2]]))
             {
-                indices.push_back(static_cast<unsigned short int>(idx));
+                std::swap(idx_arr[1], idx_arr[2]);
             }
         };
     };
