@@ -19,8 +19,8 @@ export namespace starrealm
 {
     template
     <
-        std::integral       size_t  = unsigned int,
-        std::floating_point float_t = float
+        std::floating_point float_t = float,
+        std::integral       size_t  = unsigned int
     >
     class StarFactory final
     {
@@ -55,15 +55,10 @@ export namespace starrealm
 
 
     public:
-        explicit StarFactory(NAMESPACE_D3D11::Graphics<>& gfx)
-            :
-            StarFactory(gfx, Settings{})
-        {
-
-        }
-        explicit StarFactory(NAMESPACE_D3D11::Graphics<>& gfx, const Settings& settings)
+        explicit StarFactory(NAMESPACE_D3D11::Graphics<>& gfx, NAMESPACE_UTIL::ViewXM& worldView, const Settings& settings = {})
             :
             m_gfx_(gfx),
+            m_worldView_{ worldView },
             m_settings_{ settings }
         {
             m_stars_.reserve(m_settings_.m_starCount);
@@ -128,22 +123,22 @@ export namespace starrealm
             switch (m_rng_() % 6u)
             {
             case 0:
-                return std::make_unique<entity::star::HollowSingle>(m_gfx_, desc);
+                return std::make_unique<entity::star::HollowSingle>(m_gfx_, desc, m_worldView_);
 
             case 1:
-                return std::make_unique<entity::star::HollowMulti>(m_gfx_, desc);
+                return std::make_unique<entity::star::HollowMulti>(m_gfx_, desc, m_worldView_);
 
             case 2:
-                return std::make_unique<entity::star::HollowBlend>(m_gfx_, desc);
+                return std::make_unique<entity::star::HollowBlend>(m_gfx_, desc, m_worldView_);
 
             case 3:
-                return std::make_unique<entity::star::FilledSingle>(m_gfx_, desc);
+                return std::make_unique<entity::star::FilledSingle>(m_gfx_, desc, m_worldView_);
 
             case 4:
-                return std::make_unique<entity::star::FilledMulti>(m_gfx_, desc);
+                return std::make_unique<entity::star::FilledMulti>(m_gfx_, desc, m_worldView_);
 
             case 5:
-                return std::make_unique<entity::star::FilledBlend>(m_gfx_, desc);
+                return std::make_unique<entity::star::FilledBlend>(m_gfx_, desc, m_worldView_);
 
             default:
                 return nullptr;
@@ -170,6 +165,8 @@ export namespace starrealm
 
     private:
         NAMESPACE_D3D11::Graphics<>& m_gfx_;
+
+        NAMESPACE_UTIL::ViewXM& m_worldView_;
 
         const Settings m_settings_;
 

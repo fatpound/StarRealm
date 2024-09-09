@@ -14,7 +14,7 @@ export namespace starrealm::entity::star
     class FilledBlend final : public StarBase<style::type::Filled, style::effect::Blend>
     {
     public:
-        explicit FilledBlend(NAMESPACE_D3D11::Graphics<>& gfx, const Descriptor& desc);
+        explicit FilledBlend(NAMESPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, NAMESPACE_UTIL::ViewXM& worldView);
 
         explicit FilledBlend() = delete;
         explicit FilledBlend(const FilledBlend& src) = delete;

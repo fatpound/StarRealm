@@ -23,9 +23,9 @@ namespace starrealm
         m_wnd_(L"StarRealm", NAMESPACE_UTIL::ScreenSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
         m_gfx_(m_wnd_.GetHwnd(), NAMESPACE_UTIL::ScreenSizeInfo{ m_wnd_.GetClientWidth<UINT>(), m_wnd_.GetClientHeight<UINT>() }),
         m_camera_(m_settings_.m_minStarDepth, m_settings_.m_maxStarDepth, m_wnd_.GetMouse(), m_wnd_.GetKeyboard()),
-        m_stars_{ StarFactory{ m_gfx_ }.GetStars() }
+        m_stars_{ StarFactory<>{ m_gfx_, m_viewXM_ }.GetStars() }
     {
-        m_gfx_.SetProjectionXM(
+        m_viewXM_.SetProjectionXM(
             ::dx::XMMatrixPerspectiveLH(
                 1.0f,
                 m_wnd_.GetClientHeight<float>() / m_wnd_.GetClientWidth<float>(), // 1 / Aspect Ratio
@@ -48,13 +48,6 @@ namespace starrealm
                 return static_cast<int>(*error_code);
             }
 
-            if (m_wnd_.GetKeyboard().KeyIsPressed(VK_ESCAPE)) [[unlikely]]
-            {
-                m_wnd_.Kill();
-
-                return 0;
-            }
-
             m_gfx_.BeginFrame();
             DoFrame_();
             m_gfx_.EndFrame();
@@ -67,13 +60,13 @@ namespace starrealm
 
         const auto& delta_time = m_timer_.Mark();
         
-        m_gfx_.SetCameraXM(m_camera_.GetMatrix());
+        m_viewXM_.SetCameraXM(m_camera_.GetMatrix());
 
-        const auto pImmediateContext = m_gfx_.GetImmediateContext();
+        auto* const pImmediateContext = m_gfx_.GetImmediateContext();
 
         for (auto& star : m_stars_)
         {
-            if (not m_wnd_.GetKeyboard().KeyIsPressed(VK_SPACE)) [[likely]]
+            if (not m_wnd_.GetKeyboard().KeyIsPressed(VK_SPACE))
             {
                 star->Update(delta_time);
             }

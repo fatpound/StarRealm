@@ -14,7 +14,7 @@ export namespace starrealm::entity::star
     class FilledMulti final : public StarBase<style::type::Filled, style::effect::MultiColor>
     {
     public:
-        explicit FilledMulti(NAMESPACE_D3D11::Graphics<>& gfx, const Descriptor& desc);
+        explicit FilledMulti(NAMESPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, NAMESPACE_UTIL::ViewXM& worldView);
 
         explicit FilledMulti() = delete;
         explicit FilledMulti(const FilledMulti& src) = delete;

@@ -43,6 +43,7 @@ export namespace starrealm
         NAMESPACE_WIN32::Window m_wnd_;
         NAMESPACE_D3D11::Graphics<> m_gfx_;
         
+        NAMESPACE_UTIL::ViewXM m_viewXM_;
         NAMESPACE_UTIL::Camera m_camera_;
         NAMESPACE_UTIL::AutoTimer m_timer_;
         

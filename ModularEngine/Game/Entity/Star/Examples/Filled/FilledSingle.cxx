@@ -13,9 +13,9 @@ namespace dx = DirectX;
 
 namespace starrealm::entity::star
 {
-    FilledSingle::FilledSingle(NAMESPACE_D3D11::Graphics<>& gfx, const Descriptor& desc)
+    FilledSingle::FilledSingle(NAMESPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, NAMESPACE_UTIL::ViewXM& worldView)
         :
-        StarBase<style::type::Filled, style::effect::SingleColor>(gfx, desc)
+        StarBase<style::type::Filled, style::effect::SingleColor>(gfx, desc, worldView)
     {
         const auto& vertices = Star::Make<true>(m_radiuses_, m_position_, desc.flare_count);
         AddBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexBuffer>(gfx.GetDevice(), vertices));

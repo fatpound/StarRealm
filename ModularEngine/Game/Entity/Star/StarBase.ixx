@@ -26,7 +26,7 @@ export namespace starrealm::entity::star
         friend E;
 
     public:
-        explicit StarBase(NAMESPACE_D3D11::Graphics<>& gfx, const Descriptor& desc)
+        explicit StarBase(NAMESPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, NAMESPACE_UTIL::ViewXM& worldView)
             :
             Star(desc)
         {
@@ -44,7 +44,7 @@ export namespace starrealm::entity::star
                 }
             }
 
-            AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::TransformCBuffer<StarBase>>(gfx.GetDevice(), *this, gfx.GetViewXM()));
+            AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::TransformCBuffer<StarBase>>(gfx.GetDevice(), *this, worldView));
         }
 
         explicit StarBase() = delete;

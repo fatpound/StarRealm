@@ -13,9 +13,9 @@ namespace dx = DirectX;
 
 namespace starrealm::entity::star
 {
-    FilledBlend::FilledBlend(NAMESPACE_D3D11::Graphics<>& gfx, const Descriptor& desc)
+    FilledBlend::FilledBlend(NAMESPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, NAMESPACE_UTIL::ViewXM& worldView)
         :
-        StarBase<style::type::Filled, style::effect::Blend>(gfx, desc)
+        StarBase<style::type::Filled, style::effect::Blend>(gfx, desc, worldView)
     {
         const auto& vertices = NAMESPACE_STAR_EFFECT::Blend::GenerateVertices(m_radiuses_, m_position_, desc.flare_count);
         AddBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexBuffer>(gfx.GetDevice(), vertices));
