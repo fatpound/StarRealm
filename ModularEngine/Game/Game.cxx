@@ -22,7 +22,7 @@ namespace starrealm
         :
         m_wnd_(L"StarRealm", NAMESPACE_UTIL::ScreenSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
         m_gfx_(m_wnd_.GetHwnd(), NAMESPACE_UTIL::ScreenSizeInfo{ m_wnd_.GetClientWidth<UINT>(), m_wnd_.GetClientHeight<UINT>() }),
-        m_camera_(m_settings_.m_minStarDepth, m_settings_.m_maxStarDepth, m_wnd_.GetMouse(), m_wnd_.GetKeyboard()),
+        m_camera_(m_settings_.m_minStarDepth, m_settings_.m_maxStarDepth, m_wnd_.m_mouse, m_wnd_.m_keyboard),
         m_stars_{ StarFactory<>{ m_gfx_, m_viewXM_ }.GetStars() }
     {
         m_viewXM_.SetProjectionXM(
@@ -66,7 +66,7 @@ namespace starrealm
 
         for (auto& star : m_stars_)
         {
-            if (not m_wnd_.GetKeyboard().KeyIsPressed(VK_SPACE))
+            if (not m_wnd_.m_keyboard.KeyIsPressed(VK_SPACE))
             {
                 star->Update(delta_time);
             }
