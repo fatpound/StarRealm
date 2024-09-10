@@ -52,7 +52,7 @@ export namespace starrealm::entity::star::style::effect
             if constexpr (ForFilled)
             {
                 ied.push_back(
-                    { "Color", 0, DXGI_FORMAT_R8G8B8A8_UNORM,  0, 12u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+                    { "Color", 0, DXGI_FORMAT_B8G8R8A8_UNORM,  0, 12u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
                 );
             }
 
