@@ -41,7 +41,7 @@ namespace starrealm
 
         while (true)
         {
-            error_code = NAMESPACE_WIN32::Window::ProcessMessages();
+            error_code = NAMESPACE_WIN32::Window_::ProcessMessages();
 
             if (error_code) [[unlikely]]
             {

@@ -40,7 +40,7 @@ export namespace starrealm
     private:
         Settings m_settings_;
 
-        NAMESPACE_WIN32::Window m_wnd_;
+        NAMESPACE_WIN32::Window_ m_wnd_;
         NAMESPACE_D3D11::Graphics<> m_gfx_;
         
         NAMESPACE_UTIL::ViewXM m_viewXM_;
