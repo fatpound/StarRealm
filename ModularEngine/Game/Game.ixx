@@ -1,6 +1,6 @@
 module;
 
-#include <FatWin32_Namespaces.hpp>
+#include <FatNamespaces.hpp>
 
 export module StarRealm;
 
@@ -27,26 +27,34 @@ export namespace starrealm
 
 
     public:
-        auto Go() -> int;
+        auto IsRunning()  const -> bool;
+        auto IsFinished() const -> bool;
 
 
     protected:
         
 
     private:
+        void Init_();
+
+        void Go_();
         void DoFrame_();
 
 
     private:
-        Settings m_settings_;
+        inline static std::size_t s_game_id_{};
 
-        NAMESPACE_WIN32::Window_ m_wnd_;
-        NAMESPACE_D3D11::Graphics<> m_gfx_;
+
+    private:
+        FATSPACE_WIN32::WindowEx m_wnd_;
+        FATSPACE_D3D11::Graphics<> m_gfx_;
         
-        NAMESPACE_UTIL::ViewXM m_viewXM_;
-        NAMESPACE_UTIL::Camera m_camera_;
-        NAMESPACE_UTIL::AutoTimer m_timer_;
+        FATSPACE_UTIL::ViewXM m_viewXM_;
+        FATSPACE_UTIL::Camera m_camera_;
+        FATSPACE_TIME::AutoTimer m_timer_;
         
         std::vector<std::unique_ptr<entity::Star>> m_stars_;
+
+        std::jthread m_game_loop_;
     };
 }

@@ -1,7 +1,7 @@
 module;
 
 #include <FatWin32_Settings.hpp>
-#include <FatWin32_Namespaces.hpp>
+#include <FatNamespaces.hpp>
 
 #include <DirectXMath.h>
 
@@ -26,7 +26,7 @@ export namespace starrealm::entity::star::style::effect
         {
             ::DirectX::XMFLOAT3 pos;
 
-            NAMESPACE_UTIL::Color color;
+            FATSPACE_UTIL::Color color;
         };
 
 
@@ -44,7 +44,7 @@ export namespace starrealm::entity::star::style::effect
         template <bool WithCentre = true>
         static auto GenerateVertices(
                 const Star::RadiusPack radiuses,
-                const DirectX::XMFLOAT3 position,
+                const ::DirectX::XMFLOAT3 position,
                 const std::size_t flare_count
             )
         {
@@ -55,7 +55,7 @@ export namespace starrealm::entity::star::style::effect
             std::minstd_rand mrng(std::random_device{}());
             std::uniform_int_distribution<int> rgb_dist(0, 255);
 
-            std::vector<DirectX::XMFLOAT3> star_vertices;
+            std::vector<::DirectX::XMFLOAT3> star_vertices;
 
             star_vertices = Star::Make<WithCentre>(radiuses, position, flare_count);
 
@@ -63,7 +63,7 @@ export namespace starrealm::entity::star::style::effect
             {
                 vertices.emplace_back(
                     vertex,
-                    NAMESPACE_UTIL::Color(
+                    FATSPACE_UTIL::Color(
                         static_cast<unsigned char>(rgb_dist(mrng)),
                         static_cast<unsigned char>(rgb_dist(mrng)),
                         static_cast<unsigned char>(rgb_dist(mrng)),
@@ -76,12 +76,12 @@ export namespace starrealm::entity::star::style::effect
         }
 
         template <typename StarBase>
-        static void InitStaticBinds(NAMESPACE_D3D11::Graphics<>& gfx)
+        static void InitStaticBinds(FATSPACE_D3D11::Graphics<>& gfx)
         {
-            auto pvs = std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexShader>(gfx.GetDevice(), L"VSColorBlend.cso");
+            auto pvs = std::make_unique<FATSPACE_PIPELINE_ELEMENT::VertexShader>(gfx.GetDevice(), L"VSColorBlend.cso");
             auto pvsbc = pvs->GetBytecode();
             StarBase::AddStaticBind_(std::move(pvs));
-            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::PixelShader>(gfx.GetDevice(), L"PSColorBlend.cso"));
+            StarBase::AddStaticBind_(std::make_unique<FATSPACE_PIPELINE_ELEMENT::PixelShader>(gfx.GetDevice(), L"PSColorBlend.cso"));
 
             const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
             {
@@ -89,7 +89,7 @@ export namespace starrealm::entity::star::style::effect
                 { "Color",    0, DXGI_FORMAT_B8G8R8A8_UNORM,  0, 12u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
             };
 
-            StarBase::AddStaticBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::InputLayout>(gfx.GetDevice(), ied, pvsbc));
+            StarBase::AddStaticBind_(std::make_unique<FATSPACE_PIPELINE_ELEMENT::InputLayout>(gfx.GetDevice(), ied, pvsbc));
         }
 
 

@@ -1,6 +1,8 @@
 module;
 
-#include <FatWin32_Namespaces.hpp>
+#include <FatNamespaces.hpp>
+
+#include <StarRealmNamespaces.hpp>
 
 export module StarRealm.Entity.Star.HollowSingle;
 
@@ -14,7 +16,7 @@ export namespace starrealm::entity::star
     class HollowSingle final : public StarBase<style::type::Hollow, style::effect::SingleColor>
     {
     public:
-        explicit HollowSingle(NAMESPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, NAMESPACE_UTIL::ViewXM& worldView);
+        explicit HollowSingle(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView);
 
         explicit HollowSingle() = delete;
         explicit HollowSingle(const HollowSingle& src) = delete;

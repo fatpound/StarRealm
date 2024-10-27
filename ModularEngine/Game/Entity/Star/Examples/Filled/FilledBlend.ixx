@@ -1,6 +1,8 @@
 module;
 
-#include <FatWin32_Namespaces.hpp>
+#include <FatNamespaces.hpp>
+
+#include <StarRealmNamespaces.hpp>
 
 export module StarRealm.Entity.Star.FilledBlend;
 
@@ -14,7 +16,7 @@ export namespace starrealm::entity::star
     class FilledBlend final : public StarBase<style::type::Filled, style::effect::Blend>
     {
     public:
-        explicit FilledBlend(NAMESPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, NAMESPACE_UTIL::ViewXM& worldView);
+        explicit FilledBlend(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView);
 
         explicit FilledBlend() = delete;
         explicit FilledBlend(const FilledBlend& src) = delete;

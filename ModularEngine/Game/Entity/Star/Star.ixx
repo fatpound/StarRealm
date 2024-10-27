@@ -1,7 +1,7 @@
 module;
 
 #include <FatWin32_Settings.hpp>
-#include <FatWin32_Namespaces.hpp>
+#include <FatNamespaces.hpp>
 
 #include <DirectXMath.h>
 
@@ -13,7 +13,7 @@ import std;
 
 export namespace starrealm::entity
 {
-    class Star : public NAMESPACE_VISUAL::Drawable
+    class Star : public FATSPACE_VISUAL::Drawable
     {
     public:
         struct RadiusPack final
@@ -21,19 +21,16 @@ export namespace starrealm::entity
             float outer_radius;
             float inner_radius;
         };
-#pragma warning (push)
-#pragma warning (disable : 4623 4626 5027)
         struct Descriptor final
         {
-            const ::DirectX::XMFLOAT3 position;
+            ::DirectX::XMFLOAT3 position;
 
-            const RadiusPack radiuses;
+            RadiusPack radiuses;
 
-            const std::size_t flare_count;
+            std::size_t flare_count;
 
-            const float rotation_speed;
+            float rotation_speed;
         };
-#pragma warning (pop)
 
 
     public:
@@ -59,14 +56,14 @@ export namespace starrealm::entity
                 const ::DirectX::XMFLOAT3& centre,
                 const std::size_t flare_count = 4u
             )
-            -> std::vector<DirectX::XMFLOAT3>
+            -> std::vector<::DirectX::XMFLOAT3>
         {
-            std::vector<DirectX::XMFLOAT3> star;
+            std::vector<::DirectX::XMFLOAT3> star;
             const std::size_t capacity = flare_count * 2u;
 
             star.reserve(capacity + 1u);
 
-            const float dTheta = 2.0f * DirectX::XM_PI / static_cast<float>(capacity);
+            const float dTheta = 2.0f * ::DirectX::XM_PI / static_cast<float>(capacity);
 
             for (std::size_t i = 0u; i < capacity; ++i)
             {

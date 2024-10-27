@@ -1,7 +1,9 @@
 module;
 
 #include <FatWin32_Settings.hpp>
-#include <FatWin32_Namespaces.hpp>
+#include <FatNamespaces.hpp>
+
+#include <StarRealmNamespaces.hpp>
 
 #include <DirectXMath.h>
 
@@ -13,17 +15,17 @@ namespace dx = DirectX;
 
 namespace starrealm::entity::star
 {
-    HollowSingle::HollowSingle(NAMESPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, NAMESPACE_UTIL::ViewXM& worldView)
+    HollowSingle::HollowSingle(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView)
         :
         StarBase<style::type::Hollow, style::effect::SingleColor>(gfx, desc, worldView)
     {
         const auto& vertices = Star::Make(m_radiuses_, m_position_, desc.flare_count);
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::VertexBuffer>(gfx.GetDevice(), vertices));
+        AddBind_(std::make_unique<FATSPACE_PIPELINE_ELEMENT::VertexBuffer>(gfx.GetDevice(), vertices));
 
-        const auto& indices = NAMESPACE_STAR_TYPE::Hollow::GenerateIndices<unsigned short int>(vertices.size());
-        AddIndexBuffer_(std::make_unique<NAMESPACE_PIPELINE_ELEMENT::IndexBuffer>(gfx.GetDevice(), indices));
+        const auto& indices = STARREALM_STAR_TYPE::Hollow::GenerateIndices<unsigned short int>(vertices.size());
+        AddIndexBuffer_(std::make_unique<FATSPACE_PIPELINE_ELEMENT::IndexBuffer>(gfx.GetDevice(), indices));
 
-        const auto& cbuf = NAMESPACE_STAR_EFFECT::SingleColor::ColorBase_::GeneratePixelCBuffer();
-        AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::PixelCBuffer<NAMESPACE_STAR_EFFECT::SingleColor::ColorBase_::CBuffer>>(gfx.GetDevice(), cbuf));
+        const auto& cbuf = STARREALM_STAR_EFFECT::SingleColor::ColorBase_::GeneratePixelCBuffer();
+        AddBind_(std::make_unique<FATSPACE_PIPELINE_RESOURCE::PixelCBuffer<STARREALM_STAR_EFFECT::SingleColor::ColorBase_::CBuffer>>(gfx.GetDevice(), cbuf));
     }
 }

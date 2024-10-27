@@ -129,4 +129,9 @@
     <FxCompile Include="Game\Entity\Star\Shader\VSColorMulti.hlsl" />
     <FxCompile Include="Game\Entity\Star\Shader\VSColorSingle.hlsl" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="StarRealmNamespaces.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

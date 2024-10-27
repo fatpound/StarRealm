@@ -5,11 +5,15 @@ module;
 #include <DirectXMath.h>
 
 #if IN_RELEASE
-#define SCREEN_WIDTH    static_cast<UINT>(GetSystemMetrics(SM_CXSCREEN))
-#define SCREEN_HEIGHT   static_cast<UINT>(GetSystemMetrics(SM_CYSCREEN))
+
+#define SCREEN_WIDTH    static_cast<UINT>(::GetSystemMetrics(SM_CXSCREEN))
+#define SCREEN_HEIGHT   static_cast<UINT>(::GetSystemMetrics(SM_CYSCREEN))
+
 #else
+
 #define SCREEN_WIDTH    800u
 #define SCREEN_HEIGHT   600u
+
 #endif // IN_RELEASE
 
 module StarRealm;
@@ -20,58 +24,81 @@ namespace starrealm
 {
     Game::Game()
         :
-        m_wnd_(L"StarRealm", NAMESPACE_UTIL::ScreenSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
-        m_gfx_(m_wnd_.GetHwnd(), NAMESPACE_UTIL::ScreenSizeInfo{ m_wnd_.GetClientWidth<UINT>(), m_wnd_.GetClientHeight<UINT>() }),
-        m_camera_(m_settings_.m_minStarDepth, m_settings_.m_maxStarDepth, m_wnd_.m_mouse, m_wnd_.m_keyboard),
-        m_stars_{ StarFactory<>{ m_gfx_, m_viewXM_ }.GetStars() }
+        m_wnd_(std::make_shared<FATSPACE_WIN32::WndClassEx>(L"fat->pound WindowClassEx: " + std::to_wstring(s_game_id_++)), std::make_shared<FATSPACE_IO::Keyboard>(), std::make_shared<FATSPACE_IO::Mouse>(), L"StarRealm " + std::to_wstring(s_game_id_), FATSPACE_UTIL::ScreenSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
+        m_gfx_(m_wnd_.GetHandle(), FATSPACE_UTIL::ScreenSizeInfo{ m_wnd_.GetClientWidth<UINT>(), m_wnd_.GetClientHeight<UINT>() }),
+        m_camera_(Settings{}.m_maxStarDepth, m_wnd_.m_pKeyboard, m_wnd_.m_pMouse),
+        ////////////////////////////////
+#pragma region (gameloop w/o C4355)
+#pragma warning (push)
+#pragma warning (disable : 4355)
+        m_game_loop_{ &Game::Go_, this }
+#pragma warning (pop)
+#pragma endregion
+        ////////////////////////////////
     {
+
+    }
+
+    auto Game::IsRunning() const -> bool
+    {
+        return not IsFinished();
+    }
+    auto Game::IsFinished() const -> bool
+    {
+        return m_wnd_.IsClosing();
+    }
+
+    void Game::Init_()
+    {
+        Settings default_settings;
+
         m_viewXM_.SetProjectionXM(
             ::dx::XMMatrixPerspectiveLH(
                 1.0f,
                 m_wnd_.GetClientHeight<float>() / m_wnd_.GetClientWidth<float>(), // 1 / Aspect Ratio
-                m_settings_.m_minStarDepth,
-                m_settings_.m_maxStarDepth * 100.0f
+                default_settings.m_minStarDepth,
+                default_settings.m_maxStarDepth * 20.0f
             )
         );
+
+        m_stars_ = StarFactory<>{ m_gfx_, m_viewXM_ }.GetStars();
     }
 
-    auto Game::Go() -> int
+    void Game::Go_()
     {
-        std::optional<WPARAM> error_code;
+        Init_();
 
-        while (true)
+        while (not m_wnd_.IsClosing())
         {
-            error_code = NAMESPACE_WIN32::Window_::ProcessMessages();
-
-            if (error_code) [[unlikely]]
-            {
-                return static_cast<int>(*error_code);
-            }
-
             m_gfx_.BeginFrame();
             DoFrame_();
             m_gfx_.EndFrame();
         }
     }
-
     void Game::DoFrame_()
     {
-        m_camera_.Update();
+        const auto& deltaTime = m_timer_.Mark();
 
-        const auto& delta_time = m_timer_.Mark();
+        m_camera_.Update();
         
         m_viewXM_.SetCameraXM(m_camera_.GetMatrix());
 
         auto* const pImmediateContext = m_gfx_.GetImmediateContext();
 
-        for (auto& star : m_stars_)
+        if (not m_wnd_.m_pKeyboard->KeyIsPressed(VK_SPACE))
         {
-            if (not m_wnd_.m_keyboard.KeyIsPressed(VK_SPACE))
+            for (auto& star : m_stars_)
             {
-                star->Update(delta_time);
+                star->Update(deltaTime);
+                star->Draw(pImmediateContext);
             }
-
-            star->Draw(pImmediateContext);
+        }
+        else
+        {
+            for (auto& star : m_stars_)
+            {
+                star->Draw(pImmediateContext);
+            }
         }
     }
 }

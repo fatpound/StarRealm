@@ -1,6 +1,6 @@
 module;
 
-#include <FatWin32_Namespaces.hpp>
+#include <FatNamespaces.hpp>
 
 #include <cassert>
 
@@ -15,22 +15,21 @@ import std;
 
 export namespace starrealm::entity::star
 {
-    template
-    <
+    template <
         style::Type T,
         style::Effect E
     >
-    class StarBase : public Star, public NAMESPACE_PIPELINE::StaticBindableVec<StarBase<T, E>>
+    class StarBase : public Star, public FATSPACE_PIPELINE::StaticBindableVec<StarBase<T, E>>
     {
         friend T;
         friend E;
 
     public:
-        explicit StarBase(NAMESPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, NAMESPACE_UTIL::ViewXM& worldView)
+        explicit StarBase(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView)
             :
             Star(desc)
         {
-            if (not NAMESPACE_PIPELINE::StaticBindableVec<StarBase>::IsStaticInitialized_())
+            if (not FATSPACE_PIPELINE::StaticBindableVec<StarBase>::IsStaticInitialized_())
             {
                 T::template InitStaticBinds<StarBase>();
 
@@ -44,7 +43,7 @@ export namespace starrealm::entity::star
                 }
             }
 
-            AddBind_(std::make_unique<NAMESPACE_PIPELINE_RESOURCE::TransformCBuffer<StarBase>>(gfx.GetDevice(), *this, worldView));
+            AddBind_(std::make_unique<FATSPACE_PIPELINE_RESOURCE::TransformCBuffer<StarBase>>(gfx.GetDevice(), *this, worldView));
         }
 
         explicit StarBase() = delete;
@@ -62,7 +61,7 @@ export namespace starrealm::entity::star
     private:
         virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const bind_vec_t& override final
         {
-            return this->m_static_binds_;
+            return this->s_static_binds_;
         }
     };
 }
