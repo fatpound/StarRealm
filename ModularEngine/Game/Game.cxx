@@ -24,7 +24,7 @@ namespace starrealm
 {
     Game::Game()
         :
-        m_wnd_(std::make_shared<FATSPACE_WIN32::WndClassEx>(L"fat->pound WindowClassEx: " + std::to_wstring(s_game_id_++)), std::make_shared<FATSPACE_IO::Keyboard>(), std::make_shared<FATSPACE_IO::Mouse>(), L"StarRealm " + std::to_wstring(s_game_id_), FATSPACE_UTIL::ScreenSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
+        m_wnd_(std::make_shared<FATSPACE_WIN32::WndClassEx>(L"fat->pound WindowClassEx: " + std::to_wstring(s_game_id_++)), std::make_shared<FATSPACE_UTIL_IO::Keyboard>(), std::make_shared<FATSPACE_UTIL_IO::Mouse>(), L"StarRealm " + std::to_wstring(s_game_id_), FATSPACE_UTIL::ScreenSizeInfo{ SCREEN_WIDTH, SCREEN_HEIGHT }),
         m_gfx_(m_wnd_.GetHandle(), FATSPACE_UTIL::ScreenSizeInfo{ m_wnd_.GetClientWidth<UINT>(), m_wnd_.GetClientHeight<UINT>() }),
         m_camera_(Settings{}.m_maxStarDepth, m_wnd_.m_pKeyboard, m_wnd_.m_pMouse),
         ////////////////////////////////
