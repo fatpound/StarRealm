@@ -28,9 +28,9 @@ export namespace starrealm
     public:
         struct Settings final
         {
-            size_t m_starCount = 200u;
-            size_t m_minFlareCount = 2u;
-            size_t m_maxFlareCount = 7u;
+            size_t m_starCount     = 200u;
+            size_t m_minFlareCount =   2u;
+            size_t m_maxFlareCount =   7u;
 
             float_t m_worldWidth  = 40.0f;
             float_t m_worldHeight = 30.0f;
@@ -48,8 +48,8 @@ export namespace starrealm
             float_t m_minStarDepth = 0.1f;
             float_t m_maxStarDepth = 1.0f;
 
-            float_t m_minRotationSpeed = -1.0f * std::numbers::pi_v<float_t>;
-            float_t m_maxRotationSpeed =  1.0f * std::numbers::pi_v<float_t>;
+            float_t m_minRotationSpeed = -1.0f * ::std::numbers::pi_v<float_t>;
+            float_t m_maxRotationSpeed =  1.0f * ::std::numbers::pi_v<float_t>;
         };
 
 

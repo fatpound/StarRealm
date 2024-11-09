@@ -41,9 +41,9 @@ namespace starrealm
 
     auto Game::IsRunning() const -> bool
     {
-        return not IsFinished();
+        return not IsOver();
     }
-    auto Game::IsFinished() const -> bool
+    auto Game::IsOver() const -> bool
     {
         return m_wnd_.IsClosing();
     }
@@ -68,7 +68,7 @@ namespace starrealm
     {
         Init_();
 
-        while (not m_wnd_.IsClosing())
+        while (IsRunning())
         {
             m_gfx_.BeginFrame();
             DoFrame_();

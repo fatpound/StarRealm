@@ -27,8 +27,8 @@ export namespace starrealm
 
 
     public:
-        auto IsRunning()  const -> bool;
-        auto IsFinished() const -> bool;
+        auto IsRunning() const -> bool;
+        auto IsOver()    const -> bool;
 
 
     protected:

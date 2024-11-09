@@ -38,7 +38,7 @@ int APIENTRY wWinMain(
 
         while (not games.empty())
         {
-            std::erase_if(games, [](auto& pGame) noexcept -> bool { return pGame->IsFinished(); });
+            std::erase_if(games, [](auto& pGame) noexcept -> bool { return pGame->IsOver(); });
 
             std::this_thread::sleep_for(100ms);
         }
