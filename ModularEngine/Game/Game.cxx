@@ -70,9 +70,9 @@ namespace starrealm
 
         while (IsRunning())
         {
-            m_gfx_.BeginFrame();
+            m_gfx_.BeginFrame<false, 0.0f, 0.0f, 0.25f>();
             DoFrame_();
-            m_gfx_.EndFrame();
+            m_gfx_.EndFrame<>();
         }
     }
     void Game::DoFrame_()
