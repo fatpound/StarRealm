@@ -12,12 +12,25 @@ import std;
 
 using std::literals::chrono_literals::operator ""ms;
 
+template <typename T>
+struct ErrorTest
+{
+    T val{};
+    void causeBuildError()
+    {
+        val = {};
+    }
+};
+
 int APIENTRY wWinMain(
         [[maybe_unused]] _In_     HINSTANCE hInst,
         [[maybe_unused]] _In_opt_ HINSTANCE hPrevInst,
         [[maybe_unused]] _In_     LPWSTR    lpCmdLine,
         [[maybe_unused]] _In_     int       nShowCmd)
 {
+    ErrorTest<const int> et;
+    et.causeBuildError();
+
     try
     {
 #if IN_DEBUG
