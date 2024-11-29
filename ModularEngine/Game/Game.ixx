@@ -51,7 +51,7 @@ export namespace starrealm
         
         FATSPACE_UTIL::ViewXM m_viewXM_;
         FATSPACE_UTIL::Camera m_camera_;
-        FATSPACE_UTIL_TIME::AutoTimer m_timer_;
+        FATSPACE_UTIL::Timer m_timer_;
         
         std::vector<std::unique_ptr<entity::Star>> m_stars_;
 
