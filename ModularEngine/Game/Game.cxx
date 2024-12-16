@@ -73,15 +73,15 @@ namespace starrealm
         while (IsRunning())
         {
             m_gfx_.BeginFrame<false, 0.0f, 0.0f, 0.25f>();
-            m_timer_.Stop();
             DoFrame_();
-            m_timer_.Start();
             m_gfx_.EndFrame<>();
         }
     }
     void Game::DoFrame_()
     {
+        m_timer_.Stop();
         const auto& deltaTime = m_timer_.GetElapsed_s();
+        m_timer_.Start();
 
         m_camera_.Update();
         
