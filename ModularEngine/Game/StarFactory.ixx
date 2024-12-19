@@ -146,8 +146,8 @@ export namespace starrealm
 
         auto GenerateRadiusPack_() -> entity::Star::RadiusPack
         {
-            const auto& outerRadius = std::clamp(m_outer_rad_dist_(m_rng_), mc_settings_.m_minStarOuterRadius, mc_settings_.m_maxStarOuterRadius);
-            const auto& innerRadiusRatio = std::clamp(m_inner_rad_ratio_dist_(m_rng_), mc_settings_.m_minStarInnerRatio, mc_settings_.m_maxStarInnerRatio);
+            const auto outerRadius = std::clamp(m_outer_rad_dist_(m_rng_), mc_settings_.m_minStarOuterRadius, mc_settings_.m_maxStarOuterRadius);
+            const auto innerRadiusRatio = std::clamp(m_inner_rad_ratio_dist_(m_rng_), mc_settings_.m_minStarInnerRatio, mc_settings_.m_maxStarInnerRatio);
 
             return { outerRadius, outerRadius * innerRadiusRatio };
         }
