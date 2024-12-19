@@ -1,7 +1,6 @@
 module;
 
 #include <FatNamespaces.hpp>
-
 #include <StarRealmNamespaces.hpp>
 
 export module StarRealm.Entity.Star.HollowMulti;

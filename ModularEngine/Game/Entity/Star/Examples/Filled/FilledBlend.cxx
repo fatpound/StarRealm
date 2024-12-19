@@ -1,8 +1,6 @@
 module;
 
-#include <FatWin32_Settings.hpp>
 #include <FatNamespaces.hpp>
-
 #include <StarRealmNamespaces.hpp>
 
 #include <DirectXMath.h>
