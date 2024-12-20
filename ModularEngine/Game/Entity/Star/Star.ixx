@@ -111,3 +111,5 @@ export namespace starrealm::entity
     private:
     };
 }
+
+module : private;

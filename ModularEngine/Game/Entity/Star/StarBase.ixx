@@ -65,3 +65,5 @@ export namespace starrealm::entity::star
         }
     };
 }
+
+module : private;

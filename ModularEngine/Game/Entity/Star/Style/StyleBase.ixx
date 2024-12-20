@@ -13,3 +13,5 @@ export namespace starrealm::entity::star
     >
     concept Style = std::derived_from<T, StyleBase_<T>>;
 }
+
+module : private;

@@ -14,3 +14,5 @@ export namespace starrealm::entity::star::style
     template <typename T>
     concept Type = Style<T, type::Base_>;
 }
+
+module : private;

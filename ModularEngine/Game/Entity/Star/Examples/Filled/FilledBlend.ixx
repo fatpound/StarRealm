@@ -32,3 +32,5 @@ export namespace starrealm::entity::star
     private:
     };
 }
+
+module : private;

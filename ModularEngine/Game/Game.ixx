@@ -58,3 +58,5 @@ export namespace starrealm
         std::jthread m_game_loop_;
     };
 }
+
+module : private;

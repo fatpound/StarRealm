@@ -15,3 +15,5 @@ export namespace starrealm::entity::star::style
     template <typename T>
     concept Effect = Style<T, effect::Base_>;
 }
+
+module : private;
