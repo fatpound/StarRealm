@@ -55,32 +55,22 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\FatModules\FatCpp.props" />
-    <Import Project="..\FatModules\FatCpp_Debug.props" />
-    <Import Project="..\FatModules\FatLibrary.props" />
+    <Import Project="..\FatModules\FatCppM_Debug.props" />
     <Import Project="..\FatModules\FatLibraryM.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\FatModules\FatCpp.props" />
-    <Import Project="..\FatModules\FatCpp_Release.props" />
-    <Import Project="..\FatModules\FatCpp_Intrinsic.props" />
-    <Import Project="..\FatModules\FatLibrary.props" />
+    <Import Project="..\FatModules\FatCppM_Release.props" />
     <Import Project="..\FatModules\FatLibraryM.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\FatModules\FatCpp.props" />
-    <Import Project="..\FatModules\FatCpp_Debug.props" />
-    <Import Project="..\FatModules\FatLibrary.props" />
+    <Import Project="..\FatModules\FatCppM_Debug.props" />
     <Import Project="..\FatModules\FatLibraryM.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\FatModules\FatCpp.props" />
-    <Import Project="..\FatModules\FatCpp_Release.props" />
-    <Import Project="..\FatModules\FatCpp_Intrinsic.props" />
-    <Import Project="..\FatModules\FatLibrary.props" />
+    <Import Project="..\FatModules\FatCppM_Release.props" />
     <Import Project="..\FatModules\FatLibraryM.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
