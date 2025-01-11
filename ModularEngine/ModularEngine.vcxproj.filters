@@ -120,6 +120,15 @@
     <ClCompile Include="Game\Game.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Game\View\View.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\View\Camera.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\View\Camera.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Game\Entity\Star\Shader\PSColorBlend.hlsl" />

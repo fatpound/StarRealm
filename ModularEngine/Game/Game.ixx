@@ -6,6 +6,8 @@ export module StarRealm;
 
 export import :StarFactory;
 
+export import StarRealm.View;
+
 import FatPound;
 
 import std;
@@ -49,8 +51,9 @@ export namespace starrealm
         FATSPACE_WIN32::WindowEx m_wnd_;
         FATSPACE_D3D11::Graphics<> m_gfx_;
         
+        view::Camera m_camera_;
+
         FATSPACE_UTIL::ViewXM m_viewXM_;
-        FATSPACE_UTIL::Camera m_camera_;
         FATSPACE_UTIL::Timer m_timer_;
         
         std::vector<std::unique_ptr<entity::Star>> m_stars_;

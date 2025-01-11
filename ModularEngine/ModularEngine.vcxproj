@@ -183,6 +183,9 @@
     <ClCompile Include="Game\StarFactory.ixx" />
     <ClCompile Include="Game\Game.cxx" />
     <ClCompile Include="Game\Game.ixx" />
+    <ClCompile Include="Game\View\Camera.cxx" />
+    <ClCompile Include="Game\View\Camera.ixx" />
+    <ClCompile Include="Game\View\View.ixx" />
     <ClCompile Include="wWinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
