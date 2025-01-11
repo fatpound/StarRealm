@@ -59,7 +59,7 @@ export namespace starrealm::entity::star
 
 
     private:
-        virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const bind_vec_t& override final
+        virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const BindableVec_t& override final
         {
             return this->s_static_binds_;
         }
