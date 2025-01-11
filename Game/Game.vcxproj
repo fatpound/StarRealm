@@ -21,28 +21,32 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{8edafada-94b8-4999-a5cb-8971fef7c18d}</ProjectGuid>
-    <RootNamespace>ModularEngine</RootNamespace>
+    <ProjectGuid>{28837652-792f-49c3-a013-149f857ad9df}</ProjectGuid>
+    <RootNamespace>Game</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -74,26 +78,13 @@
     <Import Project="..\FatModules\_props\FatLibraryM.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <UseStructuredOutput>true</UseStructuredOutput>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <UseStructuredOutput>true</UseStructuredOutput>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <UseStructuredOutput>true</UseStructuredOutput>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <UseStructuredOutput>true</UseStructuredOutput>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions);</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)ModularEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <EnableModules>true</EnableModules>
-      <BuildStlModules>true</BuildStlModules>
-      <TreatWarningAsError>false</TreatWarningAsError>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Game;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -102,13 +93,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions);</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)ModularEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <EnableModules>true</EnableModules>
-      <BuildStlModules>true</BuildStlModules>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Game;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -119,12 +110,11 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions);</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)ModularEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <EnableModules>true</EnableModules>
-      <BuildStlModules>true</BuildStlModules>
-      <TreatWarningAsError>false</TreatWarningAsError>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Game;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -133,13 +123,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions);</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)ModularEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <EnableModules>true</EnableModules>
-      <BuildStlModules>true</BuildStlModules>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Game;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -149,61 +139,54 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Game\Entity\Entity.ixx" />
-    <ClCompile Include="Game\Entity\Star\Examples\Examples.ixx" />
-    <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledExamples.ixx" />
-    <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledBlend.cxx" />
-    <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledBlend.ixx" />
-    <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledMulti.cxx" />
-    <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledMulti.ixx" />
-    <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledSingle.cxx" />
-    <ClCompile Include="Game\Entity\Star\Examples\Filled\FilledSingle.ixx" />
-    <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowExamples.ixx" />
-    <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowBlend.cxx" />
-    <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowBlend.ixx" />
-    <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowMulti.cxx" />
-    <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowMulti.ixx" />
-    <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowSingle.cxx" />
-    <ClCompile Include="Game\Entity\Star\Examples\Hollow\HollowSingle.ixx" />
-    <ClCompile Include="Game\Entity\Star\Star.cxx" />
-    <ClCompile Include="Game\Entity\Star\Star.ixx" />
-    <ClCompile Include="Game\Entity\Star\StarBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Effect\Blend.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Effect\ColorBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Effect\Effect.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Effect\EffectBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Effect\MultiColor.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Effect\SingleColor.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Style.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\StyleBase.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Type\Filled.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Type\Hollow.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Type\Type.ixx" />
-    <ClCompile Include="Game\Entity\Star\Style\Type\TypeBase.ixx" />
-    <ClCompile Include="Game\StarFactory.ixx" />
-    <ClCompile Include="Game\Game.cxx" />
-    <ClCompile Include="Game\Game.ixx" />
-    <ClCompile Include="Game\View\Camera.cxx" />
-    <ClCompile Include="Game\View\Camera.ixx" />
-    <ClCompile Include="Game\View\View.ixx" />
+    <ClCompile Include="Entity\Entity.ixx" />
+    <ClCompile Include="Entity\Star\Filled\FilledBlend.cxx" />
+    <ClCompile Include="Entity\Star\Filled\FilledBlend.ixx" />
+    <ClCompile Include="Entity\Star\Filled\FilledMulti.cxx" />
+    <ClCompile Include="Entity\Star\Filled\FilledMulti.ixx" />
+    <ClCompile Include="Entity\Star\Filled\FilledSingle.cxx" />
+    <ClCompile Include="Entity\Star\Filled\FilledSingle.ixx" />
+    <ClCompile Include="Entity\Star\Hollow\HollowBlend.cxx" />
+    <ClCompile Include="Entity\Star\Hollow\HollowBlend.ixx" />
+    <ClCompile Include="Entity\Star\Hollow\HollowMulti.cxx" />
+    <ClCompile Include="Entity\Star\Hollow\HollowMulti.ixx" />
+    <ClCompile Include="Entity\Star\Hollow\HollowSingle.cxx" />
+    <ClCompile Include="Entity\Star\Hollow\HollowSingle.ixx" />
+    <ClCompile Include="Entity\Star\Star.cxx" />
+    <ClCompile Include="Entity\Star\Star.ixx" />
+    <ClCompile Include="Entity\Star\StarBase.ixx" />
+    <ClCompile Include="Entity\Star\Style\Effect\Blend.ixx" />
+    <ClCompile Include="Entity\Star\Style\Effect\ColorBase.ixx" />
+    <ClCompile Include="Entity\Star\Style\Effect\Effect.ixx" />
+    <ClCompile Include="Entity\Star\Style\Effect\EffectBase.ixx" />
+    <ClCompile Include="Entity\Star\Style\Effect\MultiColor.ixx" />
+    <ClCompile Include="Entity\Star\Style\Effect\SingleColor.ixx" />
+    <ClCompile Include="Entity\Star\Style\Style.ixx" />
+    <ClCompile Include="Entity\Star\Style\StyleBase.ixx" />
+    <ClCompile Include="Entity\Star\Style\Type\Filled.ixx" />
+    <ClCompile Include="Entity\Star\Style\Type\Hollow.ixx" />
+    <ClCompile Include="Entity\Star\Style\Type\Type.ixx" />
+    <ClCompile Include="Entity\Star\Style\Type\TypeBase.ixx" />
+    <ClCompile Include="StarRealm.cxx" />
+    <ClCompile Include="StarRealm.ixx" />
+    <ClCompile Include="StarFactory.ixx" />
+    <ClCompile Include="View\Camera.cxx" />
+    <ClCompile Include="View\Camera.ixx" />
+    <ClCompile Include="View\View.ixx" />
     <ClCompile Include="wWinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Game\Entity\Star\Shader\PSColorBlend.hlsl">
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+    <FxCompile Include="Entity\Star\Shader\PSColorBlend.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-    </FxCompile>
-    <FxCompile Include="Game\Entity\Star\Shader\PSColorMulti.hlsl">
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="Entity\Star\Shader\PSColorMulti.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
@@ -212,55 +195,59 @@
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
-    </FxCompile>
-    <FxCompile Include="Game\Entity\Star\Shader\PSColorSingle.hlsl">
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="Entity\Star\Shader\PSColorSingle.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-    </FxCompile>
-    <FxCompile Include="Game\Entity\Star\Shader\VSColorBlend.hlsl">
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="Entity\Star\Shader\VSColorBlend.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-    </FxCompile>
-    <FxCompile Include="Game\Entity\Star\Shader\VSColorMulti.hlsl">
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="Entity\Star\Shader\VSColorMulti.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-    </FxCompile>
-    <FxCompile Include="Game\Entity\Star\Shader\VSColorSingle.hlsl">
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="Entity\Star\Shader\VSColorSingle.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="StarRealmNamespaces.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FatModules\FatModules.vcxproj">
       <Project>{064e2dd0-aee6-4af4-ae1a-64fdd79d9fb7}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="StarRealmNamespaces.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
