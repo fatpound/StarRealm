@@ -165,8 +165,8 @@
     <ClCompile Include="Entity\Star\Style\Type\Hollow.ixx" />
     <ClCompile Include="Entity\Star\Style\Type\Type.ixx" />
     <ClCompile Include="Entity\Star\Style\Type\TypeBase.ixx" />
-    <ClCompile Include="StarRealm.cxx" />
-    <ClCompile Include="StarRealm.ixx" />
+    <ClCompile Include="Game.cxx" />
+    <ClCompile Include="Game.ixx" />
     <ClCompile Include="StarFactory.ixx" />
     <ClCompile Include="View\Camera.cxx" />
     <ClCompile Include="View\Camera.ixx" />

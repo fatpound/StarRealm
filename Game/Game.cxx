@@ -65,7 +65,6 @@ namespace starrealm
 
         m_stars_ = StarFactory<>{ m_gfx_, m_viewXM_ }.GetStars();
     }
-
     void Game::Go_()
     {
         Init_();

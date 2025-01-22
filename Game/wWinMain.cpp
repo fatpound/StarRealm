@@ -1,16 +1,30 @@
-/*            */
-//  fatpound* //
-/*            */
+/*******************************************************************************/
+/*                                                                             */
+/*                 :::::::                                                     */
+/*               :+:    :+:            ::                                      */
+/*              +:+            :+     +#                                       */
+/*             +#+            +#pL+++##+##++:          :::::::        :::      */
+/*            +#+         ++#+##+++ uﬂ#+             :+:    :+:     :+:        */
+/*           #+#     #+#     #+      ##                   +:+     +:++         */
+/*   wWinMain.########      ##                          +#+      +#+  +:+      */
+/*                                                    +#+      +#+#    #+#+    */
+/*                                                  #+#         #+#   #+#      */
+/*   By: fatpound                                 ########:#      ##.tr        */
+/*                                                                             */
+/*   Created: --/--/---- ??:??:??                                              */
+/*   Updated: 21/01/2025 01:23:26                                              */
+/*                                                                             */
+/*******************************************************************************/
 
-// StarRealm
+/*          */
+// fatpound //
+/*          */
 
 #include <FatWin32.hpp>
 
 import StarRealm;
 
 import std;
-
-using std::literals::chrono_literals::operator ""ms;
 
 int APIENTRY wWinMain(
     [[maybe_unused]] _In_     HINSTANCE hInst,
@@ -38,8 +52,8 @@ int APIENTRY wWinMain(
         while (not games.empty())
         {
             std::erase_if(games, [](auto& pGame) noexcept -> bool { return pGame->IsOver(); });
-
-            std::this_thread::sleep_for(100ms);
+            
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
 
         return 0;

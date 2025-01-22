@@ -38,7 +38,6 @@ export namespace starrealm
 
     private:
         void Init_();
-
         void Go_();
         void DoFrame_();
 
