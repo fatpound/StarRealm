@@ -15,11 +15,8 @@ import std;
 
 export namespace starrealm::entity::star
 {
-    template <
-        style::Type T,
-        style::Effect E
-    >
-    class StarBase : public Star, public FATSPACE_PIPELINE::StaticBindableVec<StarBase<T, E>>
+    template <style::Type T, style::Effect E>
+    class StarBase : public Star
     {
         friend T;
         friend E;
@@ -29,7 +26,7 @@ export namespace starrealm::entity::star
             :
             Star(desc)
         {
-            if (not FATSPACE_PIPELINE::StaticBindableVec<StarBase>::IsStaticInitialized_())
+            if (tl_bindable_vec_.empty())
             {
                 T::template InitStaticBinds<StarBase>();
 
@@ -61,8 +58,19 @@ export namespace starrealm::entity::star
     private:
         virtual auto GetStaticBinds_() const noexcept(IN_RELEASE) -> const BindableVec_t& override final
         {
-            return this->s_static_binds_;
+            return tl_bindable_vec_;
         }
+
+
+    private:
+        static void AddStaticBind_(BindablePtr_t bindable)
+        {
+            tl_bindable_vec_.push_back(std::move(bindable));
+        }
+
+
+    private:
+        inline static thread_local std::vector<BindablePtr_t> tl_bindable_vec_;
     };
 }
 

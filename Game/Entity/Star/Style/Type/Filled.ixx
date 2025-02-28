@@ -37,11 +37,7 @@ export namespace starrealm::entity::star::style::type
 
 
     public:
-        template
-        <
-            MyVertex V,
-            bool WithCentre = true
-        >
+        template <MyVertex V, bool WithCentre = true>
         static auto GenerateIndices(const std::vector<V>& vertices) -> std::vector<unsigned short int>
         {
             using idx_val_t = unsigned short int;

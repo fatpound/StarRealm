@@ -33,11 +33,7 @@ export namespace starrealm::entity::star::style::effect
 
 
     public:
-        template
-        <
-            typename StarBase,
-            bool ForFilled = true
-        >
+        template <typename StarBase, bool ForFilled = true>
         static void InitStaticBinds(FATSPACE_D3D11::Graphics<>& gfx)
         {
             auto pvs = std::make_unique<FATSPACE_PIPELINE_ELEMENT::VertexShader>(gfx.GetDevice(), L"VSColorSingle.cso");
