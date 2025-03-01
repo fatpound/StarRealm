@@ -43,13 +43,13 @@ export namespace starrealm::entity::star
             AddBind_(std::make_unique<FATSPACE_PIPELINE_RESOURCE::TransformCBuffer<StarBase>>(gfx.GetDevice(), *this, worldView));
         }
 
-        explicit StarBase() = delete;
-        explicit StarBase(const StarBase& src) = delete;
-        explicit StarBase(StarBase&& src) = delete;
+        explicit StarBase()                    = delete;
+        explicit StarBase(const StarBase&)     = delete;
+        explicit StarBase(StarBase&&) noexcept = delete;
 
-        auto operator = (const StarBase& src) -> StarBase& = delete;
-        auto operator = (StarBase&& src)      -> StarBase& = delete;
-        virtual ~StarBase() noexcept = default;
+        auto operator = (const StarBase&)     -> StarBase& = delete;
+        auto operator = (StarBase&&) noexcept -> StarBase& = delete;
+        virtual ~StarBase() noexcept                       = default;
 
 
     protected:

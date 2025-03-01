@@ -20,12 +20,12 @@ export namespace starrealm
 
     public:
         explicit Game();
-        explicit Game(const Game& src) = delete;
-        explicit Game(Game&& src) = delete;
+        explicit Game(const Game&)     = delete;
+        explicit Game(Game&&) noexcept = delete;
 
-        auto operator = (const Game& src) -> Game& = delete;
-        auto operator = (Game&& src)      -> Game& = delete;
-        ~Game() noexcept = default;
+        auto operator = (const Game& src)     -> Game& = delete;
+        auto operator = (Game&& src) noexcept -> Game& = delete;
+        ~Game() noexcept                               = default;
 
 
     public:

@@ -17,13 +17,13 @@ export namespace starrealm::entity::star
     public:
         explicit FilledSingle(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView);
 
-        explicit FilledSingle() = delete;
-        explicit FilledSingle(const FilledSingle& src) = delete;
-        explicit FilledSingle(FilledSingle&& src) = delete;
+        explicit FilledSingle()                        = delete;
+        explicit FilledSingle(const FilledSingle&)     = delete;
+        explicit FilledSingle(FilledSingle&&) noexcept = delete;
 
-        auto operator = (const FilledSingle& src) -> FilledSingle& = delete;
-        auto operator = (FilledSingle&& src)      -> FilledSingle& = delete;
-        virtual ~FilledSingle() noexcept final = default;
+        auto operator = (const FilledSingle&)     -> FilledSingle& = delete;
+        auto operator = (FilledSingle&&) noexcept -> FilledSingle& = delete;
+        virtual ~FilledSingle() noexcept final                     = default;
 
 
     protected:

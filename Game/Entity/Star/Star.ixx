@@ -35,13 +35,13 @@ export namespace starrealm::entity
     public:
         explicit Star(const Descriptor& desc) noexcept;
 
-        explicit Star() = default;
-        explicit Star(const Star& src) = delete;
-        explicit Star(Star&& src) = delete;
+        explicit Star()                = default;
+        explicit Star(const Star&)     = delete;
+        explicit Star(Star&&) noexcept = delete;
 
-        auto operator = (const Star& src) -> Star& = delete;
-        auto operator = (Star&& src)      -> Star& = delete;
-        virtual ~Star() noexcept = default;
+        auto operator = (const Star&)     -> Star& = delete;
+        auto operator = (Star&&) noexcept -> Star& = delete;
+        virtual ~Star() noexcept                   = default;
 
 
     public:

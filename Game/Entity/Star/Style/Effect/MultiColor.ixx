@@ -23,13 +23,13 @@ export namespace starrealm::entity::star::style::effect
     class MultiColor final : public ColorBase_<MultiColor>
     {
     public:
-        explicit MultiColor() = delete;
-        explicit MultiColor(const MultiColor& src) = delete;
-        explicit MultiColor(MultiColor&& src) = delete;
+        explicit MultiColor()                      = delete;
+        explicit MultiColor(const MultiColor&)     = delete;
+        explicit MultiColor(MultiColor&&) noexcept = delete;
 
-        auto operator = (const MultiColor& src) -> MultiColor& = delete;
-        auto operator = (MultiColor&& src)      -> MultiColor& = delete;
-        ~MultiColor() noexcept = delete;
+        auto operator = (const MultiColor&)     -> MultiColor& = delete;
+        auto operator = (MultiColor&&) noexcept -> MultiColor& = delete;
+        ~MultiColor() noexcept                                 = delete;
 
 
     public:

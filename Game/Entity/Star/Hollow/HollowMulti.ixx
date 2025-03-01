@@ -17,13 +17,13 @@ export namespace starrealm::entity::star
     public:
         explicit HollowMulti(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView);
 
-        explicit HollowMulti() = delete;
-        explicit HollowMulti(const HollowMulti& src) = delete;
-        explicit HollowMulti(HollowMulti&& src) = delete;
+        explicit HollowMulti()                       = delete;
+        explicit HollowMulti(const HollowMulti&)     = delete;
+        explicit HollowMulti(HollowMulti&&) noexcept = delete;
 
-        auto operator = (const HollowMulti& src) -> HollowMulti& = delete;
-        auto operator = (HollowMulti&& src)      -> HollowMulti& = delete;
-        virtual ~HollowMulti() noexcept final = default;
+        auto operator = (const HollowMulti&)     -> HollowMulti& = delete;
+        auto operator = (HollowMulti&&) noexcept -> HollowMulti& = delete;
+        virtual ~HollowMulti() noexcept final                    = default;
 
 
     protected:

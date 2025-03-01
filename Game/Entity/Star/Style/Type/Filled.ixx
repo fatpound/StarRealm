@@ -27,13 +27,13 @@ export namespace starrealm::entity::star::style::type
     class Filled final : public Base_<Filled>
     {
     public:
-        explicit Filled() = delete;
-        explicit Filled(const Filled& src) = delete;
-        explicit Filled(Filled&& src) = delete;
+        explicit Filled()                  = delete;
+        explicit Filled(const Filled&)     = delete;
+        explicit Filled(Filled&&) noexcept = delete;
 
-        auto operator = (const Filled& src) -> Filled& = delete;
-        auto operator = (Filled&& src)      -> Filled& = delete;
-        ~Filled() noexcept = delete;
+        auto operator = (const Filled&)     -> Filled& = delete;
+        auto operator = (Filled&&) noexcept -> Filled& = delete;
+        ~Filled() noexcept                             = delete;
 
 
     public:

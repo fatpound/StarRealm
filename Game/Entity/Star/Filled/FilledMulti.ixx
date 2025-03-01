@@ -17,13 +17,13 @@ export namespace starrealm::entity::star
     public:
         explicit FilledMulti(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView);
 
-        explicit FilledMulti() = delete;
-        explicit FilledMulti(const FilledMulti& src) = delete;
-        explicit FilledMulti(FilledMulti&& src) = delete;
+        explicit FilledMulti()                       = delete;
+        explicit FilledMulti(const FilledMulti&)     = delete;
+        explicit FilledMulti(FilledMulti&&) noexcept = delete;
 
-        auto operator = (const FilledMulti& src) -> FilledMulti& = delete;
-        auto operator = (FilledMulti&& src)      -> FilledMulti& = delete;
-        virtual ~FilledMulti() noexcept final = default;
+        auto operator = (const FilledMulti&)     -> FilledMulti& = delete;
+        auto operator = (FilledMulti&&) noexcept -> FilledMulti& = delete;
+        virtual ~FilledMulti() noexcept final                    = default;
 
 
     protected:

@@ -17,13 +17,13 @@ export namespace starrealm::entity::star
     public:
         explicit FilledBlend(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView);
 
-        explicit FilledBlend() = delete;
-        explicit FilledBlend(const FilledBlend& src) = delete;
-        explicit FilledBlend(FilledBlend&& src) = delete;
+        explicit FilledBlend()                       = delete;
+        explicit FilledBlend(const FilledBlend&)     = delete;
+        explicit FilledBlend(FilledBlend&&) noexcept = delete;
 
-        auto operator = (const FilledBlend& src) -> FilledBlend& = delete;
-        auto operator = (FilledBlend&& src)      -> FilledBlend& = delete;
-        virtual ~FilledBlend() noexcept final = default;
+        auto operator = (const FilledBlend&)     -> FilledBlend& = delete;
+        auto operator = (FilledBlend&&) noexcept -> FilledBlend& = delete;
+        virtual ~FilledBlend() noexcept final                    = default;
 
 
     protected:

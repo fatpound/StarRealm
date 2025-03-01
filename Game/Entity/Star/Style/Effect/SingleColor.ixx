@@ -23,13 +23,13 @@ export namespace starrealm::entity::star::style::effect
     class SingleColor final : public ColorBase_<SingleColor>
     {
     public:
-        explicit SingleColor() = delete;
-        explicit SingleColor(const SingleColor& src) = delete;
-        explicit SingleColor(SingleColor&& src) = delete;
+        explicit SingleColor()                       = delete;
+        explicit SingleColor(const SingleColor&)     = delete;
+        explicit SingleColor(SingleColor&&) noexcept = delete;
 
-        auto operator = (const SingleColor& src) -> SingleColor& = delete;
-        auto operator = (SingleColor&& src)      -> SingleColor& = delete;
-        ~SingleColor() noexcept = delete;
+        auto operator = (const SingleColor&)     -> SingleColor& = delete;
+        auto operator = (SingleColor&&) noexcept -> SingleColor& = delete;
+        ~SingleColor() noexcept                                  = delete;
 
 
     public:

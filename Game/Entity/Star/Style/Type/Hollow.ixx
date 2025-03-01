@@ -21,13 +21,13 @@ export namespace starrealm::entity::star::style::type
     class Hollow final : public Base_<Hollow>
     {
     public:
-        explicit Hollow() = delete;
-        explicit Hollow(const Hollow& src) = delete;
-        explicit Hollow(Hollow&& src) = delete;
+        explicit Hollow()                  = delete;
+        explicit Hollow(const Hollow&)     = delete;
+        explicit Hollow(Hollow&&) noexcept = delete;
 
-        auto operator = (const Hollow& src) -> Hollow& = delete;
-        auto operator = (Hollow&& src)      -> Hollow& = delete;
-        ~Hollow() noexcept = delete;
+        auto operator = (const Hollow&)     -> Hollow& = delete;
+        auto operator = (Hollow&&) noexcept -> Hollow& = delete;
+        ~Hollow() noexcept                             = delete;
 
 
     public:

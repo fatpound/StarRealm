@@ -17,13 +17,13 @@ export namespace starrealm::entity::star
     public:
         explicit HollowBlend(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView);
 
-        explicit HollowBlend() = delete;
-        explicit HollowBlend(const HollowBlend& src) = delete;
-        explicit HollowBlend(HollowBlend&& src) = delete;
+        explicit HollowBlend()                       = delete;
+        explicit HollowBlend(const HollowBlend&)     = delete;
+        explicit HollowBlend(HollowBlend&&) noexcept = delete;
 
-        auto operator = (const HollowBlend& src) -> HollowBlend& = delete;
-        auto operator = (HollowBlend&& src)      -> HollowBlend& = delete;
-        virtual ~HollowBlend() noexcept final = default;
+        auto operator = (const HollowBlend&)     -> HollowBlend& = delete;
+        auto operator = (HollowBlend&&) noexcept -> HollowBlend& = delete;
+        virtual ~HollowBlend() noexcept final                    = default;
 
 
     protected:
