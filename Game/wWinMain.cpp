@@ -20,8 +20,10 @@
 // fatpound //
 /*          */
 
+#include <FatNamespaces.hpp>
 #include <FatWin32.hpp>
 
+import FatPound;
 import StarRealm;
 
 import std;
@@ -60,15 +62,7 @@ int APIENTRY wWinMain(
     }
     catch (const std::exception& ex)
     {
-        const std::string str = ex.what();
-
-        const auto sizeNeeded = ::MultiByteToWideChar(CP_UTF8, 0, str.c_str(), static_cast<int>(str.size()), nullptr, 0);
-
-        std::wstring wstr(static_cast<std::uint64_t>(sizeNeeded), 0);
-
-        ::MultiByteToWideChar(CP_UTF8, 0, str.c_str(), static_cast<int>(str.size()), wstr.data(), sizeNeeded);
-
-        ::MessageBox(nullptr, wstr.c_str(), L"Error!", MB_OK | MB_ICONERROR);
+        ::MessageBox(nullptr, FATSPACE_UTIL::ToWString(ex.what()).c_str(), L"Error!", MB_OK | MB_ICONERROR);
     }
     catch (...)
     {
