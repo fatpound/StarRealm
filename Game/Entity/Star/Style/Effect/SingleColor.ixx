@@ -6,13 +6,12 @@ module;
 
 #include <DirectXMath.h>
 
-#include <d3d11.h>
-
 export module StarRealm.Entity.Star.Style.Effect:Color.Single;
 
 export import :Base;
-
 export import :Color.Base;
+
+import <d3d11.h>;
 
 import FatPound;
 

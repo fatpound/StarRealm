@@ -6,11 +6,11 @@ module;
 
 #include <DirectXMath.h>
 
-#include <d3d11.h>
-
 export module StarRealm.Entity.Star.Style.Effect:Blend;
 
 export import :Base;
+
+import <d3d11.h>;
 
 import StarRealm.Entity.Star;
 
