@@ -41,7 +41,7 @@ export namespace starrealm::entity
 
         auto operator = (const Star&)     -> Star& = delete;
         auto operator = (Star&&) noexcept -> Star& = delete;
-        virtual ~Star() noexcept                   = default;
+        virtual ~Star() noexcept override          = default;
 
 
     public:

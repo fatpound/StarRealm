@@ -15,7 +15,21 @@ export namespace starrealm::entity::star
     class FilledBlend final : public StarBase<style::type::Filled, style::effect::Blend>
     {
     public:
-        explicit FilledBlend(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView);
+        explicit FilledBlend(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView)
+            :
+            StarBase(gfx, desc, worldView)
+        {
+            const auto& vertices = STARREALM_STAR_EFFECT::Blend::GenerateVertices<>(m_radiuses_, m_position_, desc.flare_count);
+
+            AddBind_(std::make_unique<FATSPACE_PIPELINE_ELEMENT::VertexBuffer>(gfx.GetDevice(), vertices));
+
+            AddIndexBuffer_(
+                std::make_unique<FATSPACE_PIPELINE_ELEMENT::IndexBuffer>(
+                    gfx.GetDevice(),
+                    STARREALM_STAR_TYPE::Filled::GenerateIndices(vertices)
+                )
+            );
+        }
 
         explicit FilledBlend()                       = delete;
         explicit FilledBlend(const FilledBlend&)     = delete;
@@ -23,7 +37,7 @@ export namespace starrealm::entity::star
 
         auto operator = (const FilledBlend&)     -> FilledBlend& = delete;
         auto operator = (FilledBlend&&) noexcept -> FilledBlend& = delete;
-        virtual ~FilledBlend() noexcept final                    = default;
+        virtual ~FilledBlend() noexcept override final           = default;
 
 
     protected:

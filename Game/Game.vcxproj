@@ -154,17 +154,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Entity\Entity.ixx" />
-    <ClCompile Include="Entity\Star\Filled\FilledBlend.cxx" />
     <ClCompile Include="Entity\Star\Filled\FilledBlend.ixx" />
-    <ClCompile Include="Entity\Star\Filled\FilledMulti.cxx" />
     <ClCompile Include="Entity\Star\Filled\FilledMulti.ixx" />
-    <ClCompile Include="Entity\Star\Filled\FilledSingle.cxx" />
     <ClCompile Include="Entity\Star\Filled\FilledSingle.ixx" />
-    <ClCompile Include="Entity\Star\Hollow\HollowBlend.cxx" />
     <ClCompile Include="Entity\Star\Hollow\HollowBlend.ixx" />
-    <ClCompile Include="Entity\Star\Hollow\HollowMulti.cxx" />
     <ClCompile Include="Entity\Star\Hollow\HollowMulti.ixx" />
-    <ClCompile Include="Entity\Star\Hollow\HollowSingle.cxx" />
     <ClCompile Include="Entity\Star\Hollow\HollowSingle.ixx" />
     <ClCompile Include="Entity\Star\Star.cxx" />
     <ClCompile Include="Entity\Star\Star.ixx" />

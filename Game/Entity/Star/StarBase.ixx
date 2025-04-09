@@ -49,7 +49,7 @@ export namespace starrealm::entity::star
 
         auto operator = (const StarBase&)     -> StarBase& = delete;
         auto operator = (StarBase&&) noexcept -> StarBase& = delete;
-        virtual ~StarBase() noexcept                       = default;
+        virtual ~StarBase() noexcept override              = default;
 
 
     protected:
