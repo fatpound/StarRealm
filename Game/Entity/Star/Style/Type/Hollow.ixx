@@ -31,14 +31,14 @@ export namespace starrealm::entity::star::style::type
 
 
     public:
-        template <typename T>
+        template <::std::integral T = ::std::uint32_t>
         static auto GenerateIndices(const std::size_t vertex_count) -> std::vector<T>
         {
             std::vector<T> indices;
 
             indices.reserve(vertex_count + 1u);
 
-            for (std::size_t i = 0u; i < vertex_count; ++i)
+            for (std::size_t i{}; i < vertex_count; ++i)
             {
                 indices.emplace_back(static_cast<T>(i));
             }

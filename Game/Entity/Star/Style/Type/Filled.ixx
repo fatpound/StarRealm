@@ -37,28 +37,31 @@ export namespace starrealm::entity::star::style::type
 
 
     public:
-        template <MyVertex V, bool WithCentre = true>
-        static auto GenerateIndices(const std::vector<V>& vertices) -> std::vector<unsigned short int>
+        template
+        <
+            MyVertex V,
+            bool WithCentre   = true,
+            ::std::integral T = ::std::uint32_t
+        >
+        static auto GenerateIndices(const ::std::vector<V>& vertices) -> ::std::vector<T>
         {
-            using idx_val_t = unsigned short int;
+            const auto vertex_count_no_centre = static_cast<T>(vertices.size() - 1u);
 
-            const auto vertex_count_no_centre = static_cast<idx_val_t>(vertices.size() - 1u);
-
-            std::vector<idx_val_t> indices;
+            ::std::vector<T> indices;
 
             indices.reserve(vertex_count_no_centre * 3u);
 
-            for (idx_val_t i = 1u; i <= vertex_count_no_centre - 1u; i += 2u)
+            for (T i = 1u; i <= vertex_count_no_centre - 1u; i += 2u)
             {
-                for (idx_val_t j = 0u; j < 2u; ++j)
+                for (T j{}; j < 2u; ++j)
                 {
-                    std::array<idx_val_t, 3u> temp_idx{};
+                    ::std::array<T, 3u> temp_idx{};
 
-                    temp_idx[0u] = static_cast<idx_val_t>(i % vertex_count_no_centre);
-                    temp_idx[1u] = static_cast<idx_val_t>(((j == 0) ? ((i + 1u) % vertex_count_no_centre) : (vertex_count_no_centre)));
-                    temp_idx[2u] = static_cast<idx_val_t>((i + 2u) % vertex_count_no_centre);
+                    temp_idx[0u] = static_cast<T>(i % vertex_count_no_centre);
+                    temp_idx[1u] = static_cast<T>(((j == 0) ? ((i + 1u) % vertex_count_no_centre) : (vertex_count_no_centre)));
+                    temp_idx[2u] = static_cast<T>((i + 2u) % vertex_count_no_centre);
 
-                    ReorderVertices_(vertices, temp_idx);
+                    ReorderVertices_<>(vertices, temp_idx);
 
                     indices.append_range(temp_idx);
                 }
@@ -81,7 +84,7 @@ export namespace starrealm::entity::star::style::type
         template <MyVertex V>
         static float GetVertex_X_(const V& vertex) noexcept
         {
-            if constexpr (std::is_same_v<V, ::DirectX::XMFLOAT3>)
+            if constexpr (std::same_as<V, ::DirectX::XMFLOAT3>)
             {
                 return vertex.x;
             }
@@ -94,7 +97,7 @@ export namespace starrealm::entity::star::style::type
         template <MyVertex V>
         static float GetVertex_Y_(const V& vertex) noexcept
         {
-            if constexpr (std::is_same_v<V, ::DirectX::XMFLOAT3>)
+            if constexpr (std::same_as<V, ::DirectX::XMFLOAT3>)
             {
                 return vertex.y;
             }
@@ -104,10 +107,10 @@ export namespace starrealm::entity::star::style::type
             }
         }
 
-        template <MyVertex V>
-        static void ReorderVertices_(const std::vector<V>& vertices, std::array<unsigned short int, 3u>& idx_arr)
+        template <MyVertex V, ::std::integral T>
+        static void ReorderVertices_(const ::std::vector<V>& vertices, ::std::array<T, 3u>& idx_arr)
         {
-            std::ranges::sort(
+            ::std::ranges::sort(
                 idx_arr,
                 [&](const auto& idx0, const auto& idx1) noexcept -> bool
                 {
@@ -125,7 +128,9 @@ export namespace starrealm::entity::star::style::type
 
             auto isClockwise = [](const V& v0, const V& v1, const V& v2) noexcept -> bool
             {
-                return ((GetVertex_X_(v1) - GetVertex_X_(v0)) * (GetVertex_Y_(v2) - GetVertex_Y_(v0))
+                return
+                    (
+                        (GetVertex_X_(v1) - GetVertex_X_(v0)) * (GetVertex_Y_(v2) - GetVertex_Y_(v0))
                         -
                         (GetVertex_Y_(v1) - GetVertex_Y_(v0)) * (GetVertex_X_(v2) - GetVertex_X_(v0))
                     )

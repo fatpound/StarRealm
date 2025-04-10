@@ -1,6 +1,7 @@
 module;
 
 #include <FatNamespaces.hpp>
+#include <StarRealmNamespaces.hpp>
 
 #include <cassert>
 
@@ -13,9 +14,9 @@ import FatPound;
 
 import std;
 
-export namespace starrealm::entity::star
+export namespace starrealm::entity
 {
-    template <style::Type T, style::Effect E>
+    template <STARREALM_STAR_STYLE::Type T, STARREALM_STAR_STYLE::Effect E>
     class StarBase : public Star
     {
         friend T;
@@ -30,13 +31,13 @@ export namespace starrealm::entity::star
             {
                 T::template InitStaticBinds<StarBase>();
 
-                if constexpr (std::derived_from<E, style::effect::Blend>)
+                if constexpr (::std::derived_from<E, STARREALM_STAR_EFFECT::Blend>)
                 {
                     E::template InitStaticBinds<StarBase>(gfx);
                 }
                 else
                 {
-                    E::template InitStaticBinds<StarBase, std::same_as<T, style::type::Filled>>(gfx);
+                    E::template InitStaticBinds<StarBase, ::std::same_as<T, STARREALM_STAR_TYPE::Filled>>(gfx);
                 }
             }
 

@@ -3,30 +3,30 @@ module;
 #include <FatNamespaces.hpp>
 #include <StarRealmNamespaces.hpp>
 
-export module StarRealm.Entity.Star.HollowMulti;
+export module StarRealm.Entity.Examples.FilledMulti;
 
 import StarRealm.Entity.StarBase;
 import StarRealm.Entity.Star.Style;
 
 import FatPound;
 
-export namespace starrealm::entity::star
+export namespace starrealm::entity
 {
-    class HollowMulti final : public StarBase<style::type::Hollow, style::effect::MultiColor>
+    class FilledMulti final : public StarBase<STARREALM_STAR_TYPE::Filled, STARREALM_STAR_EFFECT::MultiColor>
     {
     public:
-        explicit HollowMulti(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView)
+        explicit FilledMulti(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView)
             :
             StarBase(gfx, desc, worldView)
         {
-            const auto& vertices = Star::Make(m_radiuses_, m_position_, desc.flare_count);
+            const auto& vertices = Star::Make<true>(m_radiuses_, m_position_, desc.flare_count);
 
             AddBind_(std::make_unique<FATSPACE_PIPELINE_ELEMENT::VertexBuffer>(gfx.GetDevice(), vertices));
 
             AddIndexBuffer_(
                 std::make_unique<FATSPACE_PIPELINE_ELEMENT::IndexBuffer>(
                     gfx.GetDevice(),
-                    STARREALM_STAR_TYPE::Hollow::GenerateIndices<unsigned short int>(vertices.size())
+                    STARREALM_STAR_TYPE::Filled::GenerateIndices<>(vertices)
                 )
             );
 
@@ -39,13 +39,13 @@ export namespace starrealm::entity::star
             );
         }
 
-        explicit HollowMulti()                       = delete;
-        explicit HollowMulti(const HollowMulti&)     = delete;
-        explicit HollowMulti(HollowMulti&&) noexcept = delete;
+        explicit FilledMulti()                       = delete;
+        explicit FilledMulti(const FilledMulti&)     = delete;
+        explicit FilledMulti(FilledMulti&&) noexcept = delete;
 
-        auto operator = (const HollowMulti&)     -> HollowMulti& = delete;
-        auto operator = (HollowMulti&&) noexcept -> HollowMulti& = delete;
-        virtual ~HollowMulti() noexcept override final           = default;
+        auto operator = (const FilledMulti&)     -> FilledMulti& = delete;
+        auto operator = (FilledMulti&&) noexcept -> FilledMulti& = delete;
+        virtual ~FilledMulti() noexcept override final           = default;
 
 
     protected:

@@ -91,5 +91,3 @@ export namespace starrealm::view
         Controller_ m_controller_;
     };
 }
-
-module : private;

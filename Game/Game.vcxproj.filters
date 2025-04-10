@@ -15,22 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Entity\Star\Filled\FilledBlend.ixx">
+    <ClCompile Include="Entity\Examples\FilledBlend.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star\Filled\FilledMulti.ixx">
+    <ClCompile Include="Entity\Examples\FilledMulti.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star\Filled\FilledSingle.ixx">
+    <ClCompile Include="Entity\Examples\FilledSingle.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star\Hollow\HollowBlend.ixx">
+    <ClCompile Include="Entity\Examples\HollowBlend.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star\Hollow\HollowMulti.ixx">
+    <ClCompile Include="Entity\Examples\HollowMulti.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star\Hollow\HollowSingle.ixx">
+    <ClCompile Include="Entity\Examples\HollowSingle.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Entity\Star\Style\Effect\Blend.ixx">
@@ -100,6 +100,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="wWinMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\Examples\Examples.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

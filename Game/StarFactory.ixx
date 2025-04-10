@@ -16,13 +16,14 @@ namespace dx = DirectX;
 
 export namespace starrealm
 {
-    template <
-        std::floating_point float_t = float,
-        std::integral       size_t  = unsigned int
+    template
+    <
+        ::std::floating_point float_t = float,
+        ::std::integral        size_t = unsigned int
     >
     class StarFactory final
     {
-        using unique_pstar = std::unique_ptr<entity::Star>;
+        using unique_pstar = ::std::unique_ptr<entity::Star>;
 
     public:
         struct Settings final
@@ -67,13 +68,13 @@ export namespace starrealm
             }
         }
 
-        explicit StarFactory() = delete;
-        explicit StarFactory(const StarFactory& src) = delete;
-        explicit StarFactory(StarFactory&& src) = delete;
+        explicit StarFactory()                       = delete;
+        explicit StarFactory(const StarFactory&)     = delete;
+        explicit StarFactory(StarFactory&&) noexcept = delete;
 
-        auto operator = (const StarFactory& src) -> StarFactory& = delete;
-        auto operator = (StarFactory&& src)      -> StarFactory& = delete;
-        ~StarFactory() noexcept = default;
+        auto operator = (const StarFactory&)     -> StarFactory& = delete;
+        auto operator = (StarFactory&&) noexcept -> StarFactory& = delete;
+        ~StarFactory() noexcept                                  = default;
 
 
     public:
@@ -121,22 +122,22 @@ export namespace starrealm
             switch (m_rng_() % 6u)
             {
             case 0:
-                return std::make_unique<entity::star::HollowSingle>(m_gfx_, desc, m_worldView_);
+                return std::make_unique<entity::HollowSingle>(m_gfx_, desc, m_worldView_);
 
             case 1:
-                return std::make_unique<entity::star::HollowMulti>(m_gfx_, desc, m_worldView_);
+                return std::make_unique<entity::HollowMulti>(m_gfx_, desc, m_worldView_);
 
             case 2:
-                return std::make_unique<entity::star::HollowBlend>(m_gfx_, desc, m_worldView_);
+                return std::make_unique<entity::HollowBlend>(m_gfx_, desc, m_worldView_);
 
             case 3:
-                return std::make_unique<entity::star::FilledSingle>(m_gfx_, desc, m_worldView_);
+                return std::make_unique<entity::FilledSingle>(m_gfx_, desc, m_worldView_);
 
             case 4:
-                return std::make_unique<entity::star::FilledMulti>(m_gfx_, desc, m_worldView_);
+                return std::make_unique<entity::FilledMulti>(m_gfx_, desc, m_worldView_);
 
             case 5:
-                return std::make_unique<entity::star::FilledBlend>(m_gfx_, desc, m_worldView_);
+                return std::make_unique<entity::FilledBlend>(m_gfx_, desc, m_worldView_);
 
             default:
                 return nullptr;
