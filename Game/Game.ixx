@@ -6,18 +6,6 @@ module;
 
 #include <DirectXMath.h>
 
-#if IN_RELEASE
-
-#define SCREEN_WIDTH    static_cast<UINT>(::GetSystemMetrics(SM_CXSCREEN))
-#define SCREEN_HEIGHT   static_cast<UINT>(::GetSystemMetrics(SM_CYSCREEN))
-
-#else
-
-#define SCREEN_WIDTH    800u
-#define SCREEN_HEIGHT   600u
-
-#endif // IN_RELEASE
-
 export module StarRealm;
 
 export import :StarFactory;
@@ -30,6 +18,14 @@ import std;
 
 namespace dx = DirectX;
 
+#if IN_RELEASE
+#define ScreenWidth  static_cast<UINT>(::GetSystemMetrics(SM_CXSCREEN))
+#define ScreenHeight static_cast<UINT>(::GetSystemMetrics(SM_CYSCREEN))
+#else
+static constexpr UINT ScreenWidth  = 800u;
+static constexpr UINT ScreenHeight = 600u;
+#endif
+
 export namespace starrealm
 {
     class Game final
@@ -39,7 +35,7 @@ export namespace starrealm
     public:
         explicit Game()
             :
-            m_wnd_(std::make_shared<FATSPACE_WIN32::WndClassEx>(L"fat->pound WindowClassEx: " + std::to_wstring(s_game_id_++)), L"StarRealm " + std::to_wstring(s_game_id_), FATSPACE_UTIL_GFX::SizePack{ SCREEN_WIDTH, SCREEN_HEIGHT }),
+            m_wnd_(std::make_shared<FATSPACE_WIN32::WndClassEx>(L"fat->pound WindowClassEx: " + std::to_wstring(s_game_id_++)), L"StarRealm " + std::to_wstring(s_game_id_), FATSPACE_UTIL_GFX::SizePack{ ScreenWidth, ScreenHeight }),
             m_gfx_(m_wnd_.GetHandle(), FATSPACE_UTIL_GFX::SizePack{ m_wnd_.GetClientWidth<UINT>(), m_wnd_.GetClientHeight<UINT>() }),
             m_camera_(Settings{}.m_maxStarDepth, m_wnd_.m_pKeyboard, m_wnd_.m_pMouse),
             ////////////////////////////////
