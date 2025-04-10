@@ -15,22 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Entity\Examples\FilledBlend.ixx">
+    <ClCompile Include="Demo\FilledBlend.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Examples\FilledMulti.ixx">
+    <ClCompile Include="Demo\FilledMulti.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Examples\FilledSingle.ixx">
+    <ClCompile Include="Demo\FilledSingle.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Examples\HollowBlend.ixx">
+    <ClCompile Include="Demo\HollowBlend.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Examples\HollowMulti.ixx">
+    <ClCompile Include="Demo\HollowMulti.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Examples\HollowSingle.ixx">
+    <ClCompile Include="Demo\HollowSingle.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Entity\Star\Style\Effect\Blend.ixx">
@@ -69,9 +69,6 @@
     <ClCompile Include="Entity\Star\Style\StyleBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star\Star.cxx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Entity\Star\Star.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -81,16 +78,10 @@
     <ClCompile Include="Entity\Entity.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="View\Camera.cxx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="View\Camera.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="View\View.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game.ixx">
@@ -102,7 +93,10 @@
     <ClCompile Include="wWinMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Examples\Examples.ixx">
+    <ClCompile Include="Demo\Demo.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="View\Camera.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

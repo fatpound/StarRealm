@@ -3,16 +3,16 @@ module;
 #include <FatNamespaces.hpp>
 #include <StarRealmNamespaces.hpp>
 
-export module StarRealm.Entity.Examples.FilledBlend;
+export module StarRealm.Demo.FilledBlend;
 
 import StarRealm.Entity.StarBase;
 import StarRealm.Entity.Star.Style;
 
 import FatPound;
 
-export namespace starrealm::entity
+export namespace starrealm::demo
 {
-    class FilledBlend final : public StarBase<STARREALM_STAR_TYPE::Filled, STARREALM_STAR_EFFECT::Blend>
+    class FilledBlend final : public entity::StarBase<STARREALM_STAR_TYPE::Filled, STARREALM_STAR_EFFECT::Blend>
     {
     public:
         explicit FilledBlend(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView)

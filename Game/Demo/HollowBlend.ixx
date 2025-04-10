@@ -3,16 +3,16 @@ module;
 #include <FatNamespaces.hpp>
 #include <StarRealmNamespaces.hpp>
 
-export module StarRealm.Entity.Examples.HollowBlend;
+export module StarRealm.Demo.HollowBlend;
 
 import StarRealm.Entity.StarBase;
 import StarRealm.Entity.Star.Style;
 
 import FatPound;
 
-export namespace starrealm::entity
+export namespace starrealm::demo
 {
-    class HollowBlend final : public StarBase<STARREALM_STAR_TYPE::Hollow, STARREALM_STAR_EFFECT::Blend>
+    class HollowBlend final : public entity::StarBase<STARREALM_STAR_TYPE::Hollow, STARREALM_STAR_EFFECT::Blend>
     {
     public:
         explicit HollowBlend(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView)

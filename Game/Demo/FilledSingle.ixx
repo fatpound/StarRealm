@@ -3,16 +3,16 @@ module;
 #include <FatNamespaces.hpp>
 #include <StarRealmNamespaces.hpp>
 
-export module StarRealm.Entity.Examples.FilledSingle;
+export module StarRealm.Demo.FilledSingle;
 
 import StarRealm.Entity.StarBase;
 import StarRealm.Entity.Star.Style;
 
 import FatPound;
 
-export namespace starrealm::entity
+export namespace starrealm::demo
 {
-    class FilledSingle final : public StarBase<STARREALM_STAR_TYPE::Filled, STARREALM_STAR_EFFECT::SingleColor>
+    class FilledSingle final : public entity::StarBase<STARREALM_STAR_TYPE::Filled, STARREALM_STAR_EFFECT::SingleColor>
     {
     public:
         explicit FilledSingle(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView)

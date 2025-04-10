@@ -154,14 +154,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Entity\Entity.ixx" />
-    <ClCompile Include="Entity\Examples\Examples.ixx" />
-    <ClCompile Include="Entity\Examples\FilledBlend.ixx" />
-    <ClCompile Include="Entity\Examples\FilledMulti.ixx" />
-    <ClCompile Include="Entity\Examples\FilledSingle.ixx" />
-    <ClCompile Include="Entity\Examples\HollowBlend.ixx" />
-    <ClCompile Include="Entity\Examples\HollowMulti.ixx" />
-    <ClCompile Include="Entity\Examples\HollowSingle.ixx" />
-    <ClCompile Include="Entity\Star\Star.cxx" />
+    <ClCompile Include="Demo\Demo.ixx" />
+    <ClCompile Include="Demo\FilledBlend.ixx" />
+    <ClCompile Include="Demo\FilledMulti.ixx" />
+    <ClCompile Include="Demo\FilledSingle.ixx" />
+    <ClCompile Include="Demo\HollowBlend.ixx" />
+    <ClCompile Include="Demo\HollowMulti.ixx" />
+    <ClCompile Include="Demo\HollowSingle.ixx" />
     <ClCompile Include="Entity\Star\Star.ixx" />
     <ClCompile Include="Entity\Star\StarBase.ixx" />
     <ClCompile Include="Entity\Star\Style\Effect\Blend.ixx" />
@@ -176,7 +175,6 @@
     <ClCompile Include="Entity\Star\Style\Type\Hollow.ixx" />
     <ClCompile Include="Entity\Star\Style\Type\Type.ixx" />
     <ClCompile Include="Entity\Star\Style\Type\TypeBase.ixx" />
-    <ClCompile Include="Game.cxx" />
     <ClCompile Include="Game.ixx" />
     <ClCompile Include="StarFactory.ixx" />
     <ClCompile Include="View\Camera.cxx" />

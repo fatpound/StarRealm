@@ -6,7 +6,8 @@ module;
 
 export module StarRealm:StarFactory;
 
-export import StarRealm.Entity;
+import StarRealm.Demo;
+import StarRealm.Entity;
 
 import FatPound;
 
@@ -122,22 +123,22 @@ export namespace starrealm
             switch (m_rng_() % 6u)
             {
             case 0:
-                return std::make_unique<entity::HollowSingle>(m_gfx_, desc, m_worldView_);
+                return std::make_unique<demo::HollowSingle>(m_gfx_, desc, m_worldView_);
 
             case 1:
-                return std::make_unique<entity::HollowMulti>(m_gfx_, desc, m_worldView_);
+                return std::make_unique<demo::HollowMulti>(m_gfx_, desc, m_worldView_);
 
             case 2:
-                return std::make_unique<entity::HollowBlend>(m_gfx_, desc, m_worldView_);
+                return std::make_unique<demo::HollowBlend>(m_gfx_, desc, m_worldView_);
 
             case 3:
-                return std::make_unique<entity::FilledSingle>(m_gfx_, desc, m_worldView_);
+                return std::make_unique<demo::FilledSingle>(m_gfx_, desc, m_worldView_);
 
             case 4:
-                return std::make_unique<entity::FilledMulti>(m_gfx_, desc, m_worldView_);
+                return std::make_unique<demo::FilledMulti>(m_gfx_, desc, m_worldView_);
 
             case 5:
-                return std::make_unique<entity::FilledBlend>(m_gfx_, desc, m_worldView_);
+                return std::make_unique<demo::FilledBlend>(m_gfx_, desc, m_worldView_);
 
             default:
                 return nullptr;

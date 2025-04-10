@@ -16,7 +16,11 @@ import std;
 
 export namespace starrealm::entity
 {
-    template <STARREALM_STAR_STYLE::Type T, STARREALM_STAR_STYLE::Effect E>
+    template
+    <
+        STARREALM_STAR_STYLE::Type   T,
+        STARREALM_STAR_STYLE::Effect E
+    >
     class StarBase : public Star
     {
         friend T;

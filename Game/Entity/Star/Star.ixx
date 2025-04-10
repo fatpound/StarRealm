@@ -10,6 +10,8 @@ import FatPound;
 
 import std;
 
+namespace dx = DirectX;
+
 export namespace starrealm::entity
 {
     class Star : public FATSPACE_VISUAL::Drawable
@@ -22,7 +24,7 @@ export namespace starrealm::entity
         };
         struct Descriptor final
         {
-            ::DirectX::XMFLOAT3 position;
+            ::dx::XMFLOAT3 position;
 
             RadiusPack radiuses;
 
@@ -33,7 +35,15 @@ export namespace starrealm::entity
 
 
     public:
-        explicit Star(const Descriptor& desc) noexcept;
+        explicit Star(const Descriptor& desc) noexcept
+            :
+            m_position_(desc.position),
+            m_radiuses_(desc.radiuses),
+            m_rotation_speed_(desc.rotation_speed),
+            m_roll_(0.0f)
+        {
+
+        }
 
         explicit Star()                = default;
         explicit Star(const Star&)     = delete;
@@ -45,22 +55,25 @@ export namespace starrealm::entity
 
 
     public:
-        auto operator <=> (const Star& rhs) const noexcept;
+        auto operator <=> (const Star& rhs) const noexcept
+        {
+            return m_radiuses_.outer_radius <=> rhs.m_radiuses_.outer_radius;
+        }
 
 
     public:
         template <bool WithCentre = false>
         static auto Make(
             const RadiusPack& radiuses,
-            const ::DirectX::XMFLOAT3& centre,
-            const std::size_t flare_count = 4u) -> std::vector<::DirectX::XMFLOAT3>
+            const ::dx::XMFLOAT3& centre,
+            const std::size_t flare_count = 4u) -> std::vector<::dx::XMFLOAT3>
         {
-            std::vector<::DirectX::XMFLOAT3> star;
+            std::vector<::dx::XMFLOAT3> star;
             const std::size_t capacity = flare_count * 2u;
 
             star.reserve(capacity + 1u);
 
-            const float dTheta = 2.0f * ::DirectX::XM_PI / static_cast<float>(capacity);
+            const float dTheta = 2.0f * ::dx::XM_PI / static_cast<float>(capacity);
 
             for (std::size_t i = 0u; i < capacity; ++i)
             {
@@ -86,21 +99,44 @@ export namespace starrealm::entity
 
 
     public:
-        virtual auto GetTransformXM() const noexcept -> ::DirectX::XMMATRIX override final;
+        virtual auto GetTransformXM() const noexcept -> ::dx::XMMATRIX override final
+        {
+            const auto& pos_vec = ::dx::XMLoadFloat3(&m_position_);
 
-        virtual auto GetPosition() const noexcept -> ::DirectX::XMFLOAT3 final;
+            return
+                ::dx::XMMatrixTranslationFromVector(::dx::XMVectorNegate(pos_vec)) *
+                ::dx::XMMatrixRotationZ(m_roll_) *
+                ::dx::XMMatrixTranslationFromVector(pos_vec);
+        }
 
-        virtual auto GetOuterRadius() const noexcept -> float final;
+        virtual auto GetPosition() const noexcept -> ::dx::XMFLOAT3 final
+        {
+            return m_position_;
+        }
 
-        virtual void Update(const float delta_time) noexcept override final;
+        virtual auto GetOuterRadius() const noexcept -> float final
+        {
+            return m_radiuses_.outer_radius;
+        }
+
+        virtual void Update(const float delta_time) noexcept override final
+        {
+            m_roll_ += (delta_time * m_rotation_speed_);
+        }
 
 
     public:
-        auto IsWithinArea(const ::DirectX::XMFLOAT3& position, const float radius) const noexcept -> bool;
+        auto IsWithinArea(const ::dx::XMFLOAT3& position, const float radius) const noexcept -> bool
+        {
+            const float distance = FATSPACE_MATH::GetDistanceBetweenXMF3(this->m_position_, position);
+            const float radsum = m_radiuses_.outer_radius + radius;
+
+            return radsum > distance;
+        }
 
 
     protected:
-        ::DirectX::XMFLOAT3 m_position_;
+        ::dx::XMFLOAT3 m_position_;
 
         RadiusPack m_radiuses_;
 
@@ -111,5 +147,3 @@ export namespace starrealm::entity
     private:
     };
 }
-
-module : private;
