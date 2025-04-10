@@ -6,16 +6,16 @@ module;
 
 #include <DirectXMath.h>
 
-export module StarRealm.Entity.Star.Style.Effect:Color.Base;
+export module StarRealm.Entity.StarStyle.Color:ColoringBase;
 
 export import :Base;
 
 import std;
 
-export namespace starrealm::entity::star::style::effect
+export namespace starrealm::entity::star_style::color
 {
     template <typename T>
-    class ColorBase_ : public Base_<T>
+    class ColoringBase : public Base<T>
     {
     public:
         struct CBuffer final
@@ -33,13 +33,13 @@ export namespace starrealm::entity::star::style::effect
 
 
     public:
-        explicit ColorBase_()                      = delete;
-        explicit ColorBase_(const ColorBase_&)     = delete;
-        explicit ColorBase_(ColorBase_&&) noexcept = delete;
+        explicit ColoringBase()                        = delete;
+        explicit ColoringBase(const ColoringBase&)     = delete;
+        explicit ColoringBase(ColoringBase&&) noexcept = delete;
 
-        auto operator = (const ColorBase_&)     -> ColorBase_& = delete;
-        auto operator = (ColorBase_&&) noexcept -> ColorBase_& = delete;
-        ~ColorBase_() noexcept                                 = delete;
+        auto operator = (const ColoringBase&)     -> ColoringBase& = delete;
+        auto operator = (ColoringBase&&) noexcept -> ColoringBase& = delete;
+        ~ColoringBase() noexcept                                   = delete;
 
 
     public:

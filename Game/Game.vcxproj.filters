@@ -33,46 +33,43 @@
     <ClCompile Include="Demo\HollowSingle.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star\Style\Effect\Blend.ixx">
+    <ClCompile Include="Entity\StarStyle\Color\Blend.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star\Style\Effect\ColorBase.ixx">
+    <ClCompile Include="Entity\StarStyle\Color\ColoringBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star\Style\Effect\Effect.ixx">
+    <ClCompile Include="Entity\StarStyle\Color\Color.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star\Style\Effect\EffectBase.ixx">
+    <ClCompile Include="Entity\StarStyle\Color\Base.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star\Style\Effect\MultiColor.ixx">
+    <ClCompile Include="Entity\StarStyle\Color\Multi.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star\Style\Effect\SingleColor.ixx">
+    <ClCompile Include="Entity\StarStyle\Color\Single.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star\Style\Type\Filled.ixx">
+    <ClCompile Include="Entity\StarStyle\Fill\Filled.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star\Style\Type\Hollow.ixx">
+    <ClCompile Include="Entity\StarStyle\Fill\Hollow.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star\Style\Type\Type.ixx">
+    <ClCompile Include="Entity\StarStyle\Fill\Fill.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star\Style\Type\TypeBase.ixx">
+    <ClCompile Include="Entity\StarStyle\Fill\Base.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star\Style\Style.ixx">
+    <ClCompile Include="Entity\StarStyle\Style.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star\Style\StyleBase.ixx">
+    <ClCompile Include="Entity\Star.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star\Star.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity\Star\StarBase.ixx">
+    <ClCompile Include="Entity\StarBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Entity\Entity.ixx">
@@ -101,12 +98,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Entity\Star\Shader\PSColorBlend.hlsl" />
-    <FxCompile Include="Entity\Star\Shader\PSColorMulti.hlsl" />
-    <FxCompile Include="Entity\Star\Shader\PSColorSingle.hlsl" />
-    <FxCompile Include="Entity\Star\Shader\VSColorBlend.hlsl" />
-    <FxCompile Include="Entity\Star\Shader\VSColorMulti.hlsl" />
-    <FxCompile Include="Entity\Star\Shader\VSColorSingle.hlsl" />
+    <FxCompile Include="Demo\Shader\PSColorBlend.hlsl" />
+    <FxCompile Include="Demo\Shader\PSColorMulti.hlsl" />
+    <FxCompile Include="Demo\Shader\PSColorSingle.hlsl" />
+    <FxCompile Include="Demo\Shader\VSColorBlend.hlsl" />
+    <FxCompile Include="Demo\Shader\VSColorMulti.hlsl" />
+    <FxCompile Include="Demo\Shader\VSColorSingle.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StarRealmNamespaces.hpp">

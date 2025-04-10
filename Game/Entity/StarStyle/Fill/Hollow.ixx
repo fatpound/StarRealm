@@ -6,7 +6,7 @@ module;
 
 #include <DirectXMath.h>
 
-export module StarRealm.Entity.Star.Style.Type:Hollow;
+export module StarRealm.Entity.StarStyle.Fill:Hollow;
 
 export import :Base;
 
@@ -16,9 +16,9 @@ import FatPound;
 
 import std;
 
-export namespace starrealm::entity::star::style::type
+export namespace starrealm::entity::star_style::fill
 {
-    class Hollow final : public Base_<Hollow>
+    class Hollow final : public Base<Hollow>
     {
     public:
         explicit Hollow()                  = delete;

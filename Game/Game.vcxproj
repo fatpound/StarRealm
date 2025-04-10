@@ -161,20 +161,19 @@
     <ClCompile Include="Demo\HollowBlend.ixx" />
     <ClCompile Include="Demo\HollowMulti.ixx" />
     <ClCompile Include="Demo\HollowSingle.ixx" />
-    <ClCompile Include="Entity\Star\Star.ixx" />
-    <ClCompile Include="Entity\Star\StarBase.ixx" />
-    <ClCompile Include="Entity\Star\Style\Effect\Blend.ixx" />
-    <ClCompile Include="Entity\Star\Style\Effect\ColorBase.ixx" />
-    <ClCompile Include="Entity\Star\Style\Effect\Effect.ixx" />
-    <ClCompile Include="Entity\Star\Style\Effect\EffectBase.ixx" />
-    <ClCompile Include="Entity\Star\Style\Effect\MultiColor.ixx" />
-    <ClCompile Include="Entity\Star\Style\Effect\SingleColor.ixx" />
-    <ClCompile Include="Entity\Star\Style\Style.ixx" />
-    <ClCompile Include="Entity\Star\Style\StyleBase.ixx" />
-    <ClCompile Include="Entity\Star\Style\Type\Filled.ixx" />
-    <ClCompile Include="Entity\Star\Style\Type\Hollow.ixx" />
-    <ClCompile Include="Entity\Star\Style\Type\Type.ixx" />
-    <ClCompile Include="Entity\Star\Style\Type\TypeBase.ixx" />
+    <ClCompile Include="Entity\Star.ixx" />
+    <ClCompile Include="Entity\StarBase.ixx" />
+    <ClCompile Include="Entity\StarStyle\Color\Blend.ixx" />
+    <ClCompile Include="Entity\StarStyle\Color\ColoringBase.ixx" />
+    <ClCompile Include="Entity\StarStyle\Color\Color.ixx" />
+    <ClCompile Include="Entity\StarStyle\Color\Base.ixx" />
+    <ClCompile Include="Entity\StarStyle\Color\Multi.ixx" />
+    <ClCompile Include="Entity\StarStyle\Color\Single.ixx" />
+    <ClCompile Include="Entity\StarStyle\Style.ixx" />
+    <ClCompile Include="Entity\StarStyle\Fill\Filled.ixx" />
+    <ClCompile Include="Entity\StarStyle\Fill\Hollow.ixx" />
+    <ClCompile Include="Entity\StarStyle\Fill\Fill.ixx" />
+    <ClCompile Include="Entity\StarStyle\Fill\Base.ixx" />
     <ClCompile Include="Game.ixx" />
     <ClCompile Include="StarFactory.ixx" />
     <ClCompile Include="View\Camera.cxx" />
@@ -183,7 +182,7 @@
     <ClCompile Include="wWinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Entity\Star\Shader\PSColorBlend.hlsl">
+    <FxCompile Include="Demo\Shader\PSColorBlend.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
@@ -193,7 +192,7 @@
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="Entity\Star\Shader\PSColorMulti.hlsl">
+    <FxCompile Include="Demo\Shader\PSColorMulti.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
@@ -207,7 +206,7 @@
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="Entity\Star\Shader\PSColorSingle.hlsl">
+    <FxCompile Include="Demo\Shader\PSColorSingle.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
@@ -217,7 +216,7 @@
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="Entity\Star\Shader\VSColorBlend.hlsl">
+    <FxCompile Include="Demo\Shader\VSColorBlend.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
@@ -227,7 +226,7 @@
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="Entity\Star\Shader\VSColorMulti.hlsl">
+    <FxCompile Include="Demo\Shader\VSColorMulti.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
@@ -237,7 +236,7 @@
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="Entity\Star\Shader\VSColorSingle.hlsl">
+    <FxCompile Include="Demo\Shader\VSColorSingle.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>

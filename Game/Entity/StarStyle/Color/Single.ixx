@@ -6,10 +6,10 @@ module;
 
 #include <DirectXMath.h>
 
-export module StarRealm.Entity.Star.Style.Effect:Color.Single;
+export module StarRealm.Entity.StarStyle.Color:Single;
 
 export import :Base;
-export import :Color.Base;
+export import :ColoringBase;
 
 import <d3d11.h>;
 
@@ -17,18 +17,18 @@ import FatPound;
 
 import std;
 
-export namespace starrealm::entity::star::style::effect
+export namespace starrealm::entity::star_style::color
 {
-    class SingleColor final : public ColorBase_<SingleColor>
+    class Single final : public ColoringBase<Single>
     {
     public:
-        explicit SingleColor()                       = delete;
-        explicit SingleColor(const SingleColor&)     = delete;
-        explicit SingleColor(SingleColor&&) noexcept = delete;
+        explicit Single()                  = delete;
+        explicit Single(const Single&)     = delete;
+        explicit Single(Single&&) noexcept = delete;
 
-        auto operator = (const SingleColor&)     -> SingleColor& = delete;
-        auto operator = (SingleColor&&) noexcept -> SingleColor& = delete;
-        ~SingleColor() noexcept                                  = delete;
+        auto operator = (const Single&)     -> Single& = delete;
+        auto operator = (Single&&) noexcept -> Single& = delete;
+        ~Single() noexcept                             = delete;
 
 
     public:

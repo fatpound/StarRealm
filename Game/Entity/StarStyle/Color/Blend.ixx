@@ -6,7 +6,7 @@ module;
 
 #include <DirectXMath.h>
 
-export module StarRealm.Entity.Star.Style.Effect:Blend;
+export module StarRealm.Entity.StarStyle.Color:Blend;
 
 export import :Base;
 
@@ -18,16 +18,16 @@ import FatPound;
 
 import std;
 
-export namespace starrealm::entity::star::style::effect
+export namespace starrealm::entity::star_style::color
 {
-    class Blend final : public Base_<Blend>
+    class Blend final : public Base<Blend>
     {
     public:
         struct Vertex final
         {
-            ::DirectX::XMFLOAT3 pos;
+            ::DirectX::XMFLOAT3 m_pos;
 
-            FATSPACE_UTIL::Color color;
+            FATSPACE_UTIL::Color m_color;
         };
 
 
@@ -44,10 +44,9 @@ export namespace starrealm::entity::star::style::effect
     public:
         template <bool WithCentre = true>
         static auto GenerateVertices(
-                const Star::RadiusPack radiuses,
-                const ::DirectX::XMFLOAT3 position,
-                const std::size_t flare_count
-            )
+            const Star::RadiusPack radiuses,
+            const ::DirectX::XMFLOAT3 position,
+            const std::size_t flare_count)
         {
             std::vector<Blend::Vertex> vertices;
 

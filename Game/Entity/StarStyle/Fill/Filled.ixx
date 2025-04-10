@@ -6,9 +6,9 @@ module;
 
 #include <DirectXMath.h>
 
-export module StarRealm.Entity.Star.Style.Type:Filled;
+export module StarRealm.Entity.StarStyle.Fill:Filled;
 
-import :Base;
+export import :Base;
 
 import <d3d11.h>;
 
@@ -16,15 +16,17 @@ import FatPound;
 
 import std;
 
+namespace dx = ::DirectX;
+
 template <typename T>
-concept MyVertex = std::same_as<T, DirectX::XMFLOAT3> or requires(T vertex)
+concept MyVertex = std::same_as<T, ::dx::XMFLOAT3> or requires(T vertex)
 {
-    vertex.pos;
+    vertex.m_pos;
 };
 
-export namespace starrealm::entity::star::style::type
+export namespace starrealm::entity::star_style::fill
 {
-    class Filled final : public Base_<Filled>
+    class Filled final : public Base<Filled>
     {
     public:
         explicit Filled()                  = delete;
@@ -84,26 +86,26 @@ export namespace starrealm::entity::star::style::type
         template <MyVertex V>
         static float GetVertex_X_(const V& vertex) noexcept
         {
-            if constexpr (std::same_as<V, ::DirectX::XMFLOAT3>)
+            if constexpr (std::same_as<V, ::dx::XMFLOAT3>)
             {
                 return vertex.x;
             }
             else
             {
-                return vertex.pos.x;
+                return vertex.m_pos.x;
             }
         }
 
         template <MyVertex V>
         static float GetVertex_Y_(const V& vertex) noexcept
         {
-            if constexpr (std::same_as<V, ::DirectX::XMFLOAT3>)
+            if constexpr (std::same_as<V, ::dx::XMFLOAT3>)
             {
                 return vertex.y;
             }
             else
             {
-                return vertex.pos.y;
+                return vertex.m_pos.y;
             }
         }
 
@@ -126,7 +128,7 @@ export namespace starrealm::entity::star::style::type
                 }
             );
 
-            auto isClockwise = [](const V& v0, const V& v1, const V& v2) noexcept -> bool
+            const auto& isClockwise = [](const V& v0, const V& v1, const V& v2) noexcept -> bool
             {
                 return
                     (

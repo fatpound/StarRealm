@@ -6,13 +6,13 @@ module;
 export module StarRealm.Demo.HollowSingle;
 
 import StarRealm.Entity.StarBase;
-import StarRealm.Entity.Star.Style;
+import StarRealm.Entity.StarStyle;
 
 import FatPound;
 
 export namespace starrealm::demo
 {
-    class HollowSingle final : public entity::StarBase<STARREALM_STAR_TYPE::Hollow, STARREALM_STAR_EFFECT::SingleColor>
+    class HollowSingle final : public entity::StarBase<STARREALM_ENTITY_FILL::Hollow, STARREALM_ENTITY_COLOR::Single>
     {
     public:
         explicit HollowSingle(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView)
@@ -26,14 +26,14 @@ export namespace starrealm::demo
             AddIndexBuffer_(
                 std::make_unique<FATSPACE_PIPELINE_ELEMENT::IndexBuffer>(
                     gfx.GetDevice(),
-                    STARREALM_STAR_TYPE::Hollow::GenerateIndices<>(vertices.size())
+                    STARREALM_ENTITY_FILL::Hollow::GenerateIndices<>(vertices.size())
                 )
             );
 
             AddBind_(
-                std::make_unique<FATSPACE_PIPELINE_RESOURCE::PixelCBuffer<STARREALM_STAR_EFFECT::SingleColor::ColorBase_::CBuffer>>(
+                std::make_unique<FATSPACE_PIPELINE_RESOURCE::PixelCBuffer<STARREALM_ENTITY_COLOR::Single::ColoringBase::CBuffer>>(
                     gfx.GetDevice(),
-                    STARREALM_STAR_EFFECT::SingleColor::ColorBase_::GeneratePixelCBuffer()
+                    STARREALM_ENTITY_COLOR::Single::ColoringBase::GeneratePixelCBuffer()
                 )
             );
         }

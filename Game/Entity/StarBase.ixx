@@ -8,7 +8,7 @@ module;
 export module StarRealm.Entity.StarBase;
 
 import StarRealm.Entity.Star;
-import StarRealm.Entity.Star.Style;
+import StarRealm.Entity.StarStyle;
 
 import FatPound;
 
@@ -18,13 +18,13 @@ export namespace starrealm::entity
 {
     template
     <
-        STARREALM_STAR_STYLE::Type   T,
-        STARREALM_STAR_STYLE::Effect E
+        STARREALM_ENTITY_STARSTYLE::Fill  T,
+        STARREALM_ENTITY_STARSTYLE::Color U
     >
     class StarBase : public Star
     {
         friend T;
-        friend E;
+        friend U;
 
     public:
         explicit StarBase(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView)
@@ -35,13 +35,13 @@ export namespace starrealm::entity
             {
                 T::template InitStaticBinds<StarBase>();
 
-                if constexpr (::std::derived_from<E, STARREALM_STAR_EFFECT::Blend>)
+                if constexpr (::std::derived_from<U, STARREALM_ENTITY_COLOR::Blend>)
                 {
-                    E::template InitStaticBinds<StarBase>(gfx);
+                    U::template InitStaticBinds<StarBase>(gfx);
                 }
                 else
                 {
-                    E::template InitStaticBinds<StarBase, ::std::same_as<T, STARREALM_STAR_TYPE::Filled>>(gfx);
+                    U::template InitStaticBinds<StarBase, ::std::same_as<T, STARREALM_ENTITY_FILL::Filled>>(gfx);
                 }
             }
 

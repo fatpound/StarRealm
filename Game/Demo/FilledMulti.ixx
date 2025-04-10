@@ -6,13 +6,13 @@ module;
 export module StarRealm.Demo.FilledMulti;
 
 import StarRealm.Entity.StarBase;
-import StarRealm.Entity.Star.Style;
+import StarRealm.Entity.StarStyle;
 
 import FatPound;
 
 export namespace starrealm::demo
 {
-    class FilledMulti final : public entity::StarBase<STARREALM_STAR_TYPE::Filled, STARREALM_STAR_EFFECT::MultiColor>
+    class FilledMulti final : public entity::StarBase<STARREALM_ENTITY_FILL::Filled, STARREALM_ENTITY_COLOR::Multi>
     {
     public:
         explicit FilledMulti(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView)
@@ -26,15 +26,15 @@ export namespace starrealm::demo
             AddIndexBuffer_(
                 std::make_unique<FATSPACE_PIPELINE_ELEMENT::IndexBuffer>(
                     gfx.GetDevice(),
-                    STARREALM_STAR_TYPE::Filled::GenerateIndices<>(vertices)
+                    STARREALM_ENTITY_FILL::Filled::GenerateIndices<>(vertices)
                 )
             );
 
             AddBind_(
-                std::make_unique<FATSPACE_PIPELINE_RESOURCE::PixelSBuffer<STARREALM_STAR_EFFECT::MultiColor::ColorBase_::SBuffer::Type>>(
+                std::make_unique<FATSPACE_PIPELINE_RESOURCE::PixelSBuffer<STARREALM_ENTITY_COLOR::Multi::ColoringBase::SBuffer::Type>>(
                     gfx.GetDevice(),
                     gfx.GetImmediateContext(),
-                    STARREALM_STAR_EFFECT::MultiColor::ColorBase_::GeneratePixelSBuffer(desc.flare_count).vertex_colors
+                    STARREALM_ENTITY_COLOR::Multi::ColoringBase::GeneratePixelSBuffer(desc.flare_count).vertex_colors
                 )
             );
         }
