@@ -4,4 +4,4 @@ module;
 
 module StarRealm.View.Camera;
 
-// this file is needed because of an MSVC bug
+// this file is needed because of an MSVC bug?

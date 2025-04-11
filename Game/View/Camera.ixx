@@ -109,6 +109,8 @@ export namespace starrealm::view
     private:
         class Controller_ final
         {
+            static constexpr auto scx_ZoomIncrement_ = 0.02f;
+
         public:
             explicit Controller_(Camera& camera, std::shared_ptr<FATSPACE_IO::Keyboard> pKeyboard, std::shared_ptr<FATSPACE_IO::Mouse> pMouse) noexcept
                 :
@@ -156,14 +158,13 @@ export namespace starrealm::view
                     case FATSPACE_IO::MouseEvent::Type::LRelease:
                         m_engaged_ = false;
                         break;
-        
 
                     case FATSPACE_IO::MouseEvent::Type::WheelUp:
-                        m_camera_.SetR(m_camera_.GetR() - scx_zoomIncrement_ * 5.0f);
+                        m_camera_.SetR(m_camera_.GetR() - scx_ZoomIncrement_ * 5.0f);
                         break;
 
                     case FATSPACE_IO::MouseEvent::Type::WheelDown:
-                        m_camera_.SetR(m_camera_.GetR() + scx_zoomIncrement_ * 5.0f);
+                        m_camera_.SetR(m_camera_.GetR() + scx_ZoomIncrement_ * 5.0f);
                         break;
         
                     default:
@@ -182,17 +183,14 @@ export namespace starrealm::view
                     const auto& deltaPositionVec1    = ::dx::XMVectorSubtract(currentPositionVec, lastPositionVec);
                     const auto& deltaPositionVec2    = ::dx::XMVectorSetX(deltaPositionVec1, -::dx::XMVectorGetX(deltaPositionVec1));
 
-                    m_camera_.SetX(m_camera_.GetX() + -::dx::XMVectorGetX(deltaPositionVec2) * scx_zoomIncrement_);
-                    m_camera_.SetY(m_camera_.GetY() + -::dx::XMVectorGetY(deltaPositionVec2) * scx_zoomIncrement_);
+                    m_camera_.SetX(m_camera_.GetX() + -::dx::XMVectorGetX(deltaPositionVec2) * scx_ZoomIncrement_);
+                    m_camera_.SetY(m_camera_.GetY() + -::dx::XMVectorGetY(deltaPositionVec2) * scx_ZoomIncrement_);
 
                     m_last_position_ = currentPosition;
                 }
             }
 
         protected:
-
-        private:
-            static constexpr auto scx_zoomIncrement_ = 0.02f;
 
         private:
             ::dx::XMFLOAT2 m_last_position_{};

@@ -2,8 +2,6 @@ module;
 
 #include <FatNamespaces.hpp>
 
-#include <FatWin32.hpp>
-
 #include <DirectXMath.h>
 
 module StarRealm.Entity.Star.Style.Color:ColoringBase;
