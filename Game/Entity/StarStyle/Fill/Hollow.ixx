@@ -6,7 +6,7 @@ module;
 
 #include <DirectXMath.h>
 
-export module StarRealm.Entity.StarStyle.Fill:Hollow;
+export module StarRealm.Entity.Star.Style.Fill:Hollow;
 
 export import :Base;
 

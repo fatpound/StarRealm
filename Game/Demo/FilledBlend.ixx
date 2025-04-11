@@ -6,7 +6,7 @@ module;
 export module StarRealm.Demo.FilledBlend;
 
 import StarRealm.Entity.StarBase;
-import StarRealm.Entity.StarStyle;
+import StarRealm.Entity.Star.Style;
 
 import FatPound;
 

@@ -6,7 +6,7 @@ module;
 
 #include <DirectXMath.h>
 
-export module StarRealm.Entity.StarStyle.Color:Blend;
+export module StarRealm.Entity.Star.Style.Color:Blend;
 
 export import :Base;
 

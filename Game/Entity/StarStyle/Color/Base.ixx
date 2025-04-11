@@ -1,6 +1,6 @@
 module;
 
-export module StarRealm.Entity.StarStyle.Color:Base;
+export module StarRealm.Entity.Star.Style.Color:Base;
 
 export namespace starrealm::entity::star_style::color
 {

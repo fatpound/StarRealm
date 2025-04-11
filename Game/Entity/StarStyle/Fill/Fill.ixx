@@ -1,6 +1,6 @@
 module;
 
-export module StarRealm.Entity.StarStyle.Fill;
+export module StarRealm.Entity.Star.Style.Fill;
 
 export import :Base;
 

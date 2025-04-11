@@ -6,7 +6,7 @@ module;
 
 #include <DirectXMath.h>
 
-export module StarRealm.Entity.StarStyle.Fill:Filled;
+export module StarRealm.Entity.Star.Style.Fill:Filled;
 
 export import :Base;
 
@@ -16,7 +16,7 @@ import FatPound;
 
 import std;
 
-namespace dx = ::DirectX;
+namespace dx = DirectX;
 
 template <typename T>
 concept MyVertex = std::same_as<T, ::dx::XMFLOAT3> or requires(T vertex)

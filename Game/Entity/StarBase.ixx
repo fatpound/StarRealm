@@ -8,7 +8,7 @@ module;
 export module StarRealm.Entity.StarBase;
 
 import StarRealm.Entity.Star;
-import StarRealm.Entity.StarStyle;
+import StarRealm.Entity.Star.Style;
 
 import FatPound;
 

@@ -1,8 +1,8 @@
 module;
 
-export module StarRealm.Entity.StarStyle;
+export module StarRealm.Entity.Star.Style;
 
-export import StarRealm.Entity.StarStyle.Fill;
-export import StarRealm.Entity.StarStyle.Color;
+export import StarRealm.Entity.Star.Style.Fill;
+export import StarRealm.Entity.Star.Style.Color;
 
 module : private;

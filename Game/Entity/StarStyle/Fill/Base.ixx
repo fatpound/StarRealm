@@ -1,6 +1,6 @@
 module;
 
-export module StarRealm.Entity.StarStyle.Fill:Base;
+export module StarRealm.Entity.Star.Style.Fill:Base;
 
 export namespace starrealm::entity::star_style::fill
 {
