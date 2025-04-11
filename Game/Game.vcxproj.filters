@@ -33,40 +33,40 @@
     <ClCompile Include="Demo\HollowSingle.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\StarStyle\Color\Blend.ixx">
+    <ClCompile Include="Entity\Star\Style\Color\Blend.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\StarStyle\Color\ColoringBase.cxx">
+    <ClCompile Include="Entity\Star\Style\Color\ColoringBase.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\StarStyle\Color\Color.ixx">
+    <ClCompile Include="Entity\Star\Style\Color\Color.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\StarStyle\Color\Base.cxx">
+    <ClCompile Include="Entity\Star\Style\Color\Base.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\StarStyle\Color\Multi.ixx">
+    <ClCompile Include="Entity\Star\Style\Color\Multi.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\StarStyle\Color\Single.ixx">
+    <ClCompile Include="Entity\Star\Style\Color\Single.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\StarStyle\Fill\Filled.ixx">
+    <ClCompile Include="Entity\Star\Style\Fill\Filled.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\StarStyle\Fill\Hollow.ixx">
+    <ClCompile Include="Entity\Star\Style\Fill\Hollow.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\StarStyle\Fill\Fill.ixx">
+    <ClCompile Include="Entity\Star\Style\Fill\Fill.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\StarStyle\Style.ixx">
+    <ClCompile Include="Entity\Star\Style\Style.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Star.ixx">
+    <ClCompile Include="Entity\Star\Star.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\StarBase.ixx">
+    <ClCompile Include="Entity\Star\StarBase.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Entity\Entity.ixx">
@@ -87,7 +87,7 @@
     <ClCompile Include="Demo\Demo.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\StarStyle\Fill\Base.cxx">
+    <ClCompile Include="Entity\Star\Style\Fill\Base.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="View\Camera.ixx">

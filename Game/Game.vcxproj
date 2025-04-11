@@ -161,34 +161,34 @@
     <ClCompile Include="Demo\HollowBlend.ixx" />
     <ClCompile Include="Demo\HollowMulti.ixx" />
     <ClCompile Include="Demo\HollowSingle.ixx" />
-    <ClCompile Include="Entity\Star.ixx" />
-    <ClCompile Include="Entity\StarBase.ixx" />
-    <ClCompile Include="Entity\StarStyle\Color\Blend.ixx" />
-    <ClCompile Include="Entity\StarStyle\Color\ColoringBase.cxx">
+    <ClCompile Include="Entity\Star\Star.ixx" />
+    <ClCompile Include="Entity\Star\StarBase.ixx" />
+    <ClCompile Include="Entity\Star\Style\Color\Blend.ixx" />
+    <ClCompile Include="Entity\Star\Style\Color\ColoringBase.cxx">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCppModuleInternalPartition</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCppModuleInternalPartition</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsCppModuleInternalPartition</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsCppModuleInternalPartition</CompileAs>
     </ClCompile>
-    <ClCompile Include="Entity\StarStyle\Color\Color.ixx" />
-    <ClCompile Include="Entity\StarStyle\Color\Base.cxx">
+    <ClCompile Include="Entity\Star\Style\Color\Color.ixx" />
+    <ClCompile Include="Entity\Star\Style\Color\Base.cxx">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCppModuleInternalPartition</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCppModuleInternalPartition</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsCppModuleInternalPartition</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsCppModuleInternalPartition</CompileAs>
     </ClCompile>
-    <ClCompile Include="Entity\StarStyle\Color\Multi.ixx" />
-    <ClCompile Include="Entity\StarStyle\Color\Single.ixx" />
-    <ClCompile Include="Entity\StarStyle\Fill\Base.cxx">
+    <ClCompile Include="Entity\Star\Style\Color\Multi.ixx" />
+    <ClCompile Include="Entity\Star\Style\Color\Single.ixx" />
+    <ClCompile Include="Entity\Star\Style\Fill\Base.cxx">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCppModuleInternalPartition</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCppModuleInternalPartition</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsCppModuleInternalPartition</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsCppModuleInternalPartition</CompileAs>
     </ClCompile>
-    <ClCompile Include="Entity\StarStyle\Style.ixx" />
-    <ClCompile Include="Entity\StarStyle\Fill\Filled.ixx" />
-    <ClCompile Include="Entity\StarStyle\Fill\Hollow.ixx" />
-    <ClCompile Include="Entity\StarStyle\Fill\Fill.ixx" />
+    <ClCompile Include="Entity\Star\Style\Style.ixx" />
+    <ClCompile Include="Entity\Star\Style\Fill\Filled.ixx" />
+    <ClCompile Include="Entity\Star\Style\Fill\Hollow.ixx" />
+    <ClCompile Include="Entity\Star\Style\Fill\Fill.ixx" />
     <ClCompile Include="Game.ixx" />
     <ClCompile Include="StarFactory.ixx" />
     <ClCompile Include="View\Camera.cxx" />
