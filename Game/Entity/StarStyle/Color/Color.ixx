@@ -3,7 +3,6 @@ module;
 export module StarRealm.Entity.Star.Style.Color;
 
 export import :Base;
-
 export import :Blend;
 export import :Single;
 export import :Multi;

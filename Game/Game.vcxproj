@@ -169,11 +169,11 @@
     <ClCompile Include="Entity\StarStyle\Color\Base.ixx" />
     <ClCompile Include="Entity\StarStyle\Color\Multi.ixx" />
     <ClCompile Include="Entity\StarStyle\Color\Single.ixx" />
+    <ClCompile Include="Entity\StarStyle\Fill\Base.ixx" />
     <ClCompile Include="Entity\StarStyle\Style.ixx" />
     <ClCompile Include="Entity\StarStyle\Fill\Filled.ixx" />
     <ClCompile Include="Entity\StarStyle\Fill\Hollow.ixx" />
     <ClCompile Include="Entity\StarStyle\Fill\Fill.ixx" />
-    <ClCompile Include="Entity\StarStyle\Fill\Base.ixx" />
     <ClCompile Include="Game.ixx" />
     <ClCompile Include="StarFactory.ixx" />
     <ClCompile Include="View\Camera.cxx" />

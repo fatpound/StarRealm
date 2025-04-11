@@ -32,27 +32,31 @@ export namespace starrealm::entity::star_style::color
 
 
     public:
-        template <typename StarBase, bool ForFilled = true>
+        template
+        <
+            typename StarBase,
+            bool ForFilled = true
+        >
         static void InitStaticBinds(FATSPACE_D3D11::Graphics<>& gfx)
         {
-            auto pvs = std::make_unique<FATSPACE_PIPELINE_ELEMENT::VertexShader>(gfx.GetDevice(), L"VSColorSingle.cso");
+            auto pvs = ::std::make_unique<FATSPACE_PIPELINE_ELEMENT::VertexShader>(gfx.GetDevice(), L"VSColorSingle.cso");
             auto pvsbc = pvs->GetBytecode();
-            StarBase::AddStaticBind_(std::move(pvs));
-            StarBase::AddStaticBind_(std::make_unique<FATSPACE_PIPELINE_ELEMENT::PixelShader>(gfx.GetDevice(), L"PSColorSingle.cso"));
+            StarBase::AddStaticBind_(::std::move<>(pvs));
+            StarBase::AddStaticBind_(::std::make_unique<FATSPACE_PIPELINE_ELEMENT::PixelShader>(gfx.GetDevice(), L"PSColorSingle.cso"));
 
-            std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
+            ::std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
             {
-                { "Position",  0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+                { "Position",  0U, DXGI_FORMAT_R32G32B32_FLOAT, 0U,  0U, D3D11_INPUT_PER_VERTEX_DATA, 0U }
             };
 
             if constexpr (ForFilled)
             {
                 ied.push_back(
-                    { "Color", 0, DXGI_FORMAT_B8G8R8A8_UNORM,  0, 12u, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+                    { "Color", 0U, DXGI_FORMAT_B8G8R8A8_UNORM,  0U, 12U, D3D11_INPUT_PER_VERTEX_DATA, 0U }
                 );
             }
 
-            StarBase::AddStaticBind_(std::make_unique<FATSPACE_PIPELINE_ELEMENT::InputLayout>(gfx.GetDevice(), ied, pvsbc));
+            StarBase::AddStaticBind_(::std::make_unique<FATSPACE_PIPELINE_ELEMENT::InputLayout>(gfx.GetDevice(), ied, pvsbc));
         }
 
 

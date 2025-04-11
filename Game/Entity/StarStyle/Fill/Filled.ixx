@@ -19,7 +19,7 @@ import std;
 namespace dx = DirectX;
 
 template <typename T>
-concept MyVertex = std::same_as<T, ::dx::XMFLOAT3> or requires(T vertex)
+concept MyVertex = ::std::same_as<T, ::dx::XMFLOAT3> or requires(T vertex)
 {
     vertex.m_pos;
 };
@@ -75,7 +75,7 @@ export namespace starrealm::entity::star_style::fill
         template <typename StarBase>
         static void InitStaticBinds()
         {
-            StarBase::AddStaticBind_(std::make_unique<FATSPACE_PIPELINE_ELEMENT::Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
+            StarBase::AddStaticBind_(::std::make_unique<FATSPACE_PIPELINE_ELEMENT::Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
         }
 
 
@@ -86,7 +86,7 @@ export namespace starrealm::entity::star_style::fill
         template <MyVertex V>
         static float GetVertex_X_(const V& vertex) noexcept
         {
-            if constexpr (std::same_as<V, ::dx::XMFLOAT3>)
+            if constexpr (::std::same_as<V, ::dx::XMFLOAT3>)
             {
                 return vertex.x;
             }
@@ -99,7 +99,7 @@ export namespace starrealm::entity::star_style::fill
         template <MyVertex V>
         static float GetVertex_Y_(const V& vertex) noexcept
         {
-            if constexpr (std::same_as<V, ::dx::XMFLOAT3>)
+            if constexpr (::std::same_as<V, ::dx::XMFLOAT3>)
             {
                 return vertex.y;
             }
@@ -116,15 +116,15 @@ export namespace starrealm::entity::star_style::fill
                 idx_arr,
                 [&](const auto& idx0, const auto& idx1) noexcept -> bool
                 {
-                    const auto y0 = GetVertex_Y_(vertices[idx0]);
-                    const auto y1 = GetVertex_Y_(vertices[idx1]);
+                    const auto y0 = GetVertex_Y_<>(vertices[idx0]);
+                    const auto y1 = GetVertex_Y_<>(vertices[idx1]);
 
                     if (y0 not_eq y1)
                     {
                         return y0 < y1;
                     }
 
-                    return GetVertex_X_(vertices[idx0]) < GetVertex_X_(vertices[idx1]);
+                    return GetVertex_X_<>(vertices[idx0]) < GetVertex_X_<>(vertices[idx1]);
                 }
             );
 
@@ -132,16 +132,16 @@ export namespace starrealm::entity::star_style::fill
             {
                 return
                     (
-                        (GetVertex_X_(v1) - GetVertex_X_(v0)) * (GetVertex_Y_(v2) - GetVertex_Y_(v0))
+                        (GetVertex_X_<>(v1) - GetVertex_X_<>(v0)) * (GetVertex_Y_<>(v2) - GetVertex_Y_<>(v0))
                         -
-                        (GetVertex_Y_(v1) - GetVertex_Y_(v0)) * (GetVertex_X_(v2) - GetVertex_X_(v0))
+                        (GetVertex_Y_<>(v1) - GetVertex_Y_<>(v0)) * (GetVertex_X_<>(v2) - GetVertex_X_<>(v0))
                     )
                     < 0;
             };
 
             if (not isClockwise(vertices[idx_arr[0]], vertices[idx_arr[1]], vertices[idx_arr[2]]))
             {
-                std::swap(idx_arr[1], idx_arr[2]);
+                ::std::swap<>(idx_arr[1], idx_arr[2]);
             }
         };
     };

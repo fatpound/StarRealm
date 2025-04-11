@@ -10,6 +10,8 @@ export module StarRealm.Entity.Star.Style.Color:ColoringBase;
 
 export import :Base;
 
+import FatPound;
+
 import std;
 
 export namespace starrealm::entity::star_style::color
@@ -28,7 +30,7 @@ export namespace starrealm::entity::star_style::color
         {
             using Type = CBuffer::Type;
 
-            std::vector<Type> vertex_colors;
+            ::std::vector<Type> vertex_colors;
         };
 
 
@@ -45,38 +47,29 @@ export namespace starrealm::entity::star_style::color
     public:
         static auto GeneratePixelCBuffer() -> CBuffer
         {
-            std::minstd_rand mrng(std::random_device{}());
-            std::uniform_real_distribution<float> rgb_dist(0.0f, 1.0f);
-
-            const CBuffer cbuf =
+            return CBuffer
             {
                 {
-                    rgb_dist(mrng),
-                    rgb_dist(mrng),
-                    rgb_dist(mrng),
-                    1.0f
+                    FATSPACE_RANDOM::RandFloat<>(0.0F, 1.0F),
+                    FATSPACE_RANDOM::RandFloat<>(0.0F, 1.0F),
+                    FATSPACE_RANDOM::RandFloat<>(0.0F, 1.0F),
+                    1.0F
                 }
             };
-
-            return cbuf;
         }
 
-        static auto GeneratePixelSBuffer(const std::size_t color_count) -> SBuffer
+        static auto GeneratePixelSBuffer(const ::std::size_t& colorCount) -> SBuffer
         {
-            std::minstd_rand mrng(std::random_device{}());
-            std::uniform_real_distribution<float> rgb_dist(0.0f, 1.0f);
+            SBuffer sbuf{};
+            sbuf.vertex_colors.reserve(colorCount);
 
-            SBuffer sbuf = {};
-
-            sbuf.vertex_colors.reserve(color_count);
-
-            for (std::size_t i = 0u; i < color_count; ++i)
+            for (::std::size_t i{}; i < colorCount; ++i)
             {
                 sbuf.vertex_colors.emplace_back(
-                    rgb_dist(mrng),
-                    rgb_dist(mrng),
-                    rgb_dist(mrng),
-                    1.0f
+                    FATSPACE_RANDOM::RandFloat<>(0.0F, 1.0F),
+                    FATSPACE_RANDOM::RandFloat<>(0.0F, 1.0F),
+                    FATSPACE_RANDOM::RandFloat<>(0.0F, 1.0F),
+                    1.0F
                 );
             }
 

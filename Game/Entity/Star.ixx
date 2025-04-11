@@ -28,7 +28,7 @@ export namespace starrealm::entity
 
             RadiusPack radiuses;
 
-            std::size_t flare_count;
+            ::std::size_t flare_count;
 
             float rotation_speed;
         };
@@ -40,7 +40,7 @@ export namespace starrealm::entity
             m_position_(desc.position),
             m_radiuses_(desc.radiuses),
             m_rotation_speed_(desc.rotation_speed),
-            m_roll_(0.0f)
+            m_roll_(0.0F)
         {
 
         }
@@ -66,25 +66,25 @@ export namespace starrealm::entity
         static auto Make(
             const RadiusPack& radiuses,
             const ::dx::XMFLOAT3& centre,
-            const std::size_t flare_count = 4u) -> std::vector<::dx::XMFLOAT3>
+            const ::std::size_t& flare_count = 4U) -> ::std::vector<::dx::XMFLOAT3>
         {
-            std::vector<::dx::XMFLOAT3> star;
-            const std::size_t capacity = flare_count * 2u;
+            const auto& capacity = flare_count * 2U;
 
-            star.reserve(capacity + 1u);
+            ::std::vector<::dx::XMFLOAT3> star;
+            star.reserve(capacity + 1U);
 
-            const float dTheta = 2.0f * ::dx::XM_PI / static_cast<float>(capacity);
+            const auto& dTheta = 2.0F * ::dx::XM_PI / static_cast<float>(capacity);
 
-            for (std::size_t i = 0u; i < capacity; ++i)
+            for (::std::size_t i{}; i < capacity; ++i)
             {
-                const float rad = (i % 2u == 0u)
+                const auto& rad = (i % 2U == 0U)
                     ? radiuses.outer_radius
                     : radiuses.inner_radius
                     ;
 
                 star.emplace_back(
-                    rad * std::cos(static_cast<float>(i) * dTheta) + centre.x,
-                    rad * std::sin(static_cast<float>(i) * dTheta) + centre.y,
+                    rad * ::std::cos(static_cast<float>(i) * dTheta) + centre.x,
+                    rad * ::std::sin(static_cast<float>(i) * dTheta) + centre.y,
                     centre.z
                 );
             }
@@ -128,8 +128,8 @@ export namespace starrealm::entity
     public:
         auto IsWithinArea(const ::dx::XMFLOAT3& position, const float radius) const noexcept -> bool
         {
-            const float distance = FATSPACE_MATH::GetDistanceBetweenXMF3(this->m_position_, position);
-            const float radsum = m_radiuses_.outer_radius + radius;
+            const auto& distance = FATSPACE_MATH::GetDistanceBetweenXMF3(this->m_position_, position);
+            const auto& radsum   = m_radiuses_.outer_radius + radius;
 
             return radsum > distance;
         }

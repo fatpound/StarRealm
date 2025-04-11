@@ -3,7 +3,6 @@ module;
 export module StarRealm.Entity.Star.Style.Fill;
 
 export import :Base;
-
 export import :Filled;
 export import :Hollow;
 
