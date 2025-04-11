@@ -74,14 +74,14 @@ export namespace starrealm
     private:
         void Init_()
         {
-            Settings default_settings;
+            Settings default_settings{};
 
             m_viewXM_.SetProjectionXM(
                 ::dx::XMMatrixPerspectiveLH(
-                    1.0f,
+                    1.0F,
                     m_wnd_.GetClientHeight<float>() / m_wnd_.GetClientWidth<float>(), // 1 / Aspect Ratio
                     default_settings.m_minStarDepth,
-                    default_settings.m_maxStarDepth * 20.0f
+                    default_settings.m_maxStarDepth * 20.0F
                 )
             );
 
