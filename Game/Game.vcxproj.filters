@@ -36,13 +36,13 @@
     <ClCompile Include="Entity\StarStyle\Color\Blend.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\StarStyle\Color\ColoringBase.ixx">
+    <ClCompile Include="Entity\StarStyle\Color\ColoringBase.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Entity\StarStyle\Color\Color.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\StarStyle\Color\Base.ixx">
+    <ClCompile Include="Entity\StarStyle\Color\Base.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Entity\StarStyle\Color\Multi.ixx">
@@ -93,7 +93,7 @@
     <ClCompile Include="View\Camera.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\StarStyle\Fill\Base.ixx">
+    <ClCompile Include="Entity\StarStyle\Fill\Base.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

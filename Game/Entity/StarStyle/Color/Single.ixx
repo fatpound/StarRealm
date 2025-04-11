@@ -8,10 +8,10 @@ module;
 
 export module StarRealm.Entity.Star.Style.Color:Single;
 
-export import :Base;
-export import :ColoringBase;
-
 import <d3d11.h>;
+
+import :Base;
+import :ColoringBase;
 
 import FatPound;
 

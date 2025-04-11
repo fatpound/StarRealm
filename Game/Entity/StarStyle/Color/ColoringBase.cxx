@@ -6,15 +6,15 @@ module;
 
 #include <DirectXMath.h>
 
-export module StarRealm.Entity.Star.Style.Color:ColoringBase;
+module StarRealm.Entity.Star.Style.Color:ColoringBase;
 
-export import :Base;
+import :Base;
 
 import FatPound;
 
 import std;
 
-export namespace starrealm::entity::star_style::color
+namespace starrealm::entity::star_style::color
 {
     template <typename T>
     class ColoringBase : public Base<T>

@@ -8,9 +8,9 @@ module;
 
 export module StarRealm.Entity.Star.Style.Fill:Hollow;
 
-export import :Base;
-
 import <d3d11.h>;
+
+import :Base;
 
 import FatPound;
 

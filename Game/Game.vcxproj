@@ -164,12 +164,27 @@
     <ClCompile Include="Entity\Star.ixx" />
     <ClCompile Include="Entity\StarBase.ixx" />
     <ClCompile Include="Entity\StarStyle\Color\Blend.ixx" />
-    <ClCompile Include="Entity\StarStyle\Color\ColoringBase.ixx" />
+    <ClCompile Include="Entity\StarStyle\Color\ColoringBase.cxx">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCppModuleInternalPartition</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCppModuleInternalPartition</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsCppModuleInternalPartition</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsCppModuleInternalPartition</CompileAs>
+    </ClCompile>
     <ClCompile Include="Entity\StarStyle\Color\Color.ixx" />
-    <ClCompile Include="Entity\StarStyle\Color\Base.ixx" />
+    <ClCompile Include="Entity\StarStyle\Color\Base.cxx">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCppModuleInternalPartition</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCppModuleInternalPartition</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsCppModuleInternalPartition</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsCppModuleInternalPartition</CompileAs>
+    </ClCompile>
     <ClCompile Include="Entity\StarStyle\Color\Multi.ixx" />
     <ClCompile Include="Entity\StarStyle\Color\Single.ixx" />
-    <ClCompile Include="Entity\StarStyle\Fill\Base.ixx" />
+    <ClCompile Include="Entity\StarStyle\Fill\Base.cxx">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCppModuleInternalPartition</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCppModuleInternalPartition</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsCppModuleInternalPartition</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsCppModuleInternalPartition</CompileAs>
+    </ClCompile>
     <ClCompile Include="Entity\StarStyle\Style.ixx" />
     <ClCompile Include="Entity\StarStyle\Fill\Filled.ixx" />
     <ClCompile Include="Entity\StarStyle\Fill\Hollow.ixx" />
