@@ -56,9 +56,9 @@ export namespace starrealm::entity::star_style::color
                 vertices.emplace_back(
                     vertex,
                     FATSPACE_UTIL::Color(
-                        FATSPACE_RANDOM::RandUInt<unsigned char>(),
-                        FATSPACE_RANDOM::RandUInt<unsigned char>(),
-                        FATSPACE_RANDOM::RandUInt<unsigned char>(),
+                        FATSPACE_RANDOM::RandNum<unsigned char>(),
+                        FATSPACE_RANDOM::RandNum<unsigned char>(),
+                        FATSPACE_RANDOM::RandNum<unsigned char>(),
                         255U
                     )
                 );
