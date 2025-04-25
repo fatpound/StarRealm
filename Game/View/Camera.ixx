@@ -42,14 +42,14 @@ export namespace starrealm::view
 
 
     public:
-        auto GetMatrix() const noexcept -> ::dx::XMMATRIX
+        auto GetMatrix() const noexcept -> dx::XMMATRIX
         {
             return
-                ::dx::XMMatrixTranslation(m_x_, m_y_, m_z_) *
-                ::dx::XMMatrixLookAtLH(
-                    ::dx::XMVectorSet(0.0f, 0.0f, -m_r_, 0.0f),        // position to go n look from
-                    ::dx::XMVectorSet(0.0f, 0.0f, mc_max_depth_, 0.0f), // position to go n look at
-                    ::dx::XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f)        // y should be pointing towards up
+                dx::XMMatrixTranslation(m_x_, m_y_, m_z_) *
+                dx::XMMatrixLookAtLH(
+                    dx::XMVectorSet(0.0f, 0.0f, -m_r_, 0.0f),        // position to go n look from
+                    dx::XMVectorSet(0.0f, 0.0f, mc_max_depth_, 0.0f), // position to go n look at
+                    dx::XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f)        // y should be pointing towards up
                 );
         }
 
@@ -147,7 +147,7 @@ export namespace starrealm::view
                     {
                         m_engaged_ = true;
         
-                        m_last_position_ = ::dx::XMFLOAT2
+                        m_last_position_ = dx::XMFLOAT2
                         {
                             static_cast<float>(mouseE->pos_x),
                             static_cast<float>(mouseE->pos_y)
@@ -176,15 +176,15 @@ export namespace starrealm::view
                 {
                     const auto& pos = mc_pMouse_->GetPos();
 
-                    const auto& lastPositionVec      = ::dx::XMLoadFloat2(&m_last_position_);
-                    const auto& currentPosition      = ::dx::XMFLOAT2{ static_cast<float>(pos.first), static_cast<float>(pos.second) };
+                    const auto& lastPositionVec      = dx::XMLoadFloat2(&m_last_position_);
+                    const auto& currentPosition      = dx::XMFLOAT2{ static_cast<float>(pos.first), static_cast<float>(pos.second) };
                                              
-                    const auto& currentPositionVec   = ::dx::XMLoadFloat2(&currentPosition);
-                    const auto& deltaPositionVec1    = ::dx::XMVectorSubtract(currentPositionVec, lastPositionVec);
-                    const auto& deltaPositionVec2    = ::dx::XMVectorSetX(deltaPositionVec1, -::dx::XMVectorGetX(deltaPositionVec1));
+                    const auto& currentPositionVec   = dx::XMLoadFloat2(&currentPosition);
+                    const auto& deltaPositionVec1    = dx::XMVectorSubtract(currentPositionVec, lastPositionVec);
+                    const auto& deltaPositionVec2    = dx::XMVectorSetX(deltaPositionVec1, -dx::XMVectorGetX(deltaPositionVec1));
 
-                    m_camera_.SetX(m_camera_.GetX() + -::dx::XMVectorGetX(deltaPositionVec2) * scx_ZoomIncrement_);
-                    m_camera_.SetY(m_camera_.GetY() + -::dx::XMVectorGetY(deltaPositionVec2) * scx_ZoomIncrement_);
+                    m_camera_.SetX(m_camera_.GetX() + -dx::XMVectorGetX(deltaPositionVec2) * scx_ZoomIncrement_);
+                    m_camera_.SetY(m_camera_.GetY() + -dx::XMVectorGetY(deltaPositionVec2) * scx_ZoomIncrement_);
 
                     m_last_position_ = currentPosition;
                 }
@@ -193,7 +193,7 @@ export namespace starrealm::view
         protected:
 
         private:
-            ::dx::XMFLOAT2 m_last_position_{};
+            dx::XMFLOAT2 m_last_position_{};
 
             Camera& m_camera_;
 

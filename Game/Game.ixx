@@ -77,7 +77,7 @@ export namespace starrealm
             Settings default_settings{};
 
             m_viewXM_.SetProjectionXM(
-                ::dx::XMMatrixPerspectiveLH(
+                dx::XMMatrixPerspectiveLH(
                     1.0F,
                     m_wnd_.GetClientHeight<float>() / m_wnd_.GetClientWidth<float>(), // 1 / Aspect Ratio
                     default_settings.m_minStarDepth,

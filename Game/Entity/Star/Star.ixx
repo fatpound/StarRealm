@@ -24,11 +24,11 @@ export namespace starrealm::entity
         };
         struct Descriptor final
         {
-            ::dx::XMFLOAT3 position;
+            dx::XMFLOAT3 position;
 
             RadiusPack radiuses;
 
-            ::std::size_t flare_count;
+            std::size_t flare_count;
 
             float rotation_speed;
         };
@@ -65,17 +65,17 @@ export namespace starrealm::entity
         template <bool WithCentre = false>
         static auto Make(
             const RadiusPack& radiuses,
-            const ::dx::XMFLOAT3& centre,
-            const ::std::size_t& flare_count = 4U) -> ::std::vector<::dx::XMFLOAT3>
+            const dx::XMFLOAT3& centre,
+            const std::size_t& flare_count = 4U) -> std::vector<dx::XMFLOAT3>
         {
             const auto& capacity = flare_count * 2U;
 
-            ::std::vector<::dx::XMFLOAT3> star;
+            std::vector<dx::XMFLOAT3> star;
             star.reserve(capacity + 1U);
 
-            const auto& dTheta = 2.0F * ::dx::XM_PI / static_cast<float>(capacity);
+            const auto& dTheta = 2.0F * dx::XM_PI / static_cast<float>(capacity);
 
-            for (::std::size_t i{}; i < capacity; ++i)
+            for (std::size_t i{}; i < capacity; ++i)
             {
                 const auto& rad = (i % 2U == 0U)
                     ? radiuses.outer_radius
@@ -83,8 +83,8 @@ export namespace starrealm::entity
                     ;
 
                 star.emplace_back(
-                    rad * ::std::cos(static_cast<float>(i) * dTheta) + centre.x,
-                    rad * ::std::sin(static_cast<float>(i) * dTheta) + centre.y,
+                    rad * std::cos(static_cast<float>(i) * dTheta) + centre.x,
+                    rad * std::sin(static_cast<float>(i) * dTheta) + centre.y,
                     centre.z
                 );
             }
@@ -99,17 +99,17 @@ export namespace starrealm::entity
 
 
     public:
-        virtual auto GetTransformXM() const noexcept -> ::dx::XMMATRIX override final
+        virtual auto GetTransformXM() const noexcept -> dx::XMMATRIX override final
         {
-            const auto& pos_vec = ::dx::XMLoadFloat3(&m_position_);
+            const auto& pos_vec = dx::XMLoadFloat3(&m_position_);
 
             return
-                ::dx::XMMatrixTranslationFromVector(::dx::XMVectorNegate(pos_vec)) *
-                ::dx::XMMatrixRotationZ(m_roll_) *
-                ::dx::XMMatrixTranslationFromVector(pos_vec);
+                dx::XMMatrixTranslationFromVector(dx::XMVectorNegate(pos_vec)) *
+                dx::XMMatrixRotationZ(m_roll_) *
+                dx::XMMatrixTranslationFromVector(pos_vec);
         }
 
-        virtual auto GetPosition() const noexcept -> ::dx::XMFLOAT3 final
+        virtual auto GetPosition() const noexcept -> dx::XMFLOAT3 final
         {
             return m_position_;
         }
@@ -126,7 +126,7 @@ export namespace starrealm::entity
 
 
     public:
-        auto IsWithinArea(const ::dx::XMFLOAT3& position, const float radius) const noexcept -> bool
+        auto IsWithinArea(const dx::XMFLOAT3& position, const float radius) const noexcept -> bool
         {
             using FATSPACE_MATH::operator -;
 
@@ -138,7 +138,7 @@ export namespace starrealm::entity
 
 
     protected:
-        ::dx::XMFLOAT3 m_position_;
+        dx::XMFLOAT3 m_position_;
 
         RadiusPack m_radiuses_;
 

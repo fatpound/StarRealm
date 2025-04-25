@@ -12,6 +12,8 @@ import FatPound;
 
 import std;
 
+namespace dx = DirectX;
+
 namespace starrealm::entity::star_style::color
 {
     template <typename T>
@@ -20,7 +22,7 @@ namespace starrealm::entity::star_style::color
     public:
         struct CBuffer final
         {
-            using Type = ::DirectX::XMFLOAT4;
+            using Type = dx::XMFLOAT4;
 
             Type vertex_color;
         };
@@ -28,7 +30,7 @@ namespace starrealm::entity::star_style::color
         {
             using Type = CBuffer::Type;
 
-            ::std::vector<Type> vertex_colors;
+            std::vector<Type> vertex_colors;
         };
 
 
@@ -56,12 +58,12 @@ namespace starrealm::entity::star_style::color
             };
         }
 
-        static auto GeneratePixelSBuffer(const ::std::size_t& colorCount) -> SBuffer
+        static auto GeneratePixelSBuffer(const std::size_t& colorCount) -> SBuffer
         {
             SBuffer sbuf{};
             sbuf.vertex_colors.reserve(colorCount);
 
-            for (::std::size_t i{}; i < colorCount; ++i)
+            for (std::size_t i{}; i < colorCount; ++i)
             {
                 sbuf.vertex_colors.emplace_back(
                     FATSPACE_RANDOM::RandNum<>(0.0F, 1.0F),

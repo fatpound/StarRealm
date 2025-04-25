@@ -19,12 +19,12 @@ export namespace starrealm
 {
     template
     <
-        ::std::floating_point float_t = float,
-        ::std::integral        size_t = unsigned int
+        std::floating_point float_t = float,
+        std::integral        size_t = unsigned int
     >
     class StarFactory final
     {
-        using unique_pstar = ::std::unique_ptr<entity::Star>;
+        using unique_pstar = std::unique_ptr<entity::Star>;
 
     public:
         struct Settings final
@@ -49,8 +49,8 @@ export namespace starrealm
             float_t m_minStarDepth = 0.1f;
             float_t m_maxStarDepth = 1.0f;
 
-            float_t m_minRotationSpeed = -1.0f * ::std::numbers::pi_v<float_t>;
-            float_t m_maxRotationSpeed =  1.0f * ::std::numbers::pi_v<float_t>;
+            float_t m_minRotationSpeed = -1.0f * std::numbers::pi_v<float_t>;
+            float_t m_maxRotationSpeed =  1.0f * std::numbers::pi_v<float_t>;
         };
 
 
@@ -153,7 +153,7 @@ export namespace starrealm
             return { outerRadius, outerRadius * innerRadiusRatio };
         }
 
-        auto GeneratePosition3_() -> ::DirectX::XMFLOAT3
+        auto GeneratePosition3_() -> dx::XMFLOAT3
         {
             return {
                 m_x_dist_(m_rng_),

@@ -35,13 +35,13 @@ export namespace starrealm::entity
             {
                 T::template InitStaticBinds<StarBase>();
 
-                if constexpr (::std::derived_from<U, STARREALM_ENTITY_COLOR::Blend>)
+                if constexpr (std::derived_from<U, STARREALM_ENTITY_COLOR::Blend>)
                 {
                     U::template InitStaticBinds<StarBase>(gfx);
                 }
                 else
                 {
-                    U::template InitStaticBinds<StarBase, ::std::same_as<T, STARREALM_ENTITY_FILL::Filled>>(gfx);
+                    U::template InitStaticBinds<StarBase, std::same_as<T, STARREALM_ENTITY_FILL::Filled>>(gfx);
                 }
             }
 

@@ -17,7 +17,7 @@ import std;
 namespace dx = DirectX;
 
 template <typename T>
-concept MyVertex = ::std::same_as<T, ::dx::XMFLOAT3> or requires(T vertex)
+concept MyVertex = std::same_as<T, dx::XMFLOAT3> or requires(T vertex)
 {
     vertex.m_pos;
 };
@@ -41,13 +41,13 @@ export namespace starrealm::entity::star_style::fill
         <
             MyVertex V,
             bool WithCentre   = true,
-            ::std::integral T = ::std::uint32_t
+            std::integral T = std::uint32_t
         >
-        static auto GenerateIndices(const ::std::vector<V>& vertices) -> ::std::vector<T>
+        static auto GenerateIndices(const std::vector<V>& vertices) -> std::vector<T>
         {
             const auto vertex_count_no_centre = static_cast<T>(vertices.size() - 1u);
 
-            ::std::vector<T> indices;
+            std::vector<T> indices;
 
             indices.reserve(vertex_count_no_centre * 3u);
 
@@ -55,7 +55,7 @@ export namespace starrealm::entity::star_style::fill
             {
                 for (T j{}; j < 2u; ++j)
                 {
-                    ::std::array<T, 3u> temp_idx{};
+                    std::array<T, 3u> temp_idx{};
 
                     temp_idx[0u] = static_cast<T>(i % vertex_count_no_centre);
                     temp_idx[1u] = static_cast<T>(((j == 0) ? ((i + 1u) % vertex_count_no_centre) : (vertex_count_no_centre)));
@@ -73,7 +73,7 @@ export namespace starrealm::entity::star_style::fill
         template <typename StarBase>
         static void InitStaticBinds()
         {
-            StarBase::AddStaticBind_(::std::make_unique<FATSPACE_PIPELINE_ELEMENT::Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
+            StarBase::AddStaticBind_(std::make_unique<FATSPACE_PIPELINE_ELEMENT::Topology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
         }
 
 
@@ -84,7 +84,7 @@ export namespace starrealm::entity::star_style::fill
         template <MyVertex V>
         static float GetVertex_X_(const V& vertex) noexcept
         {
-            if constexpr (::std::same_as<V, ::dx::XMFLOAT3>)
+            if constexpr (std::same_as<V, dx::XMFLOAT3>)
             {
                 return vertex.x;
             }
@@ -97,7 +97,7 @@ export namespace starrealm::entity::star_style::fill
         template <MyVertex V>
         static float GetVertex_Y_(const V& vertex) noexcept
         {
-            if constexpr (::std::same_as<V, ::dx::XMFLOAT3>)
+            if constexpr (std::same_as<V, dx::XMFLOAT3>)
             {
                 return vertex.y;
             }
@@ -107,10 +107,10 @@ export namespace starrealm::entity::star_style::fill
             }
         }
 
-        template <MyVertex V, ::std::integral T>
-        static void ReorderVertices_(const ::std::vector<V>& vertices, ::std::array<T, 3u>& idx_arr)
+        template <MyVertex V, std::integral T>
+        static void ReorderVertices_(const std::vector<V>& vertices, std::array<T, 3u>& idx_arr)
         {
-            ::std::ranges::sort(
+            std::ranges::sort(
                 idx_arr,
                 [&](const auto& idx0, const auto& idx1) noexcept -> bool
                 {
@@ -139,7 +139,7 @@ export namespace starrealm::entity::star_style::fill
 
             if (not isClockwise(vertices[idx_arr[0]], vertices[idx_arr[1]], vertices[idx_arr[2]]))
             {
-                ::std::swap<>(idx_arr[1], idx_arr[2]);
+                std::swap<>(idx_arr[1], idx_arr[2]);
             }
         };
     };
