@@ -191,7 +191,6 @@
     <ClCompile Include="Entity\Star\Style\Fill\Fill.ixx" />
     <ClCompile Include="Game.ixx" />
     <ClCompile Include="StarFactory.ixx" />
-    <ClCompile Include="View\Camera.cxx" />
     <ClCompile Include="View\Camera.ixx" />
     <ClCompile Include="View\View.ixx" />
     <ClCompile Include="wWinMain.cpp" />

@@ -93,9 +93,6 @@
     <ClCompile Include="View\Camera.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="View\Camera.cxx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Demo\Shader\PSColorBlend.hlsl" />
