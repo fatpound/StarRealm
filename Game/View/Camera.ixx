@@ -2,9 +2,9 @@ module;
 
 #include <FatNamespaces.hpp>
 
-#include <DirectXMath.h>
-
 export module StarRealm.View.Camera;
+
+import <DirectXMath.h>;
 
 import FatPound.IO;
 

@@ -2,10 +2,9 @@ module;
 
 #include <FatNamespaces.hpp>
 
-#include <DirectXMath.h>
-
 module StarRealm.Entity.Star.Style.Color:ColoringBase;
 
+import <DirectXMath.h>;
 import :Base;
 
 import FatPound;

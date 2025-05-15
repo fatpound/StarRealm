@@ -2,9 +2,9 @@ module;
 
 #include <FatNamespaces.hpp>
 
-#include <DirectXMath.h>
-
 export module StarRealm.Entity.Star;
+
+import <DirectXMath.h>;
 
 import FatPound;
 

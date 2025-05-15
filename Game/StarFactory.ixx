@@ -2,9 +2,9 @@ module;
 
 #include <FatNamespaces.hpp>
 
-#include <DirectXMath.h>
-
 export module StarRealm:StarFactory;
+
+import <DirectXMath.h>;
 
 import StarRealm.Demo;
 import StarRealm.Entity;

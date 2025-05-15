@@ -2,11 +2,10 @@ module;
 
 #include <FatNamespaces.hpp>
 
-#include <DirectXMath.h>
-
 export module StarRealm.Entity.Star.Style.Fill:Filled;
 
 import <d3d11.h>;
+import <DirectXMath.h>;
 
 import :Base;
 

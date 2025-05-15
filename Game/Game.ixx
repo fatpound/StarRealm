@@ -4,13 +4,13 @@ module;
 
 #include <FatWin32.hpp>
 
-#include <DirectXMath.h>
-
 export module StarRealm;
 
 export import :StarFactory;
 
 export import StarRealm.View;
+
+import <DirectXMath.h>;
 
 import FatPound;
 
