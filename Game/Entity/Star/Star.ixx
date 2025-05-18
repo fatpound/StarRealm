@@ -1,6 +1,6 @@
 module;
 
-#include <FatNamespaces.hpp>
+#include <FatNamespaces.hxx>
 
 export module StarRealm.Entity.Star;
 

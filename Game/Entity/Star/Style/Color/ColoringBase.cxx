@@ -1,6 +1,6 @@
 module;
 
-#include <FatNamespaces.hpp>
+#include <FatNamespaces.hxx>
 
 module StarRealm.Entity.Star.Style.Color:ColoringBase;
 
