@@ -2,14 +2,13 @@ module;
 
 #include <FatNamespaces.hxx>
 
-#include <FatWin32.hpp>
-
 export module StarRealm;
 
 export import :StarFactory;
 
 export import StarRealm.View;
 
+import <FatWin32.hxx>;
 import <DirectXMath.h>;
 
 import FatPound;
@@ -140,8 +139,8 @@ export namespace starrealm
         
         view::Camera m_camera_;
 
-        FATSPACE_UTIL::ViewXM m_viewXM_;
-        FATSPACE_UTIL::Timer m_timer_;
+        FATSPACE_UTILITY::ViewXM m_viewXM_;
+        FATSPACE_UTILITY::Timer m_timer_;
         
         std::vector<std::unique_ptr<entity::Star>> m_stars_;
 

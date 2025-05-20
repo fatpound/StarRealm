@@ -27,7 +27,7 @@ export namespace starrealm::entity
         friend U;
 
     public:
-        explicit StarBase(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTIL::ViewXM& worldView)
+        explicit StarBase(FATSPACE_D3D11::Graphics<>& gfx, const Descriptor& desc, FATSPACE_UTILITY::ViewXM& worldView)
             :
             Star(desc)
         {

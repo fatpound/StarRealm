@@ -55,7 +55,7 @@ export namespace starrealm
 
 
     public:
-        explicit StarFactory(FATSPACE_D3D11::Graphics<>& gfx, FATSPACE_UTIL::ViewXM& worldView, const Settings& settings = {})
+        explicit StarFactory(FATSPACE_D3D11::Graphics<>& gfx, FATSPACE_UTILITY::ViewXM& worldView, const Settings& settings = {})
             :
             m_gfx_(gfx),
             m_worldView_{ worldView },
@@ -166,7 +166,7 @@ export namespace starrealm
     private:
         FATSPACE_D3D11::Graphics<>& m_gfx_;
 
-        FATSPACE_UTIL::ViewXM& m_worldView_;
+        FATSPACE_UTILITY::ViewXM& m_worldView_;
 
         const Settings mc_settings_;
 

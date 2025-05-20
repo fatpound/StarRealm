@@ -26,7 +26,7 @@ export namespace starrealm::entity::star_style::color
         {
             dx::XMFLOAT3 m_pos;
 
-            FATSPACE_UTIL::Color m_color;
+            FATSPACE_UTILITY::Color m_color;
         };
 
 
@@ -54,7 +54,7 @@ export namespace starrealm::entity::star_style::color
             {
                 vertices.emplace_back(
                     vertex,
-                    FATSPACE_UTIL::Color(
+                    FATSPACE_UTILITY::Color(
                         FATSPACE_RANDOM::RandNum<std::uint8_t>(),
                         FATSPACE_RANDOM::RandNum<std::uint8_t>(),
                         FATSPACE_RANDOM::RandNum<std::uint8_t>(),
