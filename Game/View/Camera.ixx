@@ -143,7 +143,7 @@ export namespace starrealm::view
 
                     switch (mouseE->type)
                     {
-                    case FATSPACE_IO::MouseEvent::Type::LPress:
+                    case FATSPACE_IO::Mouse::Event::Type::LPress:
                     {
                         m_engaged_ = true;
         
@@ -155,15 +155,15 @@ export namespace starrealm::view
                     }
                         break;
         
-                    case FATSPACE_IO::MouseEvent::Type::LRelease:
+                    case FATSPACE_IO::Mouse::Event::Type::LRelease:
                         m_engaged_ = false;
                         break;
 
-                    case FATSPACE_IO::MouseEvent::Type::WheelUp:
+                    case FATSPACE_IO::Mouse::Event::Type::WheelUp:
                         m_camera_.SetR(m_camera_.GetR() - scx_ZoomIncrement_ * 5.0f);
                         break;
 
-                    case FATSPACE_IO::MouseEvent::Type::WheelDown:
+                    case FATSPACE_IO::Mouse::Event::Type::WheelDown:
                         m_camera_.SetR(m_camera_.GetR() + scx_ZoomIncrement_ * 5.0f);
                         break;
         

@@ -21,10 +21,10 @@ export namespace starrealm::demo
         {
             const auto& vertices = STARREALM_ENTITY_COLOR::Blend::GenerateVertices<>(m_radiuses_, m_position_, desc.flare_count);
 
-            AddBind_(std::make_unique<FATSPACE_PIPELINE_ELEMENT::VertexBuffer>(gfx.GetDevice(), vertices));
+            AddBind_(std::make_unique<fatpound::win32::d3d11::pipeline::VertexBuffer>(gfx.GetDevice(), vertices));
 
             AddIndexBuffer_(
-                std::make_unique<FATSPACE_PIPELINE_ELEMENT::IndexBuffer>(
+                std::make_unique<fatpound::win32::d3d11::pipeline::IndexBuffer>(
                     gfx.GetDevice(),
                     STARREALM_ENTITY_FILL::Filled::GenerateIndices<>(vertices)
                 )

@@ -14,7 +14,7 @@ namespace dx = DirectX;
 
 export namespace starrealm::entity
 {
-    class Star : public FATSPACE_VISUAL::Drawable
+    class Star : public fatpound::win32::d3d11::visual::Drawable
     {
     public:
         struct RadiusPack final
