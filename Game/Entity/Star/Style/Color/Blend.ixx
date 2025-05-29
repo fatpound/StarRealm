@@ -50,17 +50,12 @@ export namespace starrealm::entity::star_style::color
             std::vector<Blend::Vertex> vertices;
             vertices.reserve(flare_count * 2U + 1U);
 
+            std::minstd_rand rng(std::random_device{}());
+            std::uniform_int_distribution<std::uint32_t> dist;
+
             for (const auto& vertex : Star::Make<WithCentre>(radiuses, position, flare_count))
             {
-                vertices.emplace_back(
-                    vertex,
-                    FATSPACE_UTILITY::Color(
-                        FATSPACE_RANDOM::RandNum<std::uint8_t>(),
-                        FATSPACE_RANDOM::RandNum<std::uint8_t>(),
-                        FATSPACE_RANDOM::RandNum<std::uint8_t>(),
-                        255U
-                    )
-                );
+                vertices.emplace_back(vertex, FATSPACE_RANDOM::RandColor<>(rng, dist));
             }
 
             return vertices;

@@ -46,12 +46,15 @@ namespace starrealm::entity::star_style::color
     public:
         static auto GeneratePixelCBuffer() -> CBuffer
         {
+            std::minstd_rand rng(std::random_device{}());
+            std::uniform_real_distribution<float> dist(0.0F, 1.0F);
+
             return CBuffer
             {
                 {
-                    FATSPACE_RANDOM::RandNum<>(0.0F, 1.0F),
-                    FATSPACE_RANDOM::RandNum<>(0.0F, 1.0F),
-                    FATSPACE_RANDOM::RandNum<>(0.0F, 1.0F),
+                    FATSPACE_RANDOM::RandNumber<>(rng, dist),
+                    FATSPACE_RANDOM::RandNumber<>(rng, dist),
+                    FATSPACE_RANDOM::RandNumber<>(rng, dist),
                     1.0F
                 }
             };
@@ -62,12 +65,15 @@ namespace starrealm::entity::star_style::color
             SBuffer sbuf{};
             sbuf.vertex_colors.reserve(colorCount);
 
+            std::minstd_rand rng(std::random_device{}());
+            std::uniform_real_distribution<float> dist(0.0F, 1.0F);
+            
             for (std::size_t i{}; i < colorCount; ++i)
             {
                 sbuf.vertex_colors.emplace_back(
-                    FATSPACE_RANDOM::RandNum<>(0.0F, 1.0F),
-                    FATSPACE_RANDOM::RandNum<>(0.0F, 1.0F),
-                    FATSPACE_RANDOM::RandNum<>(0.0F, 1.0F),
+                    FATSPACE_RANDOM::RandNumber<>(rng, dist),
+                    FATSPACE_RANDOM::RandNumber<>(rng, dist),
+                    FATSPACE_RANDOM::RandNumber<>(rng, dist),
                     1.0F
                 );
             }
