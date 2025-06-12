@@ -128,9 +128,7 @@ export namespace starrealm::entity
     public:
         auto IsWithinArea(const dx::XMFLOAT3& position, const float radius) const noexcept -> bool
         {
-            using FATSPACE_MATH::operator -;
-
-            const auto& distance = this->m_position_ - position;
+            const auto& distance = FATSPACE_GEOMETRY::Distance(this->m_position_, position);
             const auto& radsum   = m_radiuses_.outer_radius + radius;
 
             return radsum > distance;

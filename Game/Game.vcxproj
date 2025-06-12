@@ -193,7 +193,7 @@
     <ClCompile Include="StarFactory.ixx" />
     <ClCompile Include="View\Camera.ixx" />
     <ClCompile Include="View\View.ixx" />
-    <ClCompile Include="wWinMain.cxx" />
+    <ClCompile Include="wWinMain.c++" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Demo\Shader\PSColorBlend.hlsl">
