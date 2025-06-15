@@ -1,6 +1,7 @@
 module;
 
-#include <FatNamespaces.hxx>
+#include <_macros/Namespaces.hxx>
+
 #include <StarRealmNamespaces.hpp>
 
 export module StarRealm.Demo.FilledSingle;

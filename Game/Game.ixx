@@ -1,6 +1,6 @@
 module;
 
-#include <FatNamespaces.hxx>
+#include <_macros/Namespaces.hxx>
 
 export module StarRealm;
 
@@ -8,7 +8,7 @@ export import :StarFactory;
 
 export import StarRealm.View;
 
-import <FatWin32.hxx>;
+import <Win32_/WinAPI.hxx>;
 import <DirectXMath.h>;
 
 import FatPound;
