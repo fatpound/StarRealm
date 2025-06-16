@@ -17,12 +17,12 @@ import std;
 
 namespace dx = DirectX;
 
-#if IN_RELEASE
-#define ScreenWidth  static_cast<UINT>(::GetSystemMetrics(SM_CXSCREEN))
-#define ScreenHeight static_cast<UINT>(::GetSystemMetrics(SM_CYSCREEN))
+#ifdef IN_RELEASE
+    #define ScreenWidth  static_cast<UINT>(::GetSystemMetrics(SM_CXSCREEN))
+    #define ScreenHeight static_cast<UINT>(::GetSystemMetrics(SM_CYSCREEN))
 #else
-static constexpr UINT ScreenWidth  = 800u;
-static constexpr UINT ScreenHeight = 600u;
+    static constexpr UINT ScreenWidth  = 800u;
+    static constexpr UINT ScreenHeight = 600u;
 #endif
 
 export namespace starrealm
