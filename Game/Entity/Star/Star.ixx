@@ -8,13 +8,15 @@ import <DirectXMath.h>;
 
 import FatPound;
 
+import StarRealm.Entity.Drawable;
+
 import std;
 
 namespace dx = DirectX;
 
 export namespace starrealm::entity
 {
-    class Star : public fatpound::win32::d3d11::visual::Drawable
+    class Star : public Drawable
     {
     public:
         struct RadiusPack final

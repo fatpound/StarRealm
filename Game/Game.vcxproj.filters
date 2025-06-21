@@ -93,6 +93,12 @@
     <ClCompile Include="View\Camera.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Entity\Drawable.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\DrawableBase.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Demo\Shader\PSColorBlend.hlsl" />

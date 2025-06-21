@@ -10,6 +10,7 @@ export module StarRealm.Entity.StarBase;
 
 import StarRealm.Entity.Star;
 import StarRealm.Entity.Star.Style;
+import StarRealm.Entity.DrawableBase;
 
 import FatPound;
 
@@ -62,16 +63,16 @@ export namespace starrealm::entity
 
 
     private:
-        virtual auto GetStaticBinds_() const noexcept -> const BindableVec_t& override final
+        static void AddStaticBind_(BindablePtr_t bindable)
         {
-            return tl_bindable_vec_;
+            tl_bindable_vec_.push_back(std::move<>(bindable));
         }
 
 
     private:
-        static void AddStaticBind_(BindablePtr_t bindable)
+        virtual auto GetStaticBinds_() const noexcept -> const BindableVec_t& override final
         {
-            tl_bindable_vec_.push_back(std::move(bindable));
+            return tl_bindable_vec_;
         }
 
 

@@ -153,6 +153,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Entity\Drawable.ixx" />
+    <ClCompile Include="Entity\DrawableBase.ixx" />
     <ClCompile Include="Entity\Entity.ixx" />
     <ClCompile Include="Demo\Demo.ixx" />
     <ClCompile Include="Demo\FilledBlend.ixx" />
