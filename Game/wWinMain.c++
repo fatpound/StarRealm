@@ -37,7 +37,7 @@ int APIENTRY wWinMain(
 {
     try
     {
-#if IN_DEBUG
+#ifdef IN_DEBUG
         constexpr auto gameCount = 4;
 #else
         constexpr auto gameCount = 1;
@@ -63,7 +63,7 @@ int APIENTRY wWinMain(
     }
     catch (const std::exception& ex)
     {
-        ::MessageBox(nullptr, FATSPACE_UTILITY::ToWString(ex.what()).c_str(), L"Error!", MB_OK | MB_ICONERROR);
+        ::MessageBox(nullptr, FATSPACE_UTILITY::To_WString(ex.what()).c_str(), L"Error!", MB_OK | MB_ICONERROR);
     }
     catch (...)
     {
