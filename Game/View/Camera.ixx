@@ -47,9 +47,9 @@ export namespace starrealm::view
             return
                 dx::XMMatrixTranslation(m_x_, m_y_, m_z_) *
                 dx::XMMatrixLookAtLH(
-                    dx::XMVectorSet(0.0f, 0.0f, -m_r_, 0.0f),        // position to go n look from
+                    dx::XMVectorSet(0.0f, 0.0f,         -m_r_, 0.0f), // position to go n look from
                     dx::XMVectorSet(0.0f, 0.0f, mc_max_depth_, 0.0f), // position to go n look at
-                    dx::XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f)        // y should be pointing towards up
+                    dx::XMVectorSet(0.0f, 1.0f,          0.0f, 0.0f)  // y should be pointing towards up
                 );
         }
 
