@@ -4,11 +4,11 @@ name: MSBuild -- x64 -- Debug
 on:
   push:
     branches:
-      - main
+      - master
       
   pull_request:
     branches:
-      - main
+      - master
     
 
 permissions:
