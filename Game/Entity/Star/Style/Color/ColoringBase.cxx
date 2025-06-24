@@ -52,9 +52,9 @@ namespace starrealm::entity::star_style::color
             return CBuffer
             {
                 {
-                    FATSPACE_RANDOM::RandNumber<>(rng, dist),
-                    FATSPACE_RANDOM::RandNumber<>(rng, dist),
-                    FATSPACE_RANDOM::RandNumber<>(rng, dist),
+                    dist(rng),
+                    dist(rng),
+                    dist(rng),
                     1.0F
                 }
             };
@@ -71,9 +71,9 @@ namespace starrealm::entity::star_style::color
             for (std::size_t i{}; i < colorCount; ++i)
             {
                 sbuf.vertex_colors.emplace_back(
-                    FATSPACE_RANDOM::RandNumber<>(rng, dist),
-                    FATSPACE_RANDOM::RandNumber<>(rng, dist),
-                    FATSPACE_RANDOM::RandNumber<>(rng, dist),
+                    dist(rng),
+                    dist(rng),
+                    dist(rng),
                     1.0F
                 );
             }
