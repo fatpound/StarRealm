@@ -47,7 +47,17 @@ export namespace starrealm::entity
                 }
             }
 
-            AddBind_(std::make_unique<FATSPACE_D3D11::pipeline::TransformCBuffer<StarBase>>(gfx.GetDevice(), *this, worldView));
+            const D3D11_BUFFER_DESC tcbd
+            {
+                .ByteWidth           = sizeof(StarBase),
+                .Usage               = D3D11_USAGE_DYNAMIC,
+                .BindFlags           = D3D11_BIND_CONSTANT_BUFFER,
+                .CPUAccessFlags      = D3D11_CPU_ACCESS_WRITE,
+                .MiscFlags           = 0U,
+                .StructureByteStride = 0U
+            };
+
+            AddBind_(std::make_unique<FATSPACE_D3D11::pipeline::TransformCBuffer<StarBase>>(gfx.GetDevice(), tcbd, *this, worldView));
         }
 
         explicit StarBase()                    = delete;
