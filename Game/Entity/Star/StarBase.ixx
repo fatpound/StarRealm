@@ -8,6 +8,8 @@ module;
 
 export module StarRealm.Entity.StarBase;
 
+import <DirectXMath.h>;
+
 import StarRealm.Entity.Star;
 import StarRealm.Entity.Star.Style;
 import StarRealm.Entity.DrawableBase;
@@ -49,7 +51,7 @@ export namespace starrealm::entity
 
             const D3D11_BUFFER_DESC tcbd
             {
-                .ByteWidth           = sizeof(StarBase),
+                .ByteWidth           = sizeof(DirectX::XMMATRIX),
                 .Usage               = D3D11_USAGE_DYNAMIC,
                 .BindFlags           = D3D11_BIND_CONSTANT_BUFFER,
                 .CPUAccessFlags      = D3D11_CPU_ACCESS_WRITE,
