@@ -34,12 +34,12 @@ export namespace starrealm::entity::star_style::color
             typename StarBase,
             bool ForFilled = true
         >
-        static void InitStaticBinds(fatpound::win32::d3d11::Graphics<>& gfx)
+        static void InitStaticBinds(FATSPACE_D3D11::Graphics<>& gfx)
         {
-            auto pvs = std::make_unique<fatpound::win32::d3d11::pipeline::VertexShader>(gfx.GetDevice(), L"VSColorMulti.cso");
+            auto pvs = std::make_unique<FATSPACE_D3D11::pipeline::VertexShader>(gfx.GetDevice(), L"VSColorMulti.cso");
             auto pvsbc = pvs->GetBytecode();
             StarBase::AddStaticBind_(std::move<>(pvs));
-            StarBase::AddStaticBind_(std::make_unique<fatpound::win32::d3d11::pipeline::PixelShader>(gfx.GetDevice(), L"PSColorMulti.cso"));
+            StarBase::AddStaticBind_(std::make_unique<FATSPACE_D3D11::pipeline::PixelShader>(gfx.GetDevice(), L"PSColorMulti.cso"));
 
             std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
             {
@@ -55,7 +55,7 @@ export namespace starrealm::entity::star_style::color
                 );
             }
 
-            StarBase::AddStaticBind_(std::make_unique<fatpound::win32::d3d11::pipeline::InputLayout>(gfx.GetDevice(), ied, pvsbc));
+            StarBase::AddStaticBind_(std::make_unique<FATSPACE_D3D11::pipeline::InputLayout>(gfx.GetDevice(), ied, pvsbc));
         }
 
 
