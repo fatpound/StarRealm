@@ -36,7 +36,7 @@ export namespace starrealm::demo
                 .StructureByteStride = sizeof(decltype(vertices)::value_type)
             };
 
-            AddBind_(std::make_unique<FATSPACE_D3D11::pipeline::VertexBuffer>(gfx.GetDevice(), vbd, vertices));
+            AddBind_(std::make_unique<FATSPACE_D3D11::resource::VertexBuffer>(gfx.GetDevice(), vbd, vertices));
 
             const auto indices = STARREALM_ENTITY_FILL::Hollow::GenerateIndices<>(vertices.size());
 
@@ -51,7 +51,7 @@ export namespace starrealm::demo
             };
 
             AddIndexBuffer_(
-                std::make_unique<FATSPACE_D3D11::pipeline::IndexBuffer>(
+                std::make_unique<FATSPACE_D3D11::resource::IndexBuffer>(
                     gfx.GetDevice(),
                     ibd,
                     DXGI_FORMAT_R32_UINT,
@@ -89,7 +89,7 @@ export namespace starrealm::demo
             };
 
             AddBind_(
-                std::make_unique<FATSPACE_D3D11::pipeline::PixelSBuffer<STARREALM_ENTITY_COLOR::Multi::ColoringBase::SBuffer::Type>>(
+                std::make_unique<FATSPACE_D3D11::resource::PixelSBuffer<STARREALM_ENTITY_COLOR::Multi::ColoringBase::SBuffer::Type>>(
                     gfx.GetDevice(),
                     gfx.GetImmediateContext(),
                     sbd,

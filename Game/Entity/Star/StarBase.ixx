@@ -59,7 +59,7 @@ export namespace starrealm::entity
                 .StructureByteStride = 0U
             };
 
-            AddBind_(std::make_unique<FATSPACE_D3D11::pipeline::TransformCBuffer<StarBase>>(gfx.GetDevice(), tcbd, *this, worldView));
+            AddBind_(std::make_unique<FATSPACE_D3D11::resource::TransformCBuffer<StarBase>>(gfx.GetDevice(), tcbd, *this, worldView));
         }
 
         explicit StarBase()                    = delete;

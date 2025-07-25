@@ -47,7 +47,7 @@ export namespace starrealm::entity::star_style::fill
         template <typename StarBase>
         static void InitStaticBinds()
         {
-            StarBase::AddStaticBind_(std::make_unique<FATSPACE_D3D11::pipeline::Topology>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
+            StarBase::AddStaticBind_(std::make_unique<FATSPACE_D3D11::core::Topology>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
         }
 
 

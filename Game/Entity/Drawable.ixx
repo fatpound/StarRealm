@@ -27,7 +27,7 @@ export namespace starrealm::entity
     class Drawable
     {
     public:
-        using BindablePtr_t = std::unique_ptr<FATSPACE_D3D11::pipeline::Bindable>;
+        using BindablePtr_t = std::unique_ptr<FATSPACE_D3D11::Bindable>;
         using BindableVec_t = std::vector<BindablePtr_t>;
 
 
@@ -63,13 +63,13 @@ export namespace starrealm::entity
 
         
     protected:
-        virtual void AddBind_(std::unique_ptr<FATSPACE_D3D11::pipeline::Bindable> bind) final
+        virtual void AddBind_(std::unique_ptr<FATSPACE_D3D11::Bindable> bind) final
         {
-            assert(typeid(*bind) not_eq typeid(FATSPACE_D3D11::pipeline::IndexBuffer));
+            assert(typeid(*bind) not_eq typeid(FATSPACE_D3D11::resource::IndexBuffer));
 
             m_binds_.push_back(std::move<>(bind));
         }
-        virtual void AddIndexBuffer_(std::unique_ptr<FATSPACE_D3D11::pipeline::IndexBuffer> idxbuf) final
+        virtual void AddIndexBuffer_(std::unique_ptr<FATSPACE_D3D11::resource::IndexBuffer> idxbuf) final
         {
             assert(m_pCIndexBuffer_ == nullptr);
 
@@ -80,7 +80,7 @@ export namespace starrealm::entity
 
 
     protected:
-        const FATSPACE_D3D11::pipeline::IndexBuffer* m_pCIndexBuffer_{};
+        const FATSPACE_D3D11::resource::IndexBuffer* m_pCIndexBuffer_{};
 
 
     private:

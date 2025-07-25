@@ -40,16 +40,16 @@ export namespace starrealm::entity
         {
             return not tl_bindable_vec_.empty();
         }
-        static void AddStaticBind_(std::unique_ptr<FATSPACE_D3D11::pipeline::Bindable> bind)
+        static void AddStaticBind_(std::unique_ptr<FATSPACE_D3D11::Bindable> bind)
         {
-            assert(typeid(*bind) not_eq typeid(FATSPACE_D3D11::pipeline::IndexBuffer));
+            assert(typeid(*bind) not_eq typeid(FATSPACE_D3D11::resource::IndexBuffer));
 
             tl_bindable_vec_.push_back(std::move<>(bind));
         }
 
 
     protected:
-        virtual void AddStaticIndexBuffer_(std::unique_ptr<FATSPACE_D3D11::pipeline::IndexBuffer> idxbuf) final
+        virtual void AddStaticIndexBuffer_(std::unique_ptr<FATSPACE_D3D11::resource::IndexBuffer> idxbuf) final
         {
             assert(m_pCIndexBuffer_ == nullptr);
 
@@ -63,7 +63,7 @@ export namespace starrealm::entity
         
             for (const auto& bind : GetStaticBinds_())
             {
-                const auto* const ptr = dynamic_cast<FATSPACE_D3D11::pipeline::IndexBuffer*>(bind.get());
+                const auto* const ptr = dynamic_cast<FATSPACE_D3D11::resource::IndexBuffer*>(bind.get());
         
                 if (ptr not_eq nullptr)
                 {

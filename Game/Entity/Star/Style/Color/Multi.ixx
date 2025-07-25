@@ -44,7 +44,7 @@ export namespace starrealm::entity::star_style::color
                     throw std::runtime_error("CANNOT read Vertex Shader to D3D Blob!");
                 }
 
-                StarBase::AddStaticBind_(std::make_unique<FATSPACE_D3D11::pipeline::VertexShader>(gfx.GetDevice(), pVSBlob));
+                StarBase::AddStaticBind_(std::make_unique<FATSPACE_D3D11::shader::VertexShader>(gfx.GetDevice(), pVSBlob));
 
                 std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
                 {
@@ -60,10 +60,10 @@ export namespace starrealm::entity::star_style::color
                     );
                 }
 
-                StarBase::AddStaticBind_(std::make_unique<FATSPACE_D3D11::pipeline::InputLayout>(gfx.GetDevice(), ied, pVSBlob));
+                StarBase::AddStaticBind_(std::make_unique<FATSPACE_D3D11::core::InputLayout>(gfx.GetDevice(), ied, pVSBlob));
             }
 
-            StarBase::AddStaticBind_(std::make_unique<FATSPACE_D3D11::pipeline::PixelShader>(gfx.GetDevice(), std::wstring(L"PSColorMulti.cso")));
+            StarBase::AddStaticBind_(std::make_unique<FATSPACE_D3D11::shader::PixelShader>(gfx.GetDevice(), std::wstring(L"PSColorMulti.cso")));
         }
 
 
