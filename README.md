@@ -35,4 +35,4 @@ If you want to lower the memory usage of the game, then try 4, 2 or 1 value for 
 Hold SPACE to stop stars\
 Press ESC to exit
 
-Copyright (c) 2024 fatpound 
+Copyright (c) 2024-2025 fatpound 
