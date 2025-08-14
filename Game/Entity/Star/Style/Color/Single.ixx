@@ -6,6 +6,7 @@ export module StarRealm.Entity.Star.Style.Color:Single;
 
 import <d3d11.h>;
 import <d3dcompiler.h>;
+import <wrl.h>;
 
 import :Base;
 import :ColoringBase;
@@ -37,7 +38,7 @@ export namespace starrealm::entity::star_style::color
         static void InitStaticBinds(FATSPACE_D3D11::Graphics<>& gfx)
         {
             {
-                wrl::ComPtr<ID3DBlob> pVSBlob;
+                Microsoft::WRL::ComPtr<ID3DBlob> pVSBlob;
 
                 if (FAILED(::D3DReadFileToBlob(L"VSColorSingle.cso", &pVSBlob)))
                 {

@@ -5,8 +5,9 @@ module;
 export module StarRealm.Entity.Star.Style.Color:Blend;
 
 import <d3d11.h>;
-import <DirectXMath.h>;
 import <d3dcompiler.h>;
+import <wrl.h>;
+import <DirectXMath.h>;
 
 import :Base;
 
@@ -66,7 +67,7 @@ export namespace starrealm::entity::star_style::color
         static void InitStaticBinds(FATSPACE_D3D11::Graphics<>& gfx)
         {
             {
-                wrl::ComPtr<ID3DBlob> pVSBlob;
+                Microsoft::WRL::ComPtr<ID3DBlob> pVSBlob;
 
                 if (FAILED(::D3DReadFileToBlob(L"VSColorBlend.cso", &pVSBlob)))
                 {
