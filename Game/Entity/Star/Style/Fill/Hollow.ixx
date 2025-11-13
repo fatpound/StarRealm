@@ -4,7 +4,7 @@ module;
 
 export module StarRealm.Entity.Star.Style.Fill:Hollow;
 
-import <d3d11.h>;
+import <d3d11_4.h>;
 
 import :Base;
 

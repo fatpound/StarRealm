@@ -6,7 +6,7 @@ module;
 
 export module StarRealm.Demo.HollowMulti;
 
-import <d3d11.h>;
+import <d3d11_4.h>;
 
 import StarRealm.Entity.StarBase;
 import StarRealm.Entity.Star.Style;

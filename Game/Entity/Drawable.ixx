@@ -12,7 +12,7 @@ export module StarRealm.Entity.Drawable;
 
 #ifdef FATLIB_BUILDING_WITH_MSVC
 
-import <d3d11.h>;
+import <d3d11_4.h>;
 
 import FatPound;
 
